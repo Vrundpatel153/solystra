@@ -256,6 +256,11 @@ export const Footer = () => {
                   BIS Hallmark Verification
                 </a>
               </li>
+              <li>
+                <a href="#/privacy" className="hover:text-[#7A152E] transition-colors font-medium">
+                  Privacy &amp; Policy
+                </a>
+              </li>
             </ul>
           </div>
 
@@ -300,12 +305,16 @@ export const Footer = () => {
 
         {/* Bottom Bar: Legal & Payment Icons */}
         <div className="pt-6 flex flex-col sm:flex-row items-center justify-between gap-3 sm:gap-4 text-[11px] text-stone-500">
-          {/* Copyright (and desktop Terms link) */}
+          {/* Copyright (and desktop Terms & Privacy links) */}
           <div className="flex items-center gap-2 flex-wrap text-center sm:text-left justify-center sm:justify-start order-1">
             <span>&copy; {new Date().getFullYear()} Solystra Jewels. All rights reserved.</span>
             <span className="text-stone-300 hidden sm:inline">&bull;</span>
+            <a href="#/privacy" className="hidden sm:inline hover:text-[#7A152E] transition-colors underline font-medium">
+              Privacy &amp; Policy
+            </a>
+            <span className="text-stone-300 hidden sm:inline">&bull;</span>
             <a href="#/terms" className="hidden sm:inline hover:text-[#7A152E] transition-colors underline font-medium">
-              Terms &amp; Conditions &amp; Purity Standards
+              Terms &amp; Purity Standards
             </a>
           </div>
 
@@ -322,10 +331,14 @@ export const Footer = () => {
             <span className="px-1.5 sm:px-2 py-0.5 bg-white rounded text-stone-700 border border-stone-200 font-medium text-[9px] sm:text-[10px] whitespace-nowrap shrink-0">NetBanking</span>
           </div>
 
-          {/* Mobile only: Terms & Conditions link placed directly below payment methods */}
-          <div className="order-3 sm:hidden text-center pt-0.5">
+          {/* Mobile only: Terms & Privacy links placed directly below payment methods */}
+          <div className="order-3 sm:hidden text-center pt-0.5 space-x-2">
+            <a href="#/privacy" className="hover:text-[#7A152E] transition-colors underline font-medium text-[11px]">
+              Privacy &amp; Policy
+            </a>
+            <span className="text-stone-300">&bull;</span>
             <a href="#/terms" className="hover:text-[#7A152E] transition-colors underline font-medium text-[11px]">
-              Terms &amp; Conditions &amp; Purity Standards
+              Terms &amp; Conditions
             </a>
           </div>
         </div>

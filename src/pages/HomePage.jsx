@@ -2209,39 +2209,6 @@ export const HomePage = ({ activeCategory, onSelectCategory }) => {
             })}
           </div>
 
-          {/* Atelier Trust Assurance Strip */}
-          <div className="mt-10 sm:mt-12 pt-8 border-t border-[#EAE4DC] grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6">
-            <div className="flex items-center gap-3 bg-white p-3.5 rounded-xl border border-[#EAE4DC] shadow-2xs">
-              <div className="w-9 h-9 rounded-full bg-[#7A152E]/8 flex items-center justify-center shrink-0 text-[#7A152E]">
-                <ShieldCheck className="w-4 h-4" />
-              </div>
-              <div>
-                <p className="text-xs font-bold text-stone-900">Government BIS Hallmarked</p>
-                <p className="text-[11px] text-stone-500">Official 925 purity engraved on every piece</p>
-              </div>
-            </div>
-
-            <div className="flex items-center gap-3 bg-white p-3.5 rounded-xl border border-[#EAE4DC] shadow-2xs">
-              <div className="w-9 h-9 rounded-full bg-[#C5A059]/15 flex items-center justify-center shrink-0 text-[#C5A059]">
-                <Award className="w-4 h-4" />
-              </div>
-              <div>
-                <p className="text-xs font-bold text-stone-900">Austrian Hand-Cut Crystals</p>
-                <p className="text-[11px] text-stone-500">57-facet diamond brilliance under all lighting</p>
-              </div>
-            </div>
-
-            <div className="flex items-center gap-3 bg-white p-3.5 rounded-xl border border-[#EAE4DC] shadow-2xs">
-              <div className="w-9 h-9 rounded-full bg-[#7A152E]/8 flex items-center justify-center shrink-0 text-[#7A152E]">
-                <RefreshCw className="w-4 h-4" />
-              </div>
-              <div>
-                <p className="text-xs font-bold text-stone-900">15-Day Hassle-Free Returns</p>
-                <p className="text-[11px] text-stone-500">Doorstep pickup with full purchase guarantee</p>
-              </div>
-            </div>
-          </div>
-
         </div>
       </section>
 

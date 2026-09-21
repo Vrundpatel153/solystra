@@ -44,8 +44,12 @@ export const TermsPage = ({ onBackToStore }) => {
             </button>
             <span className="text-stone-300">/</span>
             <span className="text-xs text-stone-500 uppercase tracking-widest font-medium">
-              Legal & Atelier Standards
+              Terms &amp; Purity Standards
             </span>
+            <span className="text-stone-300">&bull;</span>
+            <a href="#/privacy" className="text-xs text-[#7A152E] hover:underline font-semibold">
+              View Privacy &amp; Policy &rarr;
+            </a>
           </div>
 
           <div className="max-w-3xl">
