@@ -436,3 +436,89 @@
   z-index: 25;
 }
 
+/* 18K Gold Liquid Shimmer Beam Animation */
+@keyframes gold-shine-sweep {
+  0% {
+    left: -70%;
+    opacity: 0;
+  }
+  6% {
+    opacity: 1;
+  }
+  42% {
+    left: 150%;
+    opacity: 1;
+  }
+  43%, 100% {
+    left: 150%;
+    opacity: 0;
+  }
+}
+
+.gold-card-shine-beam {
+  position: absolute;
+  top: -120%;
+  left: -70%;
+  width: 130px;
+  height: 340%;
+  transform: rotate(25deg);
+  will-change: left, opacity;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(212, 175, 55, 0.08) 15%,
+    rgba(244, 208, 104, 0.8) 46%,
+    rgba(255, 245, 220, 0.98) 50%,
+    rgba(244, 208, 104, 0.8) 54%,
+    rgba(212, 175, 55, 0.08) 85%,
+    transparent 100%
+  );
+  filter: drop-shadow(0 0 18px rgba(244, 208, 104, 0.85));
+  animation: gold-shine-sweep 4.2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+  pointer-events: none;
+  z-index: 25;
+}
+
+/* 925 Sterling Silver Mirror Shimmer Beam Animation (Alternating Offset) */
+@keyframes silver-shine-sweep {
+  0%, 20% {
+    left: -70%;
+    opacity: 0;
+  }
+  26% {
+    opacity: 1;
+  }
+  62% {
+    left: 150%;
+    opacity: 1;
+  }
+  63%, 100% {
+    left: 150%;
+    opacity: 0;
+  }
+}
+
+.silver-card-shine-beam {
+  position: absolute;
+  top: -120%;
+  left: -70%;
+  width: 130px;
+  height: 340%;
+  transform: rotate(25deg);
+  will-change: left, opacity;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(226, 232, 240, 0.08) 15%,
+    rgba(255, 255, 255, 0.85) 46%,
+    rgba(255, 255, 255, 0.98) 50%,
+    rgba(255, 255, 255, 0.85) 54%,
+    rgba(226, 232, 240, 0.08) 85%,
+    transparent 100%
+  );
+  filter: drop-shadow(0 0 18px rgba(255, 255, 255, 0.9));
+  animation: silver-shine-sweep 4.2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+  pointer-events: none;
+  z-index: 25;
+}
+
