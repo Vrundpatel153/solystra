@@ -1315,28 +1315,28 @@ export const HomePage = ({ activeCategory, onSelectCategory }) => {
             </button>
           </div>
 
-          {/* Mobile: Square Cards Carousel with Seamless Infinite Looping */}
+          {/* Mobile: Full-Sized Cards Carousel with Seamless Infinite Looping */}
           <div
             ref={newlyLaunchedScrollRef}
             onScroll={handleNewlyLaunchedScroll}
-            className="flex sm:hidden gap-3 overflow-x-auto no-scrollbar py-1 px-0.5 -mx-1"
+            className="flex sm:hidden gap-3.5 overflow-x-auto no-scrollbar py-2 px-1 -mx-1"
           >
             {tripleNewlyLaunched.map((product, idx) => (
               <div
                 key={`newly-launched-m-${product.id}-${idx}`}
                 data-product-card="true"
-                className="w-[170px] xs:w-[190px] shrink-0 select-none aspect-square"
+                className="w-[220px] xs:w-[240px] shrink-0 select-none"
               >
-                <ProductCard product={product} variant="square" />
+                <ProductCard product={product} />
               </div>
             ))}
           </div>
 
-          {/* Desktop & Tablet: Clean Square Grid */}
-          <div className="hidden sm:grid sm:grid-cols-2 lg:grid-cols-4 gap-5 lg:gap-6">
+          {/* Desktop & Tablet: Generous Full-Sized Grid */}
+          <div className="hidden sm:grid sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-7 pt-1">
             {newlyLaunchedProducts.slice(0, 4).map((product) => (
-              <div key={`newly-launched-d-${product.id}`} className="w-full aspect-square">
-                <ProductCard product={product} variant="square" />
+              <div key={`newly-launched-d-${product.id}`} className="w-full h-full">
+                <ProductCard product={product} />
               </div>
             ))}
           </div>
