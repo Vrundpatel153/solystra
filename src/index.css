@@ -578,7 +578,7 @@
 }
 
 /* ========================================================
-   Curated Metals Smooth Laser Border Auto-Loop
+   Curated Metals High-Definition Laser Border Auto-Loop
    ======================================================== */
 @keyframes laser-spin {
   0% {
@@ -592,13 +592,18 @@
 .laser-card-gold {
   position: relative;
   overflow: hidden;
-  background: rgba(212, 175, 55, 0.28);
-  box-shadow: 0 8px 24px rgba(212, 175, 55, 0.12);
-  transition: all 0.5s ease;
+  background: #D4AF37;
+  border: 1.5px solid rgba(255, 235, 160, 0.9);
+  box-shadow: 
+    0 0 22px rgba(212, 175, 55, 0.45),
+    0 8px 30px rgba(0, 0, 0, 0.35);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .laser-card-gold:hover {
-  box-shadow: 0 16px 40px rgba(212, 175, 55, 0.32);
+  box-shadow: 
+    0 0 32px rgba(212, 175, 55, 0.7),
+    0 12px 40px rgba(0, 0, 0, 0.45);
 }
 
 .laser-beam-gold {
@@ -609,30 +614,36 @@
   height: 300%;
   background: conic-gradient(
     from 0deg,
-    transparent 0deg,
-    transparent 285deg,
-    rgba(212, 175, 55, 0.25) 310deg,
-    #D4AF37 335deg,
-    #FFFCE8 352deg,
-    #D4AF37 358deg,
-    transparent 360deg
+    #8B6817 0deg,
+    #D4AF37 80deg,
+    #8B6817 160deg,
+    #D4AF37 240deg,
+    #FCE59F 300deg,
+    #FFFFFF 345deg,
+    #FFF8D6 355deg,
+    #8B6817 360deg
   );
-  animation: laser-spin 4.2s linear infinite;
+  animation: laser-spin 3s linear infinite;
   z-index: 1;
   will-change: transform;
-  filter: drop-shadow(0 0 6px rgba(255, 244, 209, 0.85));
+  filter: drop-shadow(0 0 8px #FFF0A8) drop-shadow(0 0 16px #D4AF37);
 }
 
 .laser-card-silver {
   position: relative;
   overflow: hidden;
-  background: rgba(226, 232, 240, 0.28);
-  box-shadow: 0 8px 24px rgba(226, 232, 240, 0.12);
-  transition: all 0.5s ease;
+  background: #CBD5E1;
+  border: 1.5px solid rgba(255, 255, 255, 0.95);
+  box-shadow: 
+    0 0 22px rgba(203, 213, 225, 0.5),
+    0 8px 30px rgba(0, 0, 0, 0.35);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .laser-card-silver:hover {
-  box-shadow: 0 16px 40px rgba(226, 232, 240, 0.32);
+  box-shadow: 
+    0 0 32px rgba(226, 232, 240, 0.75),
+    0 12px 40px rgba(0, 0, 0, 0.45);
 }
 
 .laser-beam-silver {
@@ -643,18 +654,19 @@
   height: 300%;
   background: conic-gradient(
     from 180deg,
-    transparent 0deg,
-    transparent 285deg,
-    rgba(203, 213, 225, 0.25) 310deg,
-    #94A3B8 335deg,
-    #FFFFFF 352deg,
-    #CBD5E1 358deg,
-    transparent 360deg
+    #475569 0deg,
+    #94A3B8 80deg,
+    #475569 160deg,
+    #CBD5E1 240deg,
+    #E2E8F0 300deg,
+    #FFFFFF 345deg,
+    #F8FAFC 355deg,
+    #475569 360deg
   );
-  animation: laser-spin 4.2s linear infinite;
+  animation: laser-spin 3s linear infinite;
   z-index: 1;
   will-change: transform;
-  filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.88));
+  filter: drop-shadow(0 0 8px #FFFFFF) drop-shadow(0 0 16px #94A3B8);
 }
 
 

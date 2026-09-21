@@ -1154,13 +1154,13 @@ export const HomePage = ({ activeCategory, onSelectCategory }) => {
           {/* Card 1: 18K Gold Vermeil (Authentic Luminous Gold Theme & Smooth Laser Border Loop) */}
           <div
             onClick={() => handleCategorySelect('gold')}
-            className="laser-card-gold group relative rounded-2xl sm:rounded-3xl p-[1.5px] sm:p-[2px] transition-all duration-500 cursor-pointer flex flex-col aspect-[3/4] sm:aspect-[4/5]"
+            className="laser-card-gold group relative rounded-2xl sm:rounded-3xl p-[2.5px] sm:p-[3.5px] transition-all duration-500 cursor-pointer flex flex-col aspect-[3/4] sm:aspect-[4/5]"
           >
             {/* Automatic Smooth Looped Gold Laser Border */}
             <div className="laser-beam-gold pointer-events-none" />
 
             {/* Inner Card Container (masks center, revealing only the animated laser border) */}
-            <div className="relative w-full h-full rounded-[calc(1rem-1.5px)] sm:rounded-[calc(1.5rem-2px)] overflow-hidden bg-[#181109] flex flex-col justify-between p-3 sm:p-5 z-10">
+            <div className="relative w-full h-full rounded-[13.5px] sm:rounded-[20.5px] overflow-hidden bg-[#181109] flex flex-col justify-between p-3 sm:p-5 z-10">
               {/* Full-bleed high fashion model portrait */}
               <img
                 src="/solystra_assets/metals/gold_model.jpg"
@@ -1220,13 +1220,13 @@ export const HomePage = ({ activeCategory, onSelectCategory }) => {
           {/* Card 2: 925 Sterling Silver (Authentic Moonlit Platinum Theme & Smooth Laser Border Loop) */}
           <div
             onClick={() => handleCategorySelect('silver')}
-            className="laser-card-silver group relative rounded-2xl sm:rounded-3xl p-[1.5px] sm:p-[2px] transition-all duration-500 cursor-pointer flex flex-col aspect-[3/4] sm:aspect-[4/5]"
+            className="laser-card-silver group relative rounded-2xl sm:rounded-3xl p-[2.5px] sm:p-[3.5px] transition-all duration-500 cursor-pointer flex flex-col aspect-[3/4] sm:aspect-[4/5]"
           >
             {/* Automatic Smooth Looped Silver Laser Border */}
             <div className="laser-beam-silver pointer-events-none" />
 
             {/* Inner Card Container (masks center, revealing only the animated laser border) */}
-            <div className="relative w-full h-full rounded-[calc(1rem-1.5px)] sm:rounded-[calc(1.5rem-2px)] overflow-hidden bg-[#0A101D] flex flex-col justify-between p-3 sm:p-5 z-10">
+            <div className="relative w-full h-full rounded-[13.5px] sm:rounded-[20.5px] overflow-hidden bg-[#0A101D] flex flex-col justify-between p-3 sm:p-5 z-10">
               {/* Full-bleed high fashion model portrait */}
               <img
                 src="/solystra_assets/metals/silver_model.jpg"
