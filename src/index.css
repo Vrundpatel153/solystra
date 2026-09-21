@@ -436,89 +436,144 @@
   z-index: 25;
 }
 
-/* 18K Gold Liquid Shimmer Beam Animation */
-@keyframes gold-shine-sweep {
+/* Authentic Brushed Metallic Gold & Silver CTA Buttons */
+.btn-real-gold {
+  background: linear-gradient(
+    135deg,
+    #A37C34 0%,
+    #DDB768 22%,
+    #FFF8E6 48%,
+    #D4AF37 68%,
+    #9C742D 100%
+  );
+  background-size: 200% auto;
+  color: #1A1002 !important;
+  border: 1px solid rgba(255, 248, 225, 0.85);
+  box-shadow: 
+    0 4px 18px rgba(180, 130, 40, 0.45),
+    inset 0 1px 2px rgba(255, 255, 255, 0.95),
+    inset 0 -1.5px 2px rgba(95, 60, 10, 0.5);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn-real-gold:hover {
+  background-position: right center;
+  box-shadow: 
+    0 6px 24px rgba(212, 175, 55, 0.6),
+    inset 0 1px 2px rgba(255, 255, 255, 1),
+    inset 0 -1.5px 2px rgba(95, 60, 10, 0.5);
+}
+
+.btn-real-silver {
+  background: linear-gradient(
+    135deg,
+    #7B8C9E 0%,
+    #BCC9D8 22%,
+    #FFFFFF 48%,
+    #CBD7E4 68%,
+    #738496 100%
+  );
+  background-size: 200% auto;
+  color: #0A101D !important;
+  border: 1px solid rgba(255, 255, 255, 0.95);
+  box-shadow: 
+    0 4px 18px rgba(150, 170, 195, 0.45),
+    inset 0 1px 2px rgba(255, 255, 255, 1),
+    inset 0 -1.5px 2px rgba(55, 70, 90, 0.5);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn-real-silver:hover {
+  background-position: right center;
+  box-shadow: 
+    0 6px 24px rgba(200, 215, 235, 0.6),
+    inset 0 1px 2px rgba(255, 255, 255, 1),
+    inset 0 -1.5px 2px rgba(55, 70, 90, 0.5);
+}
+
+/* Modern Luxury Studio Caustic Sheen (Soft Diffused Atmosphere, NOT a harsh laser line) */
+@keyframes modern-gold-sheen {
   0% {
-    left: -70%;
+    left: -120%;
     opacity: 0;
   }
-  6% {
-    opacity: 1;
+  15% {
+    opacity: 0.75;
   }
-  42% {
-    left: 150%;
-    opacity: 1;
+  50% {
+    left: 170%;
+    opacity: 0.75;
   }
-  43%, 100% {
-    left: 150%;
+  51%, 100% {
+    left: 170%;
     opacity: 0;
   }
 }
 
-.gold-card-shine-beam {
+.gold-modern-sheen {
   position: absolute;
-  top: -120%;
-  left: -70%;
-  width: 130px;
-  height: 340%;
-  transform: rotate(25deg);
+  top: -60%;
+  left: -120%;
+  width: 280px;
+  height: 230%;
+  transform: rotate(18deg);
+  filter: blur(40px);
   will-change: left, opacity;
   background: linear-gradient(
     90deg,
     transparent 0%,
-    rgba(212, 175, 55, 0.08) 15%,
-    rgba(244, 208, 104, 0.8) 46%,
-    rgba(255, 245, 220, 0.98) 50%,
-    rgba(244, 208, 104, 0.8) 54%,
-    rgba(212, 175, 55, 0.08) 85%,
+    rgba(212, 175, 55, 0.12) 20%,
+    rgba(245, 224, 163, 0.65) 48%,
+    rgba(255, 253, 247, 0.85) 52%,
+    rgba(245, 224, 163, 0.65) 56%,
+    rgba(212, 175, 55, 0.12) 80%,
     transparent 100%
   );
-  filter: drop-shadow(0 0 18px rgba(244, 208, 104, 0.85));
-  animation: gold-shine-sweep 4.2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+  animation: modern-gold-sheen 5.5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
   pointer-events: none;
-  z-index: 25;
+  z-index: 20;
 }
 
-/* 925 Sterling Silver Mirror Shimmer Beam Animation (Alternating Offset) */
-@keyframes silver-shine-sweep {
-  0%, 20% {
-    left: -70%;
+/* Modern Luxury Silver Diffused Sheen (Natural Phase-Offset) */
+@keyframes modern-silver-sheen {
+  0%, 25% {
+    left: -120%;
     opacity: 0;
   }
-  26% {
-    opacity: 1;
+  40% {
+    opacity: 0.8;
   }
-  62% {
-    left: 150%;
-    opacity: 1;
+  75% {
+    left: 170%;
+    opacity: 0.8;
   }
-  63%, 100% {
-    left: 150%;
+  76%, 100% {
+    left: 170%;
     opacity: 0;
   }
 }
 
-.silver-card-shine-beam {
+.silver-modern-sheen {
   position: absolute;
-  top: -120%;
-  left: -70%;
-  width: 130px;
-  height: 340%;
-  transform: rotate(25deg);
+  top: -60%;
+  left: -120%;
+  width: 280px;
+  height: 230%;
+  transform: rotate(18deg);
+  filter: blur(40px);
   will-change: left, opacity;
   background: linear-gradient(
     90deg,
     transparent 0%,
-    rgba(226, 232, 240, 0.08) 15%,
-    rgba(255, 255, 255, 0.85) 46%,
-    rgba(255, 255, 255, 0.98) 50%,
-    rgba(255, 255, 255, 0.85) 54%,
-    rgba(226, 232, 240, 0.08) 85%,
+    rgba(226, 232, 240, 0.12) 20%,
+    rgba(240, 245, 250, 0.7) 48%,
+    rgba(255, 255, 255, 0.9) 52%,
+    rgba(240, 245, 250, 0.7) 56%,
+    rgba(226, 232, 240, 0.12) 80%,
     transparent 100%
   );
-  filter: drop-shadow(0 0 18px rgba(255, 255, 255, 0.9));
-  animation: silver-shine-sweep 4.2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+  animation: modern-silver-sheen 5.5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
   pointer-events: none;
-  z-index: 25;
+  z-index: 20;
 }
 
