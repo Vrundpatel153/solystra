@@ -26,3 +26,10 @@ const srcHtml = `<!DOCTYPE html>
 fs.writeFileSync(path.join(rootDir, 'index.html'), srcHtml, 'utf8');
 console.log('Prebuild: Prepared index.html with Soulystra Jewels and /src/main.jsx entry');
 
+// Ensure master catalog is freshly built
+try {
+  await import('./build_catalog.js');
+} catch (err) {
+  console.error('Prebuild: Error running build_catalog:', err);
+}
+

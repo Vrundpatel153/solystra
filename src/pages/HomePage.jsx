@@ -1278,28 +1278,28 @@ export const HomePage = ({ activeCategory, onSelectCategory }) => {
             </button>
           </div>
 
-          {/* Mobile: 2.5 Products Visible with Seamless Infinite Looping */}
+          {/* Mobile: Square Cards Carousel with Seamless Infinite Looping */}
           <div
             ref={newlyLaunchedScrollRef}
             onScroll={handleNewlyLaunchedScroll}
-            className="flex sm:hidden gap-2.5 overflow-x-auto no-scrollbar py-1 px-0.5 -mx-1"
+            className="flex sm:hidden gap-3 overflow-x-auto no-scrollbar py-1 px-0.5 -mx-1"
           >
             {tripleNewlyLaunched.map((product, idx) => (
               <div
                 key={`newly-launched-m-${product.id}-${idx}`}
                 data-product-card="true"
-                className="w-[calc((100vw-3.25rem)/2.5)] shrink-0 select-none"
+                className="w-[170px] xs:w-[190px] shrink-0 select-none aspect-square"
               >
-                <ProductCard product={product} />
+                <ProductCard product={product} variant="square" />
               </div>
             ))}
           </div>
 
-          {/* Desktop & Tablet: Clean Grid */}
-          <div className="hidden sm:grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          {/* Desktop & Tablet: Clean Square Grid */}
+          <div className="hidden sm:grid sm:grid-cols-2 lg:grid-cols-4 gap-5 lg:gap-6">
             {newlyLaunchedProducts.slice(0, 4).map((product) => (
-              <div key={`newly-launched-d-${product.id}`} className="w-full">
-                <ProductCard product={product} />
+              <div key={`newly-launched-d-${product.id}`} className="w-full aspect-square">
+                <ProductCard product={product} variant="square" />
               </div>
             ))}
           </div>
@@ -1788,109 +1788,6 @@ export const HomePage = ({ activeCategory, onSelectCategory }) => {
 
 
       {/* ========================================================
-          9. STORYTELLING & BRAND HERITAGE SECTION
-          ======================================================== */}
-      <section className="py-4 sm:py-7 bg-[#FAF8F5] border-y border-[#EAE4DC]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14 items-center">
-            
-            {/* Left Narrative Column */}
-            <div className="lg:col-span-6 space-y-5 sm:space-y-6">
-              <div>
-                <span className="text-[11px] sm:text-xs uppercase tracking-widest text-[#7A152E] font-bold block mb-1.5">
-                  OUR HERITAGE & CRAFT
-                </span>
-                <h2 className="font-serif text-2xl sm:text-4xl lg:text-5xl text-stone-900 font-normal leading-[1.2]">
-                  Born from a Passion for Uncompromising Purity
-                </h2>
-              </div>
-
-              <p className="text-xs sm:text-base text-stone-600 leading-relaxed font-light">
-                Founded on the belief that everyday fine jewelry should never cut corners. While ordinary fashion jewelry tarnishes within weeks and relies on hollow brass cores, <strong className="text-stone-900 font-semibold">Solystra</strong> was created to deliver authentic atelier luxury at transparent pricing.
-              </p>
-
-              {/* 3 Trust Stat Cards: Perfect Responsive 3-Column Grid without Clipping */}
-              <div className="grid grid-cols-3 gap-2 sm:gap-4 pt-1">
-                <div className="p-2.5 sm:p-4 rounded-xl sm:rounded-2xl bg-white border border-[#EAE4DC] flex flex-col justify-between shadow-2xs">
-                  <div>
-                    <div className="font-serif text-lg sm:text-2xl font-normal text-[#7A152E] leading-tight">92.5%</div>
-                    <div className="text-[10.5px] sm:text-xs font-bold text-stone-800 mt-1 leading-snug">Solid Silver</div>
-                  </div>
-                  <div className="text-[9px] sm:text-[11px] text-stone-500 mt-1 leading-tight">BIS Hallmarked pure cast</div>
-                </div>
-                <div className="p-2.5 sm:p-4 rounded-xl sm:rounded-2xl bg-white border border-[#EAE4DC] flex flex-col justify-between shadow-2xs">
-                  <div>
-                    <div className="font-serif text-lg sm:text-2xl font-normal text-[#7A152E] leading-tight">2.0 µm</div>
-                    <div className="text-[10.5px] sm:text-xs font-bold text-stone-800 mt-1 leading-snug">Dual Rhodium</div>
-                  </div>
-                  <div className="text-[9px] sm:text-[11px] text-stone-500 mt-1 leading-tight">Lifetime shine barrier</div>
-                </div>
-                <div className="p-2.5 sm:p-4 rounded-xl sm:rounded-2xl bg-white border border-[#EAE4DC] flex flex-col justify-between shadow-2xs">
-                  <div>
-                    <div className="font-serif text-lg sm:text-2xl font-normal text-[#7A152E] leading-tight">0%</div>
-                    <div className="text-[10.5px] sm:text-xs font-bold text-stone-800 mt-1 leading-snug">Nickel / Lead</div>
-                  </div>
-                  <div className="text-[9px] sm:text-[11px] text-stone-500 mt-1 leading-tight">100% skin safe & pure</div>
-                </div>
-              </div>
-
-              {/* Master Silversmith Quote Callout Card */}
-              <div className="p-3.5 sm:p-4 rounded-xl sm:rounded-2xl bg-white/90 border border-[#EAE4DC] border-l-4 border-l-[#7A152E] shadow-2xs">
-                <blockquote className="italic text-xs sm:text-sm text-stone-800 font-serif leading-relaxed">
-                  “True luxury isn’t exorbitant markup—it is the honest heft of solid precious metal, hand-set Austrian stones, and an unwavering promise to last for generations.”
-                </blockquote>
-                <div className="mt-2 pt-2 border-t border-stone-100 text-[10px] sm:text-xs font-bold text-[#7A152E] tracking-wider uppercase flex items-center gap-1.5">
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#7A152E]" />
-                  <span>Master Silversmith, Solystra Atelier</span>
-                </div>
-              </div>
-
-              {/* Atelier CTA Button */}
-              <div className="pt-1">
-                <button
-                  onClick={() => handleCategorySelect('all')}
-                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 sm:py-3 bg-[#7A152E] hover:bg-[#590D1E] text-white text-xs sm:text-sm font-bold uppercase tracking-wider rounded-xl shadow-md hover:shadow-lg transition-all cursor-pointer active:scale-98"
-                >
-                  <span>Explore Atelier Creations</span>
-                  <ArrowRight className="w-4 h-4 text-[#F4D068]" />
-                </button>
-              </div>
-            </div>
-
-            {/* Right Visual Column: Craftsmanship Photography */}
-            <div className="lg:col-span-6 relative">
-              <div className="relative rounded-2xl sm:rounded-3xl overflow-hidden shadow-xl sm:shadow-2xl border border-[#EAE4DC] aspect-[16/11]">
-                <img
-                  src="assets/craftsmanship-atelier.jpg"
-                  alt="Solystra Master Artisan Jewelry Craft"
-                  className="w-full h-full object-cover object-[center_35%] block"
-                  loading="lazy"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent pointer-events-none" />
-                
-                {/* Hallmark Stamp Floating Badge */}
-                <div className="absolute bottom-3 left-3 right-3 sm:bottom-5 sm:left-5 sm:right-auto bg-white/95 backdrop-blur-md p-2.5 sm:p-4 rounded-xl sm:rounded-2xl border border-stone-200/90 shadow-lg flex items-center gap-3">
-                  <div className="min-w-[56px] sm:min-w-[62px] h-10 sm:h-11 px-2 py-0.5 rounded-lg sm:rounded-xl bg-[#FAF8F5] border border-[#EAE4DC] flex flex-col items-center justify-center shrink-0 text-center shadow-2xs">
-                    <span className="text-[12px] sm:text-[13px] font-serif font-bold tracking-wider text-[#7A152E] leading-none">925</span>
-                    <span className="text-[7.5px] sm:text-[8px] tracking-wider uppercase font-bold text-stone-600 mt-0.5 whitespace-nowrap">HALLMARK</span>
-                  </div>
-                  <div className="min-w-0">
-                    <div className="text-[11px] sm:text-xs font-bold text-stone-900 uppercase tracking-wide truncate">
-                      Jaipur & Mumbai Bench Ateliers
-                    </div>
-                    <div className="text-[9.5px] sm:text-[11px] text-stone-500 line-clamp-1">
-                      Hand-finished by third-generation master silversmiths
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-          </div>
-        </div>
-      </section>
-
-      {/* ========================================================
           8. VIDEO SIDE SCROLL OPTION (SOLYSTRA REELS IN MOTION)
           ======================================================== */}
       <section className="py-4 sm:py-6 bg-white border-b border-[#EAE4DC]">
@@ -2043,11 +1940,6 @@ export const HomePage = ({ activeCategory, onSelectCategory }) => {
             ))}
           </div>
 
-          {/* Mobile Swipe Hint */}
-          <div className="sm:hidden flex items-center justify-center gap-2 mt-3 text-stone-400 text-xs font-medium">
-            <span>Slide left/right to view more pieces in motion</span>
-            <ArrowRight className="w-3.5 h-3.5" />
-          </div>
 
         </div>
       </section>

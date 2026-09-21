@@ -4,6 +4,7 @@
   "version": "1.0.0",
   "type": "module",
   "scripts": {
+    "predev": "node tools/prebuild.js",
     "dev": "vite",
     "build": "node tools/prebuild.js && vite build && node tools/postbuild.js",
     "preview": "vite preview"

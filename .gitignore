@@ -15,8 +15,8 @@ pdp_test_screenshot.png
 walkthrough.md
 *.py
 *.log
-banner_candidates.json
-catalog.js
+/catalog.js
+!src/data/catalog.js
 
 # Root scratch images
 *.png
