@@ -1,0 +1,78 @@
+# Dependencies
+node_modules/
+
+# Production build outputs & archives
+dist/
+dist-final/
+*.zip
+assets-bundle/
+
+# Local & temporary artifacts
+scratch/
+figma-export/
+figma-html-export/
+pdp_test_screenshot.png
+walkthrough.md
+*.py
+*.log
+banner_candidates.json
+catalog.js
+
+# Root scratch images
+*.png
+!solystra_assets/**
+!assets/**
+!public/**
+!zavya_assets/**
+
+# Legacy static scrape files
+index_legacy.html
+solystra_index.html
+solystra_products.json
+solystra_catalog_data.json
+solystra_collections.json
+solystra_extracted_urls.json
+script.js
+styles.css
+*.html
+!index.html
+
+# Exclude raw unused external video/image scrape dumps
+zavya_assets/**
+
+# Un-ignore ONLY active video and poster assets used by the React app & production dist
+!zavya_assets/
+!zavya_assets/products/
+!zavya_assets/products/**/
+!zavya_assets/products/pendant/pen-30277-g/video_01_pen-30277-g.mp4
+!zavya_assets/products/pendant/pen-30277-g/01_pen-30277-g.jpg
+!zavya_assets/products/drop_earrings/ear-21096-g/video_01_ear-21096-g.mp4
+!zavya_assets/products/drop_earrings/ear-21096-g/07_ear-21096-g.jpg
+!zavya_assets/products/bracelet/br-80505-g/video_01_br-80505-g.mp4
+!zavya_assets/products/bracelet/br-80505-g/01_br-80505-g.jpg
+!zavya_assets/products/diamond_stud_earrings/0-75-ct-halo-heart-solitaire-gold-stud-earring/01_0-75-ct-halo-heart-solitaire-gold-stud-earring.jpg
+!zavya_assets/products/diamond_solitaire_ring/0-75-ct-lambency-solitaire-diamond-ring/01_0-75-ct-lambency-solitaire-diamond-ring.jpg
+!zavya_assets/products/necklace/nl-30455-g/video_01_nl-30455-g.mp4
+!zavya_assets/products/necklace/nl-30455-g/01_nl-30455-g.jpg
+!zavya_assets/products/diamond_pendant/0-75-ct-celestial-solitaire-lab-grown-diamond-pendant-without-chain/01_0-75-ct-celestial-solitaire-lab-grown-diamond-pendant-without-chain.jpg
+!zavya_assets/products/kada_bracelet/peacock-925-sterling-silver-bracelet-in-rose-gold-valentine-hamper/01_peacock-925-sterling-silver-bracelet-in-rose-gold-valentine-hamper.jpg
+!zavya_assets/products/kada_bracelet_men/bold-and-striking-rhodium-plated-925-sterling-silver-mens-bangle/video_01_bold-and-striking-rhodium-plated-925-sterling-silver-mens-bangle.mp4
+!zavya_assets/products/kada_bracelet_men/bold-and-striking-rhodium-plated-925-sterling-silver-mens-bangle/01_bold-and-striking-rhodium-plated-925-sterling-silver-mens-bangle.jpg
+!zavya_assets/products/jewellery_sets/radiant-bloom-gold-plated-cz-pendant-earrings-set/video_01_radiant-bloom-gold-plated-cz-pendant-earrings-set.mp4
+!zavya_assets/products/jewellery_sets/eternal-spark-rose-gold-sterling-silver-jewellery-set/01_eternal-spark-rose-gold-sterling-silver-jewellery-set.jpg
+!zavya_assets/products/evil_eye_bracelet/infinity-charm-rhodium-plated-bracelet-with-evil-eye-cubic-zirconia/01_infinity-charm-rhodium-plated-bracelet-with-evil-eye-cubic-zirconia.jpg
+!zavya_assets/products/anklets/rose-gold-plated-glimmering-fusion-cz-925-sterling-silver-anklet-x-kama/video_01_rose-gold-plated-glimmering-fusion-cz-925-sterling-silver-anklet-x-kama.mp4
+!zavya_assets/products/anklets/rose-gold-plated-glimmering-fusion-cz-925-sterling-silver-anklet-x-kama/01_rose-gold-plated-glimmering-fusion-cz-925-sterling-silver-anklet-x-kama.jpg
+!zavya_assets/products/diamond_stud_earrings/0-75-ct-solitaire-halo-gold-earrings-with-lab-grown-diamonds/video_01_0-75-ct-solitaire-halo-gold-earrings-with-lab-grown-diamonds.mp4
+
+# Environment variables & local logs
+.env
+.env.local
+npm-debug.log*
+yarn-debug.log*
+
+# System & IDE files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

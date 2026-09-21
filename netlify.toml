@@ -1,0 +1,30 @@
+# Netlify Configuration for Solystra Jewels React App
+
+[build]
+  publish = "dist"
+  command = "npm run build"
+
+# Single-Page Application (SPA) Full Routing
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+# Security and Asset Caching Headers
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-XSS-Protection = "1; mode=block"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+
+[[headers]]
+  for = "/assets-bundle/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/solystra_assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
