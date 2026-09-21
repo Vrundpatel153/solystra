@@ -1151,104 +1151,134 @@ export const HomePage = ({ activeCategory, onSelectCategory }) => {
         {/* Both Cards In ONE Row on Mobile (grid-cols-2) & PC - Luxury Editorial Full-Bleed Design */}
         <div className="grid grid-cols-2 gap-3 sm:gap-6 lg:gap-8 max-w-4xl mx-auto">
           
-          {/* Card 1: 18K Gold Vermeil (Authentic Luminous Gold Theme & Modern Studio Sheen) */}
+          {/* Card 1: 18K Gold Vermeil (Authentic Luminous Gold Theme & Smooth Laser Border Loop) */}
           <div
             onClick={() => handleCategorySelect('gold')}
-            className="group relative rounded-2xl sm:rounded-3xl overflow-hidden bg-[#1F140A] border border-[#D4AF37]/50 shadow-[0_10px_30px_rgba(212,175,55,0.18)] hover:shadow-[0_18px_45px_rgba(212,175,55,0.38)] transition-all duration-500 cursor-pointer flex flex-col justify-between aspect-[3/4] sm:aspect-[4/5] p-3 sm:p-5"
+            className="laser-card-gold group relative rounded-2xl sm:rounded-3xl p-[1.5px] sm:p-[2px] transition-all duration-500 cursor-pointer flex flex-col aspect-[3/4] sm:aspect-[4/5]"
           >
-            {/* Full-bleed high fashion model portrait */}
-            <img
-              src="/solystra_assets/metals/gold_model.jpg"
-              alt="18K Gold Vermeil Collection"
-              className="absolute inset-0 w-full h-full object-cover object-top group-hover:scale-106 transition-transform duration-700 ease-out"
-              loading="lazy"
-            />
+            {/* Automatic Smooth Looped Gold Laser Border */}
+            <div className="laser-beam-gold pointer-events-none" />
 
-            {/* Warm Gold Ambient Luminance Overlay */}
-            <div className="absolute inset-0 bg-gradient-to-tr from-[#D4AF37]/25 via-transparent to-[#F4D068]/20 pointer-events-none" />
+            {/* Inner Card Container (masks center, revealing only the animated laser border) */}
+            <div className="relative w-full h-full rounded-[calc(1rem-1.5px)] sm:rounded-[calc(1.5rem-2px)] overflow-hidden bg-[#181109] flex flex-col justify-between p-3 sm:p-5 z-10">
+              {/* Full-bleed high fashion model portrait */}
+              <img
+                src="/solystra_assets/metals/gold_model.jpg"
+                alt="18K Gold Vermeil Collection"
+                className="absolute inset-0 w-full h-full object-cover object-top group-hover:scale-106 transition-transform duration-700 ease-out"
+                loading="lazy"
+              />
 
-            {/* Smooth High-Contrast Scrim Gradient for Razor-Sharp Typography */}
-            <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-black/15 pointer-events-none" />
+              {/* Warm Gold Ambient Luminance Overlay */}
+              <div className="absolute inset-0 bg-gradient-to-tr from-[#D4AF37]/25 via-transparent to-[#F4D068]/20 pointer-events-none" />
 
-            {/* Modern Luxury Studio Diffused Gold Sheen */}
-            <div className="absolute inset-0 overflow-hidden pointer-events-none z-20">
-              <div className="gold-modern-sheen" />
-            </div>
+              {/* Smooth High-Contrast Scrim Gradient for Razor-Sharp Typography */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-black/15 pointer-events-none" />
 
-            {/* Top Bar: Clean Refined Luxury Hallmarking Capsule */}
-            <div className="relative z-10 flex items-center justify-between">
-              <span className="px-2.5 sm:px-3.5 py-1 rounded-full bg-black/60 backdrop-blur-md border border-[#D4AF37]/60 text-[#FFF5DC] text-[8.5px] xs:text-[9.5px] sm:text-xs font-mono font-bold tracking-widest uppercase flex items-center gap-1.5 shadow-sm">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#E5C378] shadow-[0_0_6px_#E5C378]" />
-                <span>AU 750 &bull; VERMEIL</span>
-              </span>
-            </div>
+              {/* Modern Luxury Studio Diffused Gold Sheen */}
+              <div className="absolute inset-0 overflow-hidden pointer-events-none z-20">
+                <div className="gold-modern-sheen" />
+              </div>
 
-            {/* Bottom Editorial Content with Real Brushed Metallic Gold CTA */}
-            <div className="relative z-10 pt-4 flex flex-col items-center text-center">
-              <span className="text-[7.5px] xs:text-[8.5px] sm:text-[10px] uppercase tracking-[0.25em] font-bold text-[#E5C378] block drop-shadow-xs">
-                SOLYSTRA ATELIER
-              </span>
-              <h3 className="font-serif text-base xs:text-lg sm:text-2xl lg:text-3xl font-normal text-white mt-0.5 leading-tight drop-shadow-sm">
-                18K Gold Vermeil
-              </h3>
-              <p className="hidden sm:block text-[11px] text-stone-200/90 font-light mt-1">
-                2.5-Micron Thick Gold over Pure 925 Silver
-              </p>
-              
-              <div className="mt-2.5 sm:mt-3.5 btn-real-gold inline-flex items-center gap-1.5 px-4 sm:px-6 py-1.5 sm:py-2 rounded-full font-sans font-extrabold text-[9px] xs:text-[10px] sm:text-xs uppercase tracking-wider transition-all duration-300 group-hover:scale-103">
-                <span>Explore Gold</span>
-                <span className="group-hover:translate-x-1 transition-transform">→</span>
+              {/* Top Bar: Clean Refined Luxury Atelier Label */}
+              <div className="relative z-20 flex items-center justify-between">
+                <span className="px-2.5 sm:px-3.5 py-1 rounded-full bg-black/40 backdrop-blur-md border border-[#D4AF37]/45 text-[#F5E6C8] text-[8.5px] xs:text-[9.5px] sm:text-[10.5px] font-sans font-semibold tracking-[0.22em] uppercase shadow-sm">
+                  18K Gold Vermeil
+                </span>
+              </div>
+
+              {/* Bottom Editorial Content with Real Brushed Metallic Gold CTA */}
+              <div className="relative z-20 pt-4 flex flex-col items-center text-center">
+                <span className="text-[7.5px] xs:text-[8.5px] sm:text-[10px] uppercase tracking-[0.25em] font-bold text-[#E5C378] block drop-shadow-xs">
+                  SOLYSTRA ATELIER
+                </span>
+                <h3 className="font-serif text-base xs:text-lg sm:text-2xl lg:text-3xl font-normal text-white mt-0.5 leading-tight drop-shadow-sm">
+                  18K Gold Vermeil
+                </h3>
+                <p className="hidden sm:block text-[11px] text-stone-200/90 font-light mt-1">
+                  2.5-Micron Thick Gold over Pure 925 Silver
+                </p>
+                
+                <div className="mt-2.5 sm:mt-3.5 btn-real-gold inline-flex items-center gap-1.5 sm:gap-2 px-4 sm:px-6 py-1.5 sm:py-2 rounded-full font-sans font-extrabold text-[9px] xs:text-[10px] sm:text-xs uppercase tracking-wider transition-all duration-300 group-hover:scale-103">
+                  <span>Explore Gold</span>
+                  <svg 
+                    className="w-3 h-3 sm:w-3.5 sm:h-3.5 group-hover:translate-x-1 transition-transform duration-300 shrink-0" 
+                    viewBox="0 0 16 16" 
+                    fill="none" 
+                    stroke="currentColor" 
+                    strokeWidth="2" 
+                    strokeLinecap="round" 
+                    strokeLinejoin="round"
+                  >
+                    <path d="M2.5 8h10M8.5 4L12.5 8l-4 4" />
+                  </svg>
+                </div>
               </div>
             </div>
           </div>
 
-          {/* Card 2: 925 Sterling Silver (Authentic Moonlit Platinum Theme & Modern Studio Sheen) */}
+          {/* Card 2: 925 Sterling Silver (Authentic Moonlit Platinum Theme & Smooth Laser Border Loop) */}
           <div
             onClick={() => handleCategorySelect('silver')}
-            className="group relative rounded-2xl sm:rounded-3xl overflow-hidden bg-[#0F172A] border border-slate-300/50 shadow-[0_10px_30px_rgba(226,232,240,0.18)] hover:shadow-[0_18px_45px_rgba(226,232,240,0.38)] transition-all duration-500 cursor-pointer flex flex-col justify-between aspect-[3/4] sm:aspect-[4/5] p-3 sm:p-5"
+            className="laser-card-silver group relative rounded-2xl sm:rounded-3xl p-[1.5px] sm:p-[2px] transition-all duration-500 cursor-pointer flex flex-col aspect-[3/4] sm:aspect-[4/5]"
           >
-            {/* Full-bleed high fashion model portrait */}
-            <img
-              src="/solystra_assets/metals/silver_model.jpg"
-              alt="925 Sterling Silver Collection"
-              className="absolute inset-0 w-full h-full object-cover object-top group-hover:scale-106 transition-transform duration-700 ease-out"
-              loading="lazy"
-            />
+            {/* Automatic Smooth Looped Silver Laser Border */}
+            <div className="laser-beam-silver pointer-events-none" />
 
-            {/* Cool Silver/Rhodium Ambient Lustre Overlay */}
-            <div className="absolute inset-0 bg-gradient-to-tr from-slate-200/25 via-transparent to-white/20 pointer-events-none" />
+            {/* Inner Card Container (masks center, revealing only the animated laser border) */}
+            <div className="relative w-full h-full rounded-[calc(1rem-1.5px)] sm:rounded-[calc(1.5rem-2px)] overflow-hidden bg-[#0A101D] flex flex-col justify-between p-3 sm:p-5 z-10">
+              {/* Full-bleed high fashion model portrait */}
+              <img
+                src="/solystra_assets/metals/silver_model.jpg"
+                alt="925 Sterling Silver Collection"
+                className="absolute inset-0 w-full h-full object-cover object-top group-hover:scale-106 transition-transform duration-700 ease-out"
+                loading="lazy"
+              />
 
-            {/* Smooth High-Contrast Scrim Gradient for Razor-Sharp Typography */}
-            <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-black/15 pointer-events-none" />
+              {/* Cool Silver/Rhodium Ambient Lustre Overlay */}
+              <div className="absolute inset-0 bg-gradient-to-tr from-slate-200/25 via-transparent to-white/20 pointer-events-none" />
 
-            {/* Modern Luxury Studio Diffused Silver Sheen (Alternating Phase) */}
-            <div className="absolute inset-0 overflow-hidden pointer-events-none z-20">
-              <div className="silver-modern-sheen" />
-            </div>
+              {/* Smooth High-Contrast Scrim Gradient for Razor-Sharp Typography */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-black/15 pointer-events-none" />
 
-            {/* Top Bar: Clean Refined Luxury Hallmarking Capsule */}
-            <div className="relative z-10 flex items-center justify-between">
-              <span className="px-2.5 sm:px-3.5 py-1 rounded-full bg-black/60 backdrop-blur-md border border-white/50 text-white text-[8.5px] xs:text-[9.5px] sm:text-xs font-mono font-bold tracking-widest uppercase flex items-center gap-1.5 shadow-sm">
-                <span className="w-1.5 h-1.5 rounded-full bg-white shadow-[0_0_6px_#ffffff]" />
-                <span>AG 925 &bull; RHODIUM</span>
-              </span>
-            </div>
+              {/* Modern Luxury Studio Diffused Silver Sheen (Alternating Phase) */}
+              <div className="absolute inset-0 overflow-hidden pointer-events-none z-20">
+                <div className="silver-modern-sheen" />
+              </div>
 
-            {/* Bottom Editorial Content with Real Brushed Metallic Silver CTA */}
-            <div className="relative z-10 pt-4 flex flex-col items-center text-center">
-              <span className="text-[7.5px] xs:text-[8.5px] sm:text-[10px] uppercase tracking-[0.25em] font-bold text-slate-200 block drop-shadow-xs">
-                SOLYSTRA ATELIER
-              </span>
-              <h3 className="font-serif text-base xs:text-lg sm:text-2xl lg:text-3xl font-normal text-white mt-0.5 leading-tight drop-shadow-sm">
-                925 Sterling Silver
-              </h3>
-              <p className="hidden sm:block text-[11px] text-stone-200/90 font-light mt-1">
-                Anti-Tarnish Mirror Rhodium Dipped Solid 925
-              </p>
-              
-              <div className="mt-2.5 sm:mt-3.5 btn-real-silver inline-flex items-center gap-1.5 px-4 sm:px-6 py-1.5 sm:py-2 rounded-full font-sans font-extrabold text-[9px] xs:text-[10px] sm:text-xs uppercase tracking-wider transition-all duration-300 group-hover:scale-103">
-                <span>Explore Silver</span>
-                <span className="group-hover:translate-x-1 transition-transform">→</span>
+              {/* Top Bar: Clean Refined Luxury Atelier Label */}
+              <div className="relative z-20 flex items-center justify-between">
+                <span className="px-2.5 sm:px-3.5 py-1 rounded-full bg-black/40 backdrop-blur-md border border-white/40 text-slate-100 text-[8.5px] xs:text-[9.5px] sm:text-[10.5px] font-sans font-semibold tracking-[0.22em] uppercase shadow-sm">
+                  925 Sterling Silver
+                </span>
+              </div>
+
+              {/* Bottom Editorial Content with Real Brushed Metallic Silver CTA */}
+              <div className="relative z-20 pt-4 flex flex-col items-center text-center">
+                <span className="text-[7.5px] xs:text-[8.5px] sm:text-[10px] uppercase tracking-[0.25em] font-bold text-slate-200 block drop-shadow-xs">
+                  SOLYSTRA ATELIER
+                </span>
+                <h3 className="font-serif text-base xs:text-lg sm:text-2xl lg:text-3xl font-normal text-white mt-0.5 leading-tight drop-shadow-sm">
+                  925 Sterling Silver
+                </h3>
+                <p className="hidden sm:block text-[11px] text-stone-200/90 font-light mt-1">
+                  Anti-Tarnish Mirror Rhodium Dipped Solid 925
+                </p>
+                
+                <div className="mt-2.5 sm:mt-3.5 btn-real-silver inline-flex items-center gap-1.5 sm:gap-2 px-4 sm:px-6 py-1.5 sm:py-2 rounded-full font-sans font-extrabold text-[9px] xs:text-[10px] sm:text-xs uppercase tracking-wider transition-all duration-300 group-hover:scale-103">
+                  <span>Explore Silver</span>
+                  <svg 
+                    className="w-3 h-3 sm:w-3.5 sm:h-3.5 group-hover:translate-x-1 transition-transform duration-300 shrink-0" 
+                    viewBox="0 0 16 16" 
+                    fill="none" 
+                    stroke="currentColor" 
+                    strokeWidth="2" 
+                    strokeLinecap="round" 
+                    strokeLinejoin="round"
+                  >
+                    <path d="M2.5 8h10M8.5 4L12.5 8l-4 4" />
+                  </svg>
+                </div>
               </div>
             </div>
           </div>
