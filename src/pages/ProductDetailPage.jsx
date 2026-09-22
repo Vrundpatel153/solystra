@@ -768,105 +768,7 @@ export const ProductDetailPage = ({ productId }) => {
               </button>
             </div>
 
-            {/* 4. Available Offers */}
-            <div className="space-y-2 pt-1">
-              <div className="text-xs font-semibold text-stone-900 tracking-wide">
-                Available offers
-              </div>
-              <div className="flex gap-2.5 overflow-x-auto hide-scrollbar pb-1">
-                {[
-                  { discount: 'Get 10% off', min: 'above ₹1990', code: 'SILVER10' },
-                  { discount: 'Get 15% off', min: 'above ₹2990', code: 'SILVER15' },
-                  { discount: 'Get 20% off', min: 'above ₹4990', code: 'SILVER20' },
-                  { discount: 'Get 25% off', min: 'above ₹7990', code: 'SOLYSTRA25' }
-                ].map((offer) => (
-                  <button
-                    key={offer.code}
-                    type="button"
-                    onClick={() => handleApplyOffer(offer.code)}
-                    className="min-w-[130px] sm:min-w-[140px] p-3 rounded-xl bg-[#FAF5F0] border border-[#EAE0D3] text-left hover:border-[#7A152E] hover:bg-[#FDFBF7] transition-all cursor-pointer group shrink-0 active:scale-95 shadow-2xs"
-                  >
-                    <p className="text-xs font-semibold text-stone-900 leading-tight">{offer.discount}</p>
-                    <p className="text-[10px] text-stone-600 mt-0.5">{offer.min}</p>
-                    <div className="mt-2 text-[10.5px] font-mono tracking-wide flex items-center justify-between">
-                      <span className="text-stone-700">use <strong className="text-[#7A152E] font-bold">{offer.code}</strong></span>
-                      <span className="text-[8.5px] uppercase font-sans font-semibold text-stone-400 group-hover:text-[#7A152E]">Apply</span>
-                    </div>
-                  </button>
-                ))}
-              </div>
-            </div>
-
-            {/* 5. ATELIER BOGO PRIVILEGE: SIGNATURE ROYAL BURGUNDY BANNER (#7A152E THEME) */}
-            <div className="relative rounded-2xl text-white p-3.5 sm:p-4 shadow-md overflow-hidden bg-gradient-to-r from-[#4A0A19] via-[#7A152E] to-[#4A0A19] border border-[#C5A059]/45 ring-1 ring-inset ring-white/15 group">
-              {/* Subtle Warm Gold Ambient Radiance Over Royal Burgundy */}
-              <div className="absolute inset-0 bg-gradient-to-tr from-[#D4AF37]/15 via-transparent to-[#D4AF37]/10 pointer-events-none" />
-
-              {/* Main Content Row: Matching Burgundy Jewel + Clean Offer Details */}
-              <div className="flex items-center gap-3.5 sm:gap-4 relative z-10">
-                {/* Solitaire Jewel on Royal Burgundy Velvet (Rounded corners + gold hairline border) */}
-                <div className="relative w-16 h-16 sm:w-20 sm:h-20 shrink-0 rounded-xl sm:rounded-2xl overflow-hidden border border-[#D4AF37]/50 shadow-md">
-                  <img
-                    src="/solystra_assets/promos/bogo_gift_solitaire.jpg"
-                    alt="Complimentary Atelier Solitaire Jewel"
-                    className="w-full h-full object-cover group-hover:scale-108 transition-transform duration-500"
-                  />
-                  {/* Subtle inner gold rim gleam */}
-                  <div className="absolute inset-0 rounded-xl sm:rounded-2xl ring-1 ring-inset ring-white/20 pointer-events-none" />
-                </div>
-
-                {/* Offer Copy & Direct CTA */}
-                <div className="flex-1 min-w-0">
-                  <div className="flex items-baseline gap-2 flex-wrap">
-                    <h3 className="font-serif text-base sm:text-lg font-bold tracking-tight text-white drop-shadow-xs">
-                      BUY 1, RECEIVE 1
-                    </h3>
-                    <span className="font-serif italic text-lg sm:text-xl text-[#FFF0D0] font-normal leading-none drop-shadow-xs">
-                      Free
-                    </span>
-                  </div>
-                  <p className="text-[11px] sm:text-xs text-rose-100/90 font-light mt-0.5 leading-snug">
-                    Add any 2 creations &mdash; the 2nd jewel is gifted with our compliments.
-                  </p>
-
-                  {/* Code Badge & CTA Button */}
-                  <div className="mt-2 flex items-center gap-2 flex-wrap">
-                    <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-[#2D060F]/60 border border-[#D4AF37]/45 shadow-inner backdrop-blur-xs">
-                      <span className="text-[8.5px] uppercase font-serif text-[#F4D068] font-bold tracking-wider">CODE</span>
-                      <span className="w-px h-3 bg-[#D4AF37]/40" />
-                      <span className="font-mono text-[11px] font-bold text-white tracking-wider">BOGOFREE</span>
-                    </div>
-
-                    <button
-                      type="button"
-                      onClick={() => handleApplyOffer('BOGOFREE')}
-                      className="btn-real-gold px-3.5 py-1 rounded-lg text-[11px] font-bold uppercase tracking-wider cursor-pointer active:scale-95 flex items-center gap-1 shadow-sm"
-                    >
-                      <span>Claim Gift</span>
-                      <Check className="w-3 h-3 stroke-[3]" />
-                    </button>
-                  </div>
-                </div>
-              </div>
-
-              {/* Bottom Assurance Micro-Strip */}
-              <div className="mt-2.5 pt-2 border-t border-[#D4AF37]/25 flex items-center justify-between text-[10px] sm:text-[10.5px] text-rose-100/90 font-medium relative z-10 flex-wrap gap-x-3 gap-y-1">
-                <div className="flex items-center gap-1">
-                  <Check className="w-3 h-3 text-[#FFF0D0] stroke-[2.5]" />
-                  <span>Auto-applied in cart</span>
-                </div>
-                <div className="flex items-center gap-1">
-                  <span className="text-[#FFF0D0] font-bold">&bull;</span>
-                  <span>Pure 925 BIS Hallmarked</span>
-                </div>
-                <div className="flex items-center gap-1">
-                  <span className="text-[#FFF0D0] font-bold">&bull;</span>
-                  <span>Complimentary Velvet Box</span>
-                </div>
-              </div>
-            </div>
-
-            {/* 6. Solystra Atelier Trust Badges & Delivery Concierge */}
+            {/* 4. Solystra Atelier Trust Badges & Delivery Concierge */}
             <div className="rounded-2xl bg-[#FAF6F0] border border-[#E8DFC8] p-3.5 sm:p-4 space-y-3.5 shadow-2xs">
               
               {/* 4 Official Fine Jewellery Trust Badges (Exact match to Landing Page) */}
@@ -970,6 +872,104 @@ export const ProductDetailPage = ({ productId }) => {
                 )}
               </div>
 
+            </div>
+
+            {/* 5. Available Offers */}
+            <div className="space-y-2 pt-1">
+              <div className="text-xs font-semibold text-stone-900 tracking-wide">
+                Available offers
+              </div>
+              <div className="flex gap-2.5 overflow-x-auto hide-scrollbar pb-1">
+                {[
+                  { discount: 'Get 10% off', min: 'above ₹1990', code: 'SILVER10' },
+                  { discount: 'Get 15% off', min: 'above ₹2990', code: 'SILVER15' },
+                  { discount: 'Get 20% off', min: 'above ₹4990', code: 'SILVER20' },
+                  { discount: 'Get 25% off', min: 'above ₹7990', code: 'SOLYSTRA25' }
+                ].map((offer) => (
+                  <button
+                    key={offer.code}
+                    type="button"
+                    onClick={() => handleApplyOffer(offer.code)}
+                    className="min-w-[130px] sm:min-w-[140px] p-3 rounded-xl bg-[#FAF5F0] border border-[#EAE0D3] text-left hover:border-[#7A152E] hover:bg-[#FDFBF7] transition-all cursor-pointer group shrink-0 active:scale-95 shadow-2xs"
+                  >
+                    <p className="text-xs font-semibold text-stone-900 leading-tight">{offer.discount}</p>
+                    <p className="text-[10px] text-stone-600 mt-0.5">{offer.min}</p>
+                    <div className="mt-2 text-[10.5px] font-mono tracking-wide flex items-center justify-between">
+                      <span className="text-stone-700">use <strong className="text-[#7A152E] font-bold">{offer.code}</strong></span>
+                      <span className="text-[8.5px] uppercase font-sans font-semibold text-stone-400 group-hover:text-[#7A152E]">Apply</span>
+                    </div>
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            {/* 6. ATELIER BOGO PRIVILEGE: SIGNATURE ROYAL BURGUNDY BANNER (#7A152E THEME) */}
+            <div className="relative rounded-2xl text-white p-3.5 sm:p-4 shadow-md overflow-hidden bg-gradient-to-r from-[#4A0A19] via-[#7A152E] to-[#4A0A19] border border-[#C5A059]/45 ring-1 ring-inset ring-white/15 group">
+              {/* Subtle Warm Gold Ambient Radiance Over Royal Burgundy */}
+              <div className="absolute inset-0 bg-gradient-to-tr from-[#D4AF37]/15 via-transparent to-[#D4AF37]/10 pointer-events-none" />
+
+              {/* Main Content Row: Matching Burgundy Jewel + Clean Offer Details */}
+              <div className="flex items-center gap-3.5 sm:gap-4 relative z-10">
+                {/* Solitaire Jewel on Royal Burgundy Velvet (Rounded corners + gold hairline border) */}
+                <div className="relative w-16 h-16 sm:w-20 sm:h-20 shrink-0 rounded-xl sm:rounded-2xl overflow-hidden border border-[#D4AF37]/50 shadow-md">
+                  <img
+                    src="/solystra_assets/promos/bogo_gift_solitaire.jpg"
+                    alt="Complimentary Atelier Solitaire Jewel"
+                    className="w-full h-full object-cover group-hover:scale-108 transition-transform duration-500"
+                  />
+                  {/* Subtle inner gold rim gleam */}
+                  <div className="absolute inset-0 rounded-xl sm:rounded-2xl ring-1 ring-inset ring-white/20 pointer-events-none" />
+                </div>
+
+                {/* Offer Copy & Direct CTA */}
+                <div className="flex-1 min-w-0">
+                  <div className="flex items-baseline gap-2 flex-wrap">
+                    <h3 className="font-serif text-base sm:text-lg font-bold tracking-tight text-white drop-shadow-xs">
+                      BUY 1, RECEIVE 1
+                    </h3>
+                    <span className="font-serif italic text-lg sm:text-xl text-[#FFF0D0] font-normal leading-none drop-shadow-xs">
+                      Free
+                    </span>
+                  </div>
+                  <p className="text-[11px] sm:text-xs text-rose-100/90 font-light mt-0.5 leading-snug">
+                    Add any 2 creations &mdash; the 2nd jewel is gifted with our compliments.
+                  </p>
+
+                  {/* Code Badge & CTA Button */}
+                  <div className="mt-2 flex items-center gap-2 flex-wrap">
+                    <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-[#2D060F]/60 border border-[#D4AF37]/45 shadow-inner backdrop-blur-xs">
+                      <span className="text-[8.5px] uppercase font-serif text-[#F4D068] font-bold tracking-wider">CODE</span>
+                      <span className="w-px h-3 bg-[#D4AF37]/40" />
+                      <span className="font-mono text-[11px] font-bold text-white tracking-wider">BOGOFREE</span>
+                    </div>
+
+                    <button
+                      type="button"
+                      onClick={() => handleApplyOffer('BOGOFREE')}
+                      className="btn-real-gold px-3.5 py-1 rounded-lg text-[11px] font-bold uppercase tracking-wider cursor-pointer active:scale-95 flex items-center gap-1 shadow-sm"
+                    >
+                      <span>Claim Gift</span>
+                      <Check className="w-3 h-3 stroke-[3]" />
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              {/* Bottom Assurance Micro-Strip */}
+              <div className="mt-2.5 pt-2 border-t border-[#D4AF37]/25 flex items-center justify-between text-[10px] sm:text-[10.5px] text-rose-100/90 font-medium relative z-10 flex-wrap gap-x-3 gap-y-1">
+                <div className="flex items-center gap-1">
+                  <Check className="w-3 h-3 text-[#FFF0D0] stroke-[2.5]" />
+                  <span>Auto-applied in cart</span>
+                </div>
+                <div className="flex items-center gap-1">
+                  <span className="text-[#FFF0D0] font-bold">&bull;</span>
+                  <span>Pure 925 BIS Hallmarked</span>
+                </div>
+                <div className="flex items-center gap-1">
+                  <span className="text-[#FFF0D0] font-bold">&bull;</span>
+                  <span>Complimentary Velvet Box</span>
+                </div>
+              </div>
             </div>
 
           </div>
@@ -2470,64 +2470,30 @@ export const ProductDetailPage = ({ productId }) => {
           ======================================================== */}
       <aside
         aria-label="Floating Product Purchase Action"
-        className={`fixed bottom-3.5 left-3 right-3 sm:left-6 sm:right-6 max-w-md mx-auto z-40 lg:hidden transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] ${
+        className={`fixed bottom-3.5 left-4 right-4 max-w-sm mx-auto z-40 lg:hidden transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] ${
           showStickyCta
             ? 'translate-y-0 scale-100 opacity-100 pointer-events-auto'
             : 'translate-y-16 scale-90 opacity-0 pointer-events-none'
         }`}
       >
-        <div className="backdrop-blur-2xl bg-[#FAF8F5]/95 border border-white/90 shadow-[0_16px_40px_rgba(0,0,0,0.16),0_2px_8px_rgba(122,21,46,0.08)] rounded-full px-2.5 py-1.5 flex items-center justify-between gap-2 overflow-hidden">
-          
-          {/* Left: Round Thumbnail & Pricing (Zero Collision Guaranteed) */}
-          <div className="flex items-center gap-2 min-w-0 flex-1 overflow-hidden">
-            <img
-              src={product.images[0]}
-              alt={product.name}
-              className="w-8 h-8 sm:w-9 sm:h-9 rounded-full object-cover border border-[#EAE4DC] shrink-0 bg-white shadow-2xs"
-            />
-            <div className="min-w-0 flex-1">
-              <p className="text-[11px] sm:text-[11.5px] text-stone-900 font-semibold truncate leading-tight">
-                {cleanTitle}
-              </p>
-              <div className="flex items-center gap-1.5 mt-0.5 min-w-0 overflow-hidden whitespace-nowrap">
-                <span className="text-xs sm:text-sm font-bold text-stone-950 font-sans shrink-0">
-                  ₹{product.price.toLocaleString('en-IN')}
-                </span>
-                {product.discount && (
-                  <span className="text-[9px] font-bold text-[#D11A46] uppercase bg-[#FAF0F2] px-1 py-0.2 rounded border border-[#EAD5DA] shrink-0">
-                    {product.discount}
-                  </span>
-                )}
-                {product.mrp && product.mrp > product.price && (
-                  <span className="hidden sm:inline text-[10px] text-stone-400 line-through shrink-0">
-                    ₹{product.mrp.toLocaleString('en-IN')}
-                  </span>
-                )}
-              </div>
-            </div>
-          </div>
+        <div className="backdrop-blur-2xl bg-[#FAF8F5]/95 border border-white/90 shadow-[0_16px_40px_rgba(0,0,0,0.18),0_2px_8px_rgba(122,21,46,0.1)] rounded-full p-1.5 flex items-center justify-center gap-2">
+          <button
+            type="button"
+            onClick={handleAddToCart}
+            className="flex-1 py-2.5 px-3 rounded-full border border-[#7A152E] text-[#7A152E] bg-white hover:bg-[#FAF8F5] text-xs sm:text-sm font-bold flex items-center justify-center gap-1.5 active:scale-95 transition-all cursor-pointer shadow-2xs"
+            title="Add to Cart"
+          >
+            <ShoppingBag className="w-4 h-4" />
+            <span>Add to Cart</span>
+          </button>
 
-          {/* Right: Capsule CTA Buttons (Proportional & Non-Clipping) */}
-          <div className="flex items-center gap-1.5 shrink-0">
-            <button
-              type="button"
-              onClick={handleAddToCart}
-              className="py-1.5 px-2.5 sm:px-3 rounded-full border border-[#7A152E] text-[#7A152E] bg-white hover:bg-[#FAF8F5] text-[11px] sm:text-xs font-bold flex items-center gap-1 active:scale-95 transition-all cursor-pointer shadow-2xs shrink-0"
-              title="Add to Cart"
-            >
-              <ShoppingBag className="w-3.5 h-3.5" />
-              <span>Add</span>
-            </button>
-
-            <button
-              type="button"
-              onClick={handleBuyNow}
-              className="py-1.5 px-3 sm:px-4 rounded-full bg-[#7A152E] hover:bg-[#590D1E] text-white text-[11px] sm:text-xs font-bold flex items-center gap-1 active:scale-95 transition-all cursor-pointer shadow-md tracking-wide shrink-0"
-            >
-              <span>Buy Now</span>
-            </button>
-          </div>
-
+          <button
+            type="button"
+            onClick={handleBuyNow}
+            className="flex-1 py-2.5 px-3 rounded-full bg-[#7A152E] hover:bg-[#590D1E] text-white text-xs sm:text-sm font-bold flex items-center justify-center gap-1.5 active:scale-95 transition-all cursor-pointer shadow-md tracking-wide"
+          >
+            <span>Buy Now</span>
+          </button>
         </div>
       </aside>
 
