@@ -142,7 +142,7 @@ try {
   if (process.platform === 'win32') {
     execSync(`powershell -Command "Compress-Archive -Path dist\\* -DestinationPath dist.zip -Force"`, { cwd: rootDir, stdio: 'inherit' });
   } else {
-    execSync(`zip -rq dist.zip dist/`, { cwd: rootDir, stdio: 'inherit' });
+    execSync(`cd "${distDir}" && zip -rq "${zipPath}" . -x "*.DS_Store"`, { stdio: 'inherit' });
   }
   if (fs.existsSync(zipPath)) {
     fs.utimesSync(zipPath, now, now);
