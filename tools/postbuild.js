@@ -136,7 +136,11 @@ try {
   const zipPath = path.join(rootDir, 'dist.zip');
   if (fs.existsSync(zipPath)) fs.unlinkSync(zipPath);
   console.log('Postbuild: Creating dist.zip for lightning-fast Netlify Drop upload...');
-  execSync(`powershell -Command "Compress-Archive -Path dist\\* -DestinationPath dist.zip -Force"`, { cwd: rootDir, stdio: 'inherit' });
+  if (process.platform === 'win32') {
+    execSync(`powershell -Command "Compress-Archive -Path dist\\* -DestinationPath dist.zip -Force"`, { cwd: rootDir, stdio: 'inherit' });
+  } else {
+    execSync(`zip -rq dist.zip dist/`, { cwd: rootDir, stdio: 'inherit' });
+  }
   if (fs.existsSync(zipPath)) {
     fs.utimesSync(zipPath, now, now);
   }

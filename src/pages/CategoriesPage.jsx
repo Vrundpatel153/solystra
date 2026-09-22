@@ -6,7 +6,6 @@ export const ALL_CATEGORIES = [
     id: 'necklaces',
     name: 'Necklaces & Pendants',
     shortName: 'Necklaces',
-    badge: 'HOT',
     count: '14 Designs',
     desc: 'Austrian crystal solitaires, layering lariats & choker suites.',
     img: 'solystra_assets/categories/zavya_style/necklaces.png'
@@ -15,7 +14,6 @@ export const ALL_CATEGORIES = [
     id: 'earrings',
     name: 'Earrings & Studs',
     shortName: 'Earrings',
-    badge: 'TRENDING',
     count: '10 Designs',
     desc: 'Classic studs, huggies, drops & statement chandelier earrings.',
     img: 'solystra_assets/categories/zavya_style/earrings.png'
@@ -24,7 +22,6 @@ export const ALL_CATEGORIES = [
     id: 'bracelets',
     name: 'Bracelets & Cuffs',
     shortName: 'Bracelets',
-    badge: '18K GOLD',
     count: '12 Designs',
     desc: 'Italian gold vermeil tennis links, kada cuffs & charm bracelets.',
     img: 'solystra_assets/categories/zavya_style/bracelets.png'
@@ -33,7 +30,6 @@ export const ALL_CATEGORIES = [
     id: 'rings',
     name: 'Rings & Bands',
     shortName: 'Rings',
-    badge: 'BESTSELLER',
     count: '8 Designs',
     desc: 'Eternity promise bands, cocktail solitaires & adjustable rings.',
     img: 'solystra_assets/categories/zavya_style/rings.png'
@@ -42,7 +38,6 @@ export const ALL_CATEGORIES = [
     id: 'anklets',
     name: 'Anklets & Payals',
     shortName: 'Anklets',
-    badge: 'SUMMER',
     count: '6 Designs',
     desc: 'Delicate pure 925 sterling silver payals & barefoot shimmer chains.',
     img: 'solystra_assets/categories/zavya_style/anklets.png'
@@ -51,7 +46,6 @@ export const ALL_CATEGORIES = [
     id: 'complete_sets',
     name: 'Gift Suites & Sets',
     shortName: 'Gift Suites',
-    badge: 'GIFTING',
     count: '6 Sets',
     desc: 'Complete necklace, earring & bracelet sets in velvet keepsake boxes.',
     img: 'solystra_assets/categories/zavya_style/complete_sets.png'
@@ -60,7 +54,6 @@ export const ALL_CATEGORIES = [
     id: 'chains',
     name: 'Classic Layering Chains',
     shortName: 'Chains',
-    badge: 'CLASSIC',
     count: '8 Designs',
     desc: 'Timeless Italian curb, box & rope chains for everyday luxury.',
     img: 'solystra_assets/categories/zavya_style/chains.png'
@@ -69,7 +62,6 @@ export const ALL_CATEGORIES = [
     id: 'mangalsutras',
     name: 'Sacred Mangalsutras',
     shortName: 'Mangalsutra',
-    badge: 'SACRED',
     count: '8 Designs',
     desc: 'Traditional auspicious black bead craftsmanship with contemporary flair.',
     img: 'solystra_assets/categories/zavya_style/mangalsutras.png'
@@ -78,7 +70,6 @@ export const ALL_CATEGORIES = [
     id: 'nose_pins',
     name: 'Solitaire Nose Pins',
     shortName: 'Nose Pins',
-    badge: 'NEW',
     count: '6 Designs',
     desc: 'Micro-prong Austrian crystal solitaires in solid 925 sterling silver.',
     img: 'solystra_assets/categories/zavya_style/nose_pins.png'
@@ -87,7 +78,6 @@ export const ALL_CATEGORIES = [
     id: 'mens_collection',
     name: "Men's Silver Collection",
     shortName: "Men's Silver",
-    badge: 'SOLID 925',
     count: '7 Designs',
     desc: 'Bold kada cuffs, heavy link bracelets & minimalist signet rings.',
     img: 'solystra_assets/categories/zavya_style/mens.png'
@@ -204,13 +194,6 @@ export const CategoriesPage = ({ onSelectCategory, onBackToStore }) => {
                   />
                   {/* Subtle Specular Ambient Sheen */}
                   <div className="absolute inset-0 bg-gradient-to-t from-[#7A152E]/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                  
-                  {/* Badge */}
-                  {cat.badge && (
-                    <span className="absolute top-2 right-2 px-1.5 py-0.5 bg-[#7A152E]/90 backdrop-blur-xs text-[#F5E2B3] text-[8px] sm:text-[9px] font-bold uppercase tracking-wider rounded-full shadow-xs">
-                      {cat.badge}
-                    </span>
-                  )}
                 </div>
               </div>
 

@@ -80,70 +80,60 @@ const CATEGORY_CARDS = [
     id: 'necklaces',
     name: 'Necklaces',
     count: '14 Designs',
-    badge: 'HOT',
     img: 'solystra_assets/categories/zavya_style/necklaces.png'
   },
   {
     id: 'earrings',
     name: 'Earrings',
     count: '10 Designs',
-    badge: 'TRENDING',
     img: 'solystra_assets/categories/zavya_style/earrings.png'
   },
   {
     id: 'bracelets',
     name: 'Bracelets',
     count: '12 Designs',
-    badge: '18K GOLD',
     img: 'solystra_assets/categories/zavya_style/bracelets.png'
   },
   {
     id: 'rings',
     name: 'Rings',
     count: '8 Designs',
-    badge: 'BESTSELLER',
     img: 'solystra_assets/categories/zavya_style/rings.png'
   },
   {
     id: 'anklets',
     name: 'Anklets',
     count: '6 Designs',
-    badge: 'SUMMER',
     img: 'solystra_assets/categories/zavya_style/anklets.png'
   },
   {
     id: 'complete_sets',
     name: 'Gift Suites',
     count: '6 Sets',
-    badge: 'GIFTING',
     img: 'solystra_assets/categories/zavya_style/complete_sets.png'
   },
   {
     id: 'chains',
     name: 'Chains',
     count: '8 Designs',
-    badge: 'CLASSIC',
     img: 'solystra_assets/categories/zavya_style/chains.png'
   },
   {
     id: 'mangalsutras',
     name: 'Mangalsutra',
     count: '8 Designs',
-    badge: 'SACRED',
     img: 'solystra_assets/categories/zavya_style/mangalsutras.png'
   },
   {
     id: 'nose_pins',
     name: 'Nose Pins',
     count: '6 Designs',
-    badge: 'NEW',
     img: 'solystra_assets/categories/zavya_style/nose_pins.png'
   },
   {
     id: 'mens_collection',
     name: "Men's Silver",
     count: '7 Designs',
-    badge: 'SOLID 925',
     img: 'solystra_assets/categories/zavya_style/mens.png'
   }
 ];
@@ -475,7 +465,7 @@ export const HomePage = ({ activeCategory, onSelectCategory }) => {
   const [isVideoMuted, setIsVideoMuted] = useState(true);
 
   // Drag to scroll hooks for silky smooth desktop & mobile navigation
-  const categoryDrag = useDragScroll();
+  const categoryDrag = useDragScroll({ isInfiniteLoop: false, momentum: true });
   const categoryScrollRef = categoryDrag.ref;
 
   const topCollectionsDrag = useDragScroll();
@@ -490,15 +480,7 @@ export const HomePage = ({ activeCategory, onSelectCategory }) => {
   // Auto-scroll loop states for hands-free infinite exploration
   const isVideoInteracting = useRef(false);
   const videoAnimationId = useRef(null);
-  const [isCategoryPaused, setIsCategoryPaused] = useState(false);
   const [activeHotspotId, setActiveHotspotId] = useState(null);
-
-  // Tripled datasets for seamless continuous circular looping (never hits a wall)
-  const TRIPLE_CATEGORY_CARDS = useMemo(() => [
-    ...CATEGORY_CARDS.map(c => ({ ...c, loopId: `${c.id}-set1` })),
-    ...CATEGORY_CARDS.map(c => ({ ...c, loopId: `${c.id}-set2` })),
-    ...CATEGORY_CARDS.map(c => ({ ...c, loopId: `${c.id}-set3` })),
-  ], []);
 
   const TRIPLE_TOP_COLLECTIONS = useMemo(() => [
     ...TOP_COLLECTIONS.map(c => ({ ...c, loopId: `${c.id}-set1` })),
@@ -621,10 +603,9 @@ export const HomePage = ({ activeCategory, onSelectCategory }) => {
     el.scrollBy({ left: direction * amount, behavior: 'smooth' });
   };
 
-  // Attach seamless infinite circular boundary protection and quiet re-centering for category scrollers
+  // Attach seamless infinite circular boundary protection and quiet re-centering for collections scrollers
   useEffect(() => {
     const scrollers = [
-      categoryScrollRef,
       topCollectionsScrollRef
     ];
 
@@ -782,14 +763,6 @@ export const HomePage = ({ activeCategory, onSelectCategory }) => {
     };
   }, []);
 
-  // Auto-scroll loop: Categories Scroller
-  useEffect(() => {
-    if (isCategoryPaused) return;
-    const timer = setInterval(() => {
-      scrollLoop(categoryScrollRef, 1, 340);
-    }, 4800);
-    return () => clearInterval(timer);
-  }, [isCategoryPaused]);
 
   // Top 4 Bestsellers for the curated home section (1 clean row of 4 on desktop, 2x2 on mobile)
   const bestsellers = useMemo(() => {
@@ -1079,13 +1052,6 @@ export const HomePage = ({ activeCategory, onSelectCategory }) => {
 
                       {/* Ambient Specular Hover Sheen */}
                       <div className="absolute inset-0 bg-gradient-to-t from-[#7A152E]/15 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-
-                      {/* Subtle Badge Micro-Pill */}
-                      {cat.badge && (
-                        <span className="absolute top-1.5 right-1.5 px-1.5 py-0.5 bg-[#7A152E]/95 text-[#F5E2B3] text-[7.5px] lg:text-[8.5px] font-bold uppercase tracking-wider rounded-full shadow-xs">
-                          {cat.badge}
-                        </span>
-                      )}
                     </div>
                   </div>
 
@@ -1102,26 +1068,19 @@ export const HomePage = ({ activeCategory, onSelectCategory }) => {
             })}
           </div>
 
-          {/* Mobile Layout: Responsive touch-swipe row of 6 categories + Explore All Card */}
+          {/* Mobile Layout: Buttery-smooth, lag-free touch-swipe row of categories + Explore All Card */}
           <div
             ref={categoryScrollRef}
             {...categoryDrag.dragProps}
-            onMouseEnter={() => setIsCategoryPaused(true)}
-            onMouseLeave={() => {
-              setIsCategoryPaused(false);
-              categoryDrag.dragProps.onMouseLeave();
-            }}
-            onTouchStart={() => setIsCategoryPaused(true)}
-            onTouchEnd={() => setIsCategoryPaused(false)}
-            className="md:hidden flex flex-nowrap gap-2.5 sm:gap-3.5 overflow-x-auto hide-scrollbar pb-2 pt-1 px-1 cursor-grab active:cursor-grabbing select-none"
+            className="md:hidden flex flex-nowrap gap-3 sm:gap-4 overflow-x-auto hide-scrollbar pb-2.5 pt-1 px-2.5 sm:px-4 cursor-grab active:cursor-grabbing select-none overscroll-x-contain touch-pan-x [-webkit-overflow-scrolling:touch] scroll-smooth"
           >
-            {CATEGORY_CARDS.slice(0, 6).map((cat) => {
+            {CATEGORY_CARDS.map((cat) => {
               const isSelected = selectedCategory === cat.id;
               return (
                 <div
                   key={cat.id}
                   onClick={categoryDrag.handleItemClick(() => handleCategorySelect(cat.id))}
-                  className="w-[74px] xs:w-[82px] sm:w-[96px] shrink-0 group cursor-pointer flex flex-col items-center select-none"
+                  className="w-[76px] xs:w-[84px] sm:w-[96px] shrink-0 group cursor-pointer flex flex-col items-center select-none"
                 >
                   <div className={`w-full relative p-[1.5px] rounded-[18px] bg-gradient-to-tr transition-all duration-300 ${
                     isSelected
@@ -1136,11 +1095,6 @@ export const HomePage = ({ activeCategory, onSelectCategory }) => {
                         className="w-full h-full object-cover block pointer-events-none"
                         loading="lazy"
                       />
-                      {cat.badge && (
-                        <span className="absolute top-1 right-1 px-1 py-0.2 bg-[#7A152E]/90 text-[#F5E2B3] text-[6.5px] font-bold uppercase tracking-wider rounded-full shadow-xs">
-                          {cat.badge}
-                        </span>
-                      )}
                     </div>
                   </div>
 
@@ -1158,7 +1112,7 @@ export const HomePage = ({ activeCategory, onSelectCategory }) => {
               onClick={categoryDrag.handleItemClick(() => {
                 window.location.hash = '#/categories';
               })}
-              className="w-[74px] xs:w-[82px] sm:w-[96px] shrink-0 group cursor-pointer flex flex-col items-center select-none"
+              className="w-[76px] xs:w-[84px] sm:w-[96px] shrink-0 group cursor-pointer flex flex-col items-center select-none"
             >
               <div className="w-full relative p-[1.5px] rounded-[18px] bg-gradient-to-tr from-[#7A152E]/40 via-[#D4AF37]/50 to-[#7A152E]/40 shadow-2xs">
                 <div className="w-full aspect-square rounded-[16.5px] bg-[#FAF8F5] flex flex-col items-center justify-center p-2 text-center border border-[#EAE4DC]">
