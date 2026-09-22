@@ -438,7 +438,7 @@ export const Navbar = ({ activeCategory, onSelectCategory, onOpenBoutique }) => 
                 className="relative rounded-2xl overflow-hidden bg-stone-900 group cursor-pointer aspect-[16/11] border border-[#EAE4DC] shadow-md flex flex-col justify-end p-4 transition-all duration-300 hover:shadow-xl"
               >
                 <img
-                  src="solystra_assets/categories/cat_necklaces.png"
+                  src="solystra_assets/categories/zavya_style/necklaces.png"
                   alt="Atelier Royal Gala Solitaires"
                   className="absolute inset-0 w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 opacity-80"
                 />

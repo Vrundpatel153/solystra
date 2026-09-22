@@ -1074,7 +1074,7 @@ export const HomePage = ({ activeCategory, onSelectCategory }) => {
             {...categoryDrag.dragProps}
             className="md:hidden flex flex-nowrap gap-3 sm:gap-4 overflow-x-auto hide-scrollbar pb-2.5 pt-1 px-2.5 sm:px-4 cursor-grab active:cursor-grabbing select-none overscroll-x-contain touch-pan-x [-webkit-overflow-scrolling:touch] scroll-smooth"
           >
-            {CATEGORY_CARDS.map((cat) => {
+            {CATEGORY_CARDS.slice(0, 6).map((cat) => {
               const isSelected = selectedCategory === cat.id;
               return (
                 <div

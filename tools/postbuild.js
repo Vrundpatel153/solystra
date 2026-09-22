@@ -27,6 +27,9 @@ function copyDirRecursive(src, dest) {
 
 // 1. Copy solystra_assets into dist/solystra_assets for Netlify self-contained hosting
 console.log('Postbuild: Syncing solystra_assets into dist/solystra_assets...');
+if (fs.existsSync(path.join(rootDir, 'public', 'solystra_assets'))) {
+  copyDirRecursive(path.join(rootDir, 'public', 'solystra_assets'), path.join(distDir, 'solystra_assets'));
+}
 copyDirRecursive(path.join(rootDir, 'solystra_assets'), path.join(distDir, 'solystra_assets'));
 
 // 1b. Copy assets into dist/assets
