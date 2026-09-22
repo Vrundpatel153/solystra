@@ -144,8 +144,9 @@ export const Footer = () => {
                 <div className="flex items-center gap-2"><CheckCircle2 className="w-3.5 h-3.5 text-[#C5A059] shrink-0" /><span>Free Insured Express Delivery</span></div>
                 <div className="flex items-center gap-2"><CheckCircle2 className="w-3.5 h-3.5 text-[#C5A059] shrink-0" /><span>Signature Velvet Keepsake Box</span></div>
                 <div className="pt-2">
-                  <a href="#/terms" className="text-[11px] text-[#7A152E] font-semibold underline">
-                    Read Full Purity Terms &amp; Guarantee &rarr;
+                  <a href="#/terms" className="inline-flex items-center gap-1 text-[11px] text-[#7A152E] font-semibold hover:underline group">
+                    <span>Read Full Purity Terms &amp; Guarantee</span>
+                    <ArrowRight className="w-3 h-3 group-hover:translate-x-0.5 transition-transform" />
                   </a>
                 </div>
               </div>
@@ -294,9 +295,10 @@ export const Footer = () => {
             <div className="mt-4 pt-3 border-t border-stone-200">
               <a
                 href="#/terms"
-                className="text-xs text-[#7A152E] font-semibold hover:underline inline-flex items-center gap-1 transition-colors"
+                className="text-xs text-[#7A152E] font-semibold hover:underline inline-flex items-center gap-1 group transition-colors"
               >
-                <span>Read Full Purity Terms &amp; Guarantee &rarr;</span>
+                <span>Read Full Purity Terms &amp; Guarantee</span>
+                <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
               </a>
             </div>
           </div>

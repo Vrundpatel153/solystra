@@ -1,6 +1,9 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useShop } from '../context/ShopContext';
 import { ProductCard } from '../components/ProductCard';
+import { MetalPurityBadge } from '../components/MetalPurityBadge';
+import { GoldShoppingBag } from '../components/GoldShoppingBag';
+import { DeliveryIcon, HallmarkIcon, ExchangeIcon, WarrantyIcon } from '../components/TrustBadges';
 import {
   ShieldCheck,
   Truck,
@@ -8,7 +11,6 @@ import {
   Heart,
   ShoppingBag,
   Share2,
-  ChevronLeft,
   ChevronRight,
   ChevronDown,
   Ruler,
@@ -24,7 +26,17 @@ import {
   HelpCircle,
   Send,
   Tag,
-  Gift
+  Gift,
+  Crown,
+  Users,
+  BadgeCheck,
+  Star,
+  ThumbsUp,
+  CheckCircle2,
+  Search,
+  SlidersHorizontal,
+  Sparkles,
+  ArrowRight
 } from 'lucide-react';
 
 export const ProductDetailPage = ({ productId }) => {
@@ -126,63 +138,216 @@ export const ProductDetailPage = ({ productId }) => {
   const [showReviewModal, setShowReviewModal] = useState(false);
   const [reviewForm, setReviewForm] = useState({ name: '', rating: 5, comment: '' });
 
+  const INITIAL_REVIEWS = [
+    {
+      id: 'rev-1',
+      name: 'Meera Sengupta',
+      avatar: 'MS',
+      location: 'Mumbai, MH',
+      rating: 5,
+      headline: 'Exceeded all expectations — mirror bright luxury finish!',
+      comment: 'Exceeded all expectations. The silver polish is mirror bright and spotless, and the setting of the stones is firm with zero wobbles. Truly an authentic luxury experience.',
+      date: '3 days ago',
+      verified: true,
+      helpfulCount: 24,
+      metal: '925 Sterling Silver',
+      finish: 'Rhodium Platinum Luster'
+    },
+    {
+      id: 'rev-2',
+      name: 'Kavita Rao',
+      avatar: 'KR',
+      location: 'Bengaluru, KA',
+      rating: 5,
+      headline: 'Packaging alone is worth half the price!',
+      comment: 'The emerald velvet keepsake box alone is worth half the price! Felt like receiving a gift from a high-end atelier. BIS 925 Hallmark stamp is clearly visible and laser-crisp on the clasp.',
+      date: '1 week ago',
+      verified: true,
+      helpfulCount: 19,
+      metal: '925 Sterling Silver',
+      finish: 'Signature Velvet Box'
+    },
+    {
+      id: 'rev-3',
+      name: 'Pooja Deshmukh',
+      avatar: 'PD',
+      location: 'Pune, MH',
+      rating: 5,
+      headline: 'Mesmerizing sparkle under natural sunlight',
+      comment: 'I was hesitant about buying fine jewelry online, but Solystra Atelier proved me wrong. The sparkle of the stones is comparable to fine lab diamonds, and the solid silver feels substantial and weighty, not hollow.',
+      date: '2 weeks ago',
+      verified: true,
+      helpfulCount: 15,
+      metal: '925 Sterling Silver',
+      finish: 'Insured Delivery'
+    },
+    {
+      id: 'rev-4',
+      name: 'Ananya Sharma',
+      avatar: 'AS',
+      location: 'New Delhi, DL',
+      rating: 4,
+      headline: 'Delicate craftsmanship, very comfortable clasp',
+      comment: 'Very fine detailing and delicate craftsmanship. Sizing was exact according to their size guide. Arrived in 3 days with tamper-proof security seal and official purity certificate.',
+      date: '3 weeks ago',
+      verified: true,
+      helpfulCount: 8,
+      metal: '925 Sterling Silver',
+      finish: 'Atelier Certified'
+    }
+  ];
+
+  const [reviewsList, setReviewsList] = useState(INITIAL_REVIEWS);
+  const [reviewRatingFilter, setReviewRatingFilter] = useState('all');
+  const [reviewSortBy, setReviewSortBy] = useState('helpful');
+  const [helpfulVotedReviews, setHelpfulVotedReviews] = useState({});
+  const [isSortDropdownOpen, setIsSortDropdownOpen] = useState(false);
+  const sortDropdownRef = useRef(null);
+
+  useEffect(() => {
+    const handleSortClickOutside = (e) => {
+      if (sortDropdownRef.current && !sortDropdownRef.current.contains(e.target)) {
+        setIsSortDropdownOpen(false);
+      }
+    };
+    document.addEventListener('mousedown', handleSortClickOutside);
+    document.addEventListener('touchstart', handleSortClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleSortClickOutside);
+      document.removeEventListener('touchstart', handleSortClickOutside);
+    };
+  }, []);
+
+  const SORT_OPTIONS = [
+    { id: 'helpful', label: 'Most Helpful' },
+    { id: 'recent', label: 'Most Recent' },
+    { id: 'highest', label: 'Highest Rating' },
+    { id: 'lowest', label: 'Lowest Rating' }
+  ];
+
+  const currentSortLabel = SORT_OPTIONS.find(o => o.id === reviewSortBy)?.label || 'Most Helpful';
+
+  const handleHelpfulReview = (id) => {
+    setHelpfulVotedReviews(prev => ({
+      ...prev,
+      [id]: !prev[id]
+    }));
+  };
+
+  const filteredReviews = reviewsList
+    .filter(r => {
+      if (reviewRatingFilter === 'all') return true;
+      return r.rating === Number(reviewRatingFilter);
+    })
+    .sort((a, b) => {
+      if (reviewSortBy === 'recent') {
+        return b.id.localeCompare(a.id);
+      }
+      if (reviewSortBy === 'highest') {
+        return b.rating - a.rating;
+      }
+      if (reviewSortBy === 'lowest') {
+        return a.rating - b.rating;
+      }
+      const aHelpful = a.helpfulCount + (helpfulVotedReviews[a.id] ? 1 : 0);
+      const bHelpful = b.helpfulCount + (helpfulVotedReviews[b.id] ? 1 : 0);
+      return bHelpful - aHelpful;
+    });
+
   // Q&A State
-  const [openQnaId, setOpenQnaId] = useState('qna-1');
+  const [expandedQnaIds, setExpandedQnaIds] = useState({});
   const [selectedQnaCategory, setSelectedQnaCategory] = useState('all');
   const [showAskQuestionModal, setShowAskQuestionModal] = useState(false);
   const [questionForm, setQuestionForm] = useState({ name: '', email: '', question: '' });
+  const [qnaSearchQuery, setQnaSearchQuery] = useState('');
+  const [qnaHelpfulVoted, setQnaHelpfulVoted] = useState({});
+  const [expandedReviewIds, setExpandedReviewIds] = useState({});
+
+  const toggleQna = (id) => {
+    setExpandedQnaIds(prev => ({
+      ...prev,
+      [id]: !prev[id]
+    }));
+  };
+
+  const toggleReview = (id) => {
+    setExpandedReviewIds(prev => ({
+      ...prev,
+      [id]: !prev[id]
+    }));
+  };
 
   const PRODUCT_QNA = [
     {
       id: 'qna-1',
       category: 'purity',
       question: 'Is this piece certified BIS Hallmarked 925 Sterling Silver?',
-      answer: 'Yes, unconditionally. Every piece from Solystra Atelier is cast in solid 92.5% pure sterling silver and laser-inscribed with the official government-recognized BIS 925 hallmark on the clasp, inner shank, or rear casing. Each shipment includes a tamper-evident Certificate of Authenticity.',
-      author: 'Atelier Quality Assurance',
-      badge: 'Verified Expert',
-      date: 'Official Response'
+      answer: 'Yes, unconditionally. Every piece from Solystra Atelier is cast in solid 92.5% pure sterling silver and laser-inscribed with the official government-recognized BIS 925 hallmark on the clasp, inner shank, or rear casing. Each shipment includes a tamper-evident Certificate of Authenticity and purity card.',
+      author: 'Master Silversmith • Solystra QA',
+      badge: 'Verified Atelier Expert',
+      helpfulCount: 42
     },
     {
       id: 'qna-2',
       category: 'purity',
-      question: 'Will the silver tarnish, oxidize, or turn skin green?',
+      question: 'Will the silver tarnish, oxidize, or turn skin green over time?',
       answer: 'No. Our creations receive an ultra-durable 2.0-micron double rhodium barrier coating (a rare precious metal from the platinum family). It provides an anti-tarnish mirror finish, prevents moisture oxidation, and is 100% hypoallergenic, nickel-free, and lead-free.',
-      author: 'Master Silversmith',
-      badge: 'Verified Expert',
-      date: 'Official Response'
+      author: 'Metallurgy Specialist',
+      badge: 'Verified Atelier Expert',
+      helpfulCount: 38
     },
     {
       id: 'qna-3',
       category: 'shipping',
       question: 'What is included in the packaging box and is shipping insured?',
       answer: 'Your jewelry arrives inside our signature emerald velvet keepsake box, accompanied by a luxury microfiber polishing cloth, sealed purity credentials, and a warranty card. Every parcel is 100% express insured against transit loss or damage across India.',
-      author: 'Concierge Dispatch',
-      badge: 'Verified Expert',
-      date: 'Official Response'
+      author: 'Concierge Dispatch Team',
+      badge: 'Verified Atelier Expert',
+      helpfulCount: 29
     },
     {
       id: 'qna-4',
       category: 'shipping',
       question: 'What if the size does not fit or I want an exchange?',
-      answer: 'We provide an unconditional 15-day exchange and return policy. If your ring size or bracelet fit needs adjustment, our insured courier will pick it up directly from your doorstep at zero fee, and your exchange or refund will be processed within 48 hours.',
+      answer: 'We provide an unconditional 15-day exchange and return policy. If your ring size or bracelet fit needs adjustment, our insured courier will pick it up directly from your doorstep at zero fee, and your exchange or refund will be processed within 48 hours of inspection.',
       author: 'Customer Care Desk',
-      badge: 'Verified Expert',
-      date: 'Official Response'
+      badge: 'Verified Atelier Expert',
+      helpfulCount: 31
     },
     {
       id: 'qna-5',
       category: 'care',
-      question: 'How do I care for and maintain the stone brilliance at home?',
-      answer: 'Simply buff gently with the complimentary Solystra microfiber polishing cloth after wearing. Keep pieces away from direct sprays of perfumes, chlorine pools, or harsh cleaning detergents. Store inside the dry velvet box to keep the Austrian stones fire-bright.',
+      question: 'Can I wear this jewelry during daily showers, swimming, or workouts?',
+      answer: 'While our dual-layer rhodium plating offers superior water resistance compared to standard silver, we recommend avoiding prolonged contact with hot chlorinated water, pool chemicals, direct perfumes, or harsh detergents to maintain stone setting brilliance for decades.',
       author: 'Atelier Care Guide',
-      badge: 'Verified Expert',
-      date: 'Official Response'
+      badge: 'Verified Atelier Expert',
+      helpfulCount: 23
+    },
+    {
+      id: 'qna-6',
+      category: 'care',
+      question: 'How do I care for and maintain the stone brilliance at home?',
+      answer: 'Simply buff gently with the complimentary Solystra microfiber polishing cloth after wearing. Keep pieces away from direct sprays of perfumes. Store inside the dry velvet box provided to keep the stones fire-bright.',
+      author: 'Gemological Specialist',
+      badge: 'Verified Atelier Expert',
+      helpfulCount: 19
     }
   ];
 
-  const filteredQna = selectedQnaCategory === 'all'
-    ? PRODUCT_QNA
-    : PRODUCT_QNA.filter(q => q.category === selectedQnaCategory);
+  const handleHelpfulQna = (id) => {
+    setQnaHelpfulVoted(prev => ({
+      ...prev,
+      [id]: !prev[id]
+    }));
+  };
+
+  const filteredQna = PRODUCT_QNA.filter(item => {
+    const matchesCategory = selectedQnaCategory === 'all' || item.category === selectedQnaCategory;
+    const matchesSearch = !qnaSearchQuery.trim() ||
+      item.question.toLowerCase().includes(qnaSearchQuery.toLowerCase()) ||
+      item.answer.toLowerCase().includes(qnaSearchQuery.toLowerCase());
+    return matchesCategory && matchesSearch;
+  });
 
   useEffect(() => {
     setSelectedImageIndex(0);
@@ -237,8 +402,13 @@ export const ProductDetailPage = ({ productId }) => {
   };
 
   const emiAmount = Math.round(product.price / 3);
-  const savingsAmount = product.mrp && product.mrp > product.price ? product.mrp - product.price : 0;
-  const relatedProducts = PRODUCTS.filter(p => p.id !== product.id && p.category === product.category).slice(0, 4);
+  const relatedScrollRef = useRef(null);
+
+
+
+  const sameCategory = PRODUCTS.filter(p => p.id !== product.id && p.category === product.category);
+  const otherProducts = PRODUCTS.filter(p => p.id !== product.id && p.category !== product.category);
+  const relatedProducts = [...sameCategory, ...otherProducts].slice(0, 10);
 
   return (
     <div className="bg-[#FAF8F5] min-h-screen text-[#231F20] pb-24 font-sans">
@@ -264,8 +434,8 @@ export const ProductDetailPage = ({ productId }) => {
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-4 sm:pt-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
           
-          {/* Left: Gallery with Vertical Thumbnail Rail (7 Cols) */}
-          <div ref={imageGalleryRef} className="lg:col-span-7 flex flex-col-reverse sm:flex-row gap-4">
+          {/* Left: Sticky Gallery with Vertical Thumbnail Rail (7 Cols) */}
+          <div ref={imageGalleryRef} className="lg:col-span-7 lg:sticky lg:top-20 self-start flex flex-col-reverse sm:flex-row gap-4">
             
             {/* Vertical Thumbnail Rail */}
             {product.images.length > 1 && (
@@ -303,16 +473,18 @@ export const ProductDetailPage = ({ productId }) => {
                   draggable={false}
                 />
 
-                {/* Eyebrow Badges */}
-                <div className="absolute top-4 left-4 flex flex-col gap-1.5 pointer-events-none z-10">
-                  {product.badge && (
-                    <span className="px-2.5 py-1 bg-[#7A152E] text-white text-[10.5px] uppercase tracking-wider font-semibold rounded shadow-xs">
+                {/* Marketing Status Tag (Top-Left) */}
+                {product.badge && (
+                  <div className="absolute top-4 left-4 pointer-events-none z-10">
+                    <span className="px-3 py-1 bg-[#7A152E] text-white text-[10.5px] uppercase tracking-wider font-semibold rounded-full shadow-md border border-white/25">
                       {product.badge}
                     </span>
-                  )}
-                  <span className="px-2.5 py-0.5 bg-white/95 border border-stone-200 text-[#7A152E] text-[10.5px] font-medium tracking-wider uppercase rounded shadow-xs">
-                    BIS 925 Hallmarked
-                  </span>
+                  </div>
+                )}
+
+                {/* Atelier Hallmark Seal (Bottom-Left Craftsmanship Mark) */}
+                <div className="absolute bottom-4 left-4 pointer-events-none z-10 transition-transform duration-300 group-hover:scale-105">
+                  <MetalPurityBadge product={product} size="lg" />
                 </div>
 
                 {/* Action Overlays */}
@@ -338,29 +510,6 @@ export const ProductDetailPage = ({ productId }) => {
                 {/* Left/Right Navigation Chevrons on Main Image */}
                 {product.images.length > 1 && (
                   <>
-                    <button
-                      type="button"
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        setSelectedImageIndex((prev) => (prev - 1 + product.images.length) % product.images.length);
-                      }}
-                      className="absolute left-2.5 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-white/85 hover:bg-white text-stone-800 shadow-sm border border-stone-200 flex items-center justify-center transition-all cursor-pointer z-10 active:scale-95"
-                      aria-label="Previous image"
-                    >
-                      <ChevronLeft className="w-4 h-4" />
-                    </button>
-                    <button
-                      type="button"
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        setSelectedImageIndex((prev) => (prev + 1) % product.images.length);
-                      }}
-                      className="absolute right-2.5 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-white/85 hover:bg-white text-stone-800 shadow-sm border border-stone-200 flex items-center justify-center transition-all cursor-pointer z-10 active:scale-95"
-                      aria-label="Next image"
-                    >
-                      <ChevronRight className="w-4 h-4" />
-                    </button>
-
                     {/* Minimalist Image Dots Indicator on Mobile */}
                     <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex items-center gap-1.5 z-10 pointer-events-none">
                       {product.images.map((_, idx) => (
@@ -379,8 +528,8 @@ export const ProductDetailPage = ({ productId }) => {
 
           </div>
 
-          {/* Right: Sticky Purchase Column (5 Cols) */}
-          <div className="lg:col-span-5 lg:sticky lg:top-28 self-start space-y-5">
+          {/* Right: Purchase Details & Action Column (5 Cols) */}
+          <div className="lg:col-span-5 space-y-5">
             
             {/* 1. Price, Discount, Taxes & Top Right Actions */}
             <div className="flex items-start justify-between pb-1">
@@ -436,56 +585,148 @@ export const ProductDetailPage = ({ productId }) => {
               </p>
             </div>
 
-            {/* Subtle Metal & Size Options */}
-            <div className="pt-1 pb-1 space-y-2 border-y border-stone-100 py-2.5">
-              <div className="flex items-center justify-between">
+            {/* Color & Size Customization Area */}
+            <div className="pt-1 pb-1 space-y-3 border-y border-stone-100 py-3">
+              
+              {/* 1. Dedicated Color Selection Row */}
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
                 <div className="flex items-center gap-2">
-                  <span className="text-[11px] text-stone-500 font-medium">Metal:</span>
-                  <div className="flex items-center gap-1.5">
+                  <span className="text-xs font-semibold text-stone-800">
+                    Color:
+                  </span>
+                  <span className="text-xs text-[#7A152E] font-medium bg-rose-50 px-2 py-0.5 rounded-md border border-rose-100">
                     {[
-                      { name: 'Pure 925 Silver', label: 'Silver', color: 'bg-slate-300' },
-                      { name: 'Rose Gold Plated', label: 'Rose Gold', color: 'bg-[#E5C3CB]' },
-                      { name: '18K Gold Vermeil', label: '18K Gold', color: 'bg-[#C5A059]' }
-                    ].map(m => (
+                      { name: 'Pure 925 Silver', label: 'Silver' },
+                      { name: 'Rose Gold Plated', label: 'Rose Gold' },
+                      { name: '18K Gold Vermeil', label: '18K Gold' }
+                    ].find(m => m.name === selectedMetal)?.label || 'Silver'}
+                  </span>
+                </div>
+
+                <div className="flex items-center gap-1.5 flex-wrap">
+                  {[
+                    { 
+                      name: 'Pure 925 Silver', 
+                      label: 'Silver', 
+                      dotClass: 'bg-gradient-to-tr from-slate-400 via-slate-100 to-slate-300 border border-slate-300' 
+                    },
+                    { 
+                      name: 'Rose Gold Plated', 
+                      label: 'Rose Gold', 
+                      dotClass: 'bg-gradient-to-tr from-[#C9808C] via-[#FCE3E8] to-[#E5A8B2] border border-[#C9808C]/40' 
+                    },
+                    { 
+                      name: '18K Gold Vermeil', 
+                      label: '18K Gold', 
+                      dotClass: 'bg-gradient-to-tr from-[#946A1E] via-[#F7E7C4] to-[#C99D46] border border-[#946A1E]/50' 
+                    }
+                  ].map(m => {
+                    const isSelected = selectedMetal === m.name;
+                    return (
                       <button
                         key={m.name}
                         type="button"
                         onClick={() => setSelectedMetal(m.name)}
-                        className={`text-[11px] px-2 py-0.5 rounded-md border flex items-center gap-1 transition-all cursor-pointer ${
-                          selectedMetal === m.name
-                            ? 'border-[#7A152E] bg-[#7A152E] text-white font-medium shadow-2xs'
-                            : 'border-stone-200 bg-white text-stone-600 hover:border-stone-300'
+                        className={`text-xs px-2.5 py-1 rounded-lg border flex items-center gap-1.5 transition-all cursor-pointer font-medium active:scale-95 ${
+                          isSelected
+                            ? 'border-[#7A152E] bg-[#7A152E] text-white shadow-xs'
+                            : 'border-stone-200 bg-white text-stone-700 hover:border-stone-300 hover:bg-stone-50'
                         }`}
                       >
-                        <span className={`w-1.5 h-1.5 rounded-full ${m.color}`} />
+                        <span className={`w-2 h-2 rounded-full shrink-0 ${m.dotClass} ${isSelected ? 'ring-1 ring-white/60' : ''}`} />
                         <span>{m.label}</span>
                       </button>
-                    ))}
-                  </div>
+                    );
+                  })}
                 </div>
+              </div>
 
-                {(isRing || isBracelet) && (
-                  <div className="flex items-center gap-1.5">
-                    <span className="text-[11px] text-stone-500 font-medium">Size:</span>
-                    <div className="flex items-center gap-1">
-                      {sizes.map(s => (
+              {/* 2. Dedicated Ring Sizes Row (Fully Responsive) */}
+              {isRing && (
+                <div className="pt-2.5 border-t border-stone-100 space-y-2">
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center gap-2">
+                      <span className="text-xs font-semibold text-stone-800">
+                        Select Ring Size:
+                      </span>
+                      <span className="text-xs font-bold text-[#7A152E] bg-[#7A152E]/10 px-2 py-0.5 rounded-md border border-[#7A152E]/20">
+                        Size {selectedSize}
+                      </span>
+                    </div>
+
+                    {/* Size Guide Trigger */}
+                    <button
+                      type="button"
+                      onClick={() => setShowSizeGuide(true)}
+                      className="text-[11px] text-[#7A152E] hover:text-[#590D1E] hover:underline font-semibold flex items-center gap-1 cursor-pointer transition-colors"
+                    >
+                      <Ruler className="w-3.5 h-3.5" />
+                      <span>Size Guide</span>
+                    </button>
+                  </div>
+
+                  {/* Responsive Ring Size Pills (Wraps gracefully on any screen width) */}
+                  <div className="flex flex-wrap items-center gap-2 sm:gap-2.5">
+                    {sizes.map(s => {
+                      const isSelected = selectedSize === s;
+                      return (
                         <button
                           key={s}
                           type="button"
                           onClick={() => setSelectedSize(s)}
-                          className={`px-2 py-0.5 text-[11px] rounded-md border transition-all cursor-pointer ${
-                            selectedSize === s
-                              ? 'bg-[#7A152E] text-white border-[#7A152E] font-semibold shadow-2xs'
-                              : 'bg-white text-stone-700 border-stone-200 hover:border-[#7A152E]/50'
+                          className={`min-w-[42px] sm:min-w-[46px] h-9 px-3 text-xs sm:text-[13px] font-bold rounded-xl border transition-all duration-200 cursor-pointer flex items-center justify-center active:scale-95 ${
+                            isSelected
+                              ? 'bg-[#7A152E] text-white border-[#7A152E] shadow-sm ring-2 ring-[#7A152E]/25'
+                              : 'bg-white text-stone-700 border-stone-200 hover:border-[#7A152E] hover:text-[#7A152E] hover:bg-[#FAF8F5]'
                           }`}
                         >
                           {s}
                         </button>
-                      ))}
+                      );
+                    })}
+                  </div>
+
+                  <p className="text-[10.5px] text-stone-500 font-light">
+                    Standard Indian ring sizing &bull; Complimentary 15-day exchange if size doesn&apos;t fit
+                  </p>
+                </div>
+              )}
+
+              {/* Bracelet Size Row (if bracelet product) */}
+              {isBracelet && (
+                <div className="pt-2.5 border-t border-stone-100 space-y-2">
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center gap-2">
+                      <span className="text-xs font-semibold text-stone-800">
+                        Select Wrist Size:
+                      </span>
+                      <span className="text-xs font-bold text-[#7A152E] bg-[#7A152E]/10 px-2 py-0.5 rounded-md border border-[#7A152E]/20">
+                        {selectedSize}
+                      </span>
                     </div>
                   </div>
-                )}
-              </div>
+
+                  <div className="flex flex-wrap items-center gap-2">
+                    {sizes.map(s => {
+                      const isSelected = selectedSize === s;
+                      return (
+                        <button
+                          key={s}
+                          type="button"
+                          onClick={() => setSelectedSize(s)}
+                          className={`min-w-[50px] h-9 px-3 text-xs font-bold rounded-xl border transition-all duration-200 cursor-pointer flex items-center justify-center active:scale-95 ${
+                            isSelected
+                              ? 'bg-[#7A152E] text-white border-[#7A152E] shadow-sm ring-2 ring-[#7A152E]/25'
+                              : 'bg-white text-stone-700 border-stone-200 hover:border-[#7A152E] hover:text-[#7A152E] hover:bg-[#FAF8F5]'
+                          }`}
+                        >
+                          {s}
+                        </button>
+                      );
+                    })}
+                  </div>
+                </div>
+              )}
 
               {/* Complimentary Laser Engraving toggle */}
               <div className="flex items-center justify-between text-[11px]">
@@ -522,8 +763,8 @@ export const ProductDetailPage = ({ productId }) => {
                 onClick={handleAddToCart}
                 className="w-full py-4 px-6 rounded-xl bg-[#7A152E] hover:bg-[#590D1E] text-white font-sans text-xs sm:text-sm font-bold uppercase tracking-widest transition-all cursor-pointer active:scale-[0.98] shadow-md hover:shadow-lg text-center flex items-center justify-center gap-2.5 group"
               >
-                <ShoppingBag className="w-4 h-4 text-[#F4D068] transition-transform group-hover:-translate-y-0.5" />
-                <span>ADD TO CART</span>
+                <GoldShoppingBag className="w-4 h-4 shrink-0 -translate-y-px transition-transform group-hover:-translate-y-0.5" />
+                <span className="leading-none">ADD TO CART</span>
               </button>
             </div>
 
@@ -556,197 +797,179 @@ export const ProductDetailPage = ({ productId }) => {
               </div>
             </div>
 
-            {/* 5. ATELIER BOGO PRIVILEGE: LUXURY SINGLE HERO SPOTLIGHT WITH AUTOMATIC LOOPED WHITE SHINE ANIMATION */}
-            <div className="relative rounded-2xl bg-gradient-to-br from-[#29050D] via-[#4A0918] to-[#690D23] text-white p-5 sm:p-6 shadow-xl overflow-hidden border border-[#C5A059]/45 ring-1 ring-inset ring-white/10 group">
-              {/* Automatic Looped Luxury White Shine Sweep Beam */}
-              <div className="absolute inset-0 overflow-hidden pointer-events-none z-20">
-                <div className="luxury-card-shine-beam" />
-              </div>
+            {/* 5. ATELIER BOGO PRIVILEGE: SIGNATURE ROYAL BURGUNDY BANNER (#7A152E THEME) */}
+            <div className="relative rounded-2xl text-white p-3.5 sm:p-4 shadow-md overflow-hidden bg-gradient-to-r from-[#4A0A19] via-[#7A152E] to-[#4A0A19] border border-[#C5A059]/45 ring-1 ring-inset ring-white/15 group">
+              {/* Subtle Warm Gold Ambient Radiance Over Royal Burgundy */}
+              <div className="absolute inset-0 bg-gradient-to-tr from-[#D4AF37]/15 via-transparent to-[#D4AF37]/10 pointer-events-none" />
 
-              {/* Soft Ambient Radiance Gradients */}
-              <div className="absolute -top-12 -right-12 w-48 h-48 bg-[#C5A059]/15 rounded-full blur-2xl pointer-events-none" />
-              <div className="absolute -bottom-12 -left-12 w-48 h-48 bg-[#8E1634]/30 rounded-full blur-2xl pointer-events-none" />
-
-              {/* Header Micro-Bar without star icons */}
-              <div className="flex items-center justify-between pb-3 border-b border-[#C5A059]/20 relative z-10">
-                <div className="flex items-center gap-2">
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#EAD7AE] shadow-[0_0_8px_#EAD7AE]" />
-                  <span className="text-[10px] uppercase tracking-[0.22em] text-[#EAD7AE] font-bold font-sans">
-                    ATELIER SIGNATURE PRIVILEGE
-                  </span>
-                </div>
-                <span className="px-2.5 py-0.5 rounded-full bg-black/40 border border-[#C5A059]/35 text-[9px] font-mono font-medium text-amber-200/90 tracking-wide">
-                  EXCLUSIVE OFFER
-                </span>
-              </div>
-
-              {/* Single Product Showcase & Offer Narrative */}
-              <div className="flex items-center gap-4 sm:gap-5 mt-4 relative z-10">
-                {/* Left: Single Product Spotlight Pedestal */}
-                <div className="relative w-24 h-24 sm:w-28 sm:h-28 rounded-2xl bg-gradient-to-b from-white/15 via-white/5 to-white/0 border border-[#C5A059]/50 p-2.5 flex items-center justify-center shrink-0 shadow-[0_12px_24px_rgba(0,0,0,0.45),inset_0_1px_1px_rgba(255,255,255,0.2)] group-hover:border-[#EAD7AE] transition-all duration-500">
-                  {/* Subtle Ambient Gold Glow beneath the single jewel */}
-                  <div className="absolute inset-2 rounded-xl bg-radial from-[#C5A059]/30 to-transparent blur-xs pointer-events-none" />
-
+              {/* Main Content Row: Matching Burgundy Jewel + Clean Offer Details */}
+              <div className="flex items-center gap-3.5 sm:gap-4 relative z-10">
+                {/* Solitaire Jewel on Royal Burgundy Velvet (Rounded corners + gold hairline border) */}
+                <div className="relative w-16 h-16 sm:w-20 sm:h-20 shrink-0 rounded-xl sm:rounded-2xl overflow-hidden border border-[#D4AF37]/50 shadow-md">
                   <img
-                    src="solystra_assets/categories/cat_rings.png"
-                    alt="Complimentary Pure 925 Solitaire Jewel"
-                    className="w-full h-full object-contain filter drop-shadow-[0_6px_12px_rgba(0,0,0,0.55)] group-hover:scale-108 transition-transform duration-500 relative z-10"
+                    src="/solystra_assets/promos/bogo_gift_solitaire.jpg"
+                    alt="Complimentary Atelier Solitaire Jewel"
+                    className="w-full h-full object-cover group-hover:scale-108 transition-transform duration-500"
                   />
-
-                  <div className="absolute -bottom-2.5 left-1/2 -translate-x-1/2 px-2.5 py-0.5 rounded-full bg-gradient-to-r from-[#C5A059] via-[#E2C37D] to-[#C5A059] text-[#2D0610] font-sans font-black text-[8.5px] uppercase tracking-wider shadow-md whitespace-nowrap z-20 border border-white/30">
-                    FREE GIFT
-                  </div>
+                  {/* Subtle inner gold rim gleam */}
+                  <div className="absolute inset-0 rounded-xl sm:rounded-2xl ring-1 ring-inset ring-white/20 pointer-events-none" />
                 </div>
 
-                {/* Right: Editorial Headline & Interactive Action */}
-                <div className="flex-1 min-w-0 flex flex-col justify-between py-0.5">
-                  <div>
-                    <div className="flex items-baseline gap-2 flex-wrap">
-                      <h3 className="font-serif text-xl sm:text-2xl font-bold uppercase tracking-wide text-white leading-none drop-shadow-sm">
-                        BUY 1 GET 1
-                      </h3>
-                      <span className="font-serif italic text-2xl sm:text-3xl text-[#EAD7AE] font-normal leading-none">
-                        Free
-                      </span>
-                    </div>
-                    <p className="text-[11.5px] text-stone-200/90 font-light mt-1.5 leading-relaxed">
-                      Add any 2 handcrafted creations — the second jewel is gifted with our compliments.
-                    </p>
+                {/* Offer Copy & Direct CTA */}
+                <div className="flex-1 min-w-0">
+                  <div className="flex items-baseline gap-2 flex-wrap">
+                    <h3 className="font-serif text-base sm:text-lg font-bold tracking-tight text-white drop-shadow-xs">
+                      BUY 1, RECEIVE 1
+                    </h3>
+                    <span className="font-serif italic text-lg sm:text-xl text-[#FFF0D0] font-normal leading-none drop-shadow-xs">
+                      Free
+                    </span>
                   </div>
+                  <p className="text-[11px] sm:text-xs text-rose-100/90 font-light mt-0.5 leading-snug">
+                    Add any 2 creations &mdash; the 2nd jewel is gifted with our compliments.
+                  </p>
 
-                  {/* Coupon Code & Instant Claim CTA */}
-                  <div className="pt-3 flex flex-wrap items-center gap-2.5">
-                    <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-black/45 border border-dashed border-[#C5A059]/50 shadow-inner">
-                      <span className="text-[9px] uppercase font-mono text-stone-300 tracking-wider">CODE:</span>
-                      <span className="font-mono text-xs font-bold text-[#F4D068] tracking-widest">BOGOFREE</span>
+                  {/* Code Badge & CTA Button */}
+                  <div className="mt-2 flex items-center gap-2 flex-wrap">
+                    <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-[#2D060F]/60 border border-[#D4AF37]/45 shadow-inner backdrop-blur-xs">
+                      <span className="text-[8.5px] uppercase font-serif text-[#F4D068] font-bold tracking-wider">CODE</span>
+                      <span className="w-px h-3 bg-[#D4AF37]/40" />
+                      <span className="font-mono text-[11px] font-bold text-white tracking-wider">BOGOFREE</span>
                     </div>
 
                     <button
                       type="button"
                       onClick={() => handleApplyOffer('BOGOFREE')}
-                      className="px-4 py-2 rounded-xl bg-gradient-to-r from-[#C5A059] via-[#E2C37D] to-[#C5A059] bg-[length:200%_auto] hover:bg-right text-[#2D0610] text-xs font-bold uppercase tracking-wider transition-all duration-300 cursor-pointer active:scale-95 shadow-md hover:shadow-lg flex items-center gap-1.5 whitespace-nowrap"
+                      className="btn-real-gold px-3.5 py-1 rounded-lg text-[11px] font-bold uppercase tracking-wider cursor-pointer active:scale-95 flex items-center gap-1 shadow-sm"
                     >
                       <span>Claim Gift</span>
-                      <Check className="w-3.5 h-3.5 stroke-[2.5]" />
+                      <Check className="w-3 h-3 stroke-[3]" />
                     </button>
                   </div>
                 </div>
               </div>
 
-              {/* Bottom 3-Point Guarantee Strip */}
-              <div className="mt-4 pt-3 border-t border-[#C5A059]/20 flex items-center justify-between text-[10px] text-stone-300 font-medium relative z-10 flex-wrap gap-2">
-                <div className="flex items-center gap-1.5 text-[#EAD7AE]">
-                  <span className="w-3.5 h-3.5 rounded-full bg-[#C5A059]/25 flex items-center justify-center text-[9px] text-[#EAD7AE] font-bold">✓</span>
-                  <span className="text-stone-200">Auto-applied in bag</span>
+              {/* Bottom Assurance Micro-Strip */}
+              <div className="mt-2.5 pt-2 border-t border-[#D4AF37]/25 flex items-center justify-between text-[10px] sm:text-[10.5px] text-rose-100/90 font-medium relative z-10 flex-wrap gap-x-3 gap-y-1">
+                <div className="flex items-center gap-1">
+                  <Check className="w-3 h-3 text-[#FFF0D0] stroke-[2.5]" />
+                  <span>Auto-applied in cart</span>
                 </div>
-                <div className="flex items-center gap-1.5 text-[#EAD7AE]">
-                  <span className="w-3.5 h-3.5 rounded-full bg-[#C5A059]/25 flex items-center justify-center text-[9px] text-[#EAD7AE] font-bold">✓</span>
-                  <span className="text-stone-200">Pure 925 BIS Hallmarked</span>
+                <div className="flex items-center gap-1">
+                  <span className="text-[#FFF0D0] font-bold">&bull;</span>
+                  <span>Pure 925 BIS Hallmarked</span>
                 </div>
-                <div className="flex items-center gap-1.5 text-[#EAD7AE]">
-                  <span className="w-3.5 h-3.5 rounded-full bg-[#C5A059]/25 flex items-center justify-center text-[9px] text-[#EAD7AE] font-bold">✓</span>
-                  <span className="text-stone-200">Complimentary Velvet Box</span>
+                <div className="flex items-center gap-1">
+                  <span className="text-[#FFF0D0] font-bold">&bull;</span>
+                  <span>Complimentary Velvet Box</span>
                 </div>
               </div>
             </div>
 
-            {/* 6. Trust / 4-Pillar Strip */}
-            <div className="p-3 sm:p-3.5 rounded-xl bg-[#FAF8F5] border border-[#EAE4DC] grid grid-cols-4 divide-x divide-[#EAE4DC] text-center">
-              {/* 1. Pure 925 Silver */}
-              <div className="flex flex-col items-center justify-center px-1 sm:px-2 gap-1.5">
-                <div className="w-8 h-8 rounded-full bg-white border border-[#EAE4DC] flex items-center justify-center text-[#7A152E] shadow-2xs">
-                  <svg className="w-4 h-4 stroke-[1.6]" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                    <circle cx="12" cy="9" r="6" />
-                    <path d="M8.5 14.5L7 22l5-3 5 3-1.5-7.5" strokeLinecap="round" strokeLinejoin="round" />
-                  </svg>
+            {/* 6. Solystra Atelier Trust Badges & Delivery Concierge */}
+            <div className="rounded-2xl bg-[#FAF6F0] border border-[#E8DFC8] p-3.5 sm:p-4 space-y-3.5 shadow-2xs">
+              
+              {/* 4 Official Fine Jewellery Trust Badges (Exact match to Landing Page) */}
+              <div className="grid grid-cols-4 gap-1 sm:gap-2 text-center">
+                {/* Badge 1: Insured Delivery */}
+                <div className="flex flex-col items-center group cursor-default">
+                  <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-xl bg-white border border-[#E8DFC8] flex items-center justify-center text-[#7A152E] shadow-2xs group-hover:scale-105 group-hover:border-[#7A152E]/40 transition-all mb-1.5">
+                    <DeliveryIcon className="w-5 h-5" />
+                  </div>
+                  <span className="text-[10px] sm:text-xs font-bold text-stone-900 leading-tight block">
+                    Insured Delivery
+                  </span>
+                  <span className="text-[9px] sm:text-[10px] text-stone-500 font-normal leading-tight block mt-0.5">
+                    Express Air
+                  </span>
                 </div>
-                <span className="text-[10px] sm:text-[11px] font-medium text-stone-800 leading-tight">
-                  Pure<br />925 Silver
+
+                {/* Badge 2: BIS 925 Hallmark */}
+                <div className="flex flex-col items-center group cursor-default">
+                  <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-xl bg-white border border-[#E8DFC8] flex items-center justify-center text-[#7A152E] shadow-2xs group-hover:scale-105 group-hover:border-[#7A152E]/40 transition-all mb-1.5">
+                    <HallmarkIcon className="w-5 h-5" />
+                  </div>
+                  <span className="text-[10px] sm:text-xs font-bold text-stone-900 leading-tight block">
+                    BIS 925 Hallmark
+                  </span>
+                  <span className="text-[9px] sm:text-[10px] text-stone-500 font-normal leading-tight block mt-0.5">
+                    Tested Purity
+                  </span>
+                </div>
+
+                {/* Badge 3: 7-Day Exchanges */}
+                <div className="flex flex-col items-center group cursor-default">
+                  <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-xl bg-white border border-[#E8DFC8] flex items-center justify-center text-[#7A152E] shadow-2xs group-hover:scale-105 group-hover:border-[#7A152E]/40 transition-all mb-1.5">
+                    <ExchangeIcon className="w-5 h-5" />
+                  </div>
+                  <span className="text-[10px] sm:text-xs font-bold text-stone-900 leading-tight block">
+                    7-Day Exchanges
+                  </span>
+                  <span className="text-[9px] sm:text-[10px] text-stone-500 font-normal leading-tight block mt-0.5">
+                    Doorstep Pickup
+                  </span>
+                </div>
+
+                {/* Badge 4: 1-Year Warranty */}
+                <div className="flex flex-col items-center group cursor-default">
+                  <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-xl bg-white border border-[#E8DFC8] flex items-center justify-center text-[#7A152E] shadow-2xs group-hover:scale-105 group-hover:border-[#7A152E]/40 transition-all mb-1.5">
+                    <WarrantyIcon className="w-5 h-5" />
+                  </div>
+                  <span className="text-[10px] sm:text-xs font-bold text-stone-900 leading-tight block">
+                    1-Year Warranty
+                  </span>
+                  <span className="text-[9px] sm:text-[10px] text-stone-500 font-normal leading-tight block mt-0.5">
+                    Plating Guarantee
+                  </span>
+                </div>
+              </div>
+
+              {/* Solystra Royal Burgundy 1-Year Plating Warranty Pill (Responsive Zero Clipping Layout) */}
+              <div
+                onClick={() => showToast('Complimentary replating & ultrasonic spa cleaning covered under our 1-year warranty!')}
+                className="relative overflow-hidden rounded-xl bg-gradient-to-r from-[#4A0A19] via-[#7A152E] to-[#4A0A19] border border-[#8E1B38] py-2 px-3 sm:px-4 flex items-center justify-center gap-1.5 sm:gap-2 cursor-pointer hover:shadow-md transition-all shadow-xs select-none"
+              >
+                {/* Smooth crystal-clear diagonal light sheen */}
+                <div className="luxury-shine-sweep pointer-events-none" />
+                
+                <ShieldCheck className="w-3.5 h-3.5 text-[#EAD7AE] shrink-0 relative z-10" />
+                <span className="relative z-10 font-sans text-[9.5px] min-[360px]:text-[10.5px] sm:text-xs font-semibold uppercase tracking-wide sm:tracking-wider text-white whitespace-nowrap text-center">
+                  1-Year Warranty &bull; Free Replating &amp; Care
                 </span>
               </div>
 
-              {/* 2. Authenticity Certificate */}
-              <div className="flex flex-col items-center justify-center px-1 sm:px-2 gap-1.5">
-                <div className="w-8 h-8 rounded-full bg-white border border-[#EAE4DC] flex items-center justify-center text-[#7A152E] shadow-2xs">
-                  <svg className="w-4 h-4 stroke-[1.6]" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                    <rect x="4" y="3" width="16" height="18" rx="2" />
-                    <path d="M8 7h8M8 11h8M8 15h4" strokeLinecap="round" />
-                    <circle cx="15" cy="15" r="2" />
-                  </svg>
+              {/* Delivery Estimation Concierge */}
+              <div>
+                <div className="flex items-center gap-1.5 text-xs font-semibold text-stone-900 mb-2">
+                  <Truck className="w-3.5 h-3.5 text-[#7A152E]" />
+                  <span>Estimated Delivery</span>
                 </div>
-                <span className="text-[10px] sm:text-[11px] font-medium text-stone-800 leading-tight">
-                  Authenticity<br />Certificate
-                </span>
+
+                <form onSubmit={handlePincodeCheck} className="flex h-10 rounded-xl overflow-hidden border border-stone-300 focus-within:border-[#7A152E] transition-colors bg-white shadow-2xs">
+                  <input
+                    type="text"
+                    maxLength={6}
+                    value={pincode}
+                    onChange={(e) => setPincode(e.target.value.replace(/\D/g, ''))}
+                    placeholder="Enter 6-digit Indian pincode..."
+                    className="flex-1 px-3.5 text-xs text-stone-900 placeholder-stone-400 focus:outline-none bg-transparent"
+                  />
+                  <button
+                    type="submit"
+                    className="px-5 bg-[#7A152E] hover:bg-[#590D1E] text-white text-xs font-bold uppercase tracking-wider transition-colors cursor-pointer active:scale-95"
+                  >
+                    Check
+                  </button>
+                </form>
+
+                {pincodeResult && (
+                  <div className="mt-2 p-2.5 rounded-xl bg-emerald-50/70 border border-emerald-200/80 flex items-start gap-2 text-xs text-emerald-900">
+                    <Check className="w-4 h-4 text-emerald-700 mt-0.5 shrink-0 stroke-[2.5]" />
+                    <span className="leading-snug">{pincodeResult.message}</span>
+                  </div>
+                )}
               </div>
 
-              {/* 3. 15 Days Return */}
-              <div className="flex flex-col items-center justify-center px-1 sm:px-2 gap-1.5">
-                <div className="w-8 h-8 rounded-full bg-white border border-[#EAE4DC] flex items-center justify-center text-[#7A152E] shadow-2xs">
-                  <svg className="w-4 h-4 stroke-[1.6]" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                    <path d="M12 3L4 7.5v9L12 21l8-4.5v-9L12 3z" />
-                    <path d="M12 12L4 7.5m8 4.5l8-4.5m-8 4.5V21" />
-                  </svg>
-                </div>
-                <span className="text-[10px] sm:text-[11px] font-medium text-stone-800 leading-tight">
-                  15 Days<br />Return
-                </span>
-              </div>
-
-              {/* 4. 5 Lakh+ Customers */}
-              <div className="flex flex-col items-center justify-center px-1 sm:px-2 gap-1.5">
-                <div className="w-8 h-8 rounded-full bg-white border border-[#EAE4DC] flex items-center justify-center text-[#7A152E] shadow-2xs">
-                  <svg className="w-4 h-4 stroke-[1.6]" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                    <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" strokeLinecap="round" />
-                    <circle cx="9" cy="7" r="4" />
-                    <path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75" strokeLinecap="round" />
-                  </svg>
-                </div>
-                <span className="text-[10px] sm:text-[11px] font-medium text-stone-800 leading-tight">
-                  5 Lakh+<br />Customers
-                </span>
-              </div>
-            </div>
-
-            {/* 7. Estimated Delivery Time */}
-            <div className="space-y-1.5">
-              <label className="text-xs font-semibold text-stone-800 block">
-                Estimated delivery time
-              </label>
-              <form onSubmit={handlePincodeCheck} className="flex h-10 border border-stone-300 rounded-md overflow-hidden focus-within:border-[#7A152E] transition-colors">
-                <input
-                  type="text"
-                  maxLength={6}
-                  value={pincode}
-                  onChange={(e) => setPincode(e.target.value.replace(/\D/g, ''))}
-                  placeholder="Enter 6 digit pincode"
-                  className="flex-1 px-3.5 text-xs bg-white text-stone-900 placeholder-stone-400 focus:outline-none"
-                />
-                <button
-                  type="submit"
-                  className="px-6 bg-[#7A152E] hover:bg-[#590D1E] text-white text-xs font-bold uppercase tracking-wider transition-colors cursor-pointer"
-                >
-                  Check
-                </button>
-              </form>
-              {pincodeResult && (
-                <div className="text-xs text-stone-800 bg-[#FAF5EE] border border-[#EADCC8] rounded-md p-2.5 flex items-center gap-2 mt-2">
-                  <Check className="w-4 h-4 text-[#7A152E] shrink-0 stroke-[2.2]" />
-                  <span>{pincodeResult.message}</span>
-                </div>
-              )}
-            </div>
-
-            {/* 8. 1 YEAR PLATING WARRANTY Ribbon (Royal Burgundy & Gold Atelier Banner) */}
-            <div
-              onClick={() => showToast('Complimentary replating & ultrasonic spa cleaning covered under our 1-year guarantee!')}
-              className="relative py-3.5 px-4 rounded-md bg-gradient-to-r from-[#4A0A19] via-[#7A152E] to-[#4A0A19] border border-[#8E1B38] text-center cursor-pointer hover:shadow-md transition-all overflow-hidden group shadow-sm"
-            >
-              <h4 className="font-sans text-xs sm:text-[13px] font-extrabold uppercase tracking-wider text-white group-hover:text-[#E8D3A2] transition-colors">
-                1 YEAR PLATING WARRANTY
-              </h4>
-              <p className="text-[8.5px] sm:text-[9px] text-stone-200/80 mt-0.5 sm:absolute sm:right-3 sm:bottom-1 group-hover:text-white transition-colors">
-                Click to know more about the T&Cs.
-              </p>
             </div>
 
           </div>
@@ -1266,140 +1489,495 @@ export const ProductDetailPage = ({ productId }) => {
         </div>
       </section>
 
-      {/* Complete The Look Section */}
+      {/* Complete The Look Section (Smooth Row Slide Scroll) */}
       {relatedProducts.length > 0 && (
-        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-8 sm:mt-10">
-          <div className="mb-6">
-            <span className="text-xs uppercase tracking-wider text-[#7A152E] font-semibold block mb-1">
-              Complete The Look
-            </span>
-            <h3 className="font-serif text-2xl sm:text-3xl text-stone-900 font-normal">
-              You May Also Like
-            </h3>
+        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-8 sm:mt-10 overflow-hidden">
+          <div className="flex items-end justify-between mb-4 sm:mb-6">
+            <div>
+              <span className="text-xs uppercase tracking-wider text-[#7A152E] font-semibold block mb-1">
+                Complete The Look
+              </span>
+              <h3 className="font-serif text-2xl sm:text-3xl text-stone-900 font-normal">
+                You May Also Like
+              </h3>
+            </div>
+
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+
+          {/* Horizontal Smooth Sliding Row with Snap & Touch Physics */}
+          <div
+            ref={relatedScrollRef}
+            className="flex gap-3 sm:gap-5 overflow-x-auto no-scrollbar scroll-smooth snap-x snap-mandatory py-2 -mx-4 px-4 sm:-mx-6 sm:px-6 lg:-mx-8 lg:px-8"
+            style={{
+              WebkitOverflowScrolling: 'touch',
+              scrollBehavior: 'smooth'
+            }}
+          >
             {relatedProducts.map(p => (
-              <ProductCard key={p.id} product={p} />
+              <div
+                key={p.id}
+                data-related-card="true"
+                className="w-[200px] xs:w-[220px] sm:w-[240px] md:w-[260px] lg:w-[280px] shrink-0 snap-start select-none"
+              >
+                <ProductCard product={p} />
+              </div>
             ))}
           </div>
         </section>
       )}
 
-      {/* Customer Reviews Section */}
-      <section id="reviews-section" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-8 sm:mt-10">
-        <div className="bg-white rounded-2xl border border-stone-200 p-6 sm:p-10 shadow-2xs">
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-8 border-b border-stone-200 gap-4">
-            <div>
-              <span className="text-xs uppercase tracking-wider text-[#7A152E] font-semibold block mb-1">
-                Verified Reviews
-              </span>
-              <h3 className="font-serif text-2xl sm:text-3xl text-stone-900 font-normal">
-                Customer Reviews &amp; Ratings
-              </h3>
-            </div>
-            <button
-              onClick={() => setShowReviewModal(true)}
-              className="px-6 py-2.5 bg-[#7A152E] text-white text-xs font-medium rounded-lg hover:bg-[#590D1E] transition-colors flex items-center gap-2 self-start shadow-xs cursor-pointer"
-            >
-              <MessageSquare className="w-4 h-4" />
-              <span>Write a Review</span>
-            </button>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 pt-8">
-            <div className="flex flex-col items-center justify-center p-6 rounded-2xl bg-stone-50 border border-stone-200 text-center">
-              <div className="font-serif text-5xl font-normal text-[#7A152E]">
-                {product.rating}
-              </div>
-              <div className="text-xs font-semibold text-stone-800 my-2 uppercase tracking-wider">
-                Overall Satisfaction
-              </div>
-              <span className="text-xs text-stone-500 font-normal">
-                Based on {product.reviewsCount} verified purchases
-              </span>
-            </div>
-
-            <div className="md:col-span-2 space-y-4">
-              <div className="p-5 rounded-xl border border-stone-200 bg-stone-50/50 space-y-2">
-                <div className="flex items-center justify-between text-xs">
-                  <div className="font-medium text-stone-900 flex items-center gap-2">
-                    <span>Meera Sengupta</span>
-                    <span className="px-2 py-0.5 rounded bg-white text-[#7A152E] border border-stone-200 text-[10px] font-semibold">
-                      Verified Buyer
-                    </span>
-                  </div>
-                  <span className="text-stone-400">3 days ago</span>
-                </div>
-                <div className="text-xs font-semibold text-[#7A152E]">Rated 5.0 / 5.0</div>
-                <p className="text-xs text-stone-600 leading-relaxed font-normal">
-                  "Exceeded all expectations. The silver polish is mirror bright and spotless, and the setting of the stones is firm with zero wobbles. Truly an authentic luxury experience."
-                </p>
-              </div>
-
-              <div className="p-5 rounded-xl border border-stone-200 bg-stone-50/50 space-y-2">
-                <div className="flex items-center justify-between text-xs">
-                  <div className="font-medium text-stone-900 flex items-center gap-2">
-                    <span>Kavita Rao</span>
-                    <span className="px-2 py-0.5 rounded bg-white text-[#7A152E] border border-stone-200 text-[10px] font-semibold">
-                      Verified Buyer
-                    </span>
-                  </div>
-                  <span className="text-stone-400">1 week ago</span>
-                </div>
-                <div className="text-xs font-semibold text-[#7A152E]">Rated 5.0 / 5.0</div>
-                <p className="text-xs text-stone-600 leading-relaxed font-normal">
-                  "The packaging alone is worth half the price! Felt like receiving a gift from a high-end atelier. Hallmark stamp is clearly visible on the clasp."
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ========================================================
-          PRODUCT ADVISORY & FAQ SECTION (Clean Luxury Accordion)
-          ======================================================== */}
-      <section id="qna-section" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-8 sm:mt-12">
-        <div className="bg-white rounded-2xl border border-[#EAE4DC] p-5 sm:p-8 lg:p-10 shadow-2xs">
+      {/* Customer Reviews Section (Solystra Luxury Atelier Standard) */}
+      <section id="reviews-section" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-10 sm:mt-14">
+        <div className="bg-white rounded-2xl border border-[#EAE4DC] p-5 sm:p-8 lg:p-10 shadow-xs">
           
-          {/* Header Row */}
-          <div className="flex flex-col sm:flex-row sm:items-end justify-between pb-5 border-b border-[#EAE4DC] gap-4">
-            <div>
-              <span className="text-[10px] sm:text-[11px] uppercase tracking-widest text-[#7A152E] font-bold block mb-1">
-                Product Advisory
-              </span>
+          {/* Section Header */}
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-6 border-b border-[#EAE4DC] gap-4">
+            <div className="space-y-1">
               <h3 className="font-serif text-2xl sm:text-3xl text-stone-900 font-normal">
-                Frequently Asked Questions
+                Customer Reviews
               </h3>
-              <p className="text-xs sm:text-sm text-stone-500 mt-1 font-light">
-                Direct answers regarding silver purity, BIS hallmarking, sizing, and lifetime care.
+              <p className="text-xs sm:text-sm text-stone-500 font-light">
+                Authentic reflections from patrons who cherish this handcrafted Solystra creation.
               </p>
             </div>
 
             <button
-              onClick={() => setShowAskQuestionModal(true)}
-              className="px-4 py-2 bg-[#7A152E] hover:bg-[#590D1E] text-white text-xs font-bold uppercase tracking-wider rounded-xl shadow-xs transition-colors flex items-center gap-2 self-start sm:self-auto cursor-pointer shrink-0 active:scale-98"
+              type="button"
+              onClick={() => setShowReviewModal(true)}
+              className="px-5 py-2.5 bg-[#7A152E] hover:bg-[#590D1E] text-white text-xs font-semibold uppercase tracking-wider rounded-xl shadow-xs transition-all flex items-center gap-2 self-start sm:self-auto cursor-pointer active:scale-98 shrink-0"
             >
-              <HelpCircle className="w-3.5 h-3.5 text-[#F4D068]" />
+              <MessageSquare className="w-3.5 h-3.5 text-[#EAD7AE]" />
+              <span>Write a Review</span>
+            </button>
+          </div>
+
+          {/* Rating Overview & Breakdown Grid (Solystra Luxury Architecture) */}
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-6 lg:gap-8 py-8 border-b border-[#EAE4DC]">
+            
+            {/* 1. Overall Score & Recommendation (4 cols) */}
+            <div className="md:col-span-4 flex flex-col justify-between bg-[#FAF8F5] rounded-2xl p-5 sm:p-6 border border-[#EAE4DC]">
+              <div>
+                <div className="flex items-baseline gap-3">
+                  <span className="font-serif text-5xl sm:text-6xl font-normal text-[#7A152E] leading-none">
+                    {product.rating || 4.9}
+                  </span>
+                  <div>
+                    <div className="flex items-center gap-1">
+                      {[1, 2, 3, 4, 5].map((s) => (
+                        <Star
+                          key={s}
+                          className="w-4 h-4 text-[#C5A059] fill-[#C5A059]"
+                        />
+                      ))}
+                    </div>
+                    <span className="text-xs text-stone-500 font-medium block mt-1">
+                      {product.rating || 4.9} out of 5 stars
+                    </span>
+                  </div>
+                </div>
+
+                {/* Recommend Badge (Solystra Champagne Gold & Burgundy Theme) */}
+                <div className="mt-4 pt-4 border-t border-[#EAE4DC]">
+                  <div className="inline-flex items-center gap-2 px-3 py-2 rounded-xl bg-[#FAF6EE] text-[#7A152E] text-xs font-medium border border-[#E8DCC4] w-full">
+                    <CheckCircle2 className="w-4 h-4 text-[#7A152E] shrink-0" />
+                    <span className="font-serif text-sm">98% of collectors recommend this creation</span>
+                  </div>
+                  <p className="text-[11px] text-stone-500 mt-2 font-light">
+                    Aggregated from {product.reviewsCount || 128} verified order deliveries across India.
+                  </p>
+                </div>
+              </div>
+
+              {/* Characteristic Ratings */}
+              <div className="mt-6 pt-4 border-t border-[#EAE4DC] space-y-2 text-xs">
+                <div className="text-[11px] font-semibold uppercase tracking-wider text-stone-700 mb-2">
+                  Atelier Quality Metrics
+                </div>
+                {[
+                  { label: 'Silver Purity & Hallmarking', score: '5.0' },
+                  { label: 'Stone Sparkle & Setting', score: '4.9' },
+                  { label: 'Keepsake Velvet Packaging', score: '5.0' },
+                  { label: 'Value for Investment', score: '4.8' }
+                ].map((item, idx) => (
+                  <div key={idx} className="flex items-center justify-between text-stone-600">
+                    <span className="text-[11px]">{item.label}</span>
+                    <span className="font-medium text-stone-900 flex items-center gap-1">
+                      <span>{item.score}</span>
+                      <Star className="w-3 h-3 text-[#C5A059] fill-[#C5A059]" />
+                    </span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* 2. Rating Breakdown Bars (5 cols) */}
+            <div className="md:col-span-5 flex flex-col justify-center space-y-3 px-1 sm:px-3">
+              <div className="text-xs font-semibold uppercase tracking-wider text-stone-700 mb-1">
+                Rating Breakdown
+              </div>
+              {[
+                { star: 5, pct: 88, count: Math.round((product.reviewsCount || 128) * 0.88) },
+                { star: 4, pct: 9, count: Math.round((product.reviewsCount || 128) * 0.09) },
+                { star: 3, pct: 2, count: Math.round((product.reviewsCount || 128) * 0.02) },
+                { star: 2, pct: 1, count: Math.round((product.reviewsCount || 128) * 0.01) },
+                { star: 1, pct: 0, count: 0 }
+              ].map((item) => {
+                const isSelected = reviewRatingFilter === item.star;
+                return (
+                  <button
+                    key={item.star}
+                    type="button"
+                    onClick={() => setReviewRatingFilter(isSelected ? 'all' : item.star)}
+                    className={`w-full flex items-center gap-3 group text-left transition-colors cursor-pointer rounded-lg p-1.5 ${
+                      isSelected ? 'bg-[#FAF0F2] ring-1 ring-[#7A152E]/30' : 'hover:bg-[#FAF8F5]'
+                    }`}
+                  >
+                    <span className="text-xs font-medium text-stone-700 w-12 flex items-center gap-1 group-hover:text-[#7A152E]">
+                      <span>{item.star} star</span>
+                    </span>
+                    <div className="flex-1 h-2.5 bg-[#F3EFE9] rounded-full overflow-hidden border border-[#EAE4DC]/60 relative">
+                      <div
+                        className="h-full bg-linear-to-r from-[#C5A059] to-[#7A152E] rounded-full transition-all duration-500"
+                        style={{ width: `${item.pct}%` }}
+                      />
+                    </div>
+                    <span className="text-xs text-stone-500 font-medium w-10 text-right group-hover:text-[#7A152E]">
+                      {item.pct}%
+                    </span>
+                  </button>
+                );
+              })}
+
+              {reviewRatingFilter !== 'all' && (
+                <div className="pt-2 flex items-center justify-between">
+                  <span className="text-xs text-stone-500">
+                    Showing only {reviewRatingFilter}-star reviews
+                  </span>
+                  <button
+                    type="button"
+                    onClick={() => setReviewRatingFilter('all')}
+                    className="text-xs text-[#7A152E] hover:underline font-semibold cursor-pointer"
+                  >
+                    Clear Filter
+                  </button>
+                </div>
+              )}
+            </div>
+
+            {/* 3. Review This Design Prompt (3 cols) */}
+            <div className="md:col-span-3 flex flex-col justify-center p-5 rounded-2xl border border-[#EAE4DC] bg-white space-y-3">
+              <h4 className="font-serif text-lg text-stone-900 font-normal">
+                Review this creation
+              </h4>
+              <p className="text-xs text-stone-500 font-light leading-relaxed">
+                Share your impressions with fellow collectors and receive 100 Solystra Club Reward Points.
+              </p>
+              <div className="flex items-center gap-1 py-1 text-stone-300">
+                {[1, 2, 3, 4, 5].map((s) => (
+                  <button
+                    key={s}
+                    type="button"
+                    onClick={() => {
+                      setReviewForm(prev => ({ ...prev, rating: s }));
+                      setShowReviewModal(true);
+                    }}
+                    className="hover:text-[#C5A059] hover:scale-110 transition-transform cursor-pointer"
+                    title={`Rate ${s} stars`}
+                  >
+                    <Star className="w-5 h-5 fill-current" />
+                  </button>
+                ))}
+              </div>
+              <button
+                type="button"
+                onClick={() => setShowReviewModal(true)}
+                className="w-full py-2 bg-[#7A152E] hover:bg-[#590D1E] text-white text-xs font-medium rounded-lg transition-colors cursor-pointer text-center shadow-xs"
+              >
+                Write Customer Review
+              </button>
+            </div>
+
+          </div>
+
+          {/* Filter Pills & Sorting Bar (Custom Luxury Dropdown with Proper UX) */}
+          <div className="py-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-[#EAE4DC]">
+            <div className="flex items-center gap-2 overflow-x-auto no-scrollbar pb-1 sm:pb-0 flex-1 min-w-0">
+              <span className="text-xs font-semibold text-stone-500 mr-1 shrink-0">Filter:</span>
+              {[
+                { id: 'all', label: `All Reviews (${reviewsList.length})` },
+                { id: 5, label: `5 Stars (${reviewsList.filter(r => r.rating === 5).length})` },
+                { id: 4, label: `4 Stars (${reviewsList.filter(r => r.rating === 4).length})` }
+              ].map(filter => (
+                <button
+                  key={filter.id}
+                  type="button"
+                  onClick={() => setReviewRatingFilter(filter.id)}
+                  className={`px-3 py-1 rounded-full text-xs font-medium transition-all whitespace-nowrap cursor-pointer shrink-0 ${
+                    reviewRatingFilter === filter.id
+                      ? 'bg-[#7A152E] text-white shadow-2xs'
+                      : 'bg-[#FAF8F5] text-stone-700 border border-[#EAE4DC] hover:border-[#7A152E]/30'
+                  }`}
+                >
+                  {filter.label}
+                </button>
+              ))}
+            </div>
+
+            {/* Bespoke Luxury Sort Dropdown with Proper UX */}
+            <div ref={sortDropdownRef} className="relative self-start sm:self-auto shrink-0 z-20">
+              <button
+                type="button"
+                onClick={() => setIsSortDropdownOpen(!isSortDropdownOpen)}
+                className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-xl bg-[#FAF8F5] hover:bg-[#FAF0F2] border border-[#EAE4DC] hover:border-[#7A152E]/40 text-xs font-medium text-stone-800 transition-all cursor-pointer shadow-2xs select-none active:scale-98"
+                aria-haspopup="listbox"
+                aria-expanded={isSortDropdownOpen}
+              >
+                <span className="text-stone-400 font-normal">Sort:</span>
+                <span className="text-stone-900 font-semibold">{currentSortLabel}</span>
+                <ChevronDown
+                  className={`w-3.5 h-3.5 text-[#7A152E] transition-transform duration-200 ${
+                    isSortDropdownOpen ? 'rotate-180' : ''
+                  }`}
+                />
+              </button>
+
+              {/* Floating Luxury Menu with Backdrop Shadow */}
+              {isSortDropdownOpen && (
+                <div
+                  className="absolute left-0 sm:left-auto sm:right-0 top-full mt-1.5 w-44 rounded-xl bg-white border border-[#EAE4DC] shadow-xl py-1.5 z-40 animate-in fade-in zoom-in-95 duration-150"
+                  role="listbox"
+                >
+                  {SORT_OPTIONS.map(option => (
+                    <button
+                      key={option.id}
+                      type="button"
+                      onClick={() => {
+                        setReviewSortBy(option.id);
+                        setIsSortDropdownOpen(false);
+                      }}
+                      className={`w-full flex items-center justify-between px-3.5 py-2 text-xs text-left transition-colors cursor-pointer ${
+                        reviewSortBy === option.id
+                          ? 'bg-[#FAF0F2] text-[#7A152E] font-semibold'
+                          : 'text-stone-700 hover:bg-[#FAF8F5] hover:text-stone-900'
+                      }`}
+                      role="option"
+                      aria-selected={reviewSortBy === option.id}
+                    >
+                      <span>{option.label}</span>
+                      {reviewSortBy === option.id && (
+                        <Check className="w-3.5 h-3.5 text-[#7A152E]" />
+                      )}
+                    </button>
+                  ))}
+                </div>
+              )}
+            </div>
+          </div>
+
+          {/* Review Cards List (Solystra Atelier Theme & Fully Responsive) */}
+          <div className="divide-y divide-[#EAE4DC] pt-2">
+            {filteredReviews.map((review) => {
+              const isHelpfulVoted = !!helpfulVotedReviews[review.id];
+              return (
+                <article key={review.id} className="py-6 sm:py-7 space-y-3">
+                  
+                  {/* User Profile Header (Zero wrapping collisions on mobile) */}
+                  <div className="flex items-start justify-between gap-2">
+                    <div className="flex items-center gap-3 min-w-0">
+                      <div className="w-10 h-10 rounded-full bg-[#FAF0F2] text-[#7A152E] font-serif font-bold text-xs flex items-center justify-center shrink-0 border border-[#EAD5DA]">
+                        {review.avatar}
+                      </div>
+                      <div className="min-w-0">
+                        <div className="flex flex-wrap items-center gap-1.5">
+                          <span className="font-medium text-stone-900 text-sm">
+                            {review.name}
+                          </span>
+                          {review.verified && (
+                            <span className="inline-flex items-center gap-1 text-[10px] font-semibold text-[#8B6B38] bg-[#FAF6EE] px-2 py-0.5 rounded-full border border-[#E8DCC4] shrink-0">
+                              <ShieldCheck className="w-2.5 h-2.5 text-[#C5A059]" />
+                              <span>Verified Collector</span>
+                            </span>
+                          )}
+                        </div>
+                        <div className="text-[11px] text-stone-400 mt-0.5 flex items-center gap-2">
+                          {review.location && <span>{review.location}</span>}
+                          {review.location && <span>•</span>}
+                          <span>{review.date}</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Rating Stars & Headline */}
+                  <div className="flex flex-wrap items-center gap-2">
+                    <div className="flex items-center gap-0.5">
+                      {[1, 2, 3, 4, 5].map((s) => (
+                        <Star
+                          key={s}
+                          className={`w-3.5 h-3.5 ${
+                            s <= review.rating
+                              ? 'text-[#C5A059] fill-[#C5A059]'
+                              : 'text-stone-300'
+                          }`}
+                        />
+                      ))}
+                    </div>
+                    <h5 className="font-semibold text-stone-900 text-xs sm:text-sm">
+                      {review.headline}
+                    </h5>
+                  </div>
+
+                  {/* Variation Tag in Solystra Theme */}
+                  {(review.metal || review.finish) && (
+                    <div className="inline-flex flex-wrap items-center gap-1.5 text-[11px] text-stone-600 bg-[#FAF8F5] px-2.5 py-1 rounded-lg border border-[#EAE4DC]">
+                      <span className="text-stone-400">Specification:</span>
+                      <span className="font-medium text-[#7A152E]">{review.metal}</span>
+                      {review.finish && (
+                        <>
+                          <span className="text-stone-300">•</span>
+                          <span className="font-medium text-stone-700">{review.finish}</span>
+                        </>
+                      )}
+                    </div>
+                  )}
+
+                  {/* Comment Body with Inline WhatsApp-Style Read More */}
+                  {(() => {
+                    const isRevExpanded = !!expandedReviewIds[review.id];
+                    const REV_LIMIT = 140;
+                    const isRevLong = review.comment.length > REV_LIMIT;
+                    const revCut = isRevLong ? review.comment.lastIndexOf(' ', REV_LIMIT) : REV_LIMIT;
+                    const rawRevSnippet = isRevLong ? review.comment.slice(0, revCut > 0 ? revCut : REV_LIMIT) : review.comment;
+                    const revSnippet = rawRevSnippet.replace(/[.,\s]+$/, '');
+
+                    return (
+                      <p className="text-xs sm:text-sm text-stone-600 leading-relaxed font-normal">
+                        "{isRevExpanded || !isRevLong ? (
+                          <>
+                            <span>{review.comment}</span>{' '}
+                            {isRevLong && (
+                              <button
+                                type="button"
+                                onClick={() => toggleReview(review.id)}
+                                className="inline font-semibold text-[#7A152E] hover:underline cursor-pointer select-none text-xs ml-1"
+                              >
+                                See less
+                              </button>
+                            )}
+                          </>
+                        ) : (
+                          <>
+                            <span>{revSnippet}...</span>{' '}
+                            <button
+                              type="button"
+                              onClick={() => toggleReview(review.id)}
+                              className="inline font-semibold text-[#7A152E] hover:underline cursor-pointer select-none text-xs"
+                            >
+                              Read more
+                            </button>
+                          </>
+                        )}"
+                      </p>
+                    );
+                  })()}
+
+                  {/* Solystra Helpful Action Bar */}
+                  <div className="flex items-center gap-3 pt-1 text-xs text-stone-500">
+                    <button
+                      type="button"
+                      onClick={() => handleHelpfulReview(review.id)}
+                      className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium transition-all cursor-pointer border active:scale-95 ${
+                        isHelpfulVoted
+                          ? 'bg-[#FAF0F2] border-[#7A152E] text-[#7A152E]'
+                          : 'bg-[#FAF8F5] border-[#EAE4DC] hover:border-[#7A152E]/40 text-stone-700 hover:text-[#7A152E]'
+                      }`}
+                    >
+                      <ThumbsUp className="w-3.5 h-3.5 text-[#C5A059]" />
+                      <span>Helpful ({review.helpfulCount + (isHelpfulVoted ? 1 : 0)})</span>
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => showToast('Feedback recorded. Thank you!')}
+                      className="text-stone-400 hover:text-[#7A152E] transition-colors text-[11px] cursor-pointer"
+                    >
+                      Report
+                    </button>
+                  </div>
+
+                </article>
+              );
+            })}
+          </div>
+
+        </div>
+      </section>
+
+      {/* ========================================================
+          CUSTOMER QUESTIONS & ANSWERS (Solystra Luxury Advisory)
+          ======================================================== */}
+      <section id="qna-section" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-8 sm:mt-12">
+        <div className="bg-white rounded-2xl border border-[#EAE4DC] p-5 sm:p-8 lg:p-10 shadow-xs">
+          
+          {/* Header Row */}
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-6 border-b border-[#EAE4DC] gap-4">
+            <div className="space-y-1">
+              <h3 className="font-serif text-2xl sm:text-3xl text-stone-900 font-normal">
+                Frequently Asked Questions
+              </h3>
+              <p className="text-xs sm:text-sm text-stone-500 font-light">
+                Verified answers regarding BIS 925 hallmarking, custom sizing, insured courier dispatch, and lifetime care.
+              </p>
+            </div>
+
+            <button
+              type="button"
+              onClick={() => setShowAskQuestionModal(true)}
+              className="px-5 py-2.5 bg-[#7A152E] hover:bg-[#590D1E] text-white text-xs font-semibold uppercase tracking-wider rounded-xl shadow-xs transition-colors flex items-center gap-2 self-start sm:self-auto cursor-pointer shrink-0 active:scale-98"
+            >
+              <HelpCircle className="w-3.5 h-3.5 text-[#EAD7AE]" />
               <span>Ask a Question</span>
             </button>
           </div>
 
+          {/* Luxury Search Bar */}
+          <div className="pt-6 pb-4">
+            <div className="relative max-w-2xl">
+              <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-[#C5A059]" />
+              <input
+                type="text"
+                value={qnaSearchQuery}
+                onChange={(e) => setQnaSearchQuery(e.target.value)}
+                placeholder="Search answers, purity, sizing, courier dispatch, care..."
+                className="w-full pl-10 pr-10 py-2.5 bg-[#FAF8F5] border border-[#EAE4DC] rounded-xl text-xs sm:text-sm text-stone-900 placeholder:text-stone-400 focus:outline-none focus:border-[#7A152E] focus:bg-white focus:ring-1 focus:ring-[#7A152E]/20 transition-all shadow-2xs"
+              />
+              {qnaSearchQuery && (
+                <button
+                  type="button"
+                  onClick={() => setQnaSearchQuery('')}
+                  className="absolute right-3 top-1/2 -translate-y-1/2 text-stone-400 hover:text-stone-700 p-1 cursor-pointer"
+                >
+                  <X className="w-3.5 h-3.5" />
+                </button>
+              )}
+            </div>
+          </div>
+
           {/* Category Filter Tabs */}
-          <div className="flex items-center gap-2 pt-5 pb-3 overflow-x-auto hide-scrollbar">
+          <div className="flex items-center gap-2 pb-4 overflow-x-auto no-scrollbar">
             {[
               { id: 'all', label: 'All Questions' },
-              { id: 'purity', label: 'Purity & Hallmarking' },
-              { id: 'shipping', label: 'Shipping & Delivery' },
-              { id: 'care', label: 'Jewelry Care & Sizing' }
+              { id: 'purity', label: 'BIS Hallmark & Purity' },
+              { id: 'shipping', label: 'Shipping & Free 15-Day Returns' },
+              { id: 'care', label: 'Jewelry Care & Daily Wear' }
             ].map(cat => (
               <button
                 key={cat.id}
+                type="button"
                 onClick={() => setSelectedQnaCategory(cat.id)}
                 className={`px-3.5 py-1.5 rounded-full text-xs font-medium transition-all whitespace-nowrap cursor-pointer ${
                   selectedQnaCategory === cat.id
                     ? 'bg-[#7A152E] text-white shadow-xs'
-                    : 'bg-stone-100 text-stone-600 hover:bg-stone-200/80 hover:text-stone-900'
+                    : 'bg-[#FAF8F5] text-stone-700 border border-[#EAE4DC] hover:border-[#7A152E]/30'
                 }`}
               >
                 {cat.label}
@@ -1407,61 +1985,144 @@ export const ProductDetailPage = ({ productId }) => {
             ))}
           </div>
 
-          {/* Clean Minimalist Q&A Accordion Rows */}
-          <div className="divide-y divide-[#EAE4DC] border-y border-[#EAE4DC] mt-2">
-            {filteredQna.map((item) => {
-              const isOpen = openQnaId === item.id;
-              return (
-                <div key={item.id} className="py-4 sm:py-5 group">
-                  <button
-                    onClick={() => setOpenQnaId(isOpen ? null : item.id)}
-                    className="w-full flex items-center justify-between text-left gap-4 cursor-pointer"
-                  >
-                    <span className="font-serif text-base sm:text-lg font-normal text-stone-900 group-hover:text-[#7A152E] transition-colors leading-snug">
-                      {item.question}
-                    </span>
-                    <ChevronDown
-                      className={`w-4 h-4 text-stone-400 group-hover:text-[#7A152E] shrink-0 transition-transform duration-300 ${
-                        isOpen ? 'rotate-180 text-[#7A152E]' : ''
-                      }`}
-                    />
-                  </button>
+          {/* Q&A Cards (WhatsApp-Style Inline Read More / See Less Inside Paragraph) */}
+          {filteredQna.length > 0 ? (
+            <div className="divide-y divide-[#EAE4DC] border-t border-[#EAE4DC]">
+              {filteredQna.map((item) => {
+                const isExpanded = !!expandedQnaIds[item.id];
+                const isVoted = !!qnaHelpfulVoted[item.id];
+                const LIMIT = 135;
+                const isLong = item.answer.length > LIMIT;
+                const cleanCut = isLong ? item.answer.lastIndexOf(' ', LIMIT) : LIMIT;
+                const rawSnippet = isLong ? item.answer.slice(0, cleanCut > 0 ? cleanCut : LIMIT) : item.answer;
+                const snippet = rawSnippet.replace(/[.,\s]+$/, '');
 
-                  {isOpen && (
-                    <div className="mt-2.5 space-y-2.5">
-                      <p className="text-xs sm:text-sm text-stone-600 font-light leading-relaxed pr-4">
-                        {item.answer}
-                      </p>
-                      <div className="flex items-center gap-2 text-[11px] text-stone-400 font-sans pt-1">
-                        <span className="text-[10px] uppercase tracking-wider text-[#7A152E] font-bold">
-                          Atelier Certified
-                        </span>
-                        <span>&bull;</span>
-                        <span className="text-stone-500">{item.author}</span>
+                return (
+                  <div key={item.id} className="py-5 sm:py-6 space-y-3">
+                    
+                    {/* Question Row with Q Badge (Pure Title, No Dropdown Button) */}
+                    <div className="flex items-start gap-3">
+                      <span className="px-2 py-0.5 bg-[#FAF0F2] text-[#7A152E] border border-[#EAD5DA] text-[11px] font-cinzel font-bold rounded-md shrink-0 mt-0.5 tracking-wide">
+                        Q
+                      </span>
+                      <h4 className="font-serif text-base sm:text-lg font-normal text-stone-900 leading-snug">
+                        {item.question}
+                      </h4>
+                    </div>
+
+                    {/* Answer Row with A Badge & Inline WhatsApp-style Read More */}
+                    <div className="flex items-start gap-3 pl-0 sm:pl-1">
+                      <span className="px-2 py-0.5 bg-[#FAF6EE] text-[#8B6B38] border border-[#E8DCC4] text-[11px] font-cinzel font-bold rounded-md shrink-0 mt-0.5 tracking-wide">
+                        A
+                      </span>
+                      <div className="space-y-2 flex-1 min-w-0">
+                        <p className="text-xs sm:text-sm text-stone-700 font-light leading-relaxed">
+                          {isExpanded || !isLong ? (
+                            <>
+                              <span>{item.answer}</span>{' '}
+                              {isLong && (
+                                <button
+                                  type="button"
+                                  onClick={() => toggleQna(item.id)}
+                                  className="inline font-semibold text-[#7A152E] hover:underline cursor-pointer select-none text-xs ml-1"
+                                >
+                                  See less
+                                </button>
+                              )}
+                            </>
+                          ) : (
+                            <>
+                              <span>{snippet}...</span>{' '}
+                              <button
+                                type="button"
+                                onClick={() => toggleQna(item.id)}
+                                className="inline font-semibold text-[#7A152E] hover:underline cursor-pointer select-none text-xs"
+                              >
+                                Read more
+                              </button>
+                            </>
+                          )}
+                        </p>
+
+                        {/* Atelier Attribution & Helpful Count */}
+                        <div className="flex flex-wrap items-center justify-between gap-3 pt-2 text-[11px] text-stone-400 border-t border-[#FAF5EE]">
+                          <div className="flex flex-wrap items-center gap-2">
+                            <span className="font-medium text-[#7A152E]">
+                              {item.author}
+                            </span>
+                            <span>•</span>
+                            <span className="inline-flex items-center gap-1 text-[#8B6B38] bg-[#FAF6EE] px-2 py-0.5 rounded-full border border-[#E8DCC4] font-medium text-[10px]">
+                              <Award className="w-2.5 h-2.5 text-[#C5A059]" />
+                              <span>{item.badge}</span>
+                            </span>
+                          </div>
+
+                          <button
+                            type="button"
+                            onClick={() => handleHelpfulQna(item.id)}
+                            className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium transition-all cursor-pointer border active:scale-95 ${
+                              isVoted
+                                ? 'bg-[#FAF0F2] border-[#7A152E] text-[#7A152E]'
+                                : 'bg-[#FAF8F5] border-[#EAE4DC] hover:border-[#7A152E]/30 text-stone-700 hover:text-[#7A152E]'
+                            }`}
+                          >
+                            <ThumbsUp className="w-3 h-3 text-[#C5A059]" />
+                            <span>Helpful ({item.helpfulCount + (isVoted ? 1 : 0)})</span>
+                          </button>
+                        </div>
                       </div>
                     </div>
-                  )}
-                </div>
-              );
-            })}
-          </div>
 
-          {/* Concierge Desk Card */}
-          <div className="mt-6 p-4 sm:p-5 rounded-xl bg-[#FAF8F5] border border-[#EAE4DC] flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-            <div>
-              <h5 className="text-xs sm:text-sm font-semibold text-stone-900">
-                Have a bespoke inquiry about custom sizing or engraving?
-              </h5>
-              <p className="text-[11px] sm:text-xs text-stone-500 mt-0.5 font-light">
-                Our master silversmiths and concierge desk respond to all inquiries within 2 hours.
+                  </div>
+                );
+              })}
+            </div>
+          ) : (
+            <div className="py-12 text-center space-y-3 border-t border-[#EAE4DC]">
+              <HelpCircle className="w-10 h-10 text-[#C5A059] mx-auto opacity-70" />
+              <p className="text-sm font-medium text-stone-800">
+                No answers found matching "{qnaSearchQuery}"
               </p>
+              <p className="text-xs text-stone-500 max-w-md mx-auto font-light">
+                Have a specific query regarding custom sizing, hallmarking or care? Our concierge desk will answer within 2 hours.
+              </p>
+              <button
+                type="button"
+                onClick={() => {
+                  setQuestionForm(prev => ({ ...prev, question: qnaSearchQuery }));
+                  setShowAskQuestionModal(true);
+                }}
+                className="px-5 py-2 bg-[#7A152E] hover:bg-[#590D1E] text-white text-xs font-semibold rounded-xl shadow-xs transition-colors inline-flex items-center gap-2 cursor-pointer mt-2"
+              >
+                <HelpCircle className="w-3.5 h-3.5 text-[#EAD7AE]" />
+                <span>Ask Atelier Team Directly</span>
+              </button>
+            </div>
+          )}
+
+          {/* Concierge Desk Help Banner */}
+          <div className="mt-8 p-4 sm:p-5 rounded-xl bg-[#FAF8F5] border border-[#EAE4DC] flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 rounded-full bg-[#FAF0F2] text-[#7A152E] border border-[#EAD5DA] flex items-center justify-center shrink-0">
+                <Award className="w-5 h-5 text-[#7A152E]" />
+              </div>
+              <div>
+                <h5 className="text-xs sm:text-sm font-semibold text-stone-900">
+                  Have a bespoke inquiry about custom sizing, engraving, or gold hallmarking?
+                </h5>
+                <p className="text-[11px] sm:text-xs text-stone-500 mt-0.5 font-light">
+                  Our master silversmiths and concierge desk respond to all inquiries within 2 hours.
+                </p>
+              </div>
             </div>
 
             <button
+              type="button"
               onClick={() => setShowAskQuestionModal(true)}
-              className="px-4 py-2 bg-white hover:bg-stone-50 text-[#7A152E] hover:text-[#590D1E] text-xs font-semibold rounded-xl border border-[#7A152E]/30 shadow-2xs transition-colors shrink-0 cursor-pointer self-start sm:self-auto"
+              className="px-4 py-2 bg-white hover:bg-[#FAF8F5] text-[#7A152E] text-xs font-semibold rounded-xl border border-[#7A152E]/30 shadow-2xs transition-all shrink-0 cursor-pointer self-start sm:self-auto inline-flex items-center gap-1.5 group"
             >
-              Ask Concierge Desk &rarr;
+              <span>Ask Concierge Desk</span>
+              <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
             </button>
           </div>
 
@@ -1594,7 +2255,26 @@ export const ProductDetailPage = ({ productId }) => {
             </div>
             <button
               onClick={() => {
-                showToast('Thank you! Your verified review has been submitted.');
+                if (!reviewForm.comment.trim()) {
+                  showToast('Please enter your review comment before submitting.', 'info');
+                  return;
+                }
+                const newRev = {
+                  id: 'rev-' + Date.now(),
+                  name: reviewForm.name.trim() || 'Verified Collector',
+                  avatar: (reviewForm.name.trim() || 'VC').slice(0, 2).toUpperCase(),
+                  location: 'India',
+                  rating: reviewForm.rating || 5,
+                  headline: reviewForm.rating === 5 ? 'Exceptional Atelier Craftsmanship!' : 'Verified Customer Review',
+                  comment: reviewForm.comment.trim(),
+                  date: 'Just now',
+                  verified: true,
+                  helpfulCount: 0,
+                  metal: '925 Sterling Silver',
+                  finish: 'Official Hallmark'
+                };
+                setReviewsList(prev => [newRev, ...prev]);
+                showToast('Thank you! Your verified review has been published.');
                 setShowReviewModal(false);
                 setReviewForm({ name: '', rating: 5, comment: '' });
               }}
@@ -1680,6 +2360,110 @@ export const ProductDetailPage = ({ productId }) => {
       )}
 
       {/* ========================================================
+          RING & JEWELRY SIZE GUIDE MODAL
+          ======================================================== */}
+      {showSizeGuide && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-xs animate-in fade-in duration-200">
+          <div className="relative w-full max-w-lg bg-white rounded-2xl p-6 sm:p-7 shadow-2xl border border-[#EAE4DC] max-h-[90vh] overflow-y-auto">
+            <button
+              onClick={() => setShowSizeGuide(false)}
+              className="absolute top-4 right-4 p-2 text-stone-400 hover:text-stone-800 rounded-full hover:bg-stone-100 transition-colors cursor-pointer"
+              aria-label="Close Size Guide"
+            >
+              <X className="w-5 h-5" />
+            </button>
+
+            <div className="flex items-center gap-2 mb-1">
+              <div className="w-8 h-8 rounded-full bg-[#7A152E]/10 flex items-center justify-center text-[#7A152E]">
+                <Ruler className="w-4 h-4" />
+              </div>
+              <div>
+                <h3 className="font-serif text-xl font-bold text-stone-900">
+                  Ring Size Guide
+                </h3>
+                <p className="text-xs text-stone-500">
+                  Standard Indian Ring Size Chart & Fitment Guide
+                </p>
+              </div>
+            </div>
+
+            {/* Indian Size Chart Table */}
+            <div className="mt-4 border border-stone-200 rounded-xl overflow-hidden shadow-2xs">
+              <table className="w-full text-left text-xs">
+                <thead className="bg-[#FAF8F5] border-b border-stone-200 text-stone-800 font-semibold">
+                  <tr>
+                    <th className="py-2.5 px-3">Indian Size</th>
+                    <th className="py-2.5 px-3">Inner Diameter</th>
+                    <th className="py-2.5 px-3">Circumference</th>
+                    <th className="py-2.5 px-3">Select</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-stone-100">
+                  {[
+                    { size: '10', dia: '15.9 mm', circ: '50.0 mm' },
+                    { size: '12', dia: '16.5 mm', circ: '51.9 mm' },
+                    { size: '14', dia: '17.2 mm', circ: '54.0 mm' },
+                    { size: '16', dia: '17.8 mm', circ: '56.0 mm' },
+                    { size: '18', dia: '18.5 mm', circ: '58.1 mm' },
+                    { size: '20', dia: '19.1 mm', circ: '60.0 mm' }
+                  ].map((row) => (
+                    <tr
+                      key={row.size}
+                      onClick={() => {
+                        setSelectedSize(row.size);
+                        setShowSizeGuide(false);
+                      }}
+                      className={`cursor-pointer transition-colors ${
+                        selectedSize === row.size
+                          ? 'bg-[#7A152E]/10 font-bold text-[#7A152E]'
+                          : 'hover:bg-stone-50 text-stone-700'
+                      }`}
+                    >
+                      <td className="py-2 px-3 font-semibold">{row.size}</td>
+                      <td className="py-2 px-3 text-stone-600">{row.dia}</td>
+                      <td className="py-2 px-3 text-stone-600">{row.circ}</td>
+                      <td className="py-2 px-3">
+                        <button
+                          type="button"
+                          className={`text-[11px] px-2 py-0.5 rounded-md font-semibold cursor-pointer ${
+                            selectedSize === row.size
+                              ? 'bg-[#7A152E] text-white'
+                              : 'bg-stone-100 text-stone-600 hover:bg-[#7A152E] hover:text-white'
+                          }`}
+                        >
+                          {selectedSize === row.size ? 'Selected' : 'Choose'}
+                        </button>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+
+            {/* How to measure */}
+            <div className="mt-4 p-3 rounded-xl bg-[#FAF8F5] border border-stone-200 text-xs space-y-1.5">
+              <h4 className="font-semibold text-stone-900">How to find your ring size:</h4>
+              <p className="text-stone-600 leading-relaxed">
+                1. Take an existing ring that fits your intended finger comfortably.<br />
+                2. Measure the <strong>inside diameter</strong> in millimeters (mm) with a ruler.<br />
+                3. Match with the chart above. If you are between sizes, we recommend ordering the larger size.
+              </p>
+            </div>
+
+            <div className="mt-4 pt-3 border-t border-stone-200 flex justify-end">
+              <button
+                type="button"
+                onClick={() => setShowSizeGuide(false)}
+                className="px-5 py-2 bg-[#7A152E] text-white text-xs font-bold rounded-xl hover:bg-[#590D1E] cursor-pointer"
+              >
+                Done
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* ========================================================
           FLOATING MOBILE CAPSULE CTA (Buy Now & Add to Cart)
           Floating capsule matching the mobile bottom bar shape & blur
           Smoothly springs in/out when scrolling past product image
@@ -1692,43 +2476,43 @@ export const ProductDetailPage = ({ productId }) => {
             : 'translate-y-16 scale-90 opacity-0 pointer-events-none'
         }`}
       >
-        <div className="backdrop-blur-2xl bg-[#FAF8F5]/95 border border-white/90 shadow-[0_16px_40px_rgba(0,0,0,0.16),0_2px_8px_rgba(122,21,46,0.08)] rounded-full px-2 py-1.5 flex items-center justify-between gap-2">
+        <div className="backdrop-blur-2xl bg-[#FAF8F5]/95 border border-white/90 shadow-[0_16px_40px_rgba(0,0,0,0.16),0_2px_8px_rgba(122,21,46,0.08)] rounded-full px-2.5 py-1.5 flex items-center justify-between gap-2 overflow-hidden">
           
-          {/* Left: Round Thumbnail & Pricing */}
-          <div className="flex items-center gap-2 min-w-0 flex-1 pl-1">
+          {/* Left: Round Thumbnail & Pricing (Zero Collision Guaranteed) */}
+          <div className="flex items-center gap-2 min-w-0 flex-1 overflow-hidden">
             <img
               src={product.images[0]}
               alt={product.name}
-              className="w-9 h-9 rounded-full object-cover border border-[#EAE4DC] shrink-0 bg-white shadow-2xs"
+              className="w-8 h-8 sm:w-9 sm:h-9 rounded-full object-cover border border-[#EAE4DC] shrink-0 bg-white shadow-2xs"
             />
-            <div className="min-w-0">
-              <p className="text-[11.5px] text-stone-900 font-semibold truncate leading-tight">
+            <div className="min-w-0 flex-1">
+              <p className="text-[11px] sm:text-[11.5px] text-stone-900 font-semibold truncate leading-tight">
                 {cleanTitle}
               </p>
-              <div className="flex items-baseline gap-1 mt-0.5 whitespace-nowrap">
-                <span className="text-xs font-bold text-stone-950 font-sans">
+              <div className="flex items-center gap-1.5 mt-0.5 min-w-0 overflow-hidden whitespace-nowrap">
+                <span className="text-xs sm:text-sm font-bold text-stone-950 font-sans shrink-0">
                   ₹{product.price.toLocaleString('en-IN')}
                 </span>
-                {product.mrp && product.mrp > product.price && (
-                  <span className="text-[10px] text-stone-400 line-through">
-                    ₹{product.mrp.toLocaleString('en-IN')}
+                {product.discount && (
+                  <span className="text-[9px] font-bold text-[#D11A46] uppercase bg-[#FAF0F2] px-1 py-0.2 rounded border border-[#EAD5DA] shrink-0">
+                    {product.discount}
                   </span>
                 )}
-                {product.discount && (
-                  <span className="text-[9px] font-bold text-[#D11A46] uppercase whitespace-nowrap">
-                    {product.discount}
+                {product.mrp && product.mrp > product.price && (
+                  <span className="hidden sm:inline text-[10px] text-stone-400 line-through shrink-0">
+                    ₹{product.mrp.toLocaleString('en-IN')}
                   </span>
                 )}
               </div>
             </div>
           </div>
 
-          {/* Right: Capsule CTA Buttons */}
+          {/* Right: Capsule CTA Buttons (Proportional & Non-Clipping) */}
           <div className="flex items-center gap-1.5 shrink-0">
             <button
               type="button"
               onClick={handleAddToCart}
-              className="py-2 px-3 rounded-full border border-[#7A152E] text-[#7A152E] bg-white hover:bg-[#FAF8F5] text-xs font-bold flex items-center gap-1 active:scale-95 transition-all cursor-pointer shadow-2xs"
+              className="py-1.5 px-2.5 sm:px-3 rounded-full border border-[#7A152E] text-[#7A152E] bg-white hover:bg-[#FAF8F5] text-[11px] sm:text-xs font-bold flex items-center gap-1 active:scale-95 transition-all cursor-pointer shadow-2xs shrink-0"
               title="Add to Cart"
             >
               <ShoppingBag className="w-3.5 h-3.5" />
@@ -1738,7 +2522,7 @@ export const ProductDetailPage = ({ productId }) => {
             <button
               type="button"
               onClick={handleBuyNow}
-              className="py-2 px-4 rounded-full bg-[#7A152E] hover:bg-[#590D1E] text-white text-xs font-bold flex items-center gap-1 active:scale-95 transition-all cursor-pointer shadow-md tracking-wide"
+              className="py-1.5 px-3 sm:px-4 rounded-full bg-[#7A152E] hover:bg-[#590D1E] text-white text-[11px] sm:text-xs font-bold flex items-center gap-1 active:scale-95 transition-all cursor-pointer shadow-md tracking-wide shrink-0"
             >
               <span>Buy Now</span>
             </button>

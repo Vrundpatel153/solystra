@@ -106,7 +106,7 @@ export const OffersPage = ({ onBackToStore }) => {
       <section className="relative overflow-hidden bg-stone-900 border-b border-[#EAE4DC]">
         <div className="relative w-full h-36 xs:h-40 sm:h-48 md:h-56">
           <img
-            src="solystra_assets/banners/offers_editorial_banner.jpg"
+            src="solystra_assets/banners/offers_privilege_vault_banner.jpg"
             alt="Solystra Fine Jewelry Offers Campaign"
             className="w-full h-full object-cover object-center"
           />
@@ -150,7 +150,7 @@ export const OffersPage = ({ onBackToStore }) => {
       {/* ========================================================
           2. STICKY QUICK-JUMP FILTER PILLS
           ======================================================== */}
-      <nav className="sticky top-0 z-30 bg-[#FAF8F5]/95 backdrop-blur-md border-b border-[#EAE4DC] py-2.5 px-4 sm:px-6 lg:px-8 shadow-xs">
+      <nav className="sticky top-[52px] sm:top-[62px] z-30 bg-[#FAF8F5]/96 backdrop-blur-md border-b border-[#EAE4DC] py-2.5 px-4 sm:px-6 lg:px-8 shadow-xs">
         <div className="max-w-7xl mx-auto flex items-center justify-between gap-3">
           <span className="text-[11px] uppercase tracking-wider font-bold text-stone-500 hidden sm:inline-block shrink-0">
             QUICK JUMP:

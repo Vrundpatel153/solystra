@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { useShop } from '../context/ShopContext';
 import { X, Heart, ShoppingBag, ArrowRight } from 'lucide-react';
+import { MetalPurityBadge } from './MetalPurityBadge';
+import { GoldShoppingBag } from './GoldShoppingBag';
 
 export const QuickViewModal = () => {
   const { quickViewProduct, setQuickViewProduct, addToCart, toggleWishlist, isInWishlist } = useShop();
@@ -45,11 +47,10 @@ export const QuickViewModal = () => {
                 alt={product.name}
                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
               />
-              {product.badge && (
-                <div className="absolute top-3 left-3 px-3 py-1 bg-[#7A152E] text-white font-sans text-xs uppercase tracking-wider rounded font-bold">
-                  {product.badge}
-                </div>
-              )}
+              {/* Atelier Hallmark Seal */}
+              <div className="absolute top-3 left-3 pointer-events-none z-10">
+                <MetalPurityBadge product={product} size="md" />
+              </div>
             </div>
 
             {product.images.length > 1 && (
@@ -106,42 +107,47 @@ export const QuickViewModal = () => {
                 )}
               </div>
 
-              {/* Metal Selection */}
+              {/* Color Selection */}
               <div className="mt-5">
                 <label className="block text-xs uppercase tracking-wider font-semibold text-[#111111] mb-2">
-                  Select Metal Finish: <span className="text-[#7A152E] font-bold">{selectedMetal}</span>
+                  Select Color: <span className="text-[#7A152E] font-bold">{selectedMetal}</span>
                 </label>
                 <div className="flex gap-2">
                   {['Pure 925 Silver', 'Rose Gold Plated', '18K Gold Vermeil'].map(metal => (
                     <button
                       key={metal}
                       onClick={() => setSelectedMetal(metal)}
-                      className={`flex-1 py-2 px-2 text-xs rounded-xl border transition-all text-center ${
+                      className={`flex-1 py-2 px-2 text-xs rounded-xl border transition-all text-center cursor-pointer ${
                         selectedMetal === metal
-                          ? 'border-[#7A152E] bg-[#FDF2F4] text-[#7A152E] font-bold'
+                          ? 'border-[#7A152E] bg-[#FDF2F4] text-[#7A152E] font-bold shadow-2xs'
                           : 'border-[#E8E5DF] hover:border-[#7A152E]/50 text-[#111111]'
                       }`}
                     >
-                      {metal}
+                      {metal.replace('Pure ', '').replace(' Plated', '').replace(' Vermeil', '')}
                     </button>
                   ))}
                 </div>
               </div>
 
-              {/* Size Picker */}
+              {/* Size Picker (Responsive Row) */}
               {isRing && (
                 <div className="mt-4">
-                  <label className="block text-xs uppercase tracking-wider font-semibold text-[#111111] mb-2">
-                    Select Ring Size:
-                  </label>
-                  <div className="flex gap-2">
+                  <div className="flex items-center justify-between mb-2">
+                    <label className="block text-xs uppercase tracking-wider font-semibold text-[#111111]">
+                      Select Ring Size:
+                    </label>
+                    <span className="text-xs font-bold text-[#7A152E]">
+                      Size {selectedSize}
+                    </span>
+                  </div>
+                  <div className="flex flex-wrap gap-2">
                     {sizes.map(size => (
                       <button
                         key={size}
                         onClick={() => setSelectedSize(size)}
-                        className={`w-9 h-9 rounded-lg border text-xs font-semibold transition-all ${
+                        className={`w-9 h-9 rounded-xl border text-xs font-bold transition-all cursor-pointer flex items-center justify-center active:scale-95 ${
                           selectedSize === size
-                            ? 'bg-[#7A152E] text-white border-[#7A152E]'
+                            ? 'bg-[#7A152E] text-white border-[#7A152E] shadow-2xs'
                             : 'border-[#E8E5DF] hover:border-[#7A152E] text-[#111111]'
                         }`}
                       >
@@ -158,10 +164,10 @@ export const QuickViewModal = () => {
               <div className="flex gap-3">
                 <button
                   onClick={handleAddToCart}
-                  className="flex-1 py-3.5 bg-[#7A152E] text-white font-serif text-xs uppercase tracking-widest font-bold rounded-xl hover:bg-[#590D1E] transition-all shadow-md flex items-center justify-center gap-2"
+                  className="flex-1 py-3.5 bg-[#7A152E] text-white font-serif text-xs uppercase tracking-widest font-bold rounded-xl hover:bg-[#590D1E] transition-all shadow-md flex items-center justify-center gap-2 group"
                 >
-                  <ShoppingBag className="w-4 h-4" />
-                  <span>Add to Bag</span>
+                  <GoldShoppingBag className="w-4 h-4 shrink-0 -translate-y-px transition-transform group-hover:-translate-y-0.5" />
+                  <span className="leading-none">Add to Bag</span>
                 </button>
                 <button
                   onClick={() => toggleWishlist(product.id)}

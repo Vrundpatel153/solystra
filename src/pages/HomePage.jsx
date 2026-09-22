@@ -1,12 +1,12 @@
-import React, { useState, useMemo, useEffect, useRef } from 'react';
+import React, { useState, useMemo, useEffect, useRef, useCallback } from 'react';
 import { useShop } from '../context/ShopContext';
 import { ProductCard } from '../components/ProductCard';
 import { TrustBadgesRow } from '../components/TrustBadges';
 import { TRUST_PILLARS, CUSTOMER_REVIEWS } from '../data/catalog';
 import { useDragScroll } from '../utils/useDragScroll';
+import { GoldShoppingBag } from '../components/GoldShoppingBag';
 import {
   ArrowRight,
-  ChevronLeft,
   ChevronRight,
   Check,
   Shield,
@@ -225,6 +225,7 @@ const STYLING_COMBOS = [
     tag: 'ROSE GOLD VERMEIL',
     desc: 'Handcrafted floral blossom necklace paired with matching petal drop earrings.',
     editorialImg: '/solystra_assets/banners/banner_blush_tones_pc.jpg',
+    imagePosition: 'object-[75%_center]',
     items: [
       {
         id: 'c1-item-1',
@@ -259,6 +260,7 @@ const STYLING_COMBOS = [
     tag: 'PURE 925 STERLING SILVER',
     desc: 'Brilliant Austrian solitaire pendant paired with matching solitaire drop earrings.',
     editorialImg: '/solystra_assets/banners/banner_pc_1.jpg',
+    imagePosition: 'object-[72%_center]',
     items: [
       {
         id: 'c2-item-1',
@@ -269,7 +271,7 @@ const STYLING_COMBOS = [
         price: 2799,
         mrp: 3999,
         image: '/solystra_assets/categories/cat_necklaces.png',
-        hotspot: { x: 46.6, y: 76.2, label: 'Solitaire Pendant Necklace' }
+        hotspot: { x: 32.3, y: 76.2, label: 'Solitaire Pendant Necklace' }
       },
       {
         id: 'c2-item-2',
@@ -280,7 +282,7 @@ const STYLING_COMBOS = [
         price: 2299,
         mrp: 3299,
         image: '/solystra_assets/categories/cat_earrings.png',
-        hotspot: { x: 53.2, y: 41.3, label: 'Solitaire Drop Earrings' }
+        hotspot: { x: 42.7, y: 40.6, label: 'Solitaire Drop Earrings' }
       }
     ],
     bundlePrice: 5098,
@@ -293,6 +295,7 @@ const STYLING_COMBOS = [
     tag: 'FINE EVENING WEAR',
     desc: 'Graduated tennis choker in pure silver paired with tiered chandelier drops.',
     editorialImg: '/solystra_assets/generated/cocktail_glam.jpg',
+    imagePosition: 'object-center',
     items: [
       {
         id: 'c3-item-1',
@@ -314,7 +317,7 @@ const STYLING_COMBOS = [
         price: 3499,
         mrp: 4999,
         image: '/solystra_assets/categories/cat_earrings.png',
-        hotspot: { x: 61.5, y: 24.5, label: 'Imperial Chandelier Drops' }
+        hotspot: { x: 60.8, y: 34.5, label: 'Imperial Chandelier Drops' }
       }
     ],
     bundlePrice: 8998,
@@ -538,6 +541,63 @@ export const HomePage = ({ activeCategory, onSelectCategory }) => {
     setViewFullCatalog(true);
     document.getElementById('bestsellers-showcase')?.scrollIntoView({ behavior: 'smooth' });
   };
+
+  // Top Collections: Track active centered card on mobile for dynamic peek-and-scale effect
+  const [activeCollectionIndex, setActiveCollectionIndex] = useState(7);
+  const isTopCollectionsScrollTicking = useRef(false);
+
+  const handleTopCollectionsScroll = useCallback(() => {
+    if (isTopCollectionsScrollTicking.current) return;
+    isTopCollectionsScrollTicking.current = true;
+
+    requestAnimationFrame(() => {
+      const el = topCollectionsScrollRef.current;
+      if (el) {
+        const containerCenter = el.scrollLeft + el.clientWidth / 2;
+        const cards = el.querySelectorAll('[data-collection-card]');
+        
+        let closestIdx = 7;
+        let minDiff = Infinity;
+
+        for (let i = 0; i < cards.length; i++) {
+          const card = cards[i];
+          const cardCenter = card.offsetLeft + card.clientWidth / 2;
+          const diff = Math.abs(containerCenter - cardCenter);
+          if (diff < minDiff) {
+            minDiff = diff;
+            closestIdx = i;
+          }
+        }
+
+        setActiveCollectionIndex((prev) => (prev !== closestIdx ? closestIdx : prev));
+
+        // Seamless continuous loop wrap
+        const singleSet = el.scrollWidth / 3;
+        if (singleSet > 50) {
+          if (el.scrollLeft < 30) {
+            el.scrollLeft += singleSet;
+          } else if (el.scrollLeft >= singleSet * 2) {
+            el.scrollLeft -= singleSet;
+          }
+        }
+      }
+      isTopCollectionsScrollTicking.current = false;
+    });
+  }, [topCollectionsScrollRef]);
+
+  const handleCollectionCardClick = useCallback((col, idx) => {
+    if (idx !== activeCollectionIndex) {
+      const el = topCollectionsScrollRef.current;
+      if (el) {
+        const cards = el.querySelectorAll('[data-collection-card]');
+        if (cards[idx]) {
+          cards[idx].scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+        }
+      }
+      return;
+    }
+    handleCategorySelect(col.category);
+  }, [activeCollectionIndex, topCollectionsScrollRef]);
 
   // Helper function for left/right slide scrolling with auto continuous looping
   const scrollLoop = (ref, direction, amount = 340) => {
@@ -963,22 +1023,86 @@ export const HomePage = ({ activeCategory, onSelectCategory }) => {
       </section>
 
       {/* ========================================================
-          3. CATEGORIES: ZAVYA-STYLE SQUIRCLE PODS IN ROYAL BURGUNDY & GOLD THEME
+          3. CATEGORIES: 6 FEATURED ON PC + EXPLORE CATEGORIES REDIRECT
           ======================================================== */}
       <section className="py-3 sm:py-5 bg-white border-b border-[#EAE4DC]">
         <div className="max-w-7xl mx-auto px-2.5 sm:px-6 lg:px-8">
           
-          {/* Header with Title (Clean without dividing lines or arrows) */}
-          <div className="mb-2 sm:mb-3 px-1">
-            <span className="text-[10.5px] uppercase tracking-widest text-[#7A152E] font-semibold block mb-0.5">
-              SHOP BY CATEGORY
-            </span>
-            <h2 className="font-serif text-xl sm:text-3xl text-stone-900 font-normal">
-              Explore by Category
-            </h2>
+          {/* Header with Title and "Explore Categories" Action */}
+          <div className="flex items-center justify-between mb-3 sm:mb-4 px-1">
+            <div>
+              <span className="text-[10px] sm:text-[10.5px] uppercase tracking-widest text-[#7A152E] font-semibold block mb-0.5">
+                SHOP BY CATEGORY
+              </span>
+              <h2 className="font-serif text-lg sm:text-2xl md:text-3xl text-stone-900 font-normal">
+                Explore by Category
+              </h2>
+            </div>
+
+            {/* Redirect to Categories Page with Full-Size Cards */}
+            <button
+              type="button"
+              onClick={() => {
+                window.location.hash = '#/categories';
+              }}
+              className="inline-flex items-center gap-1 sm:gap-1.5 text-xs sm:text-sm font-semibold text-[#7A152E] hover:text-[#590D1E] group transition-colors cursor-pointer py-1 px-2 -mr-2 rounded-lg hover:bg-[#FAF0F2]"
+            >
+              <span>Explore Categories</span>
+              <ChevronRight className="w-3.5 h-3.5 sm:w-4 sm:h-4 group-hover:translate-x-0.5 transition-transform" />
+            </button>
           </div>
 
-          {/* Zavya-Style Category Carousel (Infinite Smooth Looping - 4 to 4.5 Visible on Mobile) */}
+          {/* PC Layout: Only these 6 categories in a clean, non-scrolling 6-column grid */}
+          <div className="hidden md:grid md:grid-cols-6 gap-3.5 lg:gap-5 pt-1 pb-1">
+            {CATEGORY_CARDS.slice(0, 6).map((cat) => {
+              const isSelected = selectedCategory === cat.id;
+              return (
+                <div
+                  key={cat.id}
+                  onClick={() => handleCategorySelect(cat.id)}
+                  className="group cursor-pointer flex flex-col items-center select-none"
+                >
+                  {/* Zavya-Style Squircle Card with Aurelia Royal Burgundy & Champagne Gold Gradient Halo */}
+                  <div className={`w-full relative p-[2px] rounded-[22px] lg:rounded-[26px] bg-gradient-to-tr transition-all duration-300 ${
+                    isSelected 
+                      ? 'from-[#7A152E] via-[#C5A059] to-[#7A152E] shadow-[0_6px_20px_rgba(122,21,46,0.25)] scale-[1.03]' 
+                      : 'from-[#7A152E]/80 via-[#D4AF37] to-[#F6E3B8] group-hover:from-[#D4AF37] group-hover:via-[#F6E3B8] group-hover:to-[#7A152E] shadow-2xs group-hover:shadow-[0_8px_20px_rgba(122,21,46,0.18)] group-hover:-translate-y-1'
+                  }`}>
+                    <div className="w-full aspect-square rounded-[20px] lg:rounded-[24px] overflow-hidden bg-white relative flex items-center justify-center border border-white/60">
+                      <img
+                        src={cat.img}
+                        alt={cat.name}
+                        draggable="false"
+                        className="w-full h-full object-cover group-hover:scale-108 transition-transform duration-500 block pointer-events-none"
+                        loading="lazy"
+                      />
+
+                      {/* Ambient Specular Hover Sheen */}
+                      <div className="absolute inset-0 bg-gradient-to-t from-[#7A152E]/15 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+
+                      {/* Subtle Badge Micro-Pill */}
+                      {cat.badge && (
+                        <span className="absolute top-1.5 right-1.5 px-1.5 py-0.5 bg-[#7A152E]/95 text-[#F5E2B3] text-[7.5px] lg:text-[8.5px] font-bold uppercase tracking-wider rounded-full shadow-xs">
+                          {cat.badge}
+                        </span>
+                      )}
+                    </div>
+                  </div>
+
+                  {/* Clean Centered Typography */}
+                  <span className={`font-serif text-[13px] lg:text-[15px] transition-colors text-center mt-2.5 line-clamp-1 tracking-tight ${
+                    isSelected 
+                      ? 'text-[#7A152E] font-bold' 
+                      : 'text-stone-900 font-medium group-hover:text-[#7A152E]'
+                  }`}>
+                    {cat.name}
+                  </span>
+                </div>
+              );
+            })}
+          </div>
+
+          {/* Mobile Layout: Responsive touch-swipe row of 6 categories + Explore All Card */}
           <div
             ref={categoryScrollRef}
             {...categoryDrag.dragProps}
@@ -989,43 +1113,67 @@ export const HomePage = ({ activeCategory, onSelectCategory }) => {
             }}
             onTouchStart={() => setIsCategoryPaused(true)}
             onTouchEnd={() => setIsCategoryPaused(false)}
-            className="flex flex-nowrap gap-2 sm:gap-4 md:gap-5 overflow-x-auto hide-scrollbar pb-1 pt-1 px-1 cursor-grab active:cursor-grabbing select-none"
+            className="md:hidden flex flex-nowrap gap-2.5 sm:gap-3.5 overflow-x-auto hide-scrollbar pb-2 pt-1 px-1 cursor-grab active:cursor-grabbing select-none"
           >
-            {TRIPLE_CATEGORY_CARDS.map((cat) => (
-              <div
-                key={cat.loopId}
-                onClick={categoryDrag.handleItemClick(() => handleCategorySelect(cat.id))}
-                className="w-[72px] xs:w-[78px] sm:w-[115px] md:w-[130px] lg:w-[145px] shrink-0 group cursor-pointer flex flex-col items-center select-none"
-              >
-                {/* Zavya-Style Squircle Card with Aurelia Royal Burgundy & Champagne Gold Gradient Halo */}
-                <div className="w-full relative p-[1.5px] sm:p-[2px] rounded-[18px] sm:rounded-[26px] bg-gradient-to-tr from-[#7A152E]/85 via-[#D4AF37] to-[#F6E3B8] group-hover:from-[#D4AF37] group-hover:via-[#F6E3B8] group-hover:to-[#7A152E] shadow-2xs group-hover:shadow-[0_6px_16px_rgba(122,21,46,0.18)] transition-all duration-300">
-                  <div className="w-full aspect-square rounded-[16.5px] sm:rounded-[24px] overflow-hidden bg-white relative flex items-center justify-center border border-white/60">
-                    <img
-                      src={cat.img}
-                      alt={cat.name}
-                      draggable="false"
-                      className="w-full h-full object-cover group-hover:scale-108 transition-transform duration-500 block pointer-events-none"
-                      loading="lazy"
-                    />
-
-                    {/* Ambient Specular Hover Sheen */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#7A152E]/15 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-
-                    {/* Subtle Hot / New Micro-Pill */}
-                    {cat.badge && (
-                      <span className="absolute top-1 right-1 sm:top-1.5 sm:right-1.5 px-1 py-0.2 bg-[#7A152E]/90 backdrop-blur-xs text-[#F5E2B3] text-[6.5px] sm:text-[8px] font-bold uppercase tracking-wider rounded-full shadow-xs">
-                        {cat.badge}
-                      </span>
-                    )}
+            {CATEGORY_CARDS.slice(0, 6).map((cat) => {
+              const isSelected = selectedCategory === cat.id;
+              return (
+                <div
+                  key={cat.id}
+                  onClick={categoryDrag.handleItemClick(() => handleCategorySelect(cat.id))}
+                  className="w-[74px] xs:w-[82px] sm:w-[96px] shrink-0 group cursor-pointer flex flex-col items-center select-none"
+                >
+                  <div className={`w-full relative p-[1.5px] rounded-[18px] bg-gradient-to-tr transition-all duration-300 ${
+                    isSelected
+                      ? 'from-[#7A152E] via-[#C5A059] to-[#7A152E] shadow-[0_4px_14px_rgba(122,21,46,0.2)]'
+                      : 'from-[#7A152E]/85 via-[#D4AF37] to-[#F6E3B8] shadow-2xs'
+                  }`}>
+                    <div className="w-full aspect-square rounded-[16.5px] overflow-hidden bg-white relative flex items-center justify-center border border-white/60">
+                      <img
+                        src={cat.img}
+                        alt={cat.name}
+                        draggable="false"
+                        className="w-full h-full object-cover block pointer-events-none"
+                        loading="lazy"
+                      />
+                      {cat.badge && (
+                        <span className="absolute top-1 right-1 px-1 py-0.2 bg-[#7A152E]/90 text-[#F5E2B3] text-[6.5px] font-bold uppercase tracking-wider rounded-full shadow-xs">
+                          {cat.badge}
+                        </span>
+                      )}
+                    </div>
                   </div>
-                </div>
 
-                {/* Zavya-Style Clean Centered Typography in Our Theme */}
-                <span className="font-serif text-[10px] xs:text-[11px] sm:text-[13px] md:text-[14px] font-semibold text-stone-900 group-hover:text-[#7A152E] transition-colors text-center mt-1.5 sm:mt-2 line-clamp-1 tracking-tight">
-                  {cat.name}
-                </span>
+                  <span className={`font-serif text-[10.5px] xs:text-[11.5px] sm:text-[12.5px] text-center mt-1.5 line-clamp-1 tracking-tight ${
+                    isSelected ? 'text-[#7A152E] font-bold' : 'text-stone-900 font-semibold'
+                  }`}>
+                    {cat.name}
+                  </span>
+                </div>
+              );
+            })}
+
+            {/* Explore All Card on Mobile */}
+            <div
+              onClick={categoryDrag.handleItemClick(() => {
+                window.location.hash = '#/categories';
+              })}
+              className="w-[74px] xs:w-[82px] sm:w-[96px] shrink-0 group cursor-pointer flex flex-col items-center select-none"
+            >
+              <div className="w-full relative p-[1.5px] rounded-[18px] bg-gradient-to-tr from-[#7A152E]/40 via-[#D4AF37]/50 to-[#7A152E]/40 shadow-2xs">
+                <div className="w-full aspect-square rounded-[16.5px] bg-[#FAF8F5] flex flex-col items-center justify-center p-2 text-center border border-[#EAE4DC]">
+                  <div className="w-6 h-6 rounded-full bg-[#7A152E]/10 flex items-center justify-center mb-1">
+                    <ChevronRight className="w-3.5 h-3.5 text-[#7A152E]" />
+                  </div>
+                  <span className="text-[8px] font-bold uppercase tracking-wider text-[#7A152E]">
+                    Explore
+                  </span>
+                </div>
               </div>
-            ))}
+              <span className="font-serif text-[10.5px] xs:text-[11.5px] sm:text-[12.5px] font-semibold text-[#7A152E] text-center mt-1.5 line-clamp-1 tracking-tight">
+                View All
+              </span>
+            </div>
           </div>
 
         </div>
@@ -1154,13 +1302,13 @@ export const HomePage = ({ activeCategory, onSelectCategory }) => {
           {/* Card 1: 18K Gold Vermeil (Authentic Luminous Gold Theme & Smooth Laser Border Loop) */}
           <div
             onClick={() => handleCategorySelect('gold')}
-            className="laser-card-gold group relative rounded-2xl sm:rounded-3xl p-[2.5px] sm:p-[3.5px] transition-all duration-500 cursor-pointer flex flex-col aspect-[3/4] sm:aspect-[4/5]"
+            className="laser-card-gold group relative rounded-2xl sm:rounded-3xl p-[2px] sm:p-[3.5px] transition-all duration-500 cursor-pointer flex flex-col aspect-[3/4.3] sm:aspect-[4/5]"
           >
             {/* Automatic Smooth Looped Gold Laser Border */}
             <div className="laser-beam-gold pointer-events-none" />
 
             {/* Inner Card Container (masks center, revealing only the animated laser border) */}
-            <div className="relative w-full h-full rounded-[13.5px] sm:rounded-[20.5px] overflow-hidden bg-[#181109] flex flex-col justify-between p-3 sm:p-5 z-10">
+            <div className="relative w-full h-full rounded-[14px] sm:rounded-[20.5px] overflow-hidden bg-[#181109] flex flex-col justify-end p-2.5 xs:p-3.5 sm:p-5 z-10">
               {/* Full-bleed high fashion model portrait */}
               <img
                 src="/solystra_assets/metals/gold_model.jpg"
@@ -1170,43 +1318,36 @@ export const HomePage = ({ activeCategory, onSelectCategory }) => {
               />
 
               {/* Warm Gold Ambient Luminance Overlay */}
-              <div className="absolute inset-0 bg-gradient-to-tr from-[#D4AF37]/25 via-transparent to-[#F4D068]/20 pointer-events-none" />
+              <div className="absolute inset-0 bg-gradient-to-tr from-[#D4AF37]/20 via-transparent to-[#E5C985]/15 pointer-events-none" />
 
               {/* Smooth High-Contrast Scrim Gradient for Razor-Sharp Typography */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-black/15 pointer-events-none" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/35 via-45% to-transparent pointer-events-none" />
 
               {/* Modern Luxury Studio Diffused Gold Sheen */}
               <div className="absolute inset-0 overflow-hidden pointer-events-none z-20">
                 <div className="gold-modern-sheen" />
               </div>
 
-              {/* Top Bar: Clean Refined Luxury Atelier Label */}
-              <div className="relative z-20 flex items-center justify-between">
-                <span className="px-2.5 sm:px-3.5 py-1 rounded-full bg-black/40 backdrop-blur-md border border-[#D4AF37]/45 text-[#F5E6C8] text-[8.5px] xs:text-[9.5px] sm:text-[10.5px] font-sans font-semibold tracking-[0.22em] uppercase shadow-sm">
-                  18K Gold Vermeil
-                </span>
-              </div>
-
               {/* Bottom Editorial Content with Real Brushed Metallic Gold CTA */}
-              <div className="relative z-20 pt-4 flex flex-col items-center text-center">
-                <span className="text-[7.5px] xs:text-[8.5px] sm:text-[10px] uppercase tracking-[0.25em] font-bold text-[#E5C378] block drop-shadow-xs">
+              <div className="relative z-20 flex flex-col items-center text-center">
+                <span className="text-[7px] xs:text-[8px] sm:text-[10px] uppercase tracking-[0.25em] font-semibold text-[#E5C378] block drop-shadow-xs">
                   SOLYSTRA ATELIER
                 </span>
-                <h3 className="font-serif text-base xs:text-lg sm:text-2xl lg:text-3xl font-normal text-white mt-0.5 leading-tight drop-shadow-sm">
+                <h3 className="font-serif text-[15px] xs:text-lg sm:text-2xl lg:text-3xl font-normal text-white mt-0.5 leading-tight drop-shadow-sm">
                   18K Gold Vermeil
                 </h3>
                 <p className="hidden sm:block text-[11px] text-stone-200/90 font-light mt-1">
                   2.5-Micron Thick Gold over Pure 925 Silver
                 </p>
                 
-                <div className="mt-2.5 sm:mt-3.5 btn-real-gold inline-flex items-center gap-1.5 sm:gap-2 px-4 sm:px-6 py-1.5 sm:py-2 rounded-full font-sans font-extrabold text-[9px] xs:text-[10px] sm:text-xs uppercase tracking-wider transition-all duration-300 group-hover:scale-103">
+                <div className="mt-2 sm:mt-3.5 btn-real-gold inline-flex items-center justify-center gap-1 sm:gap-1.5 px-3 xs:px-3.5 sm:px-6 py-1 sm:py-2 rounded-full font-sans font-bold text-[8.5px] xs:text-[9.5px] sm:text-xs uppercase tracking-wider whitespace-nowrap transition-all duration-300 group-hover:scale-103 shadow-md">
                   <span>Explore Gold</span>
                   <svg 
-                    className="w-3 h-3 sm:w-3.5 sm:h-3.5 group-hover:translate-x-1 transition-transform duration-300 shrink-0" 
+                    className="w-2.5 h-2.5 sm:w-3.5 sm:h-3.5 group-hover:translate-x-0.5 transition-transform duration-300 shrink-0" 
                     viewBox="0 0 16 16" 
                     fill="none" 
                     stroke="currentColor" 
-                    strokeWidth="2" 
+                    strokeWidth="2.2" 
                     strokeLinecap="round" 
                     strokeLinejoin="round"
                   >
@@ -1220,13 +1361,13 @@ export const HomePage = ({ activeCategory, onSelectCategory }) => {
           {/* Card 2: 925 Sterling Silver (Authentic Moonlit Platinum Theme & Smooth Laser Border Loop) */}
           <div
             onClick={() => handleCategorySelect('silver')}
-            className="laser-card-silver group relative rounded-2xl sm:rounded-3xl p-[2.5px] sm:p-[3.5px] transition-all duration-500 cursor-pointer flex flex-col aspect-[3/4] sm:aspect-[4/5]"
+            className="laser-card-silver group relative rounded-2xl sm:rounded-3xl p-[2px] sm:p-[3.5px] transition-all duration-500 cursor-pointer flex flex-col aspect-[3/4.3] sm:aspect-[4/5]"
           >
             {/* Automatic Smooth Looped Silver Laser Border */}
             <div className="laser-beam-silver pointer-events-none" />
 
             {/* Inner Card Container (masks center, revealing only the animated laser border) */}
-            <div className="relative w-full h-full rounded-[13.5px] sm:rounded-[20.5px] overflow-hidden bg-[#0A101D] flex flex-col justify-between p-3 sm:p-5 z-10">
+            <div className="relative w-full h-full rounded-[14px] sm:rounded-[20.5px] overflow-hidden bg-[#0A101D] flex flex-col justify-end p-2.5 xs:p-3.5 sm:p-5 z-10">
               {/* Full-bleed high fashion model portrait */}
               <img
                 src="/solystra_assets/metals/silver_model.jpg"
@@ -1236,43 +1377,36 @@ export const HomePage = ({ activeCategory, onSelectCategory }) => {
               />
 
               {/* Cool Silver/Rhodium Ambient Lustre Overlay */}
-              <div className="absolute inset-0 bg-gradient-to-tr from-slate-200/25 via-transparent to-white/20 pointer-events-none" />
+              <div className="absolute inset-0 bg-gradient-to-tr from-slate-200/20 via-transparent to-white/15 pointer-events-none" />
 
               {/* Smooth High-Contrast Scrim Gradient for Razor-Sharp Typography */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-black/15 pointer-events-none" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/35 via-45% to-transparent pointer-events-none" />
 
               {/* Modern Luxury Studio Diffused Silver Sheen (Alternating Phase) */}
               <div className="absolute inset-0 overflow-hidden pointer-events-none z-20">
                 <div className="silver-modern-sheen" />
               </div>
 
-              {/* Top Bar: Clean Refined Luxury Atelier Label */}
-              <div className="relative z-20 flex items-center justify-between">
-                <span className="px-2.5 sm:px-3.5 py-1 rounded-full bg-black/40 backdrop-blur-md border border-white/40 text-slate-100 text-[8.5px] xs:text-[9.5px] sm:text-[10.5px] font-sans font-semibold tracking-[0.22em] uppercase shadow-sm">
-                  925 Sterling Silver
-                </span>
-              </div>
-
               {/* Bottom Editorial Content with Real Brushed Metallic Silver CTA */}
-              <div className="relative z-20 pt-4 flex flex-col items-center text-center">
-                <span className="text-[7.5px] xs:text-[8.5px] sm:text-[10px] uppercase tracking-[0.25em] font-bold text-slate-200 block drop-shadow-xs">
+              <div className="relative z-20 flex flex-col items-center text-center">
+                <span className="text-[7px] xs:text-[8px] sm:text-[10px] uppercase tracking-[0.25em] font-semibold text-slate-200 block drop-shadow-xs">
                   SOLYSTRA ATELIER
                 </span>
-                <h3 className="font-serif text-base xs:text-lg sm:text-2xl lg:text-3xl font-normal text-white mt-0.5 leading-tight drop-shadow-sm">
+                <h3 className="font-serif text-[15px] xs:text-lg sm:text-2xl lg:text-3xl font-normal text-white mt-0.5 leading-tight drop-shadow-sm">
                   925 Sterling Silver
                 </h3>
                 <p className="hidden sm:block text-[11px] text-stone-200/90 font-light mt-1">
                   Anti-Tarnish Mirror Rhodium Dipped Solid 925
                 </p>
                 
-                <div className="mt-2.5 sm:mt-3.5 btn-real-silver inline-flex items-center gap-1.5 sm:gap-2 px-4 sm:px-6 py-1.5 sm:py-2 rounded-full font-sans font-extrabold text-[9px] xs:text-[10px] sm:text-xs uppercase tracking-wider transition-all duration-300 group-hover:scale-103">
+                <div className="mt-2 sm:mt-3.5 btn-real-silver inline-flex items-center justify-center gap-1 sm:gap-1.5 px-3 xs:px-3.5 sm:px-6 py-1 sm:py-2 rounded-full font-sans font-bold text-[8.5px] xs:text-[9.5px] sm:text-xs uppercase tracking-wider whitespace-nowrap transition-all duration-300 group-hover:scale-103 shadow-md">
                   <span>Explore Silver</span>
                   <svg 
-                    className="w-3 h-3 sm:w-3.5 sm:h-3.5 group-hover:translate-x-1 transition-transform duration-300 shrink-0" 
+                    className="w-2.5 h-2.5 sm:w-3.5 sm:h-3.5 group-hover:translate-x-0.5 transition-transform duration-300 shrink-0" 
                     viewBox="0 0 16 16" 
                     fill="none" 
                     stroke="currentColor" 
-                    strokeWidth="2" 
+                    strokeWidth="2.2" 
                     strokeLinecap="round" 
                     strokeLinejoin="round"
                   >
@@ -1481,78 +1615,52 @@ export const HomePage = ({ activeCategory, onSelectCategory }) => {
       {/* ========================================================
           8. TOP COLLECTIONS: ZAVYA-STYLE TALL PORTRAIT HORIZONTAL SLIDER
           ======================================================== */}
-      <section className="py-4 sm:py-7 bg-white border-y border-[#EAE4DC]">
+      <section className="py-4 sm:py-7 bg-white border-y border-[#EAE4DC] overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
-          {/* Header with Navigation Controls */}
-          <div className="flex items-center justify-between mb-3 sm:mb-5">
-            <div>
-              <div className="flex items-center gap-2 mb-1">
-                <span className="w-2 h-2 rounded-full bg-[#7A152E]" />
-                <span className="text-xs uppercase tracking-widest text-[#7A152E] font-semibold">
-                  SIGNATURE EDITS
-                </span>
-              </div>
-              <h2 className="font-serif text-2xl sm:text-4xl text-stone-900 font-normal">
-                Top Collections
-              </h2>
-            </div>
-
-            {/* Desktop Navigation Arrows */}
-            <div className="hidden sm:flex items-center gap-2">
-              <button
-                onClick={() => scrollLoop(topCollectionsScrollRef, -1, 280)}
-                className="w-9 h-9 rounded-full border border-stone-200 flex items-center justify-center text-stone-600 hover:text-[#7A152E] hover:border-[#7A152E] hover:bg-stone-50 transition-all cursor-pointer shadow-xs active:scale-95"
-                aria-label="Previous Collection"
-              >
-                <ChevronLeft className="w-4 h-4" />
-              </button>
-              <button
-                onClick={() => scrollLoop(topCollectionsScrollRef, 1, 280)}
-                className="w-9 h-9 rounded-full border border-stone-200 flex items-center justify-center text-stone-600 hover:text-[#7A152E] hover:border-[#7A152E] hover:bg-stone-50 transition-all cursor-pointer shadow-xs active:scale-95"
-                aria-label="Next Collection"
-              >
-                <ChevronRight className="w-4 h-4" />
-              </button>
-            </div>
+          {/* Header without dot */}
+          <div className="mb-3 sm:mb-5">
+            <span className="text-xs uppercase tracking-widest text-[#7A152E] font-semibold block mb-1">
+              SIGNATURE EDITS
+            </span>
+            <h2 className="font-serif text-2xl sm:text-4xl text-stone-900 font-normal">
+              Top Collections
+            </h2>
           </div>
 
-          {/* Smooth Horizontal Touch & Drag Slider with Tall Portrait Cards (Infinite Looping) */}
+          {/* Center-Hero Coverflow Slider with Noticeably Smaller Left/Right Cards */}
           <div
             ref={topCollectionsScrollRef}
             {...topCollectionsDrag.dragProps}
+            onScroll={handleTopCollectionsScroll}
             id="top-collections-scroll"
-            className="flex gap-3.5 sm:gap-6 overflow-x-auto hide-scrollbar pb-3 px-1 cursor-grab active:cursor-grabbing select-none"
+            className="flex items-center gap-2 sm:gap-4 overflow-x-auto hide-scrollbar py-6 sm:py-8 -mx-4 sm:-mx-6 lg:-mx-8 px-[17vw] sm:px-[calc(50%-130px)] md:px-[calc(50%-145px)] snap-x snap-mandatory cursor-grab active:cursor-grabbing select-none"
           >
-            {TRIPLE_TOP_COLLECTIONS.map((col) => (
-              <div
-                key={col.loopId}
-                onClick={topCollectionsDrag.handleItemClick(() => handleCategorySelect(col.category))}
-                className="w-[62vw] xs:w-[52vw] sm:w-[230px] md:w-[260px] aspect-[303/423] shrink-0 relative rounded-[28px] p-[2px] sm:p-[2.5px] bg-gradient-to-b from-[#D4AF37] via-[#7A152E] to-[#C5A059] shadow-sm hover:shadow-[0_12px_28px_rgba(122,21,46,0.25)] transition-all duration-300 cursor-pointer group select-none"
-              >
-                {/* Inner Clipping Container: scale-108 crops off any legacy pink edges baked into the photos */}
-                <div className="w-full h-full rounded-[25px] overflow-hidden relative bg-stone-950">
-                  <img
-                    src={col.img}
-                    alt={col.title}
-                    draggable="false"
-                    className="w-full h-full object-cover scale-[1.08] group-hover:scale-[1.13] transition-transform duration-500 block pointer-events-none"
-                    loading="lazy"
-                  />
-
-                  {/* Solystra Royal Burgundy Ambient Vignette (replaces pink with royal red + gold warmth) */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#7A152E]/65 via-[#7A152E]/20 to-black/10 group-hover:from-[#7A152E]/75 transition-all duration-300 pointer-events-none" />
-                  <div className="absolute bottom-0 inset-x-0 h-1 bg-gradient-to-r from-transparent via-[#D4AF37] to-transparent opacity-80 pointer-events-none" />
-
-                  {/* Top Luxury Category Pill in Royal Burgundy & Champagne Gold */}
-                  <div className="absolute top-3 left-3 z-10">
-                    <span className="px-2.5 py-0.5 rounded-full bg-[#7A152E] text-[#F4D068] text-[9px] font-bold tracking-wider uppercase border border-[#D4AF37]/70 shadow-md">
-                      {col.tag}
-                    </span>
+            {TRIPLE_TOP_COLLECTIONS.map((col, idx) => {
+              const isCenter = idx === activeCollectionIndex;
+              return (
+                <div
+                  key={col.loopId}
+                  data-collection-card="true"
+                  onClick={topCollectionsDrag.handleItemClick(() => handleCollectionCardClick(col, idx))}
+                  className={`w-[66vw] xs:w-[60vw] sm:w-[250px] md:w-[280px] aspect-[303/423] shrink-0 snap-center relative rounded-[24px] sm:rounded-[28px] p-[2.5px] sm:p-[3px] bg-gradient-to-b from-[#D4AF37] via-[#7A152E] to-[#590D1E] transition-all duration-500 ease-out cursor-pointer group select-none origin-center ${
+                    isCenter
+                      ? 'scale-100 sm:scale-105 opacity-100 z-20 shadow-[0_16px_40px_rgba(122,21,46,0.32)] ring-1 ring-[#D4AF37]/40'
+                      : 'scale-[0.76] sm:scale-[0.80] opacity-55 hover:opacity-75 z-0 shadow-sm filter contrast-95'
+                  }`}
+                >
+                  <div className="w-full h-full rounded-[21.5px] sm:rounded-[25px] overflow-hidden bg-[#FAF8F5] relative">
+                    <img
+                      src={col.img}
+                      alt={col.title}
+                      draggable="false"
+                      className="w-full h-full object-cover scale-[1.095] block pointer-events-none transition-transform duration-500 group-hover:scale-[1.13]"
+                      loading="lazy"
+                    />
                   </div>
                 </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
 
         </div>
@@ -1598,24 +1706,6 @@ export const HomePage = ({ activeCategory, onSelectCategory }) => {
                   />
                 ))}
               </div>
-
-              {/* Prev / Next Chevrons (Desktop Only) */}
-              <div className="hidden sm:flex items-center gap-1.5 ml-2">
-                <button
-                  onClick={() => setCurrentComboIndex((prev) => (prev === 0 ? STYLING_COMBOS.length - 1 : prev - 1))}
-                  className="w-8 h-8 rounded-full border border-stone-300 bg-white hover:bg-[#7A152E] hover:text-white hover:border-[#7A152E] text-stone-700 flex items-center justify-center transition-colors shadow-2xs cursor-pointer"
-                  aria-label="Previous look combo"
-                >
-                  <ChevronLeft className="w-4 h-4 stroke-[1.8]" />
-                </button>
-                <button
-                  onClick={() => setCurrentComboIndex((prev) => (prev + 1) % STYLING_COMBOS.length)}
-                  className="w-8 h-8 rounded-full border border-stone-300 bg-white hover:bg-[#7A152E] hover:text-white hover:border-[#7A152E] text-stone-700 flex items-center justify-center transition-colors shadow-2xs cursor-pointer"
-                  aria-label="Next look combo"
-                >
-                  <ChevronRight className="w-4 h-4 stroke-[1.8]" />
-                </button>
-              </div>
             </div>
           </div>
 
@@ -1628,13 +1718,13 @@ export const HomePage = ({ activeCategory, onSelectCategory }) => {
                 src={activeCombo.editorialImg}
                 alt={activeCombo.name}
                 draggable="false"
-                className="w-full h-full object-cover object-[72%_center] group-hover:scale-102 transition-transform duration-700 block pointer-events-none"
+                className={`w-full h-full object-cover ${activeCombo.imagePosition || 'object-[72%_center]'} group-hover:scale-102 transition-transform duration-700 block pointer-events-none`}
               />
               
-              {/* Subtle ambient gradient strictly in lower 25% so jewellery is 100% visible & radiant */}
-              <div className="absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-black/85 via-black/35 to-transparent pointer-events-none" />
+              {/* Subtle ambient gradient strictly in lower 20% so jewellery and model are clear and radiant */}
+              <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-black/80 via-black/25 to-transparent pointer-events-none" />
 
-              {/* Delicate Glowing Pinpoint Hotspots (Only Necklace & Earrings, NO oversized red targets) */}
+              {/* Delicate Glowing Pinpoint Hotspots (Directly on Jewellery Pieces, Clean Luxury Styling) */}
               {activeCombo.items.map((item) => {
                 if (!item.hotspot) return null;
                 const isHovered = activeHotspotId === item.id;
@@ -1647,25 +1737,29 @@ export const HomePage = ({ activeCategory, onSelectCategory }) => {
                     onMouseLeave={() => setActiveHotspotId(null)}
                     onClick={(e) => {
                       e.stopPropagation();
-                      window.location.hash = `#/product/${item.productId}`;
+                      if (activeHotspotId === item.id) {
+                        window.location.hash = `#/product/${item.productId}`;
+                      } else {
+                        setActiveHotspotId(item.id);
+                      }
                     }}
                   >
                     {/* Delicate Luxury Pinpoint */}
                     <div className="relative group/hotspot cursor-pointer">
-                      {/* Subtle, tiny micro-glow ping (max 16px, gentle gold glow) */}
-                      <span className="absolute -inset-1 rounded-full bg-[#F4D068]/45 animate-ping pointer-events-none" />
+                      {/* Subtle micro pulse */}
+                      <span className="absolute -inset-0.5 rounded-full bg-[#7A152E]/35 animate-ping pointer-events-none" />
 
-                      {/* Small Luxury Golden Pearl Pinpoint (14px diameter) */}
+                      {/* Small Proper Luxury Pinpoint (Delicate 12px, brand burgundy & gold) */}
                       <button
                         type="button"
-                        className={`w-3.5 h-3.5 rounded-full flex items-center justify-center transition-all duration-300 shadow-[0_0_8px_rgba(244,208,104,0.95)] border border-[#C5A059] cursor-pointer ${
+                        className={`w-3 h-3 sm:w-3.5 sm:h-3.5 rounded-full flex items-center justify-center transition-all duration-300 border border-[#D4AF37] shadow-sm cursor-pointer ${
                           isHovered
-                            ? 'scale-130 bg-[#7A152E] ring-2 ring-[#F4D068]'
-                            : 'bg-[#7A152E]/90 hover:scale-120'
+                            ? 'scale-125 bg-[#7A152E] ring-2 ring-[#D4AF37]'
+                            : 'bg-[#7A152E] hover:scale-115'
                         }`}
                         aria-label={`View ${item.name}`}
                       >
-                        <span className="w-1.5 h-1.5 rounded-full bg-white shadow-xs" />
+                        <span className="w-1 h-1 rounded-full bg-white shadow-xs" />
                       </button>
 
                       {/* Interactive Luxury Tooltip Popover */}
@@ -1689,21 +1783,22 @@ export const HomePage = ({ activeCategory, onSelectCategory }) => {
                             className="w-11 h-11 rounded-lg object-cover bg-white/10 border border-white/20 shrink-0"
                           />
                           <div className="flex-1 min-w-0 text-left">
-                            <span className="text-[9px] uppercase tracking-wider font-bold text-[#F4D068] block">
+                            <span className="text-[9px] uppercase tracking-wider font-bold text-[#E5C985] block">
                               {item.type}
                             </span>
                             <h5 className="text-xs font-serif font-normal text-white truncate">
                               {item.name}
                             </h5>
-                            <div className="text-[11px] font-bold text-[#F4D068] mt-0.5">
+                            <div className="text-[11px] font-bold text-[#E5C985] mt-0.5">
                               ₹{item.price.toLocaleString('en-IN')}
                             </div>
                           </div>
                         </div>
                         <div className="mt-2 pt-1.5 border-t border-white/10 flex items-center justify-between text-[9.5px] text-stone-300">
                           <span className="text-stone-400">Click to view piece</span>
-                          <span className="text-[#F4D068] font-bold flex items-center gap-0.5">
-                            Shop Piece →
+                          <span className="text-[#E5C985] font-bold flex items-center gap-1 group-hover:translate-x-0.5 transition-transform">
+                            <span>Shop Piece</span>
+                            <ArrowRight className="w-2.5 h-2.5" />
                           </span>
                         </div>
                       </div>
@@ -1712,17 +1807,14 @@ export const HomePage = ({ activeCategory, onSelectCategory }) => {
                 );
               })}
 
-              {/* Bottom Editorial Narrative (Compact at bottom left, never overlaps jewellery) */}
-              <div className="absolute bottom-0 left-0 p-4 sm:p-5 max-w-[50%] pointer-events-none z-10">
-                <span className="text-[9.5px] sm:text-[10px] uppercase tracking-widest text-[#D5B980] font-bold block mb-0.5">
+              {/* Bottom Editorial Narrative (Clean luxury label, no awkward wrapping) */}
+              <div className="absolute bottom-3 left-3 sm:bottom-4 sm:left-4 z-10 pointer-events-none max-w-[85%] sm:max-w-md">
+                <span className="text-[8px] xs:text-[9px] sm:text-[10px] uppercase tracking-widest text-[#E5C985] font-bold block mb-0.5 drop-shadow-xs">
                   {activeCombo.tag}
                 </span>
-                <h3 className="font-serif text-lg sm:text-xl text-white font-normal leading-snug">
+                <h3 className="font-serif text-sm xs:text-base sm:text-xl text-white font-normal leading-snug drop-shadow-sm whitespace-nowrap">
                   {activeCombo.name}
                 </h3>
-                <p className="text-[11.5px] text-stone-200 mt-0.5 max-w-sm font-light leading-snug line-clamp-1">
-                  {activeCombo.desc}
-                </p>
               </div>
             </div>
 
@@ -1730,14 +1822,16 @@ export const HomePage = ({ activeCategory, onSelectCategory }) => {
             <div className="lg:col-span-6 h-[380px] sm:h-[420px] lg:h-[430px] flex flex-col justify-between bg-white rounded-2xl p-5 sm:p-6 border border-[#EAE4DC] shadow-xs">
               
               <div>
-                <div className="flex items-center justify-between pb-3 border-b border-[#EAE4DC]">
-                  <div className="flex items-center gap-2">
-                    <span className="w-1.5 h-1.5 rounded-full bg-[#7A152E]" />
-                    <h3 className="text-xs font-bold text-stone-900 uppercase tracking-wider font-sans">
-                      Pieces in this Look
+                <div className="flex items-start justify-between pb-3 border-b border-[#EAE4DC] gap-2">
+                  <div>
+                    <span className="text-[9.5px] text-[#7A152E] uppercase tracking-widest font-bold block">
+                      {activeCombo.tag}
+                    </span>
+                    <h3 className="text-sm sm:text-base font-serif font-normal text-stone-900 leading-tight mt-0.5">
+                      {activeCombo.name}
                     </h3>
                   </div>
-                  <span className="text-[10.5px] text-[#7A152E] font-bold bg-[#7A152E]/8 px-2.5 py-0.5 rounded-full border border-[#7A152E]/20 uppercase tracking-wider">
+                  <span className="text-[10.5px] text-[#7A152E] font-bold bg-[#7A152E]/8 px-2.5 py-1 rounded-full border border-[#7A152E]/20 uppercase tracking-wider shrink-0">
                     Save ₹{activeCombo.savings.toLocaleString('en-IN')}
                   </span>
                 </div>
@@ -1810,10 +1904,10 @@ export const HomePage = ({ activeCategory, onSelectCategory }) => {
 
                 <button
                   onClick={handleAddCurrentComboToBag}
-                  className="px-6 py-2.5 bg-[#7A152E] hover:bg-[#590D1E] text-white text-xs font-bold uppercase tracking-wider rounded-xl shadow-md hover:shadow-lg transition-all cursor-pointer flex items-center justify-center gap-2 active:scale-98 shrink-0"
+                  className="px-6 py-2.5 bg-[#7A152E] hover:bg-[#590D1E] text-white text-xs font-bold uppercase tracking-wider rounded-xl shadow-md hover:shadow-lg transition-all cursor-pointer flex items-center justify-center gap-2 active:scale-98 shrink-0 group"
                 >
-                  <ShoppingBag className="w-4 h-4 text-[#F4D068]" />
-                  <span>Add Look to Bag</span>
+                  <GoldShoppingBag className="w-4 h-4 shrink-0 -translate-y-px transition-transform group-hover:-translate-y-0.5" />
+                  <span className="leading-none">Add Look to Bag</span>
                 </button>
               </div>
 
@@ -1838,26 +1932,6 @@ export const HomePage = ({ activeCategory, onSelectCategory }) => {
               <h2 className="font-serif text-2xl sm:text-4xl text-stone-900 font-normal">
                 Pure Radiance Captured
               </h2>
-            </div>
-
-            {/* Navigation Chevrons (Desktop Only) */}
-            <div className="hidden sm:flex items-center gap-2 self-end">
-              <button
-                type="button"
-                onClick={() => handleVideoScroll(-1)}
-                className="w-9 h-9 sm:w-10 sm:h-10 rounded-full border border-stone-300 bg-white hover:bg-[#7A152E] hover:text-white hover:border-[#7A152E] text-stone-700 flex items-center justify-center transition-all shadow-xs cursor-pointer"
-                aria-label="Scroll videos left"
-              >
-                <ChevronLeft className="w-4 h-4 sm:w-5 sm:h-5 stroke-[1.8]" />
-              </button>
-              <button
-                type="button"
-                onClick={() => handleVideoScroll(1)}
-                className="w-9 h-9 sm:w-10 sm:h-10 rounded-full border border-stone-300 bg-white hover:bg-[#7A152E] hover:text-white hover:border-[#7A152E] text-stone-700 flex items-center justify-center transition-all shadow-xs cursor-pointer"
-                aria-label="Scroll videos right"
-              >
-                <ChevronRight className="w-4 h-4 sm:w-5 sm:h-5 stroke-[1.8]" />
-              </button>
             </div>
           </div>
 
@@ -1968,8 +2042,8 @@ export const HomePage = ({ activeCategory, onSelectCategory }) => {
                       className="w-full py-2 px-2.5 rounded-lg bg-[#7A152E] hover:bg-[#590D1E] text-white font-sans text-xs font-semibold flex items-center justify-center gap-1.5 transition-all duration-150 cursor-pointer active:scale-95 shadow-2xs group/video-cart"
                       title="Add to Cart"
                     >
-                      <ShoppingBag className="w-3.5 h-3.5 shrink-0 text-[#F4D068] transition-transform duration-200 group-hover/video-cart:-translate-y-0.5" />
-                      <span className="truncate tracking-wide">Add to Cart</span>
+                      <GoldShoppingBag className="w-3.5 h-3.5 shrink-0 -translate-y-px transition-transform duration-200 group-hover/video-cart:-translate-y-0.5" />
+                      <span className="truncate tracking-wide leading-none">Add to Cart</span>
                     </button>
                   </div>
                 </div>
@@ -2081,10 +2155,10 @@ export const HomePage = ({ activeCategory, onSelectCategory }) => {
                     handleAddVideoProduct(activeVideoModal);
                     setActiveVideoModal(null);
                   }}
-                  className="w-full py-3.5 px-5 rounded-xl bg-[#7A152E] hover:bg-[#590D1E] text-white font-sans text-xs sm:text-sm font-bold uppercase tracking-wider rounded-xl shadow-md hover:shadow-lg transition-all cursor-pointer flex items-center justify-center gap-2"
+                  className="w-full py-3.5 px-5 rounded-xl bg-[#7A152E] hover:bg-[#590D1E] text-white font-sans text-xs sm:text-sm font-bold uppercase tracking-wider rounded-xl shadow-md hover:shadow-lg transition-all cursor-pointer flex items-center justify-center gap-2 group"
                 >
-                  <ShoppingBag className="w-4 h-4 text-[#F4D068]" />
-                  <span>Add to Bag &bull; ₹{activeVideoModal.price.toLocaleString('en-IN')}</span>
+                  <GoldShoppingBag className="w-4 h-4 shrink-0 -translate-y-px transition-transform group-hover:-translate-y-0.5" />
+                  <span className="leading-none">Add to Bag &bull; ₹{activeVideoModal.price.toLocaleString('en-IN')}</span>
                 </button>
               </div>
             </div>

@@ -17,6 +17,7 @@ import { TermsPage } from './pages/TermsPage';
 import { PrivacyPolicyPage } from './pages/PrivacyPolicyPage';
 import { OffersPage } from './pages/OffersPage';
 import { AllProductsPage } from './pages/AllProductsPage';
+import { CategoriesPage } from './pages/CategoriesPage';
 
 export const App = () => {
   const parseRoute = () => {
@@ -25,12 +26,24 @@ export const App = () => {
 
     // Check checkout route: #/checkout or /checkout
     if (hash === '#/checkout' || hash.startsWith('#/checkout') || path === '/checkout') {
-      return { isCheckout: true, isTerms: false, isPrivacy: false, isProduct: false, isOffers: false, isProducts: false, id: null };
+      return { isCheckout: true, isTerms: false, isPrivacy: false, isProduct: false, isOffers: false, isProducts: false, isCategories: false, id: null };
     }
 
     // Check offers route: #/offers, /offers
     if (hash === '#/offers' || hash.startsWith('#/offers') || path === '/offers') {
-      return { isOffers: true, isProducts: false, isCheckout: false, isTerms: false, isPrivacy: false, isProduct: false, id: null };
+      return { isOffers: true, isProducts: false, isCheckout: false, isTerms: false, isPrivacy: false, isProduct: false, isCategories: false, id: null };
+    }
+
+    // Check categories route: #/categories, #/category, /categories
+    if (
+      hash === '#/categories' ||
+      hash.startsWith('#/categories') ||
+      hash === '#/category' ||
+      hash.startsWith('#/category') ||
+      path === '/categories' ||
+      path === '/category'
+    ) {
+      return { isCategories: true, isOffers: false, isProducts: false, isCheckout: false, isTerms: false, isPrivacy: false, isProduct: false, id: null };
     }
 
     // Check all products / explore catalog route: #/products, #/catalog, #/explore, /products, /catalog
@@ -44,7 +57,7 @@ export const App = () => {
       path === '/products' ||
       path === '/catalog'
     ) {
-      return { isProducts: true, isOffers: false, isCheckout: false, isTerms: false, isPrivacy: false, isProduct: false, id: null };
+      return { isProducts: true, isCategories: false, isOffers: false, isCheckout: false, isTerms: false, isPrivacy: false, isProduct: false, id: null };
     }
 
     // Check privacy policy route: #/privacy, #/privacy-policy, /privacy, /privacy-policy
@@ -57,7 +70,7 @@ export const App = () => {
       path === '/privacy-policy' ||
       path === '/policies/privacy-policy'
     ) {
-      return { isPrivacy: true, isTerms: false, isCheckout: false, isProduct: false, isOffers: false, isProducts: false, id: null };
+      return { isPrivacy: true, isCategories: false, isTerms: false, isCheckout: false, isProduct: false, isOffers: false, isProducts: false, id: null };
     }
 
     // Check terms and conditions route: #/terms, #/terms-and-conditions, /terms
@@ -70,22 +83,22 @@ export const App = () => {
       path === '/terms-and-conditions' ||
       path === '/policies/terms-of-service'
     ) {
-      return { isTerms: true, isPrivacy: false, isCheckout: false, isProduct: false, isOffers: false, isProducts: false, id: null };
+      return { isTerms: true, isCategories: false, isPrivacy: false, isCheckout: false, isProduct: false, isOffers: false, isProducts: false, id: null };
     }
 
     // Check hash route first: #/product/:id
     if (hash.startsWith('#/product/')) {
       const id = hash.replace('#/product/', '').split('?')[0];
-      return { isProduct: true, isCheckout: false, isTerms: false, isPrivacy: false, isOffers: false, isProducts: false, id };
+      return { isProduct: true, isCategories: false, isCheckout: false, isTerms: false, isPrivacy: false, isOffers: false, isProducts: false, id };
     }
 
     // Check pathname route: /product/:id (for Netlify full routing)
     if (path.startsWith('/product/')) {
       const id = path.replace('/product/', '').split('/')[0].split('?')[0];
-      return { isProduct: true, isCheckout: false, isTerms: false, isPrivacy: false, isOffers: false, isProducts: false, id };
+      return { isProduct: true, isCategories: false, isCheckout: false, isTerms: false, isPrivacy: false, isOffers: false, isProducts: false, id };
     }
 
-    return { isProduct: false, isCheckout: false, isTerms: false, isPrivacy: false, isOffers: false, isProducts: false, id: null };
+    return { isProduct: false, isCategories: false, isCheckout: false, isTerms: false, isPrivacy: false, isOffers: false, isProducts: false, id: null };
   };
 
   const [currentRoute, setCurrentRoute] = useState(parseRoute);
@@ -115,6 +128,7 @@ export const App = () => {
       currentRoute.isTerms ||
       currentRoute.isPrivacy ||
       currentRoute.isOffers ||
+      currentRoute.isCategories ||
       currentRoute.isProducts
     ) {
       window.location.hash = '#/';
@@ -150,6 +164,13 @@ export const App = () => {
               <TermsPage onBackToStore={() => navigateToHome('all')} />
             ) : currentRoute.isOffers ? (
               <OffersPage onBackToStore={() => navigateToHome('all')} />
+            ) : currentRoute.isCategories ? (
+              <CategoriesPage
+                onSelectCategory={(catId) => {
+                  navigateToHome(catId);
+                }}
+                onBackToStore={() => navigateToHome('all')}
+              />
             ) : currentRoute.isProducts ? (
               <AllProductsPage onBackToStore={() => navigateToHome('all')} />
             ) : currentRoute.isProduct && currentRoute.id ? (

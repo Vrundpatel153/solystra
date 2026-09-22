@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
 
 const MESSAGES = [
   'Free Insured Express Delivery Across India • 10% Off with Code SOULY10',
@@ -29,26 +28,10 @@ export const AnnouncementBar = () => {
         </div>
 
         {/* Center: Message Ticker */}
-        <div className="flex-1 flex items-center justify-center gap-2 text-center">
-          <button
-            onClick={() => setCurrentIdx(prev => (prev === 0 ? MESSAGES.length - 1 : prev - 1))}
-            className="text-white/60 hover:text-white p-0.5 transition-colors hidden sm:inline-flex cursor-pointer"
-            aria-label="Previous announcement"
-          >
-            <ChevronLeft className="w-3.5 h-3.5" />
-          </button>
-
+        <div className="flex-1 flex items-center justify-center text-center">
           <span className="text-[10.5px] sm:text-xs font-normal tracking-wide text-white/95 transition-opacity duration-300 truncate max-w-[85vw] sm:max-w-none block sm:inline">
             {MESSAGES[currentIdx]}
           </span>
-
-          <button
-            onClick={() => setCurrentIdx(prev => (prev + 1) % MESSAGES.length)}
-            className="text-white/60 hover:text-white p-0.5 transition-colors hidden sm:inline-flex cursor-pointer"
-            aria-label="Next announcement"
-          >
-            <ChevronRight className="w-3.5 h-3.5" />
-          </button>
         </div>
 
         {/* Right: Currency Indicator */}

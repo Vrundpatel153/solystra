@@ -12,7 +12,8 @@ import {
   Mail,
   Phone,
   HelpCircle,
-  FileText
+  FileText,
+  ArrowRight
 } from 'lucide-react';
 
 export const TermsPage = ({ onBackToStore }) => {
@@ -47,8 +48,9 @@ export const TermsPage = ({ onBackToStore }) => {
               Terms &amp; Purity Standards
             </span>
             <span className="text-stone-300">&bull;</span>
-            <a href="#/privacy" className="text-xs text-[#7A152E] hover:underline font-semibold">
-              View Privacy &amp; Policy &rarr;
+            <a href="#/privacy" className="inline-flex items-center gap-1 text-xs text-[#7A152E] hover:underline font-semibold group">
+              <span>View Privacy &amp; Policy</span>
+              <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
             </a>
           </div>
 

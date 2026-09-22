@@ -39,15 +39,10 @@ export const MobileBottomBar = ({ onOpenBoutique }) => {
             isExploreActive ? 'text-[#7A152E]' : 'text-stone-700 hover:text-[#7A152E]'
           }`}
         >
-          <div className="relative">
-            <Compass className={`w-5 h-5 stroke-[1.75] transition-colors ${
-              isExploreActive ? 'stroke-[#7A152E]' : 'group-hover:stroke-[#7A152E]'
-            }`} />
-            {isExploreActive && (
-              <span className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-1 h-1 bg-[#7A152E] rounded-full" />
-            )}
-          </div>
-          <span className={`text-[10px] tracking-tight mt-0.5 ${
+          <Compass className={`w-5 h-5 transition-colors ${
+            isExploreActive ? 'stroke-[#7A152E] stroke-[2.2]' : 'stroke-[1.75] group-hover:stroke-[#7A152E]'
+          }`} />
+          <span className={`text-[10.5px] tracking-tight mt-0.5 ${
             isExploreActive ? 'font-bold text-[#7A152E]' : 'font-medium text-stone-600 group-hover:text-[#7A152E]'
           }`}>
             Explore
@@ -64,15 +59,10 @@ export const MobileBottomBar = ({ onOpenBoutique }) => {
             isOffersActive ? 'text-[#7A152E]' : 'text-stone-700 hover:text-[#7A152E]'
           }`}
         >
-          <div className="relative">
-            <Tag className={`w-5 h-5 stroke-[1.75] transition-colors ${
-              isOffersActive ? 'stroke-[#7A152E]' : 'group-hover:stroke-[#7A152E]'
-            }`} />
-            {isOffersActive && (
-              <span className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-1 h-1 bg-[#7A152E] rounded-full" />
-            )}
-          </div>
-          <span className={`text-[10px] tracking-tight mt-0.5 ${
+          <Tag className={`w-5 h-5 transition-colors ${
+            isOffersActive ? 'stroke-[#7A152E] stroke-[2.2]' : 'stroke-[1.75] group-hover:stroke-[#7A152E]'
+          }`} />
+          <span className={`text-[10.5px] tracking-tight mt-0.5 ${
             isOffersActive ? 'font-bold text-[#7A152E]' : 'font-medium text-stone-600 group-hover:text-[#7A152E]'
           }`}>
             Offers
