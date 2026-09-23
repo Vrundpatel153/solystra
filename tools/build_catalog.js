@@ -55,9 +55,120 @@ const categoryMeta = {
 
 // Known price overrides & editorial metadata
 const knownOverrides = {
+  // --- 18K Yellow Gold Collection ---
+  'golden-meadow-necklace-set-925-sterling-silver': {
+    name: 'Golden Meadow Tennis Choker & Earrings Set in 18K Gold',
+    shortName: 'Golden Meadow 18K Gold Set',
+    price: 5499,
+    mrp: 7999,
+    badge: 'Atelier Gala',
+    category: 'necklaces',
+    metals: ['18K Yellow Gold', 'Pure 925 Silver']
+  },
+  'greek-pattern-hoops': {
+    name: 'Greek Geometric Pattern 18K Gold Imperial Hoops',
+    shortName: 'Greek Pattern 18K Gold Hoops',
+    price: 3499,
+    mrp: 4999,
+    badge: 'Bestseller',
+    category: 'earrings',
+    metals: ['18K Yellow Gold', 'Pure 925 Silver']
+  },
+  'clover-charm-bracelet': {
+    name: 'Imperial Clover Charm 18K Gold Vermeil Bracelet',
+    shortName: 'Clover Charm 18K Gold Bracelet',
+    price: 3899,
+    mrp: 5299,
+    badge: 'Bestseller',
+    category: 'bracelets',
+    metals: ['18K Yellow Gold', 'Pure 925 Silver']
+  },
+  'clover-lock-charm-925-sterling-silver-bracelet': {
+    name: 'Clover Padlock Charm 18K Gold Bracelet',
+    shortName: 'Clover Lock 18K Gold Bracelet',
+    price: 3699,
+    mrp: 4999,
+    badge: 'Trending',
+    category: 'bracelets',
+    metals: ['18K Yellow Gold', 'Pure 925 Silver']
+  },
+  'classic-ridge-band': {
+    name: 'Classic Fluted 18K Gold Vermeil Ridge Band',
+    shortName: 'Classic Ridge 18K Gold Band',
+    price: 2699,
+    mrp: 3799,
+    badge: 'Bestseller',
+    category: 'rings',
+    metals: ['18K Yellow Gold', 'Pure 925 Silver']
+  },
+  'geometric-radiance-hexagon-bracelet': {
+    name: 'Hexagon Radiance 18K Gold Link Bracelet',
+    shortName: 'Hexagon Radiance 18K Gold Bracelet',
+    price: 4199,
+    mrp: 5899,
+    badge: 'Newly Launched',
+    category: 'bracelets',
+    metals: ['18K Yellow Gold', 'Pure 925 Silver']
+  },
+  'intertwined-oval-spark-925-silver-bracelet': {
+    name: 'Intertwined Oval Spark 18K Gold Bracelet',
+    shortName: 'Intertwined Oval 18K Gold Bracelet',
+    price: 3999,
+    mrp: 5499,
+    badge: 'Atelier Gala',
+    category: 'bracelets',
+    metals: ['18K Yellow Gold', 'Pure 925 Silver']
+  },
+  'key-to-my-heart': {
+    name: 'Key To My Heart 18K Gold Solitaire Necklace',
+    shortName: 'Key To My Heart 18K Gold Necklace',
+    price: 2999,
+    mrp: 4299,
+    badge: 'Bestseller',
+    category: 'necklaces',
+    metals: ['18K Yellow Gold', 'Pure 925 Silver']
+  },
+  'linked-hearts-chain-bracelet': {
+    name: 'Linked Hearts 18K Gold Fine Chain Bracelet',
+    shortName: 'Linked Hearts 18K Gold Bracelet',
+    price: 3499,
+    mrp: 4899,
+    badge: 'Trending',
+    category: 'bracelets',
+    metals: ['18K Yellow Gold', 'Pure 925 Silver']
+  },
+  'meander-hoops': {
+    name: 'Meander Motif 18K Gold Atelier Huggies',
+    shortName: 'Meander 18K Gold Hoops',
+    price: 2899,
+    mrp: 3999,
+    badge: 'Bestseller',
+    category: 'earrings',
+    metals: ['18K Yellow Gold', 'Pure 925 Silver']
+  },
+  'single-chain-pearl-bracelet': {
+    name: 'Baroque Pearl 18K Gold Dainty Chain Bracelet',
+    shortName: 'Single Pearl 18K Gold Bracelet',
+    price: 3199,
+    mrp: 4499,
+    badge: 'Newly Launched',
+    category: 'bracelets',
+    metals: ['18K Yellow Gold', 'Pure 925 Silver']
+  },
+  'tri-color-link-bracelet': {
+    name: 'Atelier Tri-Color 18K Gold, Rose & Silver Bracelet',
+    shortName: 'Tri-Color 18K Gold Link Bracelet',
+    price: 3999,
+    mrp: 5499,
+    badge: 'Atelier Pick',
+    category: 'bracelets',
+    metals: ['18K Yellow Gold', 'Rose Gold Plated', 'Pure 925 Silver']
+  },
+
+  // --- 18K Rose Gold Collection ---
   'amethyst-bloom-necklace-set-925-sterling-silver': {
-    name: 'Amethyst Bloom Floral Necklace Set',
-    shortName: 'Amethyst Bloom Necklace Set',
+    name: 'Amethyst Bloom Rose Gold Floral Necklace Set',
+    shortName: 'Amethyst Bloom Rose Gold Set',
     price: 9585,
     mrp: 11981,
     badge: 'Atelier Gala',
@@ -65,14 +176,79 @@ const knownOverrides = {
     metals: ['Rose Gold Plated', 'Pure 925 Silver', '18K Yellow Gold']
   },
   'flora-band-hoops': {
-    name: 'Blossom Petal Flora Band Hoops',
-    shortName: 'Flora Band Hoops',
+    name: 'Blossom Petal Rose Gold Flora Band Hoops',
+    shortName: 'Flora Band Rose Gold Hoops',
     price: 2499,
     mrp: 3499,
     badge: 'Bestseller',
     category: 'earrings',
     metals: ['Rose Gold Plated', 'Pure 925 Silver']
   },
+  'blush-spark-tennis-bracelet-925-sterling-silver': {
+    name: 'Blush Spark Rose Gold Tennis Bracelet',
+    shortName: 'Blush Spark Rose Gold Bracelet',
+    price: 3699,
+    mrp: 4999,
+    badge: 'Newly Launched',
+    category: 'bracelets',
+    metals: ['Rose Gold Plated', 'Pure 925 Silver']
+  },
+  'rose-round-spark-tennis-bracelet-925-sterling-silver': {
+    name: 'Rose Round Spark Tennis Bracelet in 18K Rose Gold',
+    shortName: 'Rose Round Spark Tennis Bracelet',
+    price: 3899,
+    mrp: 5299,
+    badge: 'Trending',
+    category: 'bracelets',
+    metals: ['Rose Gold Plated', 'Pure 925 Silver']
+  },
+  'charming-flutter-925-sterling-silver-bracelet': {
+    name: 'Charming Butterfly Rose Gold Link Bracelet',
+    shortName: 'Flutter Rose Gold Bracelet',
+    price: 3299,
+    mrp: 4699,
+    badge: 'Trending',
+    category: 'bracelets',
+    metals: ['Rose Gold Plated', 'Pure 925 Silver']
+  },
+  'crystal-heart-link-bracelet-925-silver': {
+    name: 'Crystal Heart Link Rose Gold Bracelet',
+    shortName: 'Crystal Heart Rose Gold Bracelet',
+    price: 3499,
+    mrp: 4899,
+    badge: 'Bestseller',
+    category: 'bracelets',
+    metals: ['Rose Gold Plated', 'Pure 925 Silver']
+  },
+  'fusion-heart-ring': {
+    name: 'Fusion Heart Rose Gold Solitaire Ring',
+    shortName: 'Fusion Heart Rose Gold Ring',
+    price: 2699,
+    mrp: 3799,
+    badge: 'Newly Launched',
+    category: 'rings',
+    metals: ['Rose Gold Plated', 'Pure 925 Silver']
+  },
+  'mini-heart-accent-tennis-bracelet-925-silver-bracelet': {
+    name: 'Mini Heart Accent Rose Gold Tennis Bracelet',
+    shortName: 'Mini Heart Rose Tennis Bracelet',
+    price: 3599,
+    mrp: 4999,
+    badge: 'Atelier Gala',
+    category: 'bracelets',
+    metals: ['Rose Gold Plated', 'Pure 925 Silver']
+  },
+  'pastel-clover-chain': {
+    name: 'Pastel Enamel Clover Rose Gold Dainty Chain',
+    shortName: 'Pastel Clover Rose Gold Chain',
+    price: 2899,
+    mrp: 4199,
+    badge: 'Bestseller',
+    category: 'necklaces',
+    metals: ['Rose Gold Plated', 'Pure 925 Silver']
+  },
+
+  // --- Pure 925 Sterling Silver Pieces with specific pricing/badges ---
   'classic-knot-earrings': {
     name: 'Classic Artisan Solitaire Knot Earrings',
     shortName: 'Classic Knot Earrings',
@@ -82,24 +258,6 @@ const knownOverrides = {
     category: 'earrings',
     metals: ['Pure 925 Silver', 'Rose Gold Plated']
   },
-  'golden-meadow-necklace-set-925-sterling-silver': {
-    name: 'Golden Meadow Tennis Choker & Earrings Set',
-    shortName: 'Golden Meadow Necklace Set',
-    price: 5499,
-    mrp: 7999,
-    badge: 'Atelier Gala',
-    category: 'necklaces',
-    metals: ['18K Yellow Gold', 'Pure 925 Silver']
-  },
-  'greek-pattern-hoops': {
-    name: 'Greek Geometric Pattern Imperial Hoops',
-    shortName: 'Greek Pattern Hoops',
-    price: 3499,
-    mrp: 4999,
-    badge: 'Bestseller',
-    category: 'earrings',
-    metals: ['Pure 925 Silver', '18K Yellow Gold']
-  },
   'azure-daisy-tennis-bracelet-925-sterling-silver': {
     name: 'Azure Daisy Austrian Tennis Bracelet',
     shortName: 'Azure Daisy Tennis Bracelet',
@@ -108,15 +266,6 @@ const knownOverrides = {
     badge: 'Bestseller',
     category: 'bracelets',
     metals: ['Pure 925 Silver', 'Rose Gold Plated']
-  },
-  'blush-spark-tennis-bracelet-925-sterling-silver': {
-    name: 'Blush Spark Tennis Bracelet 925 Silver',
-    shortName: 'Blush Spark Tennis Bracelet',
-    price: 3699,
-    mrp: 4999,
-    badge: 'Newly Launched',
-    category: 'bracelets',
-    metals: ['Rose Gold Plated', 'Pure 925 Silver']
   },
   'celeste-glow-925-sterling-silver-necklace': {
     name: 'Celeste Glow Solitaire Drop Necklace',
@@ -238,13 +387,14 @@ dirs.forEach((id, index) => {
     desc: `Exquisitely handcrafted by master artisans at Solystra Atelier. Cast in solid, hypoallergenic 925 sterling silver with high-precision micro-prong setting and finished with protective anti-tarnish rhodium coating to maintain enduring showroom brilliance.`,
     images,
     specs: {
-      "Metal Purity": "BIS Certified 925 Sterling Silver",
-      "Plating Finish": "Anti-Tarnish Rhodium & Micron E-Coat",
-      "Stone Setting": "AAA+ Austrian Solitaire Crystals",
-      "Hallmark Verification": "Certified 925 Stamp on Clasp/Band",
+      "Metal Purity": override.specs?.["Metal Purity"] || (metals[0]?.includes('Gold') && !metals[0]?.includes('Rose') ? "18K Gold Vermeil (BIS Certified)" : metals[0]?.includes('Rose') ? "18K Rose Gold (BIS Certified)" : "BIS Certified 925 Sterling Silver"),
+      "Plating Finish": override.specs?.["Plating Finish"] || (metals[0]?.includes('Gold') && !metals[0]?.includes('Rose') ? "2.5-Micron 18K Gold Vermeil & Protective E-Coat" : metals[0]?.includes('Rose') ? "18K Rose Gold Micron Vermeil & Protective E-Coat" : "Anti-Tarnish Rhodium & Micron E-Coat"),
+      "Stone Setting": override.specs?.["Stone Setting"] || "AAA+ Austrian Solitaire Crystals",
+      "Hallmark Verification": override.specs?.["Hallmark Verification"] || (metals[0]?.includes('Gold') && !metals[0]?.includes('Rose') ? "Certified 18K / 925 Stamp on Clasp" : "Certified 925 Stamp on Clasp/Band"),
       "Warranty Coverage": "6 Months Free Replating Assurance",
       "Packaging": "Luxury Suede Box with Authenticity Card",
-      "Shipping": "Free Insured Express Delivery Across India"
+      "Shipping": "Free Insured Express Delivery Across India",
+      ...(override.specs || {})
     },
     inStock: true
   });

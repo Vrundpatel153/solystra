@@ -1,86 +1,223 @@
-import React from 'react';
+import React, { useId } from 'react';
 
 /**
- * Accurately determines metal hallmark information from product data.
- * Produces 925 Silver, 18K Gold Vermeil, or 18K Rose Gold.
+ * Accurately determines metal hallmark information from product data or selected variant.
+ * Produces Pure 925 Silver, 18K Gold Vermeil, or 18K Rose Gold.
  */
-export const getMetalBadgeInfo = (product) => {
-  if (!product) {
-    return {
-      code: '925',
-      metal: 'SILVER',
-      label: 'Pure 925 Silver',
-      badgeClass: 'bg-gradient-to-br from-white/95 via-slate-100/95 to-slate-200/90 border-slate-300/85 text-slate-800 ring-slate-400/20 shadow-[0_3px_10px_rgba(0,0,0,0.09),inset_0_1px_1px_rgba(255,255,255,0.95)]',
-      subTextClass: 'text-slate-600'
-    };
-  }
+export const getMetalBadgeInfo = (product, selectedMetal = null) => {
+  const chosen = (selectedMetal || '').toLowerCase();
 
-  const nameLower = (product.name || '').toLowerCase();
-  const puritySpec = (product.specs?.['Metal Purity'] || '').toLowerCase();
+  const idLower = (product?.id || '').toLowerCase();
+  const nameLower = (product?.name || '').toLowerCase();
+  const shortLower = (product?.shortName || '').toLowerCase();
+  const descLower = (product?.desc || '').toLowerCase();
+  const puritySpec = (product?.specs?.['Metal Purity'] || '').toLowerCase();
+  const primaryMetal = (product?.metals && product.metals[0] ? product.metals[0] : (product?.metal || '')).toLowerCase();
+  const categoryLower = (product?.category || '').toLowerCase();
+  const tagLower = (product?.tag || '').toLowerCase();
 
-  const isRose = nameLower.includes('rose') || puritySpec.includes('rose');
-  const isGold = !isRose && (nameLower.includes('gold') || nameLower.includes('vermeil') || puritySpec.includes('gold') || puritySpec.includes('vermeil'));
+  // 1. Check Rose Gold
+  const isRose =
+    chosen.includes('rose') ||
+    (!chosen && (
+      primaryMetal.includes('rose') ||
+      nameLower.includes('rose') ||
+      idLower.includes('rose') ||
+      shortLower.includes('rose') ||
+      puritySpec.includes('rose') ||
+      tagLower.includes('rose')
+    ));
+
+  // 2. Check 18K Gold (Yellow / Vermeil)
+  const isGold =
+    !isRose && (
+      chosen.includes('gold') ||
+      chosen.includes('vermeil') ||
+      chosen.includes('yellow') ||
+      (!chosen && (
+        primaryMetal.includes('gold') ||
+        primaryMetal.includes('vermeil') ||
+        primaryMetal.includes('yellow') ||
+        nameLower.includes('gold') ||
+        nameLower.includes('golden') ||
+        nameLower.includes('vermeil') ||
+        shortLower.includes('gold') ||
+        shortLower.includes('golden') ||
+        shortLower.includes('vermeil') ||
+        idLower.includes('gold') ||
+        idLower.includes('golden') ||
+        idLower.includes('vermeil') ||
+        puritySpec.includes('gold') ||
+        puritySpec.includes('vermeil') ||
+        categoryLower === 'gold' ||
+        tagLower.includes('gold') ||
+        product?.isGold === true
+      ))
+    );
 
   if (isRose) {
     return {
+      type: 'rose',
       code: '18K',
       metal: 'ROSE',
       label: '18K Rose Gold',
-      badgeClass: 'bg-gradient-to-br from-[#FFF9F9]/95 via-[#FDECEE]/95 to-[#F9D5D9]/90 border-[#EBB6BC]/85 text-[#7A152E] ring-[#B76E79]/25 shadow-[0_3px_10px_rgba(180,90,100,0.14),inset_0_1px_1px_rgba(255,255,255,0.95)]',
-      subTextClass: 'text-[#9A2D45]'
+      borderColor: '#DF9FA9',
+      borderWidth: '1.4',
+      innerRingColor: '#C47585',
+      filter: 'drop-shadow(0 2px 4px rgba(180, 80, 100, 0.22))',
+      codeTextClass: 'text-[#7A152E]',
+      subTextClass: 'text-[#9E2A44]',
+      stops: [
+        { offset: '0%', color: '#FFF9FA' },
+        { offset: '30%', color: '#FDECEF' },
+        { offset: '70%', color: '#F9D4DA' },
+        { offset: '100%', color: '#EBB6C0' }
+      ]
     };
   }
 
   if (isGold) {
     return {
+      type: 'gold',
       code: '18K',
       metal: 'GOLD',
       label: '18K Gold Vermeil',
-      badgeClass: 'bg-gradient-to-br from-[#FFFDF7]/95 via-[#FDF5E6]/95 to-[#F5E2B8]/90 border-[#E5C985]/85 text-[#6B4E1B] ring-[#D4AF37]/25 shadow-[0_3px_10px_rgba(180,130,50,0.14),inset_0_1px_1px_rgba(255,255,255,0.95)]',
-      subTextClass: 'text-[#8C6826]'
+      // Warm champagne gold shade
+      borderColor: '#CBA64E',
+      borderWidth: '1.5',
+      innerRingColor: '#BF973A',
+      filter: 'drop-shadow(0 2px 5px rgba(180, 130, 40, 0.25))',
+      codeTextClass: 'text-[#6B4B13]',
+      subTextClass: 'text-[#8A641E]',
+      stops: [
+        { offset: '0%', color: '#FFFDF7' },
+        { offset: '25%', color: '#FEF8E7' },
+        { offset: '65%', color: '#F7E5BA' },
+        { offset: '100%', color: '#ECCF86' }
+      ]
     };
   }
 
+  // Pure 925 Silver (Crisp White Silver Style)
   return {
+    type: 'silver',
     code: '925',
     metal: 'SILVER',
     label: 'Pure 925 Silver',
-    badgeClass: 'bg-gradient-to-br from-white/95 via-slate-100/95 to-slate-200/90 border-slate-300/85 text-slate-800 ring-slate-400/20 shadow-[0_3px_10px_rgba(0,0,0,0.09),inset_0_1px_1px_rgba(255,255,255,0.95)]',
-    subTextClass: 'text-slate-600'
+    borderColor: '#CBD5E1',
+    borderWidth: '1.35',
+    innerRingColor: '#94A3B8',
+    filter: 'drop-shadow(0 2px 4px rgba(15, 23, 42, 0.12))',
+    codeTextClass: 'text-[#1E293B]',
+    subTextClass: 'text-[#64748B]',
+    stops: [
+      { offset: '0%', color: '#FFFFFF' },
+      { offset: '30%', color: '#F8FAFC' },
+      { offset: '70%', color: '#EDF2F7' },
+      { offset: '100%', color: '#E2E8F0' }
+    ]
   };
 };
 
 /**
- * Luxury Circular Hallmark Medallion Badge
- * Placed at the top-left of product cards replacing raw percentage off.
- * Features luminous metallic gradients, fine hairline rings, and crisp atelier typography.
+ * Luxury Flower-Like Circle Hallmark Medallion Badge
+ * Features an 8-petal scalloped floral rosette silhouette with delicate inner circular
+ * hairline rings and crisp atelier typography (925 SILVER in white-silver styles or 18K GOLD in warm gold shade).
  */
-export const MetalPurityBadge = ({ product, size = 'md', className = '' }) => {
-  const info = getMetalBadgeInfo(product);
+export const MetalPurityBadge = ({ product, selectedMetal = null, size = 'md', className = '' }) => {
+  const reactId = useId();
+  const safeId = reactId.replace(/[^a-zA-Z0-9_-]/g, '');
+  const gradientId = `flower-badge-grad-${safeId}`;
 
-  const sizeClasses = size === 'lg'
-    ? 'w-11 h-11 sm:w-12 sm:h-12 text-[12px] sm:text-[13px]'
-    : size === 'sm'
-    ? 'w-8 h-8 text-[9.5px]'
-    : 'w-[38px] h-[38px] sm:w-[42px] sm:h-[42px] text-[10.5px] sm:text-[11.5px]';
+  const info = getMetalBadgeInfo(product, selectedMetal);
 
-  const subSizeClasses = size === 'lg'
-    ? 'text-[7px] sm:text-[7.5px]'
-    : size === 'sm'
-    ? 'text-[6px]'
-    : 'text-[6.5px] sm:text-[7px]';
+  // Sizing matrix for container and typography
+  const sizeClasses =
+    size === 'lg'
+      ? 'w-12 h-12 sm:w-14 sm:h-14'
+      : size === 'sm'
+      ? 'w-[34px] h-[34px] sm:w-[36px] sm:h-[36px]'
+      : 'w-[39px] h-[39px] sm:w-[43px] sm:h-[43px]';
+
+  const codeSizeClasses =
+    size === 'lg'
+      ? 'text-[12px] sm:text-[13.5px]'
+      : size === 'sm'
+      ? 'text-[8.5px] sm:text-[9.5px]'
+      : 'text-[10px] sm:text-[11px]';
+
+  const subSizeClasses =
+    size === 'lg'
+      ? 'text-[6.5px] sm:text-[7.5px]'
+      : size === 'sm'
+      ? 'text-[5.5px] sm:text-[6px]'
+      : 'text-[6px] sm:text-[6.5px]';
+
+  // Symmetrical 8-petal scalloped flower rosette path (centered at 50,50 within 100x100 viewBox)
+  const flowerPath =
+    'M 35.46 14.89 A 16 16 0 0 1 64.54 14.89 A 16 16 0 0 1 85.11 35.46 A 16 16 0 0 1 85.11 64.54 A 16 16 0 0 1 64.54 85.11 A 16 16 0 0 1 35.46 85.11 A 16 16 0 0 1 14.89 64.54 A 16 16 0 0 1 14.89 35.46 A 16 16 0 0 1 35.46 14.89 Z';
 
   return (
     <div
-      className={`${sizeClasses} rounded-full border ring-1 ring-inset flex flex-col items-center justify-center text-center select-none backdrop-blur-xs transition-transform duration-300 group-hover:scale-105 pointer-events-none ${info.badgeClass} ${className}`}
+      className={`${sizeClasses} relative flex items-center justify-center select-none pointer-events-none transition-transform duration-300 group-hover:scale-105 ${className}`}
       title={info.label}
     >
-      <span className="font-serif font-bold leading-none tracking-tight">
-        {info.code}
-      </span>
-      <span className={`${subSizeClasses} font-semibold uppercase tracking-[0.14em] leading-none mt-0.5 ${info.subTextClass}`}>
-        {info.metal}
-      </span>
+      {/* Flower Rosette Vector Silhouette with Metal Gradient */}
+      <svg
+        viewBox="0 0 100 100"
+        className="absolute inset-0 w-full h-full overflow-visible pointer-events-none"
+        style={{ filter: info.filter }}
+      >
+        <defs>
+          <linearGradient id={gradientId} x1="0%" y1="0%" x2="100%" y2="100%">
+            {info.stops.map((stop, i) => (
+              <stop key={i} offset={stop.offset} stopColor={stop.color} />
+            ))}
+          </linearGradient>
+        </defs>
+
+        {/* Outer 8-Petal Scalloped Flower Silhouette */}
+        <path
+          d={flowerPath}
+          fill={`url(#${gradientId})`}
+          stroke={info.borderColor}
+          strokeWidth={info.borderWidth}
+          strokeLinejoin="round"
+        />
+
+        {/* Outer Decorative Dotted Hairline Ring */}
+        <circle
+          cx="50"
+          cy="50"
+          r="32.5"
+          fill="none"
+          stroke={info.innerRingColor}
+          strokeWidth="0.85"
+          strokeDasharray="1.75 1.75"
+          opacity="0.55"
+        />
+
+        {/* Inner Solid Fine Hairline Ring for Precision Hallmark Coin Impression */}
+        <circle
+          cx="50"
+          cy="50"
+          r="29.5"
+          fill="none"
+          stroke={info.innerRingColor}
+          strokeWidth="0.5"
+          opacity="0.3"
+        />
+      </svg>
+
+      {/* Centered Hallmark Typography */}
+      <div className="relative z-10 flex flex-col items-center justify-center text-center leading-none pointer-events-none mt-[-0.5px]">
+        <span className={`font-serif font-bold tracking-tight ${codeSizeClasses} ${info.codeTextClass}`}>
+          {info.code}
+        </span>
+        <span className={`font-sans font-bold uppercase tracking-[0.14em] ${subSizeClasses} ${info.subTextClass} mt-[1px]`}>
+          {info.metal}
+        </span>
+      </div>
     </div>
   );
 };

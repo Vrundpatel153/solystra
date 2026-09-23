@@ -837,26 +837,28 @@ export const HomePage = ({ activeCategory, onSelectCategory }) => {
       } else if (selectedCategory === 'complete_sets') {
         list = list.filter((p) => p.name.toLowerCase().includes('set') || p.category === 'necklaces');
       } else if (selectedCategory === 'gold') {
-        list = list.filter((p) => 
-          (p.metals && p.metals.some(m => m.toLowerCase().includes('gold') && !m.toLowerCase().includes('rose'))) ||
-          p.name.toLowerCase().includes('gold') ||
-          p.desc?.toLowerCase().includes('gold') ||
-          p.category === 'bracelets'
-        );
+        list = list.filter((p) => {
+          const primary = (p.metals?.[0] || '').toLowerCase();
+          const name = (p.name || '').toLowerCase();
+          const id = (p.id || '').toLowerCase();
+          return (primary.includes('gold') && !primary.includes('rose')) ||
+                 (name.includes('gold') && !name.includes('rose')) ||
+                 (id.includes('gold') && !id.includes('rose'));
+        });
       } else if (selectedCategory === 'silver') {
-        list = list.filter((p) => 
-          (p.metals && p.metals.some(m => m.toLowerCase().includes('silver'))) ||
-          p.name.toLowerCase().includes('silver') ||
-          p.desc?.toLowerCase().includes('silver') ||
-          p.category === 'rings' ||
-          p.category === 'necklaces'
-        );
+        list = list.filter((p) => {
+          const primary = (p.metals?.[0] || '').toLowerCase();
+          const name = (p.name || '').toLowerCase();
+          return primary.includes('silver') ||
+                 (!primary.includes('gold') && !primary.includes('rose') && !name.includes('rose') && !name.includes('gold'));
+        });
       } else if (selectedCategory === 'rose_gold') {
-        list = list.filter((p) => 
-          (p.metals && p.metals.some(m => m.toLowerCase().includes('rose'))) ||
-          p.name.toLowerCase().includes('rose') ||
-          p.desc?.toLowerCase().includes('rose')
-        );
+        list = list.filter((p) => {
+          const primary = (p.metals?.[0] || '').toLowerCase();
+          const name = (p.name || '').toLowerCase();
+          const id = (p.id || '').toLowerCase();
+          return primary.includes('rose') || name.includes('rose') || id.includes('rose');
+        });
       } else if (selectedCategory === 'mangalsutras') {
         list = list.filter((p) => p.category === 'necklaces');
       } else if (selectedCategory === 'nose_pins') {

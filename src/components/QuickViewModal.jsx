@@ -7,12 +7,29 @@ import { GoldShoppingBag } from './GoldShoppingBag';
 export const QuickViewModal = () => {
   const { quickViewProduct, setQuickViewProduct, addToCart, toggleWishlist, isInWishlist } = useShop();
   const [selectedImageIndex, setSelectedImageIndex] = useState(0);
-  const [selectedMetal, setSelectedMetal] = useState('Pure 925 Silver');
+
+  const product = quickViewProduct;
+
+  const defaultMetal = (product?.metals && product.metals.length)
+    ? product.metals[0]
+    : (product?.name?.toLowerCase().includes('gold') || product?.id?.toLowerCase().includes('gold'))
+    ? '18K Yellow Gold'
+    : (product?.name?.toLowerCase().includes('rose') || product?.id?.toLowerCase().includes('rose'))
+    ? 'Rose Gold Plated'
+    : 'Pure 925 Silver';
+
+  const [selectedMetal, setSelectedMetal] = useState(defaultMetal);
   const [selectedSize, setSelectedSize] = useState('12');
+
+  React.useEffect(() => {
+    if (product) {
+      setSelectedMetal(defaultMetal);
+      setSelectedImageIndex(0);
+    }
+  }, [product?.id]);
 
   if (!quickViewProduct) return null;
 
-  const product = quickViewProduct;
   const isWishlisted = isInWishlist(product.id);
   const isRing = product.category === 'rings';
   const sizes = ['10', '12', '14', '16', '18'];
@@ -49,7 +66,7 @@ export const QuickViewModal = () => {
               />
               {/* Atelier Hallmark Seal */}
               <div className="absolute top-3 left-3 pointer-events-none z-10">
-                <MetalPurityBadge product={product} size="md" />
+                <MetalPurityBadge product={product} size="md" selectedMetal={selectedMetal} />
               </div>
             </div>
 

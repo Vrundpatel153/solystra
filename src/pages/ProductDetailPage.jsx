@@ -484,7 +484,7 @@ export const ProductDetailPage = ({ productId }) => {
 
                 {/* Atelier Hallmark Seal (Bottom-Left Craftsmanship Mark) */}
                 <div className="absolute bottom-4 left-4 pointer-events-none z-10 transition-transform duration-300 group-hover:scale-105">
-                  <MetalPurityBadge product={product} size="lg" />
+                  <MetalPurityBadge product={product} size="lg" selectedMetal={selectedMetal} />
                 </div>
 
                 {/* Action Overlays */}

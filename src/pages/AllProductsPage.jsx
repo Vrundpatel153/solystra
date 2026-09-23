@@ -135,15 +135,30 @@ export const AllProductsPage = ({ onBackToStore }) => {
 
       // 5. Metal / Finish filter
       if (selectedMetal !== 'all') {
+        const primary = (product.metals?.[0] || '').toLowerCase();
+        const pName = (product.name || '').toLowerCase();
+        const pShort = (product.shortName || '').toLowerCase();
+        const pId = (product.id || '').toLowerCase();
+
         if (selectedMetal === 'gold') {
-          const hasGold = product.metals?.some((m) => m.toLowerCase().includes('gold'));
-          if (!hasGold) return false;
+          const isGold =
+            (primary.includes('gold') && !primary.includes('rose')) ||
+            (pName.includes('gold') && !pName.includes('rose')) ||
+            (pShort.includes('gold') && !pShort.includes('rose')) ||
+            (pId.includes('gold') && !pId.includes('rose'));
+          if (!isGold) return false;
         } else if (selectedMetal === 'rose') {
-          const hasRose = product.metals?.some((m) => m.toLowerCase().includes('rose'));
-          if (!hasRose) return false;
+          const isRose =
+            primary.includes('rose') ||
+            pName.includes('rose') ||
+            pShort.includes('rose') ||
+            pId.includes('rose');
+          if (!isRose) return false;
         } else if (selectedMetal === 'silver') {
-          const hasSilver = product.metals?.some((m) => m.toLowerCase().includes('silver'));
-          if (!hasSilver) return false;
+          const isSilver =
+            primary.includes('silver') ||
+            (!primary.includes('gold') && !primary.includes('rose') && !pName.includes('rose') && !pName.includes('gold'));
+          if (!isSilver) return false;
         }
       }
 

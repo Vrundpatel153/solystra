@@ -6,8 +6,25 @@ import { MetalPurityBadge } from './MetalPurityBadge';
 export const ProductCard = ({ product, variant = 'default', isSquare = false }) => {
   const isSquareCard = variant === 'square' || isSquare;
   const { addToCart, toggleWishlist, isInWishlist, setQuickViewProduct } = useShop();
-  const [selectedMetal, setSelectedMetal] = useState('Pure 925 Silver');
+  // Accurately determine initial hallmark metal stamp for this specific piece
+  const nameLower = (product.name || '').toLowerCase();
+  const puritySpec = (product.specs?.['Metal Purity'] || '').toLowerCase();
+
+  const defaultMetal =
+    product.metals && product.metals.length
+      ? product.metals[0]
+      : (nameLower.includes('gold') || nameLower.includes('golden') || nameLower.includes('vermeil') || puritySpec.includes('gold'))
+      ? '18K Yellow Gold'
+      : (nameLower.includes('rose') || puritySpec.includes('rose'))
+      ? 'Rose Gold Plated'
+      : 'Pure 925 Silver';
+
+  const [selectedMetal, setSelectedMetal] = useState(defaultMetal);
   const [isHovered, setIsHovered] = useState(false);
+
+  React.useEffect(() => {
+    setSelectedMetal(defaultMetal);
+  }, [product.id, defaultMetal]);
 
   const isWishlisted = isInWishlist(product.id);
   const primaryImage = product.images[0];
@@ -18,17 +35,6 @@ export const ProductCard = ({ product, variant = 'default', isSquare = false }) 
     .replace(/\s*-\s*(925\s*)?(sterling\s*)?silver/gi, '')
     .replace(/\s*-\s*pure\s*silver/gi, '')
     .trim();
-
-  // Accurately determine hallmark metal stamp for this specific piece
-  const nameLower = product.name?.toLowerCase() || '';
-  const puritySpec = product.specs?.['Metal Purity']?.toLowerCase() || '';
-
-  const metalStamp =
-    nameLower.includes('rose') || puritySpec.includes('rose')
-      ? 'Rose Gold'
-      : (nameLower.includes('gold') || nameLower.includes('vermeil') || puritySpec.includes('gold') || puritySpec.includes('vermeil'))
-      ? '18K Vermeil'
-      : '925 Silver';
 
   const handleCardClick = (e) => {
     if (e.target.closest('button')) return;
@@ -69,7 +75,7 @@ export const ProductCard = ({ product, variant = 'default', isSquare = false }) 
 
           {/* Atelier Hallmark Seal (Replaces Percentage Off at Top-Left) */}
           <div className="absolute top-2 left-2 pointer-events-none z-10">
-            <MetalPurityBadge product={product} size="sm" />
+            <MetalPurityBadge product={product} size="sm" selectedMetal={selectedMetal} />
           </div>
 
           {/* Wishlist Heart Icon */}
@@ -176,7 +182,7 @@ export const ProductCard = ({ product, variant = 'default', isSquare = false }) 
 
         {/* Atelier Hallmark Seal (Replaces Percentage Off at Top-Left) */}
         <div className="absolute top-2 left-2 sm:top-2.5 sm:left-2.5 pointer-events-none z-10">
-          <MetalPurityBadge product={product} />
+          <MetalPurityBadge product={product} size="md" selectedMetal={selectedMetal} />
         </div>
 
         {/* Luxury Floating Wishlist Heart Icon */}
@@ -274,9 +280,45 @@ export const ProductCard = ({ product, variant = 'default', isSquare = false }) 
 
             {/* Metal Swatches (Silver, Rose Gold, 18K Gold) */}
             <div className="hidden xs:flex items-center gap-1 sm:gap-1.5 shrink-0">
-              <span title="Pure 925 Sterling Silver" className="w-2.5 h-2.5 rounded-full bg-gradient-to-tr from-slate-400 via-slate-100 to-slate-300 border border-slate-400 shadow-2xs" />
-              <span title="Rose Gold Plated" className="w-2.5 h-2.5 rounded-full bg-gradient-to-tr from-[#B76E79] via-[#F5D8DE] to-[#D99BA5] border border-[#B76E79]/40 shadow-2xs" />
-              <span title="18K Gold Vermeil" className="w-2.5 h-2.5 rounded-full bg-gradient-to-tr from-[#946A1E] via-[#F4E3BF] to-[#C99D46] border border-[#946A1E]/50 shadow-2xs" />
+              <button
+                type="button"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setSelectedMetal('Pure 925 Silver');
+                }}
+                title="Pure 925 Sterling Silver"
+                className={`w-2.5 h-2.5 rounded-full bg-gradient-to-tr from-slate-400 via-slate-100 to-slate-300 border shadow-2xs transition-all hover:scale-125 cursor-pointer ${
+                  selectedMetal.toLowerCase().includes('silver')
+                    ? 'ring-1.5 ring-slate-600 scale-115 border-slate-500'
+                    : 'border-slate-400 opacity-70 hover:opacity-100'
+                }`}
+              />
+              <button
+                type="button"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setSelectedMetal('Rose Gold Plated');
+                }}
+                title="Rose Gold Plated"
+                className={`w-2.5 h-2.5 rounded-full bg-gradient-to-tr from-[#B76E79] via-[#F5D8DE] to-[#D99BA5] border shadow-2xs transition-all hover:scale-125 cursor-pointer ${
+                  selectedMetal.toLowerCase().includes('rose')
+                    ? 'ring-1.5 ring-[#7A152E] scale-115 border-[#B76E79]'
+                    : 'border-[#B76E79]/40 opacity-70 hover:opacity-100'
+                }`}
+              />
+              <button
+                type="button"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setSelectedMetal('18K Yellow Gold');
+                }}
+                title="18K Gold Vermeil"
+                className={`w-2.5 h-2.5 rounded-full bg-gradient-to-tr from-[#946A1E] via-[#F4E3BF] to-[#C99D46] border shadow-2xs transition-all hover:scale-125 cursor-pointer ${
+                  selectedMetal.toLowerCase().includes('gold') && !selectedMetal.toLowerCase().includes('rose')
+                    ? 'ring-1.5 ring-[#946A1E] scale-115 border-[#946A1E]'
+                    : 'border-[#946A1E]/50 opacity-70 hover:opacity-100'
+                }`}
+              />
             </div>
           </div>
 

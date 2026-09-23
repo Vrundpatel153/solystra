@@ -2,8 +2,8 @@
 export const PRODUCTS = [
   {
     "id": "amethyst-bloom-necklace-set-925-sterling-silver",
-    "name": "Amethyst Bloom Floral Necklace Set",
-    "shortName": "Amethyst Bloom Necklace Set",
+    "name": "Amethyst Bloom Rose Gold Floral Necklace Set",
+    "shortName": "Amethyst Bloom Rose Gold Set",
     "sku": "AUR-AMETHYST",
     "category": "necklaces",
     "categoryName": "Necklaces & Lariats",
@@ -26,8 +26,8 @@ export const PRODUCTS = [
       "assets/bento-craftsmanship-macro.jpg"
     ],
     "specs": {
-      "Metal Purity": "BIS Certified 925 Sterling Silver",
-      "Plating Finish": "Anti-Tarnish Rhodium & Micron E-Coat",
+      "Metal Purity": "18K Rose Gold (BIS Certified)",
+      "Plating Finish": "18K Rose Gold Micron Vermeil & Protective E-Coat",
       "Stone Setting": "AAA+ Austrian Solitaire Crystals",
       "Hallmark Verification": "Certified 925 Stamp on Clasp/Band",
       "Warranty Coverage": "6 Months Free Replating Assurance",
@@ -108,8 +108,8 @@ export const PRODUCTS = [
   },
   {
     "id": "blush-spark-tennis-bracelet-925-sterling-silver",
-    "name": "Blush Spark Tennis Bracelet 925 Silver",
-    "shortName": "Blush Spark Tennis Bracelet",
+    "name": "Blush Spark Rose Gold Tennis Bracelet",
+    "shortName": "Blush Spark Rose Gold Bracelet",
     "sku": "AUR-BLUSHSPA",
     "category": "bracelets",
     "categoryName": "Tennis & Charm Bracelets",
@@ -131,8 +131,8 @@ export const PRODUCTS = [
       "solystra_assets/products/blush-spark-tennis-bracelet-925-sterling-silver/angle_3.jpg"
     ],
     "specs": {
-      "Metal Purity": "BIS Certified 925 Sterling Silver",
-      "Plating Finish": "Anti-Tarnish Rhodium & Micron E-Coat",
+      "Metal Purity": "18K Rose Gold (BIS Certified)",
+      "Plating Finish": "18K Rose Gold Micron Vermeil & Protective E-Coat",
       "Stone Setting": "AAA+ Austrian Solitaire Crystals",
       "Hallmark Verification": "Certified 925 Stamp on Clasp/Band",
       "Warranty Coverage": "6 Months Free Replating Assurance",
@@ -248,22 +248,21 @@ export const PRODUCTS = [
   },
   {
     "id": "charming-flutter-925-sterling-silver-bracelet",
-    "name": "Charming Flutter Bracelet in Pure 925 Sterling Silver",
-    "shortName": "Charming Flutter Bracelet",
+    "name": "Charming Butterfly Rose Gold Link Bracelet",
+    "shortName": "Flutter Rose Gold Bracelet",
     "sku": "AUR-CHARMING",
     "category": "bracelets",
     "categoryName": "Tennis & Charm Bracelets",
-    "price": 4969,
-    "mrp": 6857,
-    "discount": "28% OFF",
+    "price": 3299,
+    "mrp": 4699,
+    "discount": "30% OFF",
     "rating": 4.9,
     "reviewsCount": 73,
     "badge": "Trending",
     "isNew": false,
     "metals": [
-      "Pure 925 Silver",
       "Rose Gold Plated",
-      "18K Yellow Gold"
+      "Pure 925 Silver"
     ],
     "desc": "Exquisitely handcrafted by master artisans at Solystra Atelier. Cast in solid, hypoallergenic 925 sterling silver with high-precision micro-prong setting and finished with protective anti-tarnish rhodium coating to maintain enduring showroom brilliance.",
     "images": [
@@ -271,8 +270,8 @@ export const PRODUCTS = [
       "solystra_assets/products/charming-flutter-925-sterling-silver-bracelet/angle_2.jpg"
     ],
     "specs": {
-      "Metal Purity": "BIS Certified 925 Sterling Silver",
-      "Plating Finish": "Anti-Tarnish Rhodium & Micron E-Coat",
+      "Metal Purity": "18K Rose Gold (BIS Certified)",
+      "Plating Finish": "18K Rose Gold Micron Vermeil & Protective E-Coat",
       "Stone Setting": "AAA+ Austrian Solitaire Crystals",
       "Hallmark Verification": "Certified 925 Stamp on Clasp/Band",
       "Warranty Coverage": "6 Months Free Replating Assurance",
@@ -317,22 +316,21 @@ export const PRODUCTS = [
   },
   {
     "id": "classic-ridge-band",
-    "name": "Classic Ridge Band in Pure 925 Sterling Silver",
-    "shortName": "Classic Ridge Band",
+    "name": "Classic Fluted 18K Gold Vermeil Ridge Band",
+    "shortName": "Classic Ridge 18K Gold Band",
     "sku": "AUR-CLASSICR",
     "category": "rings",
     "categoryName": "Crowned Solitaires & Bands",
-    "price": 2269,
-    "mrp": 3131,
-    "discount": "28% OFF",
+    "price": 2699,
+    "mrp": 3799,
+    "discount": "29% OFF",
     "rating": 4.8,
     "reviewsCount": 87,
-    "badge": "Popular Choice",
+    "badge": "Bestseller",
     "isNew": false,
     "metals": [
-      "Pure 925 Silver",
-      "Rose Gold Plated",
-      "18K Yellow Gold"
+      "18K Yellow Gold",
+      "Pure 925 Silver"
     ],
     "desc": "Exquisitely handcrafted by master artisans at Solystra Atelier. Cast in solid, hypoallergenic 925 sterling silver with high-precision micro-prong setting and finished with protective anti-tarnish rhodium coating to maintain enduring showroom brilliance.",
     "images": [
@@ -340,10 +338,10 @@ export const PRODUCTS = [
       "solystra_assets/products/classic-ridge-band/angle_2.jpg"
     ],
     "specs": {
-      "Metal Purity": "BIS Certified 925 Sterling Silver",
-      "Plating Finish": "Anti-Tarnish Rhodium & Micron E-Coat",
+      "Metal Purity": "18K Gold Vermeil (BIS Certified)",
+      "Plating Finish": "2.5-Micron 18K Gold Vermeil & Protective E-Coat",
       "Stone Setting": "AAA+ Austrian Solitaire Crystals",
-      "Hallmark Verification": "Certified 925 Stamp on Clasp/Band",
+      "Hallmark Verification": "Certified 18K / 925 Stamp on Clasp",
       "Warranty Coverage": "6 Months Free Replating Assurance",
       "Packaging": "Luxury Suede Box with Authenticity Card",
       "Shipping": "Free Insured Express Delivery Across India"
@@ -352,22 +350,21 @@ export const PRODUCTS = [
   },
   {
     "id": "clover-charm-bracelet",
-    "name": "Clover Charm Bracelet in Pure 925 Sterling Silver",
-    "shortName": "Clover Charm Bracelet",
+    "name": "Imperial Clover Charm 18K Gold Vermeil Bracelet",
+    "shortName": "Clover Charm 18K Gold Bracelet",
     "sku": "AUR-CLOVERCH",
-    "category": "necklaces",
-    "categoryName": "Necklaces & Lariats",
-    "price": 3199,
-    "mrp": 4415,
-    "discount": "28% OFF",
+    "category": "bracelets",
+    "categoryName": "Tennis & Charm Bracelets",
+    "price": 3899,
+    "mrp": 5299,
+    "discount": "26% OFF",
     "rating": 4.9,
     "reviewsCount": 29,
     "badge": "Bestseller",
     "isNew": false,
     "metals": [
-      "Pure 925 Silver",
-      "Rose Gold Plated",
-      "18K Yellow Gold"
+      "18K Yellow Gold",
+      "Pure 925 Silver"
     ],
     "desc": "Exquisitely handcrafted by master artisans at Solystra Atelier. Cast in solid, hypoallergenic 925 sterling silver with high-precision micro-prong setting and finished with protective anti-tarnish rhodium coating to maintain enduring showroom brilliance.",
     "images": [
@@ -376,10 +373,10 @@ export const PRODUCTS = [
       "solystra_assets/products/clover-charm-bracelet/angle_3.png"
     ],
     "specs": {
-      "Metal Purity": "BIS Certified 925 Sterling Silver",
-      "Plating Finish": "Anti-Tarnish Rhodium & Micron E-Coat",
+      "Metal Purity": "18K Gold Vermeil (BIS Certified)",
+      "Plating Finish": "2.5-Micron 18K Gold Vermeil & Protective E-Coat",
       "Stone Setting": "AAA+ Austrian Solitaire Crystals",
-      "Hallmark Verification": "Certified 925 Stamp on Clasp/Band",
+      "Hallmark Verification": "Certified 18K / 925 Stamp on Clasp",
       "Warranty Coverage": "6 Months Free Replating Assurance",
       "Packaging": "Luxury Suede Box with Authenticity Card",
       "Shipping": "Free Insured Express Delivery Across India"
@@ -388,22 +385,21 @@ export const PRODUCTS = [
   },
   {
     "id": "clover-lock-charm-925-sterling-silver-bracelet",
-    "name": "Clover Lock Charm Bracelet in Pure 925 Sterling Silver",
-    "shortName": "Clover Lock Charm Bracelet",
+    "name": "Clover Padlock Charm 18K Gold Bracelet",
+    "shortName": "Clover Lock 18K Gold Bracelet",
     "sku": "AUR-CLOVERLO",
-    "category": "necklaces",
-    "categoryName": "Necklaces & Lariats",
-    "price": 3489,
-    "mrp": 4815,
-    "discount": "28% OFF",
+    "category": "bracelets",
+    "categoryName": "Tennis & Charm Bracelets",
+    "price": 3699,
+    "mrp": 4999,
+    "discount": "26% OFF",
     "rating": 4.9,
     "reviewsCount": 36,
-    "badge": "Newly Launched",
-    "isNew": true,
+    "badge": "Trending",
+    "isNew": false,
     "metals": [
-      "Pure 925 Silver",
-      "Rose Gold Plated",
-      "18K Yellow Gold"
+      "18K Yellow Gold",
+      "Pure 925 Silver"
     ],
     "desc": "Exquisitely handcrafted by master artisans at Solystra Atelier. Cast in solid, hypoallergenic 925 sterling silver with high-precision micro-prong setting and finished with protective anti-tarnish rhodium coating to maintain enduring showroom brilliance.",
     "images": [
@@ -412,10 +408,10 @@ export const PRODUCTS = [
       "solystra_assets/products/clover-lock-charm-925-sterling-silver-bracelet/angle_3.jpg"
     ],
     "specs": {
-      "Metal Purity": "BIS Certified 925 Sterling Silver",
-      "Plating Finish": "Anti-Tarnish Rhodium & Micron E-Coat",
+      "Metal Purity": "18K Gold Vermeil (BIS Certified)",
+      "Plating Finish": "2.5-Micron 18K Gold Vermeil & Protective E-Coat",
       "Stone Setting": "AAA+ Austrian Solitaire Crystals",
-      "Hallmark Verification": "Certified 925 Stamp on Clasp/Band",
+      "Hallmark Verification": "Certified 18K / 925 Stamp on Clasp",
       "Warranty Coverage": "6 Months Free Replating Assurance",
       "Packaging": "Luxury Suede Box with Authenticity Card",
       "Shipping": "Free Insured Express Delivery Across India"
@@ -495,22 +491,21 @@ export const PRODUCTS = [
   },
   {
     "id": "crystal-heart-link-bracelet-925-silver",
-    "name": "Crystal Heart Link Bracelet in Pure 925 Sterling Silver",
-    "shortName": "Crystal Heart Link Bracelet",
+    "name": "Crystal Heart Link Rose Gold Bracelet",
+    "shortName": "Crystal Heart Rose Gold Bracelet",
     "sku": "AUR-CRYSTALH",
     "category": "bracelets",
     "categoryName": "Tennis & Charm Bracelets",
-    "price": 4739,
-    "mrp": 6540,
-    "discount": "28% OFF",
+    "price": 3499,
+    "mrp": 4899,
+    "discount": "29% OFF",
     "rating": 4.9,
     "reviewsCount": 57,
-    "badge": "Popular Choice",
+    "badge": "Bestseller",
     "isNew": false,
     "metals": [
-      "Pure 925 Silver",
       "Rose Gold Plated",
-      "18K Yellow Gold"
+      "Pure 925 Silver"
     ],
     "desc": "Exquisitely handcrafted by master artisans at Solystra Atelier. Cast in solid, hypoallergenic 925 sterling silver with high-precision micro-prong setting and finished with protective anti-tarnish rhodium coating to maintain enduring showroom brilliance.",
     "images": [
@@ -519,8 +514,8 @@ export const PRODUCTS = [
       "solystra_assets/products/crystal-heart-link-bracelet-925-silver/angle_3.jpg"
     ],
     "specs": {
-      "Metal Purity": "BIS Certified 925 Sterling Silver",
-      "Plating Finish": "Anti-Tarnish Rhodium & Micron E-Coat",
+      "Metal Purity": "18K Rose Gold (BIS Certified)",
+      "Plating Finish": "18K Rose Gold Micron Vermeil & Protective E-Coat",
       "Stone Setting": "AAA+ Austrian Solitaire Crystals",
       "Hallmark Verification": "Certified 925 Stamp on Clasp/Band",
       "Warranty Coverage": "6 Months Free Replating Assurance",
@@ -671,8 +666,8 @@ export const PRODUCTS = [
   },
   {
     "id": "flora-band-hoops",
-    "name": "Blossom Petal Flora Band Hoops",
-    "shortName": "Flora Band Hoops",
+    "name": "Blossom Petal Rose Gold Flora Band Hoops",
+    "shortName": "Flora Band Rose Gold Hoops",
     "sku": "AUR-FLORABAN",
     "category": "earrings",
     "categoryName": "Fine Earrings & Studs",
@@ -693,8 +688,8 @@ export const PRODUCTS = [
       "solystra_assets/products/flora-band-hoops/angle_2.png"
     ],
     "specs": {
-      "Metal Purity": "BIS Certified 925 Sterling Silver",
-      "Plating Finish": "Anti-Tarnish Rhodium & Micron E-Coat",
+      "Metal Purity": "18K Rose Gold (BIS Certified)",
+      "Plating Finish": "18K Rose Gold Micron Vermeil & Protective E-Coat",
       "Stone Setting": "AAA+ Austrian Solitaire Crystals",
       "Hallmark Verification": "Certified 925 Stamp on Clasp/Band",
       "Warranty Coverage": "6 Months Free Replating Assurance",
@@ -741,22 +736,21 @@ export const PRODUCTS = [
   },
   {
     "id": "fusion-heart-ring",
-    "name": "Fusion Heart Ring in Pure 925 Sterling Silver",
-    "shortName": "Fusion Heart Ring",
+    "name": "Fusion Heart Rose Gold Solitaire Ring",
+    "shortName": "Fusion Heart Rose Gold Ring",
     "sku": "AUR-FUSIONHE",
     "category": "rings",
     "categoryName": "Crowned Solitaires & Bands",
-    "price": 3229,
-    "mrp": 4456,
-    "discount": "28% OFF",
+    "price": 2699,
+    "mrp": 3799,
+    "discount": "29% OFF",
     "rating": 4.8,
     "reviewsCount": 41,
     "badge": "Newly Launched",
     "isNew": true,
     "metals": [
-      "Pure 925 Silver",
       "Rose Gold Plated",
-      "18K Yellow Gold"
+      "Pure 925 Silver"
     ],
     "desc": "Exquisitely handcrafted by master artisans at Solystra Atelier. Cast in solid, hypoallergenic 925 sterling silver with high-precision micro-prong setting and finished with protective anti-tarnish rhodium coating to maintain enduring showroom brilliance.",
     "images": [
@@ -765,8 +759,8 @@ export const PRODUCTS = [
       "assets/bento-craftsmanship-macro.jpg"
     ],
     "specs": {
-      "Metal Purity": "BIS Certified 925 Sterling Silver",
-      "Plating Finish": "Anti-Tarnish Rhodium & Micron E-Coat",
+      "Metal Purity": "18K Rose Gold (BIS Certified)",
+      "Plating Finish": "18K Rose Gold Micron Vermeil & Protective E-Coat",
       "Stone Setting": "AAA+ Austrian Solitaire Crystals",
       "Hallmark Verification": "Certified 925 Stamp on Clasp/Band",
       "Warranty Coverage": "6 Months Free Replating Assurance",
@@ -777,22 +771,21 @@ export const PRODUCTS = [
   },
   {
     "id": "geometric-radiance-hexagon-bracelet",
-    "name": "Geometric Radiance Hexagon Bracelet in Pure 925 Sterling Silver",
-    "shortName": "Geometric Radiance Hexagon Bracelet",
+    "name": "Hexagon Radiance 18K Gold Link Bracelet",
+    "shortName": "Hexagon Radiance 18K Gold Bracelet",
     "sku": "AUR-GEOMETRI",
     "category": "bracelets",
     "categoryName": "Tennis & Charm Bracelets",
-    "price": 4819,
-    "mrp": 6650,
-    "discount": "28% OFF",
+    "price": 4199,
+    "mrp": 5899,
+    "discount": "29% OFF",
     "rating": 4.9,
     "reviewsCount": 48,
-    "badge": "Trending",
-    "isNew": false,
+    "badge": "Newly Launched",
+    "isNew": true,
     "metals": [
-      "Pure 925 Silver",
-      "Rose Gold Plated",
-      "18K Yellow Gold"
+      "18K Yellow Gold",
+      "Pure 925 Silver"
     ],
     "desc": "Exquisitely handcrafted by master artisans at Solystra Atelier. Cast in solid, hypoallergenic 925 sterling silver with high-precision micro-prong setting and finished with protective anti-tarnish rhodium coating to maintain enduring showroom brilliance.",
     "images": [
@@ -801,10 +794,10 @@ export const PRODUCTS = [
       "solystra_assets/products/geometric-radiance-hexagon-bracelet/angle_3.png"
     ],
     "specs": {
-      "Metal Purity": "BIS Certified 925 Sterling Silver",
-      "Plating Finish": "Anti-Tarnish Rhodium & Micron E-Coat",
+      "Metal Purity": "18K Gold Vermeil (BIS Certified)",
+      "Plating Finish": "2.5-Micron 18K Gold Vermeil & Protective E-Coat",
       "Stone Setting": "AAA+ Austrian Solitaire Crystals",
-      "Hallmark Verification": "Certified 925 Stamp on Clasp/Band",
+      "Hallmark Verification": "Certified 18K / 925 Stamp on Clasp",
       "Warranty Coverage": "6 Months Free Replating Assurance",
       "Packaging": "Luxury Suede Box with Authenticity Card",
       "Shipping": "Free Insured Express Delivery Across India"
@@ -813,8 +806,8 @@ export const PRODUCTS = [
   },
   {
     "id": "golden-meadow-necklace-set-925-sterling-silver",
-    "name": "Golden Meadow Tennis Choker & Earrings Set",
-    "shortName": "Golden Meadow Necklace Set",
+    "name": "Golden Meadow Tennis Choker & Earrings Set in 18K Gold",
+    "shortName": "Golden Meadow 18K Gold Set",
     "sku": "AUR-GOLDENME",
     "category": "necklaces",
     "categoryName": "Necklaces & Lariats",
@@ -835,10 +828,10 @@ export const PRODUCTS = [
       "solystra_assets/products/golden-meadow-necklace-set-925-sterling-silver/angle_2.png"
     ],
     "specs": {
-      "Metal Purity": "BIS Certified 925 Sterling Silver",
-      "Plating Finish": "Anti-Tarnish Rhodium & Micron E-Coat",
+      "Metal Purity": "18K Gold Vermeil (BIS Certified)",
+      "Plating Finish": "2.5-Micron 18K Gold Vermeil & Protective E-Coat",
       "Stone Setting": "AAA+ Austrian Solitaire Crystals",
-      "Hallmark Verification": "Certified 925 Stamp on Clasp/Band",
+      "Hallmark Verification": "Certified 18K / 925 Stamp on Clasp",
       "Warranty Coverage": "6 Months Free Replating Assurance",
       "Packaging": "Luxury Suede Box with Authenticity Card",
       "Shipping": "Free Insured Express Delivery Across India"
@@ -847,8 +840,8 @@ export const PRODUCTS = [
   },
   {
     "id": "greek-pattern-hoops",
-    "name": "Greek Geometric Pattern Imperial Hoops",
-    "shortName": "Greek Pattern Hoops",
+    "name": "Greek Geometric Pattern 18K Gold Imperial Hoops",
+    "shortName": "Greek Pattern 18K Gold Hoops",
     "sku": "AUR-GREEKPAT",
     "category": "earrings",
     "categoryName": "Fine Earrings & Studs",
@@ -860,8 +853,8 @@ export const PRODUCTS = [
     "badge": "Bestseller",
     "isNew": false,
     "metals": [
-      "Pure 925 Silver",
-      "18K Yellow Gold"
+      "18K Yellow Gold",
+      "Pure 925 Silver"
     ],
     "desc": "Exquisitely handcrafted by master artisans at Solystra Atelier. Cast in solid, hypoallergenic 925 sterling silver with high-precision micro-prong setting and finished with protective anti-tarnish rhodium coating to maintain enduring showroom brilliance.",
     "images": [
@@ -870,10 +863,10 @@ export const PRODUCTS = [
       "solystra_assets/products/greek-pattern-hoops/angle_3.jpg"
     ],
     "specs": {
-      "Metal Purity": "BIS Certified 925 Sterling Silver",
-      "Plating Finish": "Anti-Tarnish Rhodium & Micron E-Coat",
+      "Metal Purity": "18K Gold Vermeil (BIS Certified)",
+      "Plating Finish": "2.5-Micron 18K Gold Vermeil & Protective E-Coat",
       "Stone Setting": "AAA+ Austrian Solitaire Crystals",
-      "Hallmark Verification": "Certified 925 Stamp on Clasp/Band",
+      "Hallmark Verification": "Certified 18K / 925 Stamp on Clasp",
       "Warranty Coverage": "6 Months Free Replating Assurance",
       "Packaging": "Luxury Suede Box with Authenticity Card",
       "Shipping": "Free Insured Express Delivery Across India"
@@ -988,22 +981,21 @@ export const PRODUCTS = [
   },
   {
     "id": "intertwined-oval-spark-925-silver-bracelet",
-    "name": "Intertwined Oval Spark Bracelet in Pure 925 Sterling Silver",
-    "shortName": "Intertwined Oval Spark Bracelet",
+    "name": "Intertwined Oval Spark 18K Gold Bracelet",
+    "shortName": "Intertwined Oval 18K Gold Bracelet",
     "sku": "AUR-INTERTWI",
     "category": "bracelets",
     "categoryName": "Tennis & Charm Bracelets",
-    "price": 4279,
-    "mrp": 5905,
-    "discount": "28% OFF",
+    "price": 3999,
+    "mrp": 5499,
+    "discount": "27% OFF",
     "rating": 4.7,
     "reviewsCount": 25,
-    "badge": "Atelier Pick",
+    "badge": "Atelier Gala",
     "isNew": false,
     "metals": [
-      "Pure 925 Silver",
-      "Rose Gold Plated",
-      "18K Yellow Gold"
+      "18K Yellow Gold",
+      "Pure 925 Silver"
     ],
     "desc": "Exquisitely handcrafted by master artisans at Solystra Atelier. Cast in solid, hypoallergenic 925 sterling silver with high-precision micro-prong setting and finished with protective anti-tarnish rhodium coating to maintain enduring showroom brilliance.",
     "images": [
@@ -1011,10 +1003,10 @@ export const PRODUCTS = [
       "solystra_assets/products/intertwined-oval-spark-925-silver-bracelet/angle_2.jpg"
     ],
     "specs": {
-      "Metal Purity": "BIS Certified 925 Sterling Silver",
-      "Plating Finish": "Anti-Tarnish Rhodium & Micron E-Coat",
+      "Metal Purity": "18K Gold Vermeil (BIS Certified)",
+      "Plating Finish": "2.5-Micron 18K Gold Vermeil & Protective E-Coat",
       "Stone Setting": "AAA+ Austrian Solitaire Crystals",
-      "Hallmark Verification": "Certified 925 Stamp on Clasp/Band",
+      "Hallmark Verification": "Certified 18K / 925 Stamp on Clasp",
       "Warranty Coverage": "6 Months Free Replating Assurance",
       "Packaging": "Luxury Suede Box with Authenticity Card",
       "Shipping": "Free Insured Express Delivery Across India"
@@ -1023,22 +1015,21 @@ export const PRODUCTS = [
   },
   {
     "id": "key-to-my-heart",
-    "name": "Key To My Heart in Pure 925 Sterling Silver",
-    "shortName": "Key To My Heart",
+    "name": "Key To My Heart 18K Gold Solitaire Necklace",
+    "shortName": "Key To My Heart 18K Gold Necklace",
     "sku": "AUR-KEYTOMYH",
     "category": "necklaces",
     "categoryName": "Necklaces & Lariats",
-    "price": 4309,
-    "mrp": 5946,
-    "discount": "28% OFF",
+    "price": 2999,
+    "mrp": 4299,
+    "discount": "30% OFF",
     "rating": 4.8,
     "reviewsCount": 32,
-    "badge": "Popular Choice",
+    "badge": "Bestseller",
     "isNew": false,
     "metals": [
-      "Pure 925 Silver",
-      "Rose Gold Plated",
-      "18K Yellow Gold"
+      "18K Yellow Gold",
+      "Pure 925 Silver"
     ],
     "desc": "Exquisitely handcrafted by master artisans at Solystra Atelier. Cast in solid, hypoallergenic 925 sterling silver with high-precision micro-prong setting and finished with protective anti-tarnish rhodium coating to maintain enduring showroom brilliance.",
     "images": [
@@ -1046,10 +1037,10 @@ export const PRODUCTS = [
       "solystra_assets/products/key-to-my-heart/angle_2.png"
     ],
     "specs": {
-      "Metal Purity": "BIS Certified 925 Sterling Silver",
-      "Plating Finish": "Anti-Tarnish Rhodium & Micron E-Coat",
+      "Metal Purity": "18K Gold Vermeil (BIS Certified)",
+      "Plating Finish": "2.5-Micron 18K Gold Vermeil & Protective E-Coat",
       "Stone Setting": "AAA+ Austrian Solitaire Crystals",
-      "Hallmark Verification": "Certified 925 Stamp on Clasp/Band",
+      "Hallmark Verification": "Certified 18K / 925 Stamp on Clasp",
       "Warranty Coverage": "6 Months Free Replating Assurance",
       "Packaging": "Luxury Suede Box with Authenticity Card",
       "Shipping": "Free Insured Express Delivery Across India"
@@ -1165,22 +1156,21 @@ export const PRODUCTS = [
   },
   {
     "id": "linked-hearts-chain-bracelet",
-    "name": "Linked Hearts Chain Bracelet in Pure 925 Sterling Silver",
-    "shortName": "Linked Hearts Chain Bracelet",
+    "name": "Linked Hearts 18K Gold Fine Chain Bracelet",
+    "shortName": "Linked Hearts 18K Gold Bracelet",
     "sku": "AUR-LINKEDHE",
-    "category": "necklaces",
-    "categoryName": "Necklaces & Lariats",
-    "price": 3269,
-    "mrp": 4511,
-    "discount": "28% OFF",
+    "category": "bracelets",
+    "categoryName": "Tennis & Charm Bracelets",
+    "price": 3499,
+    "mrp": 4899,
+    "discount": "29% OFF",
     "rating": 4.8,
     "reviewsCount": 60,
-    "badge": "Atelier Pick",
+    "badge": "Trending",
     "isNew": false,
     "metals": [
-      "Pure 925 Silver",
-      "Rose Gold Plated",
-      "18K Yellow Gold"
+      "18K Yellow Gold",
+      "Pure 925 Silver"
     ],
     "desc": "Exquisitely handcrafted by master artisans at Solystra Atelier. Cast in solid, hypoallergenic 925 sterling silver with high-precision micro-prong setting and finished with protective anti-tarnish rhodium coating to maintain enduring showroom brilliance.",
     "images": [
@@ -1188,10 +1178,10 @@ export const PRODUCTS = [
       "solystra_assets/products/linked-hearts-chain-bracelet/angle_2.jpg"
     ],
     "specs": {
-      "Metal Purity": "BIS Certified 925 Sterling Silver",
-      "Plating Finish": "Anti-Tarnish Rhodium & Micron E-Coat",
+      "Metal Purity": "18K Gold Vermeil (BIS Certified)",
+      "Plating Finish": "2.5-Micron 18K Gold Vermeil & Protective E-Coat",
       "Stone Setting": "AAA+ Austrian Solitaire Crystals",
-      "Hallmark Verification": "Certified 925 Stamp on Clasp/Band",
+      "Hallmark Verification": "Certified 18K / 925 Stamp on Clasp",
       "Warranty Coverage": "6 Months Free Replating Assurance",
       "Packaging": "Luxury Suede Box with Authenticity Card",
       "Shipping": "Free Insured Express Delivery Across India"
@@ -1235,22 +1225,21 @@ export const PRODUCTS = [
   },
   {
     "id": "meander-hoops",
-    "name": "Meander Hoops in Pure 925 Sterling Silver",
-    "shortName": "Meander Hoops",
+    "name": "Meander Motif 18K Gold Atelier Huggies",
+    "shortName": "Meander 18K Gold Hoops",
     "sku": "AUR-MEANDERH",
     "category": "earrings",
     "categoryName": "Fine Earrings & Studs",
-    "price": 2849,
-    "mrp": 3932,
+    "price": 2899,
+    "mrp": 3999,
     "discount": "28% OFF",
     "rating": 4.9,
     "reviewsCount": 74,
     "badge": "Bestseller",
     "isNew": false,
     "metals": [
-      "Pure 925 Silver",
-      "Rose Gold Plated",
-      "18K Yellow Gold"
+      "18K Yellow Gold",
+      "Pure 925 Silver"
     ],
     "desc": "Exquisitely handcrafted by master artisans at Solystra Atelier. Cast in solid, hypoallergenic 925 sterling silver with high-precision micro-prong setting and finished with protective anti-tarnish rhodium coating to maintain enduring showroom brilliance.",
     "images": [
@@ -1258,10 +1247,10 @@ export const PRODUCTS = [
       "solystra_assets/products/meander-hoops/angle_2.png"
     ],
     "specs": {
-      "Metal Purity": "BIS Certified 925 Sterling Silver",
-      "Plating Finish": "Anti-Tarnish Rhodium & Micron E-Coat",
+      "Metal Purity": "18K Gold Vermeil (BIS Certified)",
+      "Plating Finish": "2.5-Micron 18K Gold Vermeil & Protective E-Coat",
       "Stone Setting": "AAA+ Austrian Solitaire Crystals",
-      "Hallmark Verification": "Certified 925 Stamp on Clasp/Band",
+      "Hallmark Verification": "Certified 18K / 925 Stamp on Clasp",
       "Warranty Coverage": "6 Months Free Replating Assurance",
       "Packaging": "Luxury Suede Box with Authenticity Card",
       "Shipping": "Free Insured Express Delivery Across India"
@@ -1270,22 +1259,21 @@ export const PRODUCTS = [
   },
   {
     "id": "mini-heart-accent-tennis-bracelet-925-silver-bracelet",
-    "name": "Mini Heart Accent Tennis Bracelet Bracelet in Pure 925 Sterling Silver",
-    "shortName": "Mini Heart Accent Tennis Bracelet Bracelet",
+    "name": "Mini Heart Accent Rose Gold Tennis Bracelet",
+    "shortName": "Mini Heart Rose Tennis Bracelet",
     "sku": "AUR-MINIHEAR",
     "category": "bracelets",
     "categoryName": "Tennis & Charm Bracelets",
-    "price": 4359,
-    "mrp": 6015,
+    "price": 3599,
+    "mrp": 4999,
     "discount": "28% OFF",
     "rating": 4.7,
     "reviewsCount": 81,
-    "badge": "Newly Launched",
-    "isNew": true,
+    "badge": "Atelier Gala",
+    "isNew": false,
     "metals": [
-      "Pure 925 Silver",
       "Rose Gold Plated",
-      "18K Yellow Gold"
+      "Pure 925 Silver"
     ],
     "desc": "Exquisitely handcrafted by master artisans at Solystra Atelier. Cast in solid, hypoallergenic 925 sterling silver with high-precision micro-prong setting and finished with protective anti-tarnish rhodium coating to maintain enduring showroom brilliance.",
     "images": [
@@ -1293,8 +1281,8 @@ export const PRODUCTS = [
       "solystra_assets/products/mini-heart-accent-tennis-bracelet-925-silver-bracelet/angle_2.jpg"
     ],
     "specs": {
-      "Metal Purity": "BIS Certified 925 Sterling Silver",
-      "Plating Finish": "Anti-Tarnish Rhodium & Micron E-Coat",
+      "Metal Purity": "18K Rose Gold (BIS Certified)",
+      "Plating Finish": "18K Rose Gold Micron Vermeil & Protective E-Coat",
       "Stone Setting": "AAA+ Austrian Solitaire Crystals",
       "Hallmark Verification": "Certified 925 Stamp on Clasp/Band",
       "Warranty Coverage": "6 Months Free Replating Assurance",
@@ -1448,22 +1436,21 @@ export const PRODUCTS = [
   },
   {
     "id": "pastel-clover-chain",
-    "name": "Pastel Clover Chain in Pure 925 Sterling Silver",
-    "shortName": "Pastel Clover Chain",
+    "name": "Pastel Enamel Clover Rose Gold Dainty Chain",
+    "shortName": "Pastel Clover Rose Gold Chain",
     "sku": "AUR-PASTELCL",
     "category": "necklaces",
     "categoryName": "Necklaces & Lariats",
-    "price": 3389,
-    "mrp": 4677,
-    "discount": "28% OFF",
+    "price": 2899,
+    "mrp": 4199,
+    "discount": "31% OFF",
     "rating": 4.8,
     "reviewsCount": 51,
-    "badge": "Newly Launched",
-    "isNew": true,
+    "badge": "Bestseller",
+    "isNew": false,
     "metals": [
-      "Pure 925 Silver",
       "Rose Gold Plated",
-      "18K Yellow Gold"
+      "Pure 925 Silver"
     ],
     "desc": "Exquisitely handcrafted by master artisans at Solystra Atelier. Cast in solid, hypoallergenic 925 sterling silver with high-precision micro-prong setting and finished with protective anti-tarnish rhodium coating to maintain enduring showroom brilliance.",
     "images": [
@@ -1471,8 +1458,8 @@ export const PRODUCTS = [
       "solystra_assets/products/pastel-clover-chain/angle_2.png"
     ],
     "specs": {
-      "Metal Purity": "BIS Certified 925 Sterling Silver",
-      "Plating Finish": "Anti-Tarnish Rhodium & Micron E-Coat",
+      "Metal Purity": "18K Rose Gold (BIS Certified)",
+      "Plating Finish": "18K Rose Gold Micron Vermeil & Protective E-Coat",
       "Stone Setting": "AAA+ Austrian Solitaire Crystals",
       "Hallmark Verification": "Certified 925 Stamp on Clasp/Band",
       "Warranty Coverage": "6 Months Free Replating Assurance",
@@ -1660,22 +1647,21 @@ export const PRODUCTS = [
   },
   {
     "id": "rose-round-spark-tennis-bracelet-925-sterling-silver",
-    "name": "Rose Round Spark Tennis Bracelet in Pure 925 Sterling Silver",
+    "name": "Rose Round Spark Tennis Bracelet in 18K Rose Gold",
     "shortName": "Rose Round Spark Tennis Bracelet",
     "sku": "AUR-ROSEROUN",
     "category": "bracelets",
     "categoryName": "Tennis & Charm Bracelets",
-    "price": 2969,
-    "mrp": 4097,
-    "discount": "28% OFF",
+    "price": 3899,
+    "mrp": 5299,
+    "discount": "26% OFF",
     "rating": 4.9,
     "reviewsCount": 28,
     "badge": "Trending",
     "isNew": false,
     "metals": [
-      "Pure 925 Silver",
       "Rose Gold Plated",
-      "18K Yellow Gold"
+      "Pure 925 Silver"
     ],
     "desc": "Exquisitely handcrafted by master artisans at Solystra Atelier. Cast in solid, hypoallergenic 925 sterling silver with high-precision micro-prong setting and finished with protective anti-tarnish rhodium coating to maintain enduring showroom brilliance.",
     "images": [
@@ -1684,8 +1670,8 @@ export const PRODUCTS = [
       "solystra_assets/products/rose-round-spark-tennis-bracelet-925-sterling-silver/angle_3.jpg"
     ],
     "specs": {
-      "Metal Purity": "BIS Certified 925 Sterling Silver",
-      "Plating Finish": "Anti-Tarnish Rhodium & Micron E-Coat",
+      "Metal Purity": "18K Rose Gold (BIS Certified)",
+      "Plating Finish": "18K Rose Gold Micron Vermeil & Protective E-Coat",
       "Stone Setting": "AAA+ Austrian Solitaire Crystals",
       "Hallmark Verification": "Certified 925 Stamp on Clasp/Band",
       "Warranty Coverage": "6 Months Free Replating Assurance",
@@ -1803,22 +1789,21 @@ export const PRODUCTS = [
   },
   {
     "id": "single-chain-pearl-bracelet",
-    "name": "Single Chain Pearl Bracelet in Pure 925 Sterling Silver",
-    "shortName": "Single Chain Pearl Bracelet",
+    "name": "Baroque Pearl 18K Gold Dainty Chain Bracelet",
+    "shortName": "Single Pearl 18K Gold Bracelet",
     "sku": "AUR-SINGLECH",
-    "category": "necklaces",
-    "categoryName": "Necklaces & Lariats",
-    "price": 4089,
-    "mrp": 5643,
-    "discount": "28% OFF",
+    "category": "bracelets",
+    "categoryName": "Tennis & Charm Bracelets",
+    "price": 3199,
+    "mrp": 4499,
+    "discount": "29% OFF",
     "rating": 4.9,
     "reviewsCount": 56,
     "badge": "Newly Launched",
     "isNew": true,
     "metals": [
-      "Pure 925 Silver",
-      "Rose Gold Plated",
-      "18K Yellow Gold"
+      "18K Yellow Gold",
+      "Pure 925 Silver"
     ],
     "desc": "Exquisitely handcrafted by master artisans at Solystra Atelier. Cast in solid, hypoallergenic 925 sterling silver with high-precision micro-prong setting and finished with protective anti-tarnish rhodium coating to maintain enduring showroom brilliance.",
     "images": [
@@ -1826,10 +1811,10 @@ export const PRODUCTS = [
       "solystra_assets/products/single-chain-pearl-bracelet/angle_2.png"
     ],
     "specs": {
-      "Metal Purity": "BIS Certified 925 Sterling Silver",
-      "Plating Finish": "Anti-Tarnish Rhodium & Micron E-Coat",
+      "Metal Purity": "18K Gold Vermeil (BIS Certified)",
+      "Plating Finish": "2.5-Micron 18K Gold Vermeil & Protective E-Coat",
       "Stone Setting": "AAA+ Austrian Solitaire Crystals",
-      "Hallmark Verification": "Certified 925 Stamp on Clasp/Band",
+      "Hallmark Verification": "Certified 18K / 925 Stamp on Clasp",
       "Warranty Coverage": "6 Months Free Replating Assurance",
       "Packaging": "Luxury Suede Box with Authenticity Card",
       "Shipping": "Free Insured Express Delivery Across India"
@@ -2014,22 +1999,22 @@ export const PRODUCTS = [
   },
   {
     "id": "tri-color-link-bracelet",
-    "name": "Tri Color Link Bracelet in Pure 925 Sterling Silver",
-    "shortName": "Tri Color Link Bracelet",
+    "name": "Atelier Tri-Color 18K Gold, Rose & Silver Bracelet",
+    "shortName": "Tri-Color 18K Gold Link Bracelet",
     "sku": "AUR-TRICOLOR",
     "category": "bracelets",
     "categoryName": "Tennis & Charm Bracelets",
-    "price": 3669,
-    "mrp": 5063,
-    "discount": "28% OFF",
+    "price": 3999,
+    "mrp": 5499,
+    "discount": "27% OFF",
     "rating": 4.8,
     "reviewsCount": 33,
-    "badge": "Trending",
+    "badge": "Atelier Pick",
     "isNew": false,
     "metals": [
-      "Pure 925 Silver",
+      "18K Yellow Gold",
       "Rose Gold Plated",
-      "18K Yellow Gold"
+      "Pure 925 Silver"
     ],
     "desc": "Exquisitely handcrafted by master artisans at Solystra Atelier. Cast in solid, hypoallergenic 925 sterling silver with high-precision micro-prong setting and finished with protective anti-tarnish rhodium coating to maintain enduring showroom brilliance.",
     "images": [
@@ -2038,10 +2023,10 @@ export const PRODUCTS = [
       "solystra_assets/products/tri-color-link-bracelet/angle_3.jpg"
     ],
     "specs": {
-      "Metal Purity": "BIS Certified 925 Sterling Silver",
-      "Plating Finish": "Anti-Tarnish Rhodium & Micron E-Coat",
+      "Metal Purity": "18K Gold Vermeil (BIS Certified)",
+      "Plating Finish": "2.5-Micron 18K Gold Vermeil & Protective E-Coat",
       "Stone Setting": "AAA+ Austrian Solitaire Crystals",
-      "Hallmark Verification": "Certified 925 Stamp on Clasp/Band",
+      "Hallmark Verification": "Certified 18K / 925 Stamp on Clasp",
       "Warranty Coverage": "6 Months Free Replating Assurance",
       "Packaging": "Luxury Suede Box with Authenticity Card",
       "Shipping": "Free Insured Express Delivery Across India"
@@ -2372,14 +2357,14 @@ export const CATEGORIES = [
     "name": "Necklaces & Lariats",
     "tagline": "Timeless cascading pendants, solitaires & bridal lariats in 925 silver",
     "image": "solystra_assets/categories/cat_necklaces.png",
-    "count": 23
+    "count": 19
   },
   {
     "id": "bracelets",
     "name": "Tennis & Charm Bracelets",
     "tagline": "Gleaming wristwear adorned with Austrian crystals & fine enamel charms",
     "image": "solystra_assets/categories/cat_bracelets.png",
-    "count": 21
+    "count": 25
   },
   {
     "id": "earrings",
