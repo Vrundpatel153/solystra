@@ -261,7 +261,7 @@ const STYLING_COMBOS = [
         price: 2799,
         mrp: 3999,
         image: '/solystra_assets/categories/cat_necklaces.png',
-        hotspot: { x: 32.3, y: 76.2, pcX: 45.9, pcY: 83.9, label: 'Solitaire Pendant Necklace' }
+        hotspot: { x: 32.3, y: 76.2, pcX: 46.1, pcY: 78.2, label: 'Solitaire Pendant Necklace' }
       },
       {
         id: 'c2-item-2',
@@ -272,7 +272,7 @@ const STYLING_COMBOS = [
         price: 2299,
         mrp: 3299,
         image: '/solystra_assets/categories/cat_earrings.png',
-        hotspot: { x: 42.7, y: 40.6, pcX: 53.1, pcY: 44.6, label: 'Solitaire Drop Earrings' }
+        hotspot: { x: 42.7, y: 40.6, pcX: 53.6, pcY: 41.8, label: 'Solitaire Drop Earrings' }
       }
     ],
     bundlePrice: 5098,
@@ -870,17 +870,17 @@ export const HomePage = ({ activeCategory, onSelectCategory }) => {
     return list;
   }, [PRODUCTS, selectedCategory, selectedMaxPrice]);
 
-  // Multi-combo state with auto-slide timer
+  // Multi-combo state with auto-slide timer (cycles through all 3 combos every 4.8s)
   const [currentComboIndex, setCurrentComboIndex] = useState(0);
-  const [isComboPaused, setIsComboPaused] = useState(false);
+  const [isComboHovered, setIsComboHovered] = useState(false);
 
   useEffect(() => {
-    if (isComboPaused) return;
+    if (activeHotspotId !== null || isComboHovered) return;
     const timer = setInterval(() => {
       setCurrentComboIndex((prev) => (prev + 1) % STYLING_COMBOS.length);
-    }, 6000);
+    }, 4800);
     return () => clearInterval(timer);
-  }, [isComboPaused, currentComboIndex]);
+  }, [activeHotspotId, isComboHovered]);
 
   const activeCombo = STYLING_COMBOS[currentComboIndex];
 
@@ -1644,11 +1644,7 @@ export const HomePage = ({ activeCategory, onSelectCategory }) => {
       {/* ========================================================
           SHOP THE COMPLETE LOOK: COMPACT MULTI-COMBO SLIDER
           ======================================================== */}
-      <section
-        className="py-4 sm:py-6 bg-[#FAF8F5] border-b border-[#EAE4DC]"
-        onMouseEnter={() => setIsComboPaused(true)}
-        onMouseLeave={() => setIsComboPaused(false)}
-      >
+      <section className="py-4 sm:py-6 bg-[#FAF8F5] border-b border-[#EAE4DC]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
           {/* Section Header with Carousel Navigation & Dot Indicators */}
@@ -1673,7 +1669,10 @@ export const HomePage = ({ activeCategory, onSelectCategory }) => {
                 {STYLING_COMBOS.map((_, idx) => (
                   <button
                     key={idx}
-                    onClick={() => setCurrentComboIndex(idx)}
+                    onClick={() => {
+                      setCurrentComboIndex(idx);
+                      setActiveHotspotId(null);
+                    }}
                     className={`h-1.5 rounded-full transition-all duration-300 cursor-pointer ${
                       idx === currentComboIndex ? 'w-5 bg-[#7A152E]' : 'w-1.5 bg-stone-300 hover:bg-stone-400'
                     }`}
@@ -1688,12 +1687,17 @@ export const HomePage = ({ activeCategory, onSelectCategory }) => {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-stretch">
             
             {/* Left Column: Proportional Editorial Combo Photo with Delicate Glowing Hotspots */}
-            <div className="lg:col-span-6 h-[380px] sm:h-[420px] lg:h-[430px] relative rounded-2xl overflow-hidden shadow-xs border border-[#EAE4DC] group bg-stone-900 select-none">
+            <div
+              onMouseEnter={() => setIsComboHovered(true)}
+              onMouseLeave={() => setIsComboHovered(false)}
+              className="lg:col-span-6 h-[380px] sm:h-[420px] lg:h-[430px] relative rounded-2xl overflow-hidden shadow-xs border border-[#EAE4DC] group bg-stone-900 select-none"
+            >
               <img
+                key={activeCombo.id}
                 src={activeCombo.editorialImg}
                 alt={activeCombo.name}
                 draggable="false"
-                className={`w-full h-full object-cover ${activeCombo.imagePosition || 'object-[72%_center]'} group-hover:scale-102 transition-transform duration-700 block pointer-events-none`}
+                className={`w-full h-full object-cover ${activeCombo.imagePosition || 'object-[72%_center]'} group-hover:scale-102 transition-transform duration-700 block pointer-events-none animate-fadeIn`}
               />
               
               {/* Subtle ambient gradient strictly in lower 20% so jewellery and model are clear and radiant */}
@@ -1801,7 +1805,12 @@ export const HomePage = ({ activeCategory, onSelectCategory }) => {
             </div>
 
             {/* Right Column: Matched Pieces & Bundle Pricing (Identical Height & Layout) */}
-            <div className="lg:col-span-6 h-[380px] sm:h-[420px] lg:h-[430px] flex flex-col justify-between bg-white rounded-2xl p-5 sm:p-6 border border-[#EAE4DC] shadow-xs">
+            <div
+              key={`details-${activeCombo.id}`}
+              onMouseEnter={() => setIsComboHovered(true)}
+              onMouseLeave={() => setIsComboHovered(false)}
+              className="lg:col-span-6 h-[380px] sm:h-[420px] lg:h-[430px] flex flex-col justify-between bg-white rounded-2xl p-5 sm:p-6 border border-[#EAE4DC] shadow-xs animate-fadeIn"
+            >
               
               <div>
                 <div className="flex items-start justify-between pb-3 border-b border-[#EAE4DC] gap-2">
