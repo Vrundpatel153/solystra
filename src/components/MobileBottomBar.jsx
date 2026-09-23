@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useShop } from '../context/ShopContext';
-import { Compass, Tag, Heart, ShoppingBag, MapPin } from 'lucide-react';
+import { Compass, Tag, Heart, ShoppingBag } from 'lucide-react';
 
 export const MobileBottomBar = ({ onOpenBoutique }) => {
   const { cartItemCount, wishlist, setIsWishlistOpen, setIsCartOpen } = useShop();
@@ -102,17 +102,6 @@ export const MobileBottomBar = ({ onOpenBoutique }) => {
           </div>
           <span className="text-[10px] font-medium tracking-tight mt-0.5 text-stone-600 group-hover:text-[#7A152E]">
             Bag {cartItemCount > 0 ? `(${cartItemCount})` : ''}
-          </span>
-        </button>
-
-        {/* Tab 5: Boutiques */}
-        <button
-          onClick={onOpenBoutique}
-          className="flex flex-col items-center justify-center py-1 px-2.5 text-stone-700 hover:text-[#7A152E] active:scale-95 transition-all group cursor-pointer"
-        >
-          <MapPin className="w-5 h-5 stroke-[1.75] group-hover:stroke-[#7A152E] transition-colors" />
-          <span className="text-[10px] font-medium tracking-tight mt-0.5 text-stone-600 group-hover:text-[#7A152E]">
-            Ateliers
           </span>
         </button>
       </nav>
