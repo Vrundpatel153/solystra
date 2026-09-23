@@ -24,7 +24,9 @@ import {
   Heart,
   Star,
   Crown,
-  ShieldCheck
+  ShieldCheck,
+  Sparkles,
+  Gem
 } from 'lucide-react';
 
 const HERO_BANNERS = [
@@ -1258,34 +1260,35 @@ export const HomePage = ({ activeCategory, onSelectCategory }) => {
       </section>
 
       {/* ========================================================
-          SHOP BY PRICE POINTS: ZAVYA-STYLE LUXURY GIFT BOX CARDS
+          SHOP BY PRICE POINTS: TAILORED LUXURY GIFT VAULT CARDS
+          (Compact on Mobile, Elegantly Detailed on PC)
           ======================================================== */}
-      <section className="py-4 sm:py-6 bg-white border-b border-[#EAE4DC]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-4 sm:py-8 bg-white border-b border-[#EAE4DC]">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           
-          <div className="text-center max-w-xl mx-auto mb-3 sm:mb-5">
-            <span className="text-xs uppercase tracking-widest text-[#7A152E] font-semibold block mb-1">
+          <div className="text-center max-w-xl mx-auto mb-3 sm:mb-6">
+            <span className="text-[10px] sm:text-xs uppercase tracking-widest text-[#7A152E] font-semibold block mb-1">
               SHOP BY PRICE
             </span>
-            <h2 className="font-serif text-2xl sm:text-4xl text-stone-900 font-normal">
+            <h2 className="font-serif text-2xl sm:text-3xl md:text-4xl text-stone-900 font-normal">
               Shop by Price Points
             </h2>
             <p className="text-xs sm:text-sm text-stone-500 mt-1">
-              Certified 925 silver & 18K gold vermeil for every budget and occasion.
+              Certified 925 silver &amp; 18K gold vermeil for every budget and occasion.
             </p>
           </div>
 
-          {/* 4 Beautiful Gift Box Cards with Ribbon Bows (All 4 in ONE Row on Mobile & PC) */}
-          <div className="grid grid-cols-4 gap-2 xs:gap-2.5 sm:gap-4 md:gap-6 pt-1 sm:pt-2">
+          {/* 4 Beautiful Gift Box Cards (All 4 in ONE Row on Mobile & PC, Tailored on Desktop) */}
+          <div className="grid grid-cols-4 gap-2 xs:gap-2.5 sm:gap-4 md:gap-5 pt-1 sm:pt-2">
             
             {/* Gift Box 1: Under 999 */}
             <div
               onClick={() => handlePriceFilter(999)}
-              className="group relative rounded-2xl sm:rounded-3xl p-2.5 xs:p-3 sm:p-6 bg-gradient-to-b from-[#FFFDF9] via-[#FAF5EE] to-[#F7EFE6] border-2 border-[#7A152E]/30 hover:border-[#7A152E] shadow-xs hover:shadow-lg transition-all duration-300 cursor-pointer flex flex-col items-center justify-center text-center aspect-square"
+              className="group relative rounded-2xl sm:rounded-3xl p-2 xs:p-2.5 sm:p-5 md:p-6 bg-gradient-to-b from-[#FFFDF9] via-[#FAF5EE] to-[#F7EFE6] border-2 border-[#7A152E]/30 hover:border-[#7A152E] shadow-xs hover:shadow-xl hover:-translate-y-1 transition-all duration-300 cursor-pointer flex flex-col items-center justify-center text-center aspect-square sm:aspect-auto sm:min-h-[200px] sm:max-h-[230px] overflow-hidden"
             >
               {/* Luxury Ribbon Bow on Top */}
               <div className="absolute -top-3.5 sm:-top-5 left-1/2 -translate-x-1/2 z-20 pointer-events-none">
-                <svg className="w-9 xs:w-11 sm:w-16 h-3.5 xs:h-4.5 sm:h-6 transition-transform duration-300 group-hover:scale-115 drop-shadow-xs" viewBox="0 0 80 32" fill="none">
+                <svg className="w-9 xs:w-11 sm:w-15 h-3.5 xs:h-4.5 sm:h-5.5 transition-transform duration-300 group-hover:scale-115 drop-shadow-xs" viewBox="0 0 80 32" fill="none">
                   <path d="M40 16 C26 2, 8 4, 10 16 C12 24, 30 20, 40 16 Z" fill="#7A152E" />
                   <path d="M40 16 C54 2, 72 4, 70 16 C68 24, 50 20, 40 16 Z" fill="#7A152E" />
                   <path d="M37 17 L18 31 L28 21 Z" fill="#590D1E" />
@@ -1294,25 +1297,46 @@ export const HomePage = ({ activeCategory, onSelectCategory }) => {
                   <circle cx="40" cy="16" r="3" fill="#7A152E" />
                 </svg>
               </div>
-              <span className="font-sans text-[8.5px] xs:text-[9.5px] sm:text-xs uppercase font-semibold text-stone-600 tracking-wider block">
+
+              {/* Vertical Satin Ribbon Spine (PC Only) */}
+              <div className="hidden sm:block absolute inset-y-0 left-1/2 -translate-x-1/2 w-6 sm:w-7 bg-gradient-to-b from-[#7A152E]/8 via-[#7A152E]/3 to-[#7A152E]/8 border-x border-[#7A152E]/10 pointer-events-none z-0" />
+
+              {/* Gold Filigree Certificate Inset Frame (PC Only) */}
+              <div className="hidden sm:block absolute inset-2.5 sm:inset-3 rounded-2xl border border-dashed border-[#CBA64E]/30 pointer-events-none group-hover:border-[#CBA64E]/60 transition-colors z-0" />
+
+              {/* Jewelry Motif Icon (PC Only) */}
+              <div className="hidden sm:flex w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-[#7A152E]/5 border border-[#7A152E]/15 items-center justify-center text-[#7A152E] mb-1.5 group-hover:scale-110 group-hover:bg-[#7A152E] group-hover:text-white transition-all duration-300 z-10 shadow-2xs">
+                <Sparkles className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
+              </div>
+
+              <span className="font-sans text-[8.5px] xs:text-[9.5px] sm:text-[10px] md:text-[11px] uppercase font-bold text-stone-500 sm:text-[#8C6D3B] tracking-wider sm:tracking-widest block z-10">
                 UNDER
               </span>
-              <span className="font-sans font-bold text-sm xs:text-base sm:text-2xl md:text-3xl text-[#7A152E] tracking-tight block mt-0.5 sm:mt-1 group-hover:scale-105 transition-transform">
+              <span className="font-serif font-bold text-sm xs:text-base sm:text-2xl md:text-3xl text-[#7A152E] tracking-tight block mt-0.5 group-hover:scale-105 transition-transform z-10">
                 ₹999
               </span>
-              <span className="text-[7.5px] xs:text-[8.5px] sm:text-[11px] text-stone-400 group-hover:text-[#7A152E] font-medium tracking-wide block mt-1 sm:mt-2 transition-colors truncate max-w-full">
+              <span className="text-[7.5px] xs:text-[8.5px] sm:text-xs text-stone-500 group-hover:text-[#7A152E] font-medium tracking-wide block mt-0.5 sm:mt-1 transition-colors truncate max-w-full z-10">
                 Daily Picks
               </span>
+              <span className="hidden sm:block text-[10px] text-stone-400 group-hover:text-stone-600 transition-colors z-10 mt-0.5">
+                Everyday Silver
+              </span>
+
+              {/* Interactive Shop Pill (PC Only) */}
+              <div className="hidden sm:inline-flex items-center gap-1 mt-2.5 py-0.5 px-2.5 rounded-full bg-white/95 border border-[#7A152E]/20 text-[#7A152E] text-[10px] md:text-[11px] font-semibold group-hover:bg-[#7A152E] group-hover:text-white group-hover:border-[#7A152E] shadow-2xs transition-all duration-300 z-10">
+                <span>Shop</span>
+                <ArrowRight className="w-2.5 h-2.5 group-hover:translate-x-0.5 transition-transform" />
+              </div>
             </div>
 
             {/* Gift Box 2: Under 1999 */}
             <div
               onClick={() => handlePriceFilter(1999)}
-              className="group relative rounded-2xl sm:rounded-3xl p-2.5 xs:p-3 sm:p-6 bg-gradient-to-b from-[#FFFDF9] via-[#FAF5EE] to-[#F7EFE6] border-2 border-[#7A152E]/30 hover:border-[#7A152E] shadow-xs hover:shadow-lg transition-all duration-300 cursor-pointer flex flex-col items-center justify-center text-center aspect-square"
+              className="group relative rounded-2xl sm:rounded-3xl p-2 xs:p-2.5 sm:p-5 md:p-6 bg-gradient-to-b from-[#FFFDF9] via-[#FAF5EE] to-[#F7EFE6] border-2 border-[#7A152E]/30 hover:border-[#7A152E] shadow-xs hover:shadow-xl hover:-translate-y-1 transition-all duration-300 cursor-pointer flex flex-col items-center justify-center text-center aspect-square sm:aspect-auto sm:min-h-[200px] sm:max-h-[230px] overflow-hidden"
             >
               {/* Luxury Ribbon Bow on Top */}
               <div className="absolute -top-3.5 sm:-top-5 left-1/2 -translate-x-1/2 z-20 pointer-events-none">
-                <svg className="w-9 xs:w-11 sm:w-16 h-3.5 xs:h-4.5 sm:h-6 transition-transform duration-300 group-hover:scale-115 drop-shadow-xs" viewBox="0 0 80 32" fill="none">
+                <svg className="w-9 xs:w-11 sm:w-15 h-3.5 xs:h-4.5 sm:h-5.5 transition-transform duration-300 group-hover:scale-115 drop-shadow-xs" viewBox="0 0 80 32" fill="none">
                   <path d="M40 16 C26 2, 8 4, 10 16 C12 24, 30 20, 40 16 Z" fill="#7A152E" />
                   <path d="M40 16 C54 2, 72 4, 70 16 C68 24, 50 20, 40 16 Z" fill="#7A152E" />
                   <path d="M37 17 L18 31 L28 21 Z" fill="#590D1E" />
@@ -1321,25 +1345,46 @@ export const HomePage = ({ activeCategory, onSelectCategory }) => {
                   <circle cx="40" cy="16" r="3" fill="#7A152E" />
                 </svg>
               </div>
-              <span className="font-sans text-[8.5px] xs:text-[9.5px] sm:text-xs uppercase font-semibold text-stone-600 tracking-wider block">
+
+              {/* Vertical Satin Ribbon Spine (PC Only) */}
+              <div className="hidden sm:block absolute inset-y-0 left-1/2 -translate-x-1/2 w-6 sm:w-7 bg-gradient-to-b from-[#7A152E]/8 via-[#7A152E]/3 to-[#7A152E]/8 border-x border-[#7A152E]/10 pointer-events-none z-0" />
+
+              {/* Gold Filigree Certificate Inset Frame (PC Only) */}
+              <div className="hidden sm:block absolute inset-2.5 sm:inset-3 rounded-2xl border border-dashed border-[#CBA64E]/30 pointer-events-none group-hover:border-[#CBA64E]/60 transition-colors z-0" />
+
+              {/* Jewelry Motif Icon (PC Only) */}
+              <div className="hidden sm:flex w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-[#7A152E]/5 border border-[#7A152E]/15 items-center justify-center text-[#7A152E] mb-1.5 group-hover:scale-110 group-hover:bg-[#7A152E] group-hover:text-white transition-all duration-300 z-10 shadow-2xs">
+                <Gem className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
+              </div>
+
+              <span className="font-sans text-[8.5px] xs:text-[9.5px] sm:text-[10px] md:text-[11px] uppercase font-bold text-stone-500 sm:text-[#8C6D3B] tracking-wider sm:tracking-widest block z-10">
                 UNDER
               </span>
-              <span className="font-sans font-bold text-sm xs:text-base sm:text-2xl md:text-3xl text-[#7A152E] tracking-tight block mt-0.5 sm:mt-1 group-hover:scale-105 transition-transform">
+              <span className="font-serif font-bold text-sm xs:text-base sm:text-2xl md:text-3xl text-[#7A152E] tracking-tight block mt-0.5 group-hover:scale-105 transition-transform z-10">
                 ₹1,999
               </span>
-              <span className="text-[7.5px] xs:text-[8.5px] sm:text-[11px] text-stone-400 group-hover:text-[#7A152E] font-medium tracking-wide block mt-1 sm:mt-2 transition-colors truncate max-w-full">
+              <span className="text-[7.5px] xs:text-[8.5px] sm:text-xs text-stone-500 group-hover:text-[#7A152E] font-medium tracking-wide block mt-0.5 sm:mt-1 transition-colors truncate max-w-full z-10">
                 Solitaires
               </span>
+              <span className="hidden sm:block text-[10px] text-stone-400 group-hover:text-stone-600 transition-colors z-10 mt-0.5">
+                Austrian Crystals
+              </span>
+
+              {/* Interactive Shop Pill (PC Only) */}
+              <div className="hidden sm:inline-flex items-center gap-1 mt-2.5 py-0.5 px-2.5 rounded-full bg-white/95 border border-[#7A152E]/20 text-[#7A152E] text-[10px] md:text-[11px] font-semibold group-hover:bg-[#7A152E] group-hover:text-white group-hover:border-[#7A152E] shadow-2xs transition-all duration-300 z-10">
+                <span>Shop</span>
+                <ArrowRight className="w-2.5 h-2.5 group-hover:translate-x-0.5 transition-transform" />
+              </div>
             </div>
 
             {/* Gift Box 3: Under 2999 */}
             <div
               onClick={() => handlePriceFilter(2999)}
-              className="group relative rounded-2xl sm:rounded-3xl p-2.5 xs:p-3 sm:p-6 bg-gradient-to-b from-[#FFFDF9] via-[#FAF5EE] to-[#F7EFE6] border-2 border-[#7A152E]/30 hover:border-[#7A152E] shadow-xs hover:shadow-lg transition-all duration-300 cursor-pointer flex flex-col items-center justify-center text-center aspect-square"
+              className="group relative rounded-2xl sm:rounded-3xl p-2 xs:p-2.5 sm:p-5 md:p-6 bg-gradient-to-b from-[#FFFDF9] via-[#FAF5EE] to-[#F7EFE6] border-2 border-[#7A152E]/30 hover:border-[#7A152E] shadow-xs hover:shadow-xl hover:-translate-y-1 transition-all duration-300 cursor-pointer flex flex-col items-center justify-center text-center aspect-square sm:aspect-auto sm:min-h-[200px] sm:max-h-[230px] overflow-hidden"
             >
               {/* Luxury Ribbon Bow on Top */}
               <div className="absolute -top-3.5 sm:-top-5 left-1/2 -translate-x-1/2 z-20 pointer-events-none">
-                <svg className="w-9 xs:w-11 sm:w-16 h-3.5 xs:h-4.5 sm:h-6 transition-transform duration-300 group-hover:scale-115 drop-shadow-xs" viewBox="0 0 80 32" fill="none">
+                <svg className="w-9 xs:w-11 sm:w-15 h-3.5 xs:h-4.5 sm:h-5.5 transition-transform duration-300 group-hover:scale-115 drop-shadow-xs" viewBox="0 0 80 32" fill="none">
                   <path d="M40 16 C26 2, 8 4, 10 16 C12 24, 30 20, 40 16 Z" fill="#7A152E" />
                   <path d="M40 16 C54 2, 72 4, 70 16 C68 24, 50 20, 40 16 Z" fill="#7A152E" />
                   <path d="M37 17 L18 31 L28 21 Z" fill="#590D1E" />
@@ -1348,25 +1393,46 @@ export const HomePage = ({ activeCategory, onSelectCategory }) => {
                   <circle cx="40" cy="16" r="3" fill="#7A152E" />
                 </svg>
               </div>
-              <span className="font-sans text-[8.5px] xs:text-[9.5px] sm:text-xs uppercase font-semibold text-stone-600 tracking-wider block">
+
+              {/* Vertical Satin Ribbon Spine (PC Only) */}
+              <div className="hidden sm:block absolute inset-y-0 left-1/2 -translate-x-1/2 w-6 sm:w-7 bg-gradient-to-b from-[#7A152E]/8 via-[#7A152E]/3 to-[#7A152E]/8 border-x border-[#7A152E]/10 pointer-events-none z-0" />
+
+              {/* Gold Filigree Certificate Inset Frame (PC Only) */}
+              <div className="hidden sm:block absolute inset-2.5 sm:inset-3 rounded-2xl border border-dashed border-[#CBA64E]/30 pointer-events-none group-hover:border-[#CBA64E]/60 transition-colors z-0" />
+
+              {/* Jewelry Motif Icon (PC Only) */}
+              <div className="hidden sm:flex w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-[#7A152E]/5 border border-[#7A152E]/15 items-center justify-center text-[#7A152E] mb-1.5 group-hover:scale-110 group-hover:bg-[#7A152E] group-hover:text-white transition-all duration-300 z-10 shadow-2xs">
+                <Award className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
+              </div>
+
+              <span className="font-sans text-[8.5px] xs:text-[9.5px] sm:text-[10px] md:text-[11px] uppercase font-bold text-stone-500 sm:text-[#8C6D3B] tracking-wider sm:tracking-widest block z-10">
                 UNDER
               </span>
-              <span className="font-sans font-bold text-sm xs:text-base sm:text-2xl md:text-3xl text-[#7A152E] tracking-tight block mt-0.5 sm:mt-1 group-hover:scale-105 transition-transform">
+              <span className="font-serif font-bold text-sm xs:text-base sm:text-2xl md:text-3xl text-[#7A152E] tracking-tight block mt-0.5 group-hover:scale-105 transition-transform z-10">
                 ₹2,999
               </span>
-              <span className="text-[7.5px] xs:text-[8.5px] sm:text-[11px] text-stone-400 group-hover:text-[#7A152E] font-medium tracking-wide block mt-1 sm:mt-2 transition-colors truncate max-w-full">
+              <span className="text-[7.5px] xs:text-[8.5px] sm:text-xs text-stone-500 group-hover:text-[#7A152E] font-medium tracking-wide block mt-0.5 sm:mt-1 transition-colors truncate max-w-full z-10">
                 Statements
               </span>
+              <span className="hidden sm:block text-[10px] text-stone-400 group-hover:text-stone-600 transition-colors z-10 mt-0.5">
+                Tennis &amp; Chains
+              </span>
+
+              {/* Interactive Shop Pill (PC Only) */}
+              <div className="hidden sm:inline-flex items-center gap-1 mt-2.5 py-0.5 px-2.5 rounded-full bg-white/95 border border-[#7A152E]/20 text-[#7A152E] text-[10px] md:text-[11px] font-semibold group-hover:bg-[#7A152E] group-hover:text-white group-hover:border-[#7A152E] shadow-2xs transition-all duration-300 z-10">
+                <span>Shop</span>
+                <ArrowRight className="w-2.5 h-2.5 group-hover:translate-x-0.5 transition-transform" />
+              </div>
             </div>
 
             {/* Gift Box 4: Premium Gifts */}
             <div
               onClick={() => handlePriceFilter(3999)}
-              className="group relative rounded-2xl sm:rounded-3xl p-2.5 xs:p-3 sm:p-6 bg-gradient-to-b from-[#FFFDF9] via-[#FAF5EE] to-[#F7EFE6] border-2 border-[#7A152E]/30 hover:border-[#7A152E] shadow-xs hover:shadow-lg transition-all duration-300 cursor-pointer flex flex-col items-center justify-center text-center aspect-square"
+              className="group relative rounded-2xl sm:rounded-3xl p-2 xs:p-2.5 sm:p-5 md:p-6 bg-gradient-to-b from-[#FFFDF9] via-[#FAF5EE] to-[#F7EFE6] border-2 border-[#7A152E]/30 hover:border-[#7A152E] shadow-xs hover:shadow-xl hover:-translate-y-1 transition-all duration-300 cursor-pointer flex flex-col items-center justify-center text-center aspect-square sm:aspect-auto sm:min-h-[200px] sm:max-h-[230px] overflow-hidden"
             >
               {/* Luxury Ribbon Bow on Top */}
               <div className="absolute -top-3.5 sm:-top-5 left-1/2 -translate-x-1/2 z-20 pointer-events-none">
-                <svg className="w-9 xs:w-11 sm:w-16 h-3.5 xs:h-4.5 sm:h-6 transition-transform duration-300 group-hover:scale-115 drop-shadow-xs" viewBox="0 0 80 32" fill="none">
+                <svg className="w-9 xs:w-11 sm:w-15 h-3.5 xs:h-4.5 sm:h-5.5 transition-transform duration-300 group-hover:scale-115 drop-shadow-xs" viewBox="0 0 80 32" fill="none">
                   <path d="M40 16 C26 2, 8 4, 10 16 C12 24, 30 20, 40 16 Z" fill="#7A152E" />
                   <path d="M40 16 C54 2, 72 4, 70 16 C68 24, 50 20, 40 16 Z" fill="#7A152E" />
                   <path d="M37 17 L18 31 L28 21 Z" fill="#590D1E" />
@@ -1375,15 +1441,36 @@ export const HomePage = ({ activeCategory, onSelectCategory }) => {
                   <circle cx="40" cy="16" r="3" fill="#7A152E" />
                 </svg>
               </div>
-              <span className="font-sans text-[8.5px] xs:text-[9.5px] sm:text-xs uppercase font-semibold text-stone-600 tracking-wider block">
+
+              {/* Vertical Satin Ribbon Spine (PC Only) */}
+              <div className="hidden sm:block absolute inset-y-0 left-1/2 -translate-x-1/2 w-6 sm:w-7 bg-gradient-to-b from-[#7A152E]/8 via-[#7A152E]/3 to-[#7A152E]/8 border-x border-[#7A152E]/10 pointer-events-none z-0" />
+
+              {/* Gold Filigree Certificate Inset Frame (PC Only) */}
+              <div className="hidden sm:block absolute inset-2.5 sm:inset-3 rounded-2xl border border-dashed border-[#CBA64E]/30 pointer-events-none group-hover:border-[#CBA64E]/60 transition-colors z-0" />
+
+              {/* Jewelry Motif Icon (PC Only) */}
+              <div className="hidden sm:flex w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-[#7A152E]/5 border border-[#7A152E]/15 items-center justify-center text-[#7A152E] mb-1.5 group-hover:scale-110 group-hover:bg-[#7A152E] group-hover:text-white transition-all duration-300 z-10 shadow-2xs">
+                <Crown className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
+              </div>
+
+              <span className="font-sans text-[8.5px] xs:text-[9.5px] sm:text-[10px] md:text-[11px] uppercase font-bold text-stone-500 sm:text-[#8C6D3B] tracking-wider sm:tracking-widest block z-10">
                 PREMIUM
               </span>
-              <span className="font-sans font-bold text-xs xs:text-sm sm:text-xl md:text-2xl text-[#7A152E] tracking-tight block mt-0.5 sm:mt-1 group-hover:scale-105 transition-transform leading-snug">
+              <span className="font-serif font-bold text-xs xs:text-sm sm:text-xl md:text-2xl text-[#7A152E] tracking-tight block mt-0.5 group-hover:scale-105 transition-transform leading-snug z-10">
                 GIFTS
               </span>
-              <span className="text-[7.5px] xs:text-[8.5px] sm:text-[11px] text-stone-400 group-hover:text-[#7A152E] font-medium tracking-wide block mt-1 sm:mt-2 transition-colors truncate max-w-full">
+              <span className="text-[7.5px] xs:text-[8.5px] sm:text-xs text-stone-500 group-hover:text-[#7A152E] font-medium tracking-wide block mt-0.5 sm:mt-1 transition-colors truncate max-w-full z-10">
                 Vault Sets
               </span>
+              <span className="hidden sm:block text-[10px] text-stone-400 group-hover:text-stone-600 transition-colors z-10 mt-0.5">
+                Curated Suites
+              </span>
+
+              {/* Interactive Shop Pill (PC Only) */}
+              <div className="hidden sm:inline-flex items-center gap-1 mt-2.5 py-0.5 px-2.5 rounded-full bg-white/95 border border-[#7A152E]/20 text-[#7A152E] text-[10px] md:text-[11px] font-semibold group-hover:bg-[#7A152E] group-hover:text-white group-hover:border-[#7A152E] shadow-2xs transition-all duration-300 z-10">
+                <span>Shop</span>
+                <ArrowRight className="w-2.5 h-2.5 group-hover:translate-x-0.5 transition-transform" />
+              </div>
             </div>
 
           </div>
