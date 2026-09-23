@@ -261,7 +261,7 @@ const STYLING_COMBOS = [
         price: 2799,
         mrp: 3999,
         image: '/solystra_assets/categories/cat_necklaces.png',
-        hotspot: { x: 32.3, y: 76.2, pcX: 53.0, pcY: 78.5, label: 'Solitaire Pendant Necklace' }
+        hotspot: { x: 32.3, y: 76.2, pcX: 45.9, pcY: 83.9, label: 'Solitaire Pendant Necklace' }
       },
       {
         id: 'c2-item-2',
@@ -272,7 +272,7 @@ const STYLING_COMBOS = [
         price: 2299,
         mrp: 3299,
         image: '/solystra_assets/categories/cat_earrings.png',
-        hotspot: { x: 42.7, y: 40.6, pcX: 62.5, pcY: 44.5, label: 'Solitaire Drop Earrings' }
+        hotspot: { x: 42.7, y: 40.6, pcX: 53.1, pcY: 44.6, label: 'Solitaire Drop Earrings' }
       }
     ],
     bundlePrice: 5098,
@@ -1714,7 +1714,7 @@ export const HomePage = ({ activeCategory, onSelectCategory }) => {
                       '--dot-x-pc': `${pcX}%`,
                       '--dot-y-pc': `${pcY}%`,
                     }}
-                    className="absolute -translate-x-1/2 -translate-y-1/2 z-20 left-[var(--dot-x-mob)] top-[var(--dot-y-mob)] lg:left-[var(--dot-x-pc)] lg:top-[var(--dot-y-pc)]"
+                    className="combo-hotspot-pin absolute -translate-x-1/2 -translate-y-1/2 z-20"
                     onMouseEnter={() => setActiveHotspotId(item.id)}
                     onMouseLeave={() => setActiveHotspotId(null)}
                     onClick={(e) => {

@@ -57,6 +57,19 @@
   }
 }
 
+/* Responsive Editorial Combo Hotspots */
+.combo-hotspot-pin {
+  left: var(--dot-x-mob);
+  top: var(--dot-y-mob);
+}
+
+@media (min-width: 1024px) {
+  .combo-hotspot-pin {
+    left: var(--dot-x-pc);
+    top: var(--dot-y-pc);
+  }
+}
+
 /* Custom Scrollbar - Champagne Gold and Off-White */
 ::-webkit-scrollbar {
   width: 6px;
