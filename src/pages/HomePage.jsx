@@ -261,7 +261,7 @@ const STYLING_COMBOS = [
         price: 2799,
         mrp: 3999,
         image: '/solystra_assets/categories/cat_necklaces.png',
-        hotspot: { x: 32.3, y: 76.2, label: 'Solitaire Pendant Necklace' }
+        hotspot: { x: 32.3, y: 76.2, pcX: 53.0, pcY: 78.5, label: 'Solitaire Pendant Necklace' }
       },
       {
         id: 'c2-item-2',
@@ -272,7 +272,7 @@ const STYLING_COMBOS = [
         price: 2299,
         mrp: 3299,
         image: '/solystra_assets/categories/cat_earrings.png',
-        hotspot: { x: 42.7, y: 40.6, label: 'Solitaire Drop Earrings' }
+        hotspot: { x: 42.7, y: 40.6, pcX: 62.5, pcY: 44.5, label: 'Solitaire Drop Earrings' }
       }
     ],
     bundlePrice: 5098,
@@ -723,43 +723,64 @@ export const HomePage = ({ activeCategory, onSelectCategory }) => {
     smoothScrollVideo(el, direction * step, 500);
   };
 
-  // Dedicated Video Reels: Position to middle set on load & Auto-slide every 2.8s
+  // Dedicated Video Reels: Silk-smooth continuous infinite glide without stops/breaks
   useEffect(() => {
+    const el = videoScrollRef.current;
+    if (!el) return;
+
+    let animId = null;
+    let isHoverPaused = false;
+    const scrollSpeed = 0.75; // Calm, continuous luxury marquee glide (~45px/sec)
+
+    // Center to middle set initially
     const initVideoPos = () => {
-      const el = videoScrollRef.current;
-      if (!el) return;
       const singleSet = el.scrollWidth / 3;
-      if (singleSet > 100 && (el.scrollLeft < 40 || el.scrollLeft >= singleSet * 2.5)) {
+      if (singleSet > 50 && (el.scrollLeft < 50 || el.scrollLeft >= singleSet * 2.2)) {
         el.scrollLeft = singleSet;
       }
     };
 
     initVideoPos();
-    const t1 = setTimeout(initVideoPos, 250);
-    const t2 = setTimeout(initVideoPos, 700);
+    const t1 = setTimeout(initVideoPos, 200);
+    const t2 = setTimeout(initVideoPos, 600);
 
-    const interval = setInterval(() => {
-      // Never pause on mouse hover; only pause when user is actively dragging or touching
-      if (isVideoInteracting.current) return;
+    const step = () => {
+      if (!isHoverPaused && !isVideoInteracting.current) {
+        el.scrollLeft += scrollSpeed;
+        const singleSet = el.scrollWidth / 3;
+        if (singleSet > 50) {
+          if (el.scrollLeft >= singleSet * 2) {
+            el.scrollLeft -= singleSet;
+          } else if (el.scrollLeft <= 10) {
+            el.scrollLeft += singleSet;
+          }
+        }
+      }
+      animId = requestAnimationFrame(step);
+    };
 
-      const el = videoScrollRef.current;
-      if (!el) return;
+    animId = requestAnimationFrame(step);
 
-      const firstCard = el.querySelector(':scope > div');
-      const cardWidth = firstCard ? firstCard.offsetWidth : (el.clientWidth < 640 ? 205 : 255);
-      const gap = el.clientWidth < 640 ? 16 : 20;
-      const step = cardWidth + gap;
+    const handleMouseEnter = () => { isHoverPaused = true; };
+    const handleMouseLeave = () => { isHoverPaused = false; };
+    const handleTouchStart = () => { isVideoInteracting.current = true; };
+    const handleTouchEnd = () => {
+      setTimeout(() => { isVideoInteracting.current = false; }, 400);
+    };
 
-      smoothScrollVideo(el, step, 700);
-    }, 2800);
+    el.addEventListener('mouseenter', handleMouseEnter);
+    el.addEventListener('mouseleave', handleMouseLeave);
+    el.addEventListener('touchstart', handleTouchStart, { passive: true });
+    el.addEventListener('touchend', handleTouchEnd, { passive: true });
 
     return () => {
       clearTimeout(t1);
       clearTimeout(t2);
-      clearInterval(interval);
-      if (videoAnimationId.current) {
-        cancelAnimationFrame(videoAnimationId.current);
-      }
+      if (animId) cancelAnimationFrame(animId);
+      el.removeEventListener('mouseenter', handleMouseEnter);
+      el.removeEventListener('mouseleave', handleMouseLeave);
+      el.removeEventListener('touchstart', handleTouchStart);
+      el.removeEventListener('touchend', handleTouchEnd);
     };
   }, []);
 
@@ -1682,11 +1703,18 @@ export const HomePage = ({ activeCategory, onSelectCategory }) => {
               {activeCombo.items.map((item) => {
                 if (!item.hotspot) return null;
                 const isHovered = activeHotspotId === item.id;
+                const pcX = item.hotspot.pcX !== undefined ? item.hotspot.pcX : item.hotspot.x;
+                const pcY = item.hotspot.pcY !== undefined ? item.hotspot.pcY : item.hotspot.y;
                 return (
                   <div
                     key={item.id}
-                    style={{ top: `${item.hotspot.y}%`, left: `${item.hotspot.x}%` }}
-                    className="absolute -translate-x-1/2 -translate-y-1/2 z-20"
+                    style={{
+                      '--dot-x-mob': `${item.hotspot.x}%`,
+                      '--dot-y-mob': `${item.hotspot.y}%`,
+                      '--dot-x-pc': `${pcX}%`,
+                      '--dot-y-pc': `${pcY}%`,
+                    }}
+                    className="absolute -translate-x-1/2 -translate-y-1/2 z-20 left-[var(--dot-x-mob)] top-[var(--dot-y-mob)] lg:left-[var(--dot-x-pc)] lg:top-[var(--dot-y-pc)]"
                     onMouseEnter={() => setActiveHotspotId(item.id)}
                     onMouseLeave={() => setActiveHotspotId(null)}
                     onClick={(e) => {
@@ -1718,11 +1746,11 @@ export const HomePage = ({ activeCategory, onSelectCategory }) => {
 
                       {/* Interactive Luxury Tooltip Popover */}
                       <div className={`absolute z-30 transition-all duration-300 pointer-events-auto ${
-                        item.hotspot.y > 55
+                        (item.hotspot.y > 55 || pcY > 55)
                           ? 'bottom-full mb-3'
                           : 'top-full mt-3'
                       } ${
-                        item.hotspot.x > 60
+                        (item.hotspot.x > 60 || pcX > 60)
                           ? 'right-0 sm:-right-4'
                           : 'left-0 sm:-left-4'
                       } ${
@@ -1889,31 +1917,17 @@ export const HomePage = ({ activeCategory, onSelectCategory }) => {
             </div>
           </div>
 
-          {/* Horizontal Video Reel Slider (Infinite Loop & Mouse Drag) */}
+          {/* Horizontal Video Reel Slider (Infinite Continuous Flow & Drag/Touch) */}
           <div
             ref={videoScrollRef}
             {...videoDrag.dragProps}
             onMouseDown={(e) => {
               isVideoInteracting.current = true;
-              if (videoAnimationId.current) {
-                cancelAnimationFrame(videoAnimationId.current);
-                videoAnimationId.current = null;
-              }
               videoDrag.dragProps.onMouseDown(e);
             }}
             onMouseUp={(e) => {
               videoDrag.dragProps.onMouseUp(e);
-              setTimeout(() => { isVideoInteracting.current = false; }, 1500);
-            }}
-            onTouchStart={() => {
-              isVideoInteracting.current = true;
-              if (videoAnimationId.current) {
-                cancelAnimationFrame(videoAnimationId.current);
-                videoAnimationId.current = null;
-              }
-            }}
-            onTouchEnd={() => {
-              setTimeout(() => { isVideoInteracting.current = false; }, 1500);
+              setTimeout(() => { isVideoInteracting.current = false; }, 300);
             }}
             className="flex flex-nowrap gap-4 sm:gap-5 overflow-x-auto hide-scrollbar pb-4 pt-1 cursor-grab active:cursor-grabbing select-none"
           >

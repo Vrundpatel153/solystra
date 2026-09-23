@@ -63,7 +63,7 @@ export const CartDrawer = () => {
       />
 
       <div className="fixed inset-y-0 right-0 max-w-full flex pl-6 sm:pl-10">
-        <div className="w-screen max-w-md bg-white shadow-2xl flex flex-col border-l border-[#EAE4DC] animate-slideLeft">
+        <div data-lenis-prevent="true" className="w-screen max-w-md bg-white shadow-2xl flex flex-col border-l border-[#EAE4DC] animate-slideLeft">
           
           {/* Header */}
           <div className="p-5 border-b border-[#EAE4DC] flex items-center justify-between bg-[#FAF8F5]">

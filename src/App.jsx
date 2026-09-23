@@ -18,6 +18,12 @@ import { PrivacyPolicyPage } from './pages/PrivacyPolicyPage';
 import { OffersPage } from './pages/OffersPage';
 import { AllProductsPage } from './pages/AllProductsPage';
 import { CategoriesPage } from './pages/CategoriesPage';
+import Lenis from 'lenis';
+import 'lenis/dist/lenis.css';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+gsap.registerPlugin(ScrollTrigger);
 
 export const App = () => {
   const parseRoute = () => {
@@ -105,10 +111,45 @@ export const App = () => {
   const [activeCategory, setActiveCategory] = useState('all');
   const [isBoutiqueOpen, setIsBoutiqueOpen] = useState(false);
 
+  // Initialize Lenis + GSAP for high-performance smooth momentum scrolling
+  useEffect(() => {
+    const lenis = new Lenis({
+      duration: 1.15,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      orientation: 'vertical',
+      gestureOrientation: 'vertical',
+      smoothWheel: true,
+      wheelMultiplier: 0.95,
+      touchMultiplier: 1.2,
+      infinite: false,
+    });
+
+    lenis.on('scroll', ScrollTrigger.update);
+
+    const updateLenis = (time) => {
+      lenis.raf(time * 1000);
+    };
+
+    gsap.ticker.add(updateLenis);
+    gsap.ticker.lagSmoothing(0);
+
+    window.__lenis = lenis;
+
+    return () => {
+      gsap.ticker.remove(updateLenis);
+      lenis.destroy();
+      delete window.__lenis;
+    };
+  }, []);
+
   useEffect(() => {
     const handleRouteChange = () => {
       setCurrentRoute(parseRoute());
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+      if (window.__lenis) {
+        window.__lenis.scrollTo(0, { immediate: true });
+      } else {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
     };
 
     window.addEventListener('hashchange', handleRouteChange);
