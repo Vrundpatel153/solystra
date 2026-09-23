@@ -15,20 +15,23 @@ import {
 
 const CATEGORIES = [
   { id: 'all', label: 'All Designs' },
-  { id: 'necklaces', label: 'Necklaces & Lariats' },
+  { id: 'bracelets', label: 'Bracelets & Kadas' },
+  { id: 'necklaces', label: 'Necklaces & Pendants' },
   { id: 'rings', label: 'Rings & Bands' },
   { id: 'earrings', label: 'Earrings & Studs' },
-  { id: 'bracelets', label: 'Bracelets & Kadas' },
-  { id: 'complete_sets', label: 'Gift Sets' },
+  { id: 'complete_sets', label: 'Gift Sets & Suites' },
+  { id: 'chains', label: 'Layering Chains' },
+  { id: 'anklets', label: 'Silver Anklets' },
   { id: 'bestseller', label: 'Bestsellers' }
 ];
 
 const PRICE_TIERS = [
   { id: 'all', label: 'All Prices', min: 0, max: Infinity },
-  { id: 'under-2500', label: 'Under ₹2,500', min: 0, max: 2500 },
-  { id: '2500-5000', label: '₹2,500 – ₹5,000', min: 2500, max: 5000 },
-  { id: '5000-8000', label: '₹5,000 – ₹8,000', min: 5000, max: 8000 },
-  { id: 'above-8000', label: 'Above ₹8,000', min: 8000, max: Infinity }
+  { id: 'under-3000', label: 'Under ₹3,000', min: 0, max: 3000 },
+  { id: '3000-7000', label: '₹3,000 – ₹7,000', min: 3000, max: 7000 },
+  { id: '7000-15000', label: '₹7,000 – ₹15,000', min: 7000, max: 15000 },
+  { id: '15000-30000', label: '₹15,000 – ₹30,000', min: 15000, max: 30000 },
+  { id: 'above-30000', label: 'Above ₹30,000', min: 30000, max: Infinity }
 ];
 
 const METALS = [
@@ -47,18 +50,41 @@ const SORT_OPTIONS = [
 ];
 
 export const AllProductsPage = ({ onBackToStore }) => {
+  // Compute dynamic max price from catalog
+  const maxCatalogPrice = useMemo(() => {
+    const highest = Math.max(...PRODUCTS.map((p) => p.price || 0), 80000);
+    return Math.ceil(highest / 5000) * 5000;
+  }, []);
+
   // Filter States
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [selectedPriceTier, setSelectedPriceTier] = useState('all');
-  const [maxPriceSlider, setMaxPriceSlider] = useState(15000);
+  const [maxPriceSlider, setMaxPriceSlider] = useState(maxCatalogPrice);
   const [selectedMetal, setSelectedMetal] = useState('all');
   const [sortBy, setSortBy] = useState('featured');
   const [isMobileFilterOpen, setIsMobileFilterOpen] = useState(false);
 
-  // Sync scroll to top on mount
+  // Sync scroll to top on mount and parse URL hash params
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
+
+    const parseHashParams = () => {
+      const hash = window.location.hash || '';
+      const queryIdx = hash.indexOf('?');
+      if (queryIdx !== -1) {
+        const params = new URLSearchParams(hash.slice(queryIdx));
+        const cat = params.get('category');
+        if (cat) setSelectedCategory(cat);
+        const metal = params.get('metal');
+        if (metal) setSelectedMetal(metal);
+        const q = params.get('q') || params.get('search');
+        if (q) setSearchQuery(q);
+      }
+    };
+    parseHashParams();
+    window.addEventListener('hashchange', parseHashParams);
+    return () => window.removeEventListener('hashchange', parseHashParams);
   }, []);
 
   // Lock body scroll when mobile filter drawer is open
@@ -79,17 +105,17 @@ export const AllProductsPage = ({ onBackToStore }) => {
     if (searchQuery.trim()) count++;
     if (selectedCategory !== 'all') count++;
     if (selectedPriceTier !== 'all') count++;
-    if (maxPriceSlider < 15000) count++;
+    if (maxPriceSlider < maxCatalogPrice) count++;
     if (selectedMetal !== 'all') count++;
     return count;
-  }, [searchQuery, selectedCategory, selectedPriceTier, maxPriceSlider, selectedMetal]);
+  }, [searchQuery, selectedCategory, selectedPriceTier, maxPriceSlider, maxCatalogPrice, selectedMetal]);
 
   // Reset all filters
   const handleResetFilters = () => {
     setSearchQuery('');
     setSelectedCategory('all');
     setSelectedPriceTier('all');
-    setMaxPriceSlider(15000);
+    setMaxPriceSlider(maxCatalogPrice);
     setSelectedMetal('all');
     setSortBy('featured');
   };
@@ -129,37 +155,20 @@ export const AllProductsPage = ({ onBackToStore }) => {
       }
 
       // 4. Slider max price filter
-      if (maxPriceSlider < 15000 && product.price > maxPriceSlider) {
+      if (maxPriceSlider < maxCatalogPrice && product.price > maxPriceSlider) {
         return false;
       }
 
       // 5. Metal / Finish filter
       if (selectedMetal !== 'all') {
-        const primary = (product.metals?.[0] || '').toLowerCase();
-        const pName = (product.name || '').toLowerCase();
-        const pShort = (product.shortName || '').toLowerCase();
-        const pId = (product.id || '').toLowerCase();
+        const metalsList = (product.metals || []).map((m) => m.toLowerCase());
+        const hasGold = metalsList.some((m) => m.includes('gold') && !m.includes('rose'));
+        const hasRose = metalsList.some((m) => m.includes('rose'));
+        const hasSilver = metalsList.some((m) => m.includes('silver') || m.includes('925'));
 
-        if (selectedMetal === 'gold') {
-          const isGold =
-            (primary.includes('gold') && !primary.includes('rose')) ||
-            (pName.includes('gold') && !pName.includes('rose')) ||
-            (pShort.includes('gold') && !pShort.includes('rose')) ||
-            (pId.includes('gold') && !pId.includes('rose'));
-          if (!isGold) return false;
-        } else if (selectedMetal === 'rose') {
-          const isRose =
-            primary.includes('rose') ||
-            pName.includes('rose') ||
-            pShort.includes('rose') ||
-            pId.includes('rose');
-          if (!isRose) return false;
-        } else if (selectedMetal === 'silver') {
-          const isSilver =
-            primary.includes('silver') ||
-            (!primary.includes('gold') && !primary.includes('rose') && !pName.includes('rose') && !pName.includes('gold'));
-          if (!isSilver) return false;
-        }
+        if (selectedMetal === 'gold' && !hasGold) return false;
+        if (selectedMetal === 'rose' && !hasRose) return false;
+        if (selectedMetal === 'silver' && !hasSilver) return false;
       }
 
       return true;
@@ -175,7 +184,7 @@ export const AllProductsPage = ({ onBackToStore }) => {
       // 'featured': maintain default catalog order
       return 0;
     });
-  }, [searchQuery, selectedCategory, selectedPriceTier, maxPriceSlider, selectedMetal, sortBy]);
+  }, [searchQuery, selectedCategory, selectedPriceTier, maxPriceSlider, maxCatalogPrice, selectedMetal, sortBy]);
 
   return (
     <div className="bg-[#FAF8F5] min-h-screen text-[#231F20] font-sans pb-20 lg:pb-14">
@@ -339,10 +348,10 @@ export const AllProductsPage = ({ onBackToStore }) => {
                 </span>
               )}
 
-              {maxPriceSlider < 15000 && (
+              {maxPriceSlider < maxCatalogPrice && (
                 <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[11px] bg-[#FAF0F2] text-[#7A152E] border border-[#EAD5DA]">
                   Under ₹{maxPriceSlider.toLocaleString('en-IN')}
-                  <button onClick={() => setMaxPriceSlider(15000)} className="cursor-pointer">
+                  <button onClick={() => setMaxPriceSlider(maxCatalogPrice)} className="cursor-pointer">
                     <X className="w-3 h-3" />
                   </button>
                 </span>
@@ -403,16 +412,16 @@ export const AllProductsPage = ({ onBackToStore }) => {
               </div>
               <input
                 type="range"
-                min="1500"
-                max="15000"
+                min="1000"
+                max={maxCatalogPrice}
                 step="500"
                 value={maxPriceSlider}
                 onChange={(e) => setMaxPriceSlider(Number(e.target.value))}
                 className="w-full accent-[#7A152E] cursor-pointer"
               />
               <div className="flex justify-between text-[10.5px] text-stone-400 mt-1">
-                <span>₹1,500</span>
-                <span>₹15,000+</span>
+                <span>₹1,000</span>
+                <span>₹{maxCatalogPrice.toLocaleString('en-IN')}+</span>
               </div>
             </div>
 
@@ -653,16 +662,16 @@ export const AllProductsPage = ({ onBackToStore }) => {
                 </div>
                 <input
                   type="range"
-                  min="1500"
-                  max="15000"
+                  min="1000"
+                  max={maxCatalogPrice}
                   step="500"
                   value={maxPriceSlider}
                   onChange={(e) => setMaxPriceSlider(Number(e.target.value))}
                   className="w-full accent-[#7A152E]"
                 />
                 <div className="flex justify-between text-[11px] text-stone-400 mt-1">
-                  <span>₹1,500</span>
-                  <span>₹15,000+</span>
+                  <span>₹1,000</span>
+                  <span>₹{maxCatalogPrice.toLocaleString('en-IN')}+</span>
                 </div>
               </div>
 

@@ -26,10 +26,36 @@ const srcHtml = `<!DOCTYPE html>
 fs.writeFileSync(path.join(rootDir, 'index.html'), srcHtml, 'utf8');
 console.log('Prebuild: Prepared index.html with Soulystra Jewels and /src/main.jsx entry');
 
+// Sync solystra_assets/products into public/solystra_assets/products
+try {
+  const src = path.join(rootDir, 'solystra_assets', 'products');
+  const dst = path.join(rootDir, 'public', 'solystra_assets', 'products');
+  if (fs.existsSync(src)) {
+    fs.mkdirSync(dst, { recursive: true });
+    for (const d of fs.readdirSync(src)) {
+      const sDir = path.join(src, d);
+      const dDir = path.join(dst, d);
+      if (fs.statSync(sDir).isDirectory()) {
+        fs.mkdirSync(dDir, { recursive: true });
+        for (const f of fs.readdirSync(sDir)) {
+          const sf = path.join(sDir, f);
+          const df = path.join(dDir, f);
+          if (!fs.existsSync(df)) {
+            fs.copyFileSync(sf, df);
+          }
+        }
+      }
+    }
+  }
+} catch (e) {
+  console.warn('Prebuild: Could not sync public/solystra_assets/products:', e);
+}
+
 // Ensure master catalog is freshly built
 try {
   await import('./build_catalog.js');
 } catch (err) {
   console.error('Prebuild: Error running build_catalog:', err);
 }
+
 

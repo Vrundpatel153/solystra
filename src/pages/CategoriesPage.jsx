@@ -1,52 +1,45 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useMemo } from 'react';
 import { ArrowLeft, Sparkles, ArrowRight } from 'lucide-react';
+import { PRODUCTS } from '../data/catalog';
 
-export const ALL_CATEGORIES = [
+const RAW_CATEGORIES = [
+  {
+    id: 'bracelets',
+    name: 'Bracelets & Kadas',
+    shortName: 'Bracelets',
+    filterCategory: 'bracelets',
+    desc: 'Italian gold vermeil tennis links, kada cuffs & charm bracelets.',
+    img: 'solystra_assets/categories/zavya_style/bracelets.png'
+  },
   {
     id: 'necklaces',
     name: 'Necklaces & Pendants',
     shortName: 'Necklaces',
-    count: '14 Designs',
+    filterCategory: 'necklaces',
     desc: 'Austrian crystal solitaires, layering lariats & choker suites.',
     img: 'solystra_assets/categories/zavya_style/necklaces.png'
-  },
-  {
-    id: 'earrings',
-    name: 'Earrings & Studs',
-    shortName: 'Earrings',
-    count: '10 Designs',
-    desc: 'Classic studs, huggies, drops & statement chandelier earrings.',
-    img: 'solystra_assets/categories/zavya_style/earrings.png'
-  },
-  {
-    id: 'bracelets',
-    name: 'Bracelets & Cuffs',
-    shortName: 'Bracelets',
-    count: '12 Designs',
-    desc: 'Italian gold vermeil tennis links, kada cuffs & charm bracelets.',
-    img: 'solystra_assets/categories/zavya_style/bracelets.png'
   },
   {
     id: 'rings',
     name: 'Rings & Bands',
     shortName: 'Rings',
-    count: '8 Designs',
+    filterCategory: 'rings',
     desc: 'Eternity promise bands, cocktail solitaires & adjustable rings.',
     img: 'solystra_assets/categories/zavya_style/rings.png'
   },
   {
-    id: 'anklets',
-    name: 'Anklets & Payals',
-    shortName: 'Anklets',
-    count: '6 Designs',
-    desc: 'Delicate pure 925 sterling silver payals & barefoot shimmer chains.',
-    img: 'solystra_assets/categories/zavya_style/anklets.png'
+    id: 'earrings',
+    name: 'Earrings & Studs',
+    shortName: 'Earrings',
+    filterCategory: 'earrings',
+    desc: 'Classic studs, huggies, drops & statement chandelier earrings.',
+    img: 'solystra_assets/categories/zavya_style/earrings.png'
   },
   {
     id: 'complete_sets',
     name: 'Gift Suites & Sets',
     shortName: 'Gift Suites',
-    count: '6 Sets',
+    filterCategory: 'complete_sets',
     desc: 'Complete necklace, earring & bracelet sets in velvet keepsake boxes.',
     img: 'solystra_assets/categories/zavya_style/complete_sets.png'
   },
@@ -54,15 +47,23 @@ export const ALL_CATEGORIES = [
     id: 'chains',
     name: 'Classic Layering Chains',
     shortName: 'Chains',
-    count: '8 Designs',
+    filterCategory: 'chains',
     desc: 'Timeless Italian curb, box & rope chains for everyday luxury.',
     img: 'solystra_assets/categories/zavya_style/chains.png'
+  },
+  {
+    id: 'anklets',
+    name: 'Anklets & Payals',
+    shortName: 'Anklets',
+    filterCategory: 'anklets',
+    desc: 'Delicate pure 925 sterling silver payals & barefoot shimmer chains.',
+    img: 'solystra_assets/categories/zavya_style/anklets.png'
   },
   {
     id: 'mangalsutras',
     name: 'Sacred Mangalsutras',
     shortName: 'Mangalsutra',
-    count: '8 Designs',
+    filterCategory: 'necklaces',
     desc: 'Traditional auspicious black bead craftsmanship with contemporary flair.',
     img: 'solystra_assets/categories/zavya_style/mangalsutras.png'
   },
@@ -70,7 +71,7 @@ export const ALL_CATEGORIES = [
     id: 'nose_pins',
     name: 'Solitaire Nose Pins',
     shortName: 'Nose Pins',
-    count: '6 Designs',
+    filterCategory: 'earrings',
     desc: 'Micro-prong Austrian crystal solitaires in solid 925 sterling silver.',
     img: 'solystra_assets/categories/zavya_style/nose_pins.png'
   },
@@ -78,11 +79,30 @@ export const ALL_CATEGORIES = [
     id: 'mens_collection',
     name: "Men's Silver Collection",
     shortName: "Men's Silver",
-    count: '7 Designs',
+    filterCategory: 'bracelets',
     desc: 'Bold kada cuffs, heavy link bracelets & minimalist signet rings.',
     img: 'solystra_assets/categories/zavya_style/mens.png'
   }
 ];
+
+export const ALL_CATEGORIES = RAW_CATEGORIES.map((cat) => {
+  let count = PRODUCTS.filter((p) => p.category === cat.filterCategory).length;
+  if (cat.id === 'mangalsutras') {
+    const m = PRODUCTS.filter((p) => p.name?.toLowerCase().includes('mangalsutra')).length;
+    count = m > 0 ? m : 8;
+  } else if (cat.id === 'nose_pins') {
+    const n = PRODUCTS.filter((p) => p.name?.toLowerCase().includes('nose')).length;
+    count = n > 0 ? n : 6;
+  } else if (cat.id === 'mens_collection') {
+    const mc = PRODUCTS.filter((p) => p.name?.toLowerCase().includes('men') || p.name?.toLowerCase().includes('bangle')).length;
+    count = mc > 0 ? mc : 7;
+  }
+  return {
+    ...cat,
+    count: `${count} Designs`
+  };
+});
+
 
 export const CategoriesPage = ({ onSelectCategory, onBackToStore }) => {
   useEffect(() => {
