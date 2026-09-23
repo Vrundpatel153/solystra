@@ -16,10 +16,13 @@ export const getMetalBadgeInfo = (product, selectedMetal = null) => {
   const categoryLower = (product?.category || '').toLowerCase();
   const tagLower = (product?.tag || '').toLowerCase();
 
+  const metalType = product?.metalType;
+
   // 1. Check Rose Gold
   const isRose =
     chosen.includes('rose') ||
-    (!chosen && (
+    (!chosen && metalType === 'rose') ||
+    (!chosen && !metalType && (
       primaryMetal.includes('rose') ||
       nameLower.includes('rose') ||
       idLower.includes('rose') ||
@@ -34,7 +37,8 @@ export const getMetalBadgeInfo = (product, selectedMetal = null) => {
       chosen.includes('gold') ||
       chosen.includes('vermeil') ||
       chosen.includes('yellow') ||
-      (!chosen && (
+      (!chosen && metalType === 'gold') ||
+      (!chosen && !metalType && (
         primaryMetal.includes('gold') ||
         primaryMetal.includes('vermeil') ||
         primaryMetal.includes('yellow') ||

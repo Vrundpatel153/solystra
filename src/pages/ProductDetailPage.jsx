@@ -114,9 +114,15 @@ export const ProductDetailPage = ({ productId }) => {
     touchEndXRef.current = null;
   };
 
-  const [selectedMetal, setSelectedMetal] = useState(
-    product.metals && product.metals.length ? product.metals[0] : 'Pure 925 Silver'
-  );
+  const defaultProductMetal = product.metalType === 'gold'
+    ? '18K Gold Vermeil'
+    : product.metalType === 'rose'
+    ? 'Rose Gold Plated'
+    : product.metalType === 'silver'
+    ? 'Pure 925 Silver'
+    : product.metals && product.metals.length ? product.metals[0] : 'Pure 925 Silver';
+
+  const [selectedMetal, setSelectedMetal] = useState(defaultProductMetal);
   const [selectedSize, setSelectedSize] = useState('12');
   const [engravingText, setEngravingText] = useState('');
   const [showEngravingInput, setShowEngravingInput] = useState(false);
@@ -620,7 +626,15 @@ export const ProductDetailPage = ({ productId }) => {
                       label: '18K Gold', 
                       dotClass: 'bg-gradient-to-tr from-[#946A1E] via-[#F7E7C4] to-[#C99D46] border border-[#946A1E]/50' 
                     }
-                  ].map(m => {
+                  ]
+                    .filter(m => {
+                      if (!product.metals || product.metals.length === 0) return true;
+                      if (product.metalType === 'gold') return m.name.includes('Gold') && !m.name.includes('Rose');
+                      if (product.metalType === 'rose') return m.name.includes('Rose');
+                      if (product.metalType === 'silver') return m.name.includes('Silver');
+                      return product.metals.some(pm => pm.toLowerCase().includes(m.label.toLowerCase()));
+                    })
+                    .map(m => {
                     const isSelected = selectedMetal === m.name;
                     return (
                       <button

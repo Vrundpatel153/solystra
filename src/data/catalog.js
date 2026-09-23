@@ -14,6 +14,7 @@ export const PRODUCTS = [
     "reviewsCount": 18,
     "badge": "Bestseller",
     "isNew": false,
+    "metalType": "silver",
     "metals": [
       "Pure 925 Silver"
     ],
@@ -48,10 +49,9 @@ export const PRODUCTS = [
     "reviewsCount": 25,
     "badge": "Atelier Gala",
     "isNew": false,
+    "metalType": "rose",
     "metals": [
-      "Rose Gold Plated",
-      "Pure 925 Silver",
-      "18K Yellow Gold"
+      "Rose Gold Plated"
     ],
     "desc": "Inspired by the delicate beauty of spring blossoms, the Amethyst Bloom Necklace Set features a charming five-petal floral design with rich plum enamel detailing and a brushed, textured finish. Polished sterling silver edges and sparkling cubic zirconia accents bring a touch of modern elegance to the nature-inspired motif. The unique lariat-style pendant cascades down to a glittering baguette drop, perfectly complemented by a pair of matching floral stud earrings. This versatile set offers an effortless blend of everyday charm and refined sophistication. The set includes a 925 sterling silver lariat necklace and a matching pair of floral stud earrings. Product Specifications Product Name: Amethyst Bloom Necklace Set Metal: 925 Sterling Silver Includes: Lariat-Style Necklace &amp; Matching Floral Stud Earrings Style: Floral | Contemporary | Elegant | Enamel Detail Occasion: Daily Wear | Office | Brunch | Gifting | Evening Out Styling Tip Elevate neutral basics or pastel dresses with this set for a pop of rich color. Wear the necklace and earrings together for a complete, polished look, or style the necklace alone to let the unique lariat drop take center stage. Care Tip Gently wipe with a soft, dry cloth after each wear. Store separately in a jewelry pouch and avoid direct contact with perfumes, cosmetics, water, and harsh chemicals to protect the enamel finish and silver shine.",
     "images": [
@@ -63,7 +63,7 @@ export const PRODUCTS = [
       "Metal Purity": "18K Rose Gold Micron (BIS Certified)",
       "Plating Finish": "18K Rose Gold Micron Vermeil & Protective E-Coat",
       "Stone Setting": "AAA+ Austrian Solitaire Crystals",
-      "Hallmark Verification": "Certified 925 Stamp on Clasp/Band",
+      "Hallmark Verification": "Certified 18K / 925 Stamp on Clasp",
       "Warranty Coverage": "6 Months Free Replating Assurance",
       "Packaging": "Luxury Suede Box with Authenticity Card",
       "Shipping": "Free Insured Express Delivery Across India"
@@ -84,6 +84,7 @@ export const PRODUCTS = [
     "reviewsCount": 32,
     "badge": "Trending",
     "isNew": false,
+    "metalType": "silver",
     "metals": [
       "Pure 925 Silver"
     ],
@@ -118,6 +119,7 @@ export const PRODUCTS = [
     "reviewsCount": 39,
     "badge": "Atelier Pick",
     "isNew": false,
+    "metalType": "silver",
     "metals": [
       "Pure 925 Silver"
     ],
@@ -152,6 +154,7 @@ export const PRODUCTS = [
     "reviewsCount": 46,
     "badge": "Atelier Gala",
     "isNew": false,
+    "metalType": "gold",
     "metals": [
       "18K Yellow Gold"
     ],
@@ -186,9 +189,9 @@ export const PRODUCTS = [
     "reviewsCount": 53,
     "badge": "Bestseller",
     "isNew": false,
+    "metalType": "silver",
     "metals": [
-      "Pure 925 Silver",
-      "Rose Gold Plated"
+      "Pure 925 Silver"
     ],
     "desc": "Brighten up your jewelry collection with the cheerful elegance of the Azure Daisy Tennis Bracelet. Crafted from high-polish 925 sterling silver, this piece features a timeless tennis-style strand of sparkling round Swarovski crystals that catch the light beautifully. The design is punctuated by three charming daisy motifs, each finished with vibrant sky-blue enamel petals and a polished silver center. Secured with a sturdy lobster clasp and an adjustable extender chain, this bracelet brings a playful yet refined touch of nature-inspired color to any outfit. Product Specifications Product Name: Azure Daisy Tennis Bracelet Metal: 925 Sterling Silver Stones: Swarovski Crystals (Clear Round-Cut) Details: Sky-Blue Enamel Floral Accents Closure: Secure Lobster Clasp with Adjustable Extender Chain Style: Tennis | Floral | Enamel Detail | Playful Elegance Occasion: Daywear | Brunch | Summer Getaways | Casual Chic | Gifting Styling Tip Let the vibrant blue pop by pairing it with crisp white, denim, or pastel summer dresses. Wear it alone to highlight the daisy details, or mix it with delicate silver chains for a trendy, stacked wrist aesthetic. Care Tip Gently wipe with a soft, dry cloth to maintain the silver shine. Store in a lined jewelry pouch away from other pieces to prevent scratching. Avoid direct contact with perfumes, lotions, and harsh chemicals to protect the enamel finish and preserve the brilliance of the Swarovski crystals.",
     "images": [
@@ -221,6 +224,7 @@ export const PRODUCTS = [
     "reviewsCount": 60,
     "badge": "Newly Launched",
     "isNew": true,
+    "metalType": "silver",
     "metals": [
       "Pure 925 Silver"
     ],
@@ -255,6 +259,7 @@ export const PRODUCTS = [
     "reviewsCount": 67,
     "badge": "Trending",
     "isNew": false,
+    "metalType": "silver",
     "metals": [
       "Pure 925 Silver"
     ],
@@ -289,6 +294,7 @@ export const PRODUCTS = [
     "reviewsCount": 74,
     "badge": "Atelier Pick",
     "isNew": false,
+    "metalType": "silver",
     "metals": [
       "Pure 925 Silver"
     ],
@@ -323,6 +329,7 @@ export const PRODUCTS = [
     "reviewsCount": 81,
     "badge": "Atelier Gala",
     "isNew": false,
+    "metalType": "gold",
     "metals": [
       "18K Yellow Gold"
     ],
@@ -357,9 +364,8 @@ export const PRODUCTS = [
     "reviewsCount": 88,
     "badge": "Atelier Gala",
     "isNew": false,
+    "metalType": "gold",
     "metals": [
-      "Pure 925 Silver",
-      "Rose Gold Plated",
       "18K Yellow Gold"
     ],
     "desc": "Graceful and eye-catching, the Blue Marquise Layered Necklace pairs vibrant marquise-shaped blue opal accents with a delicate freshwater pearl on the upper layer. The elegant dual-layer design adds a refreshing pop of colour while maintaining a refined, everyday look. Product Specifications Product Name: Blue Marquise Layered Necklace Metal: 18K BIS Hallmarked Gold Gross Weight: 2.860 g Net Weight: 2.813 g Style: Layered | Contemporary | Elegant Occasion: Everyday Wear | Office | Brunch | Vacation | Evening Styling Tip Pair it with solid-coloured outfits to let the vibrant blue accents stand out, or wear it solo for an effortlessly layered look. Care Tip Store flat in a soft jewellery pouch to prevent tangling, and avoid contact with perfumes, lotions, and harsh chemicals to maintain its shine and the beauty of the pearl and opal accents.",
@@ -369,10 +375,10 @@ export const PRODUCTS = [
       "assets/bento-craftsmanship-macro.jpg"
     ],
     "specs": {
-      "Metal Purity": "BIS Certified 925 Sterling Silver",
-      "Plating Finish": "Anti-Tarnish Rhodium & Micron E-Coat",
+      "Metal Purity": "18K Gold Vermeil (BIS Certified)",
+      "Plating Finish": "2.5-Micron 18K Gold Vermeil & Protective E-Coat",
       "Stone Setting": "AAA+ Austrian Solitaire Crystals",
-      "Hallmark Verification": "Certified 925 Stamp on Clasp/Band",
+      "Hallmark Verification": "Certified 18K / 925 Stamp on Clasp",
       "Warranty Coverage": "6 Months Free Replating Assurance",
       "Packaging": "Luxury Suede Box with Authenticity Card",
       "Shipping": "Free Insured Express Delivery Across India"
@@ -393,9 +399,9 @@ export const PRODUCTS = [
     "reviewsCount": 20,
     "badge": "Newly Launched",
     "isNew": true,
+    "metalType": "rose",
     "metals": [
-      "Rose Gold Plated",
-      "Pure 925 Silver"
+      "Rose Gold Plated"
     ],
     "desc": "A refined take on the classic tennis style, this bracelet features a sleek line of shimmering stones accented with delicate blush-toned highlights for a subtle pop of color. The balance of sparkle and soft pink details adds a fresh, feminine touch while keeping the look timeless and elegant. Designed to sit gracefully on the wrist, it transitions effortlessly from day to evening. Product Details: 925 Sterling Silver Lightweight &amp; comfortable for daily wear Tennis-style design with blush stone accents Fine, continuous sparkle with subtle color detailing Secure clasp closure Perfect for stacking or wearing solo",
     "images": [
@@ -410,7 +416,7 @@ export const PRODUCTS = [
       "Metal Purity": "18K Rose Gold Micron (BIS Certified)",
       "Plating Finish": "18K Rose Gold Micron Vermeil & Protective E-Coat",
       "Stone Setting": "AAA+ Austrian Solitaire Crystals",
-      "Hallmark Verification": "Certified 925 Stamp on Clasp/Band",
+      "Hallmark Verification": "Certified 18K / 925 Stamp on Clasp",
       "Warranty Coverage": "6 Months Free Replating Assurance",
       "Packaging": "Luxury Suede Box with Authenticity Card",
       "Shipping": "Free Insured Express Delivery Across India"
@@ -431,6 +437,7 @@ export const PRODUCTS = [
     "reviewsCount": 27,
     "badge": "Atelier Gala",
     "isNew": false,
+    "metalType": "gold",
     "metals": [
       "18K Yellow Gold"
     ],
@@ -465,8 +472,8 @@ export const PRODUCTS = [
     "reviewsCount": 34,
     "badge": "Atelier Gala",
     "isNew": false,
+    "metalType": "rose",
     "metals": [
-      "18K Yellow Gold",
       "Rose Gold Plated"
     ],
     "desc": "Elegant and meaningful, the Black Bead Heart Bracelet blends delicate design with symbolic charm. The bracelet features a fine chain accented with a row of glossy black beads, creating a beautiful contrast against the warm gold tone. At the centre sits a distinctive heart motif that combines two elements — a smooth open heart paired with a radiant sunburst-style heart. This dual-heart design adds a touch of character and symbolism, representing connection and warmth while giving the bracelet a modern yet romantic feel. The black bead detailing gives the bracelet a classic look often associated with protective and traditional styles, while the contemporary heart design keeps the piece refined and stylish. Lightweight and comfortable, this bracelet is perfect for everyday wear and can be worn alone or layered with other bracelets for a more curated look. Product Details • Gold Weight: 2.29 grams • Fine chain bracelet with black bead accents • Dual heart centrepiece design • Secure clasp closure • Lightweight and comfortable for daily wear",
@@ -476,8 +483,8 @@ export const PRODUCTS = [
       "solystra_assets/products/bracelet/angle_3.jpg"
     ],
     "specs": {
-      "Metal Purity": "18K Gold Vermeil (BIS Certified)",
-      "Plating Finish": "2.5-Micron 18K Gold Vermeil & Protective E-Coat",
+      "Metal Purity": "18K Rose Gold Micron (BIS Certified)",
+      "Plating Finish": "18K Rose Gold Micron Vermeil & Protective E-Coat",
       "Stone Setting": "AAA+ Austrian Solitaire Crystals",
       "Hallmark Verification": "Certified 18K / 925 Stamp on Clasp",
       "Warranty Coverage": "6 Months Free Replating Assurance",
@@ -500,6 +507,7 @@ export const PRODUCTS = [
     "reviewsCount": 41,
     "badge": "Popular Choice",
     "isNew": false,
+    "metalType": "silver",
     "metals": [
       "Pure 925 Silver"
     ],
@@ -534,6 +542,7 @@ export const PRODUCTS = [
     "reviewsCount": 48,
     "badge": "Bestseller",
     "isNew": false,
+    "metalType": "silver",
     "metals": [
       "Pure 925 Silver"
     ],
@@ -568,6 +577,7 @@ export const PRODUCTS = [
     "reviewsCount": 55,
     "badge": "Atelier Gala",
     "isNew": false,
+    "metalType": "gold",
     "metals": [
       "18K Yellow Gold"
     ],
@@ -602,6 +612,7 @@ export const PRODUCTS = [
     "reviewsCount": 62,
     "badge": "Atelier Gala",
     "isNew": false,
+    "metalType": "gold",
     "metals": [
       "18K Yellow Gold"
     ],
@@ -636,6 +647,7 @@ export const PRODUCTS = [
     "reviewsCount": 69,
     "badge": "Atelier Pick",
     "isNew": false,
+    "metalType": "silver",
     "metals": [
       "Pure 925 Silver"
     ],
@@ -671,6 +683,7 @@ export const PRODUCTS = [
     "reviewsCount": 76,
     "badge": "Atelier Gala",
     "isNew": false,
+    "metalType": "gold",
     "metals": [
       "18K Yellow Gold"
     ],
@@ -705,6 +718,7 @@ export const PRODUCTS = [
     "reviewsCount": 83,
     "badge": "Atelier Gala",
     "isNew": false,
+    "metalType": "rose",
     "metals": [
       "Rose Gold Plated"
     ],
@@ -717,7 +731,7 @@ export const PRODUCTS = [
       "Metal Purity": "18K Rose Gold Micron (BIS Certified)",
       "Plating Finish": "18K Rose Gold Micron Vermeil & Protective E-Coat",
       "Stone Setting": "AAA+ Austrian Solitaire Crystals",
-      "Hallmark Verification": "Certified 925 Stamp on Clasp/Band",
+      "Hallmark Verification": "Certified 18K / 925 Stamp on Clasp",
       "Warranty Coverage": "6 Months Free Replating Assurance",
       "Packaging": "Luxury Suede Box with Authenticity Card",
       "Shipping": "Free Insured Express Delivery Across India"
@@ -738,6 +752,7 @@ export const PRODUCTS = [
     "reviewsCount": 90,
     "badge": "Newly Launched",
     "isNew": true,
+    "metalType": "silver",
     "metals": [
       "Pure 925 Silver"
     ],
@@ -771,9 +786,9 @@ export const PRODUCTS = [
     "reviewsCount": 22,
     "badge": "Trending",
     "isNew": false,
+    "metalType": "gold",
     "metals": [
-      "Pure 925 Silver",
-      "Rose Gold Plated"
+      "18K Yellow Gold"
     ],
     "desc": "Timeless and sophisticated, the Classic Knot Stud Earrings feature a beautifully intertwined knot design that symbolizes unity and elegance. The interlocking bands create a graceful structure, combining smooth polished gold with a subtly textured finish that adds depth and character to the piece. The contrast between the polished curves and the finely textured surfaces enhances the dimensional look of the knot, making the earrings both eye-catching and refined. Their compact stud style sits comfortably on the ear, offering a balanced blend of classic design and contemporary sophistication. Perfect for everyday elegance or special occasions, these knot studs bring a touch of timeless charm to any jewellery collection while remaining versatile enough to pair effortlessly with other pieces. Product Details • Gold Weight: 2.03 grams • Classic interlocking knot design • Combination of polished and textured gold finish • Stud style earrings • Lightweight and comfortable for daily wear",
     "images": [
@@ -781,10 +796,10 @@ export const PRODUCTS = [
       "solystra_assets/products/classic-knot-earrings/angle_2.jpg"
     ],
     "specs": {
-      "Metal Purity": "BIS Certified 925 Sterling Silver",
-      "Plating Finish": "Anti-Tarnish Rhodium & Micron E-Coat",
+      "Metal Purity": "18K Gold Vermeil (BIS Certified)",
+      "Plating Finish": "2.5-Micron 18K Gold Vermeil & Protective E-Coat",
       "Stone Setting": "AAA+ Austrian Solitaire Crystals",
-      "Hallmark Verification": "Certified 925 Stamp on Clasp/Band",
+      "Hallmark Verification": "Certified 18K / 925 Stamp on Clasp",
       "Warranty Coverage": "6 Months Free Replating Assurance",
       "Packaging": "Luxury Suede Box with Authenticity Card",
       "Shipping": "Free Insured Express Delivery Across India"
@@ -793,8 +808,8 @@ export const PRODUCTS = [
   },
   {
     "id": "classic-ridge-band",
-    "name": "Classic Fluted 18K Gold Vermeil Ridge Band",
-    "shortName": "Classic Ridge 18K Gold Band",
+    "name": "Classic Fluted Rose Gold Ridge Band",
+    "shortName": "Classic Ridge Rose Gold Band",
     "sku": "SOL-CLASSICR",
     "category": "rings",
     "categoryName": "Crowned Solitaires & Bands",
@@ -805,9 +820,9 @@ export const PRODUCTS = [
     "reviewsCount": 29,
     "badge": "Bestseller",
     "isNew": false,
+    "metalType": "rose",
     "metals": [
-      "18K Yellow Gold",
-      "Pure 925 Silver"
+      "Rose Gold Plated"
     ],
     "desc": "Strong. Polished. Effortlessly timeless. The Classic Ridge Band features a smooth, structured silhouette with a subtle raised ridge detail that adds depth and character without overpowering the design. Its clean, high-polish finish gives it a refined presence — minimal, yet undeniably confident. With a gold weight of 2.236 grams , this band offers a solid, comfortable feel on the finger. Perfect as an everyday statement piece, a modern stacking ring, or even a sleek unisex style. Understated luxury at its finest — a piece that never goes out of style. ✨ • Ring Size: Standard size (12) — Custom sizes available on request",
     "images": [
@@ -815,8 +830,8 @@ export const PRODUCTS = [
       "solystra_assets/products/classic-ridge-band/angle_2.jpg"
     ],
     "specs": {
-      "Metal Purity": "18K Gold Vermeil (BIS Certified)",
-      "Plating Finish": "2.5-Micron 18K Gold Vermeil & Protective E-Coat",
+      "Metal Purity": "18K Rose Gold Micron (BIS Certified)",
+      "Plating Finish": "18K Rose Gold Micron Vermeil & Protective E-Coat",
       "Stone Setting": "AAA+ Austrian Solitaire Crystals",
       "Hallmark Verification": "Certified 18K / 925 Stamp on Clasp",
       "Warranty Coverage": "6 Months Free Replating Assurance",
@@ -827,8 +842,8 @@ export const PRODUCTS = [
   },
   {
     "id": "clover-charm-bracelet",
-    "name": "Imperial Clover Charm 18K Gold Vermeil Bracelet",
-    "shortName": "Clover Charm 18K Gold Bracelet",
+    "name": "Imperial Clover Charm 18K Rose Gold Bracelet",
+    "shortName": "Clover Charm Rose Gold Bracelet",
     "sku": "SOL-CLOVERCH",
     "category": "bracelets",
     "categoryName": "Tennis & Charm Bracelets",
@@ -839,9 +854,9 @@ export const PRODUCTS = [
     "reviewsCount": 36,
     "badge": "Bestseller",
     "isNew": false,
+    "metalType": "rose",
     "metals": [
-      "18K Yellow Gold",
-      "Pure 925 Silver"
+      "Rose Gold Plated"
     ],
     "desc": "Delicate and feminine, our Clover Charms Bracelet features a beautifully crafted clover motif at its center, symbolizing luck, grace, and timeless elegance. The fine double-chain design adds a subtle layered effect, enhancing its charm while maintaining a minimal and refined look. Its polished gold finish gives it a soft, radiant glow that complements every style effortlessly. With a gold weight of 2.121 grams , this bracelet is lightweight and comfortable for everyday wear. Perfect for stacking or wearing alone as a delicate statement piece, it is designed for customers who appreciate understated luxury with meaningful detailing. A graceful addition to any fine jewellery collection. ✨",
     "images": [
@@ -850,8 +865,8 @@ export const PRODUCTS = [
       "solystra_assets/products/clover-charm-bracelet/angle_3.png"
     ],
     "specs": {
-      "Metal Purity": "18K Gold Vermeil (BIS Certified)",
-      "Plating Finish": "2.5-Micron 18K Gold Vermeil & Protective E-Coat",
+      "Metal Purity": "18K Rose Gold Micron (BIS Certified)",
+      "Plating Finish": "18K Rose Gold Micron Vermeil & Protective E-Coat",
       "Stone Setting": "AAA+ Austrian Solitaire Crystals",
       "Hallmark Verification": "Certified 18K / 925 Stamp on Clasp",
       "Warranty Coverage": "6 Months Free Replating Assurance",
@@ -862,8 +877,8 @@ export const PRODUCTS = [
   },
   {
     "id": "clover-lock-charm-925-sterling-silver-bracelet",
-    "name": "Clover Padlock Charm 18K Gold Bracelet",
-    "shortName": "Clover Lock 18K Gold Bracelet",
+    "name": "Clover Padlock Charm 925 Silver Bracelet",
+    "shortName": "Clover Lock 925 Silver Bracelet",
     "sku": "SOL-CLOVERLO",
     "category": "bracelets",
     "categoryName": "Tennis & Charm Bracelets",
@@ -874,8 +889,8 @@ export const PRODUCTS = [
     "reviewsCount": 43,
     "badge": "Trending",
     "isNew": false,
+    "metalType": "silver",
     "metals": [
-      "18K Yellow Gold",
       "Pure 925 Silver"
     ],
     "desc": "A delicate bracelet featuring a clover-inspired centerpiece with a subtle lock detail at its heart, symbolizing protection and quiet strength. The fine chain is accented with minimal bead elements, adding a soft rhythm and movement to the design. Elegant yet meaningful, this piece blends charm and symbolism in a very wearable, everyday style. Product Details: 925 Sterling Silver Lightweight &amp; comfortable Clover-inspired central motif with lock detail Fine chain with subtle bead accents Adjustable length for a perfect fit Minimal, modern everyday piece",
@@ -886,10 +901,10 @@ export const PRODUCTS = [
       "solystra_assets/products/clover-lock-charm-925-sterling-silver-bracelet/angle_3.png"
     ],
     "specs": {
-      "Metal Purity": "18K Gold Vermeil (BIS Certified)",
-      "Plating Finish": "2.5-Micron 18K Gold Vermeil & Protective E-Coat",
+      "Metal Purity": "BIS Certified 925 Sterling Silver",
+      "Plating Finish": "Anti-Tarnish Rhodium & Micron E-Coat",
       "Stone Setting": "AAA+ Austrian Solitaire Crystals",
-      "Hallmark Verification": "Certified 18K / 925 Stamp on Clasp",
+      "Hallmark Verification": "Certified 925 Stamp on Clasp/Band",
       "Warranty Coverage": "6 Months Free Replating Assurance",
       "Packaging": "Luxury Suede Box with Authenticity Card",
       "Shipping": "Free Insured Express Delivery Across India"
@@ -910,6 +925,7 @@ export const PRODUCTS = [
     "reviewsCount": 50,
     "badge": "Atelier Gala",
     "isNew": false,
+    "metalType": "gold",
     "metals": [
       "18K Yellow Gold"
     ],
@@ -944,6 +960,7 @@ export const PRODUCTS = [
     "reviewsCount": 57,
     "badge": "Atelier Gala",
     "isNew": false,
+    "metalType": "gold",
     "metals": [
       "18K Yellow Gold"
     ],
@@ -978,6 +995,7 @@ export const PRODUCTS = [
     "reviewsCount": 64,
     "badge": "Atelier Pick",
     "isNew": false,
+    "metalType": "silver",
     "metals": [
       "Pure 925 Silver"
     ],
@@ -1011,6 +1029,7 @@ export const PRODUCTS = [
     "reviewsCount": 71,
     "badge": "Popular Choice",
     "isNew": false,
+    "metalType": "silver",
     "metals": [
       "Pure 925 Silver"
     ],
@@ -1045,6 +1064,7 @@ export const PRODUCTS = [
     "reviewsCount": 78,
     "badge": "Bestseller",
     "isNew": false,
+    "metalType": "silver",
     "metals": [
       "Pure 925 Silver"
     ],
@@ -1082,6 +1102,7 @@ export const PRODUCTS = [
     "reviewsCount": 85,
     "badge": "Atelier Gala",
     "isNew": false,
+    "metalType": "gold",
     "metals": [
       "18K Yellow Gold"
     ],
@@ -1116,8 +1137,8 @@ export const PRODUCTS = [
     "reviewsCount": 92,
     "badge": "Atelier Gala",
     "isNew": false,
+    "metalType": "rose",
     "metals": [
-      "18K Yellow Gold",
       "Rose Gold Plated"
     ],
     "desc": "Elegant and timeless, our Dual Chain Pearl Bracelet features a delicate double-chain design beautifully adorned with evenly spaced pearls. The soft shimmer of the pearls paired with the warm gold finish creates a graceful balance of sophistication and femininity. Its refined detailing makes it perfect for both everyday elegance and special occasions. With a gold weight of 2.545 grams , this bracelet is lightweight and comfortable for all-day wear. The layered chain adds subtle dimension while maintaining a minimal and classy look, making it an attractive choice for customers who love delicate, pearl-accented jewellery. A charming piece that effortlessly enhances any outfit. ✨",
@@ -1126,8 +1147,8 @@ export const PRODUCTS = [
       "solystra_assets/products/dual-chain-pearl-bracelet/angle_2.jpg"
     ],
     "specs": {
-      "Metal Purity": "18K Gold Vermeil (BIS Certified)",
-      "Plating Finish": "2.5-Micron 18K Gold Vermeil & Protective E-Coat",
+      "Metal Purity": "18K Rose Gold Micron (BIS Certified)",
+      "Plating Finish": "18K Rose Gold Micron Vermeil & Protective E-Coat",
       "Stone Setting": "AAA+ Austrian Solitaire Crystals",
       "Hallmark Verification": "Certified 18K / 925 Stamp on Clasp",
       "Warranty Coverage": "6 Months Free Replating Assurance",
@@ -1150,8 +1171,8 @@ export const PRODUCTS = [
     "reviewsCount": 24,
     "badge": "Atelier Gala",
     "isNew": false,
+    "metalType": "rose",
     "metals": [
-      "18K Yellow Gold",
       "Rose Gold Plated"
     ],
     "desc": "Elegant and modern, the Dual Charm Open Ring features a delicate open-band design with two distinctive elements that create a balanced yet eye-catching look. One side showcases a sparkling round cluster detail that adds subtle brilliance, while the other side features a sleek pyramid stud for a bold geometric contrast. Crafted in a rose gold finish , the ring brings a warm and refined touch that enhances its contemporary design. The open structure gives it a light, adjustable feel, making it comfortable for everyday wear while still standing out with its unique dual-element style. Perfect for those who love minimal jewelry with a modern twist, this ring pairs beautifully with other stackable pieces or can be worn alone as a delicate statement. Product Details • Gold Weight: 1.824 grams • Rose gold finish • Open band design • Dual charm detail (pyramid stud and sparkling cluster) • Lightweight and comfortable for daily wear • Ring Size: Standard size (10)— Custom sizes available on request",
@@ -1161,8 +1182,8 @@ export const PRODUCTS = [
       "assets/bento-craftsmanship-macro.jpg"
     ],
     "specs": {
-      "Metal Purity": "18K Gold Vermeil (BIS Certified)",
-      "Plating Finish": "2.5-Micron 18K Gold Vermeil & Protective E-Coat",
+      "Metal Purity": "18K Rose Gold Micron (BIS Certified)",
+      "Plating Finish": "18K Rose Gold Micron Vermeil & Protective E-Coat",
       "Stone Setting": "AAA+ Austrian Solitaire Crystals",
       "Hallmark Verification": "Certified 18K / 925 Stamp on Clasp",
       "Warranty Coverage": "6 Months Free Replating Assurance",
@@ -1185,6 +1206,7 @@ export const PRODUCTS = [
     "reviewsCount": 31,
     "badge": "Popular Choice",
     "isNew": false,
+    "metalType": "silver",
     "metals": [
       "Pure 925 Silver"
     ],
@@ -1219,8 +1241,8 @@ export const PRODUCTS = [
     "reviewsCount": 38,
     "badge": "Atelier Gala",
     "isNew": false,
+    "metalType": "rose",
     "metals": [
-      "18K Yellow Gold",
       "Rose Gold Plated"
     ],
     "desc": "Two hearts, one story. This delicate ring features intertwined heart motifs — one polished in warm gold and the other softly highlighted with shimmering stones. The subtle contrast creates a beautiful balance of romance and sparkle without feeling overdone. With a gold weight of 1.097 grams , it’s ultra-light and designed for effortless everyday wear. The slim band keeps the look refined and feminine, making it perfect for stacking or wearing alone as a meaningful symbol of love and connection. Minimal in weight, rich in sentiment — a tiny reminder of bonds that matter most. • Ring Size: (16) — Custom sizes available on request",
@@ -1229,8 +1251,8 @@ export const PRODUCTS = [
       "solystra_assets/products/dual-heart-charm-ring/angle_2.jpg"
     ],
     "specs": {
-      "Metal Purity": "18K Gold Vermeil (BIS Certified)",
-      "Plating Finish": "2.5-Micron 18K Gold Vermeil & Protective E-Coat",
+      "Metal Purity": "18K Rose Gold Micron (BIS Certified)",
+      "Plating Finish": "18K Rose Gold Micron Vermeil & Protective E-Coat",
       "Stone Setting": "AAA+ Austrian Solitaire Crystals",
       "Hallmark Verification": "Certified 18K / 925 Stamp on Clasp",
       "Warranty Coverage": "6 Months Free Replating Assurance",
@@ -1253,8 +1275,8 @@ export const PRODUCTS = [
     "reviewsCount": 45,
     "badge": "Atelier Gala",
     "isNew": false,
+    "metalType": "rose",
     "metals": [
-      "18K Yellow Gold",
       "Rose Gold Plated"
     ],
     "desc": "Clean lines. Confident presence. Zero overcomplication. This dual-tone band ring features alternating polished rose gold and white gold segments, creating a structured, modern rhythm around the finger. The smooth rectangular links give it a contemporary, almost architectural feel — minimal yet impactful. With a gold weight of 1.913 grams , it’s lightweight but visually bold. Comfortable for daily wear, strong enough to stand alone, and versatile enough to stack. Perfect for someone who loves subtle contrast and sharp design — a refined everyday essential with a modern edge. ✨ • Ring Size: Standard size (13) — Custom sizes available on request",
@@ -1264,8 +1286,8 @@ export const PRODUCTS = [
       "assets/bento-craftsmanship-macro.jpg"
     ],
     "specs": {
-      "Metal Purity": "18K Gold Vermeil (BIS Certified)",
-      "Plating Finish": "2.5-Micron 18K Gold Vermeil & Protective E-Coat",
+      "Metal Purity": "18K Rose Gold Micron (BIS Certified)",
+      "Plating Finish": "18K Rose Gold Micron Vermeil & Protective E-Coat",
       "Stone Setting": "AAA+ Austrian Solitaire Crystals",
       "Hallmark Verification": "Certified 18K / 925 Stamp on Clasp",
       "Warranty Coverage": "6 Months Free Replating Assurance",
@@ -1288,6 +1310,7 @@ export const PRODUCTS = [
     "reviewsCount": 52,
     "badge": "Trending",
     "isNew": false,
+    "metalType": "silver",
     "metals": [
       "Pure 925 Silver"
     ],
@@ -1322,6 +1345,7 @@ export const PRODUCTS = [
     "reviewsCount": 59,
     "badge": "Atelier Gala",
     "isNew": false,
+    "metalType": "rose",
     "metals": [
       "Rose Gold Plated"
     ],
@@ -1334,7 +1358,7 @@ export const PRODUCTS = [
       "Metal Purity": "18K Rose Gold Micron (BIS Certified)",
       "Plating Finish": "18K Rose Gold Micron Vermeil & Protective E-Coat",
       "Stone Setting": "AAA+ Austrian Solitaire Crystals",
-      "Hallmark Verification": "Certified 925 Stamp on Clasp/Band",
+      "Hallmark Verification": "Certified 18K / 925 Stamp on Clasp",
       "Warranty Coverage": "6 Months Free Replating Assurance",
       "Packaging": "Luxury Suede Box with Authenticity Card",
       "Shipping": "Free Insured Express Delivery Across India"
@@ -1355,6 +1379,7 @@ export const PRODUCTS = [
     "reviewsCount": 66,
     "badge": "Popular Choice",
     "isNew": false,
+    "metalType": "silver",
     "metals": [
       "Pure 925 Silver"
     ],
@@ -1389,6 +1414,7 @@ export const PRODUCTS = [
     "reviewsCount": 73,
     "badge": "Atelier Gala",
     "isNew": false,
+    "metalType": "gold",
     "metals": [
       "18K Yellow Gold"
     ],
@@ -1423,6 +1449,7 @@ export const PRODUCTS = [
     "reviewsCount": 80,
     "badge": "Atelier Gala",
     "isNew": false,
+    "metalType": "rose",
     "metals": [
       "Rose Gold Plated"
     ],
@@ -1435,7 +1462,7 @@ export const PRODUCTS = [
       "Metal Purity": "18K Rose Gold Micron (BIS Certified)",
       "Plating Finish": "18K Rose Gold Micron Vermeil & Protective E-Coat",
       "Stone Setting": "AAA+ Austrian Solitaire Crystals",
-      "Hallmark Verification": "Certified 925 Stamp on Clasp/Band",
+      "Hallmark Verification": "Certified 18K / 925 Stamp on Clasp",
       "Warranty Coverage": "6 Months Free Replating Assurance",
       "Packaging": "Luxury Suede Box with Authenticity Card",
       "Shipping": "Free Insured Express Delivery Across India"
@@ -1456,6 +1483,7 @@ export const PRODUCTS = [
     "reviewsCount": 87,
     "badge": "Atelier Gala",
     "isNew": false,
+    "metalType": "gold",
     "metals": [
       "18K Yellow Gold"
     ],
@@ -1490,6 +1518,7 @@ export const PRODUCTS = [
     "reviewsCount": 19,
     "badge": "Atelier Gala",
     "isNew": false,
+    "metalType": "rose",
     "metals": [
       "Rose Gold Plated"
     ],
@@ -1503,7 +1532,7 @@ export const PRODUCTS = [
       "Metal Purity": "18K Rose Gold Micron (BIS Certified)",
       "Plating Finish": "18K Rose Gold Micron Vermeil & Protective E-Coat",
       "Stone Setting": "AAA+ Austrian Solitaire Crystals",
-      "Hallmark Verification": "Certified 925 Stamp on Clasp/Band",
+      "Hallmark Verification": "Certified 18K / 925 Stamp on Clasp",
       "Warranty Coverage": "6 Months Free Replating Assurance",
       "Packaging": "Luxury Suede Box with Authenticity Card",
       "Shipping": "Free Insured Express Delivery Across India"
@@ -1512,8 +1541,8 @@ export const PRODUCTS = [
   },
   {
     "id": "flora-band-hoops",
-    "name": "Blossom Petal Rose Gold Flora Band Hoops",
-    "shortName": "Flora Band Rose Gold Hoops",
+    "name": "Blossom Petal 18K Gold Flora Band Hoops",
+    "shortName": "Flora Band 18K Gold Hoops",
     "sku": "SOL-FLORABAN",
     "category": "earrings",
     "categoryName": "Fine Earrings & Studs",
@@ -1524,9 +1553,9 @@ export const PRODUCTS = [
     "reviewsCount": 26,
     "badge": "Bestseller",
     "isNew": false,
+    "metalType": "gold",
     "metals": [
-      "Rose Gold Plated",
-      "Pure 925 Silver"
+      "18K Yellow Gold"
     ],
     "desc": "A refined take on classic hoops, the Flora Band Hoops feature intricate floral-inspired detailing set against a smooth gold band. The delicate black enamel accents create beautiful contrast, highlighting the elegant pattern and adding a touch of vintage charm. The openwork interior reflects fine Italian craftsmanship, giving the piece both structure and lightness. With a gold weight of 1.880 grams , these hoops feel comfortable and easy to wear while still offering distinctive character. Perfect for those who love subtle artistry in their jewellery, this Italian-made pair blends tradition and modern styling in one graceful design. ✨",
     "images": [
@@ -1534,10 +1563,10 @@ export const PRODUCTS = [
       "solystra_assets/products/flora-band-hoops/angle_2.png"
     ],
     "specs": {
-      "Metal Purity": "18K Rose Gold Micron (BIS Certified)",
-      "Plating Finish": "18K Rose Gold Micron Vermeil & Protective E-Coat",
+      "Metal Purity": "18K Gold Vermeil (BIS Certified)",
+      "Plating Finish": "2.5-Micron 18K Gold Vermeil & Protective E-Coat",
       "Stone Setting": "AAA+ Austrian Solitaire Crystals",
-      "Hallmark Verification": "Certified 925 Stamp on Clasp/Band",
+      "Hallmark Verification": "Certified 18K / 925 Stamp on Clasp",
       "Warranty Coverage": "6 Months Free Replating Assurance",
       "Packaging": "Luxury Suede Box with Authenticity Card",
       "Shipping": "Free Insured Express Delivery Across India"
@@ -1558,6 +1587,7 @@ export const PRODUCTS = [
     "reviewsCount": 33,
     "badge": "Bestseller",
     "isNew": false,
+    "metalType": "silver",
     "metals": [
       "Pure 925 Silver"
     ],
@@ -1592,6 +1622,7 @@ export const PRODUCTS = [
     "reviewsCount": 40,
     "badge": "Newly Launched",
     "isNew": true,
+    "metalType": "silver",
     "metals": [
       "Pure 925 Silver"
     ],
@@ -1626,6 +1657,7 @@ export const PRODUCTS = [
     "reviewsCount": 47,
     "badge": "Atelier Gala",
     "isNew": false,
+    "metalType": "gold",
     "metals": [
       "18K Yellow Gold"
     ],
@@ -1660,8 +1692,8 @@ export const PRODUCTS = [
     "reviewsCount": 54,
     "badge": "Atelier Gala",
     "isNew": false,
+    "metalType": "rose",
     "metals": [
-      "18K Yellow Gold",
       "Rose Gold Plated"
     ],
     "desc": "Sleek and contemporary, our Hexa Charm Bracelet features a beautifully crafted hexagon centerpiece accented with delicate sparkling stones. The geometric design adds a modern edge, while the fine dual-chain detailing enhances its elegance and balance. The warm gold finish gives it a refined glow, making it a perfect blend of minimal and statement styling. With a gold weight of 2.712 grams , this bracelet is lightweight and comfortable for everyday wear. Its clean lines and subtle brilliance make it an attractive choice for customers who appreciate modern, delicate jewellery with a touch of sparkle. A stylish addition to any fine gold collection.",
@@ -1671,8 +1703,8 @@ export const PRODUCTS = [
       "solystra_assets/products/geometric-radiance-hexagon-bracelet/angle_3.png"
     ],
     "specs": {
-      "Metal Purity": "18K Gold Vermeil (BIS Certified)",
-      "Plating Finish": "2.5-Micron 18K Gold Vermeil & Protective E-Coat",
+      "Metal Purity": "18K Rose Gold Micron (BIS Certified)",
+      "Plating Finish": "18K Rose Gold Micron Vermeil & Protective E-Coat",
       "Stone Setting": "AAA+ Austrian Solitaire Crystals",
       "Hallmark Verification": "Certified 18K / 925 Stamp on Clasp",
       "Warranty Coverage": "6 Months Free Replating Assurance",
@@ -1695,9 +1727,9 @@ export const PRODUCTS = [
     "reviewsCount": 61,
     "badge": "Atelier Gala",
     "isNew": false,
+    "metalType": "gold",
     "metals": [
-      "18K Yellow Gold",
-      "Pure 925 Silver"
+      "18K Yellow Gold"
     ],
     "desc": "Inspired by a blooming wildflower meadow, the Golden Meadow Necklace Set showcases an elegant arrangement of intricately textured floral motifs in warm dual-tone finishes. Delicate petals with fine engraved detailing are beautifully paired with polished sterling silver accents, creating a design that feels graceful, artistic, and timeless. The statement necklace is perfectly complemented by a pair of matching floral drop earrings , making this coordinated set ideal for adding a sophisticated touch to both everyday and occasion wear. The set includes a 925 sterling silver statement necklace and a matching pair of floral drop earrings. Product Specifications Product Name: Golden Meadow Necklace Set Metal: 925 Sterling Silver Includes: Statement Necklace &amp; Matching Floral Drop Earrings Style: Floral | Nature-Inspired | Contemporary | Dual-Tone Occasion: Festive | Wedding | Brunch | Evening Wear | Gifting Styling Tip Pair it with solid-colored outfits or elegant ethnic wear to let the intricate floral details stand out. Wear the necklace and matching earrings together for a polished, coordinated look. Care Tip Store each piece separately in a soft jewellery pouch and avoid exposure to perfumes, lotions, water, and harsh chemicals to preserve the sterling silver finish and the intricate floral detailing.",
     "images": [
@@ -1729,6 +1761,7 @@ export const PRODUCTS = [
     "reviewsCount": 68,
     "badge": "Bestseller",
     "isNew": false,
+    "metalType": "gold",
     "metals": [
       "18K Yellow Gold"
     ],
@@ -1763,9 +1796,9 @@ export const PRODUCTS = [
     "reviewsCount": 75,
     "badge": "Bestseller",
     "isNew": false,
+    "metalType": "gold",
     "metals": [
-      "18K Yellow Gold",
-      "Pure 925 Silver"
+      "18K Yellow Gold"
     ],
     "desc": "Bold heritage meets contemporary shine in these striking dual-tone hoop earrings. Designed with a classic Greek key motif running through the center, the textured yellow gold detailing contrasts beautifully against the smooth white gold borders — creating depth, dimension, and unmistakable character. With a gold weight of 2.870 grams , these hoops offer a solid yet comfortable feel, making them perfect for everyday luxury or statement styling. The structured silhouette and intricate engraving add a refined edge, ideal for those who appreciate timeless patterns with a modern finish. A powerful blend of tradition and sophistication — made to stand out effortlessly.",
     "images": [
@@ -1798,6 +1831,7 @@ export const PRODUCTS = [
     "reviewsCount": 82,
     "badge": "Trending",
     "isNew": false,
+    "metalType": "silver",
     "metals": [
       "Pure 925 Silver"
     ],
@@ -1832,6 +1866,7 @@ export const PRODUCTS = [
     "reviewsCount": 89,
     "badge": "Atelier Pick",
     "isNew": false,
+    "metalType": "gold",
     "metals": [
       "18K Yellow Gold"
     ],
@@ -1866,9 +1901,9 @@ export const PRODUCTS = [
     "reviewsCount": 21,
     "badge": "Atelier Gala",
     "isNew": false,
+    "metalType": "gold",
     "metals": [
-      "18K Yellow Gold",
-      "Rose Gold Plated"
+      "18K Yellow Gold"
     ],
     "desc": "Delicate and romantic, the Heart Charm Layered Necklace features two graceful chains adorned with sparkling heart-shaped accents and a vibrant pink heart at the center. The layered silhouette and floating charms create a playful yet elegant look, making it perfect for everyday styling or special moments. Product Specifications Product Name: Heart Charm Layered Necklace Metal: 18K BIS Hallmarked Gold Gross Weight: 4.680 g Net Weight: 4.465 g Style: Layered | Romantic | Contemporary Occasion: Everyday Wear | Date Night | Brunch | Party | Gifting Styling Tip Wear it with a sweetheart or V-neck neckline and pair it with simple heart studs for a coordinated, elegant look. Care Tip Store flat in a soft jewellery pouch to prevent tangling, and avoid contact with perfumes, lotions, and harsh chemicals to maintain its shine and brilliance.",
     "images": [
@@ -1901,8 +1936,8 @@ export const PRODUCTS = [
     "reviewsCount": 28,
     "badge": "Atelier Gala",
     "isNew": false,
+    "metalType": "rose",
     "metals": [
-      "18K Yellow Gold",
       "Rose Gold Plated"
     ],
     "desc": "The Intertwined Heart Set features a delicate open double-heart design with a subtle stud detail placed gracefully in between — adding just the right touch of sparkle. The pendant rests softly along the neckline, while the matching earrings mirror the same romantic silhouette for a perfectly coordinated look. The design blends polished gold curves with a fine shimmering accent at the centre, symbolising connection, love, and closeness. Elegant yet minimal, it’s crafted to feel light, feminine, and easy to wear from day to evening. Chain + Pendant Weight: 3.732 grams Earrings Weight: 1.595 grams Total Set Gold Weight: 5.327 grams Refined, meaningful, and effortlessly graceful — this is the kind of set that becomes part of your everyday story. ✨",
@@ -1911,8 +1946,8 @@ export const PRODUCTS = [
       "solystra_assets/products/heart-stone-pendant-stone/angle_2.png"
     ],
     "specs": {
-      "Metal Purity": "18K Gold Vermeil (BIS Certified)",
-      "Plating Finish": "2.5-Micron 18K Gold Vermeil & Protective E-Coat",
+      "Metal Purity": "18K Rose Gold Micron (BIS Certified)",
+      "Plating Finish": "18K Rose Gold Micron Vermeil & Protective E-Coat",
       "Stone Setting": "AAA+ Austrian Solitaire Crystals",
       "Hallmark Verification": "Certified 18K / 925 Stamp on Clasp",
       "Warranty Coverage": "6 Months Free Replating Assurance",
@@ -1935,8 +1970,8 @@ export const PRODUCTS = [
     "reviewsCount": 35,
     "badge": "Atelier Gala",
     "isNew": false,
+    "metalType": "rose",
     "metals": [
-      "18K Yellow Gold",
       "Rose Gold Plated"
     ],
     "desc": "A timeless symbol of endless connection and continuity, this bracelet features a sleek infinity motif designed with a modern minimal touch. Its refined structure and subtle shine make it perfect for everyday elegance. Product Details: • Gross Weight: 2.139 grams • Net Weight: 2.102 grams • Crafted in 18K gold • Infinity motif design symbolizing eternity • Fine chain with a delicate and elegant look • Smooth polished finish • Lightweight and comfortable for daily wear • Perfect for gifting or everyday styling",
@@ -1946,8 +1981,8 @@ export const PRODUCTS = [
       "assets/bento-craftsmanship-macro.jpg"
     ],
     "specs": {
-      "Metal Purity": "18K Gold Vermeil (BIS Certified)",
-      "Plating Finish": "2.5-Micron 18K Gold Vermeil & Protective E-Coat",
+      "Metal Purity": "18K Rose Gold Micron (BIS Certified)",
+      "Plating Finish": "18K Rose Gold Micron Vermeil & Protective E-Coat",
       "Stone Setting": "AAA+ Austrian Solitaire Crystals",
       "Hallmark Verification": "Certified 18K / 925 Stamp on Clasp",
       "Warranty Coverage": "6 Months Free Replating Assurance",
@@ -1970,8 +2005,8 @@ export const PRODUCTS = [
     "reviewsCount": 42,
     "badge": "Atelier Gala",
     "isNew": false,
+    "metalType": "rose",
     "metals": [
-      "18K Yellow Gold",
       "Rose Gold Plated"
     ],
     "desc": "A delicate blend of sparkle, colour, and modern romance, the Infinity Charm Ring is designed to stand out with graceful charm. Featuring an elegant infinity-inspired loop motif paired with a vivid crimson heart-shaped stone and a fine studded accent, this ring brings together softness and statement in one refined design. Set in a rose gold finish , its warm tone beautifully complements the rich pop of colour, making it a lovely choice for both everyday elegance and special gifting. Feminine, modern, and eye-catching, this ring adds a romantic touch to any jewellery collection. Product Details • Gross Weight: 1.224 grams • Net Weight: 1.190 grams • Finish: Rose gold • Infinity-inspired design • Heart-shaped crimson centre stone • Studded accent for added sparkle • Lightweight and comfortable for daily wear Ring size: Standard size (11) ; other custom sizes can be made on order",
@@ -1981,8 +2016,8 @@ export const PRODUCTS = [
       "assets/bento-craftsmanship-macro.jpg"
     ],
     "specs": {
-      "Metal Purity": "18K Gold Vermeil (BIS Certified)",
-      "Plating Finish": "2.5-Micron 18K Gold Vermeil & Protective E-Coat",
+      "Metal Purity": "18K Rose Gold Micron (BIS Certified)",
+      "Plating Finish": "18K Rose Gold Micron Vermeil & Protective E-Coat",
       "Stone Setting": "AAA+ Austrian Solitaire Crystals",
       "Hallmark Verification": "Certified 18K / 925 Stamp on Clasp",
       "Warranty Coverage": "6 Months Free Replating Assurance",
@@ -2005,8 +2040,8 @@ export const PRODUCTS = [
     "reviewsCount": 49,
     "badge": "Atelier Gala",
     "isNew": false,
+    "metalType": "rose",
     "metals": [
-      "18K Yellow Gold",
       "Rose Gold Plated"
     ],
     "desc": "A modern take on a timeless symbol, this bracelet features a sleek infinity motif paired with a dual chain design for added depth and style. Finished in elegant rose gold, it offers a soft, feminine glow perfect for everyday wear. Product Details: • Gross Weight: 2.79 grams • Net Weight: 2.79 grams • Crafted in 18K gold • Rose gold finish for a warm, elegant tone • Infinity motif symbolizing continuity and connection • Dual chain design for a layered look • Smooth polished finish • Lightweight and comfortable for daily wear • Perfect for stacking or wearing as a statement piece",
@@ -2016,8 +2051,8 @@ export const PRODUCTS = [
       "assets/bento-craftsmanship-macro.jpg"
     ],
     "specs": {
-      "Metal Purity": "18K Gold Vermeil (BIS Certified)",
-      "Plating Finish": "2.5-Micron 18K Gold Vermeil & Protective E-Coat",
+      "Metal Purity": "18K Rose Gold Micron (BIS Certified)",
+      "Plating Finish": "18K Rose Gold Micron Vermeil & Protective E-Coat",
       "Stone Setting": "AAA+ Austrian Solitaire Crystals",
       "Hallmark Verification": "Certified 18K / 925 Stamp on Clasp",
       "Warranty Coverage": "6 Months Free Replating Assurance",
@@ -2040,6 +2075,7 @@ export const PRODUCTS = [
     "reviewsCount": 56,
     "badge": "Popular Choice",
     "isNew": false,
+    "metalType": "silver",
     "metals": [
       "Pure 925 Silver"
     ],
@@ -2076,6 +2112,7 @@ export const PRODUCTS = [
     "reviewsCount": 63,
     "badge": "Atelier Gala",
     "isNew": false,
+    "metalType": "gold",
     "metals": [
       "18K Yellow Gold"
     ],
@@ -2110,6 +2147,7 @@ export const PRODUCTS = [
     "reviewsCount": 70,
     "badge": "Newly Launched",
     "isNew": true,
+    "metalType": "silver",
     "metals": [
       "Pure 925 Silver"
     ],
@@ -2144,6 +2182,7 @@ export const PRODUCTS = [
     "reviewsCount": 77,
     "badge": "Trending",
     "isNew": false,
+    "metalType": "silver",
     "metals": [
       "Pure 925 Silver"
     ],
@@ -2178,6 +2217,7 @@ export const PRODUCTS = [
     "reviewsCount": 84,
     "badge": "Atelier Gala",
     "isNew": false,
+    "metalType": "gold",
     "metals": [
       "18K Yellow Gold"
     ],
@@ -2211,6 +2251,7 @@ export const PRODUCTS = [
     "reviewsCount": 91,
     "badge": "Popular Choice",
     "isNew": false,
+    "metalType": "silver",
     "metals": [
       "Pure 925 Silver"
     ],
@@ -2245,6 +2286,7 @@ export const PRODUCTS = [
     "reviewsCount": 23,
     "badge": "Bestseller",
     "isNew": false,
+    "metalType": "silver",
     "metals": [
       "Pure 925 Silver"
     ],
@@ -2278,6 +2320,7 @@ export const PRODUCTS = [
     "reviewsCount": 30,
     "badge": "Newly Launched",
     "isNew": true,
+    "metalType": "silver",
     "metals": [
       "Pure 925 Silver"
     ],
@@ -2312,6 +2355,7 @@ export const PRODUCTS = [
     "reviewsCount": 37,
     "badge": "Trending",
     "isNew": false,
+    "metalType": "silver",
     "metals": [
       "Pure 925 Silver"
     ],
@@ -2346,8 +2390,8 @@ export const PRODUCTS = [
     "reviewsCount": 44,
     "badge": "Atelier Gala",
     "isNew": false,
+    "metalType": "rose",
     "metals": [
-      "18K Yellow Gold",
       "Rose Gold Plated"
     ],
     "desc": "Sleek, polished, and undeniably refined — the Linear Luxe Bangle is designed for those who appreciate clean lines and quiet luxury. Its smooth rose gold silhouette wraps gracefully around the wrist, highlighted by a modern central link detail that adds structure and character without overpowering the design. Minimal in form, yet strong in presence. With a gold weight of 4.19 grams , this bangle offers a luxurious feel while maintaining comfortable wearability. The rigid bangle style gives it a premium finish, making it perfect as a standalone statement or paired with delicate bracelets for a layered look. A sophisticated rose gold essential that speaks elegance in the most effortless way.",
@@ -2357,8 +2401,8 @@ export const PRODUCTS = [
       "assets/bento-craftsmanship-macro.jpg"
     ],
     "specs": {
-      "Metal Purity": "18K Gold Vermeil (BIS Certified)",
-      "Plating Finish": "2.5-Micron 18K Gold Vermeil & Protective E-Coat",
+      "Metal Purity": "18K Rose Gold Micron (BIS Certified)",
+      "Plating Finish": "18K Rose Gold Micron Vermeil & Protective E-Coat",
       "Stone Setting": "AAA+ Austrian Solitaire Crystals",
       "Hallmark Verification": "Certified 18K / 925 Stamp on Clasp",
       "Warranty Coverage": "6 Months Free Replating Assurance",
@@ -2381,6 +2425,7 @@ export const PRODUCTS = [
     "reviewsCount": 51,
     "badge": "Atelier Gala",
     "isNew": false,
+    "metalType": "rose",
     "metals": [
       "Rose Gold Plated"
     ],
@@ -2394,7 +2439,7 @@ export const PRODUCTS = [
       "Metal Purity": "18K Rose Gold Micron (BIS Certified)",
       "Plating Finish": "18K Rose Gold Micron Vermeil & Protective E-Coat",
       "Stone Setting": "AAA+ Austrian Solitaire Crystals",
-      "Hallmark Verification": "Certified 925 Stamp on Clasp/Band",
+      "Hallmark Verification": "Certified 18K / 925 Stamp on Clasp",
       "Warranty Coverage": "6 Months Free Replating Assurance",
       "Packaging": "Luxury Suede Box with Authenticity Card",
       "Shipping": "Free Insured Express Delivery Across India"
@@ -2415,6 +2460,7 @@ export const PRODUCTS = [
     "reviewsCount": 58,
     "badge": "Bestseller",
     "isNew": false,
+    "metalType": "gold",
     "metals": [
       "18K Yellow Gold"
     ],
@@ -2449,6 +2495,7 @@ export const PRODUCTS = [
     "reviewsCount": 65,
     "badge": "Atelier Gala",
     "isNew": false,
+    "metalType": "gold",
     "metals": [
       "18K Yellow Gold"
     ],
@@ -2482,6 +2529,7 @@ export const PRODUCTS = [
     "reviewsCount": 72,
     "badge": "Trending",
     "isNew": false,
+    "metalType": "silver",
     "metals": [
       "Pure 925 Silver"
     ],
@@ -2516,6 +2564,7 @@ export const PRODUCTS = [
     "reviewsCount": 79,
     "badge": "Atelier Pick",
     "isNew": false,
+    "metalType": "silver",
     "metals": [
       "Pure 925 Silver"
     ],
@@ -2550,6 +2599,7 @@ export const PRODUCTS = [
     "reviewsCount": 86,
     "badge": "Popular Choice",
     "isNew": false,
+    "metalType": "silver",
     "metals": [
       "Pure 925 Silver"
     ],
@@ -2584,6 +2634,7 @@ export const PRODUCTS = [
     "reviewsCount": 18,
     "badge": "Bestseller",
     "isNew": false,
+    "metalType": "silver",
     "metals": [
       "Pure 925 Silver"
     ],
@@ -2618,8 +2669,8 @@ export const PRODUCTS = [
     "reviewsCount": 25,
     "badge": "Atelier Gala",
     "isNew": false,
+    "metalType": "rose",
     "metals": [
-      "18K Yellow Gold",
       "Rose Gold Plated"
     ],
     "desc": "Playful, vibrant, and full of meaning — this Lucky Charm Bracelet blends colorful enamel charms with protective evil eye details for a look that feels both trendy and symbolic. The mix of elongated gold links and delicate chain elements creates a stylish contrast, while the heart and clover-inspired accents add a youthful, positive energy to the design. Crafted in fine gold with a weight of 3.570 grams , this bracelet offers a noticeable yet comfortable presence on the wrist. It’s the perfect piece for someone who loves expressive jewellery with personality — easy to style, eye-catching, and believed to carry a touch of luck and protection wherever you go. ✨",
@@ -2629,8 +2680,8 @@ export const PRODUCTS = [
       "assets/bento-craftsmanship-macro.jpg"
     ],
     "specs": {
-      "Metal Purity": "18K Gold Vermeil (BIS Certified)",
-      "Plating Finish": "2.5-Micron 18K Gold Vermeil & Protective E-Coat",
+      "Metal Purity": "18K Rose Gold Micron (BIS Certified)",
+      "Plating Finish": "18K Rose Gold Micron Vermeil & Protective E-Coat",
       "Stone Setting": "AAA+ Austrian Solitaire Crystals",
       "Hallmark Verification": "Certified 18K / 925 Stamp on Clasp",
       "Warranty Coverage": "6 Months Free Replating Assurance",
@@ -2653,6 +2704,7 @@ export const PRODUCTS = [
     "reviewsCount": 32,
     "badge": "Atelier Gala",
     "isNew": false,
+    "metalType": "gold",
     "metals": [
       "18K Yellow Gold"
     ],
@@ -2687,6 +2739,7 @@ export const PRODUCTS = [
     "reviewsCount": 39,
     "badge": "Atelier Gala",
     "isNew": false,
+    "metalType": "gold",
     "metals": [
       "18K Yellow Gold"
     ],
@@ -2720,6 +2773,7 @@ export const PRODUCTS = [
     "reviewsCount": 46,
     "badge": "Popular Choice",
     "isNew": false,
+    "metalType": "silver",
     "metals": [
       "Pure 925 Silver"
     ],
@@ -2754,6 +2808,7 @@ export const PRODUCTS = [
     "reviewsCount": 53,
     "badge": "Bestseller",
     "isNew": false,
+    "metalType": "silver",
     "metals": [
       "Pure 925 Silver"
     ],
@@ -2789,6 +2844,7 @@ export const PRODUCTS = [
     "reviewsCount": 60,
     "badge": "Newly Launched",
     "isNew": true,
+    "metalType": "gold",
     "metals": [
       "18K Yellow Gold"
     ],
@@ -2823,6 +2879,7 @@ export const PRODUCTS = [
     "reviewsCount": 67,
     "badge": "Trending",
     "isNew": false,
+    "metalType": "silver",
     "metals": [
       "Pure 925 Silver"
     ],
@@ -2857,6 +2914,7 @@ export const PRODUCTS = [
     "reviewsCount": 74,
     "badge": "Atelier Pick",
     "isNew": false,
+    "metalType": "silver",
     "metals": [
       "Pure 925 Silver"
     ],
@@ -2891,6 +2949,7 @@ export const PRODUCTS = [
     "reviewsCount": 81,
     "badge": "Atelier Gala",
     "isNew": false,
+    "metalType": "gold",
     "metals": [
       "18K Yellow Gold"
     ],
@@ -2925,6 +2984,7 @@ export const PRODUCTS = [
     "reviewsCount": 88,
     "badge": "Atelier Gala",
     "isNew": false,
+    "metalType": "rose",
     "metals": [
       "Rose Gold Plated"
     ],
@@ -2938,7 +2998,7 @@ export const PRODUCTS = [
       "Metal Purity": "18K Rose Gold Micron (BIS Certified)",
       "Plating Finish": "18K Rose Gold Micron Vermeil & Protective E-Coat",
       "Stone Setting": "AAA+ Austrian Solitaire Crystals",
-      "Hallmark Verification": "Certified 925 Stamp on Clasp/Band",
+      "Hallmark Verification": "Certified 18K / 925 Stamp on Clasp",
       "Warranty Coverage": "6 Months Free Replating Assurance",
       "Packaging": "Luxury Suede Box with Authenticity Card",
       "Shipping": "Free Insured Express Delivery Across India"
@@ -2959,8 +3019,8 @@ export const PRODUCTS = [
     "reviewsCount": 20,
     "badge": "Atelier Gala",
     "isNew": false,
+    "metalType": "rose",
     "metals": [
-      "18K Yellow Gold",
       "Rose Gold Plated"
     ],
     "desc": "Delicate and romantic, the Open Heart Studded Ring features a graceful heart-shaped centerpiece designed with a beautiful open form that gives it a light and elegant look. One side of the heart is accented with fine sparkling stones, while the other side is finished in smooth polished metal, creating a balanced contrast that feels both modern and feminine. Crafted in a rose gold finish , the ring has a warm and refined glow that enhances its soft heart silhouette. The slim band keeps the design minimal and comfortable, making it ideal for everyday wear while still adding a subtle statement to your jewellery collection. Elegant on its own and easy to pair with other delicate rings, this piece is perfect for those who love romantic jewellery with a contemporary touch. Product Details • Gross Weight: 1.161 grams • Net Gold Weight: 1.140 grams • Rose gold finish • Open heart motif with studded detailing • Slim and elegant band design • Lightweight and comfortable for daily wear • Ring Size: (14)— Custom sizes available on request",
@@ -2970,8 +3030,8 @@ export const PRODUCTS = [
       "assets/bento-craftsmanship-macro.jpg"
     ],
     "specs": {
-      "Metal Purity": "18K Gold Vermeil (BIS Certified)",
-      "Plating Finish": "2.5-Micron 18K Gold Vermeil & Protective E-Coat",
+      "Metal Purity": "18K Rose Gold Micron (BIS Certified)",
+      "Plating Finish": "18K Rose Gold Micron Vermeil & Protective E-Coat",
       "Stone Setting": "AAA+ Austrian Solitaire Crystals",
       "Hallmark Verification": "Certified 18K / 925 Stamp on Clasp",
       "Warranty Coverage": "6 Months Free Replating Assurance",
@@ -2994,6 +3054,7 @@ export const PRODUCTS = [
     "reviewsCount": 27,
     "badge": "Atelier Gala",
     "isNew": false,
+    "metalType": "gold",
     "metals": [
       "18K Yellow Gold"
     ],
@@ -3028,6 +3089,7 @@ export const PRODUCTS = [
     "reviewsCount": 34,
     "badge": "Atelier Gala",
     "isNew": false,
+    "metalType": "gold",
     "metals": [
       "18K Yellow Gold"
     ],
@@ -3062,6 +3124,7 @@ export const PRODUCTS = [
     "reviewsCount": 41,
     "badge": "Atelier Gala",
     "isNew": false,
+    "metalType": "gold",
     "metals": [
       "18K Yellow Gold"
     ],
@@ -3096,6 +3159,7 @@ export const PRODUCTS = [
     "reviewsCount": 48,
     "badge": "Bestseller",
     "isNew": false,
+    "metalType": "silver",
     "metals": [
       "Pure 925 Silver"
     ],
@@ -3130,6 +3194,7 @@ export const PRODUCTS = [
     "reviewsCount": 55,
     "badge": "Atelier Gala",
     "isNew": false,
+    "metalType": "rose",
     "metals": [
       "Rose Gold Plated"
     ],
@@ -3143,7 +3208,7 @@ export const PRODUCTS = [
       "Metal Purity": "18K Rose Gold Micron (BIS Certified)",
       "Plating Finish": "18K Rose Gold Micron Vermeil & Protective E-Coat",
       "Stone Setting": "AAA+ Austrian Solitaire Crystals",
-      "Hallmark Verification": "Certified 925 Stamp on Clasp/Band",
+      "Hallmark Verification": "Certified 18K / 925 Stamp on Clasp",
       "Warranty Coverage": "6 Months Free Replating Assurance",
       "Packaging": "Luxury Suede Box with Authenticity Card",
       "Shipping": "Free Insured Express Delivery Across India"
@@ -3164,6 +3229,7 @@ export const PRODUCTS = [
     "reviewsCount": 62,
     "badge": "Atelier Gala",
     "isNew": false,
+    "metalType": "gold",
     "metals": [
       "18K Yellow Gold"
     ],
@@ -3198,6 +3264,7 @@ export const PRODUCTS = [
     "reviewsCount": 69,
     "badge": "Atelier Pick",
     "isNew": false,
+    "metalType": "silver",
     "metals": [
       "Pure 925 Silver"
     ],
@@ -3234,6 +3301,7 @@ export const PRODUCTS = [
     "reviewsCount": 76,
     "badge": "Atelier Gala",
     "isNew": false,
+    "metalType": "gold",
     "metals": [
       "18K Yellow Gold"
     ],
@@ -3268,6 +3336,7 @@ export const PRODUCTS = [
     "reviewsCount": 83,
     "badge": "Atelier Gala",
     "isNew": false,
+    "metalType": "rose",
     "metals": [
       "Rose Gold Plated"
     ],
@@ -3280,7 +3349,7 @@ export const PRODUCTS = [
       "Metal Purity": "18K Rose Gold Micron (BIS Certified)",
       "Plating Finish": "18K Rose Gold Micron Vermeil & Protective E-Coat",
       "Stone Setting": "AAA+ Austrian Solitaire Crystals",
-      "Hallmark Verification": "Certified 925 Stamp on Clasp/Band",
+      "Hallmark Verification": "Certified 18K / 925 Stamp on Clasp",
       "Warranty Coverage": "6 Months Free Replating Assurance",
       "Packaging": "Luxury Suede Box with Authenticity Card",
       "Shipping": "Free Insured Express Delivery Across India"
@@ -3301,6 +3370,7 @@ export const PRODUCTS = [
     "reviewsCount": 90,
     "badge": "Newly Launched",
     "isNew": true,
+    "metalType": "silver",
     "metals": [
       "Pure 925 Silver"
     ],
@@ -3335,6 +3405,7 @@ export const PRODUCTS = [
     "reviewsCount": 22,
     "badge": "Trending",
     "isNew": false,
+    "metalType": "silver",
     "metals": [
       "Pure 925 Silver"
     ],
@@ -3369,6 +3440,7 @@ export const PRODUCTS = [
     "reviewsCount": 29,
     "badge": "Atelier Gala",
     "isNew": false,
+    "metalType": "gold",
     "metals": [
       "18K Yellow Gold"
     ],
@@ -3403,6 +3475,7 @@ export const PRODUCTS = [
     "reviewsCount": 36,
     "badge": "Atelier Gala",
     "isNew": false,
+    "metalType": "gold",
     "metals": [
       "18K Yellow Gold"
     ],
@@ -3437,6 +3510,7 @@ export const PRODUCTS = [
     "reviewsCount": 43,
     "badge": "Bestseller",
     "isNew": false,
+    "metalType": "silver",
     "metals": [
       "Pure 925 Silver"
     ],
@@ -3472,6 +3546,7 @@ export const PRODUCTS = [
     "reviewsCount": 50,
     "badge": "Newly Launched",
     "isNew": true,
+    "metalType": "silver",
     "metals": [
       "Pure 925 Silver"
     ],
@@ -3506,6 +3581,7 @@ export const PRODUCTS = [
     "reviewsCount": 57,
     "badge": "Atelier Gala",
     "isNew": false,
+    "metalType": "gold",
     "metals": [
       "18K Yellow Gold"
     ],
@@ -3540,6 +3616,7 @@ export const PRODUCTS = [
     "reviewsCount": 64,
     "badge": "Atelier Pick",
     "isNew": false,
+    "metalType": "silver",
     "metals": [
       "Pure 925 Silver"
     ],
@@ -3573,8 +3650,8 @@ export const PRODUCTS = [
     "reviewsCount": 71,
     "badge": "Atelier Gala",
     "isNew": false,
+    "metalType": "rose",
     "metals": [
-      "18K Yellow Gold",
       "Rose Gold Plated"
     ],
     "desc": "A delicate symbol of love and brilliance, this bracelet features a heart motif adorned with subtle sparkle, designed to catch the light beautifully. Its refined silhouette and minimal chain make it perfect for effortless everyday elegance. Product Details: • Gross Weight: 2.724 grams • Net Weight: 2.643 grams • Crafted in 18K gold • Heart motif with sparkling stone detailing • Fine chain bracelet with an adjustable fit • Smooth polished finish with radiant shine • Lightweight and comfortable for daily wear • Perfect for gifting or adding a touch of sparkle to any look",
@@ -3584,8 +3661,8 @@ export const PRODUCTS = [
       "assets/bento-craftsmanship-macro.jpg"
     ],
     "specs": {
-      "Metal Purity": "18K Gold Vermeil (BIS Certified)",
-      "Plating Finish": "2.5-Micron 18K Gold Vermeil & Protective E-Coat",
+      "Metal Purity": "18K Rose Gold Micron (BIS Certified)",
+      "Plating Finish": "18K Rose Gold Micron Vermeil & Protective E-Coat",
       "Stone Setting": "AAA+ Austrian Solitaire Crystals",
       "Hallmark Verification": "Certified 18K / 925 Stamp on Clasp",
       "Warranty Coverage": "6 Months Free Replating Assurance",
@@ -3608,6 +3685,7 @@ export const PRODUCTS = [
     "reviewsCount": 78,
     "badge": "Atelier Gala",
     "isNew": false,
+    "metalType": "gold",
     "metals": [
       "18K Yellow Gold"
     ],
@@ -3642,6 +3720,7 @@ export const PRODUCTS = [
     "reviewsCount": 85,
     "badge": "Newly Launched",
     "isNew": true,
+    "metalType": "silver",
     "metals": [
       "Pure 925 Silver"
     ],
@@ -3675,6 +3754,7 @@ export const PRODUCTS = [
     "reviewsCount": 92,
     "badge": "Trending",
     "isNew": false,
+    "metalType": "silver",
     "metals": [
       "Pure 925 Silver"
     ],
@@ -3709,8 +3789,8 @@ export const PRODUCTS = [
     "reviewsCount": 24,
     "badge": "Atelier Gala",
     "isNew": false,
+    "metalType": "rose",
     "metals": [
-      "18K Yellow Gold",
       "Rose Gold Plated"
     ],
     "desc": "Delicate, feminine, and full of charm, the Rosé Heart Whisper Ring is designed with a graceful open-heart motif that captures the beauty of soft romance. At its centre sits a sparkling stone that adds just the right touch of brilliance, while the flowing rose gold silhouette keeps the look elegant and refined. Crafted in a rose gold finish , this ring offers a warm, luminous tone that makes it perfect for everyday wear as well as thoughtful gifting. Its lightweight yet expressive design makes it a lovely addition to any jewellery collection. Product Details • Gross Weight: 1.856 grams • Net Weight: 1.851 grams • Finish: Rose gold • Ring Size: 13 • Open-heart design with centre stone • Lightweight and elegant • Ideal for daily wear or gifting Ring size: Size 13 available; other sizes can be made on order.",
@@ -3720,8 +3800,8 @@ export const PRODUCTS = [
       "assets/bento-craftsmanship-macro.jpg"
     ],
     "specs": {
-      "Metal Purity": "18K Gold Vermeil (BIS Certified)",
-      "Plating Finish": "2.5-Micron 18K Gold Vermeil & Protective E-Coat",
+      "Metal Purity": "18K Rose Gold Micron (BIS Certified)",
+      "Plating Finish": "18K Rose Gold Micron Vermeil & Protective E-Coat",
       "Stone Setting": "AAA+ Austrian Solitaire Crystals",
       "Hallmark Verification": "Certified 18K / 925 Stamp on Clasp",
       "Warranty Coverage": "6 Months Free Replating Assurance",
@@ -3744,9 +3824,9 @@ export const PRODUCTS = [
     "reviewsCount": 31,
     "badge": "Trending",
     "isNew": false,
+    "metalType": "rose",
     "metals": [
-      "Rose Gold Plated",
-      "Pure 925 Silver"
+      "Rose Gold Plated"
     ],
     "desc": "A graceful tennis-style bracelet featuring a seamless row of round-cut shimmering stones, accented with soft rose-toned highlights for a refined touch of color. The alternating sparkle creates a delicate contrast, giving the piece a fresh yet timeless appeal. Elegant and versatile, it’s designed to elevate both everyday looks and special occasions. Product Details: 925 Sterling Silver Lightweight &amp; comfortable for daily wear Round-cut tennis design with rose-toned stone accents Fine, continuous sparkle detailing Secure clasp closure Perfect for stacking or wearing solo",
     "images": [
@@ -3760,7 +3840,7 @@ export const PRODUCTS = [
       "Metal Purity": "18K Rose Gold Micron (BIS Certified)",
       "Plating Finish": "18K Rose Gold Micron Vermeil & Protective E-Coat",
       "Stone Setting": "AAA+ Austrian Solitaire Crystals",
-      "Hallmark Verification": "Certified 925 Stamp on Clasp/Band",
+      "Hallmark Verification": "Certified 18K / 925 Stamp on Clasp",
       "Warranty Coverage": "6 Months Free Replating Assurance",
       "Packaging": "Luxury Suede Box with Authenticity Card",
       "Shipping": "Free Insured Express Delivery Across India"
@@ -3781,6 +3861,7 @@ export const PRODUCTS = [
     "reviewsCount": 38,
     "badge": "Atelier Gala",
     "isNew": false,
+    "metalType": "rose",
     "metals": [
       "Rose Gold Plated"
     ],
@@ -3794,7 +3875,7 @@ export const PRODUCTS = [
       "Metal Purity": "18K Rose Gold Micron (BIS Certified)",
       "Plating Finish": "18K Rose Gold Micron Vermeil & Protective E-Coat",
       "Stone Setting": "AAA+ Austrian Solitaire Crystals",
-      "Hallmark Verification": "Certified 925 Stamp on Clasp/Band",
+      "Hallmark Verification": "Certified 18K / 925 Stamp on Clasp",
       "Warranty Coverage": "6 Months Free Replating Assurance",
       "Packaging": "Luxury Suede Box with Authenticity Card",
       "Shipping": "Free Insured Express Delivery Across India"
@@ -3815,6 +3896,7 @@ export const PRODUCTS = [
     "reviewsCount": 45,
     "badge": "Atelier Gala",
     "isNew": false,
+    "metalType": "rose",
     "metals": [
       "Rose Gold Plated"
     ],
@@ -3828,7 +3910,7 @@ export const PRODUCTS = [
       "Metal Purity": "18K Rose Gold Micron (BIS Certified)",
       "Plating Finish": "18K Rose Gold Micron Vermeil & Protective E-Coat",
       "Stone Setting": "AAA+ Austrian Solitaire Crystals",
-      "Hallmark Verification": "Certified 925 Stamp on Clasp/Band",
+      "Hallmark Verification": "Certified 18K / 925 Stamp on Clasp",
       "Warranty Coverage": "6 Months Free Replating Assurance",
       "Packaging": "Luxury Suede Box with Authenticity Card",
       "Shipping": "Free Insured Express Delivery Across India"
@@ -3849,6 +3931,7 @@ export const PRODUCTS = [
     "reviewsCount": 52,
     "badge": "Trending",
     "isNew": false,
+    "metalType": "silver",
     "metals": [
       "Pure 925 Silver"
     ],
@@ -3882,6 +3965,7 @@ export const PRODUCTS = [
     "reviewsCount": 59,
     "badge": "Atelier Pick",
     "isNew": false,
+    "metalType": "silver",
     "metals": [
       "Pure 925 Silver"
     ],
@@ -3916,6 +4000,7 @@ export const PRODUCTS = [
     "reviewsCount": 66,
     "badge": "Atelier Gala",
     "isNew": false,
+    "metalType": "gold",
     "metals": [
       "18K Yellow Gold"
     ],
@@ -3950,6 +4035,7 @@ export const PRODUCTS = [
     "reviewsCount": 73,
     "badge": "Bestseller",
     "isNew": false,
+    "metalType": "silver",
     "metals": [
       "Pure 925 Silver"
     ],
@@ -3984,6 +4070,7 @@ export const PRODUCTS = [
     "reviewsCount": 80,
     "badge": "Atelier Gala",
     "isNew": false,
+    "metalType": "gold",
     "metals": [
       "18K Yellow Gold"
     ],
@@ -4018,6 +4105,7 @@ export const PRODUCTS = [
     "reviewsCount": 87,
     "badge": "Atelier Gala",
     "isNew": false,
+    "metalType": "rose",
     "metals": [
       "Rose Gold Plated"
     ],
@@ -4030,7 +4118,7 @@ export const PRODUCTS = [
       "Metal Purity": "18K Rose Gold Micron (BIS Certified)",
       "Plating Finish": "18K Rose Gold Micron Vermeil & Protective E-Coat",
       "Stone Setting": "AAA+ Austrian Solitaire Crystals",
-      "Hallmark Verification": "Certified 925 Stamp on Clasp/Band",
+      "Hallmark Verification": "Certified 18K / 925 Stamp on Clasp",
       "Warranty Coverage": "6 Months Free Replating Assurance",
       "Packaging": "Luxury Suede Box with Authenticity Card",
       "Shipping": "Free Insured Express Delivery Across India"
@@ -4051,6 +4139,7 @@ export const PRODUCTS = [
     "reviewsCount": 19,
     "badge": "Atelier Gala",
     "isNew": false,
+    "metalType": "gold",
     "metals": [
       "18K Yellow Gold"
     ],
@@ -4085,6 +4174,7 @@ export const PRODUCTS = [
     "reviewsCount": 26,
     "badge": "Atelier Gala",
     "isNew": false,
+    "metalType": "gold",
     "metals": [
       "18K Yellow Gold"
     ],
@@ -4119,6 +4209,7 @@ export const PRODUCTS = [
     "reviewsCount": 33,
     "badge": "Bestseller",
     "isNew": false,
+    "metalType": "silver",
     "metals": [
       "Pure 925 Silver"
     ],
@@ -4153,6 +4244,7 @@ export const PRODUCTS = [
     "reviewsCount": 40,
     "badge": "Atelier Gala",
     "isNew": false,
+    "metalType": "silver",
     "metals": [
       "Pure 925 Silver"
     ],
@@ -4186,6 +4278,7 @@ export const PRODUCTS = [
     "reviewsCount": 47,
     "badge": "Atelier Gala",
     "isNew": false,
+    "metalType": "gold",
     "metals": [
       "18K Yellow Gold"
     ],
@@ -4220,8 +4313,8 @@ export const PRODUCTS = [
     "reviewsCount": 54,
     "badge": "Atelier Gala",
     "isNew": false,
+    "metalType": "rose",
     "metals": [
-      "18K Yellow Gold",
       "Rose Gold Plated"
     ],
     "desc": "Inspired by a sky full of shimmer, the Starlight Bracelet brings together delicate star and floral-inspired motifs, each detailed with fine texture and sparkle. The evenly spaced charms create a graceful flow across the wrist, giving the piece a light, celestial feel while maintaining a refined gold finish. It’s feminine, intricate, and beautifully balanced in rose gold finish. With a gold weight of 3.51 grams , this bracelet has a noticeable yet elegant presence. Designed to catch the light with every movement, it’s perfect for adding a subtle glow to both day and evening looks. A charming piece for those who love jewellery that feels dreamy, detailed, and effortlessly radiant.",
@@ -4231,8 +4324,8 @@ export const PRODUCTS = [
       "assets/bento-craftsmanship-macro.jpg"
     ],
     "specs": {
-      "Metal Purity": "18K Gold Vermeil (BIS Certified)",
-      "Plating Finish": "2.5-Micron 18K Gold Vermeil & Protective E-Coat",
+      "Metal Purity": "18K Rose Gold Micron (BIS Certified)",
+      "Plating Finish": "18K Rose Gold Micron Vermeil & Protective E-Coat",
       "Stone Setting": "AAA+ Austrian Solitaire Crystals",
       "Hallmark Verification": "Certified 18K / 925 Stamp on Clasp",
       "Warranty Coverage": "6 Months Free Replating Assurance",
@@ -4255,6 +4348,7 @@ export const PRODUCTS = [
     "reviewsCount": 61,
     "badge": "Atelier Gala",
     "isNew": false,
+    "metalType": "gold",
     "metals": [
       "18K Yellow Gold"
     ],
@@ -4289,6 +4383,7 @@ export const PRODUCTS = [
     "reviewsCount": 68,
     "badge": "Atelier Gala",
     "isNew": false,
+    "metalType": "rose",
     "metals": [
       "Rose Gold Plated"
     ],
@@ -4302,7 +4397,7 @@ export const PRODUCTS = [
       "Metal Purity": "18K Rose Gold Micron (BIS Certified)",
       "Plating Finish": "18K Rose Gold Micron Vermeil & Protective E-Coat",
       "Stone Setting": "AAA+ Austrian Solitaire Crystals",
-      "Hallmark Verification": "Certified 925 Stamp on Clasp/Band",
+      "Hallmark Verification": "Certified 18K / 925 Stamp on Clasp",
       "Warranty Coverage": "6 Months Free Replating Assurance",
       "Packaging": "Luxury Suede Box with Authenticity Card",
       "Shipping": "Free Insured Express Delivery Across India"
@@ -4323,6 +4418,7 @@ export const PRODUCTS = [
     "reviewsCount": 75,
     "badge": "Atelier Gala",
     "isNew": false,
+    "metalType": "rose",
     "metals": [
       "Rose Gold Plated"
     ],
@@ -4335,7 +4431,7 @@ export const PRODUCTS = [
       "Metal Purity": "18K Rose Gold Micron (BIS Certified)",
       "Plating Finish": "18K Rose Gold Micron Vermeil & Protective E-Coat",
       "Stone Setting": "AAA+ Austrian Solitaire Crystals",
-      "Hallmark Verification": "Certified 925 Stamp on Clasp/Band",
+      "Hallmark Verification": "Certified 18K / 925 Stamp on Clasp",
       "Warranty Coverage": "6 Months Free Replating Assurance",
       "Packaging": "Luxury Suede Box with Authenticity Card",
       "Shipping": "Free Insured Express Delivery Across India"
@@ -4356,6 +4452,7 @@ export const PRODUCTS = [
     "reviewsCount": 82,
     "badge": "Trending",
     "isNew": false,
+    "metalType": "silver",
     "metals": [
       "Pure 925 Silver"
     ],
@@ -4390,8 +4487,8 @@ export const PRODUCTS = [
     "reviewsCount": 89,
     "badge": "Atelier Gala",
     "isNew": false,
+    "metalType": "rose",
     "metals": [
-      "18K Yellow Gold",
       "Rose Gold Plated"
     ],
     "desc": "A celebration of contrast and craftsmanship, this Italian-made tri-color bracelet blends yellow, rose, and white gold in a seamless geometric link design. The alternating tones create a dynamic visual rhythm, giving the piece depth and dimension while maintaining a sleek, modern silhouette. Each angular link reflects light differently, making the bracelet subtly eye-catching from every angle. Expertly crafted in Italy, it showcases precision detailing and a polished finish that speaks of refined artistry. Perfect for pairing with mixed-metal jewellery or wearing as a statement on its own, this bracelet offers versatility with a sophisticated edge — a contemporary essential for those who appreciate distinctive, high-quality gold pieces.",
@@ -4401,8 +4498,8 @@ export const PRODUCTS = [
       "solystra_assets/products/tri-color-link-bracelet/angle_3.jpg"
     ],
     "specs": {
-      "Metal Purity": "18K Gold Vermeil (BIS Certified)",
-      "Plating Finish": "2.5-Micron 18K Gold Vermeil & Protective E-Coat",
+      "Metal Purity": "18K Rose Gold Micron (BIS Certified)",
+      "Plating Finish": "18K Rose Gold Micron Vermeil & Protective E-Coat",
       "Stone Setting": "AAA+ Austrian Solitaire Crystals",
       "Hallmark Verification": "Certified 18K / 925 Stamp on Clasp",
       "Warranty Coverage": "6 Months Free Replating Assurance",
@@ -4425,6 +4522,7 @@ export const PRODUCTS = [
     "reviewsCount": 21,
     "badge": "Atelier Gala",
     "isNew": false,
+    "metalType": "gold",
     "metals": [
       "18K Yellow Gold"
     ],
@@ -4459,6 +4557,7 @@ export const PRODUCTS = [
     "reviewsCount": 28,
     "badge": "Atelier Gala",
     "isNew": false,
+    "metalType": "rose",
     "metals": [
       "Rose Gold Plated"
     ],
@@ -4471,7 +4570,7 @@ export const PRODUCTS = [
       "Metal Purity": "18K Rose Gold Micron (BIS Certified)",
       "Plating Finish": "18K Rose Gold Micron Vermeil & Protective E-Coat",
       "Stone Setting": "AAA+ Austrian Solitaire Crystals",
-      "Hallmark Verification": "Certified 925 Stamp on Clasp/Band",
+      "Hallmark Verification": "Certified 18K / 925 Stamp on Clasp",
       "Warranty Coverage": "6 Months Free Replating Assurance",
       "Packaging": "Luxury Suede Box with Authenticity Card",
       "Shipping": "Free Insured Express Delivery Across India"
@@ -4492,6 +4591,7 @@ export const PRODUCTS = [
     "reviewsCount": 35,
     "badge": "Atelier Gala",
     "isNew": false,
+    "metalType": "rose",
     "metals": [
       "Rose Gold Plated"
     ],
@@ -4505,7 +4605,7 @@ export const PRODUCTS = [
       "Metal Purity": "18K Rose Gold Micron (BIS Certified)",
       "Plating Finish": "18K Rose Gold Micron Vermeil & Protective E-Coat",
       "Stone Setting": "AAA+ Austrian Solitaire Crystals",
-      "Hallmark Verification": "Certified 925 Stamp on Clasp/Band",
+      "Hallmark Verification": "Certified 18K / 925 Stamp on Clasp",
       "Warranty Coverage": "6 Months Free Replating Assurance",
       "Packaging": "Luxury Suede Box with Authenticity Card",
       "Shipping": "Free Insured Express Delivery Across India"
@@ -4526,6 +4626,7 @@ export const PRODUCTS = [
     "reviewsCount": 42,
     "badge": "Atelier Gala",
     "isNew": false,
+    "metalType": "rose",
     "metals": [
       "Rose Gold Plated"
     ],
@@ -4538,7 +4639,7 @@ export const PRODUCTS = [
       "Metal Purity": "18K Rose Gold Micron (BIS Certified)",
       "Plating Finish": "18K Rose Gold Micron Vermeil & Protective E-Coat",
       "Stone Setting": "AAA+ Austrian Solitaire Crystals",
-      "Hallmark Verification": "Certified 925 Stamp on Clasp/Band",
+      "Hallmark Verification": "Certified 18K / 925 Stamp on Clasp",
       "Warranty Coverage": "6 Months Free Replating Assurance",
       "Packaging": "Luxury Suede Box with Authenticity Card",
       "Shipping": "Free Insured Express Delivery Across India"
@@ -4559,6 +4660,7 @@ export const PRODUCTS = [
     "reviewsCount": 49,
     "badge": "Atelier Gala",
     "isNew": false,
+    "metalType": "gold",
     "metals": [
       "18K Yellow Gold"
     ],
@@ -4592,9 +4694,9 @@ export const PRODUCTS = [
     "reviewsCount": 56,
     "badge": "Bestseller",
     "isNew": false,
+    "metalType": "silver",
     "metals": [
-      "Pure 925 Silver",
-      "Rose Gold Plated"
+      "Pure 925 Silver"
     ],
     "desc": "Sleek and contemporary, the Interlocking Circle Bracelet features two polished circular rings linked together to create a clean and symbolic design. The interlocking circles represent connection and continuity, giving the bracelet a subtle meaning while maintaining a minimal aesthetic. The smooth gold finish highlights the circular shapes, allowing the design to stand out while still feeling delicate and refined. Suspended on a fine chain, the centerpiece sits gracefully on the wrist and adds a modern touch to everyday jewellery styling. Lightweight and elegant, this bracelet is perfect for daily wear and pairs beautifully with other bracelets for a layered look or can be worn alone for a subtle statement. Product Details • Gold Weight: 0.97 grams • Interlocking circle design • Fine lightweight chain bracelet • Minimal and modern aesthetic • Comfortable for everyday wear",
     "images": [
@@ -4626,8 +4728,8 @@ export const PRODUCTS = [
     "reviewsCount": 63,
     "badge": "Bestseller",
     "isNew": false,
+    "metalType": "rose",
     "metals": [
-      "18K Yellow Gold",
       "Rose Gold Plated"
     ],
     "desc": "This ultra-delicate V-shaped chevron ring is designed to contour beautifully along the finger. One side features a fine row of shimmering stones, while the other remains sleek and polished — creating a modern asymmetrical balance that feels light yet refined. With a gold weight of just 0.589 grams , it’s incredibly lightweight and perfect for stacking. Wear it alone for a minimal look or pair it with a solitaire or band ring to create a layered, curated style. Subtle, sculpted, and effortlessly chic — a tiny detail that makes a big impact. ✨ • Ring Size: Standard size (12) — Custom sizes available on request",
@@ -4637,8 +4739,8 @@ export const PRODUCTS = [
       "assets/bento-craftsmanship-macro.jpg"
     ],
     "specs": {
-      "Metal Purity": "18K Gold Vermeil (BIS Certified)",
-      "Plating Finish": "2.5-Micron 18K Gold Vermeil & Protective E-Coat",
+      "Metal Purity": "18K Rose Gold Micron (BIS Certified)",
+      "Plating Finish": "18K Rose Gold Micron Vermeil & Protective E-Coat",
       "Stone Setting": "AAA+ Austrian Solitaire Crystals",
       "Hallmark Verification": "Certified 18K / 925 Stamp on Clasp",
       "Warranty Coverage": "6 Months Free Replating Assurance",
@@ -4661,6 +4763,7 @@ export const PRODUCTS = [
     "reviewsCount": 70,
     "badge": "Newly Launched",
     "isNew": true,
+    "metalType": "silver",
     "metals": [
       "Pure 925 Silver"
     ],
@@ -4695,6 +4798,7 @@ export const PRODUCTS = [
     "reviewsCount": 77,
     "badge": "Atelier Gala",
     "isNew": false,
+    "metalType": "gold",
     "metals": [
       "18K Yellow Gold"
     ],
@@ -4730,6 +4834,7 @@ export const PRODUCTS = [
     "reviewsCount": 84,
     "badge": "Atelier Gala",
     "isNew": false,
+    "metalType": "gold",
     "metals": [
       "18K Yellow Gold"
     ],
@@ -4764,6 +4869,7 @@ export const PRODUCTS = [
     "reviewsCount": 91,
     "badge": "Popular Choice",
     "isNew": false,
+    "metalType": "silver",
     "metals": [
       "Pure 925 Silver"
     ],
@@ -4798,6 +4904,7 @@ export const PRODUCTS = [
     "reviewsCount": 23,
     "badge": "Bestseller",
     "isNew": false,
+    "metalType": "silver",
     "metals": [
       "Pure 925 Silver"
     ],
@@ -4832,9 +4939,9 @@ export const PRODUCTS = [
     "reviewsCount": 56,
     "badge": "Bestseller",
     "isNew": false,
+    "metalType": "silver",
     "metals": [
-      "Pure 925 Silver",
-      "Rose Gold Plated"
+      "Pure 925 Silver"
     ],
     "desc": "Sleek and contemporary, the Interlocking Circle Bracelet features two polished circular rings linked together to create a clean and symbolic design. The interlocking circles represent connection and continuity, giving the bracelet a subtle meaning while maintaining a minimal aesthetic. The smooth gold finish highlights the circular shapes, allowing the design to stand out while still feeling delicate and refined. Suspended on a fine chain, the centerpiece sits gracefully on the wrist and adds a modern touch to everyday jewellery styling. Lightweight and elegant, this bracelet is perfect for daily wear and pairs beautifully with other bracelets for a layered look or can be worn alone for a subtle statement. Product Details • Gold Weight: 0.97 grams • Interlocking circle design • Fine lightweight chain bracelet • Minimal and modern aesthetic • Comfortable for everyday wear",
     "images": [
@@ -4866,6 +4973,7 @@ export const PRODUCTS = [
     "reviewsCount": 57,
     "badge": "Bestseller",
     "isNew": false,
+    "metalType": "gold",
     "metals": [
       "18K Yellow Gold"
     ],

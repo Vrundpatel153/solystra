@@ -10,7 +10,13 @@ export const QuickViewModal = () => {
 
   const product = quickViewProduct;
 
-  const defaultMetal = (product?.metals && product.metals.length)
+  const defaultMetal = product?.metalType === 'gold'
+    ? '18K Yellow Gold'
+    : product?.metalType === 'rose'
+    ? 'Rose Gold Plated'
+    : product?.metalType === 'silver'
+    ? 'Pure 925 Silver'
+    : (product?.metals && product.metals.length)
     ? product.metals[0]
     : (product?.name?.toLowerCase().includes('gold') || product?.id?.toLowerCase().includes('gold'))
     ? '18K Yellow Gold'
@@ -127,23 +133,30 @@ export const QuickViewModal = () => {
               {/* Color Selection */}
               <div className="mt-5">
                 <label className="block text-xs uppercase tracking-wider font-semibold text-[#111111] mb-2">
-                  Select Color: <span className="text-[#7A152E] font-bold">{selectedMetal}</span>
+                  Metal Finish: <span className="text-[#7A152E] font-bold">{selectedMetal}</span>
                 </label>
-                <div className="flex gap-2">
-                  {['Pure 925 Silver', 'Rose Gold Plated', '18K Gold Vermeil'].map(metal => (
-                    <button
-                      key={metal}
-                      onClick={() => setSelectedMetal(metal)}
-                      className={`flex-1 py-2 px-2 text-xs rounded-xl border transition-all text-center cursor-pointer ${
-                        selectedMetal === metal
-                          ? 'border-[#7A152E] bg-[#FDF2F4] text-[#7A152E] font-bold shadow-2xs'
-                          : 'border-[#E8E5DF] hover:border-[#7A152E]/50 text-[#111111]'
-                      }`}
-                    >
-                      {metal.replace('Pure ', '').replace(' Plated', '').replace(' Vermeil', '')}
-                    </button>
-                  ))}
-                </div>
+                {product?.metals && product.metals.length > 1 ? (
+                  <div className="flex gap-2">
+                    {product.metals.map(metal => (
+                      <button
+                        key={metal}
+                        onClick={() => setSelectedMetal(metal)}
+                        className={`flex-1 py-2 px-2 text-xs rounded-xl border transition-all text-center cursor-pointer ${
+                          selectedMetal === metal
+                            ? 'border-[#7A152E] bg-[#FDF2F4] text-[#7A152E] font-bold shadow-2xs'
+                            : 'border-[#E8E5DF] hover:border-[#7A152E]/50 text-[#111111]'
+                        }`}
+                      >
+                        {metal.replace('Pure ', '').replace(' Plated', '').replace(' Vermeil', '')}
+                      </button>
+                    ))}
+                  </div>
+                ) : (
+                  <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-xl border border-[#7A152E]/30 bg-[#FDF2F4] text-[#7A152E] text-xs font-semibold">
+                    <span className="w-2 h-2 rounded-full bg-[#7A152E]" />
+                    <span>{defaultMetal}</span>
+                  </div>
+                )}
               </div>
 
               {/* Size Picker (Responsive Row) */}

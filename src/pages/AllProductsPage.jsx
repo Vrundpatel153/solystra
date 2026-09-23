@@ -161,14 +161,16 @@ export const AllProductsPage = ({ onBackToStore }) => {
 
       // 5. Metal / Finish filter
       if (selectedMetal !== 'all') {
-        const metalsList = (product.metals || []).map((m) => m.toLowerCase());
-        const hasGold = metalsList.some((m) => m.includes('gold') && !m.includes('rose'));
-        const hasRose = metalsList.some((m) => m.includes('rose'));
-        const hasSilver = metalsList.some((m) => m.includes('silver') || m.includes('925'));
-
-        if (selectedMetal === 'gold' && !hasGold) return false;
-        if (selectedMetal === 'rose' && !hasRose) return false;
-        if (selectedMetal === 'silver' && !hasSilver) return false;
+        const pMetal = product.metalType || (
+          (product.metals?.[0] || '').toLowerCase().includes('rose')
+            ? 'rose'
+            : (product.metals?.[0] || '').toLowerCase().includes('gold')
+            ? 'gold'
+            : 'silver'
+        );
+        if (pMetal !== selectedMetal) {
+          return false;
+        }
       }
 
       return true;

@@ -73,7 +73,8 @@ const knownOverrides = {
     mrp: 7999,
     badge: 'Atelier Gala',
     category: 'necklaces',
-    metals: ['18K Yellow Gold', 'Pure 925 Silver']
+    metalType: 'gold',
+    metals: ['18K Yellow Gold']
   },
   'amethyst-bloom-necklace-set-925-sterling-silver': {
     name: 'Amethyst Bloom Rose Gold Floral Necklace Set',
@@ -82,7 +83,8 @@ const knownOverrides = {
     mrp: 11981,
     badge: 'Atelier Gala',
     category: 'necklaces',
-    metals: ['Rose Gold Plated', 'Pure 925 Silver', '18K Yellow Gold']
+    metalType: 'rose',
+    metals: ['Rose Gold Plated']
   },
   'greek-pattern-hoops': {
     name: 'Greek Geometric Pattern 18K Gold Imperial Hoops',
@@ -91,7 +93,8 @@ const knownOverrides = {
     mrp: 4999,
     badge: 'Bestseller',
     category: 'earrings',
-    metals: ['18K Yellow Gold', 'Pure 925 Silver']
+    metalType: 'gold',
+    metals: ['18K Yellow Gold']
   },
   'classic-knot-earrings': {
     name: 'Classic Artisan Solitaire Knot Earrings',
@@ -100,43 +103,48 @@ const knownOverrides = {
     mrp: 3299,
     badge: 'Trending',
     category: 'earrings',
-    metals: ['Pure 925 Silver', 'Rose Gold Plated']
+    metalType: 'gold',
+    metals: ['18K Yellow Gold']
   },
   'clover-charm-bracelet': {
-    name: 'Imperial Clover Charm 18K Gold Vermeil Bracelet',
-    shortName: 'Clover Charm 18K Gold Bracelet',
+    name: 'Imperial Clover Charm 18K Rose Gold Bracelet',
+    shortName: 'Clover Charm Rose Gold Bracelet',
     price: 3899,
     mrp: 5299,
     badge: 'Bestseller',
     category: 'bracelets',
-    metals: ['18K Yellow Gold', 'Pure 925 Silver']
+    metalType: 'rose',
+    metals: ['Rose Gold Plated']
   },
   'clover-lock-charm-925-sterling-silver-bracelet': {
-    name: 'Clover Padlock Charm 18K Gold Bracelet',
-    shortName: 'Clover Lock 18K Gold Bracelet',
+    name: 'Clover Padlock Charm 925 Silver Bracelet',
+    shortName: 'Clover Lock 925 Silver Bracelet',
     price: 3699,
     mrp: 4999,
     badge: 'Trending',
     category: 'bracelets',
-    metals: ['18K Yellow Gold', 'Pure 925 Silver']
+    metalType: 'silver',
+    metals: ['Pure 925 Silver']
   },
   'classic-ridge-band': {
-    name: 'Classic Fluted 18K Gold Vermeil Ridge Band',
-    shortName: 'Classic Ridge 18K Gold Band',
+    name: 'Classic Fluted Rose Gold Ridge Band',
+    shortName: 'Classic Ridge Rose Gold Band',
     price: 2699,
     mrp: 3799,
     badge: 'Bestseller',
     category: 'rings',
-    metals: ['18K Yellow Gold', 'Pure 925 Silver']
+    metalType: 'rose',
+    metals: ['Rose Gold Plated']
   },
   'flora-band-hoops': {
-    name: 'Blossom Petal Rose Gold Flora Band Hoops',
-    shortName: 'Flora Band Rose Gold Hoops',
+    name: 'Blossom Petal 18K Gold Flora Band Hoops',
+    shortName: 'Flora Band 18K Gold Hoops',
     price: 2499,
     mrp: 3499,
     badge: 'Bestseller',
     category: 'earrings',
-    metals: ['Rose Gold Plated', 'Pure 925 Silver']
+    metalType: 'gold',
+    metals: ['18K Yellow Gold']
   },
   'blush-spark-tennis-bracelet-925-sterling-silver': {
     name: 'Blush Spark Rose Gold Tennis Bracelet',
@@ -145,7 +153,8 @@ const knownOverrides = {
     mrp: 4999,
     badge: 'Newly Launched',
     category: 'bracelets',
-    metals: ['Rose Gold Plated', 'Pure 925 Silver']
+    metalType: 'rose',
+    metals: ['Rose Gold Plated']
   },
   'rose-round-spark-tennis-bracelet-925-sterling-silver': {
     name: 'Rose Round Spark Tennis Bracelet in 18K Rose Gold',
@@ -154,7 +163,8 @@ const knownOverrides = {
     mrp: 5299,
     badge: 'Trending',
     category: 'bracelets',
-    metals: ['Rose Gold Plated', 'Pure 925 Silver']
+    metalType: 'rose',
+    metals: ['Rose Gold Plated']
   },
   'azure-daisy-tennis-bracelet-925-sterling-silver': {
     name: 'Azure Daisy Austrian Tennis Bracelet',
@@ -163,7 +173,8 @@ const knownOverrides = {
     mrp: 5299,
     badge: 'Bestseller',
     category: 'bracelets',
-    metals: ['Pure 925 Silver', 'Rose Gold Plated']
+    metalType: 'silver',
+    metals: ['Pure 925 Silver']
   },
   'unity-circle': {
     name: 'Universal Solitaire Unity Circle Drop Necklace',
@@ -172,7 +183,8 @@ const knownOverrides = {
     mrp: 3999,
     badge: 'Bestseller',
     category: 'necklaces',
-    metals: ['Pure 925 Silver', 'Rose Gold Plated']
+    metalType: 'silver',
+    metals: ['Pure 925 Silver']
   }
 };
 
@@ -242,48 +254,61 @@ function determineCategory(id, rawTitle = '', productType = '') {
   return 'bracelets';
 }
 
-function determineMetals(id, p = {}) {
-  const metals = [];
+function determineProductMetal(id, p = {}) {
   const handle = id.toLowerCase();
   const title = (p.title || id).toLowerCase();
   
-  if (goldHandles.has(id)) metals.push('18K Yellow Gold');
-  if (silverHandles.has(id)) metals.push('Pure 925 Silver');
-  if (blushHandles.has(id)) metals.push('Rose Gold Plated');
+  // 1. Check variants & options for explicit finish clues
+  const vTitles = (p.variants || []).map(v => (v.title || '').toLowerCase());
+  const optValues = (p.options || []).flatMap(o => (o.values || []).map(v => String(v).toLowerCase()));
+  const allClues = [...vTitles, ...optValues].join(' ');
 
-  if (p.options) {
-    for (const opt of p.options) {
-      for (const val of opt.values || []) {
-        const v = String(val).toLowerCase();
-        if (v.includes('rose')) metals.push('Rose Gold Plated');
-        else if (v.includes('gold') || v.includes('18k')) metals.push('18K Yellow Gold');
-        else if (v.includes('silver') || v.includes('925')) metals.push('Pure 925 Silver');
-      }
-    }
+  // 2. Rose Gold / Blush
+  if (
+    allClues.includes('rose') ||
+    title.includes('rose') ||
+    handle.includes('rose') ||
+    title.includes('blush') ||
+    handle.includes('blush')
+  ) {
+    return { metalType: 'rose', metals: ['Rose Gold Plated'] };
   }
 
-  if (p.variants) {
-    for (const v of p.variants) {
-      const vt = (v.title || '').toLowerCase();
-      if (vt.includes('rose')) metals.push('Rose Gold Plated');
-      else if (vt.includes('gold')) metals.push('18K Yellow Gold');
-      else if (vt.includes('silver')) metals.push('Pure 925 Silver');
-    }
+  // 3. 18K Yellow Gold / Vermeil
+  if (
+    allClues.includes('gold') ||
+    allClues.includes('18k') ||
+    title.includes('gold') ||
+    title.includes('golden') ||
+    title.includes('vermeil') ||
+    title.includes('yellow') ||
+    handle.includes('gold') ||
+    handle.includes('vermeil')
+  ) {
+    return { metalType: 'gold', metals: ['18K Yellow Gold'] };
   }
 
-  if (title.includes('rose')) metals.push('Rose Gold Plated');
-  else if (title.includes('gold') || title.includes('vermeil')) metals.push('18K Yellow Gold');
-  else if (title.includes('silver') || title.includes('925')) metals.push('Pure 925 Silver');
-
-  if (metals.length === 0) {
-    metals.push('Pure 925 Silver', 'Rose Gold Plated', '18K Yellow Gold');
+  // 4. Specific known catalog items
+  if (id === 'blue-marquise-layered-necklace') {
+    return { metalType: 'gold', metals: ['18K Yellow Gold'] };
+  }
+  if (id === 'geometric-radiance-hexagon-bracelet') {
+    return { metalType: 'rose', metals: ['Rose Gold Plated'] };
   }
 
-  const unique = [];
-  for (const m of metals) {
-    if (!unique.includes(m)) unique.push(m);
+  // 5. Shopify Collection mapping
+  if (silverHandles.has(id)) {
+    return { metalType: 'silver', metals: ['Pure 925 Silver'] };
   }
-  return unique;
+  if (blushHandles.has(id)) {
+    return { metalType: 'rose', metals: ['Rose Gold Plated'] };
+  }
+  if (goldHandles.has(id)) {
+    return { metalType: 'gold', metals: ['18K Yellow Gold'] };
+  }
+
+  // 6. Default to Pure 925 Silver
+  return { metalType: 'silver', metals: ['Pure 925 Silver'] };
 }
 
 const products = [];
@@ -351,7 +376,9 @@ dirs.forEach((id, index) => {
   const badges = ['Bestseller', 'Newly Launched', 'Trending', 'Atelier Pick', 'Popular Choice'];
   const badge = override.badge || (price > 12000 ? 'Atelier Gala' : badges[index % badges.length]);
 
-  const metals = override.metals || determineMetals(id, sp);
+  const { metalType, metals } = override.metalType 
+    ? { metalType: override.metalType, metals: override.metals || (override.metalType === 'gold' ? ['18K Yellow Gold'] : override.metalType === 'rose' ? ['Rose Gold Plated'] : ['Pure 925 Silver']) }
+    : determineProductMetal(id, sp);
 
   // Clean description
   let cleanDesc = `Exquisitely handcrafted by master artisans at Solystra Atelier. Cast in solid, hypoallergenic 925 sterling silver with high-precision micro-prong setting and finished with protective anti-tarnish rhodium coating to maintain enduring showroom brilliance.`;
@@ -362,9 +389,8 @@ dirs.forEach((id, index) => {
     }
   }
 
-  const primaryMetal = metals[0] || 'Pure 925 Silver';
-  const isGold = primaryMetal.includes('Gold') && !primaryMetal.includes('Rose');
-  const isRose = primaryMetal.includes('Rose');
+  const isGold = metalType === 'gold';
+  const isRose = metalType === 'rose';
 
   products.push({
     id,
@@ -380,14 +406,15 @@ dirs.forEach((id, index) => {
     reviewsCount: 18 + ((index * 7) % 75),
     badge,
     isNew: badge === 'Newly Launched',
+    metalType,
     metals,
     desc: cleanDesc,
     images,
     specs: {
-      "Metal Purity": override.specs?.["Metal Purity"] || (isGold ? "18K Gold Vermeil (BIS Certified)" : isRose ? "18K Rose Gold Micron (BIS Certified)" : "BIS Certified 925 Sterling Silver"),
-      "Plating Finish": override.specs?.["Plating Finish"] || (isGold ? "2.5-Micron 18K Gold Vermeil & Protective E-Coat" : isRose ? "18K Rose Gold Micron Vermeil & Protective E-Coat" : "Anti-Tarnish Rhodium & Micron E-Coat"),
+      "Metal Purity": isGold ? "18K Gold Vermeil (BIS Certified)" : isRose ? "18K Rose Gold Micron (BIS Certified)" : "BIS Certified 925 Sterling Silver",
+      "Plating Finish": isGold ? "2.5-Micron 18K Gold Vermeil & Protective E-Coat" : isRose ? "18K Rose Gold Micron Vermeil & Protective E-Coat" : "Anti-Tarnish Rhodium & Micron E-Coat",
       "Stone Setting": override.specs?.["Stone Setting"] || "AAA+ Austrian Solitaire Crystals",
-      "Hallmark Verification": override.specs?.["Hallmark Verification"] || (isGold ? "Certified 18K / 925 Stamp on Clasp" : "Certified 925 Stamp on Clasp/Band"),
+      "Hallmark Verification": (isGold || isRose) ? "Certified 18K / 925 Stamp on Clasp" : "Certified 925 Stamp on Clasp/Band",
       "Warranty Coverage": "6 Months Free Replating Assurance",
       "Packaging": "Luxury Suede Box with Authenticity Card",
       "Shipping": "Free Insured Express Delivery Across India",
@@ -408,6 +435,8 @@ if (!products.some(p => p.id === 'universal-embrace')) {
     sku: 'AUR-UNIV-EMBRACE',
     category: 'necklaces',
     categoryName: 'Necklaces & Lariats',
+    metalType: 'silver',
+    metals: ['Pure 925 Silver'],
     price: 2799,
     mrp: 3999,
     discount: '30% OFF',
@@ -426,6 +455,8 @@ if (!products.some(p => p.id === 'crowned-solitaire-ring')) {
     sku: 'AUR-CROWN-SOL',
     category: 'rings',
     categoryName: 'Crowned Solitaires & Bands',
+    metalType: 'gold',
+    metals: ['18K Yellow Gold'],
     price: 2999,
     mrp: 4299,
     discount: '30% OFF',

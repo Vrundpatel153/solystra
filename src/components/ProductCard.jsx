@@ -11,7 +11,13 @@ export const ProductCard = ({ product, variant = 'default', isSquare = false }) 
   const puritySpec = (product.specs?.['Metal Purity'] || '').toLowerCase();
 
   const defaultMetal =
-    product.metals && product.metals.length
+    product.metalType === 'gold'
+      ? '18K Yellow Gold'
+      : product.metalType === 'rose'
+      ? 'Rose Gold Plated'
+      : product.metalType === 'silver'
+      ? 'Pure 925 Silver'
+      : product.metals && product.metals.length
       ? product.metals[0]
       : (nameLower.includes('gold') || nameLower.includes('golden') || nameLower.includes('vermeil') || puritySpec.includes('gold'))
       ? '18K Yellow Gold'
@@ -278,48 +284,50 @@ export const ProductCard = ({ product, variant = 'default', isSquare = false }) 
               )}
             </div>
 
-            {/* Metal Swatches (Silver, Rose Gold, 18K Gold) */}
-            <div className="hidden xs:flex items-center gap-1 sm:gap-1.5 shrink-0">
-              <button
-                type="button"
-                onClick={(e) => {
-                  e.stopPropagation();
-                  setSelectedMetal('Pure 925 Silver');
-                }}
-                title="Pure 925 Sterling Silver"
-                className={`w-2.5 h-2.5 rounded-full bg-gradient-to-tr from-slate-400 via-slate-100 to-slate-300 border shadow-2xs transition-all hover:scale-125 cursor-pointer ${
-                  selectedMetal.toLowerCase().includes('silver')
-                    ? 'ring-1.5 ring-slate-600 scale-115 border-slate-500'
-                    : 'border-slate-400 opacity-70 hover:opacity-100'
-                }`}
-              />
-              <button
-                type="button"
-                onClick={(e) => {
-                  e.stopPropagation();
-                  setSelectedMetal('Rose Gold Plated');
-                }}
-                title="Rose Gold Plated"
-                className={`w-2.5 h-2.5 rounded-full bg-gradient-to-tr from-[#B76E79] via-[#F5D8DE] to-[#D99BA5] border shadow-2xs transition-all hover:scale-125 cursor-pointer ${
-                  selectedMetal.toLowerCase().includes('rose')
-                    ? 'ring-1.5 ring-[#7A152E] scale-115 border-[#B76E79]'
-                    : 'border-[#B76E79]/40 opacity-70 hover:opacity-100'
-                }`}
-              />
-              <button
-                type="button"
-                onClick={(e) => {
-                  e.stopPropagation();
-                  setSelectedMetal('18K Yellow Gold');
-                }}
-                title="18K Gold Vermeil"
-                className={`w-2.5 h-2.5 rounded-full bg-gradient-to-tr from-[#946A1E] via-[#F4E3BF] to-[#C99D46] border shadow-2xs transition-all hover:scale-125 cursor-pointer ${
-                  selectedMetal.toLowerCase().includes('gold') && !selectedMetal.toLowerCase().includes('rose')
-                    ? 'ring-1.5 ring-[#946A1E] scale-115 border-[#946A1E]'
-                    : 'border-[#946A1E]/50 opacity-70 hover:opacity-100'
-                }`}
-              />
-            </div>
+            {/* Metal Swatches (only rendered when piece has multiple metal variants) */}
+            {product.metals && product.metals.length > 1 && (
+              <div className="hidden xs:flex items-center gap-1 sm:gap-1.5 shrink-0">
+                <button
+                  type="button"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    setSelectedMetal('Pure 925 Silver');
+                  }}
+                  title="Pure 925 Sterling Silver"
+                  className={`w-2.5 h-2.5 rounded-full bg-gradient-to-tr from-slate-400 via-slate-100 to-slate-300 border shadow-2xs transition-all hover:scale-125 cursor-pointer ${
+                    selectedMetal.toLowerCase().includes('silver')
+                      ? 'ring-1.5 ring-slate-600 scale-115 border-slate-500'
+                      : 'border-slate-400 opacity-70 hover:opacity-100'
+                  }`}
+                />
+                <button
+                  type="button"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    setSelectedMetal('Rose Gold Plated');
+                  }}
+                  title="Rose Gold Plated"
+                  className={`w-2.5 h-2.5 rounded-full bg-gradient-to-tr from-[#B76E79] via-[#F5D8DE] to-[#D99BA5] border shadow-2xs transition-all hover:scale-125 cursor-pointer ${
+                    selectedMetal.toLowerCase().includes('rose')
+                      ? 'ring-1.5 ring-[#7A152E] scale-115 border-[#B76E79]'
+                      : 'border-[#B76E79]/40 opacity-70 hover:opacity-100'
+                  }`}
+                />
+                <button
+                  type="button"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    setSelectedMetal('18K Yellow Gold');
+                  }}
+                  title="18K Gold Vermeil"
+                  className={`w-2.5 h-2.5 rounded-full bg-gradient-to-tr from-[#946A1E] via-[#F4E3BF] to-[#C99D46] border shadow-2xs transition-all hover:scale-125 cursor-pointer ${
+                    selectedMetal.toLowerCase().includes('gold') && !selectedMetal.toLowerCase().includes('rose')
+                      ? 'ring-1.5 ring-[#946A1E] scale-115 border-[#946A1E]'
+                      : 'border-[#946A1E]/50 opacity-70 hover:opacity-100'
+                  }`}
+                />
+              </div>
+            )}
           </div>
 
           {/* Action Button: Single Full-Width Button without Ellipsis */}
