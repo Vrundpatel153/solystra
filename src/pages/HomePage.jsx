@@ -1260,13 +1260,13 @@ export const HomePage = ({ activeCategory, onSelectCategory }) => {
       </section>
 
       {/* ========================================================
-          SHOP BY PRICE POINTS: TAILORED LUXURY GIFT VAULT CARDS
-          (Compact on Mobile, Elegantly Detailed on PC)
+          SHOP BY PRICE POINTS: ROYAL ATELIER GIFT BOX CARDS
+          (All 4 in ONE Row on Mobile & PC, Rich Ribbon Packaging)
           ======================================================== */}
-      <section className="py-4 sm:py-8 bg-white border-b border-[#EAE4DC]">
+      <section className="py-6 sm:py-9 bg-white border-b border-[#EAE4DC]">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           
-          <div className="text-center max-w-xl mx-auto mb-3 sm:mb-6">
+          <div className="text-center max-w-xl mx-auto mb-5 sm:mb-8">
             <span className="text-[10px] sm:text-xs uppercase tracking-widest text-[#7A152E] font-semibold block mb-1">
               SHOP BY PRICE
             </span>
@@ -1278,198 +1278,274 @@ export const HomePage = ({ activeCategory, onSelectCategory }) => {
             </p>
           </div>
 
-          {/* 4 Beautiful Gift Box Cards (All 4 in ONE Row on Mobile & PC, Tailored on Desktop) */}
-          <div className="grid grid-cols-4 gap-2 xs:gap-2.5 sm:gap-4 md:gap-5 pt-1 sm:pt-2">
+          {/* 4 Beautiful Gift Box Cards with Grand Ribbon Packaging (No icons, rich ribbon design) */}
+          <div className="grid grid-cols-4 gap-2 xs:gap-3 sm:gap-4 md:gap-6 pt-3 sm:pt-4">
             
             {/* Gift Box 1: Under 999 */}
             <div
               onClick={() => handlePriceFilter(999)}
-              className="group relative rounded-2xl sm:rounded-3xl p-2 xs:p-2.5 sm:p-5 md:p-6 bg-gradient-to-b from-[#FFFDF9] via-[#FAF5EE] to-[#F7EFE6] border-2 border-[#7A152E]/30 hover:border-[#7A152E] shadow-xs hover:shadow-xl hover:-translate-y-1 transition-all duration-300 cursor-pointer flex flex-col items-center justify-center text-center aspect-square sm:aspect-auto sm:min-h-[200px] sm:max-h-[230px] overflow-hidden"
+              className="group relative rounded-2xl sm:rounded-3xl p-1.5 xs:p-2 sm:p-5 md:p-6 bg-gradient-to-b from-[#FFFDF9] via-[#FAF5EE] to-[#F5ECE1] border-2 border-[#7A152E]/35 hover:border-[#7A152E] shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 cursor-pointer flex flex-col items-center justify-center text-center aspect-square sm:aspect-auto sm:min-h-[210px] sm:max-h-[240px]"
             >
-              {/* Luxury Ribbon Bow on Top */}
-              <div className="absolute -top-3.5 sm:-top-5 left-1/2 -translate-x-1/2 z-20 pointer-events-none">
-                <svg className="w-9 xs:w-11 sm:w-15 h-3.5 xs:h-4.5 sm:h-5.5 transition-transform duration-300 group-hover:scale-115 drop-shadow-xs" viewBox="0 0 80 32" fill="none">
-                  <path d="M40 16 C26 2, 8 4, 10 16 C12 24, 30 20, 40 16 Z" fill="#7A152E" />
-                  <path d="M40 16 C54 2, 72 4, 70 16 C68 24, 50 20, 40 16 Z" fill="#7A152E" />
-                  <path d="M37 17 L18 31 L28 21 Z" fill="#590D1E" />
-                  <path d="M43 17 L62 31 L52 21 Z" fill="#590D1E" />
-                  <circle cx="40" cy="16" r="4.5" fill="#D4AF37" />
-                  <circle cx="40" cy="16" r="3" fill="#7A152E" />
+              {/* Grand 3D Velvet Ribbon Bow with Satin Sheen & Cascading Tails */}
+              <div className="absolute -top-4 xs:-top-5 sm:-top-6 left-1/2 -translate-x-1/2 z-20 pointer-events-none transition-transform duration-300 group-hover:scale-110 drop-shadow-md">
+                <svg className="w-13 xs:w-15 sm:w-22 md:w-24 h-5.5 xs:h-6.5 sm:h-9 md:h-10" viewBox="0 0 100 42" fill="none">
+                  {/* Left & Right Loop Shadows */}
+                  <path d="M50 18 C30 2, 8 4, 11 20 C14 28, 38 23, 50 18 Z" fill="#4D0B19" />
+                  <path d="M50 18 C70 2, 92 4, 89 20 C86 28, 62 23, 50 18 Z" fill="#4D0B19" />
+                  {/* Satin Body Loops */}
+                  <path d="M50 18 C32 4, 12 6, 14 19 C17 26, 40 22, 50 18 Z" fill="#7A152E" />
+                  <path d="M50 18 C68 4, 88 6, 86 19 C83 26, 60 22, 50 18 Z" fill="#7A152E" />
+                  {/* Satin Highlight Sheen Strokes */}
+                  <path d="M47 15 C35 7, 20 8, 17 17" stroke="#E2738E" strokeWidth="1.6" strokeLinecap="round" opacity="0.65" fill="none" />
+                  <path d="M53 15 C65 7, 80 8, 83 17" stroke="#E2738E" strokeWidth="1.6" strokeLinecap="round" opacity="0.65" fill="none" />
+                  {/* Cascading Fishtail Streamers */}
+                  <path d="M46 19 L25 39 L37 27 L43 21 Z" fill="#8B1D35" />
+                  <path d="M46 19 L25 39 L31 36 L43 21 Z" fill="#5E0D1E" />
+                  <path d="M54 19 L75 39 L63 27 L57 21 Z" fill="#8B1D35" />
+                  <path d="M54 19 L75 39 L69 36 L57 21 Z" fill="#5E0D1E" />
+                  {/* Gold Knot Medallion */}
+                  <circle cx="50" cy="18" r="6" fill="#D4AF37" stroke="#9A7B1C" strokeWidth="0.8" />
+                  <circle cx="50" cy="18" r="4" fill="#7A152E" />
+                  <circle cx="48.8" cy="16.8" r="1.2" fill="#FFFFFF" fillOpacity="0.85" />
                 </svg>
               </div>
 
-              {/* Vertical Satin Ribbon Spine (PC Only) */}
-              <div className="hidden sm:block absolute inset-y-0 left-1/2 -translate-x-1/2 w-6 sm:w-7 bg-gradient-to-b from-[#7A152E]/8 via-[#7A152E]/3 to-[#7A152E]/8 border-x border-[#7A152E]/10 pointer-events-none z-0" />
-
-              {/* Gold Filigree Certificate Inset Frame (PC Only) */}
-              <div className="hidden sm:block absolute inset-2.5 sm:inset-3 rounded-2xl border border-dashed border-[#CBA64E]/30 pointer-events-none group-hover:border-[#CBA64E]/60 transition-colors z-0" />
-
-              {/* Jewelry Motif Icon (PC Only) */}
-              <div className="hidden sm:flex w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-[#7A152E]/5 border border-[#7A152E]/15 items-center justify-center text-[#7A152E] mb-1.5 group-hover:scale-110 group-hover:bg-[#7A152E] group-hover:text-white transition-all duration-300 z-10 shadow-2xs">
-                <Sparkles className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
+              {/* Internal Gift Box Ribbon Cross & Certificate Border (Clipped to Card Shape) */}
+              <div className="absolute inset-0 rounded-2xl sm:rounded-3xl overflow-hidden pointer-events-none z-0">
+                {/* Vertical Satin Ribbon with Gold Stitched Piping */}
+                <div className="absolute inset-y-0 left-1/2 -translate-x-1/2 w-6 xs:w-7 sm:w-8 bg-gradient-to-r from-[#6A0E22]/15 via-[#8B1D35]/25 to-[#6A0E22]/15 border-x border-[#D4AF37]/45 shadow-xs" />
+                {/* Fine Gold Stitched Twin Pinstripes down the Vertical Ribbon (PC Only) */}
+                <div className="hidden sm:block absolute inset-y-0 left-1/2 -translate-x-1/2 w-3.5 border-x border-dashed border-[#D4AF37]/35" />
+                {/* Horizontal Ribbon Cross-Band with Gold Piping */}
+                <div className="absolute inset-x-0 top-1/2 -translate-y-1/2 h-3.5 xs:h-4.5 sm:h-6 bg-gradient-to-b from-[#6A0E22]/12 via-[#8B1D35]/20 to-[#6A0E22]/12 border-y border-[#D4AF37]/40 shadow-xs" />
+                {/* Fine Gold Stitched Twin Pinstripes across Horizontal Ribbon (PC Only) */}
+                <div className="hidden sm:block absolute inset-x-0 top-1/2 -translate-y-1/2 h-3 border-y border-dashed border-[#D4AF37]/30" />
+                {/* Gold Filigree Certificate Inner Border */}
+                <div className="absolute inset-1.5 xs:inset-2 sm:inset-3 rounded-xl sm:rounded-2xl border border-dashed border-[#CBA64E]/40 group-hover:border-[#CBA64E]/75 transition-colors" />
+                {/* Subtle Gold Crest Watermark in Center (PC Only) */}
+                <div className="hidden sm:block absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-28 h-28 rounded-full border border-[#D4AF37]/20 pointer-events-none" />
               </div>
 
-              <span className="font-sans text-[8.5px] xs:text-[9.5px] sm:text-[10px] md:text-[11px] uppercase font-bold text-stone-500 sm:text-[#8C6D3B] tracking-wider sm:tracking-widest block z-10">
-                UNDER
-              </span>
-              <span className="font-serif font-bold text-sm xs:text-base sm:text-2xl md:text-3xl text-[#7A152E] tracking-tight block mt-0.5 group-hover:scale-105 transition-transform z-10">
-                ₹999
-              </span>
-              <span className="text-[7.5px] xs:text-[8.5px] sm:text-xs text-stone-500 group-hover:text-[#7A152E] font-medium tracking-wide block mt-0.5 sm:mt-1 transition-colors truncate max-w-full z-10">
-                Daily Picks
-              </span>
-              <span className="hidden sm:block text-[10px] text-stone-400 group-hover:text-stone-600 transition-colors z-10 mt-0.5">
-                Everyday Silver
-              </span>
+              {/* Content Layer (z-10 on top of ribbon wrap with subtle frosted backdrop) */}
+              <div className="relative z-10 flex flex-col items-center justify-center py-1 sm:py-2 px-1.5 sm:px-3 rounded-xl backdrop-blur-[2px] bg-white/70 sm:bg-white/80 border border-white/60 shadow-2xs group-hover:bg-white/95 transition-all">
+                <span className="font-sans text-[8.5px] xs:text-[9.5px] sm:text-[11px] uppercase font-bold text-stone-600 sm:text-[#8C6D3B] tracking-wider sm:tracking-widest block">
+                  UNDER
+                </span>
+                <span className="font-serif font-bold text-sm xs:text-base sm:text-2xl md:text-3xl text-[#7A152E] tracking-tight block mt-0.5 group-hover:scale-105 transition-transform">
+                  ₹999
+                </span>
+                <span className="text-[7.5px] xs:text-[8.5px] sm:text-xs text-stone-600 group-hover:text-[#7A152E] font-medium tracking-wide block mt-0.5 sm:mt-1 transition-colors truncate max-w-full">
+                  Daily Picks
+                </span>
+                <span className="hidden sm:block text-[10.5px] text-stone-400 group-hover:text-stone-600 transition-colors mt-0.5">
+                  Everyday Silver
+                </span>
 
-              {/* Interactive Shop Pill (PC Only) */}
-              <div className="hidden sm:inline-flex items-center gap-1 mt-2.5 py-0.5 px-2.5 rounded-full bg-white/95 border border-[#7A152E]/20 text-[#7A152E] text-[10px] md:text-[11px] font-semibold group-hover:bg-[#7A152E] group-hover:text-white group-hover:border-[#7A152E] shadow-2xs transition-all duration-300 z-10">
-                <span>Shop</span>
-                <ArrowRight className="w-2.5 h-2.5 group-hover:translate-x-0.5 transition-transform" />
+                {/* Interactive Shop Pill (PC Only) */}
+                <div className="hidden sm:inline-flex items-center gap-1 mt-2.5 py-0.5 px-3 rounded-full bg-white/95 border border-[#7A152E]/25 text-[#7A152E] text-[10.5px] font-semibold group-hover:bg-[#7A152E] group-hover:text-white group-hover:border-[#7A152E] shadow-2xs transition-all duration-300">
+                  <span>Explore &rarr;</span>
+                </div>
               </div>
             </div>
 
             {/* Gift Box 2: Under 1999 */}
             <div
               onClick={() => handlePriceFilter(1999)}
-              className="group relative rounded-2xl sm:rounded-3xl p-2 xs:p-2.5 sm:p-5 md:p-6 bg-gradient-to-b from-[#FFFDF9] via-[#FAF5EE] to-[#F7EFE6] border-2 border-[#7A152E]/30 hover:border-[#7A152E] shadow-xs hover:shadow-xl hover:-translate-y-1 transition-all duration-300 cursor-pointer flex flex-col items-center justify-center text-center aspect-square sm:aspect-auto sm:min-h-[200px] sm:max-h-[230px] overflow-hidden"
+              className="group relative rounded-2xl sm:rounded-3xl p-1.5 xs:p-2 sm:p-5 md:p-6 bg-gradient-to-b from-[#FFFDF9] via-[#FAF5EE] to-[#F5ECE1] border-2 border-[#7A152E]/35 hover:border-[#7A152E] shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 cursor-pointer flex flex-col items-center justify-center text-center aspect-square sm:aspect-auto sm:min-h-[210px] sm:max-h-[240px]"
             >
-              {/* Luxury Ribbon Bow on Top */}
-              <div className="absolute -top-3.5 sm:-top-5 left-1/2 -translate-x-1/2 z-20 pointer-events-none">
-                <svg className="w-9 xs:w-11 sm:w-15 h-3.5 xs:h-4.5 sm:h-5.5 transition-transform duration-300 group-hover:scale-115 drop-shadow-xs" viewBox="0 0 80 32" fill="none">
-                  <path d="M40 16 C26 2, 8 4, 10 16 C12 24, 30 20, 40 16 Z" fill="#7A152E" />
-                  <path d="M40 16 C54 2, 72 4, 70 16 C68 24, 50 20, 40 16 Z" fill="#7A152E" />
-                  <path d="M37 17 L18 31 L28 21 Z" fill="#590D1E" />
-                  <path d="M43 17 L62 31 L52 21 Z" fill="#590D1E" />
-                  <circle cx="40" cy="16" r="4.5" fill="#D4AF37" />
-                  <circle cx="40" cy="16" r="3" fill="#7A152E" />
+              {/* Grand 3D Velvet Ribbon Bow with Satin Sheen & Cascading Tails */}
+              <div className="absolute -top-4 xs:-top-5 sm:-top-6 left-1/2 -translate-x-1/2 z-20 pointer-events-none transition-transform duration-300 group-hover:scale-110 drop-shadow-md">
+                <svg className="w-13 xs:w-15 sm:w-22 md:w-24 h-5.5 xs:h-6.5 sm:h-9 md:h-10" viewBox="0 0 100 42" fill="none">
+                  {/* Left & Right Loop Shadows */}
+                  <path d="M50 18 C30 2, 8 4, 11 20 C14 28, 38 23, 50 18 Z" fill="#4D0B19" />
+                  <path d="M50 18 C70 2, 92 4, 89 20 C86 28, 62 23, 50 18 Z" fill="#4D0B19" />
+                  {/* Satin Body Loops */}
+                  <path d="M50 18 C32 4, 12 6, 14 19 C17 26, 40 22, 50 18 Z" fill="#7A152E" />
+                  <path d="M50 18 C68 4, 88 6, 86 19 C83 26, 60 22, 50 18 Z" fill="#7A152E" />
+                  {/* Satin Highlight Sheen Strokes */}
+                  <path d="M47 15 C35 7, 20 8, 17 17" stroke="#E2738E" strokeWidth="1.6" strokeLinecap="round" opacity="0.65" fill="none" />
+                  <path d="M53 15 C65 7, 80 8, 83 17" stroke="#E2738E" strokeWidth="1.6" strokeLinecap="round" opacity="0.65" fill="none" />
+                  {/* Cascading Fishtail Streamers */}
+                  <path d="M46 19 L25 39 L37 27 L43 21 Z" fill="#8B1D35" />
+                  <path d="M46 19 L25 39 L31 36 L43 21 Z" fill="#5E0D1E" />
+                  <path d="M54 19 L75 39 L63 27 L57 21 Z" fill="#8B1D35" />
+                  <path d="M54 19 L75 39 L69 36 L57 21 Z" fill="#5E0D1E" />
+                  {/* Gold Knot Medallion */}
+                  <circle cx="50" cy="18" r="6" fill="#D4AF37" stroke="#9A7B1C" strokeWidth="0.8" />
+                  <circle cx="50" cy="18" r="4" fill="#7A152E" />
+                  <circle cx="48.8" cy="16.8" r="1.2" fill="#FFFFFF" fillOpacity="0.85" />
                 </svg>
               </div>
 
-              {/* Vertical Satin Ribbon Spine (PC Only) */}
-              <div className="hidden sm:block absolute inset-y-0 left-1/2 -translate-x-1/2 w-6 sm:w-7 bg-gradient-to-b from-[#7A152E]/8 via-[#7A152E]/3 to-[#7A152E]/8 border-x border-[#7A152E]/10 pointer-events-none z-0" />
-
-              {/* Gold Filigree Certificate Inset Frame (PC Only) */}
-              <div className="hidden sm:block absolute inset-2.5 sm:inset-3 rounded-2xl border border-dashed border-[#CBA64E]/30 pointer-events-none group-hover:border-[#CBA64E]/60 transition-colors z-0" />
-
-              {/* Jewelry Motif Icon (PC Only) */}
-              <div className="hidden sm:flex w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-[#7A152E]/5 border border-[#7A152E]/15 items-center justify-center text-[#7A152E] mb-1.5 group-hover:scale-110 group-hover:bg-[#7A152E] group-hover:text-white transition-all duration-300 z-10 shadow-2xs">
-                <Gem className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
+              {/* Internal Gift Box Ribbon Cross & Certificate Border (Clipped to Card Shape) */}
+              <div className="absolute inset-0 rounded-2xl sm:rounded-3xl overflow-hidden pointer-events-none z-0">
+                {/* Vertical Satin Ribbon with Gold Stitched Piping */}
+                <div className="absolute inset-y-0 left-1/2 -translate-x-1/2 w-6 xs:w-7 sm:w-8 bg-gradient-to-r from-[#6A0E22]/15 via-[#8B1D35]/25 to-[#6A0E22]/15 border-x border-[#D4AF37]/45 shadow-xs" />
+                {/* Fine Gold Stitched Twin Pinstripes down the Vertical Ribbon (PC Only) */}
+                <div className="hidden sm:block absolute inset-y-0 left-1/2 -translate-x-1/2 w-3.5 border-x border-dashed border-[#D4AF37]/35" />
+                {/* Horizontal Ribbon Cross-Band with Gold Piping */}
+                <div className="absolute inset-x-0 top-1/2 -translate-y-1/2 h-3.5 xs:h-4.5 sm:h-6 bg-gradient-to-b from-[#6A0E22]/12 via-[#8B1D35]/20 to-[#6A0E22]/12 border-y border-[#D4AF37]/40 shadow-xs" />
+                {/* Fine Gold Stitched Twin Pinstripes across Horizontal Ribbon (PC Only) */}
+                <div className="hidden sm:block absolute inset-x-0 top-1/2 -translate-y-1/2 h-3 border-y border-dashed border-[#D4AF37]/30" />
+                {/* Gold Filigree Certificate Inner Border */}
+                <div className="absolute inset-1.5 xs:inset-2 sm:inset-3 rounded-xl sm:rounded-2xl border border-dashed border-[#CBA64E]/40 group-hover:border-[#CBA64E]/75 transition-colors" />
+                {/* Subtle Gold Crest Watermark in Center (PC Only) */}
+                <div className="hidden sm:block absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-28 h-28 rounded-full border border-[#D4AF37]/20 pointer-events-none" />
               </div>
 
-              <span className="font-sans text-[8.5px] xs:text-[9.5px] sm:text-[10px] md:text-[11px] uppercase font-bold text-stone-500 sm:text-[#8C6D3B] tracking-wider sm:tracking-widest block z-10">
-                UNDER
-              </span>
-              <span className="font-serif font-bold text-sm xs:text-base sm:text-2xl md:text-3xl text-[#7A152E] tracking-tight block mt-0.5 group-hover:scale-105 transition-transform z-10">
-                ₹1,999
-              </span>
-              <span className="text-[7.5px] xs:text-[8.5px] sm:text-xs text-stone-500 group-hover:text-[#7A152E] font-medium tracking-wide block mt-0.5 sm:mt-1 transition-colors truncate max-w-full z-10">
-                Solitaires
-              </span>
-              <span className="hidden sm:block text-[10px] text-stone-400 group-hover:text-stone-600 transition-colors z-10 mt-0.5">
-                Austrian Crystals
-              </span>
+              {/* Content Layer (z-10 on top of ribbon wrap with subtle frosted backdrop) */}
+              <div className="relative z-10 flex flex-col items-center justify-center py-1 sm:py-2 px-1.5 sm:px-3 rounded-xl backdrop-blur-[2px] bg-white/70 sm:bg-white/80 border border-white/60 shadow-2xs group-hover:bg-white/95 transition-all">
+                <span className="font-sans text-[8.5px] xs:text-[9.5px] sm:text-[11px] uppercase font-bold text-stone-600 sm:text-[#8C6D3B] tracking-wider sm:tracking-widest block">
+                  UNDER
+                </span>
+                <span className="font-serif font-bold text-sm xs:text-base sm:text-2xl md:text-3xl text-[#7A152E] tracking-tight block mt-0.5 group-hover:scale-105 transition-transform">
+                  ₹1,999
+                </span>
+                <span className="text-[7.5px] xs:text-[8.5px] sm:text-xs text-stone-600 group-hover:text-[#7A152E] font-medium tracking-wide block mt-0.5 sm:mt-1 transition-colors truncate max-w-full">
+                  Solitaires
+                </span>
+                <span className="hidden sm:block text-[10.5px] text-stone-400 group-hover:text-stone-600 transition-colors mt-0.5">
+                  Austrian Crystals
+                </span>
 
-              {/* Interactive Shop Pill (PC Only) */}
-              <div className="hidden sm:inline-flex items-center gap-1 mt-2.5 py-0.5 px-2.5 rounded-full bg-white/95 border border-[#7A152E]/20 text-[#7A152E] text-[10px] md:text-[11px] font-semibold group-hover:bg-[#7A152E] group-hover:text-white group-hover:border-[#7A152E] shadow-2xs transition-all duration-300 z-10">
-                <span>Shop</span>
-                <ArrowRight className="w-2.5 h-2.5 group-hover:translate-x-0.5 transition-transform" />
+                {/* Interactive Shop Pill (PC Only) */}
+                <div className="hidden sm:inline-flex items-center gap-1 mt-2.5 py-0.5 px-3 rounded-full bg-white/95 border border-[#7A152E]/25 text-[#7A152E] text-[10.5px] font-semibold group-hover:bg-[#7A152E] group-hover:text-white group-hover:border-[#7A152E] shadow-2xs transition-all duration-300">
+                  <span>Explore &rarr;</span>
+                </div>
               </div>
             </div>
 
             {/* Gift Box 3: Under 2999 */}
             <div
               onClick={() => handlePriceFilter(2999)}
-              className="group relative rounded-2xl sm:rounded-3xl p-2 xs:p-2.5 sm:p-5 md:p-6 bg-gradient-to-b from-[#FFFDF9] via-[#FAF5EE] to-[#F7EFE6] border-2 border-[#7A152E]/30 hover:border-[#7A152E] shadow-xs hover:shadow-xl hover:-translate-y-1 transition-all duration-300 cursor-pointer flex flex-col items-center justify-center text-center aspect-square sm:aspect-auto sm:min-h-[200px] sm:max-h-[230px] overflow-hidden"
+              className="group relative rounded-2xl sm:rounded-3xl p-1.5 xs:p-2 sm:p-5 md:p-6 bg-gradient-to-b from-[#FFFDF9] via-[#FAF5EE] to-[#F5ECE1] border-2 border-[#7A152E]/35 hover:border-[#7A152E] shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 cursor-pointer flex flex-col items-center justify-center text-center aspect-square sm:aspect-auto sm:min-h-[210px] sm:max-h-[240px]"
             >
-              {/* Luxury Ribbon Bow on Top */}
-              <div className="absolute -top-3.5 sm:-top-5 left-1/2 -translate-x-1/2 z-20 pointer-events-none">
-                <svg className="w-9 xs:w-11 sm:w-15 h-3.5 xs:h-4.5 sm:h-5.5 transition-transform duration-300 group-hover:scale-115 drop-shadow-xs" viewBox="0 0 80 32" fill="none">
-                  <path d="M40 16 C26 2, 8 4, 10 16 C12 24, 30 20, 40 16 Z" fill="#7A152E" />
-                  <path d="M40 16 C54 2, 72 4, 70 16 C68 24, 50 20, 40 16 Z" fill="#7A152E" />
-                  <path d="M37 17 L18 31 L28 21 Z" fill="#590D1E" />
-                  <path d="M43 17 L62 31 L52 21 Z" fill="#590D1E" />
-                  <circle cx="40" cy="16" r="4.5" fill="#D4AF37" />
-                  <circle cx="40" cy="16" r="3" fill="#7A152E" />
+              {/* Grand 3D Velvet Ribbon Bow with Satin Sheen & Cascading Tails */}
+              <div className="absolute -top-4 xs:-top-5 sm:-top-6 left-1/2 -translate-x-1/2 z-20 pointer-events-none transition-transform duration-300 group-hover:scale-110 drop-shadow-md">
+                <svg className="w-13 xs:w-15 sm:w-22 md:w-24 h-5.5 xs:h-6.5 sm:h-9 md:h-10" viewBox="0 0 100 42" fill="none">
+                  {/* Left & Right Loop Shadows */}
+                  <path d="M50 18 C30 2, 8 4, 11 20 C14 28, 38 23, 50 18 Z" fill="#4D0B19" />
+                  <path d="M50 18 C70 2, 92 4, 89 20 C86 28, 62 23, 50 18 Z" fill="#4D0B19" />
+                  {/* Satin Body Loops */}
+                  <path d="M50 18 C32 4, 12 6, 14 19 C17 26, 40 22, 50 18 Z" fill="#7A152E" />
+                  <path d="M50 18 C68 4, 88 6, 86 19 C83 26, 60 22, 50 18 Z" fill="#7A152E" />
+                  {/* Satin Highlight Sheen Strokes */}
+                  <path d="M47 15 C35 7, 20 8, 17 17" stroke="#E2738E" strokeWidth="1.6" strokeLinecap="round" opacity="0.65" fill="none" />
+                  <path d="M53 15 C65 7, 80 8, 83 17" stroke="#E2738E" strokeWidth="1.6" strokeLinecap="round" opacity="0.65" fill="none" />
+                  {/* Cascading Fishtail Streamers */}
+                  <path d="M46 19 L25 39 L37 27 L43 21 Z" fill="#8B1D35" />
+                  <path d="M46 19 L25 39 L31 36 L43 21 Z" fill="#5E0D1E" />
+                  <path d="M54 19 L75 39 L63 27 L57 21 Z" fill="#8B1D35" />
+                  <path d="M54 19 L75 39 L69 36 L57 21 Z" fill="#5E0D1E" />
+                  {/* Gold Knot Medallion */}
+                  <circle cx="50" cy="18" r="6" fill="#D4AF37" stroke="#9A7B1C" strokeWidth="0.8" />
+                  <circle cx="50" cy="18" r="4" fill="#7A152E" />
+                  <circle cx="48.8" cy="16.8" r="1.2" fill="#FFFFFF" fillOpacity="0.85" />
                 </svg>
               </div>
 
-              {/* Vertical Satin Ribbon Spine (PC Only) */}
-              <div className="hidden sm:block absolute inset-y-0 left-1/2 -translate-x-1/2 w-6 sm:w-7 bg-gradient-to-b from-[#7A152E]/8 via-[#7A152E]/3 to-[#7A152E]/8 border-x border-[#7A152E]/10 pointer-events-none z-0" />
-
-              {/* Gold Filigree Certificate Inset Frame (PC Only) */}
-              <div className="hidden sm:block absolute inset-2.5 sm:inset-3 rounded-2xl border border-dashed border-[#CBA64E]/30 pointer-events-none group-hover:border-[#CBA64E]/60 transition-colors z-0" />
-
-              {/* Jewelry Motif Icon (PC Only) */}
-              <div className="hidden sm:flex w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-[#7A152E]/5 border border-[#7A152E]/15 items-center justify-center text-[#7A152E] mb-1.5 group-hover:scale-110 group-hover:bg-[#7A152E] group-hover:text-white transition-all duration-300 z-10 shadow-2xs">
-                <Award className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
+              {/* Internal Gift Box Ribbon Cross & Certificate Border (Clipped to Card Shape) */}
+              <div className="absolute inset-0 rounded-2xl sm:rounded-3xl overflow-hidden pointer-events-none z-0">
+                {/* Vertical Satin Ribbon with Gold Stitched Piping */}
+                <div className="absolute inset-y-0 left-1/2 -translate-x-1/2 w-6 xs:w-7 sm:w-8 bg-gradient-to-r from-[#6A0E22]/15 via-[#8B1D35]/25 to-[#6A0E22]/15 border-x border-[#D4AF37]/45 shadow-xs" />
+                {/* Fine Gold Stitched Twin Pinstripes down the Vertical Ribbon (PC Only) */}
+                <div className="hidden sm:block absolute inset-y-0 left-1/2 -translate-x-1/2 w-3.5 border-x border-dashed border-[#D4AF37]/35" />
+                {/* Horizontal Ribbon Cross-Band with Gold Piping */}
+                <div className="absolute inset-x-0 top-1/2 -translate-y-1/2 h-3.5 xs:h-4.5 sm:h-6 bg-gradient-to-b from-[#6A0E22]/12 via-[#8B1D35]/20 to-[#6A0E22]/12 border-y border-[#D4AF37]/40 shadow-xs" />
+                {/* Fine Gold Stitched Twin Pinstripes across Horizontal Ribbon (PC Only) */}
+                <div className="hidden sm:block absolute inset-x-0 top-1/2 -translate-y-1/2 h-3 border-y border-dashed border-[#D4AF37]/30" />
+                {/* Gold Filigree Certificate Inner Border */}
+                <div className="absolute inset-1.5 xs:inset-2 sm:inset-3 rounded-xl sm:rounded-2xl border border-dashed border-[#CBA64E]/40 group-hover:border-[#CBA64E]/75 transition-colors" />
+                {/* Subtle Gold Crest Watermark in Center (PC Only) */}
+                <div className="hidden sm:block absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-28 h-28 rounded-full border border-[#D4AF37]/20 pointer-events-none" />
               </div>
 
-              <span className="font-sans text-[8.5px] xs:text-[9.5px] sm:text-[10px] md:text-[11px] uppercase font-bold text-stone-500 sm:text-[#8C6D3B] tracking-wider sm:tracking-widest block z-10">
-                UNDER
-              </span>
-              <span className="font-serif font-bold text-sm xs:text-base sm:text-2xl md:text-3xl text-[#7A152E] tracking-tight block mt-0.5 group-hover:scale-105 transition-transform z-10">
-                ₹2,999
-              </span>
-              <span className="text-[7.5px] xs:text-[8.5px] sm:text-xs text-stone-500 group-hover:text-[#7A152E] font-medium tracking-wide block mt-0.5 sm:mt-1 transition-colors truncate max-w-full z-10">
-                Statements
-              </span>
-              <span className="hidden sm:block text-[10px] text-stone-400 group-hover:text-stone-600 transition-colors z-10 mt-0.5">
-                Tennis &amp; Chains
-              </span>
+              {/* Content Layer (z-10 on top of ribbon wrap with subtle frosted backdrop) */}
+              <div className="relative z-10 flex flex-col items-center justify-center py-1 sm:py-2 px-1.5 sm:px-3 rounded-xl backdrop-blur-[2px] bg-white/70 sm:bg-white/80 border border-white/60 shadow-2xs group-hover:bg-white/95 transition-all">
+                <span className="font-sans text-[8.5px] xs:text-[9.5px] sm:text-[11px] uppercase font-bold text-stone-600 sm:text-[#8C6D3B] tracking-wider sm:tracking-widest block">
+                  UNDER
+                </span>
+                <span className="font-serif font-bold text-sm xs:text-base sm:text-2xl md:text-3xl text-[#7A152E] tracking-tight block mt-0.5 group-hover:scale-105 transition-transform">
+                  ₹2,999
+                </span>
+                <span className="text-[7.5px] xs:text-[8.5px] sm:text-xs text-stone-600 group-hover:text-[#7A152E] font-medium tracking-wide block mt-0.5 sm:mt-1 transition-colors truncate max-w-full">
+                  Statements
+                </span>
+                <span className="hidden sm:block text-[10.5px] text-stone-400 group-hover:text-stone-600 transition-colors mt-0.5">
+                  Tennis &amp; Chains
+                </span>
 
-              {/* Interactive Shop Pill (PC Only) */}
-              <div className="hidden sm:inline-flex items-center gap-1 mt-2.5 py-0.5 px-2.5 rounded-full bg-white/95 border border-[#7A152E]/20 text-[#7A152E] text-[10px] md:text-[11px] font-semibold group-hover:bg-[#7A152E] group-hover:text-white group-hover:border-[#7A152E] shadow-2xs transition-all duration-300 z-10">
-                <span>Shop</span>
-                <ArrowRight className="w-2.5 h-2.5 group-hover:translate-x-0.5 transition-transform" />
+                {/* Interactive Shop Pill (PC Only) */}
+                <div className="hidden sm:inline-flex items-center gap-1 mt-2.5 py-0.5 px-3 rounded-full bg-white/95 border border-[#7A152E]/25 text-[#7A152E] text-[10.5px] font-semibold group-hover:bg-[#7A152E] group-hover:text-white group-hover:border-[#7A152E] shadow-2xs transition-all duration-300">
+                  <span>Explore &rarr;</span>
+                </div>
               </div>
             </div>
 
             {/* Gift Box 4: Premium Gifts */}
             <div
               onClick={() => handlePriceFilter(3999)}
-              className="group relative rounded-2xl sm:rounded-3xl p-2 xs:p-2.5 sm:p-5 md:p-6 bg-gradient-to-b from-[#FFFDF9] via-[#FAF5EE] to-[#F7EFE6] border-2 border-[#7A152E]/30 hover:border-[#7A152E] shadow-xs hover:shadow-xl hover:-translate-y-1 transition-all duration-300 cursor-pointer flex flex-col items-center justify-center text-center aspect-square sm:aspect-auto sm:min-h-[200px] sm:max-h-[230px] overflow-hidden"
+              className="group relative rounded-2xl sm:rounded-3xl p-1.5 xs:p-2 sm:p-5 md:p-6 bg-gradient-to-b from-[#FFFDF9] via-[#FAF5EE] to-[#F5ECE1] border-2 border-[#7A152E]/35 hover:border-[#7A152E] shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 cursor-pointer flex flex-col items-center justify-center text-center aspect-square sm:aspect-auto sm:min-h-[210px] sm:max-h-[240px]"
             >
-              {/* Luxury Ribbon Bow on Top */}
-              <div className="absolute -top-3.5 sm:-top-5 left-1/2 -translate-x-1/2 z-20 pointer-events-none">
-                <svg className="w-9 xs:w-11 sm:w-15 h-3.5 xs:h-4.5 sm:h-5.5 transition-transform duration-300 group-hover:scale-115 drop-shadow-xs" viewBox="0 0 80 32" fill="none">
-                  <path d="M40 16 C26 2, 8 4, 10 16 C12 24, 30 20, 40 16 Z" fill="#7A152E" />
-                  <path d="M40 16 C54 2, 72 4, 70 16 C68 24, 50 20, 40 16 Z" fill="#7A152E" />
-                  <path d="M37 17 L18 31 L28 21 Z" fill="#590D1E" />
-                  <path d="M43 17 L62 31 L52 21 Z" fill="#590D1E" />
-                  <circle cx="40" cy="16" r="4.5" fill="#D4AF37" />
-                  <circle cx="40" cy="16" r="3" fill="#7A152E" />
+              {/* Grand 3D Velvet Ribbon Bow with Satin Sheen & Cascading Tails */}
+              <div className="absolute -top-4 xs:-top-5 sm:-top-6 left-1/2 -translate-x-1/2 z-20 pointer-events-none transition-transform duration-300 group-hover:scale-110 drop-shadow-md">
+                <svg className="w-13 xs:w-15 sm:w-22 md:w-24 h-5.5 xs:h-6.5 sm:h-9 md:h-10" viewBox="0 0 100 42" fill="none">
+                  {/* Left & Right Loop Shadows */}
+                  <path d="M50 18 C30 2, 8 4, 11 20 C14 28, 38 23, 50 18 Z" fill="#4D0B19" />
+                  <path d="M50 18 C70 2, 92 4, 89 20 C86 28, 62 23, 50 18 Z" fill="#4D0B19" />
+                  {/* Satin Body Loops */}
+                  <path d="M50 18 C32 4, 12 6, 14 19 C17 26, 40 22, 50 18 Z" fill="#7A152E" />
+                  <path d="M50 18 C68 4, 88 6, 86 19 C83 26, 60 22, 50 18 Z" fill="#7A152E" />
+                  {/* Satin Highlight Sheen Strokes */}
+                  <path d="M47 15 C35 7, 20 8, 17 17" stroke="#E2738E" strokeWidth="1.6" strokeLinecap="round" opacity="0.65" fill="none" />
+                  <path d="M53 15 C65 7, 80 8, 83 17" stroke="#E2738E" strokeWidth="1.6" strokeLinecap="round" opacity="0.65" fill="none" />
+                  {/* Cascading Fishtail Streamers */}
+                  <path d="M46 19 L25 39 L37 27 L43 21 Z" fill="#8B1D35" />
+                  <path d="M46 19 L25 39 L31 36 L43 21 Z" fill="#5E0D1E" />
+                  <path d="M54 19 L75 39 L63 27 L57 21 Z" fill="#8B1D35" />
+                  <path d="M54 19 L75 39 L69 36 L57 21 Z" fill="#5E0D1E" />
+                  {/* Gold Knot Medallion */}
+                  <circle cx="50" cy="18" r="6" fill="#D4AF37" stroke="#9A7B1C" strokeWidth="0.8" />
+                  <circle cx="50" cy="18" r="4" fill="#7A152E" />
+                  <circle cx="48.8" cy="16.8" r="1.2" fill="#FFFFFF" fillOpacity="0.85" />
                 </svg>
               </div>
 
-              {/* Vertical Satin Ribbon Spine (PC Only) */}
-              <div className="hidden sm:block absolute inset-y-0 left-1/2 -translate-x-1/2 w-6 sm:w-7 bg-gradient-to-b from-[#7A152E]/8 via-[#7A152E]/3 to-[#7A152E]/8 border-x border-[#7A152E]/10 pointer-events-none z-0" />
-
-              {/* Gold Filigree Certificate Inset Frame (PC Only) */}
-              <div className="hidden sm:block absolute inset-2.5 sm:inset-3 rounded-2xl border border-dashed border-[#CBA64E]/30 pointer-events-none group-hover:border-[#CBA64E]/60 transition-colors z-0" />
-
-              {/* Jewelry Motif Icon (PC Only) */}
-              <div className="hidden sm:flex w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-[#7A152E]/5 border border-[#7A152E]/15 items-center justify-center text-[#7A152E] mb-1.5 group-hover:scale-110 group-hover:bg-[#7A152E] group-hover:text-white transition-all duration-300 z-10 shadow-2xs">
-                <Crown className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
+              {/* Internal Gift Box Ribbon Cross & Certificate Border (Clipped to Card Shape) */}
+              <div className="absolute inset-0 rounded-2xl sm:rounded-3xl overflow-hidden pointer-events-none z-0">
+                {/* Vertical Satin Ribbon with Gold Stitched Piping */}
+                <div className="absolute inset-y-0 left-1/2 -translate-x-1/2 w-6 xs:w-7 sm:w-8 bg-gradient-to-r from-[#6A0E22]/15 via-[#8B1D35]/25 to-[#6A0E22]/15 border-x border-[#D4AF37]/45 shadow-xs" />
+                {/* Fine Gold Stitched Twin Pinstripes down the Vertical Ribbon (PC Only) */}
+                <div className="hidden sm:block absolute inset-y-0 left-1/2 -translate-x-1/2 w-3.5 border-x border-dashed border-[#D4AF37]/35" />
+                {/* Horizontal Ribbon Cross-Band with Gold Piping */}
+                <div className="absolute inset-x-0 top-1/2 -translate-y-1/2 h-3.5 xs:h-4.5 sm:h-6 bg-gradient-to-b from-[#6A0E22]/12 via-[#8B1D35]/20 to-[#6A0E22]/12 border-y border-[#D4AF37]/40 shadow-xs" />
+                {/* Fine Gold Stitched Twin Pinstripes across Horizontal Ribbon (PC Only) */}
+                <div className="hidden sm:block absolute inset-x-0 top-1/2 -translate-y-1/2 h-3 border-y border-dashed border-[#D4AF37]/30" />
+                {/* Gold Filigree Certificate Inner Border */}
+                <div className="absolute inset-1.5 xs:inset-2 sm:inset-3 rounded-xl sm:rounded-2xl border border-dashed border-[#CBA64E]/40 group-hover:border-[#CBA64E]/75 transition-colors" />
+                {/* Subtle Gold Crest Watermark in Center (PC Only) */}
+                <div className="hidden sm:block absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-28 h-28 rounded-full border border-[#D4AF37]/20 pointer-events-none" />
               </div>
 
-              <span className="font-sans text-[8.5px] xs:text-[9.5px] sm:text-[10px] md:text-[11px] uppercase font-bold text-stone-500 sm:text-[#8C6D3B] tracking-wider sm:tracking-widest block z-10">
-                PREMIUM
-              </span>
-              <span className="font-serif font-bold text-xs xs:text-sm sm:text-xl md:text-2xl text-[#7A152E] tracking-tight block mt-0.5 group-hover:scale-105 transition-transform leading-snug z-10">
-                GIFTS
-              </span>
-              <span className="text-[7.5px] xs:text-[8.5px] sm:text-xs text-stone-500 group-hover:text-[#7A152E] font-medium tracking-wide block mt-0.5 sm:mt-1 transition-colors truncate max-w-full z-10">
-                Vault Sets
-              </span>
-              <span className="hidden sm:block text-[10px] text-stone-400 group-hover:text-stone-600 transition-colors z-10 mt-0.5">
-                Curated Suites
-              </span>
+              {/* Content Layer (z-10 on top of ribbon wrap with subtle frosted backdrop) */}
+              <div className="relative z-10 flex flex-col items-center justify-center py-1 sm:py-2 px-1.5 sm:px-3 rounded-xl backdrop-blur-[2px] bg-white/70 sm:bg-white/80 border border-white/60 shadow-2xs group-hover:bg-white/95 transition-all">
+                <span className="font-sans text-[8.5px] xs:text-[9.5px] sm:text-[11px] uppercase font-bold text-stone-600 sm:text-[#8C6D3B] tracking-wider sm:tracking-widest block">
+                  PREMIUM
+                </span>
+                <span className="font-serif font-bold text-xs xs:text-sm sm:text-xl md:text-2xl text-[#7A152E] tracking-tight block mt-0.5 group-hover:scale-105 transition-transform leading-snug">
+                  GIFTS
+                </span>
+                <span className="text-[7.5px] xs:text-[8.5px] sm:text-xs text-stone-600 group-hover:text-[#7A152E] font-medium tracking-wide block mt-0.5 sm:mt-1 transition-colors truncate max-w-full">
+                  Vault Sets
+                </span>
+                <span className="hidden sm:block text-[10.5px] text-stone-400 group-hover:text-stone-600 transition-colors mt-0.5">
+                  Curated Suites
+                </span>
 
-              {/* Interactive Shop Pill (PC Only) */}
-              <div className="hidden sm:inline-flex items-center gap-1 mt-2.5 py-0.5 px-2.5 rounded-full bg-white/95 border border-[#7A152E]/20 text-[#7A152E] text-[10px] md:text-[11px] font-semibold group-hover:bg-[#7A152E] group-hover:text-white group-hover:border-[#7A152E] shadow-2xs transition-all duration-300 z-10">
-                <span>Shop</span>
-                <ArrowRight className="w-2.5 h-2.5 group-hover:translate-x-0.5 transition-transform" />
+                {/* Interactive Shop Pill (PC Only) */}
+                <div className="hidden sm:inline-flex items-center gap-1 mt-2.5 py-0.5 px-3 rounded-full bg-white/95 border border-[#7A152E]/25 text-[#7A152E] text-[10.5px] font-semibold group-hover:bg-[#7A152E] group-hover:text-white group-hover:border-[#7A152E] shadow-2xs transition-all duration-300">
+                  <span>Explore &rarr;</span>
+                </div>
               </div>
             </div>
 
