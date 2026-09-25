@@ -158,20 +158,12 @@ export const MetalPurityBadge = ({ product, selectedMetal = null, size = 'md', c
       ? 'text-[5px] sm:text-[5.5px]'
       : 'text-[5.5px] sm:text-[6.5px]';
 
-  // Precision Emerald Cut Octagon (45-degree beveled corners)
-  const outerOctagonPath =
-    'M 25 7 L 75 7 L 93 25 L 93 75 L 75 93 L 25 93 L 7 75 L 7 25 Z';
-
-  // Concentric Inner Hairline Frame
-  const innerOctagonPath =
-    'M 29 14.5 L 71 14.5 L 85.5 29 L 85.5 71 L 71 85.5 L 29 85.5 L 14.5 71 L 14.5 29 Z';
-
   return (
     <div
       className={`${sizeClasses} relative flex items-center justify-center select-none pointer-events-none transition-transform duration-300 group-hover:scale-105 ${className}`}
       title={info.label}
     >
-      {/* Emerald Cut Hallmark Silhouette with Metallic Satin Gradient */}
+      {/* Rounded-Edge Cushion Hallmark Silhouette with Metallic Satin Gradient */}
       <svg
         viewBox="0 0 100 100"
         className="absolute inset-0 w-full h-full overflow-visible pointer-events-none"
@@ -185,22 +177,30 @@ export const MetalPurityBadge = ({ product, selectedMetal = null, size = 'md', c
           </linearGradient>
         </defs>
 
-        {/* Outer Emerald-Cut Beveled Octagon */}
-        <path
-          d={outerOctagonPath}
+        {/* Outer Rounded-Edge Cushion Hallmark Ingot */}
+        <rect
+          x="7"
+          y="7"
+          width="86"
+          height="86"
+          rx="20"
+          ry="20"
           fill={`url(#${gradientId})`}
           stroke={info.borderColor}
           strokeWidth={info.borderWidth}
-          strokeLinejoin="round"
         />
 
         {/* Concentric Inner Hairline Frame for Authentic Assay Stamp Ingot Feel */}
-        <path
-          d={innerOctagonPath}
+        <rect
+          x="14"
+          y="14"
+          width="72"
+          height="72"
+          rx="14"
+          ry="14"
           fill="none"
           stroke={info.innerRingColor}
           strokeWidth="0.75"
-          strokeLinejoin="round"
           opacity="0.45"
         />
       </svg>
