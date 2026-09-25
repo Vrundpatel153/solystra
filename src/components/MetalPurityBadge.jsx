@@ -124,14 +124,15 @@ export const getMetalBadgeInfo = (product, selectedMetal = null) => {
 };
 
 /**
- * Luxury Flower-Like Circle Hallmark Medallion Badge
- * Features an 8-petal scalloped floral rosette silhouette with delicate inner circular
- * hairline rings and crisp atelier typography (925 SILVER in white-silver styles or 18K GOLD in warm gold shade).
+ * Luxury Emerald-Cut Ingot Hallmark Seal Badge
+ * Features a minimalist, creative emerald-cut beveled octagonal silhouette
+ * inspired by classic fine jewelry diamond cuts and Swiss/French bullion assay hallmarks.
+ * Avoids generic circle (copyright) and ornate floral petals (overdesigned).
  */
 export const MetalPurityBadge = ({ product, selectedMetal = null, size = 'md', className = '' }) => {
   const reactId = useId();
   const safeId = reactId.replace(/[^a-zA-Z0-9_-]/g, '');
-  const gradientId = `flower-badge-grad-${safeId}`;
+  const gradientId = `emerald-badge-grad-${safeId}`;
 
   const info = getMetalBadgeInfo(product, selectedMetal);
 
@@ -140,12 +141,12 @@ export const MetalPurityBadge = ({ product, selectedMetal = null, size = 'md', c
     size === 'lg'
       ? 'w-12 h-12 sm:w-14 sm:h-14'
       : size === 'sm'
-      ? 'w-[34px] h-[34px] sm:w-[36px] sm:h-[36px]'
-      : 'w-[39px] h-[39px] sm:w-[43px] sm:h-[43px]';
+      ? 'w-[33px] h-[33px] sm:w-[35px] sm:h-[35px]'
+      : 'w-[38px] h-[38px] sm:w-[41px] sm:h-[41px]';
 
   const codeSizeClasses =
     size === 'lg'
-      ? 'text-[12px] sm:text-[13.5px]'
+      ? 'text-[12.5px] sm:text-[14px]'
       : size === 'sm'
       ? 'text-[8.5px] sm:text-[9.5px]'
       : 'text-[10px] sm:text-[11px]';
@@ -154,19 +155,23 @@ export const MetalPurityBadge = ({ product, selectedMetal = null, size = 'md', c
     size === 'lg'
       ? 'text-[6.5px] sm:text-[7.5px]'
       : size === 'sm'
-      ? 'text-[5.5px] sm:text-[6px]'
-      : 'text-[6px] sm:text-[6.5px]';
+      ? 'text-[5px] sm:text-[5.5px]'
+      : 'text-[5.5px] sm:text-[6.5px]';
 
-  // Symmetrical 8-petal scalloped flower rosette path (centered at 50,50 within 100x100 viewBox)
-  const flowerPath =
-    'M 35.46 14.89 A 16 16 0 0 1 64.54 14.89 A 16 16 0 0 1 85.11 35.46 A 16 16 0 0 1 85.11 64.54 A 16 16 0 0 1 64.54 85.11 A 16 16 0 0 1 35.46 85.11 A 16 16 0 0 1 14.89 64.54 A 16 16 0 0 1 14.89 35.46 A 16 16 0 0 1 35.46 14.89 Z';
+  // Precision Emerald Cut Octagon (45-degree beveled corners)
+  const outerOctagonPath =
+    'M 25 7 L 75 7 L 93 25 L 93 75 L 75 93 L 25 93 L 7 75 L 7 25 Z';
+
+  // Concentric Inner Hairline Frame
+  const innerOctagonPath =
+    'M 29 14.5 L 71 14.5 L 85.5 29 L 85.5 71 L 71 85.5 L 29 85.5 L 14.5 71 L 14.5 29 Z';
 
   return (
     <div
       className={`${sizeClasses} relative flex items-center justify-center select-none pointer-events-none transition-transform duration-300 group-hover:scale-105 ${className}`}
       title={info.label}
     >
-      {/* Flower Rosette Vector Silhouette with Metal Gradient */}
+      {/* Emerald Cut Hallmark Silhouette with Metallic Satin Gradient */}
       <svg
         viewBox="0 0 100 100"
         className="absolute inset-0 w-full h-full overflow-visible pointer-events-none"
@@ -180,36 +185,23 @@ export const MetalPurityBadge = ({ product, selectedMetal = null, size = 'md', c
           </linearGradient>
         </defs>
 
-        {/* Outer 8-Petal Scalloped Flower Silhouette */}
+        {/* Outer Emerald-Cut Beveled Octagon */}
         <path
-          d={flowerPath}
+          d={outerOctagonPath}
           fill={`url(#${gradientId})`}
           stroke={info.borderColor}
           strokeWidth={info.borderWidth}
           strokeLinejoin="round"
         />
 
-        {/* Outer Decorative Dotted Hairline Ring */}
-        <circle
-          cx="50"
-          cy="50"
-          r="32.5"
+        {/* Concentric Inner Hairline Frame for Authentic Assay Stamp Ingot Feel */}
+        <path
+          d={innerOctagonPath}
           fill="none"
           stroke={info.innerRingColor}
-          strokeWidth="0.85"
-          strokeDasharray="1.75 1.75"
-          opacity="0.55"
-        />
-
-        {/* Inner Solid Fine Hairline Ring for Precision Hallmark Coin Impression */}
-        <circle
-          cx="50"
-          cy="50"
-          r="29.5"
-          fill="none"
-          stroke={info.innerRingColor}
-          strokeWidth="0.5"
-          opacity="0.3"
+          strokeWidth="0.75"
+          strokeLinejoin="round"
+          opacity="0.45"
         />
       </svg>
 
@@ -218,7 +210,7 @@ export const MetalPurityBadge = ({ product, selectedMetal = null, size = 'md', c
         <span className={`font-serif font-bold tracking-tight ${codeSizeClasses} ${info.codeTextClass}`}>
           {info.code}
         </span>
-        <span className={`font-sans font-bold uppercase tracking-[0.14em] ${subSizeClasses} ${info.subTextClass} mt-[1px]`}>
+        <span className={`font-sans font-bold uppercase tracking-[0.16em] ${subSizeClasses} ${info.subTextClass} mt-[1px]`}>
           {info.metal}
         </span>
       </div>
