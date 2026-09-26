@@ -79,11 +79,6 @@ export const ProductCard = ({ product, variant = 'default', isSquare = false }) 
             loading="lazy"
           />
 
-          {/* Atelier Hallmark Seal (Replaces Percentage Off at Top-Left) */}
-          <div className="absolute top-2 left-2 pointer-events-none z-10">
-            <MetalPurityBadge product={product} size="sm" selectedMetal={selectedMetal} />
-          </div>
-
           {/* Wishlist Heart Icon */}
           <button
             type="button"
@@ -124,19 +119,22 @@ export const ProductCard = ({ product, variant = 'default', isSquare = false }) 
             <h3 className="font-serif text-[11px] sm:text-xs font-semibold text-[#231F20] group-hover:text-[#7A152E] transition-colors truncate leading-snug">
               {cleanTitle}
             </h3>
-            {product.discount ? (
-              <span className="text-[#7A152E] font-bold text-[8.5px] sm:text-[9.5px] tracking-wide shrink-0">
-                {product.discount}
-              </span>
-            ) : product.badge ? (
-              <span className="text-[#7A152E] font-semibold text-[8px] sm:text-[9px] uppercase tracking-wider shrink-0">
-                {product.badge}
-              </span>
-            ) : (
-              <span className="text-stone-400 font-medium text-[8px] sm:text-[8.5px] uppercase tracking-wider shrink-0">
-                Certified
-              </span>
-            )}
+            <div className="flex items-center gap-1 shrink-0">
+              <MetalPurityBadge product={product} size="rating" selectedMetal={selectedMetal} />
+              {product.discount ? (
+                <span className="text-[#7A152E] font-bold text-[8.5px] sm:text-[9.5px] tracking-wide shrink-0">
+                  {product.discount}
+                </span>
+              ) : product.badge ? (
+                <span className="text-[#7A152E] font-semibold text-[8px] sm:text-[9px] uppercase tracking-wider shrink-0">
+                  {product.badge}
+                </span>
+              ) : (
+                <span className="text-stone-400 font-medium text-[8px] sm:text-[8.5px] uppercase tracking-wider shrink-0">
+                  Certified
+                </span>
+              )}
+            </div>
           </div>
 
           <div className="mt-1 flex items-center justify-between gap-1 pt-1 border-t border-stone-100">
@@ -186,11 +184,6 @@ export const ProductCard = ({ product, variant = 'default', isSquare = false }) 
           loading="lazy"
         />
 
-        {/* Atelier Hallmark Seal (Replaces Percentage Off at Top-Left) */}
-        <div className="absolute top-2 left-2 sm:top-2.5 sm:left-2.5 pointer-events-none z-10">
-          <MetalPurityBadge product={product} size="md" selectedMetal={selectedMetal} />
-        </div>
-
         {/* Luxury Floating Wishlist Heart Icon */}
         <button
           type="button"
@@ -236,33 +229,38 @@ export const ProductCard = ({ product, variant = 'default', isSquare = false }) 
           </div>
 
           {/* Rating & Exclusive Offer Badges (Single-Line Zero Clipping Architecture) */}
-          <div className="flex items-center justify-between gap-1.5 mt-2 pt-0.5 w-full">
-            {/* Rating Tag */}
-            <div className="inline-flex items-center gap-1 px-2 py-0.5 rounded-lg bg-[#FAF8F5] border border-[#EAE4DC] shadow-2xs shrink-0">
-              <svg className="w-3 h-3 sm:w-3.5 sm:h-3.5 fill-[#C5A059] text-[#C5A059] shrink-0 drop-shadow-2xs" viewBox="0 0 24 24">
-                <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
-              </svg>
-              <span className="font-sans font-bold text-[11px] sm:text-xs text-stone-900 leading-none">
-                {product.rating}
-              </span>
+          <div className="flex items-center justify-between gap-1 sm:gap-1.5 mt-2 pt-0.5 w-full">
+            {/* Rating Tag & Metal Purity Hallmark Badge */}
+            <div className="flex items-center gap-1 sm:gap-1.5 shrink-0">
+              <div className="inline-flex items-center gap-1 px-1.5 sm:px-2 py-0.5 rounded-lg bg-[#FAF8F5] border border-[#EAE4DC] shadow-2xs shrink-0">
+                <svg className="w-3 h-3 sm:w-3.5 sm:h-3.5 fill-[#C5A059] text-[#C5A059] shrink-0 drop-shadow-2xs" viewBox="0 0 24 24">
+                  <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+                </svg>
+                <span className="font-sans font-bold text-[10.5px] sm:text-xs text-stone-900 leading-none">
+                  {product.rating}
+                </span>
+              </div>
+
+              {/* Metal Purity Hallmark Badge */}
+              <MetalPurityBadge product={product} size="rating" selectedMetal={selectedMetal} />
             </div>
 
             {/* Offer / Privilege Tag (Sleek Single-Line Pill with Royal Burgundy Theme) */}
             {product.discount ? (
-              <div className="inline-flex items-center justify-center text-center px-2 py-0.5 rounded-lg bg-[#FAF0F2] border border-[#EAD5DA] text-[#7A152E] shadow-2xs shrink-0">
-                <span className="font-sans font-bold text-[10px] sm:text-[10.5px] uppercase tracking-wide leading-none whitespace-nowrap">
+              <div className="inline-flex items-center justify-center text-center px-1.5 sm:px-2 py-0.5 rounded-lg bg-[#FAF0F2] border border-[#EAD5DA] text-[#7A152E] shadow-2xs shrink-0">
+                <span className="font-sans font-bold text-[9.5px] sm:text-[10.5px] uppercase tracking-wide leading-none whitespace-nowrap">
                   {product.discount}
                 </span>
               </div>
             ) : product.badge ? (
-              <div className="inline-flex items-center justify-center text-center px-2 py-0.5 rounded-lg bg-[#FAF0F2] border border-[#EAD5DA] text-[#7A152E] shadow-2xs shrink-0">
-                <span className="font-sans font-bold text-[10px] sm:text-[10.5px] uppercase tracking-wide leading-none whitespace-nowrap">
+              <div className="inline-flex items-center justify-center text-center px-1.5 sm:px-2 py-0.5 rounded-lg bg-[#FAF0F2] border border-[#EAD5DA] text-[#7A152E] shadow-2xs shrink-0">
+                <span className="font-sans font-bold text-[9.5px] sm:text-[10.5px] uppercase tracking-wide leading-none whitespace-nowrap">
                   {product.badge}
                 </span>
               </div>
             ) : (
-              <div className="inline-flex items-center justify-center text-center px-2 py-0.5 rounded-lg bg-[#FAF8F5] border border-[#EAE4DC] text-stone-600 shadow-2xs shrink-0">
-                <span className="font-sans font-medium text-[9.5px] sm:text-[10px] uppercase tracking-wide leading-none whitespace-nowrap">
+              <div className="inline-flex items-center justify-center text-center px-1.5 sm:px-2 py-0.5 rounded-lg bg-[#FAF8F5] border border-[#EAE4DC] text-stone-600 shadow-2xs shrink-0">
+                <span className="font-sans font-medium text-[9px] sm:text-[10px] uppercase tracking-wide leading-none whitespace-nowrap">
                   Certified
                 </span>
               </div>

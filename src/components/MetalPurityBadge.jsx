@@ -129,12 +129,34 @@ export const getMetalBadgeInfo = (product, selectedMetal = null) => {
  * inspired by classic fine jewelry diamond cuts and Swiss/French bullion assay hallmarks.
  * Avoids generic circle (copyright) and ornate floral petals (overdesigned).
  */
-export const MetalPurityBadge = ({ product, selectedMetal = null, size = 'md', className = '' }) => {
+export const MetalPurityBadge = ({ product, selectedMetal = null, size = 'rating', className = '' }) => {
   const reactId = useId();
   const safeId = reactId.replace(/[^a-zA-Z0-9_-]/g, '');
   const gradientId = `emerald-badge-grad-${safeId}`;
 
   const info = getMetalBadgeInfo(product, selectedMetal);
+
+  // Rating-adjacent hallmark badge variant
+  if (size === 'rating') {
+    return (
+      <div
+        className={`inline-flex items-center gap-1 px-1.5 sm:px-2 py-0.5 rounded-lg border shadow-2xs select-none transition-transform duration-200 shrink-0 ${className}`}
+        style={{
+          background: `linear-gradient(135deg, ${info.stops[0].color} 0%, ${info.stops[1].color} 30%, ${info.stops[2].color} 70%, ${info.stops[3].color} 100%)`,
+          borderColor: info.borderColor,
+          boxShadow: '0 1px 2px rgba(0,0,0,0.04)',
+        }}
+        title={info.label}
+      >
+        <span className={`font-serif font-bold tracking-tight text-[10px] sm:text-[11px] leading-none ${info.codeTextClass}`}>
+          {info.code}
+        </span>
+        <span className={`font-sans font-bold uppercase tracking-wider text-[7.5px] sm:text-[8.5px] leading-none ${info.subTextClass}`}>
+          {info.metal}
+        </span>
+      </div>
+    );
+  }
 
   // Sizing matrix for container and typography
   const sizeClasses =

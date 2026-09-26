@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useShop } from '../context/ShopContext';
 import { ProductCard } from '../components/ProductCard';
-import { MetalPurityBadge } from '../components/MetalPurityBadge';
 import { GoldShoppingBag } from '../components/GoldShoppingBag';
 import { DeliveryIcon, HallmarkIcon, ExchangeIcon, WarrantyIcon } from '../components/TrustBadges';
 import {
@@ -488,11 +487,6 @@ export const ProductDetailPage = ({ productId }) => {
                   </div>
                 )}
 
-                {/* Atelier Hallmark Seal (Bottom-Left Craftsmanship Mark) */}
-                <div className="absolute bottom-4 left-4 pointer-events-none z-10 transition-transform duration-300 group-hover:scale-105">
-                  <MetalPurityBadge product={product} size="lg" selectedMetal={selectedMetal} />
-                </div>
-
                 {/* Action Overlays */}
                 <div className="absolute top-4 right-4 flex items-center gap-2 z-10">
                   <button
@@ -586,8 +580,18 @@ export const ProductDetailPage = ({ productId }) => {
               <h1 className="font-sans text-xl sm:text-2xl text-stone-800 font-normal leading-snug">
                 {product.name}
               </h1>
-              <p className="text-xs sm:text-[13px] text-stone-500 font-normal">
-                Made with pure 925 silver
+              <p className="text-xs sm:text-[13px] text-stone-900 font-bold tracking-wide">
+                {selectedMetal 
+                  ? (selectedMetal.toLowerCase().includes('rose')
+                      ? 'Made with Pure 925 Silver & 18K Rose Gold Plated'
+                      : selectedMetal.toLowerCase().includes('gold')
+                      ? 'Made with Pure 925 Silver & 18K Gold Vermeil'
+                      : 'Made with Pure 925 Silver')
+                  : (product?.metalType === 'gold' 
+                      ? 'Made with Pure 925 Silver & 18K Gold Vermeil'
+                      : product?.metalType === 'rose'
+                      ? 'Made with Pure 925 Silver & 18K Rose Gold Plated'
+                      : 'Made with Pure 925 Silver')}
               </p>
             </div>
 

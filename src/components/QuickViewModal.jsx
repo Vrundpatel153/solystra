@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { useShop } from '../context/ShopContext';
 import { X, Heart, ShoppingBag, ArrowRight } from 'lucide-react';
-import { MetalPurityBadge } from './MetalPurityBadge';
 import { GoldShoppingBag } from './GoldShoppingBag';
 
 export const QuickViewModal = () => {
@@ -70,10 +69,6 @@ export const QuickViewModal = () => {
                 alt={product.name}
                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
               />
-              {/* Atelier Hallmark Seal */}
-              <div className="absolute top-3 left-3 pointer-events-none z-10">
-                <MetalPurityBadge product={product} size="md" selectedMetal={selectedMetal} />
-              </div>
             </div>
 
             {product.images.length > 1 && (
