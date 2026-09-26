@@ -912,73 +912,15 @@ export const ProductDetailPage = ({ productId }) => {
               </div>
             </div>
 
-            {/* 6. ATELIER BOGO PRIVILEGE: SIGNATURE ROYAL BURGUNDY BANNER (#7A152E THEME) */}
-            <div className="relative rounded-2xl text-white p-3.5 sm:p-4 shadow-md overflow-hidden bg-gradient-to-r from-[#4A0A19] via-[#7A152E] to-[#4A0A19] border border-[#C5A059]/45 ring-1 ring-inset ring-white/15 group">
-              {/* Subtle Warm Gold Ambient Radiance Over Royal Burgundy */}
-              <div className="absolute inset-0 bg-gradient-to-tr from-[#D4AF37]/15 via-transparent to-[#D4AF37]/10 pointer-events-none" />
-
-              {/* Main Content Row: Matching Burgundy Jewel + Clean Offer Details */}
-              <div className="flex items-center gap-3.5 sm:gap-4 relative z-10">
-                {/* Solitaire Jewel on Royal Burgundy Velvet (Rounded corners + gold hairline border) */}
-                <div className="relative w-16 h-16 sm:w-20 sm:h-20 shrink-0 rounded-xl sm:rounded-2xl overflow-hidden border border-[#D4AF37]/50 shadow-md">
-                  <img
-                    src="/solystra_assets/promos/bogo_gift_solitaire.jpg"
-                    alt="Complimentary Atelier Solitaire Jewel"
-                    className="w-full h-full object-cover group-hover:scale-108 transition-transform duration-500"
-                  />
-                  {/* Subtle inner gold rim gleam */}
-                  <div className="absolute inset-0 rounded-xl sm:rounded-2xl ring-1 ring-inset ring-white/20 pointer-events-none" />
-                </div>
-
-                {/* Offer Copy & Direct CTA */}
-                <div className="flex-1 min-w-0">
-                  <div className="flex items-baseline gap-2 flex-wrap">
-                    <h3 className="font-serif text-base sm:text-lg font-bold tracking-tight text-white drop-shadow-xs">
-                      BUY 1, RECEIVE 1
-                    </h3>
-                    <span className="font-serif italic text-lg sm:text-xl text-[#FFF0D0] font-normal leading-none drop-shadow-xs">
-                      Free
-                    </span>
-                  </div>
-                  <p className="text-[11px] sm:text-xs text-rose-100/90 font-light mt-0.5 leading-snug">
-                    Add any 2 creations &mdash; the 2nd jewel is gifted with our compliments.
-                  </p>
-
-                  {/* Code Badge & CTA Button */}
-                  <div className="mt-2 flex items-center gap-2 flex-wrap">
-                    <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-[#2D060F]/60 border border-[#D4AF37]/45 shadow-inner backdrop-blur-xs">
-                      <span className="text-[8.5px] uppercase font-serif text-[#F4D068] font-bold tracking-wider">CODE</span>
-                      <span className="w-px h-3 bg-[#D4AF37]/40" />
-                      <span className="font-mono text-[11px] font-bold text-white tracking-wider">BOGOFREE</span>
-                    </div>
-
-                    <button
-                      type="button"
-                      onClick={() => handleApplyOffer('BOGOFREE')}
-                      className="btn-real-gold px-3.5 py-1 rounded-lg text-[11px] font-bold uppercase tracking-wider cursor-pointer active:scale-95 flex items-center gap-1 shadow-sm"
-                    >
-                      <span>Claim Gift</span>
-                      <Check className="w-3 h-3 stroke-[3]" />
-                    </button>
-                  </div>
-                </div>
-              </div>
-
-              {/* Bottom Assurance Micro-Strip */}
-              <div className="mt-2.5 pt-2 border-t border-[#D4AF37]/25 flex items-center justify-between text-[10px] sm:text-[10.5px] text-rose-100/90 font-medium relative z-10 flex-wrap gap-x-3 gap-y-1">
-                <div className="flex items-center gap-1">
-                  <Check className="w-3 h-3 text-[#FFF0D0] stroke-[2.5]" />
-                  <span>Auto-applied in cart</span>
-                </div>
-                <div className="flex items-center gap-1">
-                  <span className="text-[#FFF0D0] font-bold">&bull;</span>
-                  <span>Pure 925 BIS Hallmarked</span>
-                </div>
-                <div className="flex items-center gap-1">
-                  <span className="text-[#FFF0D0] font-bold">&bull;</span>
-                  <span>Complimentary Velvet Box</span>
-                </div>
-              </div>
+            {/* 6. ATELIER LUXURY BRAND HERITAGE BANNER (THEME QUOTE) */}
+            <div className="relative w-full rounded-2xl overflow-hidden border border-[#D4AF37]/35 shadow-md group bg-[#3B0713]">
+              <img
+                src="/solystra_assets/promos/atelier_luxury_banner.jpg"
+                alt="Soulystra Jewels - Timeless Elegance, Crafted Forever"
+                className="w-full aspect-[16/9] object-cover object-center group-hover:scale-103 transition-transform duration-700 block"
+                loading="lazy"
+              />
+              <div className="absolute inset-0 rounded-2xl ring-1 ring-inset ring-white/15 pointer-events-none" />
             </div>
 
           </div>
