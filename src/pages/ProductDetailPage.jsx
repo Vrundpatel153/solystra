@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useShop } from '../context/ShopContext';
 import { ProductCard } from '../components/ProductCard';
+import { getMetalBadgeInfo } from '../components/MetalPurityBadge';
 import { GoldShoppingBag } from '../components/GoldShoppingBag';
 import { DeliveryIcon, HallmarkIcon, ExchangeIcon, WarrantyIcon } from '../components/TrustBadges';
 import {
@@ -581,17 +582,7 @@ export const ProductDetailPage = ({ productId }) => {
                 {product.name}
               </h1>
               <p className="text-xs sm:text-[13px] text-stone-900 font-bold tracking-wide">
-                {selectedMetal 
-                  ? (selectedMetal.toLowerCase().includes('rose')
-                      ? 'Made with Pure 925 Silver & 18K Rose Gold Plated'
-                      : selectedMetal.toLowerCase().includes('gold')
-                      ? 'Made with Pure 925 Silver & 18K Gold Vermeil'
-                      : 'Made with Pure 925 Silver')
-                  : (product?.metalType === 'gold' 
-                      ? 'Made with Pure 925 Silver & 18K Gold Vermeil'
-                      : product?.metalType === 'rose'
-                      ? 'Made with Pure 925 Silver & 18K Rose Gold Plated'
-                      : 'Made with Pure 925 Silver')}
+                Made with {getMetalBadgeInfo(product, selectedMetal).label}
               </p>
             </div>
 
