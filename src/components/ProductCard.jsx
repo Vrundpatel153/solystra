@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useShop } from '../context/ShopContext';
-import { Heart, Eye } from 'lucide-react';
+import { Heart, Eye, ShoppingBag } from 'lucide-react';
 import { MetalPurityBadge } from './MetalPurityBadge';
 
 export const ProductCard = ({ product, variant = 'default', isSquare = false }) => {
@@ -79,27 +79,6 @@ export const ProductCard = ({ product, variant = 'default', isSquare = false }) 
             loading="lazy"
           />
 
-          {/* Wishlist Heart Icon */}
-          <button
-            type="button"
-            onClick={handleWishlistClick}
-            className={`absolute top-2 right-2 w-6 h-6 sm:w-7 sm:h-7 rounded-full flex items-center justify-center transition-all duration-200 z-20 shadow-sm cursor-pointer active:scale-90 ${
-              isWishlisted
-                ? 'bg-white text-[#7A152E] ring-2 ring-[#7A152E]/30'
-                : 'bg-white/95 text-stone-700 hover:text-[#7A152E] hover:bg-white border border-stone-200/70'
-            }`}
-            aria-label={isWishlisted ? "Remove from Wishlist" : "Add to Wishlist"}
-            title={isWishlisted ? "In your Wishlist" : "Add to Wishlist"}
-          >
-            <Heart
-              className={`w-3 h-3 sm:w-3.5 sm:h-3.5 transition-all duration-200 ${
-                isWishlisted
-                  ? 'fill-[#7A152E] stroke-[#7A152E] stroke-[2] scale-110'
-                  : 'stroke-current stroke-[1.75] fill-transparent'
-              }`}
-            />
-          </button>
-
           {/* Quick View Overlay Pill on Desktop */}
           <div className="absolute inset-x-0 bottom-2 hidden sm:flex justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 pointer-events-none z-10">
             <button
@@ -113,8 +92,8 @@ export const ProductCard = ({ product, variant = 'default', isSquare = false }) 
           </div>
         </div>
 
-        {/* Bottom Content Bar - Compact & Square Aligned */}
-        <div className="p-2 sm:p-2.5 bg-white border-t border-[#EAE4DC] shrink-0 flex flex-col justify-between">
+        {/* Bottom Content Bar - Compact Minimal Structure */}
+        <div className="p-2 sm:p-2.5 bg-white border-t border-[#EAE4DC] shrink-0 flex flex-col justify-between gap-1">
           <div className="flex items-center justify-between gap-1">
             <h3 className="font-serif text-[11px] sm:text-xs font-semibold text-[#231F20] group-hover:text-[#7A152E] transition-colors truncate leading-snug">
               {cleanTitle}
@@ -137,7 +116,7 @@ export const ProductCard = ({ product, variant = 'default', isSquare = false }) 
             </div>
           </div>
 
-          <div className="mt-1 flex items-center justify-between gap-1 pt-1 border-t border-stone-100">
+          <div className="flex items-center justify-between gap-1 pt-1 border-t border-stone-100">
             <div className="flex items-baseline gap-1">
               <span className="font-serif text-xs sm:text-sm font-bold text-[#231F20]">
                 ₹{product.price.toLocaleString('en-IN')}
@@ -149,19 +128,29 @@ export const ProductCard = ({ product, variant = 'default', isSquare = false }) 
               )}
             </div>
 
-            <button
-              type="button"
-              onClick={handleAddToCart}
-              className="px-2 sm:px-2.5 py-1 rounded-lg bg-[#7A152E] hover:bg-[#590D1E] text-white text-[10px] sm:text-[11px] font-medium flex items-center gap-1 shadow-xs transition-all active:scale-95 cursor-pointer shrink-0"
-              title="Add to Bag"
-            >
-              <svg className="w-3 h-3 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z" />
-                <line x1="3" y1="6" x2="21" y2="6" />
-                <path d="M16 10a4 4 0 0 1-8 0" />
-              </svg>
-              <span>Add</span>
-            </button>
+            {/* Action Icons */}
+            <div className="flex items-center gap-1 shrink-0">
+              <button
+                type="button"
+                onClick={handleWishlistClick}
+                className={`w-6 h-6 rounded-full flex items-center justify-center transition-all duration-200 cursor-pointer active:scale-90 border ${
+                  isWishlisted
+                    ? 'bg-rose-50 text-[#7A152E] border-[#7A152E]/30 ring-1 ring-[#7A152E]/20'
+                    : 'bg-white text-stone-600 hover:text-[#7A152E] border-stone-200'
+                }`}
+                title={isWishlisted ? "In your Wishlist" : "Add to Wishlist"}
+              >
+                <Heart className={`w-3 h-3 ${isWishlisted ? 'fill-[#7A152E] stroke-[#7A152E]' : 'stroke-current fill-transparent'}`} />
+              </button>
+              <button
+                type="button"
+                onClick={handleAddToCart}
+                className="w-6 h-6 rounded-full bg-[#7A152E] hover:bg-[#590D1E] text-white flex items-center justify-center shadow-2xs transition-all active:scale-90 cursor-pointer"
+                title="Add to Bag"
+              >
+                <ShoppingBag className="w-3 h-3 text-white" strokeWidth={2} />
+              </button>
+            </div>
           </div>
         </div>
       </div>
@@ -175,8 +164,8 @@ export const ProductCard = ({ product, variant = 'default', isSquare = false }) 
       onMouseLeave={() => setIsHovered(false)}
       className="group bg-white rounded-2xl border border-[#EAE4DC] overflow-hidden shadow-xs hover:shadow-xl hover:border-[#7A152E]/60 transition-all duration-300 flex flex-col cursor-pointer h-full"
     >
-      {/* Visual Image Viewport */}
-      <div className="relative w-full aspect-square bg-[#FAF8F5] overflow-hidden">
+      {/* Visual Image Viewport - Grand Aspect 4:5 for Larger, Taller Showcase */}
+      <div className="relative w-full aspect-[4/5] bg-[#FAF8F5] overflow-hidden">
         <img
           src={isHovered && hoverImage ? hoverImage : primaryImage}
           alt={product.name}
@@ -184,28 +173,7 @@ export const ProductCard = ({ product, variant = 'default', isSquare = false }) 
           loading="lazy"
         />
 
-        {/* Luxury Floating Wishlist Heart Icon */}
-        <button
-          type="button"
-          onClick={handleWishlistClick}
-          className={`absolute top-2 right-2 sm:top-2.5 sm:right-2.5 w-7 h-7 sm:w-8 sm:h-8 rounded-full flex items-center justify-center transition-all duration-200 z-20 shadow-md cursor-pointer active:scale-90 ${
-            isWishlisted
-              ? 'bg-white text-[#7A152E] ring-2 ring-[#7A152E]/30 shadow-[#7A152E]/15'
-              : 'bg-white/95 text-stone-700 hover:text-[#7A152E] hover:bg-white hover:shadow-lg hover:scale-105 border border-stone-200/70'
-          }`}
-          aria-label={isWishlisted ? "Remove from Wishlist" : "Add to Wishlist"}
-          title={isWishlisted ? "In your Wishlist" : "Add to Wishlist"}
-        >
-          <Heart
-            className={`w-3.5 h-3.5 transition-all duration-200 ${
-              isWishlisted
-                ? 'fill-[#7A152E] stroke-[#7A152E] stroke-[2] scale-110'
-                : 'stroke-current stroke-[1.75] fill-transparent'
-            }`}
-          />
-        </button>
-
-        {/* Subtle Quick View Overlay Pill */}
+        {/* Subtle Quick View Overlay Pill on Desktop */}
         <div className="absolute inset-x-0 bottom-2.5 hidden sm:flex justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 pointer-events-none z-10">
           <button
             type="button"
@@ -218,59 +186,56 @@ export const ProductCard = ({ product, variant = 'default', isSquare = false }) 
         </div>
       </div>
 
-      {/* Content - Precision Aligned Flex Container */}
-      <div className="p-2.5 sm:p-3.5 flex-1 flex flex-col justify-between">
-        <div>
-          {/* Title: Generous min-height with natural top-alignment so 2-line titles never clip vertically */}
-          <div className="min-h-[2.6rem] sm:min-h-[2.8rem] flex items-start">
-            <h3 className="font-serif text-xs sm:text-sm font-semibold text-[#231F20] group-hover:text-[#7A152E] transition-colors line-clamp-2 leading-snug">
-              {cleanTitle}
-            </h3>
-          </div>
+      {/* Content - Precision Minimalist Container */}
+      <div className="p-2.5 sm:p-3 flex flex-col justify-between gap-1.5 sm:gap-2 flex-1">
+        {/* Title */}
+        <h3 className="font-serif text-xs sm:text-[13.5px] font-semibold text-[#231F20] group-hover:text-[#7A152E] transition-colors truncate leading-snug">
+          {cleanTitle}
+        </h3>
 
-          {/* Rating & Exclusive Offer Badges (Single-Line Zero Clipping Architecture) */}
-          <div className="flex items-center justify-between gap-1 sm:gap-1.5 mt-2 pt-0.5 w-full">
-            {/* Rating Tag & Metal Purity Hallmark Badge */}
-            <div className="flex items-center gap-1 sm:gap-1.5 shrink-0">
-              <div className="inline-flex items-center gap-1 px-1.5 sm:px-2 py-0.5 rounded-lg bg-[#FAF8F5] border border-[#EAE4DC] shadow-2xs shrink-0">
-                <svg className="w-3 h-3 sm:w-3.5 sm:h-3.5 fill-[#C5A059] text-[#C5A059] shrink-0 drop-shadow-2xs" viewBox="0 0 24 24">
-                  <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
-                </svg>
-                <span className="font-sans font-bold text-[10.5px] sm:text-xs text-stone-900 leading-none">
-                  {product.rating}
-                </span>
-              </div>
-
-              {/* Metal Purity Hallmark Badge */}
-              <MetalPurityBadge product={product} size="rating" selectedMetal={selectedMetal} />
+        {/* Rating & Hallmark & Offer Badges Row */}
+        <div className="flex items-center justify-between gap-1 sm:gap-1.5 w-full">
+          <div className="flex items-center gap-1 sm:gap-1.5 shrink-0">
+            {/* Rating Tag */}
+            <div className="inline-flex items-center gap-1 px-1.5 sm:px-2 py-0.5 rounded-lg bg-[#FAF8F5] border border-[#EAE4DC] shadow-2xs shrink-0">
+              <svg className="w-3 h-3 sm:w-3.5 sm:h-3.5 fill-[#C5A059] text-[#C5A059] shrink-0 drop-shadow-2xs" viewBox="0 0 24 24">
+                <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+              </svg>
+              <span className="font-sans font-bold text-[10.5px] sm:text-xs text-stone-900 leading-none">
+                {product.rating}
+              </span>
             </div>
 
-            {/* Offer / Privilege Tag (Sleek Single-Line Pill with Royal Burgundy Theme) */}
-            {product.discount ? (
-              <div className="inline-flex items-center justify-center text-center px-1.5 sm:px-2 py-0.5 rounded-lg bg-[#FAF0F2] border border-[#EAD5DA] text-[#7A152E] shadow-2xs shrink-0">
-                <span className="font-sans font-bold text-[9.5px] sm:text-[10.5px] uppercase tracking-wide leading-none whitespace-nowrap">
-                  {product.discount}
-                </span>
-              </div>
-            ) : product.badge ? (
-              <div className="inline-flex items-center justify-center text-center px-1.5 sm:px-2 py-0.5 rounded-lg bg-[#FAF0F2] border border-[#EAD5DA] text-[#7A152E] shadow-2xs shrink-0">
-                <span className="font-sans font-bold text-[9.5px] sm:text-[10.5px] uppercase tracking-wide leading-none whitespace-nowrap">
-                  {product.badge}
-                </span>
-              </div>
-            ) : (
-              <div className="inline-flex items-center justify-center text-center px-1.5 sm:px-2 py-0.5 rounded-lg bg-[#FAF8F5] border border-[#EAE4DC] text-stone-600 shadow-2xs shrink-0">
-                <span className="font-sans font-medium text-[9px] sm:text-[10px] uppercase tracking-wide leading-none whitespace-nowrap">
-                  Certified
-                </span>
-              </div>
-            )}
+            {/* Metal Purity Hallmark Badge */}
+            <MetalPurityBadge product={product} size="rating" selectedMetal={selectedMetal} />
           </div>
+
+          {/* Offer Tag */}
+          {product.discount ? (
+            <div className="inline-flex items-center justify-center text-center px-1.5 sm:px-2 py-0.5 rounded-lg bg-[#FAF0F2] border border-[#EAD5DA] text-[#7A152E] shadow-2xs shrink-0">
+              <span className="font-sans font-bold text-[9.5px] sm:text-[10px] uppercase tracking-wide leading-none whitespace-nowrap">
+                {product.discount}
+              </span>
+            </div>
+          ) : product.badge ? (
+            <div className="inline-flex items-center justify-center text-center px-1.5 sm:px-2 py-0.5 rounded-lg bg-[#FAF0F2] border border-[#EAD5DA] text-[#7A152E] shadow-2xs shrink-0">
+              <span className="font-sans font-bold text-[9.5px] sm:text-[10px] uppercase tracking-wide leading-none whitespace-nowrap">
+                {product.badge}
+              </span>
+            </div>
+          ) : (
+            <div className="inline-flex items-center justify-center text-center px-1.5 sm:px-2 py-0.5 rounded-lg bg-[#FAF8F5] border border-[#EAE4DC] text-stone-600 shadow-2xs shrink-0">
+              <span className="font-sans font-medium text-[9px] sm:text-[9.5px] uppercase tracking-wide leading-none whitespace-nowrap">
+                Certified
+              </span>
+            </div>
+          )}
         </div>
 
-        <div className="mt-2.5">
-          {/* Price Row: Fixed height for perfect alignment across columns */}
-          <div className="pt-1.5 border-t border-[#EAE4DC] flex items-center justify-between h-7">
+        {/* Price & Action Icons Row */}
+        <div className="pt-1.5 border-t border-[#EAE4DC]/80 flex items-center justify-between gap-1 mt-auto">
+          {/* Price & Metal Swatches */}
+          <div className="flex items-center gap-1.5 min-w-0">
             <div className="flex items-baseline gap-1">
               <span className="font-serif text-xs xs:text-sm sm:text-base font-bold text-[#231F20]">
                 ₹{product.price.toLocaleString('en-IN')}
@@ -284,7 +249,7 @@ export const ProductCard = ({ product, variant = 'default', isSquare = false }) 
 
             {/* Metal Swatches (only rendered when piece has multiple metal variants) */}
             {product.metals && product.metals.length > 1 && (
-              <div className="hidden xs:flex items-center gap-1 sm:gap-1.5 shrink-0">
+              <div className="hidden xs:flex items-center gap-1 shrink-0 ml-1">
                 <button
                   type="button"
                   onClick={(e) => {
@@ -328,24 +293,38 @@ export const ProductCard = ({ product, variant = 'default', isSquare = false }) 
             )}
           </div>
 
-          {/* Action Button: Single Full-Width Button without Ellipsis */}
-          <div className="pt-1.5 mt-1 border-t border-[#EAE4DC]/80">
+          {/* Action Icons: Wishlist & Add to Bag side-by-side */}
+          <div className="flex items-center gap-1.5 shrink-0">
+            {/* Wishlist Button */}
+            <button
+              type="button"
+              onClick={handleWishlistClick}
+              className={`w-7 h-7 sm:w-8 sm:h-8 rounded-full flex items-center justify-center transition-all duration-200 cursor-pointer active:scale-90 border shadow-2xs hover:shadow-xs ${
+                isWishlisted
+                  ? 'bg-rose-50 text-[#7A152E] border-[#7A152E]/30 ring-1 ring-[#7A152E]/20'
+                  : 'bg-white text-stone-600 hover:text-[#7A152E] hover:border-[#7A152E]/40 border-stone-200'
+              }`}
+              aria-label={isWishlisted ? "Remove from Wishlist" : "Add to Wishlist"}
+              title={isWishlisted ? "In your Wishlist" : "Add to Wishlist"}
+            >
+              <Heart
+                className={`w-3.5 h-3.5 transition-all duration-200 ${
+                  isWishlisted
+                    ? 'fill-[#7A152E] stroke-[#7A152E] stroke-[2] scale-110'
+                    : 'stroke-current stroke-[1.75] fill-transparent'
+                }`}
+              />
+            </button>
+
+            {/* Add to Bag Icon Button */}
             <button
               type="button"
               onClick={handleAddToCart}
-              className="w-full py-1.5 sm:py-2 px-2 sm:px-3 rounded-xl bg-[#7A152E] hover:bg-[#590D1E] text-white font-sans text-[11px] sm:text-xs font-semibold flex items-center justify-center gap-1.5 transition-all duration-200 cursor-pointer active:scale-[0.98] shadow-xs hover:shadow-md group/cart"
-              title="Add to Cart"
+              className="w-7 h-7 sm:w-8 sm:h-8 rounded-full flex items-center justify-center bg-[#7A152E] hover:bg-[#590D1E] text-white transition-all duration-200 cursor-pointer active:scale-90 shadow-2xs hover:shadow-xs group/cart"
+              aria-label="Add to Bag"
+              title="Add to Bag"
             >
-              <svg className="w-3.5 h-3.5 shrink-0 text-white/90 transition-transform duration-200 group-hover/cart:-translate-y-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z" />
-                <line x1="3" y1="6" x2="21" y2="6" />
-                <path d="M16 10a4 4 0 0 1-8 0" />
-              </svg>
-              {/* Clean text: "Add" on mobile to guarantee ZERO ellipsis / truncation */}
-              <span className="whitespace-nowrap font-medium tracking-wide">
-                <span className="sm:hidden">Add</span>
-                <span className="hidden sm:inline">Add to Bag</span>
-              </span>
+              <ShoppingBag className="w-3.5 h-3.5 text-white/95 group-hover/cart:scale-110 transition-transform duration-200" strokeWidth={2} />
             </button>
           </div>
         </div>
