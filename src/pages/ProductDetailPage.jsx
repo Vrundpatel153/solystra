@@ -840,9 +840,6 @@ export const ProductDetailPage = ({ productId }) => {
                 onClick={() => showToast('Complimentary replating & ultrasonic spa cleaning covered under our 1-year warranty!')}
                 className="relative overflow-hidden rounded-xl bg-gradient-to-r from-[#4A0A19] via-[#7A152E] to-[#4A0A19] border border-[#8E1B38] py-2 px-3 sm:px-4 flex items-center justify-center gap-1.5 sm:gap-2 cursor-pointer hover:shadow-md transition-all shadow-xs select-none"
               >
-                {/* Smooth crystal-clear diagonal light sheen */}
-                <div className="luxury-shine-sweep pointer-events-none" />
-                
                 <ShieldCheck className="w-3.5 h-3.5 text-[#EAD7AE] shrink-0 relative z-10" />
                 <span className="relative z-10 font-sans text-[9.5px] min-[360px]:text-[10.5px] sm:text-xs font-semibold uppercase tracking-wide sm:tracking-wider text-white whitespace-nowrap text-center">
                   1-Year Warranty &bull; Free Replating &amp; Care
