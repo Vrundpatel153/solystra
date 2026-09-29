@@ -1,17 +1,18 @@
-// ============================================================
-// SOLYSTRA JEWELS - Master Client-side Application Logic
-// Pure Vanilla JavaScript (Cart, Wishlist, Drawers, Search, Modals)
-// ============================================================
+/**
+ * Solystra Jewels - Pure HTML/CSS/JS Atelier Experience
+ * Full interactive ecommerce flow matching React 1:1
+ */
 
 (function () {
   'use strict';
 
-  // ------------------------------------------------------------
-  // 1. STATE MANAGEMENT (LocalStorage)
-  // ------------------------------------------------------------
-  const CART_KEY = 'solystra_cart_items_v2';
-  const WISHLIST_KEY = 'solystra_wishlist_items_v2';
+  // State keys
+  const CART_KEY = 'solystra_cart';
+  const WISHLIST_KEY = 'solystra_wishlist';
+  const PROMO_KEY = 'solystra_promo';
+  const VELVET_KEY = 'solystra_velvet_vault';
 
+  // Helpers for storage
   function getCart() {
     try {
       const data = localStorage.getItem(CART_KEY);
@@ -24,9 +25,9 @@
   function saveCart(cart) {
     try {
       localStorage.setItem(CART_KEY, JSON.stringify(cart));
+      updateBadges();
+      renderCartDrawer();
     } catch (e) {}
-    updateBadgeCounts();
-    renderCartDrawer();
   }
 
   function getWishlist() {
@@ -41,55 +42,161 @@
   function saveWishlist(wishlist) {
     try {
       localStorage.setItem(WISHLIST_KEY, JSON.stringify(wishlist));
+      updateBadges();
+      renderWishlistDrawer();
     } catch (e) {}
-    updateBadgeCounts();
-    renderWishlistDrawer();
-    updateWishlistIcons();
   }
 
-  // ------------------------------------------------------------
-  // 2. CART ACTIONS
-  // ------------------------------------------------------------
-  window.addToCart = function (productId, selectedMetal, size, customNote, quantity) {
-    const qty = quantity || 1;
-    const products = window.PRODUCTS || [];
-    const product = products.find(p => p.id === productId);
-    if (!product) return;
+  function getAppliedPromo() {
+    return localStorage.getItem(PROMO_KEY) || '';
+  }
 
-    const metal = selectedMetal || (product.metals && product.metals[0]) || 'Pure 925 Silver';
-    const ringSize = size || (product.category === 'rings' ? '12' : null);
+  function setAppliedPromo(code) {
+    if (code) {
+      localStorage.setItem(PROMO_KEY, code.toUpperCase());
+    } else {
+      localStorage.removeItem(PROMO_KEY);
+    }
+  }
+
+  function isVelvetVaultEnabled() {
+    const val = localStorage.getItem(VELVET_KEY);
+    return val === null ? true : val === 'true';
+  }
+
+  function setVelvetVaultEnabled(val) {
+    localStorage.setItem(VELVET_KEY, val ? 'true' : 'false');
+  }
+
+  // Format currency
+  function formatINR(num) {
+    return '₹' + Number(num || 0).toLocaleString('en-IN');
+  }
+
+  // Find product by ID
+  function findProduct(id) {
+    if (!window.PRODUCTS || !window.PRODUCTS.length) return null;
+    return window.PRODUCTS.find(p => p.id === id) || null;
+  }
+
+  // Toast Notification
+  window.showToast = function (title, message, type = 'success') {
+    const container = document.getElementById('toast-container');
+    if (!container) return;
+
+    const toast = document.createElement('div');
+    toast.className = 'toast-item pointer-events-auto bg-white border border-[#EAE4DC] shadow-2xl rounded-2xl p-4 flex items-center justify-between gap-3 text-stone-900 border-l-4 ' +
+      (type === 'success' ? 'border-l-[#7A152E]' : 'border-l-[#C5A059]');
+
+    toast.innerHTML = `
+      <div class="flex items-center gap-3">
+        <div class="w-8 h-8 rounded-xl bg-[#7A152E]/10 flex items-center justify-center text-[#7A152E] shrink-0">
+          <svg class="lucide lucide-sparkles w-4 h-4" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="24"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"></path></svg>
+        </div>
+        <div>
+          <div class="font-serif text-xs sm:text-sm font-bold text-stone-900">${title}</div>
+          <div class="text-[11px] text-stone-500">${message}</div>
+        </div>
+      </div>
+      <button onclick="this.parentElement.remove()" class="p-1 rounded-full text-stone-400 hover:text-stone-800 transition-colors cursor-pointer">
+        <svg class="lucide lucide-x w-4 h-4" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="24"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg>
+      </button>
+    `;
+
+    container.appendChild(toast);
+    setTimeout(() => {
+      if (toast.parentElement) toast.remove();
+    }, 3500);
+  };
+
+  // Badges update
+  function updateBadges() {
+    const cart = getCart();
+    const wishlist = getWishlist();
+    const count = cart.reduce((acc, item) => acc + (item.quantity || 1), 0);
+
+    // Cart badge mobile
+    const mobBadge = document.getElementById('nav-cart-badge-mobile');
+    if (mobBadge) {
+      mobBadge.textContent = count;
+      if (count > 0) mobBadge.classList.remove('hidden');
+      else mobBadge.classList.add('hidden');
+    }
+
+    // Cart text desktop
+    const deskText = document.getElementById('nav-cart-text-desktop');
+    if (deskText) {
+      deskText.textContent = `Bag (${count})`;
+    }
+
+    // Wishlist badge
+    const wishBadge = document.getElementById('nav-wishlist-badge');
+    if (wishBadge) {
+      wishBadge.textContent = wishlist.length;
+      if (wishlist.length > 0) wishBadge.classList.remove('hidden');
+      else wishBadge.classList.add('hidden');
+    }
+
+    // Header count in cart drawer
+    const cartHeaderCount = document.getElementById('cart-header-count');
+    if (cartHeaderCount) {
+      cartHeaderCount.textContent = `${count} ${count === 1 ? 'Design' : 'Designs'} Selected`;
+    }
+
+    // Header count in wishlist drawer
+    const wishHeaderTitle = document.getElementById('wishlist-header-title');
+    if (wishHeaderTitle) {
+      wishHeaderTitle.textContent = `Your Wishlist (${wishlist.length})`;
+    }
+  }
+
+  // Cart operations
+  window.addToCart = function (product, metal, size, engraving = '', quantity = 1) {
+    if (!product) return;
     const cart = getCart();
 
+    const selectedMetal = metal || (product.metals && product.metals[0]) || 'Pure 925 Silver';
+    const selectedSize = size || (product.category === 'rings' ? '12' : null);
+
     const existingIndex = cart.findIndex(item =>
-      item.id === productId &&
-      item.selectedMetal === metal &&
-      item.size === ringSize
+      item.id === product.id &&
+      item.metal === selectedMetal &&
+      item.size === selectedSize &&
+      item.engraving === engraving
     );
 
     if (existingIndex > -1) {
-      cart[existingIndex].quantity += qty;
+      cart[existingIndex].quantity += quantity;
     } else {
       cart.push({
         id: product.id,
         name: product.name,
         price: product.price,
-        mrp: product.mrp,
-        image: product.images && product.images[0] ? product.images[0] : '',
-        selectedMetal: metal,
-        size: ringSize,
-        customNote: customNote || '',
-        quantity: qty
+        mrp: product.mrp || product.price,
+        image: (product.images && product.images[0]) || 'solystra_assets/categories/zavya_style/necklaces.png',
+        category: product.category,
+        metal: selectedMetal,
+        size: selectedSize,
+        engraving: engraving,
+        quantity: quantity
       });
     }
 
     saveCart(cart);
-    showToast(`Added "${product.shortName || product.name}" to your Bag`);
-    openCartDrawer();
+    window.showToast('Added to Shopping Bag', `${product.name} has been added.`);
+    window.openCartDrawer();
+  };
+
+  window.quickAddToCart = function (productId) {
+    const product = findProduct(productId);
+    if (!product) return;
+    window.addToCart(product);
   };
 
   window.updateCartQuantity = function (index, delta) {
     const cart = getCart();
     if (!cart[index]) return;
+
     cart[index].quantity += delta;
     if (cart[index].quantity <= 0) {
       cart.splice(index, 1);
@@ -97,683 +204,665 @@
     saveCart(cart);
   };
 
-  window.removeFromCart = function (index) {
+  window.removeCartItem = function (index) {
     const cart = getCart();
     if (!cart[index]) return;
-    const removedName = cart[index].name;
     cart.splice(index, 1);
     saveCart(cart);
-    showToast(`Removed "${removedName}" from Bag`);
   };
 
-  // ------------------------------------------------------------
-  // 3. WISHLIST ACTIONS
-  // ------------------------------------------------------------
+  window.toggleVelvetVault = function (checked) {
+    setVelvetVaultEnabled(checked);
+    renderCartDrawer();
+  };
+
+  window.applyPromoCode = function (e) {
+    if (e && e.preventDefault) e.preventDefault();
+    const input = document.getElementById('cart-promo-input');
+    if (!input) return;
+    const val = input.value.trim().toUpperCase();
+
+    if (val === 'ROYAL10') {
+      setAppliedPromo('ROYAL10');
+      window.showToast('Promo Code Applied!', '10% privilege discount unlocked.');
+    } else if (val === 'VAULT500') {
+      setAppliedPromo('VAULT500');
+      window.showToast('Promo Code Applied!', 'Flat ₹500 discount unlocked.');
+    } else if (val === 'SOULY10') {
+      setAppliedPromo('SOULY10');
+      window.showToast('Welcome Offer Applied!', '10% privilege discount unlocked.');
+    } else {
+      window.showToast('Invalid Code', 'Try ROYAL10 or VAULT500', 'info');
+      return;
+    }
+    renderCartDrawer();
+  };
+
+  window.usePromoCode = function (code) {
+    const input = document.getElementById('cart-promo-input');
+    if (input) input.value = code;
+    setAppliedPromo(code);
+    window.showToast('Promo Code Applied!', `${code} unlocked successfully.`);
+    renderCartDrawer();
+  };
+
+  // Render Cart Drawer
+  function renderCartDrawer() {
+    const itemsContainer = document.getElementById('cart-drawer-items');
+    if (!itemsContainer) return;
+
+    const cart = getCart();
+    if (cart.length === 0) {
+      itemsContainer.innerHTML = `
+        <div class="h-64 flex flex-col items-center justify-center text-center p-6 text-stone-400 space-y-4">
+          <div class="w-16 h-16 rounded-full bg-[#FAF8F5] border border-[#EAE4DC] flex items-center justify-center text-[#7A152E]">
+            <svg class="lucide lucide-shopping-bag w-8 h-8 opacity-70" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="24"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"></path><path d="M3 6h18"></path><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
+          </div>
+          <div class="font-serif text-base sm:text-lg font-bold text-stone-900">Your Bag is Empty</div>
+          <p class="text-xs text-stone-500 max-w-xs">
+            Discover our handcrafted BIS hallmarked 925 sterling silver &amp; 18K gold collections.
+          </p>
+          <a href="products.html" onclick="window.closeCartDrawer()" class="px-6 py-2.5 bg-[#7A152E] text-white text-xs uppercase tracking-widest font-semibold rounded-xl hover:bg-[#590D1E] transition-all shadow-sm">
+            Explore Collection
+          </a>
+        </div>
+      `;
+
+      // Update totals to 0
+      const subtotalEl = document.getElementById('cart-subtotal-text');
+      const totalEl = document.getElementById('cart-total-text');
+      const btnText = document.getElementById('cart-checkout-btn-text');
+      if (subtotalEl) subtotalEl.textContent = formatINR(0);
+      if (totalEl) totalEl.textContent = formatINR(0);
+      if (btnText) btnText.textContent = `Proceed to Checkout • ${formatINR(0)}`;
+      return;
+    }
+
+    let subtotal = 0;
+    let savings = 0;
+
+    itemsContainer.innerHTML = cart.map((item, idx) => {
+      const itemTotal = item.price * item.quantity;
+      const mrpTotal = (item.mrp || item.price) * item.quantity;
+      subtotal += itemTotal;
+      if (mrpTotal > itemTotal) savings += (mrpTotal - itemTotal);
+
+      return `
+        <div class="py-4 flex gap-3.5 items-start">
+          <div class="w-20 h-20 rounded-xl overflow-hidden bg-stone-50 border border-stone-200 shrink-0 cursor-pointer" onclick="window.location.href='product.html?id=${item.id}'">
+            <img src="${item.image}" alt="${item.name}" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300">
+          </div>
+          <div class="flex-1 min-w-0 text-xs">
+            <h4 onclick="window.location.href='product.html?id=${item.id}'" class="font-serif text-sm font-normal text-stone-900 truncate hover:text-[#7A152E] transition-colors cursor-pointer">
+              ${item.name}
+            </h4>
+            <div class="flex flex-wrap items-center gap-1.5 mt-1 text-[10.5px]">
+              <span class="px-2 py-0.5 rounded bg-[#FAF8F5] border border-[#EAE4DC] text-stone-800 font-medium">${item.metal}</span>
+              ${item.size ? `<span class="px-1.5 py-0.5 rounded bg-stone-100 text-stone-600 font-mono">Size ${item.size}</span>` : ''}
+              ${item.engraving ? `<span class="px-1.5 py-0.5 rounded bg-stone-100 text-stone-600 font-mono text-[9px]">"${item.engraving}"</span>` : ''}
+            </div>
+            <div class="flex items-center justify-between mt-3 pt-1">
+              <div class="flex items-center border border-stone-200 rounded-lg overflow-hidden bg-white shadow-2xs">
+                <button onclick="window.updateCartQuantity(${idx}, -1)" aria-label="Decrease quantity" class="p-1 px-2.5 hover:bg-stone-100 text-stone-700 cursor-pointer">
+                  <svg class="lucide lucide-minus w-3 h-3" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="24"><path d="M5 12h14"></path></svg>
+                </button>
+                <span class="px-2 text-xs font-semibold text-stone-900 font-mono">${item.quantity}</span>
+                <button onclick="window.updateCartQuantity(${idx}, 1)" aria-label="Increase quantity" class="p-1 px-2.5 hover:bg-stone-100 text-stone-700 cursor-pointer">
+                  <svg class="lucide lucide-plus w-3 h-3" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="24"><path d="M5 12h14"></path><path d="M12 5v14"></path></svg>
+                </button>
+              </div>
+              <div class="text-right">
+                <span class="font-serif text-sm font-bold text-[#7A152E]">${formatINR(itemTotal)}</span>
+                ${item.mrp && item.mrp > item.price ? `<div class="text-[10px] text-stone-400 line-through">${formatINR(mrpTotal)}</div>` : ''}
+              </div>
+            </div>
+          </div>
+          <button onclick="window.removeCartItem(${idx})" aria-label="Remove item" class="text-stone-400 hover:text-red-600 p-1 transition-colors cursor-pointer">
+            <svg class="lucide lucide-trash2 w-4 h-4" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="24"><path d="M3 6h18"></path><path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"></path><path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"></path><line x1="10" x2="10" y1="11" y2="17"></line><line x1="14" x2="14" y1="11" y2="17"></line></svg>
+          </button>
+        </div>
+      `;
+    }).join('');
+
+    // Promo calculation
+    const promo = getAppliedPromo();
+    let discount = 0;
+    if (promo === 'ROYAL10' || promo === 'SOULY10') {
+      discount = Math.round(subtotal * 0.10);
+    } else if (promo === 'VAULT500') {
+      discount = Math.min(500, subtotal);
+    }
+
+    const totalPayable = Math.max(0, subtotal - discount);
+
+    const subtotalEl = document.getElementById('cart-subtotal-text');
+    if (subtotalEl) subtotalEl.textContent = formatINR(subtotal);
+
+    const savingsEl = document.getElementById('cart-savings-text');
+    if (savingsEl) savingsEl.textContent = '-' + formatINR(savings + discount);
+
+    const totalEl = document.getElementById('cart-total-text');
+    if (totalEl) totalEl.textContent = formatINR(totalPayable);
+
+    const btnText = document.getElementById('cart-checkout-btn-text');
+    if (btnText) btnText.textContent = `Proceed to Checkout • ${formatINR(totalPayable)}`;
+
+    // Velvet vault checkbox state
+    const vaultCb = document.getElementById('cart-velvet-vault-checkbox');
+    if (vaultCb) vaultCb.checked = isVelvetVaultEnabled();
+  }
+
+  // Wishlist operations
   window.toggleWishlist = function (productId) {
-    const products = window.PRODUCTS || [];
-    const product = products.find(p => p.id === productId);
-    if (!product) return;
+    if (!productId) return;
+    const wishlist = getWishlist();
+    const idx = wishlist.indexOf(productId);
+    const prod = findProduct(productId);
+    const name = prod ? prod.name : 'Piece';
 
-    let wishlist = getWishlist();
-    const index = wishlist.indexOf(productId);
-
-    if (index > -1) {
-      wishlist.splice(index, 1);
-      saveWishlist(wishlist);
-      showToast(`Removed from Wishlist`);
+    if (idx > -1) {
+      wishlist.splice(idx, 1);
+      window.showToast('Removed from Wishlist', `${name} removed from your saved pieces.`, 'info');
     } else {
       wishlist.push(productId);
-      saveWishlist(wishlist);
-      showToast(`Saved to Wishlist`);
+      window.showToast('Saved to Wishlist', `${name} saved to your wishlist.`);
     }
+
+    saveWishlist(wishlist);
   };
 
   window.isInWishlist = function (productId) {
     return getWishlist().includes(productId);
   };
 
-  function updateWishlistIcons() {
-    const wishlist = getWishlist();
-    document.querySelectorAll('[data-wishlist-btn]').forEach(btn => {
-      const pid = btn.getAttribute('data-wishlist-btn');
-      const heartIcon = btn.querySelector('svg');
-      if (wishlist.includes(pid)) {
-        btn.classList.add('text-[#7A152E]');
-        btn.classList.remove('text-stone-400', 'text-stone-600');
-        if (heartIcon) heartIcon.setAttribute('fill', '#7A152E');
-      } else {
-        btn.classList.remove('text-[#7A152E]');
-        btn.classList.add('text-stone-400');
-        if (heartIcon) heartIcon.setAttribute('fill', 'none');
-      }
-    });
-  }
-
-  // ------------------------------------------------------------
-  // 4. HEADER BADGE COUNTS
-  // ------------------------------------------------------------
-  function updateBadgeCounts() {
-    const cart = getCart();
-    const wishlist = getWishlist();
-
-    const totalCartCount = cart.reduce((sum, item) => sum + item.quantity, 0);
-    const totalWishlistCount = wishlist.length;
-
-    // Cart counts
-    document.querySelectorAll('.cart-count-badge').forEach(el => {
-      el.textContent = totalCartCount;
-      if (totalCartCount > 0) {
-        el.classList.remove('hidden');
-      } else {
-        el.classList.add('hidden');
-      }
-    });
-
-    // Cart text counts e.g. "Bag (2)"
-    document.querySelectorAll('.cart-count-text').forEach(el => {
-      el.textContent = `Bag (${totalCartCount})`;
-    });
-
-    // Wishlist counts
-    document.querySelectorAll('.wishlist-count-badge').forEach(el => {
-      el.textContent = totalWishlistCount;
-      if (totalWishlistCount > 0) {
-        el.classList.remove('hidden');
-      } else {
-        el.classList.add('hidden');
-      }
-    });
-  }
-
-  // ------------------------------------------------------------
-  // 5. TOAST SYSTEM
-  // ------------------------------------------------------------
-  window.showToast = function (message) {
-    let container = document.getElementById('toast-container');
-    if (!container) {
-      container = document.createElement('div');
-      container.id = 'toast-container';
-      document.body.appendChild(container);
-    }
-
-    const toast = document.createElement('div');
-    toast.className = 'toast-item';
-    toast.innerHTML = `
-      <svg class="w-4 h-4 text-[#C5A059] flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-      </svg>
-      <span>${message}</span>
-    `;
-
-    container.appendChild(toast);
-
-    setTimeout(() => {
-      toast.classList.add('toast-out');
-      setTimeout(() => {
-        if (toast.parentNode) toast.parentNode.removeChild(toast);
-      }, 300);
-    }, 2800);
-  };
-
-  // ------------------------------------------------------------
-  // 6. DRAWERS & MODALS (Cart, Wishlist, Search, QuickView, Menu)
-  // ------------------------------------------------------------
-  window.openCartDrawer = function () {
-    const drawer = document.getElementById('cart-drawer');
-    const backdrop = document.getElementById('cart-drawer-backdrop');
-    if (drawer && backdrop) {
-      backdrop.classList.remove('hidden', 'opacity-0', 'pointer-events-none');
-      backdrop.classList.add('opacity-100', 'pointer-events-auto');
-      drawer.classList.add('open');
-      drawer.classList.remove('translate-x-full');
-      document.body.style.overflow = 'hidden';
-      renderCartDrawer();
-    }
-  };
-
-  window.closeCartDrawer = function () {
-    const drawer = document.getElementById('cart-drawer');
-    const backdrop = document.getElementById('cart-drawer-backdrop');
-    if (drawer && backdrop) {
-      drawer.classList.remove('open');
-      drawer.classList.add('translate-x-full');
-      backdrop.classList.remove('opacity-100', 'pointer-events-auto');
-      backdrop.classList.add('opacity-0', 'pointer-events-none');
-      setTimeout(() => backdrop.classList.add('hidden'), 350);
-      document.body.style.overflow = '';
-    }
-  };
-
-  window.openWishlistDrawer = function () {
-    const drawer = document.getElementById('wishlist-drawer');
-    const backdrop = document.getElementById('wishlist-drawer-backdrop');
-    if (drawer && backdrop) {
-      backdrop.classList.remove('hidden', 'opacity-0', 'pointer-events-none');
-      backdrop.classList.add('opacity-100', 'pointer-events-auto');
-      drawer.classList.add('open');
-      drawer.classList.remove('translate-x-full');
-      document.body.style.overflow = 'hidden';
-      renderWishlistDrawer();
-    }
-  };
-
-  window.closeWishlistDrawer = function () {
-    const drawer = document.getElementById('wishlist-drawer');
-    const backdrop = document.getElementById('wishlist-drawer-backdrop');
-    if (drawer && backdrop) {
-      drawer.classList.remove('open');
-      drawer.classList.add('translate-x-full');
-      backdrop.classList.remove('opacity-100', 'pointer-events-auto');
-      backdrop.classList.add('opacity-0', 'pointer-events-none');
-      setTimeout(() => backdrop.classList.add('hidden'), 350);
-      document.body.style.overflow = '';
-    }
-  };
-
-  window.openMobileMenu = function () {
-    const drawer = document.getElementById('mobile-menu-drawer');
-    const backdrop = document.getElementById('mobile-menu-backdrop');
-    if (drawer && backdrop) {
-      backdrop.classList.remove('hidden');
-      drawer.classList.add('open');
-      drawer.classList.remove('-translate-x-full');
-      document.body.style.overflow = 'hidden';
-    }
-  };
-
-  window.closeMobileMenu = function () {
-    const drawer = document.getElementById('mobile-menu-drawer');
-    const backdrop = document.getElementById('mobile-menu-backdrop');
-    if (drawer && backdrop) {
-      drawer.classList.remove('open');
-      drawer.classList.add('-translate-x-full');
-      backdrop.classList.add('hidden');
-      document.body.style.overflow = '';
-    }
-  };
-
-  window.openSearchModal = function () {
-    const modal = document.getElementById('search-modal');
-    if (modal) {
-      modal.classList.remove('hidden');
-      setTimeout(() => {
-        modal.classList.remove('opacity-0');
-        const input = document.getElementById('search-input');
-        if (input) input.focus();
-      }, 10);
-      document.body.style.overflow = 'hidden';
-    }
-  };
-
-  window.closeSearchModal = function () {
-    const modal = document.getElementById('search-modal');
-    if (modal) {
-      modal.classList.add('opacity-0');
-      setTimeout(() => {
-        modal.classList.add('hidden');
-        document.body.style.overflow = '';
-      }, 250);
-    }
-  };
-
-  window.openBoutiqueModal = function () {
-    const modal = document.getElementById('boutique-modal');
-    if (modal) {
-      modal.classList.remove('hidden');
-      setTimeout(() => modal.classList.remove('opacity-0'), 10);
-      document.body.style.overflow = 'hidden';
-    }
-  };
-
-  window.closeBoutiqueModal = function () {
-    const modal = document.getElementById('boutique-modal');
-    if (modal) {
-      modal.classList.add('opacity-0');
-      setTimeout(() => {
-        modal.classList.add('hidden');
-        document.body.style.overflow = '';
-      }, 250);
-    }
-  };
-
-  window.closeQuickViewModal = function () {
-    const modal = document.getElementById('quickview-modal');
-    if (modal) {
-      modal.classList.add('opacity-0');
-      setTimeout(() => {
-        modal.classList.add('hidden');
-        document.body.style.overflow = '';
-      }, 250);
-    }
-  };
-
-  // ------------------------------------------------------------
-  // 7. RENDER CART DRAWER CONTENT
-  // ------------------------------------------------------------
-  function renderCartDrawer() {
-    const container = document.getElementById('cart-items-container');
-    const footer = document.getElementById('cart-drawer-footer');
-    if (!container) return;
-
-    const cart = getCart();
-
-    if (cart.length === 0) {
-      container.innerHTML = `
-        <div class="h-full flex flex-col items-center justify-center p-8 text-center text-stone-500">
-          <div class="w-16 h-16 rounded-full bg-stone-100 flex items-center justify-center mb-4 text-[#7A152E]">
-            <svg class="w-8 h-8 stroke-[1.5]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path>
-            </svg>
-          </div>
-          <h4 class="font-serif text-xl text-stone-900 mb-2">Your Shopping Bag is Empty</h4>
-          <p class="text-xs text-stone-500 max-w-xs mb-6">Explore our curated collections of hallmarked 925 silver and 18K gold heirloom jewelry.</p>
-          <a href="products.html" onclick="closeCartDrawer()" class="px-6 py-2.5 bg-[#7A152E] text-white text-xs font-semibold rounded-full hover:bg-[#590D1E] transition-all shadow-md">
-            Discover Atelier Pieces
-          </a>
-        </div>
-      `;
-      if (footer) footer.classList.add('hidden');
-      return;
-    }
-
-    if (footer) footer.classList.remove('hidden');
-
-    let subtotal = 0;
-    let html = '';
-
-    cart.forEach((item, index) => {
-      const itemTotal = item.price * item.quantity;
-      subtotal += itemTotal;
-
-      html += `
-        <div class="cart-item flex gap-4 p-4 border-b border-[#EAE4DC] bg-white rounded-2xl mb-3 shadow-2xs">
-          <img src="${item.image}" alt="${item.name}" class="w-20 h-20 rounded-xl object-cover border border-[#EAE4DC] bg-[#FAF8F5] flex-shrink-0" />
-          <div class="flex-1 min-w-0 flex flex-col justify-between">
-            <div class="flex items-start justify-between gap-2">
-              <h5 class="font-serif text-sm font-semibold text-stone-900 truncate">${item.name}</h5>
-              <button onclick="removeFromCart(${index})" class="text-stone-400 hover:text-[#7A152E] p-1 transition-colors" title="Remove">
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-                </svg>
-              </button>
-            </div>
-            <div class="text-[11px] text-stone-500">
-              <span>${item.selectedMetal}</span>
-              ${item.size ? `<span class="mx-1">•</span><span>Size: ${item.size}</span>` : ''}
-            </div>
-            <div class="flex items-center justify-between mt-2">
-              <div class="flex items-center border border-[#EAE4DC] rounded-lg overflow-hidden bg-stone-50">
-                <button onclick="updateCartQuantity(${index}, -1)" class="w-7 h-7 flex items-center justify-center text-stone-600 hover:bg-stone-200 transition-colors">-</button>
-                <span class="w-7 h-7 flex items-center justify-center text-xs font-semibold text-stone-900">${item.quantity}</span>
-                <button onclick="updateCartQuantity(${index}, 1)" class="w-7 h-7 flex items-center justify-center text-stone-600 hover:bg-stone-200 transition-colors">+</button>
-              </div>
-              <div class="text-right">
-                <span class="text-xs font-bold text-stone-900">₹${itemTotal.toLocaleString('en-IN')}</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      `;
-    });
-
-    container.innerHTML = html;
-
-    // Update Subtotal in Drawer
-    const subtotalEl = document.getElementById('cart-drawer-subtotal');
-    if (subtotalEl) {
-      subtotalEl.textContent = `₹${subtotal.toLocaleString('en-IN')}`;
-    }
-
-    // Free Shipping Progress
-    const freeShipThreshold = 999;
-    const progressEl = document.getElementById('cart-free-shipping-progress');
-    const freeShipTextEl = document.getElementById('cart-free-shipping-text');
-    if (progressEl && freeShipTextEl) {
-      if (subtotal >= freeShipThreshold) {
-        progressEl.style.width = '100%';
-        freeShipTextEl.innerHTML = `<span class="text-emerald-700 font-semibold">🎉 You've unlocked Free Insured Express Delivery!</span>`;
-      } else {
-        const remaining = freeShipThreshold - subtotal;
-        const pct = Math.min(100, Math.round((subtotal / freeShipThreshold) * 100));
-        progressEl.style.width = `${pct}%`;
-        freeShipTextEl.innerHTML = `Add <strong class="text-[#7A152E]">₹${remaining.toLocaleString('en-IN')}</strong> more for Free Insured Delivery`;
-      }
-    }
-  }
-
-  // ------------------------------------------------------------
-  // 8. RENDER WISHLIST DRAWER CONTENT
-  // ------------------------------------------------------------
   function renderWishlistDrawer() {
-    const container = document.getElementById('wishlist-items-container');
+    const container = document.getElementById('wishlist-drawer-items');
     if (!container) return;
 
     const wishlist = getWishlist();
-    const products = window.PRODUCTS || [];
-    const wishlistProducts = products.filter(p => wishlist.includes(p.id));
-
-    if (wishlistProducts.length === 0) {
+    if (wishlist.length === 0) {
       container.innerHTML = `
-        <div class="h-full flex flex-col items-center justify-center p-8 text-center text-stone-500">
-          <div class="w-16 h-16 rounded-full bg-stone-100 flex items-center justify-center mb-4 text-[#7A152E]">
-            <svg class="w-8 h-8 stroke-[1.5]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
-            </svg>
+        <div class="h-full flex flex-col items-center justify-center text-center p-6 text-[#717171] space-y-4">
+          <div class="w-16 h-16 rounded-full bg-[#FAF8F5] flex items-center justify-center text-[#7A152E] border border-[#E8E5DF]">
+            <svg class="lucide lucide-heart w-8 h-8 opacity-70" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="24"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"></path></svg>
           </div>
-          <h4 class="font-serif text-xl text-stone-900 mb-2">Your Wishlist is Empty</h4>
-          <p class="text-xs text-stone-500 max-w-xs mb-6">Save your favorite handcrafted rings, solitaire pendants, and bracelets to revisit later.</p>
-          <a href="products.html" onclick="closeWishlistDrawer()" class="px-6 py-2.5 bg-[#7A152E] text-white text-xs font-semibold rounded-full hover:bg-[#590D1E] transition-all shadow-md">
-            Explore Collection
+          <div class="font-serif text-lg font-semibold text-[#111111]">No Favorites Saved Yet</div>
+          <p class="text-xs text-[#717171] max-w-xs">
+            Tap the heart icon on any jewelry piece to save it to your wishlist.
+          </p>
+          <a href="products.html" onclick="window.closeWishlistDrawer()" class="px-6 py-2.5 bg-[#7A152E] text-white text-xs uppercase tracking-widest font-semibold rounded-lg hover:bg-[#590D1E] transition-all shadow-sm">
+            Discover Pieces
           </a>
         </div>
       `;
       return;
     }
 
-    let html = '';
-    wishlistProducts.forEach(product => {
-      html += `
-        <div class="wishlist-item flex gap-4 p-4 border-b border-[#EAE4DC] bg-white rounded-2xl mb-3 shadow-2xs">
-          <img src="${product.images[0]}" alt="${product.name}" class="w-20 h-20 rounded-xl object-cover border border-[#EAE4DC] bg-[#FAF8F5] flex-shrink-0" />
-          <div class="flex-1 min-w-0 flex flex-col justify-between">
-            <div class="flex items-start justify-between gap-2">
-              <h5 class="font-serif text-sm font-semibold text-stone-900 truncate">${product.name}</h5>
-              <button onclick="toggleWishlist('${product.id}')" class="text-stone-400 hover:text-[#7A152E] p-1 transition-colors" title="Remove">
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-                </svg>
-              </button>
+    container.innerHTML = wishlist.map(id => {
+      const p = findProduct(id);
+      if (!p) return '';
+      return `
+        <div class="py-4 flex gap-4 items-center">
+          <div class="w-20 h-20 rounded-lg overflow-hidden bg-[#FAF8F5] border border-[#E8E5DF] shrink-0 cursor-pointer" onclick="window.location.href='product.html?id=${p.id}'">
+            <img src="${p.images[0]}" alt="${p.name}" class="w-full h-full object-cover hover:scale-105 transition-transform">
+          </div>
+          <div class="flex-1 min-w-0">
+            <div onclick="window.location.href='product.html?id=${p.id}'" class="font-serif text-sm font-semibold text-[#111111] truncate cursor-pointer hover:text-[#7A152E] transition-colors">
+              ${p.shortName || p.name}
             </div>
-            <div class="flex items-center gap-2 mt-1">
-              <span class="text-xs font-bold text-stone-900">₹${product.price.toLocaleString('en-IN')}</span>
-              ${product.mrp ? `<span class="text-[11px] text-stone-400 line-through">₹${product.mrp.toLocaleString('en-IN')}</span>` : ''}
+            <div class="font-serif text-sm font-bold text-[#7A152E] mt-1">
+              ${formatINR(p.price)}
             </div>
             <div class="flex items-center gap-2 mt-2">
-              <button onclick="addToCart('${product.id}'); toggleWishlist('${product.id}')" class="flex-1 py-1.5 px-3 bg-[#7A152E] text-white text-[11px] font-semibold rounded-lg hover:bg-[#590D1E] transition-colors text-center">
+              <button onclick="window.addToCart(window.PRODUCTS.find(x => x.id === '${p.id}')); window.toggleWishlist('${p.id}')" class="px-3 py-1 bg-[#7A152E] text-white text-[11px] uppercase tracking-wider font-semibold rounded hover:bg-[#590D1E] transition-colors flex items-center gap-1 shadow-sm cursor-pointer">
+                <svg class="lucide lucide-shopping-bag w-3 h-3" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="24"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"></path><path d="M3 6h18"></path><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
                 Move to Bag
               </button>
-              <a href="product.html?id=${product.id}" class="py-1.5 px-3 border border-stone-200 text-stone-700 text-[11px] font-medium rounded-lg hover:border-[#7A152E] hover:text-[#7A152E] transition-colors">
-                View
-              </a>
+              <button onclick="window.toggleWishlist('${p.id}')" class="p-1 text-[#717171] hover:text-[#7A152E] transition-colors cursor-pointer" aria-label="Remove from wishlist">
+                <svg class="lucide lucide-trash2 w-4 h-4" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="24"><path d="M3 6h18"></path><path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"></path><path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"></path><line x1="10" x2="10" y1="11" y2="17"></line><line x1="14" x2="14" y1="11" y2="17"></line></svg>
+              </button>
             </div>
           </div>
         </div>
       `;
-    });
-
-    container.innerHTML = html;
+    }).join('');
   }
 
-  // ------------------------------------------------------------
-  // 9. QUICK VIEW MODAL
-  // ------------------------------------------------------------
+  // Quick View Modal
   window.openQuickView = function (productId) {
-    const products = window.PRODUCTS || [];
-    const product = products.find(p => p.id === productId);
-    if (!product) return;
+    const p = findProduct(productId);
+    if (!p) return;
 
-    const modal = document.getElementById('quickview-modal');
-    const container = document.getElementById('quickview-modal-content');
-    if (!modal || !container) return;
+    const modal = document.getElementById('quickview-modal-root');
+    const content = document.getElementById('quickview-content');
+    if (!modal || !content) return;
 
-    const discountText = product.discount || (product.mrp ? `${Math.round(((product.mrp - product.price) / product.mrp) * 100)}% OFF` : '');
+    const defaultMetal = p.metalType === 'gold' ? '18K Yellow Gold' : (p.metalType === 'rose' ? 'Rose Gold Plated' : 'Pure 925 Silver');
+    const isRing = p.category === 'rings';
 
-    const metals = product.metals || ['Pure 925 Silver', '18K Yellow Gold', 'Rose Gold Plated'];
-    const metalOptions = metals.map((m, idx) => `
-      <label class="flex items-center gap-2 text-xs text-stone-700 cursor-pointer">
-        <input type="radio" name="qv-metal" value="${m}" ${idx === 0 ? 'checked' : ''} class="accent-[#7A152E]">
-        <span>${m}</span>
-      </label>
-    `).join('');
-
-    container.innerHTML = `
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 p-6">
-        <!-- Gallery -->
-        <div class="space-y-3">
-          <div class="aspect-[4/5] rounded-2xl overflow-hidden bg-[#FAF8F5] border border-[#EAE4DC] relative">
-            <img id="qv-main-img" src="${product.images[0]}" alt="${product.name}" class="w-full h-full object-cover">
-            ${discountText ? `<span class="absolute top-3 left-3 bg-[#7A152E] text-white text-[10px] font-bold px-2 py-0.5 rounded-full uppercase tracking-wider">${discountText}</span>` : ''}
-          </div>
-          <div class="flex gap-2 overflow-x-auto pb-1">
-            ${product.images.map((img, i) => `
-              <img src="${img}" onclick="document.getElementById('qv-main-img').src='${img}'" class="w-14 h-14 rounded-lg object-cover border border-[#EAE4DC] cursor-pointer hover:border-[#7A152E] transition-all bg-[#FAF8F5]" />
+    content.innerHTML = `
+      <!-- Gallery -->
+      <div class="p-6 bg-[#FAF8F5] flex flex-col items-center justify-center border-b md:border-b-0 md:border-r border-[#E8E5DF]">
+        <div class="w-full aspect-square rounded-xl overflow-hidden bg-white border border-[#E8E5DF] shadow-sm relative group mb-4">
+          <img id="qv-main-img" src="${p.images[0]}" alt="${p.name}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+        </div>
+        ${p.images.length > 1 ? `
+          <div class="flex gap-2 overflow-x-auto max-w-full pb-1 no-scrollbar">
+            ${p.images.map((img, i) => `
+              <button onclick="document.getElementById('qv-main-img').src='${img}'" class="w-14 h-14 rounded-lg overflow-hidden border-2 border-[#E8E5DF] opacity-70 hover:opacity-100 hover:border-[#7A152E] transition-all cursor-pointer">
+                <img src="${img}" alt="Angle" class="w-full h-full object-cover">
+              </button>
             `).join('')}
           </div>
+        ` : ''}
+      </div>
+
+      <!-- Details -->
+      <div class="p-6 sm:p-8 flex flex-col justify-between space-y-5">
+        <div>
+          <div class="flex items-center gap-2 text-xs uppercase tracking-widest text-[#7A152E] font-bold">
+            <span>${p.categoryName || p.category}</span>
+            <span>•</span>
+            <span class="text-[#717171]">SKU: ${p.sku}</span>
+          </div>
+
+          <h2 class="font-serif text-2xl font-bold text-[#111111] mt-1">${p.name}</h2>
+
+          <div class="flex items-center gap-2 mt-2 text-xs font-sans text-[#717171]">
+            <span class="font-bold text-[#7A152E]">Rated ${p.rating}</span>
+            <span>•</span>
+            <span>${p.reviewsCount} verified reviews</span>
+          </div>
+
+          <div class="flex items-baseline gap-3 mt-4">
+            <span class="font-serif text-3xl font-bold text-[#7A152E]">${formatINR(p.price)}</span>
+            ${p.mrp && p.mrp > p.price ? `
+              <span class="text-sm text-[#717171] line-through">${formatINR(p.mrp)}</span>
+              <span class="px-2 py-0.5 bg-[#7A152E] text-white text-xs font-bold rounded">${p.discount}</span>
+            ` : ''}
+          </div>
+
+          <div class="mt-5">
+            <label class="block text-xs uppercase tracking-wider font-semibold text-[#111111] mb-2">
+              Metal Finish: <span class="text-[#7A152E] font-bold">${defaultMetal}</span>
+            </label>
+            <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-xl border border-[#7A152E]/30 bg-[#FDF2F4] text-[#7A152E] text-xs font-semibold">
+              <span class="w-2 h-2 rounded-full bg-[#7A152E]"></span>
+              <span>${defaultMetal}</span>
+            </div>
+          </div>
+
+          ${isRing ? `
+            <div class="mt-4">
+              <div class="flex items-center justify-between mb-2">
+                <label class="block text-xs uppercase tracking-wider font-semibold text-[#111111]">Select Ring Size:</label>
+                <span class="text-xs font-bold text-[#7A152E]">Size 12</span>
+              </div>
+              <div class="flex flex-wrap gap-2">
+                ${['10', '12', '14', '16', '18'].map(s => `
+                  <button class="w-9 h-9 rounded-xl border text-xs font-bold transition-all cursor-pointer flex items-center justify-center border-[#E8E5DF] hover:border-[#7A152E] text-[#111111]">
+                    ${s}
+                  </button>
+                `).join('')}
+              </div>
+            </div>
+          ` : ''}
         </div>
 
-        <!-- Info -->
-        <div class="flex flex-col justify-between">
-          <div>
-            <div class="flex items-center justify-between mb-2">
-              <span class="text-[10px] uppercase tracking-widest text-[#7A152E] font-bold">${product.categoryName || product.category}</span>
-              <div class="flex items-center gap-1 text-xs text-amber-500">
-                <span>★</span>
-                <span class="font-semibold text-stone-800">${product.rating || '4.8'}</span>
-                <span class="text-stone-400">(${product.reviewsCount || '24'})</span>
-              </div>
-            </div>
-
-            <h3 class="font-serif text-2xl font-semibold text-stone-900 mb-2">${product.name}</h3>
-            
-            <div class="flex items-baseline gap-3 mb-4">
-              <span class="text-2xl font-bold text-stone-900">₹${product.price.toLocaleString('en-IN')}</span>
-              ${product.mrp ? `<span class="text-sm text-stone-400 line-through">₹${product.mrp.toLocaleString('en-IN')}</span>` : ''}
-              <span class="text-xs text-emerald-700 font-semibold">Taxes Included</span>
-            </div>
-
-            <!-- Metal Purity Badge -->
-            <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-xl bg-amber-50 border border-amber-200/80 mb-4">
-              <span class="text-xs">🛡️</span>
-              <span class="text-[11px] font-semibold text-amber-900">${product.specs ? product.specs['Metal Purity'] : 'BIS Certified 925 Sterling Silver'}</span>
-            </div>
-
-            <!-- Metal Choice -->
-            <div class="mb-4">
-              <span class="block text-xs font-semibold text-stone-800 mb-2">Select Metal / Tone:</span>
-              <div class="flex flex-wrap gap-4">
-                ${metalOptions}
-              </div>
-            </div>
-
-            <p class="text-xs text-stone-600 line-clamp-3 leading-relaxed mb-6">
-              ${product.desc || 'Meticulously handcrafted in pure 925 silver with dual-micron protective anti-tarnish rhodium barrier.'}
-            </p>
-          </div>
-
-          <div class="space-y-3">
-            <button onclick="
-              const sel = document.querySelector('input[name=qv-metal]:checked');
-              addToCart('${product.id}', sel ? sel.value : null);
-              closeQuickViewModal();
-            " class="w-full py-3.5 bg-[#7A152E] text-white text-xs font-bold uppercase tracking-wider rounded-xl hover:bg-[#590D1E] transition-all shadow-md cursor-pointer">
-              Add to Shopping Bag
+        <div class="space-y-3 pt-4 border-t border-[#E8E5DF]">
+          <div class="flex gap-3">
+            <button onclick="window.addToCart(window.PRODUCTS.find(x => x.id === '${p.id}')); window.closeQuickViewModal();" class="flex-1 py-3.5 bg-[#7A152E] text-white font-serif text-xs uppercase tracking-widest font-bold rounded-xl hover:bg-[#590D1E] transition-all shadow-md flex items-center justify-center gap-2 cursor-pointer">
+              <svg class="lucide lucide-shopping-bag w-4 h-4" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="24"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"></path><path d="M3 6h18"></path><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
+              <span>Add to Bag</span>
             </button>
-            <a href="product.html?id=${product.id}" class="block text-center text-xs font-semibold text-stone-700 hover:text-[#7A152E] transition-colors py-1">
-              View Full Product Specifications & Details →
-            </a>
+            <button onclick="window.toggleWishlist('${p.id}')" class="p-3.5 rounded-xl border border-[#E8E5DF] hover:border-[#7A152E] text-[#111111] transition-all cursor-pointer">
+              <svg class="lucide lucide-heart w-5 h-5" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="24"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"></path></svg>
+            </button>
           </div>
+          <a href="product.html?id=${p.id}" class="w-full text-center text-xs uppercase tracking-widest font-semibold text-[#111111] hover:text-[#7A152E] transition-colors flex items-center justify-center gap-1.5 pt-1">
+            <span>View Full Product Details &amp; Specs</span>
+            <svg class="lucide lucide-arrow-right w-3.5 h-3.5" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="24"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
+          </a>
         </div>
       </div>
     `;
 
     modal.classList.remove('hidden');
-    setTimeout(() => modal.classList.remove('opacity-0'), 10);
     document.body.style.overflow = 'hidden';
   };
 
-  // ------------------------------------------------------------
-  // 10. SEARCH AUTOCOMPLETE / FILTER
-  // ------------------------------------------------------------
-  function initSearch() {
-    const input = document.getElementById('search-input');
-    const resultsContainer = document.getElementById('search-results');
-    if (!input || !resultsContainer) return;
+  window.closeQuickViewModal = function () {
+    const modal = document.getElementById('quickview-modal-root');
+    if (modal) modal.classList.add('hidden');
+    document.body.style.overflow = '';
+  };
 
-    input.addEventListener('input', function (e) {
-      const q = e.target.value.toLowerCase().trim();
-      if (!q) {
-        resultsContainer.innerHTML = '<p class="text-center text-xs text-stone-400 py-8">Search over 60+ handcrafted jewelry pieces by name, metal, or category</p>';
-        return;
+  // Modals show/hide
+  window.openCartDrawer = function () {
+    const drawer = document.getElementById('cart-drawer-root');
+    if (drawer) {
+      renderCartDrawer();
+      drawer.classList.remove('hidden');
+      document.body.style.overflow = 'hidden';
+    }
+  };
+
+  window.closeCartDrawer = function () {
+    const drawer = document.getElementById('cart-drawer-root');
+    if (drawer) drawer.classList.add('hidden');
+    document.body.style.overflow = '';
+  };
+
+  window.openWishlistDrawer = function () {
+    const drawer = document.getElementById('wishlist-drawer-root');
+    if (drawer) {
+      renderWishlistDrawer();
+      drawer.classList.remove('hidden');
+      document.body.style.overflow = 'hidden';
+    }
+  };
+
+  window.closeWishlistDrawer = function () {
+    const drawer = document.getElementById('wishlist-drawer-root');
+    if (drawer) drawer.classList.add('hidden');
+    document.body.style.overflow = '';
+  };
+
+  window.openBoutiqueModal = function () {
+    const modal = document.getElementById('boutique-modal-root');
+    if (modal) {
+      modal.classList.remove('hidden');
+      document.body.style.overflow = 'hidden';
+    }
+  };
+
+  window.closeBoutiqueModal = function () {
+    const modal = document.getElementById('boutique-modal-root');
+    if (modal) modal.classList.add('hidden');
+    document.body.style.overflow = '';
+  };
+
+  window.openSearchModal = function () {
+    const modal = document.getElementById('search-modal-root');
+    if (modal) {
+      modal.classList.remove('hidden');
+      document.body.style.overflow = 'hidden';
+      const input = document.getElementById('search-input');
+      if (input) {
+        input.focus();
+        window.handleSearchInput(input.value || '');
       }
+    }
+  };
 
-      const products = window.PRODUCTS || [];
-      const matches = products.filter(p =>
-        (p.name && p.name.toLowerCase().includes(q)) ||
-        (p.category && p.category.toLowerCase().includes(q)) ||
-        (p.metalType && p.metalType.toLowerCase().includes(q)) ||
-        (p.desc && p.desc.toLowerCase().includes(q))
-      ).slice(0, 10);
+  window.closeSearchModal = function () {
+    const modal = document.getElementById('search-modal-root');
+    if (modal) modal.classList.add('hidden');
+    document.body.style.overflow = '';
+  };
 
-      if (matches.length === 0) {
-        resultsContainer.innerHTML = `<p class="text-center text-xs text-stone-400 py-8">No pieces found matching "${q}". Try searching for 'ring', 'silver', or 'gold'.</p>`;
-        return;
-      }
+  // Search logic
+  let currentSearchCategory = 'all';
 
-      let html = '<div class="divide-y divide-[#EAE4DC]">';
-      matches.forEach(product => {
-        html += `
-          <a href="product.html?id=${product.id}" onclick="closeSearchModal()" class="flex items-center gap-3 p-3 hover:bg-[#FAF8F5] transition-colors rounded-xl">
-            <img src="${product.images[0]}" alt="${product.name}" class="w-12 h-12 rounded-lg object-cover border border-[#EAE4DC]" />
-            <div class="flex-1 min-w-0">
-              <h6 class="font-serif text-sm font-semibold text-stone-900 truncate">${product.name}</h6>
-              <div class="flex items-center gap-2 text-xs">
-                <span class="text-[#7A152E] font-bold">₹${product.price.toLocaleString('en-IN')}</span>
-                <span class="text-stone-400 uppercase tracking-widest text-[10px]">${product.category}</span>
-              </div>
-            </div>
-          </a>
-        `;
-      });
-      html += '</div>';
-
-      resultsContainer.innerHTML = html;
+  window.setSearchFilterCategory = function (cat, btnEl) {
+    currentSearchCategory = cat;
+    document.querySelectorAll('.search-cat-pill').forEach(b => {
+      b.className = 'search-cat-pill px-3 py-1 rounded-lg capitalize shrink-0 transition-all bg-[#FAF8F5] text-[#111111] border border-[#E8E5DF] hover:bg-[#7A152E]/10 cursor-pointer';
     });
-  }
+    if (btnEl) {
+      btnEl.className = 'search-cat-pill px-3 py-1 rounded-lg capitalize shrink-0 transition-all bg-[#7A152E] text-white font-bold shadow-sm cursor-pointer';
+    }
+    const input = document.getElementById('search-input');
+    window.handleSearchInput(input ? input.value : '');
+  };
 
-  // ------------------------------------------------------------
-  // 11. REUSABLE PRODUCT CARD GENERATOR (Exact visual match)
-  // ------------------------------------------------------------
-  window.renderProductCardHTML = function (product) {
-    const isWish = isInWishlist(product.id);
-    const primaryImg = product.images[0];
-    const hoverImg = product.images.length > 1 ? product.images[1] : product.images[0];
+  window.clearSearchInput = function () {
+    const input = document.getElementById('search-input');
+    if (input) {
+      input.value = '';
+      window.handleSearchInput('');
+    }
+  };
 
-    const discountText = product.discount || (product.mrp && product.mrp > product.price
-      ? `${Math.round(((product.mrp - product.price) / product.mrp) * 100)}% OFF`
-      : null);
+  window.handleSearchInput = function (query) {
+    const resultsContainer = document.getElementById('search-modal-results');
+    if (!resultsContainer || !window.PRODUCTS) return;
 
-    // Clean title
-    const cleanTitle = (product.shortName || product.name || '')
-      .replace(/\s*-\s*(925\s*)?(sterling\s*)?silver/gi, '')
-      .replace(/\s*-\s*pure\s*silver/gi, '')
-      .trim();
+    const term = (query || '').toLowerCase().trim();
+    let matches = window.PRODUCTS.filter(p => {
+      const matchCat = currentSearchCategory === 'all' || p.category === currentSearchCategory;
+      if (!matchCat) return false;
+      if (!term) return true;
+      return (
+        p.name.toLowerCase().includes(term) ||
+        (p.desc && p.desc.toLowerCase().includes(term)) ||
+        (p.categoryName && p.categoryName.toLowerCase().includes(term)) ||
+        (p.sku && p.sku.toLowerCase().includes(term))
+      );
+    });
 
-    const metalPurity = product.specs ? product.specs['Metal Purity'] : 'Pure 925 Silver';
-    const isGold = (product.metalType === 'gold') || (product.name && product.name.toLowerCase().includes('gold'));
+    if (!term && currentSearchCategory === 'all') {
+      matches = matches.slice(0, 6);
+    }
 
-    return `
-      <div class="product-card group bg-white rounded-2xl border border-[#EAE4DC] overflow-hidden shadow-xs hover:shadow-xl hover:border-[#7A152E]/60 transition-all duration-300 flex flex-col relative w-full" data-product-id="${product.id}">
-        <!-- Image Viewport (4:5 Aspect Ratio) -->
-        <div class="relative w-full aspect-[4/5] bg-[#FAF8F5] overflow-hidden cursor-pointer product-card-img-wrap" onclick="window.location.href='product.html?id=${product.id}'">
-          <img src="${primaryImg}" alt="${product.name}" loading="lazy" class="primary-img w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
-          <img src="${hoverImg}" alt="${product.name}" loading="lazy" class="absolute inset-0 w-full h-full object-cover opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-          
-          <!-- Discount / Badge -->
-          ${discountText ? `
-            <div class="absolute top-2.5 left-2.5 z-10">
-              <span class="bg-[#7A152E] text-white text-[9px] font-bold px-2 py-0.5 rounded-full uppercase tracking-wider shadow-xs">
-                ${discountText}
-              </span>
+    if (matches.length === 0) {
+      resultsContainer.innerHTML = `
+        <div class="py-12 text-center text-[#717171] space-y-2">
+          <p class="font-serif text-lg text-[#111111]">No jewelry matches found</p>
+          <p class="text-xs">Try searching for "Solitaire", "Bloom", "Tennis", or "Rings"</p>
+        </div>
+      `;
+      return;
+    }
+
+    resultsContainer.innerHTML = matches.map(p => `
+      <div onclick="window.location.href='product.html?id=${p.id}'; window.closeSearchModal();" class="py-3.5 flex items-center justify-between group cursor-pointer hover:bg-[#FAF8F5] -mx-3 px-3 rounded-xl transition-all">
+        <div class="flex items-center gap-4">
+          <div class="w-14 h-14 rounded-lg overflow-hidden bg-[#FAF8F5] border border-[#E8E5DF] shrink-0">
+            <img src="${p.images[0]}" alt="${p.name}" class="w-full h-full object-cover group-hover:scale-110 transition-transform">
+          </div>
+          <div>
+            <div class="font-serif text-sm font-semibold text-[#111111] group-hover:text-[#7A152E] transition-colors">${p.name}</div>
+            <div class="flex items-center gap-2 mt-0.5 text-xs text-[#717171]">
+              <span class="capitalize">${p.categoryName || p.category}</span>
+              <span>•</span>
+              <span class="text-[#7A152E] font-bold">Rated ${p.rating}</span>
+              <span>•</span>
+              <span class="text-[#111111] font-semibold">925 Silver</span>
             </div>
-          ` : ''}
-
-          <!-- Quick Actions on Image (Quick View) -->
-          <div class="absolute bottom-2.5 left-2.5 right-2.5 flex items-center justify-between opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10">
-            <button onclick="event.stopPropagation(); openQuickView('${product.id}')" class="flex-1 py-1.5 bg-white/95 backdrop-blur-sm text-stone-900 text-[11px] font-semibold rounded-lg shadow-md hover:bg-[#7A152E] hover:text-white transition-all text-center">
-              Quick View
-            </button>
           </div>
         </div>
-
-        <!-- Details -->
-        <div class="p-3.5 flex flex-col flex-1 justify-between gap-2">
+        <div class="text-right flex items-center gap-4">
           <div>
-            <!-- Hallmark Purity Pill -->
-            <div class="flex items-center gap-1 text-[10px] font-medium text-stone-500 mb-1">
-              <span class="w-1.5 h-1.5 rounded-full ${isGold ? 'bg-amber-400' : 'bg-slate-400'}"></span>
-              <span class="truncate">${metalPurity}</span>
-            </div>
-
-            <!-- Title -->
-            <a href="product.html?id=${product.id}" class="block">
-              <h4 class="font-serif text-[14px] sm:text-[15px] font-semibold text-stone-900 group-hover:text-[#7A152E] transition-colors line-clamp-1 leading-snug">
-                ${cleanTitle}
-              </h4>
-            </a>
+            <div class="font-serif text-sm font-bold text-[#7A152E]">${formatINR(p.price)}</div>
+            ${p.mrp && p.mrp > p.price ? `<div class="text-[11px] text-[#717171] line-through">${formatINR(p.mrp)}</div>` : ''}
           </div>
-
-          <!-- Price & Wishlist Row -->
-          <div class="flex items-center justify-between pt-1 border-t border-stone-100 mt-auto">
-            <div>
-              <span class="text-sm sm:text-[15px] font-bold text-stone-900">₹${product.price.toLocaleString('en-IN')}</span>
-              ${product.mrp ? `<span class="text-[11px] text-stone-400 line-through ml-1.5">₹${product.mrp.toLocaleString('en-IN')}</span>` : ''}
-            </div>
-
-            <div class="flex items-center gap-1">
-              <!-- Wishlist Button -->
-              <button onclick="event.stopPropagation(); toggleWishlist('${product.id}')" data-wishlist-btn="${product.id}" class="p-1.5 text-stone-400 hover:text-[#7A152E] transition-colors rounded-full hover:bg-stone-50" title="Wishlist">
-                <svg class="w-4 h-4" fill="${isWish ? '#7A152E' : 'none'}" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
-                </svg>
-              </button>
-
-              <!-- Add to Bag Button -->
-              <button onclick="event.stopPropagation(); addToCart('${product.id}')" class="p-1.5 text-stone-700 hover:text-[#7A152E] transition-colors rounded-full hover:bg-stone-50" title="Add to Bag">
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path>
-                </svg>
-              </button>
-            </div>
+          <div class="w-8 h-8 rounded-full bg-[#FAF8F5] border border-[#E8E5DF] flex items-center justify-center text-[#111111] group-hover:bg-[#7A152E] group-hover:text-white transition-all">
+            <svg class="lucide lucide-arrow-up-right w-4 h-4" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="24"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg>
           </div>
         </div>
       </div>
-    `;
+    `).join('');
   };
 
-  // ------------------------------------------------------------
-  // 12. INITIALIZATION ON DOM READY
-  // ------------------------------------------------------------
+  // Collections Dropdown Menu
+  let isCollectionsMenuOpen = false;
+  window.toggleCollectionsMenu = function () {
+    isCollectionsMenuOpen = !isCollectionsMenuOpen;
+    const overlay = document.getElementById('collections-dropdown-overlay');
+    const panel = document.getElementById('collections-dropdown-panel');
+    const chevron = document.getElementById('collections-chevron');
+
+    if (isCollectionsMenuOpen) {
+      if (overlay) {
+        overlay.classList.remove('opacity-0', 'pointer-events-none', 'bg-stone-900/0', 'backdrop-blur-none');
+        overlay.classList.add('opacity-100', 'pointer-events-auto', 'bg-stone-900/40', 'backdrop-blur-md');
+      }
+      if (panel) {
+        panel.classList.remove('opacity-0', '-translate-y-6', 'scale-[0.99]', 'pointer-events-none', 'invisible', 'shadow-none');
+        panel.classList.add('opacity-100', 'translate-y-0', 'scale-100', 'pointer-events-auto', 'visible', 'shadow-[0_30px_70px_-15px_rgba(0,0,0,0.25)]');
+        const inner = panel.firstElementChild;
+        if (inner) {
+          inner.classList.remove('opacity-0', '-translate-y-3');
+          inner.classList.add('opacity-100', 'translate-y-0');
+        }
+      }
+      if (chevron) chevron.classList.add('rotate-180', 'text-[#7A152E]');
+      document.body.style.overflow = 'hidden';
+    } else {
+      window.closeCollectionsMenu();
+    }
+  };
+
+  window.closeCollectionsMenu = function () {
+    isCollectionsMenuOpen = false;
+    const overlay = document.getElementById('collections-dropdown-overlay');
+    const panel = document.getElementById('collections-dropdown-panel');
+    const chevron = document.getElementById('collections-chevron');
+
+    if (overlay) {
+      overlay.classList.add('opacity-0', 'pointer-events-none', 'bg-stone-900/0', 'backdrop-blur-none');
+      overlay.classList.remove('opacity-100', 'pointer-events-auto', 'bg-stone-900/40', 'backdrop-blur-md');
+    }
+    if (panel) {
+      panel.classList.add('opacity-0', '-translate-y-6', 'scale-[0.99]', 'pointer-events-none', 'invisible', 'shadow-none');
+      panel.classList.remove('opacity-100', 'translate-y-0', 'scale-100', 'pointer-events-auto', 'visible', 'shadow-[0_30px_70px_-15px_rgba(0,0,0,0.25)]');
+      const inner = panel.firstElementChild;
+      if (inner) {
+        inner.classList.add('opacity-0', '-translate-y-3');
+        inner.classList.remove('opacity-100', 'translate-y-0');
+      }
+    }
+    if (chevron) chevron.classList.remove('rotate-180', 'text-[#7A152E]');
+    document.body.style.overflow = '';
+  };
+
+  // Close modals on Escape key
+  window.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') {
+      window.closeCartDrawer();
+      window.closeWishlistDrawer();
+      window.closeSearchModal();
+      window.closeBoutiqueModal();
+      window.closeQuickViewModal();
+      window.closeCollectionsMenu();
+    }
+  });
+
+  // Revolving announcement ticker
+  const TICKER_MESSAGES = [
+    '100% Certified BIS 925 Hallmarked Pure Silver Jewelry',
+    'Free Insured Express Delivery Across India • 10% Off with Code: SOULY10',
+    'Complimentary Luxury Velvet Keepsake Box with Authenticity Certificate',
+    '15-Day Hassle-Free Returns & Lifetime Replating Guarantee'
+  ];
+  let tickerIdx = 0;
+  setInterval(() => {
+    const el = document.getElementById('announcement-ticker');
+    if (!el) return;
+    el.style.opacity = '0';
+    setTimeout(() => {
+      tickerIdx = (tickerIdx + 1) % TICKER_MESSAGES.length;
+      el.textContent = TICKER_MESSAGES[tickerIdx];
+      el.style.opacity = '1';
+    }, 300);
+  }, 3800);
+
+  // Initial setup on DOM ready
   document.addEventListener('DOMContentLoaded', function () {
-    updateBadgeCounts();
-    initSearch();
+    updateBadges();
 
-    // Mobile menu toggle
-    const menuBtn = document.getElementById('mobile-menu-toggle');
-    const menuBackdrop = document.getElementById('mobile-menu-backdrop');
+    // Check if on Checkout Page
+    if (window.location.pathname.includes('checkout.html')) {
+      initCheckoutPage();
+    }
 
-    if (menuBtn) {
-      menuBtn.addEventListener('click', function (e) {
+    // Check if on Product Detail Page
+    if (window.location.pathname.includes('product.html')) {
+      initProductDetailPage();
+    }
+  });
+
+  // Product Detail Page initialization
+  function initProductDetailPage() {
+    const params = new URLSearchParams(window.location.search);
+    const prodId = params.get('id') || 'accent-circle-925-silver-necklace';
+    const product = findProduct(prodId);
+    if (!product) return;
+
+    // Update document title
+    document.title = `${product.name} | Solystra Jewels Atelier`;
+
+    // Swap main images when clicking thumbnails
+    const thumbnails = document.querySelectorAll('button img[alt="Angle"], button img[alt="Product Angle"]');
+    const mainImg = document.querySelector('img[alt="' + product.name + '"]') || document.querySelector('main img');
+
+    thumbnails.forEach(thumb => {
+      thumb.parentElement.addEventListener('click', function () {
+        if (mainImg) mainImg.src = thumb.src;
+        thumbnails.forEach(t => t.parentElement.classList.remove('border-[#7A152E]', 'shadow-sm'));
+        thumb.parentElement.classList.add('border-[#7A152E]', 'shadow-sm');
+      });
+    });
+
+    // Pincode checker
+    const pinBtn = document.querySelector('button:has(svg.lucide-truck)');
+    const pinInput = document.querySelector('input[placeholder*="pincode"], input[placeholder*="Pincode"]');
+    if (pinBtn && pinInput) {
+      pinBtn.addEventListener('click', function (e) {
         e.preventDefault();
-        window.openMobileMenu();
-      });
-    }
-    if (menuBackdrop) {
-      menuBackdrop.addEventListener('click', function () {
-        window.closeMobileMenu();
+        const pin = pinInput.value.trim();
+        if (pin.length === 6 && /^\d+$/.test(pin)) {
+          window.showToast('Delivery Available', `BlueDart Express reaches ${pin} in 2-3 business days.`);
+        } else {
+          window.showToast('Invalid Pincode', 'Please enter a valid 6-digit Indian PIN code.', 'info');
+        }
       });
     }
 
-    // Escape key closes open modals/drawers
-    document.addEventListener('keydown', function (e) {
-      if (e.key === 'Escape') {
-        closeCartDrawer();
-        closeWishlistDrawer();
-        closeMobileMenu();
-        closeSearchModal();
-        closeBoutiqueModal();
-        closeQuickViewModal();
+    // Add to Bag CTA
+    const addBtns = document.querySelectorAll('button');
+    addBtns.forEach(b => {
+      const txt = b.get_text ? b.get_text() : b.textContent;
+      if (txt.includes('Add to Bag')) {
+        b.onclick = function () {
+          window.addToCart(product);
+        };
+      } else if (txt.includes('Buy Now')) {
+        b.onclick = function () {
+          window.addToCart(product);
+          window.location.href = 'checkout.html';
+        };
       }
     });
-  });
+  }
+
+  // Checkout Page initialization
+  function initCheckoutPage() {
+    const cart = getCart();
+    const subtotal = cart.reduce((acc, item) => acc + (item.price * item.quantity), 0);
+    const promo = getAppliedPromo();
+    let discount = 0;
+    if (promo === 'ROYAL10' || promo === 'SOULY10') {
+      discount = Math.round(subtotal * 0.10);
+    } else if (promo === 'VAULT500') {
+      discount = Math.min(500, subtotal);
+    }
+    const total = Math.max(0, subtotal - discount);
+
+    // Wire place order button
+    const placeBtn = document.querySelector('button:has(svg.lucide-lock)');
+    if (placeBtn) {
+      placeBtn.onclick = function (e) {
+        e.preventDefault();
+        const orderId = 'SLY-' + Math.floor(100000 + Math.random() * 900000);
+        localStorage.removeItem(CART_KEY);
+        updateBadges();
+
+        alert(`✨ Luxury Order Confirmed!\n\nOrder ID: ${orderId}\nTotal: ${formatINR(total)}\n\nThank you for choosing Solystra Jewels Atelier.\nA confirmation SMS & Email have been dispatched along with your insured BlueDart tracking number.`);
+        window.location.href = 'index.html';
+      };
+    }
+  }
 
 })();
