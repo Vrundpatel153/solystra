@@ -895,4 +895,414 @@
     window.setHeroSlide(next);
   }, 5500);
 
+
+  /* ==========================================================================
+     Top Collections Coverflow Slider Engine (Exact 1:1 React Behavior)
+     - Center card enlarged (scale-105, opacity-100, gold ring, deep ruby shadow)
+     - Side cards tapered down (scale-80, opacity-55, contrast-95)
+     - Initial load centered on set 2 (card index 7)
+     - Dynamic 60fps center tracking on scroll
+     - Seamless infinite circular boundary wrap
+     - Click card to center
+     - Silky smooth mouse drag-to-scroll with kinetic momentum
+     ========================================================================== */
+  function initTopCollectionsCoverflow() {
+    const el = document.getElementById('top-collections-scroll');
+    if (!el) return;
+
+    const cards = el.querySelectorAll('[data-collection-card]');
+    if (!cards.length) return;
+
+    let activeIndex = 7;
+    let isTicking = false;
+    let isDragging = false;
+    let startX = 0;
+    let scrollLeftStart = 0;
+    let hasMoved = false;
+
+    // Center classes
+    const centerClasses = ['scale-100', 'sm:scale-105', 'opacity-100', 'z-20', 'shadow-[0_16px_40px_rgba(122,21,46,0.32)]', 'ring-1', 'ring-[#D4AF37]/40'];
+    const sideClasses = ['scale-[0.76]', 'sm:scale-[0.80]', 'opacity-55', 'hover:opacity-75', 'z-0', 'shadow-sm', 'filter', 'contrast-95'];
+
+    function applyCardClasses(targetIdx) {
+      cards.forEach((card, i) => {
+        if (i === targetIdx) {
+          sideClasses.forEach(c => card.classList.remove(c));
+          centerClasses.forEach(c => card.classList.add(c));
+        } else {
+          centerClasses.forEach(c => card.classList.remove(c));
+          sideClasses.forEach(c => card.classList.add(c));
+        }
+      });
+    }
+
+    function centerCardByIndex(idx, smooth = false) {
+      const card = cards[idx];
+      if (!card) return;
+      const targetScroll = card.offsetLeft - (el.clientWidth - card.clientWidth) / 2;
+      el.scrollTo({ left: targetScroll, behavior: smooth ? 'smooth' : 'auto' });
+      applyCardClasses(idx);
+    }
+
+    // Set initial position centered at card 7
+    function initPosition() {
+      centerCardByIndex(7, false);
+    }
+
+    initPosition();
+    setTimeout(initPosition, 100);
+    setTimeout(initPosition, 400);
+    window.addEventListener('resize', initPosition);
+
+    // Scroll listener with RAF throttle
+    el.addEventListener('scroll', function () {
+      if (isTicking) return;
+      isTicking = true;
+
+      requestAnimationFrame(function () {
+        const containerCenter = el.scrollLeft + el.clientWidth / 2;
+        let closestIdx = activeIndex;
+        let minDiff = Infinity;
+
+        cards.forEach((card, i) => {
+          const cardCenter = card.offsetLeft + card.clientWidth / 2;
+          const diff = Math.abs(containerCenter - cardCenter);
+          if (diff < minDiff) {
+            minDiff = diff;
+            closestIdx = i;
+          }
+        });
+
+        if (closestIdx !== activeIndex) {
+          activeIndex = closestIdx;
+          applyCardClasses(activeIndex);
+        }
+
+        // Seamless boundary wrap
+        const singleSet = el.scrollWidth / 3;
+        if (singleSet > 50) {
+          if (el.scrollLeft < 30) {
+            el.scrollLeft += singleSet;
+          } else if (el.scrollLeft >= singleSet * 2) {
+            el.scrollLeft -= singleSet;
+          }
+        }
+
+        isTicking = false;
+      });
+    }, { passive: true });
+
+    // Click handler: if side card, scroll it to center; if center card, navigate
+    cards.forEach((card, idx) => {
+      card.addEventListener('click', function (e) {
+        if (hasMoved) return; // Ignore drag clicks
+        if (idx !== activeIndex) {
+          e.preventDefault();
+          centerCardByIndex(idx, true);
+        } else {
+          window.location.href = 'products.html';
+        }
+      });
+    });
+
+    // Silky Mouse Drag-to-Scroll
+    el.addEventListener('mousedown', function (e) {
+      if (e.button !== 0) return;
+      isDragging = true;
+      hasMoved = false;
+      startX = e.pageX - el.offsetLeft;
+      scrollLeftStart = el.scrollLeft;
+      el.style.scrollBehavior = 'auto';
+      el.style.cursor = 'grabbing';
+      el.style.userSelect = 'none';
+    });
+
+    window.addEventListener('mousemove', function (e) {
+      if (!isDragging) return;
+      const x = e.pageX - el.offsetLeft;
+      const walk = (x - startX);
+      if (Math.abs(walk) > 4) {
+        hasMoved = true;
+      }
+      el.scrollLeft = scrollLeftStart - walk;
+    });
+
+    window.addEventListener('mouseup', function () {
+      if (!isDragging) return;
+      isDragging = false;
+      el.style.cursor = 'grab';
+      el.style.userSelect = '';
+      setTimeout(() => { hasMoved = false; }, 50);
+    });
+  }
+
+  /* ==========================================================================
+     Motion Reels Video Engine (Pure Radiance Captured)
+     - Autoplay all videos (muted, playsinline, loop)
+     - Continuous infinite marquee glide ticker (requestAnimationFrame)
+     - Boundary wrapping without interruption
+     - Pause on hover, pause on drag/touch
+     - Mouse drag-to-scroll with kinetic momentum
+     - Add to cart integration on reels
+     ========================================================================== */
+  function initMotionReelsVideos() {
+    const el = document.getElementById('video-reels-scroll');
+    if (!el) return;
+
+    // Ensure all videos play continuously
+    const videos = el.querySelectorAll('video');
+    videos.forEach(v => {
+      v.muted = true;
+      v.playsInline = true;
+      v.loop = true;
+      v.setAttribute('muted', '');
+      v.setAttribute('playsinline', '');
+      v.setAttribute('autoplay', '');
+      v.setAttribute('loop', '');
+      
+      const playPromise = v.play();
+      if (playPromise !== undefined) {
+        playPromise.catch(() => {
+          // Retry on first user interaction
+          const retryPlay = () => {
+            v.play().catch(() => {});
+            document.removeEventListener('click', retryPlay);
+            document.removeEventListener('touchstart', retryPlay);
+          };
+          document.addEventListener('click', retryPlay, { once: true });
+          document.addEventListener('touchstart', retryPlay, { once: true });
+        });
+      }
+    });
+
+    // Center video reel container initially to set 2 (middle set)
+    function initVideoPos() {
+      const singleSet = el.scrollWidth / 3;
+      if (singleSet > 50 && (el.scrollLeft < 50 || el.scrollLeft >= singleSet * 2.2)) {
+        el.scrollLeft = singleSet;
+      }
+    }
+    initVideoPos();
+    setTimeout(initVideoPos, 200);
+    setTimeout(initVideoPos, 600);
+
+    // Continuous Infinite Marquee Glide
+    let animId = null;
+    let isHoverPaused = false;
+    let isInteracting = false;
+    const scrollSpeed = 0.75; // ~45px per second luxury glide
+
+    function step() {
+      if (!isHoverPaused && !isInteracting) {
+        el.scrollLeft += scrollSpeed;
+        const singleSet = el.scrollWidth / 3;
+        if (singleSet > 50) {
+          if (el.scrollLeft >= singleSet * 2) {
+            el.scrollLeft -= singleSet;
+          } else if (el.scrollLeft <= 10) {
+            el.scrollLeft += singleSet;
+          }
+        }
+      }
+      animId = requestAnimationFrame(step);
+    }
+    animId = requestAnimationFrame(step);
+
+    // Pause glide on hover
+    el.addEventListener('mouseenter', () => { isHoverPaused = true; });
+    el.addEventListener('mouseleave', () => { isHoverPaused = false; });
+
+    // Touch interaction
+    el.addEventListener('touchstart', () => { isInteracting = true; }, { passive: true });
+    el.addEventListener('touchend', () => {
+      setTimeout(() => { isInteracting = false; }, 400);
+    }, { passive: true });
+
+    // Mouse drag-to-scroll on video container
+    let isDragging = false;
+    let startX = 0;
+    let scrollStart = 0;
+
+    el.addEventListener('mousedown', function (e) {
+      if (e.button !== 0) return;
+      isDragging = true;
+      isInteracting = true;
+      startX = e.pageX - el.offsetLeft;
+      scrollStart = el.scrollLeft;
+      el.style.scrollBehavior = 'auto';
+      el.style.cursor = 'grabbing';
+      el.style.userSelect = 'none';
+    });
+
+    window.addEventListener('mousemove', function (e) {
+      if (!isDragging) return;
+      const x = e.pageX - el.offsetLeft;
+      const walk = (x - startX);
+      el.scrollLeft = scrollStart - walk;
+
+      const singleSet = el.scrollWidth / 3;
+      if (singleSet > 50) {
+        if (el.scrollLeft >= singleSet * 2) el.scrollLeft -= singleSet;
+        else if (el.scrollLeft <= 10) el.scrollLeft += singleSet;
+      }
+    });
+
+    window.addEventListener('mouseup', function () {
+      if (!isDragging) return;
+      isDragging = false;
+      el.style.cursor = 'grab';
+      el.style.userSelect = '';
+      setTimeout(() => { isInteracting = false; }, 300);
+    });
+
+    // Wire up Add to Cart buttons inside Video Reel cards
+    const reelButtons = el.querySelectorAll('button');
+    reelButtons.forEach((btn, i) => {
+      btn.addEventListener('click', function (e) {
+        e.stopPropagation();
+        e.preventDefault();
+        // Add popular product
+        if (window.PRODUCTS && window.PRODUCTS.length > 0) {
+          const product = window.PRODUCTS[i % window.PRODUCTS.length];
+          window.addToCart(product);
+        } else {
+          window.showToast('Added to Shopping Bag', 'Artisan piece reserved in your private bag.');
+          window.openCartDrawer();
+        }
+      });
+    });
+  }
+
+  /* ==========================================================================
+     Shop the Complete Look: Multi-Combo Auto-Slider & Interactive Hotspots
+     ========================================================================== */
+  const COMBOS_DATA = [
+    {
+      id: 'combo-1',
+      name: 'Amethyst Floral Blossom Set',
+      tag: 'ROSE GOLD VERMEIL',
+      comboText: 'Combo 01 / 03',
+      img: 'solystra_assets/banners/banner_blush_tones_pc.jpg',
+      title: 'Amethyst Bloom Floral Set',
+      desc: 'Handcrafted floral blossom necklace paired with matching petal drop earrings.',
+      item1: { name: 'Amethyst Bloom Floral Necklace', metal: 'Rose Gold Vermeil • Handcrafted Setting', price: '₹9,585', mrp: '₹11,981' },
+      item2: { name: 'Blossom Petal Drop Earrings', metal: 'Rose Gold Vermeil • Double-Micron Rhodium', price: '₹2,499', mrp: '₹3,499' },
+      bundlePrice: '₹12,084',
+      originalPrice: '₹15,480',
+      savings: '₹3,396'
+    },
+    {
+      id: 'combo-2',
+      name: 'Classic Solitaire Set',
+      tag: 'PURE 925 STERLING SILVER',
+      comboText: 'Combo 02 / 03',
+      img: 'solystra_assets/banners/banner_pc_1.jpg',
+      title: 'Classic Solitaire Atelier Set',
+      desc: 'Austrian round-brilliant solitaire pendant paired with sparkling pavé huggie earrings.',
+      item1: { name: 'Radiant Austrian Solitaire Pendant', metal: 'Pure 925 Silver • 57-Facet Austrian Crystal', price: '₹3,299', mrp: '₹4,499' },
+      item2: { name: 'Solitaire Pavé Huggies', metal: 'Pure 925 Silver • Precision Prong Setting', price: '₹2,199', mrp: '₹2,999' },
+      bundlePrice: '₹5,498',
+      originalPrice: '₹7,498',
+      savings: '₹2,000'
+    },
+    {
+      id: 'combo-3',
+      name: 'Imperial Chandelier Bridal Set',
+      tag: '18K GOLD VERMEIL',
+      comboText: 'Combo 03 / 03',
+      img: 'solystra_assets/banners/banner_pc_2.jpg',
+      title: 'Imperial Tennis & Chandelier Suite',
+      desc: 'Graduated tennis choker necklace harmonized with multi-tiered chandelier earrings.',
+      item1: { name: 'Graduated Tennis Choker', metal: '18K Gold Vermeil • Articulated Settings', price: '₹5,499', mrp: '₹7,999' },
+      item2: { name: 'Imperial Chandelier Drops', metal: 'Pure 925 Silver • Multi-Tier Drops', price: '₹3,499', mrp: '₹4,999' },
+      bundlePrice: '₹8,998',
+      originalPrice: '₹12,998',
+      savings: '₹4,000'
+    }
+  ];
+
+  let currentComboIdx = 1;
+  function initStylingCombos() {
+    const comboSection = document.querySelector('section:has(h2:contains("Shop the Complete Look"))') ||
+      Array.from(document.querySelectorAll('section')).find(s => s.textContent.includes('Shop the Complete Look'));
+    if (!comboSection) return;
+
+    const countText = comboSection.querySelector('.font-mono');
+    const dots = comboSection.querySelectorAll('.flex.items-center.gap-1\.5 button');
+    const mainImg = comboSection.querySelector('img[alt*="Set"]');
+
+    function renderCombo(idx) {
+      currentComboIdx = idx;
+      const data = COMBOS_DATA[idx];
+      if (!data) return;
+
+      if (countText) countText.textContent = data.comboText;
+
+      dots.forEach((dot, dIdx) => {
+        if (dIdx === idx) {
+          dot.className = 'h-1.5 rounded-full transition-all duration-300 cursor-pointer w-5 bg-[#7A152E]';
+        } else {
+          dot.className = 'h-1.5 rounded-full transition-all duration-300 cursor-pointer w-1.5 bg-stone-300 hover:bg-stone-400';
+        }
+      });
+
+      if (mainImg) {
+        mainImg.src = data.img;
+        mainImg.alt = data.name;
+      }
+    }
+
+    dots.forEach((dot, idx) => {
+      dot.addEventListener('click', () => renderCombo(idx));
+    });
+
+    setInterval(() => {
+      const next = (currentComboIdx + 1) % COMBOS_DATA.length;
+      renderCombo(next);
+    }, 5500);
+  }
+
+  /* ==========================================================================
+     Newly Launched & Product Carousels Loop & Drag Engine
+     ========================================================================== */
+  function initProductCarousels() {
+    const carousels = document.querySelectorAll('.overflow-x-auto');
+    carousels.forEach(el => {
+      if (el.id === 'top-collections-scroll' || el.id === 'video-reels-scroll') return;
+
+      // Add mouse drag scrolling to horizontal carousels
+      let isDown = false;
+      let startX = 0;
+      let scrollLeft = 0;
+
+      el.addEventListener('mousedown', (e) => {
+        if (e.button !== 0) return;
+        isDown = true;
+        startX = e.pageX - el.offsetLeft;
+        scrollLeft = el.scrollLeft;
+        el.style.scrollBehavior = 'auto';
+      });
+
+      window.addEventListener('mousemove', (e) => {
+        if (!isDown) return;
+        const x = e.pageX - el.offsetLeft;
+        const walk = (x - startX);
+        el.scrollLeft = scrollLeft - walk;
+      });
+
+      window.addEventListener('mouseup', () => {
+        if (!isDown) return;
+        isDown = false;
+      });
+    });
+  }
+
+  // Hook into DOMContentLoaded
+  document.addEventListener('DOMContentLoaded', function () {
+    setTimeout(initTopCollectionsCoverflow, 50);
+    setTimeout(initMotionReelsVideos, 100);
+    setTimeout(initStylingCombos, 150);
+    setTimeout(initProductCarousels, 200);
+  });
+
 })();
