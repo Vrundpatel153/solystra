@@ -11558,15 +11558,105 @@ video {
   display: none !important;
 }
 
+/* ==========================================================================
+   Luxury Slide-Over Drawers (Shopping Bag & Wishlist) In-Out Animations
+   ========================================================================== */
+
+.drawer-root {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.drawer-root.is-open {
+  pointer-events: auto;
+}
+
+/* Smooth Backdrop Fade In-Out */
+.drawer-root .modal-backdrop {
+  opacity: 0 !important;
+  pointer-events: none !important;
+  transition: opacity 380ms cubic-bezier(0.16, 1, 0.3, 1) !important;
+  will-change: opacity;
+}
+
+.drawer-root.is-open .modal-backdrop {
+  opacity: 1 !important;
+  pointer-events: auto !important;
+}
+
+.drawer-root .fixed.inset-y-0.right-0 {
+  pointer-events: none;
+}
+
+/* Smooth Sliding Drawer Panel: Right to Left & Left to Right */
+.drawer-root .fixed.inset-y-0.right-0 > div,
+.drawer-root .drawer-panel,
+.drawer-root .animate-slideLeft {
+  animation: none !important;
+  transform: translate3d(100%, 0, 0) !important;
+  transition: transform 400ms cubic-bezier(0.16, 1, 0.3, 1), box-shadow 400ms ease !important;
+  will-change: transform;
+  pointer-events: auto;
+  box-shadow: -14px 0 45px -5px rgba(0, 0, 0, 0.28), -4px 0 16px -2px rgba(0, 0, 0, 0.12) !important;
+}
+
+.drawer-root.is-open .fixed.inset-y-0.right-0 > div,
+.drawer-root.is-open .drawer-panel,
+.drawer-root.is-open .animate-slideLeft {
+  transform: translate3d(0, 0, 0) !important;
+}
+
+/* Staggered entrance for items inside drawers */
+.drawer-root.is-open #cart-drawer-items > div,
+.drawer-root.is-open #wishlist-drawer-items > div {
+  animation: drawerItemFadeSlide 0.32s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes drawerItemFadeSlide {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Generic Modal Backdrop */
 .modal-backdrop {
   opacity: 0;
   pointer-events: none;
-  transition: opacity 0.3s ease;
+  transition: opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .modal-active .modal-backdrop {
   opacity: 1;
   pointer-events: auto;
+}
+
+/* QuickView Modal Smooth In-Out */
+.quickview-root {
+  opacity: 0;
+  transition: opacity 280ms cubic-bezier(0.16, 1, 0.3, 1);
+  pointer-events: none;
+}
+
+.quickview-root.is-open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.quickview-root > div {
+  transform: scale(0.95) translateY(10px);
+  transition: transform 300ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.quickview-root.is-open > div {
+  transform: scale(1) translateY(0);
 }
 
 /* Toast container animations */

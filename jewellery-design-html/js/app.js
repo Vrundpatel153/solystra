@@ -204,9 +204,20 @@
     saveCart(cart);
   };
 
-  window.removeCartItem = function (index) {
+  window.removeCartItem = function (index, btn) {
     const cart = getCart();
     if (!cart[index]) return;
+    const row = btn ? btn.closest('.py-4') : null;
+    if (row) {
+      row.style.transition = 'all 240ms cubic-bezier(0.16, 1, 0.3, 1)';
+      row.style.opacity = '0';
+      row.style.transform = 'translateX(24px)';
+      setTimeout(() => {
+        cart.splice(index, 1);
+        saveCart(cart);
+      }, 200);
+      return;
+    }
     cart.splice(index, 1);
     saveCart(cart);
   };
@@ -317,7 +328,7 @@
               </div>
             </div>
           </div>
-          <button onclick="window.removeCartItem(${idx})" aria-label="Remove item" class="text-stone-400 hover:text-red-600 p-1 transition-colors cursor-pointer">
+          <button onclick="window.removeCartItem(${idx}, this)" aria-label="Remove item" class="text-stone-400 hover:text-red-600 p-1 transition-colors cursor-pointer">
             <svg class="lucide lucide-trash2 w-4 h-4" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="24"><path d="M3 6h18"></path><path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"></path><path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"></path><line x1="10" x2="10" y1="11" y2="17"></line><line x1="14" x2="14" y1="11" y2="17"></line></svg>
           </button>
         </div>
@@ -528,44 +539,112 @@
     `;
 
     modal.classList.remove('hidden');
+    void modal.offsetWidth;
+    requestAnimationFrame(() => {
+      modal.classList.add('is-open');
+    });
     document.body.style.overflow = 'hidden';
   };
 
-  window.closeQuickViewModal = function () {
-    const modal = document.getElementById('quickview-modal-root');
-    if (modal) modal.classList.add('hidden');
-    document.body.style.overflow = '';
-  };
+  // Modals & Drawers Smooth In-Out Animations Controller
+  let cartCloseTimer = null;
+  let wishlistCloseTimer = null;
+  let quickviewCloseTimer = null;
 
-  // Modals show/hide
   window.openCartDrawer = function () {
     const drawer = document.getElementById('cart-drawer-root');
     if (drawer) {
+      if (cartCloseTimer) {
+        clearTimeout(cartCloseTimer);
+        cartCloseTimer = null;
+      }
+      // If wishlist drawer was open, close it
+      const wishDrawer = document.getElementById('wishlist-drawer-root');
+      if (wishDrawer && wishDrawer.classList.contains('is-open')) {
+        window.closeWishlistDrawer();
+      }
+
       renderCartDrawer();
       drawer.classList.remove('hidden');
+      void drawer.offsetWidth; // Force reflow to establish initial translateX(100%) and opacity 0
+      requestAnimationFrame(() => {
+        drawer.classList.add('is-open');
+      });
       document.body.style.overflow = 'hidden';
     }
   };
 
   window.closeCartDrawer = function () {
     const drawer = document.getElementById('cart-drawer-root');
-    if (drawer) drawer.classList.add('hidden');
-    document.body.style.overflow = '';
+    if (drawer) {
+      if (cartCloseTimer) {
+        clearTimeout(cartCloseTimer);
+        cartCloseTimer = null;
+      }
+      drawer.classList.remove('is-open');
+      cartCloseTimer = setTimeout(() => {
+        drawer.classList.add('hidden');
+        cartCloseTimer = null;
+        if (!document.querySelector('.drawer-root.is-open, .quickview-root.is-open, #boutique-modal-root:not(.hidden), #search-modal-root:not(.hidden)')) {
+          document.body.style.overflow = '';
+        }
+      }, 380);
+    }
   };
 
   window.openWishlistDrawer = function () {
     const drawer = document.getElementById('wishlist-drawer-root');
     if (drawer) {
+      if (wishlistCloseTimer) {
+        clearTimeout(wishlistCloseTimer);
+        wishlistCloseTimer = null;
+      }
+      // If cart drawer was open, close it
+      const cartDrawer = document.getElementById('cart-drawer-root');
+      if (cartDrawer && cartDrawer.classList.contains('is-open')) {
+        window.closeCartDrawer();
+      }
+
       renderWishlistDrawer();
       drawer.classList.remove('hidden');
+      void drawer.offsetWidth;
+      requestAnimationFrame(() => {
+        drawer.classList.add('is-open');
+      });
       document.body.style.overflow = 'hidden';
     }
   };
 
   window.closeWishlistDrawer = function () {
     const drawer = document.getElementById('wishlist-drawer-root');
-    if (drawer) drawer.classList.add('hidden');
-    document.body.style.overflow = '';
+    if (drawer) {
+      if (wishlistCloseTimer) {
+        clearTimeout(wishlistCloseTimer);
+        wishlistCloseTimer = null;
+      }
+      drawer.classList.remove('is-open');
+      wishlistCloseTimer = setTimeout(() => {
+        drawer.classList.add('hidden');
+        wishlistCloseTimer = null;
+        if (!document.querySelector('.drawer-root.is-open, .quickview-root.is-open, #boutique-modal-root:not(.hidden), #search-modal-root:not(.hidden)')) {
+          document.body.style.overflow = '';
+        }
+      }, 380);
+    }
+  };
+
+  window.closeQuickViewModal = function () {
+    const modal = document.getElementById('quickview-modal-root');
+    if (modal) {
+      modal.classList.remove('is-open');
+      quickviewCloseTimer = setTimeout(() => {
+        modal.classList.add('hidden');
+        quickviewCloseTimer = null;
+        if (!document.querySelector('.drawer-root.is-open, .quickview-root.is-open, #boutique-modal-root:not(.hidden), #search-modal-root:not(.hidden)')) {
+          document.body.style.overflow = '';
+        }
+      }, 280);
+    }
   };
 
   window.openBoutiqueModal = function () {
@@ -579,7 +658,9 @@
   window.closeBoutiqueModal = function () {
     const modal = document.getElementById('boutique-modal-root');
     if (modal) modal.classList.add('hidden');
-    document.body.style.overflow = '';
+    if (!document.querySelector('.drawer-root.is-open, .quickview-root.is-open, #search-modal-root:not(.hidden)')) {
+      document.body.style.overflow = '';
+    }
   };
 
   window.openSearchModal = function () {
@@ -598,8 +679,41 @@
   window.closeSearchModal = function () {
     const modal = document.getElementById('search-modal-root');
     if (modal) modal.classList.add('hidden');
-    document.body.style.overflow = '';
+    if (!document.querySelector('.drawer-root.is-open, .quickview-root.is-open, #boutique-modal-root:not(.hidden)')) {
+      document.body.style.overflow = '';
+    }
   };
+
+  // Global Escape key listener for smooth closing
+  window.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' || e.keyCode === 27) {
+      const cartDrawer = document.getElementById('cart-drawer-root');
+      if (cartDrawer && cartDrawer.classList.contains('is-open')) {
+        window.closeCartDrawer();
+        return;
+      }
+      const wishlistDrawer = document.getElementById('wishlist-drawer-root');
+      if (wishlistDrawer && wishlistDrawer.classList.contains('is-open')) {
+        window.closeWishlistDrawer();
+        return;
+      }
+      const quickviewModal = document.getElementById('quickview-modal-root');
+      if (quickviewModal && quickviewModal.classList.contains('is-open')) {
+        window.closeQuickViewModal();
+        return;
+      }
+      const boutiqueModal = document.getElementById('boutique-modal-root');
+      if (boutiqueModal && !boutiqueModal.classList.contains('hidden')) {
+        window.closeBoutiqueModal();
+        return;
+      }
+      const searchModal = document.getElementById('search-modal-root');
+      if (searchModal && !searchModal.classList.contains('hidden')) {
+        window.closeSearchModal();
+        return;
+      }
+    }
+  });
 
   // Search logic
   let currentSearchCategory = 'all';
