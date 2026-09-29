@@ -1175,91 +1175,407 @@
 
   /* ==========================================================================
      Shop the Complete Look: Multi-Combo Auto-Slider & Interactive Hotspots
+     - Exact 1:1 React Architecture
+     - Auto-slides all 3 combos every 4.8s
+     - Pauses on hover
+     - Interactive glowing hotspots with hoverable luxury tooltip popovers
+     - Cross-hover highlighting between model photo hotspots and right-hand item cards
+     - "Add Look to Bag" adds both pieces to the cart drawer
      ========================================================================== */
-  const COMBOS_DATA = [
+  const STYLING_COMBOS = [
     {
       id: 'combo-1',
       name: 'Amethyst Floral Blossom Set',
       tag: 'ROSE GOLD VERMEIL',
-      comboText: 'Combo 01 / 03',
-      img: 'solystra_assets/banners/banner_blush_tones_pc.jpg',
-      title: 'Amethyst Bloom Floral Set',
       desc: 'Handcrafted floral blossom necklace paired with matching petal drop earrings.',
-      item1: { name: 'Amethyst Bloom Floral Necklace', metal: 'Rose Gold Vermeil • Handcrafted Setting', price: '₹9,585', mrp: '₹11,981' },
-      item2: { name: 'Blossom Petal Drop Earrings', metal: 'Rose Gold Vermeil • Double-Micron Rhodium', price: '₹2,499', mrp: '₹3,499' },
-      bundlePrice: '₹12,084',
-      originalPrice: '₹15,480',
-      savings: '₹3,396'
+      editorialImg: 'solystra_assets/banners/banner_blush_tones_pc.jpg',
+      imagePosition: 'object-[75%_center]',
+      items: [
+        {
+          id: 'c1-item-1',
+          productId: 'amethyst-bloom-necklace-set-925-sterling-silver',
+          type: 'NECKLACE',
+          name: 'Amethyst Bloom Floral Necklace',
+          metal: 'Rose Gold Vermeil • Handcrafted Setting',
+          price: 9585,
+          mrp: 11981,
+          image: 'solystra_assets/products/amethyst-bloom-necklace-set-925-sterling-silver/angle_1.png',
+          hotspot: { x: 75.1, y: 55.0, pcX: 75.1, pcY: 55.0, label: 'Floral Blossom Necklace' }
+        },
+        {
+          id: 'c1-item-2',
+          productId: 'flora-band-hoops',
+          type: 'EARRINGS',
+          name: 'Blossom Petal Drop Earrings',
+          metal: 'Rose Gold Vermeil • Double-Micron Rhodium',
+          price: 2499,
+          mrp: 3499,
+          image: 'solystra_assets/categories/cat_earrings.png',
+          hotspot: { x: 78.6, y: 27.1, pcX: 78.6, pcY: 27.1, label: 'Blossom Drop Earrings' }
+        }
+      ],
+      bundlePrice: 12084,
+      originalPrice: 15480,
+      savings: 3396
     },
     {
       id: 'combo-2',
       name: 'Classic Solitaire Set',
       tag: 'PURE 925 STERLING SILVER',
-      comboText: 'Combo 02 / 03',
-      img: 'solystra_assets/banners/banner_pc_1.jpg',
-      title: 'Classic Solitaire Atelier Set',
-      desc: 'Austrian round-brilliant solitaire pendant paired with sparkling pavé huggie earrings.',
-      item1: { name: 'Radiant Austrian Solitaire Pendant', metal: 'Pure 925 Silver • 57-Facet Austrian Crystal', price: '₹3,299', mrp: '₹4,499' },
-      item2: { name: 'Solitaire Pavé Huggies', metal: 'Pure 925 Silver • Precision Prong Setting', price: '₹2,199', mrp: '₹2,999' },
-      bundlePrice: '₹5,498',
-      originalPrice: '₹7,498',
-      savings: '₹2,000'
+      desc: 'Brilliant Austrian solitaire pendant paired with matching solitaire drop earrings.',
+      editorialImg: 'solystra_assets/banners/banner_pc_1.jpg',
+      imagePosition: 'object-[72%_center]',
+      items: [
+        {
+          id: 'c2-item-1',
+          productId: 'universal-embrace',
+          type: 'NECKLACE',
+          name: 'Universal Solitaire Drop Necklace',
+          metal: 'Pure 925 Silver • Brilliant Cut Solitaire',
+          price: 2799,
+          mrp: 3999,
+          image: 'solystra_assets/categories/cat_necklaces.png',
+          hotspot: { x: 32.3, y: 76.2, pcX: 46.1, pcY: 78.2, label: 'Solitaire Pendant Necklace' }
+        },
+        {
+          id: 'c2-item-2',
+          productId: 'classic-knot-earrings',
+          type: 'EARRINGS',
+          name: 'Solitaire Drop Earrings',
+          metal: 'Pure 925 Silver • Cushion Cut Drop',
+          price: 2299,
+          mrp: 3299,
+          image: 'solystra_assets/categories/cat_earrings.png',
+          hotspot: { x: 42.7, y: 40.6, pcX: 53.6, pcY: 41.8, label: 'Solitaire Drop Earrings' }
+        }
+      ],
+      bundlePrice: 5098,
+      originalPrice: 7298,
+      savings: 2200
     },
     {
       id: 'combo-3',
-      name: 'Imperial Chandelier Bridal Set',
-      tag: '18K GOLD VERMEIL',
-      comboText: 'Combo 03 / 03',
-      img: 'solystra_assets/banners/banner_pc_2.jpg',
-      title: 'Imperial Tennis & Chandelier Suite',
-      desc: 'Graduated tennis choker necklace harmonized with multi-tiered chandelier earrings.',
-      item1: { name: 'Graduated Tennis Choker', metal: '18K Gold Vermeil • Articulated Settings', price: '₹5,499', mrp: '₹7,999' },
-      item2: { name: 'Imperial Chandelier Drops', metal: 'Pure 925 Silver • Multi-Tier Drops', price: '₹3,499', mrp: '₹4,999' },
-      bundlePrice: '₹8,998',
-      originalPrice: '₹12,998',
-      savings: '₹4,000'
+      name: 'Gala Choker & Chandelier Set',
+      tag: 'FINE EVENING WEAR',
+      desc: 'Graduated tennis choker in pure silver paired with tiered chandelier drops.',
+      editorialImg: 'solystra_assets/generated/cocktail_glam.jpg',
+      imagePosition: 'object-center',
+      items: [
+        {
+          id: 'c3-item-1',
+          productId: 'golden-meadow-necklace-set-925-sterling-silver',
+          type: 'NECKLACE',
+          name: 'Grand Solitaire Tennis Choker',
+          metal: 'Pure 925 Silver • Graduated Tennis Links',
+          price: 5499,
+          mrp: 7999,
+          image: 'solystra_assets/categories/cat_necklaces.png',
+          hotspot: { x: 52.5, y: 50.5, pcX: 52.5, pcY: 50.5, label: 'Graduated Tennis Choker' }
+        },
+        {
+          id: 'c3-item-2',
+          productId: 'greek-pattern-hoops',
+          type: 'EARRINGS',
+          name: 'Imperial Chandelier Drops',
+          metal: 'Pure 925 Silver • Multi-Tier Drops',
+          price: 3499,
+          mrp: 4999,
+          image: 'solystra_assets/categories/cat_earrings.png',
+          hotspot: { x: 60.8, y: 34.5, pcX: 60.8, pcY: 34.5, label: 'Imperial Chandelier Drops' }
+        }
+      ],
+      bundlePrice: 8998,
+      originalPrice: 12998,
+      savings: 4000
     }
   ];
 
-  let currentComboIdx = 1;
-  function initStylingCombos() {
-    const comboSection = document.querySelector('section:has(h2:contains("Shop the Complete Look"))') ||
-      Array.from(document.querySelectorAll('section')).find(s => s.textContent.includes('Shop the Complete Look'));
-    if (!comboSection) return;
+  let currentComboIdx = 1; // Default to Classic Solitaire Set
+  let isComboSectionHovered = false;
+  let activeHotspotItemId = null;
+  let comboTimer = null;
 
-    const countText = comboSection.querySelector('.font-mono');
-    const dots = comboSection.querySelectorAll('.flex.items-center.gap-1\.5 button');
-    const mainImg = comboSection.querySelector('img[alt*="Set"]');
+  function initStylingCombos() {
+    const grid = document.getElementById('curated-combo-grid');
+    if (!grid) return;
 
     function renderCombo(idx) {
       currentComboIdx = idx;
-      const data = COMBOS_DATA[idx];
-      if (!data) return;
+      activeHotspotItemId = null;
+      const combo = STYLING_COMBOS[idx];
+      if (!combo) return;
 
-      if (countText) countText.textContent = data.comboText;
+      // Update counter
+      const counterEl = document.getElementById('curated-combo-counter');
+      if (counterEl) {
+        counterEl.textContent = 'Combo 0' + (idx + 1) + ' / 0' + STYLING_COMBOS.length;
+      }
 
-      dots.forEach((dot, dIdx) => {
+      // Update dot indicators
+      const dotButtons = document.querySelectorAll('#curated-combo-dots button');
+      dotButtons.forEach((btn, dIdx) => {
         if (dIdx === idx) {
-          dot.className = 'h-1.5 rounded-full transition-all duration-300 cursor-pointer w-5 bg-[#7A152E]';
+          btn.className = 'h-1.5 rounded-full transition-all duration-300 cursor-pointer w-5 bg-[#7A152E]';
         } else {
-          dot.className = 'h-1.5 rounded-full transition-all duration-300 cursor-pointer w-1.5 bg-stone-300 hover:bg-stone-400';
+          btn.className = 'h-1.5 rounded-full transition-all duration-300 cursor-pointer w-1.5 bg-stone-300 hover:bg-stone-400';
         }
       });
 
-      if (mainImg) {
-        mainImg.src = data.img;
-        mainImg.alt = data.name;
+      // Build hotspots HTML
+      const hotspotsHtml = combo.items.map(item => {
+        if (!item.hotspot) return '';
+        const pcX = item.hotspot.pcX !== undefined ? item.hotspot.pcX : item.hotspot.x;
+        const pcY = item.hotspot.pcY !== undefined ? item.hotspot.pcY : item.hotspot.y;
+        const isBottom = (item.hotspot.y > 55 || pcY > 55);
+        const isRight = (item.hotspot.x > 60 || pcX > 60);
+
+        const popoverPos = (isBottom ? 'bottom-full mb-3' : 'top-full mt-3') + ' ' +
+                           (isRight ? 'right-0 sm:-right-4' : 'left-0 sm:-left-4');
+
+        return `
+          <div class="combo-hotspot-pin absolute -translate-x-1/2 -translate-y-1/2 z-20"
+               data-hotspot-id="${item.id}"
+               style="--dot-x-mob: ${item.hotspot.x}%; --dot-y-mob: ${item.hotspot.y}%; --dot-x-pc: ${pcX}%; --dot-y-pc: ${pcY}%;">
+            <div class="relative group/hotspot cursor-pointer">
+              <!-- Subtle micro pulse -->
+              <span class="absolute -inset-0.5 rounded-full bg-[#7A152E]/35 animate-ping pointer-events-none"></span>
+
+              <!-- Small Luxury Pinpoint Button -->
+              <button type="button"
+                      data-pin-btn="${item.id}"
+                      class="w-3 h-3 sm:w-3.5 sm:h-3.5 rounded-full flex items-center justify-center transition-all duration-300 border border-[#D4AF37] shadow-sm cursor-pointer bg-[#7A152E] hover:scale-125"
+                      aria-label="View ${item.name}">
+                <span class="w-1 h-1 rounded-full bg-white shadow-xs pointer-events-none"></span>
+              </button>
+
+              <!-- Interactive Luxury Tooltip Popover -->
+              <div data-popover="${item.id}"
+                   class="absolute z-30 transition-all duration-300 pointer-events-auto ${popoverPos} opacity-0 scale-95 invisible min-w-[210px] sm:min-w-[230px] p-2.5 rounded-xl bg-[#1C1819]/95 backdrop-blur-md border border-[#C5A059]/60 shadow-[0_15px_35px_rgba(0,0,0,0.6)]">
+                <div class="flex items-center gap-2.5">
+                  <img src="${item.image}" alt="${item.name}" class="w-11 h-11 rounded-lg object-cover bg-white/10 border border-white/20 shrink-0">
+                  <div class="flex-1 min-w-0 text-left">
+                    <span class="text-[9px] uppercase tracking-wider font-bold text-[#E5C985] block">${item.type}</span>
+                    <h5 class="text-xs font-serif font-normal text-white truncate">${item.name}</h5>
+                    <div class="text-[11px] font-bold text-[#E5C985] mt-0.5">₹${item.price.toLocaleString('en-IN')}</div>
+                  </div>
+                </div>
+                <div class="mt-2 pt-1.5 border-t border-white/10 flex items-center justify-between text-[9.5px] text-stone-300">
+                  <span class="text-stone-400">Click to view piece</span>
+                  <a href="product.html?id=${item.productId}" class="text-[#E5C985] font-bold flex items-center gap-1 hover:underline">
+                    <span>Shop Piece</span>
+                    <svg class="lucide lucide-arrow-right w-2.5 h-2.5" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="24"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        `;
+      }).join('');
+
+      // Build right-hand matched pieces HTML
+      const itemsHtml = combo.items.map(item => `
+        <div data-combo-item="${item.id}"
+             data-product-id="${item.productId}"
+             class="flex items-center gap-3.5 p-3 rounded-xl transition-all cursor-pointer group border bg-[#FAF8F5]/80 border-[#EAE4DC] hover:border-[#7A152E]/60 hover:bg-white hover:shadow-2xs"
+             title="Click to view product details">
+          <img src="${item.image}" alt="${item.name}" class="w-14 h-14 rounded-xl object-cover border border-[#EAE4DC] bg-white shrink-0 group-hover:scale-105 transition-transform">
+          <div class="flex-1 min-w-0">
+            <div class="flex items-center gap-2">
+              <span class="text-[9.5px] text-[#7A152E] uppercase font-bold tracking-wider block">${item.type}</span>
+              <span class="text-[9px] text-[#C5A059] opacity-0 group-hover:opacity-100 transition-opacity font-semibold">View Piece ↗</span>
+            </div>
+            <h4 class="font-serif text-sm font-normal text-stone-900 truncate group-hover:text-[#7A152E] transition-colors mt-0.5">${item.name}</h4>
+            <div class="text-[11px] text-stone-500 truncate mt-0.5">${item.metal}</div>
+          </div>
+          <div class="text-right shrink-0">
+            <div class="font-bold text-sm text-[#7A152E]">₹${item.price.toLocaleString('en-IN')}</div>
+            <div class="text-[11px] text-stone-400 line-through">₹${item.mrp.toLocaleString('en-IN')}</div>
+          </div>
+        </div>
+      `).join('');
+
+      // Complete 2-Column HTML
+      grid.innerHTML = `
+        <!-- Left Column: Editorial Photo with Delicate Glowing Hotspots -->
+        <div id="combo-left-col" class="lg:col-span-6 h-[380px] sm:h-[420px] lg:h-[430px] relative rounded-2xl overflow-hidden shadow-xs border border-[#EAE4DC] group bg-stone-900 select-none">
+          <img src="${combo.editorialImg}" alt="${combo.name}" draggable="false" class="w-full h-full object-cover ${combo.imagePosition} group-hover:scale-102 transition-transform duration-700 block pointer-events-none animate-fadeIn">
+          
+          <!-- Subtle ambient gradient in bottom 20% -->
+          <div class="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-black/80 via-black/25 to-transparent pointer-events-none"></div>
+
+          <!-- Glowing Hotspots -->
+          ${hotspotsHtml}
+
+          <!-- Bottom Editorial Tag & Name -->
+          <div class="absolute bottom-3 left-3 sm:bottom-4 sm:left-4 z-10 pointer-events-none max-w-[85%] sm:max-w-md">
+            <span class="text-[8px] xs:text-[9px] sm:text-[10px] uppercase tracking-widest text-[#E5C985] font-bold block mb-0.5 drop-shadow-xs">${combo.tag}</span>
+            <h3 class="font-serif text-sm xs:text-base sm:text-xl text-white font-normal leading-snug drop-shadow-sm whitespace-nowrap">${combo.name}</h3>
+          </div>
+        </div>
+
+        <!-- Right Column: Matched Pieces & Bundle Pricing -->
+        <div id="combo-right-col" class="lg:col-span-6 h-[380px] sm:h-[420px] lg:h-[430px] flex flex-col justify-between bg-white rounded-2xl p-5 sm:p-6 border border-[#EAE4DC] shadow-xs animate-fadeIn">
+          <div>
+            <div class="flex items-start justify-between pb-3 border-b border-[#EAE4DC] gap-2">
+              <div>
+                <span class="text-[9.5px] text-[#7A152E] uppercase tracking-widest font-bold block">${combo.tag}</span>
+                <h3 class="text-sm sm:text-base font-serif font-normal text-stone-900 leading-tight mt-0.5">${combo.name}</h3>
+              </div>
+              <span class="text-[10.5px] text-[#7A152E] font-bold bg-[#7A152E]/8 px-2.5 py-1 rounded-full border border-[#7A152E]/20 uppercase tracking-wider shrink-0">
+                Save ₹${combo.savings.toLocaleString('en-IN')}
+              </span>
+            </div>
+
+            <!-- 2 Equal-Height Matched Pieces Cards -->
+            <div class="space-y-2.5 mt-3.5">
+              ${itemsHtml}
+            </div>
+          </div>
+
+          <!-- Bundle Pricing & Action Bar -->
+          <div class="pt-3.5 mt-3 border-t border-[#EAE4DC] flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+            <div>
+              <div class="text-[10px] text-stone-500 uppercase tracking-wider font-semibold">Complete Set Price</div>
+              <div class="flex items-baseline gap-2 mt-0.5">
+                <span class="font-serif text-2xl sm:text-3xl font-bold text-[#7A152E]">₹${combo.bundlePrice.toLocaleString('en-IN')}</span>
+                <span class="text-xs text-stone-400 line-through font-sans">₹${combo.originalPrice.toLocaleString('en-IN')}</span>
+                <span class="text-[10px] font-bold text-[#7A152E] uppercase bg-[#7A152E]/10 px-2 py-0.5 rounded-full border border-[#7A152E]/20">Save ₹${combo.savings.toLocaleString('en-IN')}</span>
+              </div>
+            </div>
+
+            <button type="button" id="btn-add-combo-to-bag" class="px-6 py-2.5 bg-[#7A152E] hover:bg-[#590D1E] text-white text-xs font-bold uppercase tracking-wider rounded-xl shadow-md hover:shadow-lg transition-all cursor-pointer flex items-center justify-center gap-2 active:scale-98 shrink-0 group">
+              <svg aria-hidden="true" class="w-4 h-4 shrink-0 -translate-y-px transition-transform group-hover:-translate-y-0.5" fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <defs><linearGradient id="solystraChampagneGoldCombo" x1="0%" x2="100%" y1="0%" y2="100%"><stop offset="0%" stop-color="#FFF6D8"></stop><stop offset="35%" stop-color="#F9E2A8"></stop><stop offset="70%" stop-color="#E5BE64"></stop><stop offset="100%" stop-color="#D4AF37"></stop></linearGradient></defs>
+                <path d="M6 2L3 6V20C3 21.1 3.9 22 5 22H19C20.1 22 21 21.1 21 20V6L18 2H6Z" stroke="url(#solystraChampagneGoldCombo)" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+                <path d="M3 6H21" stroke="url(#solystraChampagneGoldCombo)" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+                <path d="M16 10C16 12.21 14.21 14 12 14C9.79 14 8 12.21 8 10" stroke="url(#solystraChampagneGoldCombo)" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+              </svg>
+              <span class="leading-none">Add Look to Bag</span>
+            </button>
+          </div>
+        </div>
+      `;
+
+      // Helper function to set active hotspot
+      function setActiveHotspot(itemId) {
+        activeHotspotItemId = itemId;
+        const allPins = grid.querySelectorAll('.combo-hotspot-pin');
+        const allCards = grid.querySelectorAll('[data-combo-item]');
+
+        allPins.forEach(pin => {
+          const pId = pin.getAttribute('data-hotspot-id');
+          const btn = pin.querySelector('button');
+          const popover = pin.querySelector('[data-popover]');
+          if (pId === itemId) {
+            if (btn) btn.className = 'w-3 h-3 sm:w-3.5 sm:h-3.5 rounded-full flex items-center justify-center transition-all duration-300 border border-[#D4AF37] shadow-sm cursor-pointer scale-125 bg-[#7A152E] ring-2 ring-[#D4AF37]';
+            if (popover) {
+              popover.classList.remove('opacity-0', 'scale-95', 'invisible');
+              popover.classList.add('opacity-100', 'scale-100', 'visible');
+            }
+          } else {
+            if (btn) btn.className = 'w-3 h-3 sm:w-3.5 sm:h-3.5 rounded-full flex items-center justify-center transition-all duration-300 border border-[#D4AF37] shadow-sm cursor-pointer bg-[#7A152E] hover:scale-125';
+            if (popover) {
+              popover.classList.remove('opacity-100', 'scale-100', 'visible');
+              popover.classList.add('opacity-0', 'scale-95', 'invisible');
+            }
+          }
+        });
+
+        allCards.forEach(card => {
+          const cId = card.getAttribute('data-combo-item');
+          if (cId === itemId) {
+            card.className = 'flex items-center gap-3.5 p-3 rounded-xl transition-all cursor-pointer group border bg-[#7A152E]/5 border-[#7A152E] shadow-sm ring-1 ring-[#7A152E]/20';
+          } else {
+            card.className = 'flex items-center gap-3.5 p-3 rounded-xl transition-all cursor-pointer group border bg-[#FAF8F5]/80 border-[#EAE4DC] hover:border-[#7A152E]/60 hover:bg-white hover:shadow-2xs';
+          }
+        });
+      }
+
+      // Attach hotspot pin hover and click listeners
+      grid.querySelectorAll('.combo-hotspot-pin').forEach(pin => {
+        const itemId = pin.getAttribute('data-hotspot-id');
+        const item = combo.items.find(i => i.id === itemId);
+
+        pin.addEventListener('mouseenter', () => setActiveHotspot(itemId));
+        pin.addEventListener('mouseleave', () => setActiveHotspot(null));
+        pin.addEventListener('click', (e) => {
+          e.stopPropagation();
+          if (activeHotspotItemId === itemId && item) {
+            window.location.href = 'product.html?id=' + item.productId;
+          } else {
+            setActiveHotspot(itemId);
+          }
+        });
+      });
+
+      // Attach right-hand item cards hover and click listeners
+      grid.querySelectorAll('[data-combo-item]').forEach(card => {
+        const itemId = card.getAttribute('data-combo-item');
+        const prodId = card.getAttribute('data-product-id');
+
+        card.addEventListener('mouseenter', () => setActiveHotspot(itemId));
+        card.addEventListener('mouseleave', () => setActiveHotspot(null));
+        card.addEventListener('click', () => {
+          if (prodId) window.location.href = 'product.html?id=' + prodId;
+        });
+      });
+
+      // Pause/resume auto-slide on hover
+      const leftCol = document.getElementById('combo-left-col');
+      const rightCol = document.getElementById('combo-right-col');
+      [leftCol, rightCol].forEach(col => {
+        if (col) {
+          col.addEventListener('mouseenter', () => { isComboSectionHovered = true; });
+          col.addEventListener('mouseleave', () => { isComboSectionHovered = false; });
+        }
+      });
+
+      // Wire "Add Look to Bag" button
+      const addBagBtn = document.getElementById('btn-add-combo-to-bag');
+      if (addBagBtn) {
+        addBagBtn.addEventListener('click', () => {
+          combo.items.forEach(item => {
+            let prod = findProduct(item.productId);
+            if (!prod) {
+              prod = {
+                id: item.productId,
+                name: item.name,
+                price: item.price,
+                mrp: item.mrp,
+                images: [item.image],
+                metals: [item.metal]
+              };
+            }
+            window.addToCart(prod, item.metal, null, '', 1);
+          });
+          window.showToast('Curated Look Added', combo.name + ' (2 pieces) added to your private bag.');
+          window.openCartDrawer();
+        });
       }
     }
 
-    dots.forEach((dot, idx) => {
-      dot.addEventListener('click', () => renderCombo(idx));
+    // Attach click handlers to top dot selectors
+    const dotButtons = document.querySelectorAll('#curated-combo-dots button');
+    dotButtons.forEach((btn, idx) => {
+      btn.addEventListener('click', () => {
+        renderCombo(idx);
+        startComboTimer();
+      });
     });
 
-    setInterval(() => {
-      const next = (currentComboIdx + 1) % COMBOS_DATA.length;
-      renderCombo(next);
-    }, 5500);
+    function startComboTimer() {
+      if (comboTimer) clearInterval(comboTimer);
+      comboTimer = setInterval(() => {
+        if (!isComboSectionHovered && activeHotspotItemId === null) {
+          const next = (currentComboIdx + 1) % STYLING_COMBOS.length;
+          renderCombo(next);
+        }
+      }, 4800);
+    }
+
+    // Initial render: start at Combo 2 (Classic Solitaire Set) or Combo 1
+    renderCombo(1);
+    startComboTimer();
   }
 
   /* ==========================================================================
