@@ -26,16 +26,19 @@ walkthrough.md
 !zavya_assets/**
 
 # Legacy static scrape files
-index_legacy.html
-solystra_index.html
-solystra_products.json
-solystra_catalog_data.json
-solystra_collections.json
-solystra_extracted_urls.json
-script.js
-styles.css
-*.html
-!index.html
+/index_legacy.html
+/solystra_index.html
+/solystra_products.json
+/solystra_catalog_data.json
+/solystra_collections.json
+/solystra_extracted_urls.json
+/script.js
+/styles.css
+/*.html
+!/index.html
+
+# Plain HTML/CSS version
+!jewellery-design-html/**
 
 # Exclude raw unused external video/image scrape dumps
 zavya_assets/**

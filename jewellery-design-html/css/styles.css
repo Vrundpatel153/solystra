@@ -1,0 +1,240 @@
+/* ============================================================
+   SOLYSTRA JEWELS - Luxury High Jewellery Design System
+   Exact visual & functional replica in pure HTML/CSS/Vanilla JS
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Alex+Brush&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,600&family=Montserrat:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
+@import url('tailwind.css');
+
+/* Base Styles & Typography */
+:root {
+  --color-primary: #7A152E;
+  --color-primary-dark: #590D1E;
+  --color-primary-light: rgba(122, 21, 46, 0.08);
+  --color-gold: #C5A059;
+  --color-gold-dark: #9E7B35;
+  --color-gold-light: #F5E0A3;
+  --color-bg: #FAF8F5;
+  --color-surface: #FFFFFF;
+  --color-surface-subtle: #F7F4EE;
+  --color-border: #EAE4DC;
+  --color-text-main: #1C1917;
+  --color-text-muted: #78716C;
+  --color-text-subtle: #A8A29E;
+}
+
+html {
+  font-family: 'Montserrat', 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  color: #231F20;
+  background-color: #FAF8F5;
+  scroll-behavior: smooth;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  overflow-x: hidden;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+h1, h2, h3, h4, h5, h6, .font-serif {
+  font-family: 'Cormorant Garamond', Garamond, 'Times New Roman', serif;
+  letter-spacing: -0.01em;
+  font-feature-settings: 'lnum' 1;
+}
+
+.font-sans {
+  font-family: 'Montserrat', 'Plus Jakarta Sans', system-ui, sans-serif;
+}
+
+.font-signature {
+  font-family: 'Alex Brush', cursive;
+}
+
+.font-cinzel {
+  font-family: 'Cinzel', serif;
+  letter-spacing: 0.06em;
+}
+
+::selection {
+  background-color: #7A152E;
+  color: #FFFFFF;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #FAF8F5;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #C5A059;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #9E7B35;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Luxury Card Shine Animation */
+@keyframes luxury-card-shine-sweep {
+  0% { left: -70%; opacity: 0; }
+  6% { opacity: 1; }
+  42% { left: 150%; opacity: 1; }
+  43%, 100% { left: 150%; opacity: 0; }
+}
+
+.luxury-card-shine-beam {
+  position: absolute;
+  top: -120%;
+  left: -70%;
+  width: 110px;
+  height: 340%;
+  transform: rotate(25deg);
+  will-change: left, opacity;
+  background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.05) 15%, rgba(255,255,255,0.7) 46%, rgba(255,255,255,0.98) 50%, rgba(255,255,255,0.7) 54%, rgba(255,255,255,0.05) 85%, transparent 100%);
+  filter: drop-shadow(0 0 16px rgba(255,255,255,0.9));
+  animation: luxury-card-shine-sweep 3.6s cubic-bezier(0.4,0,0.2,1) infinite;
+  pointer-events: none;
+  z-index: 25;
+}
+
+/* Gold Sheen Animation */
+@keyframes modern-gold-sheen {
+  0% { transform: translate3d(-160%, 0, 0) rotate(20deg); opacity: 0; }
+  15% { opacity: 0.75; }
+  45% { transform: translate3d(220%, 0, 0) rotate(20deg); opacity: 0.75; }
+  46%, 100% { transform: translate3d(220%, 0, 0) rotate(20deg); opacity: 0; }
+}
+
+.gold-modern-sheen {
+  position: absolute;
+  top: -40%;
+  left: 0;
+  width: 260px;
+  height: 200%;
+  transform: translate3d(-160%, 0, 0) rotate(20deg);
+  will-change: transform, opacity;
+  background: linear-gradient(90deg, transparent 0%, rgba(212,175,55,0.04) 20%, rgba(245,224,163,0.35) 45%, rgba(255,253,247,0.55) 50%, rgba(245,224,163,0.35) 55%, rgba(212,175,55,0.04) 80%, transparent 100%);
+  animation: modern-gold-sheen 6s cubic-bezier(0.4,0,0.2,1) infinite;
+  pointer-events: none;
+  z-index: 20;
+}
+
+/* Gradients */
+.royal-gradient-bg {
+  background: linear-gradient(135deg, #8B1E3F 0%, #7A152E 50%, #590D1E 100%);
+}
+
+.champagne-gradient-bg {
+  background: linear-gradient(135deg, #EAD7AE 0%, #C5A059 50%, #9E7B35 100%);
+}
+
+/* Toast Notifications */
+#toast-container {
+  position: fixed;
+  bottom: 5.5rem;
+  right: 1.5rem;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  pointer-events: none;
+}
+
+.toast-item {
+  pointer-events: auto;
+  background: rgba(28, 25, 23, 0.95);
+  color: #FAF8F5;
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(197, 160, 89, 0.35);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+  border-radius: 9999px;
+  padding: 0.65rem 1.25rem;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  animation: toast-in 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  transition: all 0.3s ease;
+}
+
+@keyframes toast-in {
+  from { opacity: 0; transform: translateY(12px) scale(0.96); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.toast-item.toast-out {
+  opacity: 0;
+  transform: translateY(-8px) scale(0.95);
+}
+
+/* Drawer & Modal transitions */
+.drawer-backdrop {
+  transition: opacity 0.35s ease, backdrop-filter 0.35s ease;
+}
+
+.drawer-panel {
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.modal-backdrop {
+  transition: opacity 0.3s ease;
+}
+
+.modal-content {
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
+}
+
+/* Product Card Image Zoom */
+.product-card-img-wrap img {
+  transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.product-card-img-wrap:hover img.primary-img {
+  transform: scale(1.06);
+}
+
+/* Bottom Bar Safe Spacing on Mobile */
+@media (max-width: 1023px) {
+  body {
+    padding-bottom: 4rem;
+  }
+}
