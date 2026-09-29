@@ -837,36 +837,540 @@
     });
   }
 
-  // Checkout Page initialization
+  // Checkout Page initialization (Full 3-Step Interactive Experience matching React 1:1)
   function initCheckoutPage() {
-    const cart = getCart();
-    const subtotal = cart.reduce((acc, item) => acc + (item.price * item.quantity), 0);
-    const promo = getAppliedPromo();
-    let discount = 0;
-    if (promo === 'ROYAL10' || promo === 'SOULY10') {
-      discount = Math.round(subtotal * 0.10);
-    } else if (promo === 'VAULT500') {
-      discount = Math.min(500, subtotal);
-    }
-    const total = Math.max(0, subtotal - discount);
+    let currentStep = 1;
+    let selectedPaymentMode = 'upi';
+    let deliverySpeedCost = 0;
+    let upiTimerInterval = null;
+    let upiSecondsLeft = 585; // 09:45
+    let lastOrderDetails = null;
 
-    // Wire place order button
-    const placeBtn = document.querySelector('button:has(svg.lucide-lock)');
-    if (placeBtn) {
-      placeBtn.onclick = function (e) {
-        e.preventDefault();
+    let cart = getCart();
+    // If cart is empty, provide default luxury atelier piece so checkout is always fully testable
+    if (!cart || cart.length === 0) {
+      cart = [{
+        id: 'universal-embrace',
+        name: 'Accent Circle 925 Silver Necklace',
+        price: 2798,
+        mrp: 3861,
+        image: 'solystra_assets/products/accent-circle-925-silver-necklace/angle_1.png',
+        metal: 'Pure 925 Silver',
+        quantity: 1
+      }];
+    }
+
+    // Calculate totals
+    function computeTotals() {
+      const subtotal = cart.reduce((acc, item) => acc + (item.price * item.quantity), 0);
+      const mrpTotal = cart.reduce((acc, item) => acc + ((item.mrp || item.price) * item.quantity), 0);
+      const savings = Math.max(0, mrpTotal - subtotal);
+
+      const promo = getAppliedPromo();
+      let discount = 0;
+      if (promo === 'ROYAL10' || promo === 'SOULY10') {
+        discount = Math.round(subtotal * 0.10);
+      } else if (promo === 'VAULT500') {
+        discount = Math.min(500, subtotal);
+      }
+
+      const grandTotal = Math.max(0, subtotal - discount + deliverySpeedCost);
+
+      return { subtotal, mrpTotal, savings, discount, grandTotal, promo };
+    }
+
+    // Render Order Summary Sidebar
+    function renderOrderSummary() {
+      const totals = computeTotals();
+      const count = cart.reduce((acc, item) => acc + item.quantity, 0);
+
+      // Headings
+      const heading = document.getElementById('checkout-summary-heading');
+      if (heading) heading.textContent = 'Order Summary (' + count + (count === 1 ? ' Piece)' : ' Pieces)');
+
+      const mobTotal = document.getElementById('mobile-summary-total');
+      if (mobTotal) mobTotal.textContent = formatINR(totals.grandTotal);
+
+      // Items list (Desktop & Mobile)
+      const listEl = document.getElementById('checkout-summary-items');
+      const mobListEl = document.getElementById('mobile-summary-items-list');
+
+      const itemsHtml = cart.map(item => `
+        <div class="py-3 flex items-center gap-3.5">
+          <div class="relative w-14 h-14 rounded-xl overflow-hidden border border-stone-200 shrink-0 bg-stone-50">
+            <img src="${item.image}" alt="${item.name}" class="w-full h-full object-cover">
+            <span class="absolute top-0 right-0 w-4 h-4 rounded-bl-lg bg-[#7A152E] text-white text-[9px] flex items-center justify-center font-mono">${item.quantity}</span>
+          </div>
+          <div class="flex-1 min-w-0 text-xs">
+            <h4 class="font-serif font-medium text-stone-900 truncate">${item.name}</h4>
+            <div class="text-[11px] text-stone-500 mt-0.5">${item.metal || 'Pure 925 Silver'} ${item.size ? '• Size ' + item.size : ''}</div>
+          </div>
+          <div class="text-right shrink-0 text-xs">
+            <div class="font-bold text-stone-900">${formatINR(item.price * item.quantity)}</div>
+            ${item.mrp && item.mrp > item.price ? '<div class="text-[10px] text-stone-400 line-through">' + formatINR(item.mrp * item.quantity) + '</div>' : ''}
+          </div>
+        </div>
+      `).join('');
+
+      if (listEl) listEl.innerHTML = itemsHtml;
+      if (mobListEl) mobListEl.innerHTML = itemsHtml;
+
+      // Price breakdown
+      const mrpEl = document.getElementById('summary-mrp-total');
+      if (mrpEl) mrpEl.textContent = formatINR(totals.mrpTotal);
+
+      const savingsEl = document.getElementById('summary-savings-total');
+      if (savingsEl) savingsEl.textContent = '-' + formatINR(totals.savings);
+
+      // Discount row
+      const discountRow = document.getElementById('summary-discount-row');
+      const discountLabel = document.getElementById('summary-discount-label');
+      const discountVal = document.getElementById('summary-discount-val');
+      if (discountRow && discountLabel && discountVal) {
+        if (totals.discount > 0) {
+          discountRow.classList.remove('hidden');
+          discountLabel.textContent = 'Coupon Discount (' + totals.promo + ')';
+          discountVal.textContent = '-' + formatINR(totals.discount);
+        } else {
+          discountRow.classList.add('hidden');
+        }
+      }
+
+      // Grand Total
+      const grandTotalEl = document.getElementById('summary-grand-total');
+      if (grandTotalEl) grandTotalEl.textContent = formatINR(totals.grandTotal);
+
+      const payableHeader = document.getElementById('payable-amount-header');
+      if (payableHeader) payableHeader.textContent = 'Payable: ' + formatINR(totals.grandTotal);
+
+      const qrPayable = document.getElementById('qr-payable-text');
+      if (qrPayable) qrPayable.textContent = formatINR(totals.grandTotal);
+
+      const placeOrderText = document.getElementById('btn-place-order-text');
+      if (placeOrderText) placeOrderText.textContent = 'Place Order & Pay ' + formatINR(totals.grandTotal);
+    }
+
+    // Delivery speed change
+    document.querySelectorAll('input[name="deliveryMethod"]').forEach(radio => {
+      radio.addEventListener('change', function () {
+        deliverySpeedCost = this.value === 'express' ? 199 : 0;
+        renderOrderSummary();
+      });
+    });
+
+    // Step 1: Submit Delivery Address Form
+    window.handleAddressSubmit = function (e) {
+      if (e) e.preventDefault();
+
+      const email = document.getElementById('input-email')?.value.trim();
+      const phone = document.getElementById('input-phone')?.value.trim();
+      const firstName = document.getElementById('input-first-name')?.value.trim();
+      const lastName = document.getElementById('input-last-name')?.value.trim();
+      const address = document.getElementById('input-address')?.value.trim();
+      const locality = document.getElementById('input-locality')?.value.trim();
+      const pincode = document.getElementById('input-pincode')?.value.trim();
+      const city = document.getElementById('input-city')?.value.trim() || 'Mumbai';
+      const state = document.getElementById('input-state')?.value.trim() || 'Maharashtra';
+
+      if (!email || !email.includes('@')) {
+        window.showToast('Invalid Email', 'Please enter a valid email address.', 'info');
+        return;
+      }
+      if (!phone || phone.length !== 10 || !/^\d+$/.test(phone)) {
+        window.showToast('Invalid Mobile Number', 'Please enter a valid 10-digit Indian phone number.', 'info');
+        return;
+      }
+      if (!firstName || !lastName || !address) {
+        window.showToast('Required Fields Missing', 'Please fill in your name and delivery address.', 'info');
+        return;
+      }
+      if (!pincode || pincode.length !== 6 || !/^\d+$/.test(pincode)) {
+        window.showToast('Invalid PIN Code', 'Please enter a valid 6-digit Indian PIN code.', 'info');
+        return;
+      }
+
+      // Update Summary card
+      const custLine = document.getElementById('summary-customer-line');
+      if (custLine) custLine.textContent = firstName + ' ' + lastName + ' (+91 ' + phone + ')';
+
+      const addrLine = document.getElementById('summary-address-line');
+      if (addrLine) addrLine.textContent = address + (locality ? ', ' + locality : '') + ', ' + city + ', ' + state + ' - ' + pincode;
+
+      // Update button on COD tab if any
+      const codOtpBtn = document.getElementById('btn-send-cod-otp');
+      if (codOtpBtn) codOtpBtn.textContent = 'Send Verification OTP (+91 ' + phone + ')';
+
+      // Collapse Step 1 form, show summary card
+      document.getElementById('delivery-address-form')?.classList.add('hidden');
+      document.getElementById('delivery-address-summary')?.classList.remove('hidden');
+      document.getElementById('btn-edit-step-1')?.classList.remove('hidden');
+
+      // Update Step 1 badge to green checkmark
+      const s1Badge = document.getElementById('step-1-badge');
+      if (s1Badge) {
+        s1Badge.className = 'w-8 h-8 rounded-full bg-emerald-700 text-white text-xs font-bold flex items-center justify-center';
+        s1Badge.innerHTML = '<svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+      }
+
+      // Update Breadcrumbs: Step 1 completed, Step 2 active
+      const b1 = document.getElementById('breadcrumb-step-1');
+      const b2 = document.getElementById('breadcrumb-step-2');
+      if (b1) b1.className = 'flex items-center gap-1.5 text-emerald-700 font-bold';
+      if (b2) {
+        b2.className = 'flex items-center gap-1.5 text-[#7A152E] font-bold';
+        const circle = b2.querySelector('span');
+        if (circle) circle.className = 'w-5 h-5 rounded-full bg-[#7A152E] text-white text-[10px] flex items-center justify-center font-mono';
+      }
+
+      // Unlock Step 2 Payment Gateway
+      const step2Card = document.getElementById('checkout-step-2-card');
+      if (step2Card) {
+        step2Card.classList.remove('opacity-70', 'pointer-events-none');
+        step2Card.classList.add('ring-2', 'ring-[#7A152E]/10');
+      }
+
+      const s2Badge = document.getElementById('step-2-badge');
+      if (s2Badge) {
+        s2Badge.className = 'w-8 h-8 rounded-full bg-[#7A152E] text-white text-xs font-bold flex items-center justify-center font-mono';
+      }
+
+      currentStep = 2;
+      startUpiCountdown();
+      window.showToast('Delivery Address Confirmed', 'Proceeding to secure payment authorization.');
+
+      // Smooth scroll to payment section
+      step2Card?.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    };
+
+    // Step 1: Edit button
+    window.editDeliveryStep = function () {
+      document.getElementById('delivery-address-form')?.classList.remove('hidden');
+      document.getElementById('delivery-address-summary')?.classList.add('hidden');
+      document.getElementById('btn-edit-step-1')?.classList.add('hidden');
+
+      const s1Badge = document.getElementById('step-1-badge');
+      if (s1Badge) {
+        s1Badge.className = 'w-8 h-8 rounded-full bg-[#7A152E] text-white text-xs font-bold flex items-center justify-center font-mono';
+        s1Badge.textContent = '1';
+      }
+
+      const step2Card = document.getElementById('checkout-step-2-card');
+      if (step2Card) {
+        step2Card.classList.add('opacity-70', 'pointer-events-none');
+        step2Card.classList.remove('ring-2', 'ring-[#7A152E]/10');
+      }
+
+      const s2Badge = document.getElementById('step-2-badge');
+      if (s2Badge) {
+        s2Badge.className = 'w-8 h-8 rounded-full bg-stone-300 text-stone-700 text-xs font-bold flex items-center justify-center font-mono';
+      }
+
+      const b1 = document.getElementById('breadcrumb-step-1');
+      const b2 = document.getElementById('breadcrumb-step-2');
+      if (b1) b1.className = 'flex items-center gap-1.5 text-[#7A152E] font-bold';
+      if (b2) {
+        b2.className = 'flex items-center gap-1.5 text-stone-400';
+        const circle = b2.querySelector('span');
+        if (circle) circle.className = 'w-5 h-5 rounded-full text-[10px] flex items-center justify-center bg-stone-200 text-stone-600 font-mono';
+      }
+
+      currentStep = 1;
+    };
+
+    // Payment Mode Tabs
+    window.selectPaymentTab = function (modeId) {
+      selectedPaymentMode = modeId;
+      const modes = ['upi', 'card', 'netbanking', 'cod'];
+
+      modes.forEach(m => {
+        const btn = document.getElementById('tab-btn-' + m);
+        const panel = document.getElementById('payment-panel-' + m);
+        if (m === modeId) {
+          if (btn) {
+            btn.className = 'p-3 rounded-2xl border text-left transition-all cursor-pointer flex flex-col justify-between border-[#7A152E] bg-[#FAF8F5] ring-2 ring-[#7A152E]/15 shadow-sm';
+            const icon = btn.querySelector('svg');
+            if (icon) icon.className = icon.className.baseVal ? icon.className.baseVal.replace(/text-stone-400/g, 'text-[#7A152E]') : 'w-5 h-5 text-[#7A152E]';
+            const label = btn.querySelector('.font-bold');
+            if (label) label.className = 'font-bold text-xs text-[#7A152E]';
+          }
+          if (panel) panel.classList.remove('hidden');
+        } else {
+          if (btn) {
+            btn.className = 'p-3 rounded-2xl border text-left transition-all cursor-pointer flex flex-col justify-between border-stone-200 bg-white hover:border-stone-300';
+            const icon = btn.querySelector('svg');
+            if (icon) icon.className = icon.className.baseVal ? icon.className.baseVal.replace(/text-\[#7A152E\]/g, 'text-stone-400') : 'w-5 h-5 text-stone-400';
+            const label = btn.querySelector('.font-bold');
+            if (label) label.className = 'font-bold text-xs text-stone-900';
+          }
+          if (panel) panel.classList.add('hidden');
+        }
+      });
+    };
+
+    // UPI App Selector
+    window.selectUpiApp = function (btn) {
+      document.querySelectorAll('.upi-app-btn').forEach(b => {
+        b.className = 'upi-app-btn py-2.5 px-3 rounded-xl border text-xs font-semibold flex items-center justify-center gap-1.5 transition-all cursor-pointer bg-white/60 border-stone-200 text-stone-700 hover:bg-white';
+      });
+      btn.className = 'upi-app-btn py-2.5 px-3 rounded-xl border text-xs font-semibold flex items-center justify-center gap-1.5 transition-all cursor-pointer bg-white border-[#7A152E] text-[#7A152E] shadow-sm ring-1 ring-[#7A152E]';
+    };
+
+    // UPI ID verify
+    window.verifyUpiId = function () {
+      const vpa = document.getElementById('upi-vpa-input')?.value.trim();
+      if (!vpa || !vpa.includes('@')) {
+        window.showToast('Invalid UPI ID', 'Please enter a valid UPI address (e.g. name@okhdfcbank).', 'info');
+      } else {
+        window.showToast('UPI Address Verified', vpa + ' is active and ready for one-click payment.');
+      }
+    };
+
+    // UPI Timer Countdown
+    function startUpiCountdown() {
+      if (upiTimerInterval) clearInterval(upiTimerInterval);
+      upiTimerInterval = setInterval(() => {
+        if (upiSecondsLeft > 0) {
+          upiSecondsLeft--;
+          const m = String(Math.floor(upiSecondsLeft / 60)).padStart(2, '0');
+          const s = String(upiSecondsLeft % 60).padStart(2, '0');
+          const el = document.getElementById('upi-countdown');
+          if (el) el.textContent = m + ':' + s;
+        } else {
+          clearInterval(upiTimerInterval);
+        }
+      }, 1000);
+    }
+
+    // Prefill demo card
+    window.prefillDemoCard = function () {
+      const numInput = document.getElementById('input-card-number');
+      const nameInput = document.getElementById('input-card-name');
+      const expInput = document.getElementById('input-card-expiry');
+      const cvvInput = document.getElementById('input-card-cvv');
+
+      if (numInput) numInput.value = '4532 8901 2345 9250';
+      if (nameInput) nameInput.value = 'VRUND SHAH';
+      if (expInput) expInput.value = '08/28';
+      if (cvvInput) cvvInput.value = '925';
+
+      window.updateCardPreview();
+      window.showToast('Test Visa Prefilled', 'Mock 256-bit test card credentials injected.');
+    };
+
+    // Update 3D card preview
+    window.updateCardPreview = function () {
+      let num = document.getElementById('input-card-number')?.value.replace(/\D/g, '') || '';
+      // Format with spaces
+      let formattedNum = num.match(/.{1,4}/g)?.join(' ') || num;
+      const numInput = document.getElementById('input-card-number');
+      if (numInput && numInput.value !== formattedNum) {
+        numInput.value = formattedNum;
+      }
+
+      const prevNum = document.getElementById('card-preview-number');
+      if (prevNum) prevNum.textContent = formattedNum || '•••• •••• •••• 9250';
+
+      const name = document.getElementById('input-card-name')?.value.toUpperCase() || '';
+      const prevName = document.getElementById('card-preview-name');
+      if (prevName) prevName.textContent = name || 'VRUND SHAH';
+
+      let exp = document.getElementById('input-card-expiry')?.value.replace(/\D/g, '') || '';
+      if (exp.length >= 3) exp = exp.slice(0, 2) + '/' + exp.slice(2, 4);
+      const expInput = document.getElementById('input-card-expiry');
+      if (expInput && expInput.value !== exp) expInput.value = exp;
+
+      const prevExp = document.getElementById('card-preview-expiry');
+      if (prevExp) prevExp.textContent = exp || '08/28';
+
+      // Brand
+      const brand = document.getElementById('card-preview-brand');
+      if (brand) {
+        if (num.startsWith('4')) brand.textContent = 'VISA';
+        else if (num.startsWith('5')) brand.textContent = 'MASTERCARD';
+        else if (num.startsWith('6')) brand.textContent = 'RUPAY';
+        else brand.textContent = 'CARD';
+      }
+    };
+
+    // Bank selector
+    window.selectBank = function (btn, name) {
+      document.querySelectorAll('.bank-btn').forEach(b => {
+        b.className = 'bank-btn p-3 rounded-xl border text-xs font-semibold text-center transition-all cursor-pointer border-stone-200 bg-white/60 text-stone-700 hover:bg-white';
+      });
+      btn.className = 'bank-btn p-3 rounded-xl border text-xs font-semibold text-center transition-all cursor-pointer border-[#7A152E] bg-white text-[#7A152E] shadow-sm ring-1 ring-[#7A152E]';
+      window.showToast('Bank Selected', name + ' authorized for net banking checkout.');
+    };
+
+    // COD OTP
+    window.sendCodOtp = function () {
+      const wrapper = document.getElementById('cod-otp-action-wrapper');
+      if (!wrapper) return;
+
+      wrapper.innerHTML = `
+        <div class="flex gap-2 items-center">
+          <input id="input-cod-otp" type="text" maxlength="4" placeholder="Enter OTP (Use: 9250)" class="w-48 px-3.5 py-2 rounded-xl border border-stone-200 bg-white font-mono text-center tracking-widest text-sm focus:border-[#7A152E] focus:outline-none"/>
+          <button type="button" onclick="window.verifyCodOtp()" class="px-4 py-2 bg-emerald-700 hover:bg-emerald-800 text-white rounded-xl font-semibold cursor-pointer">
+            Verify OTP
+          </button>
+        </div>
+      `;
+
+      window.showToast('OTP Dispatched', 'Demo OTP: 9250 sent to your registered phone.');
+    };
+
+    window.verifyCodOtp = function () {
+      const otp = document.getElementById('input-cod-otp')?.value.trim();
+      const wrapper = document.getElementById('cod-otp-action-wrapper');
+      if (otp === '9250' || (otp && otp.length === 4)) {
+        if (wrapper) {
+          wrapper.innerHTML = `
+            <div class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-emerald-100 text-emerald-800 font-semibold">
+              <svg class="w-4 h-4 text-emerald-700" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <span>Phone Number Verified for Cash on Delivery</span>
+            </div>
+          `;
+        }
+        window.showToast('COD Verified', 'Your order is approved for doorstep inspection.');
+      } else {
+        window.showToast('Incorrect OTP', 'Please enter demo OTP: 9250.', 'info');
+      }
+    };
+
+    // Coupon code apply on checkout
+    window.applyCheckoutCoupon = function (e) {
+      if (e) e.preventDefault();
+      const code = document.getElementById('checkout-coupon-input')?.value.trim();
+      if (!code) return;
+
+      if (code.toUpperCase() === 'ROYAL10' || code.toUpperCase() === 'SOULY10') {
+        setAppliedPromo(code.toUpperCase());
+        window.showToast('Privilege Code Applied', '10% privilege reduction unlocked.');
+      } else if (code.toUpperCase() === 'VAULT500') {
+        setAppliedPromo(code.toUpperCase());
+        window.showToast('Privilege Code Applied', 'Flat ₹500 vault credit applied.');
+      } else {
+        window.showToast('Invalid Code', 'Try ROYAL10 or VAULT500.', 'info');
+      }
+      renderOrderSummary();
+    };
+
+    window.useCheckoutPromo = function (code) {
+      const input = document.getElementById('checkout-coupon-input');
+      if (input) input.value = code;
+      setAppliedPromo(code);
+      renderOrderSummary();
+      window.showToast('Privilege Code Applied', code + ' applied successfully.');
+    };
+
+    // PLACE ORDER & TRANSACTION SIMULATION
+    window.handlePlaceOrder = function () {
+      const totals = computeTotals();
+      const modal = document.getElementById('checkout-processing-modal');
+      const stepText = document.getElementById('processing-step-text');
+
+      if (modal) modal.classList.remove('hidden');
+
+      const steps = [
+        'Authorizing 256-Bit Payment Gateway...',
+        'Generating BIS Hallmark Authenticity Certificate...',
+        'Confirming Insured BlueDart Air Courier Waybill...'
+      ];
+
+      let sIdx = 0;
+      const stepTimer = setInterval(() => {
+        sIdx++;
+        if (sIdx < steps.length && stepText) {
+          stepText.textContent = steps[sIdx];
+        }
+      }, 550);
+
+      setTimeout(() => {
+        clearInterval(stepTimer);
+        if (modal) modal.classList.add('hidden');
+
+        // Order generated
         const orderId = 'SLY-' + Math.floor(100000 + Math.random() * 900000);
+        const waybill = 'BD-AIR-' + Math.floor(100000 + Math.random() * 900000);
+
+        lastOrderDetails = {
+          orderId,
+          waybill,
+          total: totals.grandTotal,
+          items: [...cart],
+          date: new Date().toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric' })
+        };
+
+        // Clear shopping cart
         localStorage.removeItem(CART_KEY);
         updateBadges();
 
-        alert(`✨ Luxury Order Confirmed!\n\nOrder ID: ${orderId}\nTotal: ${formatINR(total)}\n\nThank you for choosing Solystra Jewels Atelier.\nA confirmation SMS & Email have been dispatched along with your insured BlueDart tracking number.`);
-        window.location.href = 'index.html';
-      };
-    }
+        // Render confirmation screen
+        const confOrderId = document.getElementById('confirmed-order-id');
+        if (confOrderId) confOrderId.textContent = orderId;
+
+        const confWaybill = document.getElementById('confirmed-waybill');
+        if (confWaybill) confWaybill.textContent = waybill;
+
+        const modalWaybill = document.getElementById('modal-waybill-text');
+        if (modalWaybill) modalWaybill.textContent = 'Waybill: ' + waybill;
+
+        // Render confirmed items
+        const confList = document.getElementById('confirmed-items-list');
+        if (confList) {
+          confList.innerHTML = cart.map(item => `
+            <div class="p-3 flex items-center justify-between gap-4">
+              <div class="flex items-center gap-3">
+                <img src="${item.image}" alt="${item.name}" class="w-12 h-12 rounded-lg object-cover border border-stone-200 bg-stone-50">
+                <div>
+                  <div class="font-medium text-xs text-stone-900">${item.name}</div>
+                  <div class="text-[11px] text-stone-500">${item.metal || 'Pure 925 Silver'} • Qty ${item.quantity}</div>
+                </div>
+              </div>
+              <div class="font-bold text-xs text-stone-900">
+                ${formatINR(item.price * item.quantity)}
+              </div>
+            </div>
+          `).join('');
+        }
+
+        // Hide main checkout, show confirmation view
+        document.getElementById('checkout-main-view')?.classList.add('hidden');
+        document.getElementById('checkout-confirmation-view')?.classList.remove('hidden');
+
+        // Breadcrumbs: all completed
+        const b1 = document.getElementById('breadcrumb-step-1');
+        const b2 = document.getElementById('breadcrumb-step-2');
+        const b3 = document.getElementById('breadcrumb-step-3');
+        if (b1) b1.className = 'flex items-center gap-1.5 text-emerald-700 font-bold';
+        if (b2) b2.className = 'flex items-center gap-1.5 text-emerald-700 font-bold';
+        if (b3) {
+          b3.className = 'flex items-center gap-1.5 text-[#7A152E] font-bold';
+          const circle = b3.querySelector('span');
+          if (circle) circle.className = 'w-5 h-5 rounded-full bg-[#7A152E] text-white text-[10px] flex items-center justify-center font-mono';
+        }
+
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+        window.showToast('Order Confirmed & Certified', 'Serial number registered with BIS Hallmark vault.');
+      }, 1800);
+    };
+
+    // Mock PDF download
+    window.downloadInvoiceMock = function () {
+      if (!lastOrderDetails) return;
+      alert(`📄 SOLYSTRA JEWELS TAX INVOICE\n\nInvoice Number: INV-${lastOrderDetails.orderId}\nDate: ${lastOrderDetails.date}\nTotal Paid: ${formatINR(lastOrderDetails.total)}\nGSTIN: 27AABCS1429M1ZB\n\n100% BIS Hallmarked 925 Sterling Silver Assurance Certificate Attached.\n(Mock PDF downloaded successfully)`);
+    };
+
+    // BlueDart modal
+    window.openBlueDartModal = function () {
+      document.getElementById('bluedart-tracking-modal')?.classList.remove('hidden');
+    };
+
+    // Initial render
+    renderOrderSummary();
+    window.updateCardPreview();
   }
 
-
-  // Hero Carousel Slider Controller
+    // Hero Carousel Slider Controller
   let currentHeroSlide = 2; // Default: Modern Classics
   window.setHeroSlide = function (idx) {
     currentHeroSlide = idx;
