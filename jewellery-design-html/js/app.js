@@ -865,4 +865,34 @@
     }
   }
 
+
+  // Hero Carousel Slider Controller
+  let currentHeroSlide = 2; // Default: Modern Classics
+  window.setHeroSlide = function (idx) {
+    currentHeroSlide = idx;
+    for (let i = 0; i < 4; i++) {
+      const slide = document.getElementById(`hero-slide-${i}`);
+      const dot = document.getElementById(`hero-dot-${i}`);
+      if (slide) {
+        if (i === idx) {
+          slide.className = 'absolute inset-0 transition-opacity duration-700 ease-in-out opacity-100 z-10';
+        } else {
+          slide.className = 'absolute inset-0 transition-opacity duration-700 ease-in-out opacity-0 z-0 pointer-events-none';
+        }
+      }
+      if (dot) {
+        if (i === idx) {
+          dot.className = 'h-1.5 rounded-full transition-all duration-300 cursor-pointer w-7 bg-[#C5A059] shadow-xs';
+        } else {
+          dot.className = 'h-1.5 rounded-full transition-all duration-300 cursor-pointer w-2 bg-white/40 hover:bg-white/70';
+        }
+      }
+    }
+  };
+
+  setInterval(() => {
+    const next = (currentHeroSlide + 1) % 4;
+    window.setHeroSlide(next);
+  }, 5500);
+
 })();
