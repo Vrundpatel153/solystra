@@ -3,7 +3,7 @@ import { useShop } from '../context/ShopContext';
 import { ProductCard } from '../components/ProductCard';
 import { getMetalBadgeInfo } from '../components/MetalPurityBadge';
 import { GoldShoppingBag } from '../components/GoldShoppingBag';
-import { DeliveryIcon, HallmarkIcon, ExchangeIcon, WarrantyIcon } from '../components/TrustBadges';
+import { TrustBadgesRow } from '../components/TrustBadges';
 import {
   ShieldCheck,
   Truck,
@@ -586,71 +586,9 @@ export const ProductDetailPage = ({ productId }) => {
               </p>
             </div>
 
-            {/* Color & Size Customization Area */}
+            {/* Size & Engraving Customization Area */}
             <div className="pt-1 pb-1 space-y-3 border-y border-stone-100 py-3">
-              
-              {/* 1. Dedicated Color Selection Row */}
-              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
-                <div className="flex items-center gap-2">
-                  <span className="text-xs font-semibold text-stone-800">
-                    Color:
-                  </span>
-                  <span className="text-xs text-[#7A152E] font-medium bg-rose-50 px-2 py-0.5 rounded-md border border-rose-100">
-                    {[
-                      { name: 'Pure 925 Silver', label: 'Silver' },
-                      { name: 'Rose Gold Plated', label: 'Rose Gold' },
-                      { name: '18K Gold Vermeil', label: '18K Gold' }
-                    ].find(m => m.name === selectedMetal)?.label || 'Silver'}
-                  </span>
-                </div>
-
-                <div className="flex items-center gap-1.5 flex-wrap">
-                  {[
-                    { 
-                      name: 'Pure 925 Silver', 
-                      label: 'Silver', 
-                      dotClass: 'bg-gradient-to-tr from-slate-400 via-slate-100 to-slate-300 border border-slate-300' 
-                    },
-                    { 
-                      name: 'Rose Gold Plated', 
-                      label: 'Rose Gold', 
-                      dotClass: 'bg-gradient-to-tr from-[#C9808C] via-[#FCE3E8] to-[#E5A8B2] border border-[#C9808C]/40' 
-                    },
-                    { 
-                      name: '18K Gold Vermeil', 
-                      label: '18K Gold', 
-                      dotClass: 'bg-gradient-to-tr from-[#946A1E] via-[#F7E7C4] to-[#C99D46] border border-[#946A1E]/50' 
-                    }
-                  ]
-                    .filter(m => {
-                      if (!product.metals || product.metals.length === 0) return true;
-                      if (product.metalType === 'gold') return m.name.includes('Gold') && !m.name.includes('Rose');
-                      if (product.metalType === 'rose') return m.name.includes('Rose');
-                      if (product.metalType === 'silver') return m.name.includes('Silver');
-                      return product.metals.some(pm => pm.toLowerCase().includes(m.label.toLowerCase()));
-                    })
-                    .map(m => {
-                    const isSelected = selectedMetal === m.name;
-                    return (
-                      <button
-                        key={m.name}
-                        type="button"
-                        onClick={() => setSelectedMetal(m.name)}
-                        className={`text-xs px-2.5 py-1 rounded-lg border flex items-center gap-1.5 transition-all cursor-pointer font-medium active:scale-95 ${
-                          isSelected
-                            ? 'border-[#7A152E] bg-[#7A152E] text-white shadow-xs'
-                            : 'border-stone-200 bg-white text-stone-700 hover:border-stone-300 hover:bg-stone-50'
-                        }`}
-                      >
-                        <span className={`w-2 h-2 rounded-full shrink-0 ${m.dotClass} ${isSelected ? 'ring-1 ring-white/60' : ''}`} />
-                        <span>{m.label}</span>
-                      </button>
-                    );
-                  })}
-                </div>
-              </div>
-
-              {/* 2. Dedicated Ring Sizes Row (Fully Responsive) */}
+              {/* Ring Sizes Row (Fully Responsive) */}
               {isRing && (
                 <div className="pt-2.5 border-t border-stone-100 space-y-2">
                   <div className="flex items-center justify-between">
@@ -778,62 +716,10 @@ export const ProductDetailPage = ({ productId }) => {
             </div>
 
             {/* 4. Solystra Atelier Trust Badges & Delivery Concierge */}
-            <div className="rounded-2xl bg-[#FAF6F0] border border-[#E8DFC8] p-3.5 sm:p-4 space-y-3.5 shadow-2xs">
+            <div className="rounded-2xl bg-[#FAF6F0] border border-[#E8DFC8]/60 p-3 sm:p-3.5 space-y-3 shadow-2xs">
               
-              {/* 4 Official Fine Jewellery Trust Badges (Exact match to Landing Page) */}
-              <div className="grid grid-cols-4 gap-1 sm:gap-2 text-center">
-                {/* Badge 1: Insured Delivery */}
-                <div className="flex flex-col items-center group cursor-default">
-                  <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-xl bg-white border border-[#E8DFC8] flex items-center justify-center text-[#7A152E] shadow-2xs group-hover:scale-105 group-hover:border-[#7A152E]/40 transition-all mb-1.5">
-                    <DeliveryIcon className="w-5 h-5" />
-                  </div>
-                  <span className="text-[10px] sm:text-xs font-bold text-stone-900 leading-tight block">
-                    Insured Delivery
-                  </span>
-                  <span className="text-[9px] sm:text-[10px] text-stone-500 font-normal leading-tight block mt-0.5">
-                    Express Air
-                  </span>
-                </div>
-
-                {/* Badge 2: BIS 925 Hallmark */}
-                <div className="flex flex-col items-center group cursor-default">
-                  <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-xl bg-white border border-[#E8DFC8] flex items-center justify-center text-[#7A152E] shadow-2xs group-hover:scale-105 group-hover:border-[#7A152E]/40 transition-all mb-1.5">
-                    <HallmarkIcon className="w-5 h-5" />
-                  </div>
-                  <span className="text-[10px] sm:text-xs font-bold text-stone-900 leading-tight block">
-                    BIS 925 Hallmark
-                  </span>
-                  <span className="text-[9px] sm:text-[10px] text-stone-500 font-normal leading-tight block mt-0.5">
-                    Tested Purity
-                  </span>
-                </div>
-
-                {/* Badge 3: 7-Day Exchanges */}
-                <div className="flex flex-col items-center group cursor-default">
-                  <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-xl bg-white border border-[#E8DFC8] flex items-center justify-center text-[#7A152E] shadow-2xs group-hover:scale-105 group-hover:border-[#7A152E]/40 transition-all mb-1.5">
-                    <ExchangeIcon className="w-5 h-5" />
-                  </div>
-                  <span className="text-[10px] sm:text-xs font-bold text-stone-900 leading-tight block">
-                    7-Day Exchanges
-                  </span>
-                  <span className="text-[9px] sm:text-[10px] text-stone-500 font-normal leading-tight block mt-0.5">
-                    Doorstep Pickup
-                  </span>
-                </div>
-
-                {/* Badge 4: 1-Year Warranty */}
-                <div className="flex flex-col items-center group cursor-default">
-                  <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-xl bg-white border border-[#E8DFC8] flex items-center justify-center text-[#7A152E] shadow-2xs group-hover:scale-105 group-hover:border-[#7A152E]/40 transition-all mb-1.5">
-                    <WarrantyIcon className="w-5 h-5" />
-                  </div>
-                  <span className="text-[10px] sm:text-xs font-bold text-stone-900 leading-tight block">
-                    1-Year Warranty
-                  </span>
-                  <span className="text-[9px] sm:text-[10px] text-stone-500 font-normal leading-tight block mt-0.5">
-                    Plating Guarantee
-                  </span>
-                </div>
-              </div>
+              {/* 4 Official Fine Jewellery Trust Badges */}
+              <TrustBadgesRow variant="product" />
 
               {/* Solystra Royal Burgundy 1-Year Plating Warranty Pill (Responsive Zero Clipping Layout) */}
               <div

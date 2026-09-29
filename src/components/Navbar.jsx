@@ -143,7 +143,7 @@ export const Navbar = ({ activeCategory, onSelectCategory, onOpenBoutique }) => 
       {/* ============================================================ */}
       <header className="relative w-full z-50 bg-[#FAF8F5] border-b border-[#EAE4DC] shadow-sm transition-all">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="relative flex items-center justify-between h-[52px] sm:h-[62px]">
+          <div className="relative flex items-center justify-between h-[54px] sm:h-[64px]">
             
             {/* ---------------------------------------------------- */}
             {/* LEFT: MOBILE MENU TOGGLE / DESKTOP NAV LINKS        */}
@@ -214,7 +214,7 @@ export const Navbar = ({ activeCategory, onSelectCategory, onOpenBoutique }) => 
               <img
                 src="solystra_assets/solystra_logo.png"
                 alt="Solystra Jewels"
-                className="h-6 sm:h-8 w-auto max-w-[115px] sm:max-w-[165px] object-contain hover:opacity-90 transition-opacity"
+                className="h-7 sm:h-9 md:h-10 w-auto max-w-[130px] sm:max-w-[185px] md:max-w-[205px] object-contain hover:opacity-90 transition-opacity"
               />
             </div>
 

@@ -1014,7 +1014,7 @@ export const HomePage = ({ activeCategory, onSelectCategory }) => {
       {/* ========================================================
           2. TRUST BADGES STRIP (Directly Below Hero Banner)
           ======================================================== */}
-      <section className="py-2 sm:py-3 bg-white border-b border-[#EAE4DC] shadow-[0_2px_10px_rgba(0,0,0,0.02)]">
+      <section className="py-2.5 sm:py-4 md:py-5 bg-white border-b border-stone-200/50 shadow-[0_1px_6px_rgba(0,0,0,0.015)]">
         <div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
           <TrustBadgesRow variant="home" />
         </div>
@@ -1026,28 +1026,14 @@ export const HomePage = ({ activeCategory, onSelectCategory }) => {
       <section className="py-3 sm:py-5 bg-white border-b border-[#EAE4DC]">
         <div className="max-w-7xl mx-auto px-2.5 sm:px-6 lg:px-8">
           
-          {/* Header with Title and "Explore Categories" Action */}
-          <div className="flex items-center justify-between mb-3 sm:mb-4 px-1">
-            <div>
-              <span className="text-[10px] sm:text-[10.5px] uppercase tracking-widest text-[#7A152E] font-semibold block mb-0.5">
-                SHOP BY CATEGORY
-              </span>
-              <h2 className="font-serif text-lg sm:text-2xl md:text-3xl text-stone-900 font-normal">
-                Explore by Category
-              </h2>
-            </div>
-
-            {/* Redirect to Categories Page with Full-Size Cards */}
-            <button
-              type="button"
-              onClick={() => {
-                window.location.hash = '#/categories';
-              }}
-              className="inline-flex items-center gap-1 sm:gap-1.5 text-xs sm:text-sm font-semibold text-[#7A152E] hover:text-[#590D1E] group transition-colors cursor-pointer py-1 px-2 -mr-2 rounded-lg hover:bg-[#FAF0F2]"
-            >
-              <span>Explore Categories</span>
-              <ChevronRight className="w-3.5 h-3.5 sm:w-4 sm:h-4 group-hover:translate-x-0.5 transition-transform" />
-            </button>
+          {/* Header with Title */}
+          <div className="mb-3 sm:mb-4 px-1">
+            <span className="text-[10px] sm:text-[10.5px] uppercase tracking-widest text-[#7A152E] font-semibold block mb-0.5">
+              SHOP BY CATEGORY
+            </span>
+            <h2 className="font-serif text-lg sm:text-2xl md:text-3xl text-stone-900 font-normal">
+              Explore by Category
+            </h2>
           </div>
 
           {/* PC Layout: Only these 6 categories in a clean, non-scrolling 6-column grid */}
@@ -1406,28 +1392,13 @@ export const HomePage = ({ activeCategory, onSelectCategory }) => {
       <section className="py-4 sm:py-6 bg-[#FAF8F5] border-b border-[#EAE4DC]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
-          <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-3 pb-2 border-b border-[#EAE4DC] gap-3">
-            <div>
-              <span className="text-[10px] tracking-[0.25em] uppercase font-semibold text-[#7A152E] block mb-1">
-                Fresh Drops &bull; Atelier Debut
-              </span>
-              <h2 className="font-serif text-2xl sm:text-4xl font-normal text-stone-900">
-                Newly Launched Designs
-              </h2>
-            </div>
-
-            <button
-              onClick={() => {
-                setViewFullCatalog(true);
-                setSelectedCategory('new_arrivals');
-                setSelectedMaxPrice(null);
-                document.getElementById('bestsellers-showcase')?.scrollIntoView({ behavior: 'smooth' });
-              }}
-              className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#7A152E] hover:text-[#590D1E] group self-start sm:self-end transition-colors cursor-pointer"
-            >
-              <span>Explore All New Releases</span>
-              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-            </button>
+          <div className="mb-3 pb-2 border-b border-[#EAE4DC]">
+            <span className="text-[10px] tracking-[0.25em] uppercase font-semibold text-[#7A152E] block mb-1">
+              Fresh Drops &bull; Atelier Debut
+            </span>
+            <h2 className="font-serif text-2xl sm:text-4xl font-normal text-stone-900">
+              Newly Launched Designs
+            </h2>
           </div>
 
           {/* Mobile: Full-Sized Cards Carousel with Seamless Infinite Looping */}

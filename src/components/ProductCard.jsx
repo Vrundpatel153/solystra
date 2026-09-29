@@ -3,7 +3,7 @@ import { useShop } from '../context/ShopContext';
 import { Heart, Eye, ShoppingBag } from 'lucide-react';
 import { MetalPurityBadge } from './MetalPurityBadge';
 
-export const ProductCard = ({ product, variant = 'default', isSquare = false }) => {
+export const ProductCard = ({ product, variant = 'default', isSquare = false, showWishlist = false }) => {
   const isSquareCard = variant === 'square' || isSquare;
   const { addToCart, toggleWishlist, isInWishlist, setQuickViewProduct } = useShop();
   // Accurately determine initial hallmark metal stamp for this specific piece
@@ -35,6 +35,12 @@ export const ProductCard = ({ product, variant = 'default', isSquare = false }) 
   const isWishlisted = isInWishlist(product.id);
   const primaryImage = product.images[0];
   const hoverImage = product.images.length > 1 ? product.images[1] : product.images[0];
+
+  const discountText =
+    product.discount ||
+    (product.mrp && product.mrp > product.price
+      ? `${Math.round(((product.mrp - product.price) / product.mrp) * 100)}% OFF`
+      : null);
 
   // Clean title: removes redundant "- 925 sterling silver" from titles since hallmark stamp is displayed right below
   const cleanTitle = (product.shortName || product.name || '')
@@ -100,7 +106,7 @@ export const ProductCard = ({ product, variant = 'default', isSquare = false }) 
             </h3>
             <div className="flex items-center gap-1 shrink-0">
               <MetalPurityBadge product={product} size="rating" selectedMetal={selectedMetal} />
-              {product.discount ? (
+              {showWishlist && (product.discount ? (
                 <span className="text-[#7A152E] font-bold text-[8.5px] sm:text-[9.5px] tracking-wide shrink-0">
                   {product.discount}
                 </span>
@@ -112,36 +118,44 @@ export const ProductCard = ({ product, variant = 'default', isSquare = false }) 
                 <span className="text-stone-400 font-medium text-[8px] sm:text-[8.5px] uppercase tracking-wider shrink-0">
                   Certified
                 </span>
-              )}
+              ))}
             </div>
           </div>
 
           <div className="flex items-center justify-between gap-1 pt-1 border-t border-stone-100">
-            <div className="flex items-baseline gap-1">
-              <span className="font-serif text-xs sm:text-sm font-bold text-[#231F20]">
+            <div className="flex items-baseline flex-wrap gap-x-1 min-w-0">
+              <span className="font-serif text-xs sm:text-sm font-bold text-[#231F20] whitespace-nowrap">
                 ₹{product.price.toLocaleString('en-IN')}
               </span>
               {product.mrp && product.mrp > product.price && (
-                <span className="text-[9px] sm:text-[10px] text-stone-400 line-through">
+                <span className="text-[9px] sm:text-[10px] text-stone-400 line-through whitespace-nowrap">
                   ₹{product.mrp.toLocaleString('en-IN')}
                 </span>
               )}
             </div>
 
-            {/* Action Icons */}
-            <div className="flex items-center gap-1 shrink-0">
-              <button
-                type="button"
-                onClick={handleWishlistClick}
-                className={`w-6 h-6 rounded-full flex items-center justify-center transition-all duration-200 cursor-pointer active:scale-90 border ${
-                  isWishlisted
-                    ? 'bg-rose-50 text-[#7A152E] border-[#7A152E]/30 ring-1 ring-[#7A152E]/20'
-                    : 'bg-white text-stone-600 hover:text-[#7A152E] border-stone-200'
-                }`}
-                title={isWishlisted ? "In your Wishlist" : "Add to Wishlist"}
-              >
-                <Heart className={`w-3 h-3 ${isWishlisted ? 'fill-[#7A152E] stroke-[#7A152E]' : 'stroke-current fill-transparent'}`} />
-              </button>
+            {/* Action Area: Discount Label & Add to Bag */}
+            <div className="flex items-center gap-1 shrink-0 ml-auto">
+              {showWishlist ? (
+                <button
+                  type="button"
+                  onClick={handleWishlistClick}
+                  className={`w-6 h-6 rounded-full flex items-center justify-center transition-all duration-200 cursor-pointer active:scale-90 border ${
+                    isWishlisted
+                      ? 'bg-rose-50 text-[#7A152E] border-[#7A152E]/30 ring-1 ring-[#7A152E]/20'
+                      : 'bg-white text-stone-600 hover:text-[#7A152E] border-stone-200'
+                  }`}
+                  title={isWishlisted ? "In your Wishlist" : "Add to Wishlist"}
+                >
+                  <Heart className={`w-3 h-3 ${isWishlisted ? 'fill-[#7A152E] stroke-[#7A152E]' : 'stroke-current fill-transparent'}`} />
+                </button>
+              ) : (
+                discountText && (
+                  <span className="inline-flex items-center justify-center px-1.5 py-0.5 rounded-md bg-[#FAF0F2] border border-[#EAD5DA] text-[#7A152E] font-sans font-bold text-[8px] sm:text-[9px] uppercase tracking-wide leading-none whitespace-nowrap shadow-2xs">
+                    {discountText}
+                  </span>
+                )
+              )}
               <button
                 type="button"
                 onClick={handleAddToCart}
@@ -193,7 +207,7 @@ export const ProductCard = ({ product, variant = 'default', isSquare = false }) 
           {cleanTitle}
         </h3>
 
-        {/* Rating & Hallmark & Offer Badges Row */}
+        {/* Rating & Hallmark Badges Row */}
         <div className="flex items-center justify-between gap-1 sm:gap-1.5 w-full">
           <div className="flex items-center gap-1 sm:gap-1.5 shrink-0">
             {/* Rating Tag */}
@@ -210,38 +224,34 @@ export const ProductCard = ({ product, variant = 'default', isSquare = false }) 
             <MetalPurityBadge product={product} size="rating" selectedMetal={selectedMetal} />
           </div>
 
-          {/* Offer Tag */}
-          {product.discount ? (
-            <div className="inline-flex items-center justify-center text-center px-1.5 sm:px-2 py-0.5 rounded-lg bg-[#FAF0F2] border border-[#EAD5DA] text-[#7A152E] shadow-2xs shrink-0">
-              <span className="font-sans font-bold text-[9.5px] sm:text-[10px] uppercase tracking-wide leading-none whitespace-nowrap">
-                {product.discount}
-              </span>
-            </div>
-          ) : product.badge ? (
-            <div className="inline-flex items-center justify-center text-center px-1.5 sm:px-2 py-0.5 rounded-lg bg-[#FAF0F2] border border-[#EAD5DA] text-[#7A152E] shadow-2xs shrink-0">
-              <span className="font-sans font-bold text-[9.5px] sm:text-[10px] uppercase tracking-wide leading-none whitespace-nowrap">
-                {product.badge}
-              </span>
-            </div>
-          ) : (
-            <div className="inline-flex items-center justify-center text-center px-1.5 sm:px-2 py-0.5 rounded-lg bg-[#FAF8F5] border border-[#EAE4DC] text-stone-600 shadow-2xs shrink-0">
-              <span className="font-sans font-medium text-[9px] sm:text-[9.5px] uppercase tracking-wide leading-none whitespace-nowrap">
-                Certified
-              </span>
-            </div>
+          {/* If showWishlist is true, preserve badge in this row */}
+          {showWishlist && (
+            discountText ? (
+              <div className="inline-flex items-center justify-center text-center px-1.5 sm:px-2 py-0.5 rounded-lg bg-[#FAF0F2] border border-[#EAD5DA] text-[#7A152E] shadow-2xs shrink-0">
+                <span className="font-sans font-bold text-[9.5px] sm:text-[10px] uppercase tracking-wide leading-none whitespace-nowrap">
+                  {discountText}
+                </span>
+              </div>
+            ) : product.badge ? (
+              <div className="inline-flex items-center justify-center text-center px-1.5 sm:px-2 py-0.5 rounded-lg bg-[#FAF0F2] border border-[#EAD5DA] text-[#7A152E] shadow-2xs shrink-0">
+                <span className="font-sans font-bold text-[9.5px] sm:text-[10px] uppercase tracking-wide leading-none whitespace-nowrap">
+                  {product.badge}
+                </span>
+              </div>
+            ) : null
           )}
         </div>
 
         {/* Price & Action Icons Row */}
-        <div className="pt-1.5 border-t border-[#EAE4DC]/80 flex items-center justify-between gap-1 mt-auto">
+        <div className="pt-1.5 border-t border-[#EAE4DC]/80 flex items-center justify-between gap-1 sm:gap-1.5 mt-auto">
           {/* Price & Metal Swatches */}
-          <div className="flex items-center gap-1.5 min-w-0">
-            <div className="flex items-baseline gap-1">
-              <span className="font-serif text-xs xs:text-sm sm:text-base font-bold text-[#231F20]">
+          <div className="flex items-center gap-1 sm:gap-1.5 min-w-0">
+            <div className="flex items-baseline flex-wrap sm:flex-nowrap gap-x-1 gap-y-0.5 min-w-0">
+              <span className="font-serif text-[12px] xs:text-[13px] sm:text-[15px] font-bold text-[#231F20] tracking-tight whitespace-nowrap">
                 ₹{product.price.toLocaleString('en-IN')}
               </span>
               {product.mrp && product.mrp > product.price && (
-                <span className="text-[9.5px] sm:text-[11px] text-[#766D6F] line-through">
+                <span className="text-[9px] xs:text-[9.5px] sm:text-[11px] text-[#766D6F] line-through whitespace-nowrap">
                   ₹{product.mrp.toLocaleString('en-IN')}
                 </span>
               )}
@@ -249,7 +259,7 @@ export const ProductCard = ({ product, variant = 'default', isSquare = false }) 
 
             {/* Metal Swatches (only rendered when piece has multiple metal variants) */}
             {product.metals && product.metals.length > 1 && (
-              <div className="hidden xs:flex items-center gap-1 shrink-0 ml-1">
+              <div className="hidden xs:flex items-center gap-1 shrink-0 ml-0.5">
                 <button
                   type="button"
                   onClick={(e) => {
@@ -293,34 +303,41 @@ export const ProductCard = ({ product, variant = 'default', isSquare = false }) 
             )}
           </div>
 
-          {/* Action Icons: Wishlist & Add to Bag side-by-side */}
-          <div className="flex items-center gap-1.5 shrink-0">
-            {/* Wishlist Button */}
-            <button
-              type="button"
-              onClick={handleWishlistClick}
-              className={`w-7 h-7 sm:w-8 sm:h-8 rounded-full flex items-center justify-center transition-all duration-200 cursor-pointer active:scale-90 border shadow-2xs hover:shadow-xs ${
-                isWishlisted
-                  ? 'bg-rose-50 text-[#7A152E] border-[#7A152E]/30 ring-1 ring-[#7A152E]/20'
-                  : 'bg-white text-stone-600 hover:text-[#7A152E] hover:border-[#7A152E]/40 border-stone-200'
-              }`}
-              aria-label={isWishlisted ? "Remove from Wishlist" : "Add to Wishlist"}
-              title={isWishlisted ? "In your Wishlist" : "Add to Wishlist"}
-            >
-              <Heart
-                className={`w-3.5 h-3.5 transition-all duration-200 ${
+          {/* Action Area: Discount Label & Add to Bag side-by-side */}
+          <div className="flex items-center gap-1 sm:gap-1.5 shrink-0 ml-auto">
+            {showWishlist ? (
+              <button
+                type="button"
+                onClick={handleWishlistClick}
+                className={`w-7 h-7 sm:w-8 sm:h-8 rounded-full flex items-center justify-center transition-all duration-200 cursor-pointer active:scale-90 border shadow-2xs hover:shadow-xs ${
                   isWishlisted
-                    ? 'fill-[#7A152E] stroke-[#7A152E] stroke-[2] scale-110'
-                    : 'stroke-current stroke-[1.75] fill-transparent'
+                    ? 'bg-rose-50 text-[#7A152E] border-[#7A152E]/30 ring-1 ring-[#7A152E]/20'
+                    : 'bg-white text-stone-600 hover:text-[#7A152E] hover:border-[#7A152E]/40 border-stone-200'
                 }`}
-              />
-            </button>
+                aria-label={isWishlisted ? "Remove from Wishlist" : "Add to Wishlist"}
+                title={isWishlisted ? "In your Wishlist" : "Add to Wishlist"}
+              >
+                <Heart
+                  className={`w-3.5 h-3.5 transition-all duration-200 ${
+                    isWishlisted
+                      ? 'fill-[#7A152E] stroke-[#7A152E] stroke-[2] scale-110'
+                      : 'stroke-current stroke-[1.75] fill-transparent'
+                  }`}
+                />
+              </button>
+            ) : (
+              discountText && (
+                <span className="inline-flex items-center justify-center px-1.5 xs:px-2 py-0.5 sm:py-1 rounded-md sm:rounded-lg bg-[#FAF0F2] border border-[#EAD5DA] text-[#7A152E] font-sans font-bold text-[8.5px] xs:text-[9.5px] sm:text-[10px] uppercase tracking-wide leading-none whitespace-nowrap shrink-0 shadow-2xs">
+                  {discountText}
+                </span>
+              )
+            )}
 
             {/* Add to Bag Icon Button */}
             <button
               type="button"
               onClick={handleAddToCart}
-              className="w-7 h-7 sm:w-8 sm:h-8 rounded-full flex items-center justify-center bg-[#7A152E] hover:bg-[#590D1E] text-white transition-all duration-200 cursor-pointer active:scale-90 shadow-2xs hover:shadow-xs group/cart"
+              className="w-7 h-7 sm:w-8 sm:h-8 rounded-full flex items-center justify-center bg-[#7A152E] hover:bg-[#590D1E] text-white transition-all duration-200 cursor-pointer active:scale-90 shadow-2xs hover:shadow-xs group/cart shrink-0"
               aria-label="Add to Bag"
               title="Add to Bag"
             >
