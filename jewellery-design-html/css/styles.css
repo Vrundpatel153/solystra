@@ -206,13 +206,108 @@ h1, h2, h3, h4, h5, h6, .font-serif {
   transform: translateY(-8px) scale(0.95);
 }
 
-/* Drawer & Modal transitions */
-.drawer-backdrop {
-  transition: opacity 0.35s ease, backdrop-filter 0.35s ease;
+/* Drawer & Modal transitions and positioning */
+.translate-x-full {
+  transform: translateX(100%) !important;
 }
 
-.drawer-panel {
-  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+.-translate-x-full {
+  transform: translateX(-100%) !important;
+}
+
+.translate-x-0 {
+  transform: translateX(0%) !important;
+}
+
+/* Base Left Mobile Menu Drawer: completely offscreen by default */
+#mobile-menu-drawer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 80%;
+  max-width: 24rem;
+  background-color: #FAF8F5;
+  z-index: 70;
+  transform: translateX(-100%);
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), visibility 0.35s;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  visibility: hidden;
+  pointer-events: none;
+}
+
+#mobile-menu-drawer.open,
+#mobile-menu-drawer.translate-x-0 {
+  transform: translateX(0%) !important;
+  visibility: visible !important;
+  pointer-events: auto !important;
+}
+
+/* Base Right Drawers (Shopping Bag & Saved Wishlist): completely offscreen by default */
+#cart-drawer,
+#wishlist-drawer {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  max-width: 28rem;
+  background-color: #FAF8F5;
+  z-index: 70;
+  transform: translateX(100%);
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1), visibility 0.4s;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  visibility: hidden;
+  pointer-events: none;
+}
+
+#cart-drawer.open,
+#cart-drawer.translate-x-0,
+#wishlist-drawer.open,
+#wishlist-drawer.translate-x-0 {
+  transform: translateX(0%) !important;
+  visibility: visible !important;
+  pointer-events: auto !important;
+}
+
+/* Drawer Backdrops */
+.drawer-backdrop {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(28, 25, 23, 0.45);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  z-index: 65;
+  transition: opacity 0.35s ease;
+}
+
+.drawer-backdrop.hidden,
+#mobile-menu-backdrop.hidden {
+  display: none !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+
+.drawer-backdrop:not(.hidden),
+#mobile-menu-backdrop:not(.hidden) {
+  display: block !important;
+}
+
+/* Modals */
+.modal-backdrop.hidden,
+#search-modal.hidden,
+#quickview-modal.hidden,
+#boutique-modal.hidden {
+  display: none !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+
+.modal-backdrop:not(.hidden),
+#search-modal:not(.hidden),
+#quickview-modal:not(.hidden),
+#boutique-modal:not(.hidden) {
+  display: flex !important;
 }
 
 .modal-backdrop {

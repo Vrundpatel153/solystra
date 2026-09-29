@@ -224,6 +224,7 @@
     if (drawer && backdrop) {
       backdrop.classList.remove('hidden', 'opacity-0', 'pointer-events-none');
       backdrop.classList.add('opacity-100', 'pointer-events-auto');
+      drawer.classList.add('open');
       drawer.classList.remove('translate-x-full');
       document.body.style.overflow = 'hidden';
       renderCartDrawer();
@@ -234,6 +235,7 @@
     const drawer = document.getElementById('cart-drawer');
     const backdrop = document.getElementById('cart-drawer-backdrop');
     if (drawer && backdrop) {
+      drawer.classList.remove('open');
       drawer.classList.add('translate-x-full');
       backdrop.classList.remove('opacity-100', 'pointer-events-auto');
       backdrop.classList.add('opacity-0', 'pointer-events-none');
@@ -248,6 +250,7 @@
     if (drawer && backdrop) {
       backdrop.classList.remove('hidden', 'opacity-0', 'pointer-events-none');
       backdrop.classList.add('opacity-100', 'pointer-events-auto');
+      drawer.classList.add('open');
       drawer.classList.remove('translate-x-full');
       document.body.style.overflow = 'hidden';
       renderWishlistDrawer();
@@ -258,10 +261,33 @@
     const drawer = document.getElementById('wishlist-drawer');
     const backdrop = document.getElementById('wishlist-drawer-backdrop');
     if (drawer && backdrop) {
+      drawer.classList.remove('open');
       drawer.classList.add('translate-x-full');
       backdrop.classList.remove('opacity-100', 'pointer-events-auto');
       backdrop.classList.add('opacity-0', 'pointer-events-none');
       setTimeout(() => backdrop.classList.add('hidden'), 350);
+      document.body.style.overflow = '';
+    }
+  };
+
+  window.openMobileMenu = function () {
+    const drawer = document.getElementById('mobile-menu-drawer');
+    const backdrop = document.getElementById('mobile-menu-backdrop');
+    if (drawer && backdrop) {
+      backdrop.classList.remove('hidden');
+      drawer.classList.add('open');
+      drawer.classList.remove('-translate-x-full');
+      document.body.style.overflow = 'hidden';
+    }
+  };
+
+  window.closeMobileMenu = function () {
+    const drawer = document.getElementById('mobile-menu-drawer');
+    const backdrop = document.getElementById('mobile-menu-backdrop');
+    if (drawer && backdrop) {
+      drawer.classList.remove('open');
+      drawer.classList.add('-translate-x-full');
+      backdrop.classList.add('hidden');
       document.body.style.overflow = '';
     }
   };
@@ -360,7 +386,7 @@
       subtotal += itemTotal;
 
       html += `
-        <div class="flex gap-4 p-4 border-b border-[#EAE4DC] bg-white rounded-2xl mb-3 shadow-2xs">
+        <div class="cart-item flex gap-4 p-4 border-b border-[#EAE4DC] bg-white rounded-2xl mb-3 shadow-2xs">
           <img src="${item.image}" alt="${item.name}" class="w-20 h-20 rounded-xl object-cover border border-[#EAE4DC] bg-[#FAF8F5] flex-shrink-0" />
           <div class="flex-1 min-w-0 flex flex-col justify-between">
             <div class="flex items-start justify-between gap-2">
@@ -447,7 +473,7 @@
     let html = '';
     wishlistProducts.forEach(product => {
       html += `
-        <div class="flex gap-4 p-4 border-b border-[#EAE4DC] bg-white rounded-2xl mb-3 shadow-2xs">
+        <div class="wishlist-item flex gap-4 p-4 border-b border-[#EAE4DC] bg-white rounded-2xl mb-3 shadow-2xs">
           <img src="${product.images[0]}" alt="${product.name}" class="w-20 h-20 rounded-xl object-cover border border-[#EAE4DC] bg-[#FAF8F5] flex-shrink-0" />
           <div class="flex-1 min-w-0 flex flex-col justify-between">
             <div class="flex items-start justify-between gap-2">
@@ -646,7 +672,7 @@
     const isGold = (product.metalType === 'gold') || (product.name && product.name.toLowerCase().includes('gold'));
 
     return `
-      <div class="group bg-white rounded-2xl border border-[#EAE4DC] overflow-hidden shadow-xs hover:shadow-xl hover:border-[#7A152E]/60 transition-all duration-300 flex flex-col relative w-full" data-product-id="${product.id}">
+      <div class="product-card group bg-white rounded-2xl border border-[#EAE4DC] overflow-hidden shadow-xs hover:shadow-xl hover:border-[#7A152E]/60 transition-all duration-300 flex flex-col relative w-full" data-product-id="${product.id}">
         <!-- Image Viewport (4:5 Aspect Ratio) -->
         <div class="relative w-full aspect-[4/5] bg-[#FAF8F5] overflow-hidden cursor-pointer product-card-img-wrap" onclick="window.location.href='product.html?id=${product.id}'">
           <img src="${primaryImg}" alt="${product.name}" loading="lazy" class="primary-img w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
@@ -723,17 +749,17 @@
 
     // Mobile menu toggle
     const menuBtn = document.getElementById('mobile-menu-toggle');
-    const menuDrawer = document.getElementById('mobile-menu-drawer');
     const menuBackdrop = document.getElementById('mobile-menu-backdrop');
 
-    if (menuBtn && menuDrawer && menuBackdrop) {
-      menuBtn.addEventListener('click', function () {
-        menuDrawer.classList.toggle('translate-x-full');
-        menuBackdrop.classList.toggle('hidden');
+    if (menuBtn) {
+      menuBtn.addEventListener('click', function (e) {
+        e.preventDefault();
+        window.openMobileMenu();
       });
+    }
+    if (menuBackdrop) {
       menuBackdrop.addEventListener('click', function () {
-        menuDrawer.classList.add('translate-x-full');
-        menuBackdrop.classList.add('hidden');
+        window.closeMobileMenu();
       });
     }
 
@@ -742,6 +768,7 @@
       if (e.key === 'Escape') {
         closeCartDrawer();
         closeWishlistDrawer();
+        closeMobileMenu();
         closeSearchModal();
         closeBoutiqueModal();
         closeQuickViewModal();

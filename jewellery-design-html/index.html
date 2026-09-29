@@ -30,7 +30,7 @@
         
         <!-- Left: Mobile Menu Button & Desktop Nav Links -->
         <div class="flex items-center gap-2 sm:gap-6">
-          <button id="mobile-menu-toggle" type="button" class="lg:hidden p-2 rounded-full text-stone-800 hover:bg-stone-200/60 transition-colors" aria-label="Toggle Menu">
+          <button id="mobile-menu-toggle" type="button" onclick="openMobileMenu()" class="lg:hidden p-2 rounded-full text-stone-800 hover:bg-stone-200/60 transition-colors" aria-label="Toggle Menu">
             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M4 6h16M4 12h16M4 18h16"></path>
             </svg>
@@ -97,11 +97,11 @@
   </header>
 
   <!-- Mobile Navigation Drawer -->
-  <div id="mobile-menu-backdrop" class="fixed inset-0 bg-stone-900/50 backdrop-blur-sm z-50 hidden transition-opacity"></div>
+  <div id="mobile-menu-backdrop" class="fixed inset-0 bg-stone-900/50 backdrop-blur-sm z-50 hidden transition-opacity" onclick="closeMobileMenu()"></div>
   <aside id="mobile-menu-drawer" class="fixed top-0 left-0 bottom-0 w-4/5 max-w-sm bg-[#FAF8F5] z-50 transform -translate-x-full transition-transform duration-300 ease-in-out shadow-2xl flex flex-col p-6">
     <div class="flex items-center justify-between pb-6 border-b border-[#EAE4DC]">
       <img src="solystra_assets/solystra_logo.png" alt="Solystra Jewels" class="h-8 w-auto object-contain" />
-      <button onclick="document.getElementById('mobile-menu-drawer').classList.add('-translate-x-full'); document.getElementById('mobile-menu-backdrop').classList.add('hidden');" class="p-2 text-stone-500 hover:text-[#7A152E]">
+      <button onclick="closeMobileMenu()" class="p-2 text-stone-500 hover:text-[#7A152E]">
         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
         </svg>
@@ -124,9 +124,11 @@
   </aside>
 
   <main>
-    <!-- HERO CAROUSEL -->
+    <!-- ========================================================
+        1. HERO BANNER SLIDER
+        ======================================================== -->
     <section class="relative w-full overflow-hidden bg-stone-900 text-white">
-      <div id="hero-slider" class="relative w-full aspect-[4/5] sm:aspect-[16/9] lg:aspect-[21/9] min-h-[480px] sm:min-h-[550px]">
+      <div id="hero-slider" class="relative w-full aspect-[4/5] sm:aspect-[16/9] lg:aspect-[21/9] min-h-[480px] sm:min-h-[560px]">
         
         <!-- Slide 1 -->
         <div class="hero-slide absolute inset-0 transition-opacity duration-1000 opacity-100 active">
@@ -134,11 +136,11 @@
             <source media="(min-width: 768px)" srcset="solystra_assets/banners/banner_pc_2.jpg">
             <img src="solystra_assets/banners/banner_mob_2.jpg" alt="The 18K Gold Suite" class="w-full h-full object-cover opacity-85">
           </picture>
-          <div class="absolute inset-0 bg-gradient-to-t from-stone-950/80 via-stone-950/30 to-transparent flex items-end sm:items-center">
+          <div class="absolute inset-0 bg-gradient-to-t from-stone-950/85 via-stone-950/30 to-transparent flex items-end sm:items-center">
             <div class="max-w-7xl mx-auto px-6 sm:px-12 py-12 w-full">
-              <span class="inline-block bg-[#7A152E] text-amber-200 text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-full mb-3">NEW ATELIER RELEASE</span>
-              <h1 class="font-serif text-3xl sm:text-5xl lg:text-6xl font-normal leading-tight max-w-2xl mb-3">The 18K Gold Suite</h1>
-              <p class="text-xs sm:text-base text-stone-200 max-w-xl mb-6 font-light leading-relaxed">
+              <span class="inline-block bg-[#7A152E] text-amber-200 text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-full mb-3 shadow-md">NEW ATELIER RELEASE</span>
+              <h1 class="font-serif text-3xl sm:text-5xl lg:text-6xl font-normal leading-tight max-w-2xl mb-3 drop-shadow-md">The 18K Gold Suite</h1>
+              <p class="text-xs sm:text-base text-stone-200 max-w-xl mb-6 font-light leading-relaxed drop-shadow-sm">
                 Layered tennis bracelets and kada cuffs in 18K Italian gold vermeil with pure 925 sterling silver core.
               </p>
               <div class="flex items-center gap-4">
@@ -159,11 +161,11 @@
             <source media="(min-width: 768px)" srcset="solystra_assets/banners/banner_blush_tones_pc.jpg">
             <img src="solystra_assets/banners/banner_blush_tones_mob.jpg" alt="Blush Tones Collection" class="w-full h-full object-cover opacity-85">
           </picture>
-          <div class="absolute inset-0 bg-gradient-to-t from-stone-950/80 via-stone-950/30 to-transparent flex items-end sm:items-center">
+          <div class="absolute inset-0 bg-gradient-to-t from-stone-950/85 via-stone-950/30 to-transparent flex items-end sm:items-center">
             <div class="max-w-7xl mx-auto px-6 sm:px-12 py-12 w-full">
-              <span class="inline-block bg-[#7A152E] text-amber-200 text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-full mb-3">SIGNATURE EDIT</span>
-              <h2 class="font-serif text-3xl sm:text-5xl lg:text-6xl font-normal leading-tight max-w-2xl mb-3">Blush Rose Gold Luminescence</h2>
-              <p class="text-xs sm:text-base text-stone-200 max-w-xl mb-6 font-light leading-relaxed">
+              <span class="inline-block bg-[#7A152E] text-amber-200 text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-full mb-3 shadow-md">SIGNATURE EDIT</span>
+              <h2 class="font-serif text-3xl sm:text-5xl lg:text-6xl font-normal leading-tight max-w-2xl mb-3 drop-shadow-md">Blush Rose Gold Luminescence</h2>
+              <p class="text-xs sm:text-base text-stone-200 max-w-xl mb-6 font-light leading-relaxed drop-shadow-sm">
                 Delicate pink enamel blossoms and brilliant solitaires finished in warm rose gold.
               </p>
               <a href="products.html?category=necklaces" class="px-7 py-3.5 bg-[#7A152E] hover:bg-[#590D1E] text-white text-xs font-bold uppercase tracking-wider rounded-xl transition-all shadow-lg inline-block">
@@ -179,11 +181,11 @@
             <source media="(min-width: 768px)" srcset="solystra_assets/banners/banner_pc_3.jpg">
             <img src="solystra_assets/banners/banner_mob_3.jpg" alt="Modern Classics" class="w-full h-full object-cover opacity-85">
           </picture>
-          <div class="absolute inset-0 bg-gradient-to-t from-stone-950/80 via-stone-950/30 to-transparent flex items-end sm:items-center">
+          <div class="absolute inset-0 bg-gradient-to-t from-stone-950/85 via-stone-950/30 to-transparent flex items-end sm:items-center">
             <div class="max-w-7xl mx-auto px-6 sm:px-12 py-12 w-full">
-              <span class="inline-block bg-[#7A152E] text-amber-200 text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-full mb-3">PURE 925 SILVER</span>
-              <h2 class="font-serif text-3xl sm:text-5xl lg:text-6xl font-normal leading-tight max-w-2xl mb-3">Modern Classic Solitaires</h2>
-              <p class="text-xs sm:text-base text-stone-200 max-w-xl mb-6 font-light leading-relaxed">
+              <span class="inline-block bg-[#7A152E] text-amber-200 text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-full mb-3 shadow-md">PURE 925 SILVER</span>
+              <h2 class="font-serif text-3xl sm:text-5xl lg:text-6xl font-normal leading-tight max-w-2xl mb-3 drop-shadow-md">Modern Classic Solitaires</h2>
+              <p class="text-xs sm:text-base text-stone-200 max-w-xl mb-6 font-light leading-relaxed drop-shadow-sm">
                 Certified 925 silver bands, huggies and solitaires with dual-micron anti-tarnish rhodium protection.
               </p>
               <a href="products.html?category=rings" class="px-7 py-3.5 bg-[#7A152E] hover:bg-[#590D1E] text-white text-xs font-bold uppercase tracking-wider rounded-xl transition-all shadow-lg inline-block">
@@ -193,141 +195,206 @@
           </div>
         </div>
 
-        <!-- Slide Indicators -->
+        <!-- Slide 4 -->
+        <div class="hero-slide absolute inset-0 transition-opacity duration-1000 opacity-0 pointer-events-none">
+          <picture>
+            <source media="(min-width: 768px)" srcset="solystra_assets/banners/banner_gift_sets_pc.jpg">
+            <img src="solystra_assets/banners/banner_gift_sets_mob.jpg" alt="Signature Gift Suites" class="w-full h-full object-cover opacity-85">
+          </picture>
+          <div class="absolute inset-0 bg-gradient-to-t from-stone-950/85 via-stone-950/30 to-transparent flex items-end sm:items-center">
+            <div class="max-w-7xl mx-auto px-6 sm:px-12 py-12 w-full">
+              <span class="inline-block bg-[#7A152E] text-amber-200 text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-full mb-3 shadow-md">HEIRLOOM SUITES</span>
+              <h2 class="font-serif text-3xl sm:text-5xl lg:text-6xl font-normal leading-tight max-w-2xl mb-3 drop-shadow-md">Signature Gift Boxes</h2>
+              <p class="text-xs sm:text-base text-stone-200 max-w-xl mb-6 font-light leading-relaxed drop-shadow-sm">
+                Delivered in bespoke velvet keepsake vaults with certified hallmark authenticity cards.
+              </p>
+              <a href="products.html?category=complete_sets" class="px-7 py-3.5 bg-[#7A152E] hover:bg-[#590D1E] text-white text-xs font-bold uppercase tracking-wider rounded-xl transition-all shadow-lg inline-block">
+                Discover Gift Suites →
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Slide Navigation Dots -->
         <div class="absolute bottom-4 left-1/2 -translate-x-1/2 flex items-center gap-2 z-20">
-          <button onclick="setHeroSlide(0)" class="hero-dot w-6 h-1 rounded-full bg-white transition-all"></button>
-          <button onclick="setHeroSlide(1)" class="hero-dot w-2 h-1 rounded-full bg-white/40 transition-all"></button>
-          <button onclick="setHeroSlide(2)" class="hero-dot w-2 h-1 rounded-full bg-white/40 transition-all"></button>
+          <button onclick="setHeroSlide(0)" class="hero-dot w-7 h-1.5 rounded-full bg-[#C5A059] shadow-xs transition-all"></button>
+          <button onclick="setHeroSlide(1)" class="hero-dot w-2 h-1.5 rounded-full bg-white/40 hover:bg-white/70 transition-all"></button>
+          <button onclick="setHeroSlide(2)" class="hero-dot w-2 h-1.5 rounded-full bg-white/40 hover:bg-white/70 transition-all"></button>
+          <button onclick="setHeroSlide(3)" class="hero-dot w-2 h-1.5 rounded-full bg-white/40 hover:bg-white/70 transition-all"></button>
         </div>
 
       </div>
     </section>
 
-    <!-- CURATED METALS STRIP -->
-    <section class="py-6 sm:py-8 bg-white border-b border-[#EAE4DC]">
+    <!-- ========================================================
+        2. TRUST BADGES STRIP (Directly Below Hero Banner)
+        ======================================================== -->
+    <section class="py-3 sm:py-4 bg-white border-b border-stone-200/60 shadow-2xs">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-6 text-center text-xs">
           
-          <a href="products.html?metal=silver" class="flex items-center gap-3 p-3.5 rounded-2xl bg-[#FAF8F5] border border-[#EAE4DC] hover:border-[#7A152E] transition-all group">
-            <span class="w-8 h-8 rounded-full bg-gradient-to-tr from-slate-200 to-slate-400 border border-slate-300 shadow-xs flex-shrink-0"></span>
-            <div>
-              <h4 class="font-serif text-sm font-semibold text-stone-900 group-hover:text-[#7A152E] transition-colors">Pure 925 Silver</h4>
-              <p class="text-[10px] text-stone-500">BIS Hallmarked • 92.5% Purity</p>
+          <div class="flex items-center justify-center gap-2 sm:gap-2.5 p-1 text-stone-800">
+            <span class="w-8 h-8 rounded-full bg-amber-50 text-[#7A152E] flex items-center justify-center shrink-0">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
+            </span>
+            <div class="text-left">
+              <span class="font-serif font-bold text-stone-900 block leading-tight">BIS Certified 925</span>
+              <span class="text-[10px] text-stone-500">Hallmarked Pure Silver</span>
             </div>
-          </a>
+          </div>
 
-          <a href="products.html?metal=gold" class="flex items-center gap-3 p-3.5 rounded-2xl bg-[#FAF8F5] border border-[#EAE4DC] hover:border-[#7A152E] transition-all group">
-            <span class="w-8 h-8 rounded-full bg-gradient-to-tr from-amber-200 to-amber-500 border border-amber-300 shadow-xs flex-shrink-0"></span>
-            <div>
-              <h4 class="font-serif text-sm font-semibold text-stone-900 group-hover:text-[#7A152E] transition-colors">18K Gold Vermeil</h4>
-              <p class="text-[10px] text-stone-500">Thick Layer • Mirror Polish</p>
+          <div class="flex items-center justify-center gap-2 sm:gap-2.5 p-1 text-stone-800">
+            <span class="w-8 h-8 rounded-full bg-amber-50 text-[#7A152E] flex items-center justify-center shrink-0">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path></svg>
+            </span>
+            <div class="text-left">
+              <span class="font-serif font-bold text-stone-900 block leading-tight">6-Month Replating</span>
+              <span class="text-[10px] text-stone-500">Complimentary Warranty</span>
             </div>
-          </a>
+          </div>
 
-          <a href="products.html?metal=rose" class="flex items-center gap-3 p-3.5 rounded-2xl bg-[#FAF8F5] border border-[#EAE4DC] hover:border-[#7A152E] transition-all group">
-            <span class="w-8 h-8 rounded-full bg-gradient-to-tr from-rose-200 to-rose-400 border border-rose-300 shadow-xs flex-shrink-0"></span>
-            <div>
-              <h4 class="font-serif text-sm font-semibold text-stone-900 group-hover:text-[#7A152E] transition-colors">Rose Gold Finish</h4>
-              <p class="text-[10px] text-stone-500">Blush Luminescence</p>
+          <div class="flex items-center justify-center gap-2 sm:gap-2.5 p-1 text-stone-800">
+            <span class="w-8 h-8 rounded-full bg-amber-50 text-[#7A152E] flex items-center justify-center shrink-0">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16V6a1 1 0 00-1-1H4a1 1 0 00-1 1v10a1 1 0 001 1h1m8-1a1 1 0 01-1 1H9m4-1V8a1 1 0 011-1h2.586a1 1 0 01.707.293l3.414 3.414a1 1 0 01.293.707V16a1 1 0 01-1 1h-1m-6-1a1 1 0 001 1h1M5 17a2 2 0 104 0m-4 0a2 2 0 114 0m6 0a2 2 0 104 0m-4 0a2 2 0 114 0"></path></svg>
+            </span>
+            <div class="text-left">
+              <span class="font-serif font-bold text-stone-900 block leading-tight">Insured Air Express</span>
+              <span class="text-[10px] text-stone-500">Free Shipping Nationwide</span>
             </div>
-          </a>
+          </div>
 
-          <a href="products.html" class="flex items-center gap-3 p-3.5 rounded-2xl bg-[#FAF8F5] border border-[#EAE4DC] hover:border-[#7A152E] transition-all group">
-            <span class="w-8 h-8 rounded-full bg-gradient-to-tr from-stone-400 to-stone-700 border border-stone-500 shadow-xs flex-shrink-0"></span>
-            <div>
-              <h4 class="font-serif text-sm font-semibold text-stone-900 group-hover:text-[#7A152E] transition-colors">Oxidized Artisan</h4>
-              <p class="text-[10px] text-stone-500">Heritage Vintage Patina</p>
+          <div class="flex items-center justify-center gap-2 sm:gap-2.5 p-1 text-stone-800">
+            <span class="w-8 h-8 rounded-full bg-amber-50 text-[#7A152E] flex items-center justify-center shrink-0">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 15v-1a4 4 0 00-4-4H8m0 0l3 3m-3-3l3-3m9 14V5a2 2 0 00-2-2H6a2 2 0 00-2 2v16l4-2 4 2 4-2 4 2z"></path></svg>
+            </span>
+            <div class="text-left">
+              <span class="font-serif font-bold text-stone-900 block leading-tight">15-Day Easy Returns</span>
+              <span class="text-[10px] text-stone-500">Doorstep Pickup Service</span>
             </div>
-          </a>
+          </div>
 
         </div>
       </div>
     </section>
 
-    <!-- SHOP BY CATEGORY SQUIRCLE CARDS -->
-    <section class="py-12 sm:py-16">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center max-w-xl mx-auto mb-10">
-          <span class="text-[10px] uppercase tracking-widest text-[#7A152E] font-bold">Curated Architecture</span>
-          <h2 class="font-serif text-2xl sm:text-4xl text-stone-900 mt-1 font-semibold">Shop by Category</h2>
-          <p class="text-xs sm:text-sm text-stone-500 mt-2">Explore handcrafted silhouettes designed for modern elegance and timeless heirloom value.</p>
-        </div>
-
-        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 sm:gap-6">
-          
-          <a href="products.html?category=necklaces" class="group flex flex-col items-center p-4 bg-white rounded-3xl border border-[#EAE4DC] hover:border-[#7A152E] hover:shadow-lg transition-all text-center">
-            <div class="w-24 h-24 sm:w-28 sm:h-28 rounded-2xl overflow-hidden bg-[#FAF8F5] mb-3 p-2">
-              <img src="solystra_assets/categories/zavya_style/necklaces.png" alt="Necklaces" class="w-full h-full object-contain group-hover:scale-110 transition-transform duration-500" />
-            </div>
-            <h4 class="font-serif text-base font-semibold text-stone-900 group-hover:text-[#7A152E] transition-colors">Necklaces</h4>
-            <span class="text-[11px] text-stone-400">14 Designs</span>
-          </a>
-
-          <a href="products.html?category=rings" class="group flex flex-col items-center p-4 bg-white rounded-3xl border border-[#EAE4DC] hover:border-[#7A152E] hover:shadow-lg transition-all text-center">
-            <div class="w-24 h-24 sm:w-28 sm:h-28 rounded-2xl overflow-hidden bg-[#FAF8F5] mb-3 p-2">
-              <img src="solystra_assets/categories/zavya_style/rings.png" alt="Rings" class="w-full h-full object-contain group-hover:scale-110 transition-transform duration-500" />
-            </div>
-            <h4 class="font-serif text-base font-semibold text-stone-900 group-hover:text-[#7A152E] transition-colors">Rings & Bands</h4>
-            <span class="text-[11px] text-stone-400">15 Designs</span>
-          </a>
-
-          <a href="products.html?category=bracelets" class="group flex flex-col items-center p-4 bg-white rounded-3xl border border-[#EAE4DC] hover:border-[#7A152E] hover:shadow-lg transition-all text-center">
-            <div class="w-24 h-24 sm:w-28 sm:h-28 rounded-2xl overflow-hidden bg-[#FAF8F5] mb-3 p-2">
-              <img src="solystra_assets/categories/zavya_style/bracelets.png" alt="Bracelets" class="w-full h-full object-contain group-hover:scale-110 transition-transform duration-500" />
-            </div>
-            <h4 class="font-serif text-base font-semibold text-stone-900 group-hover:text-[#7A152E] transition-colors">Bracelets & Cuffs</h4>
-            <span class="text-[11px] text-stone-400">12 Designs</span>
-          </a>
-
-          <a href="products.html?category=earrings" class="group flex flex-col items-center p-4 bg-white rounded-3xl border border-[#EAE4DC] hover:border-[#7A152E] hover:shadow-lg transition-all text-center">
-            <div class="w-24 h-24 sm:w-28 sm:h-28 rounded-2xl overflow-hidden bg-[#FAF8F5] mb-3 p-2">
-              <img src="solystra_assets/categories/zavya_style/earrings.png" alt="Earrings" class="w-full h-full object-contain group-hover:scale-110 transition-transform duration-500" />
-            </div>
-            <h4 class="font-serif text-base font-semibold text-stone-900 group-hover:text-[#7A152E] transition-colors">Earrings & Studs</h4>
-            <span class="text-[11px] text-stone-400">10 Designs</span>
-          </a>
-
-          <a href="products.html?category=complete_sets" class="group flex flex-col items-center p-4 bg-white rounded-3xl border border-[#EAE4DC] hover:border-[#7A152E] hover:shadow-lg transition-all text-center col-span-2 sm:col-span-1">
-            <div class="w-24 h-24 sm:w-28 sm:h-28 rounded-2xl overflow-hidden bg-[#FAF8F5] mb-3 p-2">
-              <img src="assets/gifting-complete-sets.jpg" alt="Gift Suites" class="w-full h-full object-cover rounded-xl group-hover:scale-110 transition-transform duration-500" />
-            </div>
-            <h4 class="font-serif text-base font-semibold text-stone-900 group-hover:text-[#7A152E] transition-colors">Gift Sets</h4>
-            <span class="text-[11px] text-stone-400">8 Curations</span>
-          </a>
-
-        </div>
-      </div>
-    </section>
-
-    <!-- BEST SELLERS WITH LIVE CATEGORY FILTER TABS -->
-    <section class="py-12 sm:py-16 bg-[#F7F4EE]/60 border-y border-[#EAE4DC]">
+    <!-- ========================================================
+        3. SHOP BY CATEGORY: ZAVYA SQUIRCLE CARDS
+        ======================================================== -->
+    <section class="py-6 sm:py-10 bg-white border-b border-[#EAE4DC]">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        <div class="flex flex-col sm:flex-row items-center justify-between gap-4 mb-8">
+        <div class="flex items-center justify-between mb-4 sm:mb-6">
           <div>
-            <span class="text-[10px] uppercase tracking-widest text-[#7A152E] font-bold">Iconic Vault</span>
-            <h2 class="font-serif text-2xl sm:text-3xl font-semibold text-stone-900">Solystra Bestsellers</h2>
+            <span class="text-[10px] uppercase tracking-widest text-[#7A152E] font-bold block mb-0.5">SHOP BY CATEGORY</span>
+            <h2 class="font-serif text-xl sm:text-3xl text-stone-900 font-normal">Explore by Category</h2>
+          </div>
+          <a href="categories.html" class="text-xs text-[#7A152E] hover:underline font-semibold hidden sm:inline">
+            View All Categories →
+          </a>
+        </div>
+
+        <!-- Category Grid (6 on Desktop, smooth touch row on mobile) -->
+        <div class="grid grid-cols-3 sm:grid-cols-6 gap-3 sm:gap-5">
+          
+          <a href="products.html?category=necklaces" class="group flex flex-col items-center select-none text-center">
+            <div class="w-full relative p-[2px] rounded-[22px] bg-gradient-to-tr from-[#7A152E]/80 via-[#D4AF37] to-[#F6E3B8] shadow-2xs group-hover:shadow-md group-hover:-translate-y-1 transition-all duration-300">
+              <div class="w-full aspect-square rounded-[20px] overflow-hidden bg-white p-1">
+                <img src="solystra_assets/categories/zavya_style/necklaces.png" alt="Necklaces" class="w-full h-full object-cover group-hover:scale-108 transition-transform duration-500" loading="lazy">
+              </div>
+            </div>
+            <span class="font-serif text-xs sm:text-sm font-semibold text-stone-900 group-hover:text-[#7A152E] transition-colors mt-2">Necklaces</span>
+            <span class="text-[10px] text-stone-400">14 Designs</span>
+          </a>
+
+          <a href="products.html?category=earrings" class="group flex flex-col items-center select-none text-center">
+            <div class="w-full relative p-[2px] rounded-[22px] bg-gradient-to-tr from-[#7A152E]/80 via-[#D4AF37] to-[#F6E3B8] shadow-2xs group-hover:shadow-md group-hover:-translate-y-1 transition-all duration-300">
+              <div class="w-full aspect-square rounded-[20px] overflow-hidden bg-white p-1">
+                <img src="solystra_assets/categories/zavya_style/earrings.png" alt="Earrings" class="w-full h-full object-cover group-hover:scale-108 transition-transform duration-500" loading="lazy">
+              </div>
+            </div>
+            <span class="font-serif text-xs sm:text-sm font-semibold text-stone-900 group-hover:text-[#7A152E] transition-colors mt-2">Earrings</span>
+            <span class="text-[10px] text-stone-400">10 Designs</span>
+          </a>
+
+          <a href="products.html?category=bracelets" class="group flex flex-col items-center select-none text-center">
+            <div class="w-full relative p-[2px] rounded-[22px] bg-gradient-to-tr from-[#7A152E]/80 via-[#D4AF37] to-[#F6E3B8] shadow-2xs group-hover:shadow-md group-hover:-translate-y-1 transition-all duration-300">
+              <div class="w-full aspect-square rounded-[20px] overflow-hidden bg-white p-1">
+                <img src="solystra_assets/categories/zavya_style/bracelets.png" alt="Bracelets" class="w-full h-full object-cover group-hover:scale-108 transition-transform duration-500" loading="lazy">
+              </div>
+            </div>
+            <span class="font-serif text-xs sm:text-sm font-semibold text-stone-900 group-hover:text-[#7A152E] transition-colors mt-2">Bracelets</span>
+            <span class="text-[10px] text-stone-400">12 Designs</span>
+          </a>
+
+          <a href="products.html?category=rings" class="group flex flex-col items-center select-none text-center">
+            <div class="w-full relative p-[2px] rounded-[22px] bg-gradient-to-tr from-[#7A152E]/80 via-[#D4AF37] to-[#F6E3B8] shadow-2xs group-hover:shadow-md group-hover:-translate-y-1 transition-all duration-300">
+              <div class="w-full aspect-square rounded-[20px] overflow-hidden bg-white p-1">
+                <img src="solystra_assets/categories/zavya_style/rings.png" alt="Rings" class="w-full h-full object-cover group-hover:scale-108 transition-transform duration-500" loading="lazy">
+              </div>
+            </div>
+            <span class="font-serif text-xs sm:text-sm font-semibold text-stone-900 group-hover:text-[#7A152E] transition-colors mt-2">Rings</span>
+            <span class="text-[10px] text-stone-400">15 Designs</span>
+          </a>
+
+          <a href="products.html?category=complete_sets" class="group flex flex-col items-center select-none text-center">
+            <div class="w-full relative p-[2px] rounded-[22px] bg-gradient-to-tr from-[#7A152E]/80 via-[#D4AF37] to-[#F6E3B8] shadow-2xs group-hover:shadow-md group-hover:-translate-y-1 transition-all duration-300">
+              <div class="w-full aspect-square rounded-[20px] overflow-hidden bg-white p-1">
+                <img src="solystra_assets/categories/zavya_style/complete_sets.png" alt="Gift Suites" class="w-full h-full object-cover group-hover:scale-108 transition-transform duration-500" loading="lazy">
+              </div>
+            </div>
+            <span class="font-serif text-xs sm:text-sm font-semibold text-stone-900 group-hover:text-[#7A152E] transition-colors mt-2">Gift Sets</span>
+            <span class="text-[10px] text-stone-400">8 Sets</span>
+          </a>
+
+          <a href="categories.html" class="group flex flex-col items-center select-none text-center">
+            <div class="w-full relative p-[2px] rounded-[22px] bg-gradient-to-tr from-[#7A152E]/40 via-[#D4AF37]/50 to-[#7A152E]/40 shadow-2xs group-hover:shadow-md group-hover:-translate-y-1 transition-all duration-300">
+              <div class="w-full aspect-square rounded-[20px] bg-[#FAF8F5] flex flex-col items-center justify-center p-2 text-center border border-[#EAE4DC]">
+                <div class="w-7 h-7 rounded-full bg-[#7A152E]/10 flex items-center justify-center mb-1 text-[#7A152E]">
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                </div>
+                <span class="text-[9px] font-bold uppercase tracking-wider text-[#7A152E]">Explore</span>
+              </div>
+            </div>
+            <span class="font-serif text-xs sm:text-sm font-semibold text-[#7A152E] mt-2">View All</span>
+            <span class="text-[10px] text-stone-400">10 Categories</span>
+          </a>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ========================================================
+        4. BESTSELLERS WITH LIVE CATEGORY FILTER TABS
+        ======================================================== -->
+    <section id="bestsellers-showcase" class="py-8 sm:py-12 bg-[#FAF8F5] border-b border-[#EAE4DC]">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-6 pb-3 border-b border-[#EAE4DC] gap-4">
+          <div>
+            <span class="text-xs uppercase tracking-widest text-[#7A152E] font-semibold block mb-1">ICONIC PIECES</span>
+            <h2 class="font-serif text-2xl sm:text-4xl font-normal text-stone-900">Solystra Bestsellers</h2>
           </div>
 
-          <!-- Category Filter Buttons -->
+          <!-- Category Filter Tabs -->
           <div id="bestseller-tabs" class="flex flex-wrap items-center gap-1.5 p-1 bg-white rounded-full border border-[#EAE4DC] text-xs">
-            <button onclick="filterBestsellers('all')" class="tab-btn px-4 py-1.5 rounded-full font-semibold transition-all bg-[#7A152E] text-white">All Pieces</button>
-            <button onclick="filterBestsellers('rings')" class="tab-btn px-4 py-1.5 rounded-full font-semibold transition-all text-stone-600 hover:text-stone-900">Rings</button>
-            <button onclick="filterBestsellers('necklaces')" class="tab-btn px-4 py-1.5 rounded-full font-semibold transition-all text-stone-600 hover:text-stone-900">Necklaces</button>
-            <button onclick="filterBestsellers('bracelets')" class="tab-btn px-4 py-1.5 rounded-full font-semibold transition-all text-stone-600 hover:text-stone-900">Bracelets</button>
-            <button onclick="filterBestsellers('earrings')" class="tab-btn px-4 py-1.5 rounded-full font-semibold transition-all text-stone-600 hover:text-stone-900">Earrings</button>
+            <button onclick="filterBestsellers('all', this)" class="tab-btn px-4 py-1.5 rounded-full font-semibold transition-all bg-[#7A152E] text-white">All</button>
+            <button onclick="filterBestsellers('rings', this)" class="tab-btn px-4 py-1.5 rounded-full font-semibold transition-all text-stone-600 hover:text-stone-900">Rings</button>
+            <button onclick="filterBestsellers('necklaces', this)" class="tab-btn px-4 py-1.5 rounded-full font-semibold transition-all text-stone-600 hover:text-stone-900">Necklaces</button>
+            <button onclick="filterBestsellers('bracelets', this)" class="tab-btn px-4 py-1.5 rounded-full font-semibold transition-all text-stone-600 hover:text-stone-900">Bracelets</button>
+            <button onclick="filterBestsellers('earrings', this)" class="tab-btn px-4 py-1.5 rounded-full font-semibold transition-all text-stone-600 hover:text-stone-900">Earrings</button>
+            <button onclick="filterBestsellers('complete_sets', this)" class="tab-btn px-4 py-1.5 rounded-full font-semibold transition-all text-stone-600 hover:text-stone-900">Gift Sets</button>
           </div>
         </div>
 
-        <!-- Product Grid -->
-        <div id="bestseller-grid" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6">
+        <!-- 4-Column Product Grid -->
+        <div id="bestseller-grid" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3.5 sm:gap-6">
           <!-- Populated by JavaScript -->
         </div>
 
-        <!-- View All Button -->
-        <div class="text-center mt-10">
-          <a href="products.html" class="inline-flex items-center gap-2 px-8 py-3.5 bg-white border border-[#EAE4DC] hover:border-[#7A152E] hover:text-[#7A152E] text-stone-800 text-xs font-bold uppercase tracking-wider rounded-full shadow-xs transition-all">
-            <span>Explore Entire Vault (60+ Pieces)</span>
+        <div class="mt-10 text-center">
+          <a href="products.html" class="inline-flex items-center gap-2 px-8 py-3.5 bg-white border border-[#EAE4DC] hover:border-[#7A152E] hover:text-[#7A152E] text-stone-800 text-xs font-bold uppercase tracking-wider rounded-xl shadow-xs transition-all">
+            <span>Explore Entire Atelier Vault (60+ Pieces)</span>
             <span>→</span>
           </a>
         </div>
@@ -335,17 +402,231 @@
       </div>
     </section>
 
-    <!-- CRAFTSMANSHIP BENTO GRID -->
-    <section class="py-16 sm:py-24">
+    <!-- ========================================================
+        5. CURATED METALS: 18K GOLD & 925 SILVER
+        ======================================================== -->
+    <section class="py-8 sm:py-14 bg-white border-b border-[#EAE4DC]">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="text-center max-w-2xl mx-auto mb-6 sm:mb-10">
+          <span class="text-[11px] uppercase tracking-widest text-[#7A152E] font-bold block mb-1">CURATED METALS</span>
+          <h2 class="font-serif text-2xl sm:text-4xl text-stone-900 font-normal">18K Gold Vermeil & 925 Silver</h2>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-8 max-w-4xl mx-auto">
+          
+          <!-- Card 1: 18K Gold Vermeil -->
+          <a href="products.html?metal=gold" class="group relative rounded-3xl p-[3px] bg-gradient-to-tr from-[#D4AF37] via-[#F6E3B8] to-[#8C6118] transition-all duration-500 flex flex-col aspect-[4/5] overflow-hidden shadow-lg hover:shadow-2xl">
+            <div class="relative w-full h-full rounded-[22px] overflow-hidden bg-[#181109] flex flex-col justify-end p-5 sm:p-7">
+              <img src="solystra_assets/metals/gold_model.jpg" alt="18K Gold Vermeil" class="absolute inset-0 w-full h-full object-cover object-top group-hover:scale-106 transition-transform duration-700" loading="lazy">
+              <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/35 via-45% to-transparent pointer-events-none"></div>
+              
+              <div class="relative z-10 text-center">
+                <span class="text-[9px] uppercase tracking-[0.25em] font-semibold text-[#E5C378] block">SOLYSTRA ATELIER</span>
+                <h3 class="font-serif text-2xl sm:text-3xl font-normal text-white mt-1">18K Gold Vermeil</h3>
+                <p class="text-xs text-stone-200/90 font-light mt-1 hidden sm:block">2.5-Micron Thick Gold over Pure 925 Silver</p>
+                <div class="mt-3.5 inline-flex items-center gap-1.5 px-6 py-2 rounded-full font-sans font-bold text-xs uppercase tracking-wider bg-gradient-to-r from-[#F3DFB0] via-[#C5A059] to-[#8C6118] text-stone-900 shadow-md group-hover:scale-105 transition-all">
+                  <span>Explore Gold</span>
+                  <span>→</span>
+                </div>
+              </div>
+            </div>
+          </a>
+
+          <!-- Card 2: 925 Sterling Silver -->
+          <a href="products.html?metal=silver" class="group relative rounded-3xl p-[3px] bg-gradient-to-tr from-slate-200 via-white to-slate-400 transition-all duration-500 flex flex-col aspect-[4/5] overflow-hidden shadow-lg hover:shadow-2xl">
+            <div class="relative w-full h-full rounded-[22px] overflow-hidden bg-[#0A101D] flex flex-col justify-end p-5 sm:p-7">
+              <img src="solystra_assets/metals/silver_model.jpg" alt="925 Sterling Silver" class="absolute inset-0 w-full h-full object-cover object-top group-hover:scale-106 transition-transform duration-700" loading="lazy">
+              <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/35 via-45% to-transparent pointer-events-none"></div>
+              
+              <div class="relative z-10 text-center">
+                <span class="text-[9px] uppercase tracking-[0.25em] font-semibold text-slate-200 block">SOLYSTRA ATELIER</span>
+                <h3 class="font-serif text-2xl sm:text-3xl font-normal text-white mt-1">925 Sterling Silver</h3>
+                <p class="text-xs text-stone-200/90 font-light mt-1 hidden sm:block">Anti-Tarnish Mirror Rhodium Dipped Solid 925</p>
+                <div class="mt-3.5 inline-flex items-center gap-1.5 px-6 py-2 rounded-full font-sans font-bold text-xs uppercase tracking-wider bg-white text-stone-900 shadow-md group-hover:scale-105 transition-all">
+                  <span>Explore Silver</span>
+                  <span>→</span>
+                </div>
+              </div>
+            </div>
+          </a>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================
+        6. TOP CURATED COLLECTIONS (COVERFLOW SLIDER)
+        ======================================================== -->
+    <section class="py-8 sm:py-12 bg-white border-b border-[#EAE4DC] overflow-hidden">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center max-w-xl mx-auto mb-12">
+        
+        <div class="flex items-center justify-between mb-6">
+          <div>
+            <span class="text-xs uppercase tracking-widest text-[#7A152E] font-semibold block mb-1">SIGNATURE EDITS</span>
+            <h2 class="font-serif text-2xl sm:text-4xl text-stone-900 font-normal">Top Curated Collections</h2>
+          </div>
+          <div class="flex items-center gap-2">
+            <button onclick="document.getElementById('collections-track').scrollBy({ left: -300, behavior: 'smooth' })" class="w-8 h-8 rounded-full border border-stone-200 flex items-center justify-center hover:bg-stone-100">←</button>
+            <button onclick="document.getElementById('collections-track').scrollBy({ left: 300, behavior: 'smooth' })" class="w-8 h-8 rounded-full border border-stone-200 flex items-center justify-center hover:bg-stone-100">→</button>
+          </div>
+        </div>
+
+        <div id="collections-track" class="flex gap-4 sm:gap-6 overflow-x-auto pb-4 no-scrollbar scroll-smooth">
+          
+          <a href="products.html?category=rings" class="w-64 sm:w-72 shrink-0 rounded-3xl overflow-hidden aspect-[3/4] relative group shadow-md">
+            <img src="solystra_assets/collections/collection_ombre.jpg" alt="Ombre Collection" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent p-5 flex flex-col justify-end text-white">
+              <span class="text-[9px] uppercase tracking-widest text-amber-200 font-bold mb-1">BESTSELLER</span>
+              <h4 class="font-serif text-2xl">The Ombre Collection</h4>
+              <p class="text-xs text-stone-300 font-light mt-0.5">Gradient sapphires & rose vermeil</p>
+            </div>
+          </a>
+
+          <a href="products.html?category=earrings" class="w-64 sm:w-72 shrink-0 rounded-3xl overflow-hidden aspect-[3/4] relative group shadow-md">
+            <img src="solystra_assets/collections/collection_celestial.jpg" alt="Celestial Collection" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent p-5 flex flex-col justify-end text-white">
+              <span class="text-[9px] uppercase tracking-widest text-amber-200 font-bold mb-1">NEW DROP</span>
+              <h4 class="font-serif text-2xl">Celestial Starlight</h4>
+              <p class="text-xs text-stone-300 font-light mt-0.5">Cosmic drops & pavé solitaires</p>
+            </div>
+          </a>
+
+          <a href="products.html?category=complete_sets" class="w-64 sm:w-72 shrink-0 rounded-3xl overflow-hidden aspect-[3/4] relative group shadow-md">
+            <img src="solystra_assets/collections/collection_heart.jpg" alt="Heart Echoes" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent p-5 flex flex-col justify-end text-white">
+              <span class="text-[9px] uppercase tracking-widest text-amber-200 font-bold mb-1">ROMANCE</span>
+              <h4 class="font-serif text-2xl">Heart Echoes</h4>
+              <p class="text-xs text-stone-300 font-light mt-0.5">Intertwined keepsake chains</p>
+            </div>
+          </a>
+
+          <a href="products.html?category=bracelets" class="w-64 sm:w-72 shrink-0 rounded-3xl overflow-hidden aspect-[3/4] relative group shadow-md">
+            <img src="solystra_assets/collections/collection_infinite.jpg" alt="Infinite Bond" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent p-5 flex flex-col justify-end text-white">
+              <span class="text-[9px] uppercase tracking-widest text-amber-200 font-bold mb-1">GIFTING</span>
+              <h4 class="font-serif text-2xl">Infinite Bond</h4>
+              <p class="text-xs text-stone-300 font-light mt-0.5">Continuous silver tennis links</p>
+            </div>
+          </a>
+
+          <a href="products.html?category=rings" class="w-64 sm:w-72 shrink-0 rounded-3xl overflow-hidden aspect-[3/4] relative group shadow-md">
+            <img src="solystra_assets/collections/collection_ruby.jpg" alt="Ruby Radiance" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent p-5 flex flex-col justify-end text-white">
+              <span class="text-[9px] uppercase tracking-widest text-amber-200 font-bold mb-1">ROYAL EDIT</span>
+              <h4 class="font-serif text-2xl">Ruby Radiance</h4>
+              <p class="text-xs text-stone-300 font-light mt-0.5">Pigeon-blood prong sets</p>
+            </div>
+          </a>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ========================================================
+        7. SHOP THE LOOK: STYLING COMBOS WITH GLOWING HOTSPOTS
+        ======================================================== -->
+    <section class="py-8 sm:py-14 bg-[#FAF8F5] border-b border-[#EAE4DC]">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between mb-6 pb-3 border-b border-[#EAE4DC] gap-3">
+          <div>
+            <span class="text-[11px] uppercase tracking-widest text-[#7A152E] font-bold block">CURATED LOOKS</span>
+            <h2 class="font-serif text-2xl sm:text-3xl text-stone-900 font-normal mt-0.5">Shop the Complete Look</h2>
+          </div>
+
+          <!-- Combo Switchers -->
+          <div class="flex items-center gap-2">
+            <button onclick="switchCombo(0)" id="combo-btn-0" class="px-3 py-1.5 rounded-full text-xs font-semibold bg-[#7A152E] text-white">Look 01</button>
+            <button onclick="switchCombo(1)" id="combo-btn-1" class="px-3 py-1.5 rounded-full text-xs font-semibold bg-white border border-[#EAE4DC] text-stone-700">Look 02</button>
+            <button onclick="switchCombo(2)" id="combo-btn-2" class="px-3 py-1.5 rounded-full text-xs font-semibold bg-white border border-[#EAE4DC] text-stone-700">Look 03</button>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-stretch">
+          
+          <!-- Left: Editorial Photo with Pinpoint Hotspots -->
+          <div class="lg:col-span-6 h-[380px] sm:h-[430px] relative rounded-3xl overflow-hidden shadow-xs border border-[#EAE4DC] bg-stone-900">
+            <img id="combo-editorial-img" src="solystra_assets/banners/banner_blush_tones_pc.jpg" alt="Curated Look" class="w-full h-full object-cover object-[75%_center]">
+            <div class="absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-black/80 to-transparent pointer-events-none"></div>
+
+            <!-- Hotspot 1 -->
+            <div id="combo-hotspot-1" class="absolute z-20 cursor-pointer" style="left: 75%; top: 55%;">
+              <div class="relative group/hotspot">
+                <span class="absolute -inset-1 rounded-full bg-[#7A152E]/40 animate-ping"></span>
+                <div class="w-4 h-4 rounded-full bg-[#7A152E] border-2 border-amber-300 flex items-center justify-center shadow-md">
+                  <span class="w-1 h-1 rounded-full bg-white"></span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Hotspot 2 -->
+            <div id="combo-hotspot-2" class="absolute z-20 cursor-pointer" style="left: 78%; top: 27%;">
+              <div class="relative group/hotspot">
+                <span class="absolute -inset-1 rounded-full bg-[#7A152E]/40 animate-ping"></span>
+                <div class="w-4 h-4 rounded-full bg-[#7A152E] border-2 border-amber-300 flex items-center justify-center shadow-md">
+                  <span class="w-1 h-1 rounded-full bg-white"></span>
+                </div>
+              </div>
+            </div>
+
+            <div class="absolute bottom-4 left-5 z-10 text-white">
+              <span id="combo-tag" class="text-[9px] uppercase tracking-widest text-[#E5C985] font-bold block">ROSE GOLD VERMEIL</span>
+              <h3 id="combo-title" class="font-serif text-xl sm:text-2xl font-normal">Amethyst Floral Blossom Set</h3>
+            </div>
+          </div>
+
+          <!-- Right: Matched Pieces & Bundle Add to Bag -->
+          <div class="lg:col-span-6 h-[380px] sm:h-[430px] flex flex-col justify-between bg-white rounded-3xl p-6 border border-[#EAE4DC] shadow-xs">
+            <div>
+              <div class="flex items-start justify-between pb-3 border-b border-[#EAE4DC]">
+                <div>
+                  <span id="combo-right-tag" class="text-[9.5px] text-[#7A152E] uppercase tracking-widest font-bold block">ROSE GOLD VERMEIL</span>
+                  <h3 id="combo-right-title" class="text-base font-serif font-semibold text-stone-900 mt-0.5">Amethyst Floral Blossom Set</h3>
+                </div>
+                <span id="combo-right-savings" class="text-xs text-[#7A152E] font-bold bg-[#7A152E]/10 px-3 py-1 rounded-full">Save ₹3,396</span>
+              </div>
+
+              <!-- 2 Matched Pieces -->
+              <div id="combo-items-list" class="space-y-3 mt-4">
+                <!-- Dynamically rendered -->
+              </div>
+            </div>
+
+            <div class="pt-4 border-t border-[#EAE4DC] flex items-center justify-between">
+              <div>
+                <span class="text-[10px] text-stone-500 uppercase tracking-wider font-semibold block">Complete Bundle Price</span>
+                <div class="flex items-baseline gap-2 mt-0.5">
+                  <span id="combo-bundle-price" class="font-serif text-2xl font-bold text-[#7A152E]">₹12,084</span>
+                  <span id="combo-original-price" class="text-xs text-stone-400 line-through">₹15,480</span>
+                </div>
+              </div>
+              <button onclick="addCurrentComboToCart()" class="px-6 py-3 bg-[#7A152E] hover:bg-[#590D1E] text-white text-xs font-bold uppercase tracking-wider rounded-xl transition-all shadow-md">
+                Add Look to Bag →
+              </button>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ========================================================
+        8. CRAFTSMANSHIP BENTO GRID
+        ======================================================== -->
+    <section class="py-12 sm:py-20 bg-white border-b border-[#EAE4DC]">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="text-center max-w-xl mx-auto mb-10 sm:mb-14">
           <span class="text-[10px] uppercase tracking-widest text-[#7A152E] font-bold">Uncompromising Quality</span>
           <h2 class="font-serif text-3xl sm:text-4xl text-stone-900 mt-1 font-semibold">The Solystra Atelier Standard</h2>
           <p class="text-xs sm:text-sm text-stone-500 mt-2">Every jewel is finished with dual-micron anti-tarnish rhodium, BIS hallmarked for absolute purity.</p>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <div class="relative rounded-3xl overflow-hidden aspect-[4/5] bg-stone-900 group">
+          <div class="relative rounded-3xl overflow-hidden aspect-[4/5] bg-stone-900 group shadow-md">
             <img src="assets/craftsmanship-atelier.jpg" alt="Master Goldsmiths" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-80" />
             <div class="absolute inset-0 bg-gradient-to-t from-stone-950 via-stone-950/20 to-transparent p-6 sm:p-8 flex flex-col justify-end text-white">
               <span class="text-[10px] tracking-widest uppercase text-amber-200 font-bold mb-1">PROVENANCE & CRAFT</span>
@@ -354,7 +635,7 @@
             </div>
           </div>
 
-          <div class="relative rounded-3xl overflow-hidden aspect-[4/5] bg-stone-900 group">
+          <div class="relative rounded-3xl overflow-hidden aspect-[4/5] bg-stone-900 group shadow-md">
             <img src="assets/bento-bridal-rings.jpg" alt="Pure 925 Hallmark" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-80" />
             <div class="absolute inset-0 bg-gradient-to-t from-stone-950 via-stone-950/20 to-transparent p-6 sm:p-8 flex flex-col justify-end text-white">
               <span class="text-[10px] tracking-widest uppercase text-amber-200 font-bold mb-1">BIS CERTIFICATION</span>
@@ -363,7 +644,7 @@
             </div>
           </div>
 
-          <div class="relative rounded-3xl overflow-hidden aspect-[4/5] bg-stone-900 group">
+          <div class="relative rounded-3xl overflow-hidden aspect-[4/5] bg-stone-900 group shadow-md">
             <img src="assets/bento-craftsmanship-macro.jpg" alt="Anti-Tarnish Rhodium" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-80" />
             <div class="absolute inset-0 bg-gradient-to-t from-stone-950 via-stone-950/20 to-transparent p-6 sm:p-8 flex flex-col justify-end text-white">
               <span class="text-[10px] tracking-widest uppercase text-amber-200 font-bold mb-1">PERMANENT BRILLIANCE</span>
@@ -372,94 +653,162 @@
             </div>
           </div>
         </div>
+
       </div>
     </section>
 
-    <!-- VIDEO REELS SHOWCASE -->
-    <section class="py-12 sm:py-16 bg-[#F7F4EE] border-t border-[#EAE4DC] overflow-hidden">
+    <!-- ========================================================
+        9. VIDEO REELS: 12 CINEMATIC REELS IN MOTION
+        ======================================================== -->
+    <section class="py-12 sm:py-16 bg-[#F7F4EE] border-b border-[#EAE4DC] overflow-hidden">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="flex items-center justify-between mb-8">
+        
+        <div class="flex items-center justify-between mb-6">
           <div>
-            <span class="text-[10px] uppercase tracking-widest text-[#7A152E] font-bold">Cinematic Editorial</span>
+            <span class="text-[10px] uppercase tracking-widest text-[#7A152E] font-bold block mb-0.5">CINEMATIC ATELIER</span>
             <h2 class="font-serif text-2xl sm:text-3xl font-semibold text-stone-900">Solystra In Motion</h2>
           </div>
-          <span class="text-xs text-stone-500 hidden sm:inline">Tap any video to unmute sound</span>
+          <span class="text-xs text-stone-500 hidden sm:inline">Tap any reel to toggle audio</span>
         </div>
 
         <div class="flex gap-4 overflow-x-auto pb-4 no-scrollbar">
           
-          <div class="w-48 sm:w-60 flex-shrink-0 bg-stone-900 rounded-2xl overflow-hidden shadow-md relative group aspect-[9/16]">
+          <div class="w-52 sm:w-60 flex-shrink-0 bg-stone-900 rounded-3xl overflow-hidden shadow-lg relative group aspect-[9/16]">
             <video src="solystra_assets/videos/reel_01_pen-30277-g.mp4" autoplay loop muted playsinline class="w-full h-full object-cover cursor-pointer" onclick="this.muted = !this.muted"></video>
-            <div class="absolute bottom-3 left-3 right-3 p-2 bg-stone-900/70 backdrop-blur-md rounded-xl text-white text-xs">
+            <div class="absolute bottom-3 left-3 right-3 p-3 bg-stone-900/80 backdrop-blur-md rounded-2xl text-white text-xs">
               <p class="font-serif font-semibold truncate">Halo Solitaire Pendant</p>
-              <p class="text-[10px] text-amber-300">₹3,499</p>
+              <div class="flex items-center justify-between mt-1">
+                <span class="text-amber-300 font-bold">₹2,799</span>
+                <a href="product.html?id=accent-circle-925-silver-necklace" class="text-[10px] underline">View</a>
+              </div>
             </div>
           </div>
 
-          <div class="w-48 sm:w-60 flex-shrink-0 bg-stone-900 rounded-2xl overflow-hidden shadow-md relative group aspect-[9/16]">
+          <div class="w-52 sm:w-60 flex-shrink-0 bg-stone-900 rounded-3xl overflow-hidden shadow-lg relative group aspect-[9/16]">
             <video src="solystra_assets/videos/reel_02_ear-21096-g.mp4" autoplay loop muted playsinline class="w-full h-full object-cover cursor-pointer" onclick="this.muted = !this.muted"></video>
-            <div class="absolute bottom-3 left-3 right-3 p-2 bg-stone-900/70 backdrop-blur-md rounded-xl text-white text-xs">
-              <p class="font-serif font-semibold truncate">Drop Stud Earrings</p>
-              <p class="text-[10px] text-amber-300">₹2,899</p>
+            <div class="absolute bottom-3 left-3 right-3 p-3 bg-stone-900/80 backdrop-blur-md rounded-2xl text-white text-xs">
+              <p class="font-serif font-semibold truncate">Radiant Cascade Drops</p>
+              <div class="flex items-center justify-between mt-1">
+                <span class="text-amber-300 font-bold">₹2,499</span>
+                <a href="products.html?category=earrings" class="text-[10px] underline">View</a>
+              </div>
             </div>
           </div>
 
-          <div class="w-48 sm:w-60 flex-shrink-0 bg-stone-900 rounded-2xl overflow-hidden shadow-md relative group aspect-[9/16]">
+          <div class="w-52 sm:w-60 flex-shrink-0 bg-stone-900 rounded-3xl overflow-hidden shadow-lg relative group aspect-[9/16]">
             <video src="solystra_assets/videos/reel_03_br-80505-g.mp4" autoplay loop muted playsinline class="w-full h-full object-cover cursor-pointer" onclick="this.muted = !this.muted"></video>
-            <div class="absolute bottom-3 left-3 right-3 p-2 bg-stone-900/70 backdrop-blur-md rounded-xl text-white text-xs">
-              <p class="font-serif font-semibold truncate">18K Vermeil Tennis Link</p>
-              <p class="text-[10px] text-amber-300">₹4,299</p>
+            <div class="absolute bottom-3 left-3 right-3 p-3 bg-stone-900/80 backdrop-blur-md rounded-2xl text-white text-xs">
+              <p class="font-serif font-semibold truncate">Imperial Link Tennis Bracelet</p>
+              <div class="flex items-center justify-between mt-1">
+                <span class="text-amber-300 font-bold">₹3,899</span>
+                <a href="products.html?category=bracelets" class="text-[10px] underline">View</a>
+              </div>
             </div>
           </div>
 
-          <div class="w-48 sm:w-60 flex-shrink-0 bg-stone-900 rounded-2xl overflow-hidden shadow-md relative group aspect-[9/16]">
+          <div class="w-52 sm:w-60 flex-shrink-0 bg-stone-900 rounded-3xl overflow-hidden shadow-lg relative group aspect-[9/16]">
+            <video src="solystra_assets/videos/reel_04_halo-heart.mp4" autoplay loop muted playsinline class="w-full h-full object-cover cursor-pointer" onclick="this.muted = !this.muted"></video>
+            <div class="absolute bottom-3 left-3 right-3 p-3 bg-stone-900/80 backdrop-blur-md rounded-2xl text-white text-xs">
+              <p class="font-serif font-semibold truncate">Heart Solitaire Studs</p>
+              <div class="flex items-center justify-between mt-1">
+                <span class="text-amber-300 font-bold">₹2,199</span>
+                <a href="products.html?category=earrings" class="text-[10px] underline">View</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="w-52 sm:w-60 flex-shrink-0 bg-stone-900 rounded-3xl overflow-hidden shadow-lg relative group aspect-[9/16]">
+            <video src="solystra_assets/videos/reel_05_lambency.mp4" autoplay loop muted playsinline class="w-full h-full object-cover cursor-pointer" onclick="this.muted = !this.muted"></video>
+            <div class="absolute bottom-3 left-3 right-3 p-3 bg-stone-900/80 backdrop-blur-md rounded-2xl text-white text-xs">
+              <p class="font-serif font-semibold truncate">Lambency Solitaire Ring</p>
+              <div class="flex items-center justify-between mt-1">
+                <span class="text-amber-300 font-bold">₹3,199</span>
+                <a href="products.html?category=rings" class="text-[10px] underline">View</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="w-52 sm:w-60 flex-shrink-0 bg-stone-900 rounded-3xl overflow-hidden shadow-lg relative group aspect-[9/16]">
             <video src="solystra_assets/videos/reel_06_nl-30455-g.mp4" autoplay loop muted playsinline class="w-full h-full object-cover cursor-pointer" onclick="this.muted = !this.muted"></video>
-            <div class="absolute bottom-3 left-3 right-3 p-2 bg-stone-900/70 backdrop-blur-md rounded-xl text-white text-xs">
-              <p class="font-serif font-semibold truncate">Modern Celestial Lariat</p>
-              <p class="text-[10px] text-amber-300">₹3,999</p>
+            <div class="absolute bottom-3 left-3 right-3 p-3 bg-stone-900/80 backdrop-blur-md rounded-2xl text-white text-xs">
+              <p class="font-serif font-semibold truncate">Golden Meadow Lariat</p>
+              <div class="flex items-center justify-between mt-1">
+                <span class="text-amber-300 font-bold">₹4,299</span>
+                <a href="products.html?category=necklaces" class="text-[10px] underline">View</a>
+              </div>
             </div>
           </div>
 
         </div>
+
       </div>
     </section>
 
-    <!-- TRUST BADGES SECTION -->
-    <section class="py-12 sm:py-16 bg-white border-t border-[#EAE4DC]">
+    <!-- ========================================================
+        10. VERIFIED CUSTOMER REVIEWS & TESTIMONIALS
+        ======================================================== -->
+    <section class="py-12 sm:py-20 bg-white">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
-          <div class="flex flex-col items-center p-4">
-            <div class="w-12 h-12 rounded-full bg-amber-50 text-[#7A152E] flex items-center justify-center mb-3">
-              <svg class="w-6 h-6 stroke-[1.8]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
-            </div>
-            <h4 class="font-serif text-base font-semibold text-stone-900">BIS Hallmarked 925</h4>
-            <p class="text-xs text-stone-500 mt-1">100% verified pure silver stamp on every clasp and band.</p>
-          </div>
-
-          <div class="flex flex-col items-center p-4">
-            <div class="w-12 h-12 rounded-full bg-amber-50 text-[#7A152E] flex items-center justify-center mb-3">
-              <svg class="w-6 h-6 stroke-[1.8]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path></svg>
-            </div>
-            <h4 class="font-serif text-base font-semibold text-stone-900">6-Month Replating</h4>
-            <p class="text-xs text-stone-500 mt-1">Free polish replating assurance with your authenticity card.</p>
-          </div>
-
-          <div class="flex flex-col items-center p-4">
-            <div class="w-12 h-12 rounded-full bg-amber-50 text-[#7A152E] flex items-center justify-center mb-3">
-              <svg class="w-6 h-6 stroke-[1.8]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 16V6a1 1 0 00-1-1H4a1 1 0 00-1 1v10a1 1 0 001 1h1m8-1a1 1 0 01-1 1H9m4-1V8a1 1 0 011-1h2.586a1 1 0 01.707.293l3.414 3.414a1 1 0 01.293.707V16a1 1 0 01-1 1h-1m-6-1a1 1 0 001 1h1M5 17a2 2 0 104 0m-4 0a2 2 0 114 0m6 0a2 2 0 104 0m-4 0a2 2 0 114 0"></path></svg>
-            </div>
-            <h4 class="font-serif text-base font-semibold text-stone-900">Insured Delivery</h4>
-            <p class="text-xs text-stone-500 mt-1">Complimentary insured air shipping across 19,000+ Indian pincodes.</p>
-          </div>
-
-          <div class="flex flex-col items-center p-4">
-            <div class="w-12 h-12 rounded-full bg-amber-50 text-[#7A152E] flex items-center justify-center mb-3">
-              <svg class="w-6 h-6 stroke-[1.8]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M16 15v-1a4 4 0 00-4-4H8m0 0l3 3m-3-3l3-3m9 14V5a2 2 0 00-2-2H6a2 2 0 00-2 2v16l4-2 4 2 4-2 4 2z"></path></svg>
-            </div>
-            <h4 class="font-serif text-base font-semibold text-stone-900">15-Day Easy Returns</h4>
-            <p class="text-xs text-stone-500 mt-1">Hassle-free doorstep pickup with full reimbursement policy.</p>
+        
+        <div class="text-center max-w-xl mx-auto mb-10 sm:mb-14">
+          <span class="text-[10px] uppercase tracking-widest text-[#7A152E] font-bold">Client Reflections</span>
+          <h2 class="font-serif text-3xl sm:text-4xl text-stone-900 mt-1 font-semibold">Voices of the Solystra Club</h2>
+          <div class="flex items-center justify-center gap-1 mt-2 text-amber-500 text-sm">
+            <span>★★★★★</span>
+            <span class="text-stone-700 font-semibold ml-2">4.9 / 5</span>
+            <span class="text-stone-400">(Over 1,200+ Verified Buyers Across India)</span>
           </div>
         </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          
+          <div class="p-6 bg-[#FAF8F5] rounded-3xl border border-[#EAE4DC] flex flex-col justify-between shadow-2xs">
+            <div>
+              <div class="flex items-center justify-between mb-3">
+                <div class="text-amber-500 text-sm">★★★★★</div>
+                <span class="text-[10px] uppercase tracking-wider text-emerald-700 font-bold bg-emerald-50 px-2 py-0.5 rounded-full">Verified Buyer</span>
+              </div>
+              <h4 class="font-serif text-lg font-semibold text-stone-900 mb-2">"Mirror brilliance that rivals natural solitaires."</h4>
+              <p class="text-xs text-stone-600 leading-relaxed">The 18K gold vermeil finish on the tennis bracelet is sublime. I took it to my local jeweller in Bandra and they verified the solid 925 silver stamp. Exceptional finish!</p>
+            </div>
+            <div class="mt-6 pt-4 border-t border-stone-200 flex items-center justify-between text-xs">
+              <span class="font-semibold text-stone-900">Dr. Meera Nambiar</span>
+              <span class="text-stone-400">Mumbai</span>
+            </div>
+          </div>
+
+          <div class="p-6 bg-[#FAF8F5] rounded-3xl border border-[#EAE4DC] flex flex-col justify-between shadow-2xs">
+            <div>
+              <div class="flex items-center justify-between mb-3">
+                <div class="text-amber-500 text-sm">★★★★★</div>
+                <span class="text-[10px] uppercase tracking-wider text-emerald-700 font-bold bg-emerald-50 px-2 py-0.5 rounded-full">Verified Buyer</span>
+              </div>
+              <h4 class="font-serif text-lg font-semibold text-stone-900 mb-2">"Exquisite heirloom packaging and certificate."</h4>
+              <p class="text-xs text-stone-600 leading-relaxed">Ordered the Amethyst Bloom set for my sister's wedding anniversary. The bespoke velvet keepsake vault and physical hallmark card made the unboxing unforgettable.</p>
+            </div>
+            <div class="mt-6 pt-4 border-t border-stone-200 flex items-center justify-between text-xs">
+              <span class="font-semibold text-stone-900">Ananya Singhal</span>
+              <span class="text-stone-400">New Delhi</span>
+            </div>
+          </div>
+
+          <div class="p-6 bg-[#FAF8F5] rounded-3xl border border-[#EAE4DC] flex flex-col justify-between shadow-2xs">
+            <div>
+              <div class="flex items-center justify-between mb-3">
+                <div class="text-amber-500 text-sm">★★★★★</div>
+                <span class="text-[10px] uppercase tracking-wider text-emerald-700 font-bold bg-emerald-50 px-2 py-0.5 rounded-full">Verified Buyer</span>
+              </div>
+              <h4 class="font-serif text-lg font-semibold text-stone-900 mb-2">"Dual-micron rhodium really prevents tarnishing."</h4>
+              <p class="text-xs text-stone-600 leading-relaxed">I wear my stacking silver solitaire ring daily, even when washing hands. Zero blackening after 4 months. Solystra's e-coat technology is truly state of the art.</p>
+            </div>
+            <div class="mt-6 pt-4 border-t border-stone-200 flex items-center justify-between text-xs">
+              <span class="font-semibold text-stone-900">Rhea Sen</span>
+              <span class="text-stone-400">Bengaluru</span>
+            </div>
+          </div>
+
+        </div>
+
       </div>
     </section>
 
@@ -753,53 +1102,203 @@
   <script src="js/app.js"></script>
 
 <script>
+  // ------------------------------------------------------------
   // Hero Slider
-  let currentSlide = 0;
+  // ------------------------------------------------------------
+  let heroSlideIdx = 0;
   const slides = document.querySelectorAll('.hero-slide');
   const dots = document.querySelectorAll('.hero-dot');
 
-  function setHeroSlide(n) {
+  function setHeroSlide(idx) {
     if (!slides.length) return;
-    slides[currentSlide].classList.remove('opacity-100', 'active');
-    slides[currentSlide].classList.add('opacity-0', 'pointer-events-none');
-    dots[currentSlide].classList.remove('w-6');
-    dots[currentSlide].classList.add('w-2', 'bg-white/40');
+    slides[heroSlideIdx].classList.remove('opacity-100', 'active');
+    slides[heroSlideIdx].classList.add('opacity-0', 'pointer-events-none');
+    dots[heroSlideIdx].classList.remove('w-7', 'bg-[#C5A059]');
+    dots[heroSlideIdx].classList.add('w-2', 'bg-white/40');
 
-    currentSlide = (n + slides.length) % slides.length;
+    heroSlideIdx = (idx + slides.length) % slides.length;
 
-    slides[currentSlide].classList.remove('opacity-0', 'pointer-events-none');
-    slides[currentSlide].classList.add('opacity-100', 'active');
-    dots[currentSlide].classList.remove('w-2', 'bg-white/40');
-    dots[currentSlide].classList.add('w-6', 'bg-white');
+    slides[heroSlideIdx].classList.remove('opacity-0', 'pointer-events-none');
+    slides[heroSlideIdx].classList.add('opacity-100', 'active');
+    dots[heroSlideIdx].classList.remove('w-2', 'bg-white/40');
+    dots[heroSlideIdx].classList.add('w-7', 'bg-[#C5A059]');
   }
 
-  setInterval(() => setHeroSlide(currentSlide + 1), 6000);
+  setInterval(() => setHeroSlide(heroSlideIdx + 1), 6000);
 
-  // Bestsellers Filter
-  function filterBestsellers(cat) {
+  // ------------------------------------------------------------
+  // Bestsellers Filter Tabs
+  // ------------------------------------------------------------
+  function filterBestsellers(category, btn) {
     const products = window.PRODUCTS || [];
-    const container = document.getElementById('bestseller-grid');
-    if (!container) return;
+    const grid = document.getElementById('bestseller-grid');
+    if (!grid) return;
 
-    // Update active tab styling
-    document.querySelectorAll('#bestseller-tabs .tab-btn').forEach(btn => {
-      btn.classList.remove('bg-[#7A152E]', 'text-white');
-      btn.classList.add('text-stone-600');
-    });
-    event.target.classList.remove('text-stone-600');
-    event.target.classList.add('bg-[#7A152E]', 'text-white');
-
-    let filtered = products;
-    if (cat !== 'all') {
-      filtered = products.filter(p => p.category === cat);
+    if (btn) {
+      document.querySelectorAll('#bestseller-tabs .tab-btn').forEach(b => {
+        b.classList.remove('bg-[#7A152E]', 'text-white');
+        b.classList.add('text-stone-600');
+      });
+      btn.classList.add('bg-[#7A152E]', 'text-white');
+      btn.classList.remove('text-stone-600');
     }
-    const displayList = filtered.slice(0, 8);
 
-    container.innerHTML = displayList.map(p => renderProductCardHTML(p)).join('');
+    let list = products;
+    if (category !== 'all') {
+      list = products.filter(p => p.category === category);
+    }
+    const displayList = list.slice(0, 8);
+    grid.innerHTML = displayList.map(p => renderProductCardHTML(p)).join('');
+  }
+
+  // ------------------------------------------------------------
+  // Styling Combos (Shop the Look)
+  // ------------------------------------------------------------
+  const COMBOS = [
+    {
+      id: 'combo-1',
+      title: 'Amethyst Floral Blossom Set',
+      tag: 'ROSE GOLD VERMEIL',
+      img: 'solystra_assets/banners/banner_blush_tones_pc.jpg',
+      savings: '3,396',
+      bundlePrice: '12,084',
+      origPrice: '15,480',
+      items: [
+        {
+          name: 'Amethyst Bloom Floral Necklace',
+          type: 'NECKLACE',
+          metal: 'Rose Gold Vermeil • Handcrafted Setting',
+          price: '9,585',
+          mrp: '11,981',
+          img: 'solystra_assets/products/amethyst-bloom-necklace-set-925-sterling-silver/angle_1.png',
+          pid: 'amethyst-bloom-necklace-set-925-sterling-silver'
+        },
+        {
+          name: 'Blossom Petal Drop Earrings',
+          type: 'EARRINGS',
+          metal: 'Rose Gold Vermeil • Double-Micron Rhodium',
+          price: '2,499',
+          mrp: '3,499',
+          img: 'solystra_assets/categories/cat_earrings.png',
+          pid: 'accent-circle-925-silver-necklace'
+        }
+      ]
+    },
+    {
+      id: 'combo-2',
+      title: 'Classic Solitaire Set',
+      tag: 'PURE 925 STERLING SILVER',
+      img: 'solystra_assets/banners/banner_pc_1.jpg',
+      savings: '2,200',
+      bundlePrice: '5,098',
+      origPrice: '7,298',
+      items: [
+        {
+          name: 'Universal Solitaire Drop Necklace',
+          type: 'NECKLACE',
+          metal: 'Pure 925 Silver • Brilliant Cut Solitaire',
+          price: '2,799',
+          mrp: '3,999',
+          img: 'solystra_assets/categories/cat_necklaces.png',
+          pid: 'accent-circle-925-silver-necklace'
+        },
+        {
+          name: 'Solitaire Drop Earrings',
+          type: 'EARRINGS',
+          metal: 'Pure 925 Silver • Cushion Cut Drop',
+          price: '2,299',
+          mrp: '3,299',
+          img: 'solystra_assets/categories/cat_earrings.png',
+          pid: 'accent-circle-925-silver-necklace'
+        }
+      ]
+    },
+    {
+      id: 'combo-3',
+      title: 'Gala Choker & Chandelier Set',
+      tag: 'FINE EVENING WEAR',
+      img: 'solystra_assets/banners/banner_pc_3.jpg',
+      savings: '4,000',
+      bundlePrice: '8,998',
+      origPrice: '12,998',
+      items: [
+        {
+          name: 'Grand Solitaire Tennis Choker',
+          type: 'NECKLACE',
+          metal: 'Pure 925 Silver • Graduated Tennis Links',
+          price: '5,499',
+          mrp: '7,999',
+          img: 'solystra_assets/categories/cat_necklaces.png',
+          pid: 'accent-circle-925-silver-necklace'
+        },
+        {
+          name: 'Imperial Chandelier Drops',
+          type: 'EARRINGS',
+          metal: 'Pure 925 Silver • Multi-Tier Drops',
+          price: '3,499',
+          mrp: '4,999',
+          img: 'solystra_assets/categories/cat_earrings.png',
+          pid: 'accent-circle-925-silver-necklace'
+        }
+      ]
+    }
+  ];
+
+  let currentComboIdx = 0;
+
+  function switchCombo(idx) {
+    currentComboIdx = idx;
+    const c = COMBOS[idx];
+    
+    // Update button states
+    [0, 1, 2].forEach(i => {
+      const b = document.getElementById(`combo-btn-${i}`);
+      if (b) {
+        if (i === idx) {
+          b.className = 'px-3 py-1.5 rounded-full text-xs font-semibold bg-[#7A152E] text-white';
+        } else {
+          b.className = 'px-3 py-1.5 rounded-full text-xs font-semibold bg-white border border-[#EAE4DC] text-stone-700';
+        }
+      }
+    });
+
+    document.getElementById('combo-editorial-img').src = c.img;
+    document.getElementById('combo-tag').textContent = c.tag;
+    document.getElementById('combo-title').textContent = c.title;
+    document.getElementById('combo-right-tag').textContent = c.tag;
+    document.getElementById('combo-right-title').textContent = c.title;
+    document.getElementById('combo-right-savings').textContent = `Save ₹${c.savings}`;
+    document.getElementById('combo-bundle-price').textContent = `₹${c.bundlePrice}`;
+    document.getElementById('combo-original-price').textContent = `₹${c.origPrice}`;
+
+    const itemsContainer = document.getElementById('combo-items-list');
+    itemsContainer.innerHTML = c.items.map(item => `
+      <div onclick="window.location.href='product.html?id=${item.pid}'" class="flex items-center gap-3.5 p-3 rounded-2xl border border-[#EAE4DC] hover:border-[#7A152E] bg-[#FAF8F5]/80 hover:bg-white transition-all cursor-pointer">
+        <img src="${item.img}" alt="${item.name}" class="w-14 h-14 rounded-xl object-cover border border-[#EAE4DC] bg-white shrink-0" />
+        <div class="flex-1 min-w-0">
+          <span class="text-[9px] uppercase tracking-wider font-bold text-[#7A152E]">${item.type}</span>
+          <h4 class="font-serif text-sm font-semibold text-stone-900 truncate">${item.name}</h4>
+          <span class="text-[11px] text-stone-500">${item.metal}</span>
+        </div>
+        <div class="text-right shrink-0">
+          <div class="font-bold text-sm text-[#7A152E]">₹${item.price}</div>
+          <div class="text-[11px] text-stone-400 line-through">₹${item.mrp}</div>
+        </div>
+      </div>
+    `).join('');
+  }
+
+  function addCurrentComboToCart() {
+    const c = COMBOS[currentComboIdx];
+    c.items.forEach(item => {
+      addToCart(item.pid, item.metal);
+    });
+    showToast(`Added Complete Look "${c.title}" to Bag!`);
   }
 
   document.addEventListener('DOMContentLoaded', () => {
     filterBestsellers('all');
+    switchCombo(0);
   });
 </script>
 </body>
