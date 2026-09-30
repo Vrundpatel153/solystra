@@ -209,37 +209,20 @@ export const ProductCard = ({ product, variant = 'default', isSquare = false, sh
 
         {/* Rating & Hallmark Badges Row */}
         <div className="flex items-center justify-between gap-1 sm:gap-1.5 w-full">
-          <div className="flex items-center gap-1 sm:gap-1.5 shrink-0">
-            {/* Rating Tag */}
-            <div className="inline-flex items-center gap-1 px-1.5 sm:px-2 py-0.5 rounded-lg bg-[#FAF8F5] border border-[#EAE4DC] shadow-2xs shrink-0">
-              <svg className="w-3 h-3 sm:w-3.5 sm:h-3.5 fill-[#C5A059] text-[#C5A059] shrink-0 drop-shadow-2xs" viewBox="0 0 24 24">
-                <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
-              </svg>
-              <span className="font-sans font-bold text-[10.5px] sm:text-xs text-stone-900 leading-none">
-                {product.rating}
-              </span>
-            </div>
-
-            {/* Metal Purity Hallmark Badge */}
-            <MetalPurityBadge product={product} size="rating" selectedMetal={selectedMetal} />
+          {/* Rating Tag */}
+          <div className="inline-flex items-center gap-1 px-1.5 sm:px-2 py-0.5 rounded-lg bg-[#FAF8F5] border border-[#EAE4DC] shadow-2xs shrink-0">
+            <svg className="w-3 h-3 sm:w-3.5 sm:h-3.5 fill-[#C5A059] text-[#C5A059] shrink-0 drop-shadow-2xs" viewBox="0 0 24 24">
+              <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+            </svg>
+            <span className="font-sans font-bold text-[10.5px] sm:text-xs text-stone-900 leading-none">
+              {product.rating}
+            </span>
           </div>
 
-          {/* If showWishlist is true, preserve badge in this row */}
-          {showWishlist && (
-            discountText ? (
-              <div className="inline-flex items-center justify-center text-center px-1.5 sm:px-2 py-0.5 rounded-lg bg-[#FAF0F2] border border-[#EAD5DA] text-[#7A152E] shadow-2xs shrink-0">
-                <span className="font-sans font-bold text-[9.5px] sm:text-[10px] uppercase tracking-wide leading-none whitespace-nowrap">
-                  {discountText}
-                </span>
-              </div>
-            ) : product.badge ? (
-              <div className="inline-flex items-center justify-center text-center px-1.5 sm:px-2 py-0.5 rounded-lg bg-[#FAF0F2] border border-[#EAD5DA] text-[#7A152E] shadow-2xs shrink-0">
-                <span className="font-sans font-bold text-[9.5px] sm:text-[10px] uppercase tracking-wide leading-none whitespace-nowrap">
-                  {product.badge}
-                </span>
-              </div>
-            ) : null
-          )}
+          {/* Metal Purity Hallmark Badge moved to Corner at that row */}
+          <div className="ml-auto shrink-0 flex items-center gap-1">
+            <MetalPurityBadge product={product} size="rating" selectedMetal={selectedMetal} />
+          </div>
         </div>
 
         {/* Price & Action Icons Row */}

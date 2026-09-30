@@ -46,12 +46,6 @@ const TONE_SWATCHES = [
     purity: 'Blush Luminescence',
     dots: ['#F8BBD0', '#E89895', '#D47B78'],
     category: 'necklaces'
-  },
-  {
-    name: 'Oxidized Artisan Silver',
-    purity: 'Vintage Heritage Patina',
-    dots: ['#757575', '#424242', '#212121'],
-    category: 'rings'
   }
 ];
 

@@ -882,8 +882,8 @@
     }, 300);
   }, 3800);
 
-  // Initial setup on DOM ready
-  document.addEventListener('DOMContentLoaded', function () {
+  // Initial setup on DOM ready or immediate if already loaded
+  function runPageInitializers() {
     updateBadges();
 
     // Check if on Checkout Page
@@ -895,35 +895,232 @@
     if (window.location.pathname.includes('product.html')) {
       initProductDetailPage();
     }
-  });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', runPageInitializers);
+  } else {
+    runPageInitializers();
+  }
 
   // Product Detail Page initialization
+  window.initProductDetailPage = initProductDetailPage;
   function initProductDetailPage() {
     const params = new URLSearchParams(window.location.search);
-    const prodId = params.get('id') || 'accent-circle-925-silver-necklace';
-    const product = findProduct(prodId);
+    const prodId = params.get('id');
+    let product = null;
+
+    if (prodId && window.PRODUCTS && window.PRODUCTS.length > 0) {
+      product = window.PRODUCTS.find(p => p.id === prodId || p.id === prodId.toLowerCase().trim());
+      if (!product) {
+        product = window.PRODUCTS.find(p => p.name.toLowerCase().includes(prodId.toLowerCase()) || prodId.toLowerCase().includes(p.name.toLowerCase()));
+      }
+    }
+    if (!product && window.PRODUCTS && window.PRODUCTS.length > 0) {
+      product = window.PRODUCTS[0];
+    }
     if (!product) return;
 
-    // Update document title
+    let selectedMetal = (product.metals && product.metals[0])
+      ? product.metals[0]
+      : (product.metalType === 'gold' ? '18K Gold Vermeil' : product.metalType === 'rose' ? '18K Rose Gold Finish' : 'Pure 925 Silver');
+
+    // 1. Update Document Title
     document.title = `${product.name} | Solystra Jewels Atelier`;
 
-    // Swap main images when clicking thumbnails
-    const thumbnails = document.querySelectorAll('button img[alt="Angle"], button img[alt="Product Angle"]');
-    const mainImg = document.querySelector('img[alt="' + product.name + '"]') || document.querySelector('main img');
+    // 2. Breadcrumb
+    const crumbCat = document.getElementById('pdp-crumb-cat') || document.querySelector('nav[class*="border-b"] a.capitalize');
+    if (crumbCat) {
+      crumbCat.textContent = product.categoryName || 'Fine Jewelry';
+      crumbCat.href = `products.html?category=${product.category || 'all'}`;
+    }
+    const crumbTitle = document.getElementById('pdp-crumb-title') || document.querySelector('nav[class*="border-b"] span.truncate');
+    if (crumbTitle) crumbTitle.textContent = product.name;
 
-    thumbnails.forEach(thumb => {
-      thumb.parentElement.addEventListener('click', function () {
-        if (mainImg) mainImg.src = thumb.src;
-        thumbnails.forEach(t => t.parentElement.classList.remove('border-[#7A152E]', 'shadow-sm'));
-        thumb.parentElement.classList.add('border-[#7A152E]', 'shadow-sm');
+    // 3. Main Product Image & Badge
+    const mainImg = document.getElementById('pdp-main-img') || document.querySelector('.lg\\:col-span-7 img[draggable="false"]') || document.querySelector('.lg\\:col-span-7 img');
+    if (mainImg) {
+      mainImg.src = (product.images && product.images[0]) || '';
+      mainImg.alt = product.name;
+    }
+    const badgeEl = document.getElementById('pdp-badge') || document.querySelector('.lg\\:col-span-7 span.bg-\\[\\#7A152E\\]');
+    if (badgeEl) {
+      badgeEl.textContent = product.badge || (product.isNew ? 'New Arrival' : 'Bestseller');
+    }
+
+    // 4. Thumbnails Gallery
+    const thumbsContainer = document.getElementById('pdp-thumbnails') || document.querySelector('.lg\\:col-span-7 .flex.sm\\:flex-col');
+    if (thumbsContainer && product.images && product.images.length > 0) {
+      thumbsContainer.innerHTML = '';
+      product.images.forEach((imgSrc, idx) => {
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.setAttribute('aria-label', `View angle ${idx + 1}`);
+        btn.className = `relative w-16 h-16 sm:w-20 sm:h-20 rounded-xl overflow-hidden bg-white border transition-all shrink-0 cursor-pointer ${idx === 0 ? 'border-[#7A152E] ring-2 ring-[#7A152E]/20 shadow-xs' : 'border-stone-200 opacity-75 hover:opacity-100 hover:border-stone-400'}`;
+        btn.innerHTML = `<img src="${imgSrc}" alt="${product.name} angle ${idx + 1}" class="w-full h-full object-cover block" />`;
+        btn.onclick = function () {
+          if (mainImg) mainImg.src = imgSrc;
+          thumbsContainer.querySelectorAll('button').forEach(b => {
+            b.className = 'relative w-16 h-16 sm:w-20 sm:h-20 rounded-xl overflow-hidden bg-white border transition-all shrink-0 cursor-pointer border-stone-200 opacity-75 hover:opacity-100 hover:border-stone-400';
+          });
+          btn.className = 'relative w-16 h-16 sm:w-20 sm:h-20 rounded-xl overflow-hidden bg-white border transition-all shrink-0 cursor-pointer border-[#7A152E] ring-2 ring-[#7A152E]/20 shadow-xs';
+        };
+        thumbsContainer.appendChild(btn);
       });
+    }
+
+    // 5. Title, Subtitle, Price, MRP, Discount
+    const titleEl = document.getElementById('pdp-title') || document.querySelector('h1');
+    if (titleEl) titleEl.textContent = product.name;
+
+    const subtitleEl = document.getElementById('pdp-subtitle') || (titleEl ? titleEl.nextElementSibling : null);
+    if (subtitleEl && subtitleEl.tagName === 'P') {
+      subtitleEl.textContent = `Made with ${selectedMetal}`;
+    }
+
+    const priceEl = document.getElementById('pdp-price') || document.querySelector('.lg\\:col-span-5 .text-3xl');
+    if (priceEl) priceEl.textContent = `₹${product.price.toLocaleString('en-IN')}`;
+
+    const discountEl = document.getElementById('pdp-discount') || document.querySelector('.lg\\:col-span-5 span[class*="text-[#D11A46]"]');
+    if (discountEl) discountEl.textContent = product.discount || '20% OFF';
+
+    const mrpEl = document.getElementById('pdp-mrp') || document.querySelector('.lg\\:col-span-5 .line-through');
+    if (mrpEl) {
+      mrpEl.textContent = product.mrp ? `MRP ₹${product.mrp.toLocaleString('en-IN')}` : '';
+    }
+
+    // 6. Metal Variants Selector
+    let metalsBox = document.getElementById('pdp-metals-selector');
+    if (!metalsBox && titleEl && titleEl.parentElement) {
+      metalsBox = document.createElement('div');
+      metalsBox.id = 'pdp-metals-selector';
+      metalsBox.className = 'pt-2 pb-1 space-y-2';
+      const availableMetals = (product.metals && product.metals.length > 0)
+        ? product.metals
+        : ['Pure 925 Silver', '18K Gold Vermeil', '18K Rose Gold Finish'];
+      
+      metalsBox.innerHTML = `
+        <div class="flex items-center justify-between text-xs">
+          <span class="text-stone-600 font-medium">Selected Finish: <strong id="pdp-selected-metal-name" class="text-stone-900 font-semibold">${selectedMetal}</strong></span>
+          <span class="text-[11px] text-[#7A152E] font-medium">BIS 925 Hallmark</span>
+        </div>
+        <div id="pdp-metal-pills" class="flex flex-wrap gap-2"></div>
+      `;
+      titleEl.parentElement.insertAdjacentElement('afterend', metalsBox);
+
+      const pillsContainer = metalsBox.querySelector('#pdp-metal-pills');
+      availableMetals.forEach(m => {
+        const pillBtn = document.createElement('button');
+        pillBtn.type = 'button';
+        const isSel = m.toLowerCase().includes(selectedMetal.toLowerCase()) || selectedMetal.toLowerCase().includes(m.toLowerCase());
+        pillBtn.className = `px-3.5 py-1.5 rounded-xl text-xs font-semibold border transition-all cursor-pointer ${isSel ? 'bg-[#7A152E] text-white border-[#7A152E] shadow-xs' : 'bg-white text-stone-700 border-[#EAE4DC] hover:border-[#7A152E]/40'}`;
+        pillBtn.textContent = m;
+        pillBtn.onclick = function () {
+          selectedMetal = m;
+          const metalName = document.getElementById('pdp-selected-metal-name');
+          if (metalName) metalName.textContent = m;
+          if (subtitleEl) subtitleEl.textContent = `Made with ${m}`;
+          pillsContainer.querySelectorAll('button').forEach(b => {
+            b.className = 'px-3.5 py-1.5 rounded-xl text-xs font-semibold border transition-all cursor-pointer bg-white text-stone-700 border-[#EAE4DC] hover:border-[#7A152E]/40';
+          });
+          pillBtn.className = 'px-3.5 py-1.5 rounded-xl text-xs font-semibold border transition-all cursor-pointer bg-[#7A152E] text-white border-[#7A152E] shadow-xs';
+          window.showToast('Finish Selected', `Atelier finish updated to ${m}`);
+        };
+        pillsContainer.appendChild(pillBtn);
+      });
+    }
+
+    // 7. Add to Bag & Buy Now Buttons
+    const addBtn = document.getElementById('pdp-add-btn') || Array.from(document.querySelectorAll('button')).find(b => b.textContent.includes('ADD TO CART') || b.textContent.includes('Add to Bag'));
+    if (addBtn) {
+      addBtn.onclick = function () {
+        window.addToCart(product, selectedMetal);
+      };
+    }
+    const buyBtn = document.getElementById('pdp-buy-btn') || Array.from(document.querySelectorAll('button')).find(b => b.textContent.includes('BUY NOW'));
+    if (buyBtn) {
+      buyBtn.onclick = function () {
+        window.addToCart(product, selectedMetal);
+        window.location.href = 'checkout.html';
+      };
+    }
+
+    // 8. Design Story & Description
+    const storyDesc = document.getElementById('pdp-story-desc');
+    if (storyDesc) {
+      storyDesc.textContent = product.desc || 'Handcrafted in certified 925 sterling silver with dual-micron rhodium for enduring brilliance and hypoallergenic comfort.';
+    }
+
+    // 9. Specifications Table
+    const specsGrid = document.getElementById('pdp-specs-grid');
+    if (specsGrid && product.specs) {
+      const specs = product.specs;
+      specsGrid.innerHTML = `
+        <div class="flex justify-between items-center p-3.5 rounded-xl bg-[#FAF8F5] border border-[#EAE4DC] hover:border-stone-300 transition-colors">
+          <span class="text-stone-500 font-medium text-xs">Metal Purity</span>
+          <span class="font-semibold text-stone-800 text-xs sm:text-[13px] text-right ml-2">${specs['Metal Purity'] || 'BIS Certified 925 Sterling Silver'}</span>
+        </div>
+        <div class="flex justify-between items-center p-3.5 rounded-xl bg-[#FAF8F5] border border-[#EAE4DC] hover:border-stone-300 transition-colors">
+          <span class="text-stone-500 font-medium text-xs">Plating Finish</span>
+          <span class="font-semibold text-stone-800 text-xs sm:text-[13px] text-right ml-2">${specs['Plating Finish'] || 'Anti-Tarnish Rhodium & Micron E-Coat'}</span>
+        </div>
+        <div class="flex justify-between items-center p-3.5 rounded-xl bg-[#FAF8F5] border border-[#EAE4DC] hover:border-stone-300 transition-colors">
+          <span class="text-stone-500 font-medium text-xs">Stone Setting</span>
+          <span class="font-semibold text-stone-800 text-xs sm:text-[13px] text-right ml-2">${specs['Stone Setting'] || 'AAA+ Austrian Solitaire Crystals'}</span>
+        </div>
+        <div class="flex justify-between items-center p-3.5 rounded-xl bg-[#FAF8F5] border border-[#EAE4DC] hover:border-stone-300 transition-colors">
+          <span class="text-stone-500 font-medium text-xs">Hallmark Verification</span>
+          <span class="font-semibold text-stone-800 text-xs sm:text-[13px] text-right ml-2">${specs['Hallmark Verification'] || 'Certified 925 Stamp on Clasp/Band'}</span>
+        </div>
+        <div class="flex justify-between items-center p-3.5 rounded-xl bg-[#FAF8F5] border border-[#EAE4DC] hover:border-stone-300 transition-colors">
+          <span class="text-stone-500 font-medium text-xs">Warranty Coverage</span>
+          <span class="font-semibold text-stone-800 text-xs sm:text-[13px] text-right ml-2">${specs['Warranty Coverage'] || '6 Months Free Replating Assurance'}</span>
+        </div>
+        <div class="flex justify-between items-center p-3.5 rounded-xl bg-[#FAF8F5] border border-[#EAE4DC] hover:border-stone-300 transition-colors">
+          <span class="text-stone-500 font-medium text-xs">Packaging</span>
+          <span class="font-semibold text-stone-800 text-xs sm:text-[13px] text-right ml-2">${specs['Packaging'] || 'Luxury Suede Box with Authenticity Card'}</span>
+        </div>
+        <div class="flex justify-between items-center p-3.5 rounded-xl bg-[#FAF8F5] border border-[#EAE4DC] hover:border-stone-300 transition-colors col-span-1 md:col-span-2">
+          <span class="text-stone-500 font-medium text-xs">Shipping</span>
+          <span class="font-semibold text-stone-800 text-xs sm:text-[13px] text-right ml-2">${specs['Shipping'] || 'Free Insured Express Delivery Across India'}</span>
+        </div>
+      `;
+    }
+
+    // 10. Reviews & FAQ action buttons
+    document.querySelectorAll('button').forEach(btn => {
+      const txt = btn.textContent.trim();
+      if (txt.includes('Write a Review') || txt.includes('Review this creation')) {
+        btn.onclick = function () {
+          window.openReviewModal(product);
+        };
+      } else if (txt.includes('Ask a Question') || txt.includes('Ask Concierge Desk')) {
+        btn.onclick = function () {
+          window.openAskQuestionModal(product);
+        };
+      }
     });
 
-    // Pincode checker
+    // 11. FAQ Accordion Interaction
+    document.querySelectorAll('#qna-section .border, section:has(#qna-section) .border').forEach(card => {
+      const qBtn = card.querySelector('button') || card.querySelector('h4');
+      if (qBtn) {
+        qBtn.style.cursor = 'pointer';
+        qBtn.onclick = function () {
+          const ans = card.querySelector('p');
+          if (ans) {
+            ans.classList.toggle('line-clamp-2');
+            ans.classList.toggle('line-clamp-none');
+          }
+        };
+      }
+    });
+
+    // 12. Pincode checker
     const pinBtn = document.querySelector('button:has(svg.lucide-truck)');
     const pinInput = document.querySelector('input[placeholder*="pincode"], input[placeholder*="Pincode"]');
     if (pinBtn && pinInput) {
-      pinBtn.addEventListener('click', function (e) {
+      pinBtn.onclick = function (e) {
         e.preventDefault();
         const pin = pinInput.value.trim();
         if (pin.length === 6 && /^\d+$/.test(pin)) {
@@ -931,24 +1128,8 @@
         } else {
           window.showToast('Invalid Pincode', 'Please enter a valid 6-digit Indian PIN code.', 'info');
         }
-      });
+      };
     }
-
-    // Add to Bag CTA
-    const addBtns = document.querySelectorAll('button');
-    addBtns.forEach(b => {
-      const txt = b.get_text ? b.get_text() : b.textContent;
-      if (txt.includes('Add to Bag')) {
-        b.onclick = function () {
-          window.addToCart(product);
-        };
-      } else if (txt.includes('Buy Now')) {
-        b.onclick = function () {
-          window.addToCart(product);
-          window.location.href = 'checkout.html';
-        };
-      }
-    });
   }
 
   // Checkout Page initialization (Full 3-Step Interactive Experience matching React 1:1)
@@ -2231,8 +2412,324 @@
     });
   }
 
+
+  // ==========================================
+  // Global Interactive Modals & Redirects Helpers
+  // ==========================================
+
+  // Global Newsletter Form Submit Handler
+  document.addEventListener('submit', function (e) {
+    const form = e.target;
+    const emailInput = form.querySelector('input[type="email"]');
+    if (emailInput && !form.closest('#checkout-form')) {
+      e.preventDefault();
+      const email = emailInput.value.trim();
+      if (email) {
+        window.showToast('Privilege Discount Unlocked', 'Welcome to the Solystra Club! Code SOULY10 (10% off) copied to clipboard.', 'success');
+        try { navigator.clipboard.writeText('SOULY10'); } catch (_) {}
+        emailInput.value = '';
+      }
+    }
+  });
+
+  // Mobile Footer Accordions
+  function initFooterAccordions() {
+    document.querySelectorAll('footer .sm\\:hidden button').forEach(btn => {
+      btn.onclick = function (e) {
+        e.preventDefault();
+        const parent = btn.parentElement;
+        let drawer = parent.querySelector('.accordion-drawer');
+        if (!drawer) {
+          drawer = document.createElement('div');
+          drawer.className = 'accordion-drawer p-3 pt-0 text-stone-600 text-[11.5px] space-y-2 border-t border-stone-100 mt-2';
+          const title = btn.textContent.trim();
+          if (title.includes('Collections')) {
+            drawer.innerHTML = `
+              <ul class="space-y-1.5">
+                <li><a class="text-[#7A152E] font-medium" href="products.html?category=necklaces">&bull; 925 Silver Necklaces</a></li>
+                <li><a class="hover:text-[#7A152E]" href="products.html?category=rings">&bull; Solitaire &amp; Stacking Rings</a></li>
+                <li><a class="hover:text-[#7A152E]" href="products.html?category=bracelets">&bull; Tennis Bracelets &amp; Cuffs</a></li>
+                <li><a class="hover:text-[#7A152E]" href="products.html?category=earrings">&bull; Earrings &amp; Huggies</a></li>
+                <li><a class="hover:text-[#7A152E]" href="products.html?category=anklets">&bull; Dainty Anklets</a></li>
+                <li><a class="hover:text-[#7A152E]" href="products.html?metal=gold">&bull; 18K Italian Gold Vermeil</a></li>
+              </ul>
+            `;
+          } else if (title.includes('Customer Care')) {
+            drawer.innerHTML = `
+              <ul class="space-y-1.5">
+                <li><a class="hover:text-[#7A152E]" href="terms.html#shipping" onclick="window.openTrackOrderModal(); return false;">&bull; Track Your Order</a></li>
+                <li><a class="hover:text-[#7A152E]" href="terms.html#shipping">&bull; Shipping &amp; Insured Express</a></li>
+                <li><a class="hover:text-[#7A152E]" href="terms.html#returns">&bull; 15-Day Easy Returns</a></li>
+                <li><a class="hover:text-[#7A152E]" href="terms.html#sizing" onclick="window.openSizeGuideModal(); return false;">&bull; Ring Sizing Guide</a></li>
+                <li><a class="hover:text-[#7A152E]" href="terms.html#care">&bull; Jewelry Care &amp; Spa Guide</a></li>
+                <li><a class="hover:text-[#7A152E]" href="privacy.html">&bull; Privacy &amp; Security Policy</a></li>
+              </ul>
+            `;
+          } else {
+            drawer.innerHTML = `
+              <ul class="space-y-1.5 text-stone-600">
+                <li>&bull; 100% Certified BIS 925 Stamp</li>
+                <li>&bull; AAA+ Austrian 57-Facet Solitaires</li>
+                <li>&bull; 2.0-Micron Anti-Tarnish Rhodium</li>
+                <li>&bull; Free Insured Express Delivery</li>
+                <li><a class="text-[#7A152E] font-semibold underline mt-1 block" href="terms.html">&bull; Read Full Purity Terms</a></li>
+              </ul>
+            `;
+          }
+          parent.appendChild(drawer);
+        } else {
+          drawer.classList.toggle('hidden');
+        }
+        const chevron = btn.querySelector('svg.lucide-chevron-down');
+        if (chevron) chevron.classList.toggle('rotate-180');
+      };
+    });
+  }
+
+  // Ring Sizing Modal
+  window.openSizeGuideModal = function () {
+    let modal = document.getElementById('size-guide-modal-root');
+    if (!modal) {
+      modal = document.createElement('div');
+      modal.id = 'size-guide-modal-root';
+      modal.className = 'fixed inset-0 z-50 bg-black/70 backdrop-blur-xs flex items-center justify-center p-4 font-sans';
+      modal.innerHTML = `
+        <div class="bg-white rounded-2xl max-w-lg w-full p-6 sm:p-8 space-y-4 shadow-2xl border border-stone-200 animate-slide-up">
+          <div class="flex justify-between items-center border-b border-stone-200 pb-3">
+            <h3 class="font-serif text-xl text-stone-900 font-normal">
+              Ring &amp; Wrist Measurement Guide
+            </h3>
+            <button onclick="window.closeSizeGuideModal()" class="p-1 text-stone-400 hover:text-stone-800 cursor-pointer">
+              <svg class="lucide lucide-x w-5 h-5" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="24"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg>
+            </button>
+          </div>
+          <div class="text-xs text-stone-600 space-y-3 font-normal">
+            <p>To measure your ring size accurately at home:</p>
+            <ol class="list-decimal pl-4 space-y-1">
+              <li>Wrap a narrow strip of paper or string snugly around your intended finger.</li>
+              <li>Mark the exact spot where the paper overlaps.</li>
+              <li>Measure the millimeter length with a standard ruler.</li>
+            </ol>
+            <div class="border border-stone-200 rounded-xl overflow-hidden mt-3">
+              <table class="w-full text-left divide-y divide-stone-200">
+                <thead class="bg-stone-50 text-[11px] font-semibold text-stone-800">
+                  <tr>
+                    <th class="p-2.5">Indian Ring Size</th>
+                    <th class="p-2.5">Inner Diameter (mm)</th>
+                    <th class="p-2.5">Circumference (mm)</th>
+                  </tr>
+                </thead>
+                <tbody class="divide-y divide-stone-200 text-[11px]">
+                  <tr><td class="p-2.5 font-medium">10</td><td class="p-2.5">15.9 mm</td><td class="p-2.5">50.0 mm</td></tr>
+                  <tr><td class="p-2.5 font-medium">12</td><td class="p-2.5">16.5 mm</td><td class="p-2.5">51.8 mm</td></tr>
+                  <tr><td class="p-2.5 font-medium">14</td><td class="p-2.5">17.2 mm</td><td class="p-2.5">54.0 mm</td></tr>
+                  <tr><td class="p-2.5 font-medium">16</td><td class="p-2.5">17.8 mm</td><td class="p-2.5">56.0 mm</td></tr>
+                  <tr><td class="p-2.5 font-medium">18</td><td class="p-2.5">18.5 mm</td><td class="p-2.5">58.0 mm</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <button onclick="window.closeSizeGuideModal()" class="w-full py-2.5 bg-[#7A152E] text-white text-xs uppercase tracking-wider font-semibold rounded-xl hover:bg-[#590D1E] transition-colors cursor-pointer">
+            Close Guide
+          </button>
+        </div>
+      `;
+      document.body.appendChild(modal);
+    }
+    modal.classList.remove('hidden');
+  };
+
+  window.closeSizeGuideModal = function () {
+    const modal = document.getElementById('size-guide-modal-root');
+    if (modal) modal.classList.add('hidden');
+  };
+
+  // Track Order Modal
+  window.openTrackOrderModal = function () {
+    let modal = document.getElementById('track-order-modal-root');
+    if (!modal) {
+      modal = document.createElement('div');
+      modal.id = 'track-order-modal-root';
+      modal.className = 'fixed inset-0 z-50 bg-black/70 backdrop-blur-xs flex items-center justify-center p-4 font-sans';
+      modal.innerHTML = `
+        <div class="bg-white rounded-2xl max-w-md w-full p-6 space-y-4 shadow-2xl border border-stone-200 animate-slide-up">
+          <div class="flex justify-between items-center border-b border-stone-200 pb-3">
+            <div class="flex items-center gap-2">
+              <svg class="lucide lucide-truck w-5 h-5 text-[#7A152E]" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="24"><path d="M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2"></path><path d="M15 18H9"></path><path d="M19 18h2a1 1 0 0 0 1-1v-3.65a1 1 0 0 0-.22-.624l-3.48-4.35A1 1 0 0 0 17.52 8H14v10h1"></path><circle cx="17" cy="18" r="2"></circle><circle cx="7" cy="18" r="2"></circle></svg>
+              <h3 class="font-serif text-lg text-stone-900 font-bold">Track Insured Dispatch</h3>
+            </div>
+            <button onclick="window.closeTrackOrderModal()" class="p-1 text-stone-400 hover:text-stone-800 cursor-pointer">
+              <svg class="lucide lucide-x w-5 h-5" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="24"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg>
+            </button>
+          </div>
+          <div class="space-y-3 text-xs">
+            <p class="text-stone-600">Enter your 10-digit Solystra Order ID or BlueDart Air Waybill (AWB) number:</p>
+            <div class="flex gap-2">
+              <input id="track-order-input" type="text" placeholder="e.g. SOL-98241 or 382910482" class="flex-1 px-3 py-2 border border-stone-200 rounded-xl text-xs focus:outline-none focus:border-[#7A152E]" />
+              <button onclick="window.trackOrderSearch()" class="px-4 py-2 bg-[#7A152E] text-white font-semibold text-xs rounded-xl hover:bg-[#590D1E] cursor-pointer">Track</button>
+            </div>
+            <div id="track-order-result" class="p-3.5 bg-[#FAF8F5] rounded-xl border border-[#EAE4DC] hidden space-y-2">
+              <div class="flex items-center justify-between">
+                <span class="text-[11px] font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-full border border-emerald-200">IN TRANSIT &bull; ON SCHEDULE</span>
+                <span class="text-[10px] text-stone-400">BlueDart Apex Express</span>
+              </div>
+              <div class="text-xs text-stone-800 font-medium">Estimated Delivery: Within 24-48 Business Hours</div>
+              <div class="text-[11px] text-stone-500">Security: OTP-Verified Insured Handover with Tamper-Proof Holographic Seal.</div>
+            </div>
+          </div>
+        </div>
+      `;
+      document.body.appendChild(modal);
+    }
+    modal.classList.remove('hidden');
+  };
+
+  window.closeTrackOrderModal = function () {
+    const modal = document.getElementById('track-order-modal-root');
+    if (modal) modal.classList.add('hidden');
+  };
+
+  window.trackOrderSearch = function () {
+    const input = document.getElementById('track-order-input');
+    const res = document.getElementById('track-order-result');
+    if (!input || !input.value.trim()) {
+      window.showToast('Please enter an Order ID or AWB', 'Check your order confirmation email or SMS.', 'info');
+      return;
+    }
+    if (res) res.classList.remove('hidden');
+    window.showToast('Courier Verified', 'Tracking telemetry refreshed with BlueDart Express.');
+  };
+
+  // Review Modal
+  window.openReviewModal = function (product) {
+    let modal = document.getElementById('review-modal-root');
+    if (!modal) {
+      modal = document.createElement('div');
+      modal.id = 'review-modal-root';
+      modal.className = 'fixed inset-0 z-50 bg-black/70 backdrop-blur-xs flex items-center justify-center p-4 font-sans';
+      modal.innerHTML = `
+        <div class="bg-white rounded-2xl max-w-md w-full p-6 space-y-4 shadow-2xl border border-stone-200 animate-slide-up">
+          <div class="flex justify-between items-center border-b border-stone-200 pb-3">
+            <h3 class="font-serif text-lg text-stone-900 font-normal">Share Patron Review</h3>
+            <button onclick="window.closeReviewModal()" class="p-1 text-stone-400 hover:text-stone-800 cursor-pointer">
+              <svg class="lucide lucide-x w-5 h-5" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="24"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg>
+            </button>
+          </div>
+          <div class="space-y-3 text-xs">
+            <div>
+              <label class="block text-stone-700 font-medium mb-1">Your Full Name</label>
+              <input id="rev-name-input" type="text" placeholder="e.g. Radhika Sharma" class="w-full px-3 py-2 border border-stone-200 rounded-xl focus:outline-none focus:border-[#7A152E]" />
+            </div>
+            <div>
+              <label class="block text-stone-700 font-medium mb-1">Rating Score</label>
+              <div class="flex gap-2">
+                <button type="button" onclick="window.setReviewScore(5, this)" class="rev-star-btn px-3 py-1.5 bg-[#7A152E] text-white rounded-lg font-bold border border-[#7A152E]">5.0 ★</button>
+                <button type="button" onclick="window.setReviewScore(4, this)" class="rev-star-btn px-3 py-1.5 bg-white text-stone-700 rounded-lg font-medium border border-stone-200 hover:border-[#7A152E]">4.0 ★</button>
+                <button type="button" onclick="window.setReviewScore(3, this)" class="rev-star-btn px-3 py-1.5 bg-white text-stone-700 rounded-lg font-medium border border-stone-200 hover:border-[#7A152E]">3.0 ★</button>
+              </div>
+            </div>
+            <div>
+              <label class="block text-stone-700 font-medium mb-1">Review Comments</label>
+              <textarea id="rev-comment-input" rows="3" placeholder="Share your experience with the silver luster, stone sparkle, or gifting box..." class="w-full px-3 py-2 border border-stone-200 rounded-xl focus:outline-none focus:border-[#7A152E]"></textarea>
+            </div>
+          </div>
+          <button onclick="window.submitReview()" class="w-full py-2.5 bg-[#7A152E] text-white text-xs uppercase tracking-wider font-semibold rounded-xl hover:bg-[#590D1E] transition-colors cursor-pointer">
+            Submit Review
+          </button>
+        </div>
+      `;
+      document.body.appendChild(modal);
+    }
+    modal.classList.remove('hidden');
+  };
+
+  window.closeReviewModal = function () {
+    const modal = document.getElementById('review-modal-root');
+    if (modal) modal.classList.add('hidden');
+  };
+
+  window.setReviewScore = function (score, btn) {
+    document.querySelectorAll('.rev-star-btn').forEach(b => {
+      b.className = 'rev-star-btn px-3 py-1.5 bg-white text-stone-700 rounded-lg font-medium border border-stone-200 hover:border-[#7A152E]';
+    });
+    btn.className = 'rev-star-btn px-3 py-1.5 bg-[#7A152E] text-white rounded-lg font-bold border border-[#7A152E]';
+  };
+
+  window.submitReview = function () {
+    const comm = document.getElementById('rev-comment-input');
+    if (!comm || !comm.value.trim()) {
+      window.showToast('Please enter your review', 'A short comment helps other patrons.', 'info');
+      return;
+    }
+    window.closeReviewModal();
+    window.showToast('Review Verified &amp; Posted', 'Thank you! Your feedback is now published in patron reflections.');
+    if (comm) comm.value = '';
+  };
+
+  // Ask Question Modal
+  window.openAskQuestionModal = function (product) {
+    let modal = document.getElementById('ask-question-modal-root');
+    if (!modal) {
+      modal = document.createElement('div');
+      modal.id = 'ask-question-modal-root';
+      modal.className = 'fixed inset-0 z-50 bg-black/70 backdrop-blur-xs flex items-center justify-center p-4 font-sans';
+      modal.innerHTML = `
+        <div class="bg-white rounded-2xl max-w-md w-full p-6 space-y-4 shadow-2xl border border-stone-200 animate-slide-up">
+          <div class="flex justify-between items-center border-b border-stone-200 pb-3">
+            <h3 class="font-serif text-lg text-stone-900 font-normal">Ask Concierge Desk</h3>
+            <button onclick="window.closeAskQuestionModal()" class="p-1 text-stone-400 hover:text-stone-800 cursor-pointer">
+              <svg class="lucide lucide-x w-5 h-5" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="24"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg>
+            </button>
+          </div>
+          <div class="space-y-3 text-xs">
+            <div>
+              <label class="block text-stone-700 font-medium mb-1">Your Email or Mobile</label>
+              <input id="q-contact-input" type="text" placeholder="care@solystrajewels.com or +91 98..." class="w-full px-3 py-2 border border-stone-200 rounded-xl focus:outline-none focus:border-[#7A152E]" />
+            </div>
+            <div>
+              <label class="block text-stone-700 font-medium mb-1">Inquiry Category</label>
+              <select class="w-full px-3 py-2 border border-stone-200 rounded-xl bg-white text-stone-800 focus:outline-none focus:border-[#7A152E]">
+                <option>Custom Ring/Wrist Sizing</option>
+                <option>Laser Engraving Consultation</option>
+                <option>BIS Hallmarking Verification</option>
+                <option>Express Delivery Speed</option>
+              </select>
+            </div>
+            <div>
+              <label class="block text-stone-700 font-medium mb-1">Your Question</label>
+              <textarea id="q-msg-input" rows="3" placeholder="Ask about metal finish, stone settings, custom gifts..." class="w-full px-3 py-2 border border-stone-200 rounded-xl focus:outline-none focus:border-[#7A152E]"></textarea>
+            </div>
+          </div>
+          <button onclick="window.submitQuestion()" class="w-full py-2.5 bg-[#7A152E] text-white text-xs uppercase tracking-wider font-semibold rounded-xl hover:bg-[#590D1E] transition-colors cursor-pointer">
+            Send Inquiry to Atelier
+          </button>
+        </div>
+      `;
+      document.body.appendChild(modal);
+    }
+    modal.classList.remove('hidden');
+  };
+
+  window.closeAskQuestionModal = function () {
+    const modal = document.getElementById('ask-question-modal-root');
+    if (modal) modal.classList.add('hidden');
+  };
+
+  window.submitQuestion = function () {
+    const msg = document.getElementById('q-msg-input');
+    if (!msg || !msg.value.trim()) {
+      window.showToast('Please enter your inquiry', 'Describe your question for the atelier gemologist.', 'info');
+      return;
+    }
+    window.closeAskQuestionModal();
+    window.showToast('Inquiry Transmitted', 'Solystra luxury concierge will reply within 4 business hours.');
+    if (msg) msg.value = '';
+  };
+
+
   // Hook into DOMContentLoaded
   document.addEventListener('DOMContentLoaded', function () {
+    setTimeout(initFooterAccordions, 100);
     setTimeout(initTopCollectionsCoverflow, 50);
     setTimeout(initMotionReelsVideos, 100);
     setTimeout(initStylingCombos, 150);
