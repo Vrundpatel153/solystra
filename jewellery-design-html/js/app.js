@@ -891,6 +891,11 @@
       initCheckoutPage();
     }
 
+    // Check if on Catalog Page
+    if (window.location.pathname.includes('products.html')) {
+      initProductsPage();
+    }
+
     // Check if on Product Detail Page
     if (window.location.pathname.includes('product.html')) {
       initProductDetailPage();
@@ -904,6 +909,7 @@
   }
 
   // Product Detail Page initialization
+    // Product Detail Page initialization
   window.initProductDetailPage = initProductDetailPage;
   function initProductDetailPage() {
     const params = new URLSearchParams(window.location.search);
@@ -939,9 +945,16 @@
 
     // 3. Main Product Image & Badge
     const mainImg = document.getElementById('pdp-main-img') || document.querySelector('.lg\\:col-span-7 img[draggable="false"]') || document.querySelector('.lg\\:col-span-7 img');
+    let currentImageIndex = 0;
+    const productImages = (product.images && product.images.length > 0) ? product.images : [mainImg ? mainImg.src : ''];
+
     if (mainImg) {
-      mainImg.src = (product.images && product.images[0]) || '';
+      mainImg.src = productImages[0];
       mainImg.alt = product.name;
+      mainImg.classList.add('cursor-zoom-in');
+      mainImg.onclick = function () {
+        window.openImageLightbox(mainImg.src, product);
+      };
     }
     const badgeEl = document.getElementById('pdp-badge') || document.querySelector('.lg\\:col-span-7 span.bg-\\[\\#7A152E\\]');
     if (badgeEl) {
@@ -950,23 +963,112 @@
 
     // 4. Thumbnails Gallery
     const thumbsContainer = document.getElementById('pdp-thumbnails') || document.querySelector('.lg\\:col-span-7 .flex.sm\\:flex-col');
-    if (thumbsContainer && product.images && product.images.length > 0) {
+    const bottomDots = document.querySelectorAll('.aspect-square.w-full .absolute.bottom-3 span');
+
+    function setActiveImage(idx) {
+      if (idx < 0) idx = productImages.length - 1;
+      if (idx >= productImages.length) idx = 0;
+      currentImageIndex = idx;
+
+      if (mainImg) {
+        mainImg.style.opacity = '0.5';
+        setTimeout(() => {
+          mainImg.src = productImages[currentImageIndex];
+          mainImg.style.opacity = '1';
+        }, 120);
+      }
+
+      if (thumbsContainer) {
+        thumbsContainer.querySelectorAll('button').forEach((b, i) => {
+          if (i === currentImageIndex) {
+            b.className = 'relative w-16 h-16 sm:w-20 sm:h-20 rounded-xl overflow-hidden bg-white border transition-all shrink-0 cursor-pointer border-[#7A152E] ring-2 ring-[#7A152E]/20 shadow-xs';
+          } else {
+            b.className = 'relative w-16 h-16 sm:w-20 sm:h-20 rounded-xl overflow-hidden bg-white border transition-all shrink-0 cursor-pointer border-stone-200 opacity-75 hover:opacity-100 hover:border-stone-400';
+          }
+        });
+      }
+
+      if (bottomDots && bottomDots.length > 0) {
+        bottomDots.forEach((dot, i) => {
+          if (i === currentImageIndex) {
+            dot.className = 'h-1.5 rounded-full transition-all duration-300 w-5 bg-[#7A152E]';
+          } else {
+            dot.className = 'h-1.5 rounded-full transition-all duration-300 w-1.5 bg-black/25';
+          }
+        });
+      }
+    }
+
+    if (thumbsContainer && productImages.length > 0) {
       thumbsContainer.innerHTML = '';
-      product.images.forEach((imgSrc, idx) => {
+      productImages.forEach((imgSrc, idx) => {
         const btn = document.createElement('button');
         btn.type = 'button';
         btn.setAttribute('aria-label', `View angle ${idx + 1}`);
         btn.className = `relative w-16 h-16 sm:w-20 sm:h-20 rounded-xl overflow-hidden bg-white border transition-all shrink-0 cursor-pointer ${idx === 0 ? 'border-[#7A152E] ring-2 ring-[#7A152E]/20 shadow-xs' : 'border-stone-200 opacity-75 hover:opacity-100 hover:border-stone-400'}`;
         btn.innerHTML = `<img src="${imgSrc}" alt="${product.name} angle ${idx + 1}" class="w-full h-full object-cover block" />`;
         btn.onclick = function () {
-          if (mainImg) mainImg.src = imgSrc;
-          thumbsContainer.querySelectorAll('button').forEach(b => {
-            b.className = 'relative w-16 h-16 sm:w-20 sm:h-20 rounded-xl overflow-hidden bg-white border transition-all shrink-0 cursor-pointer border-stone-200 opacity-75 hover:opacity-100 hover:border-stone-400';
-          });
-          btn.className = 'relative w-16 h-16 sm:w-20 sm:h-20 rounded-xl overflow-hidden bg-white border transition-all shrink-0 cursor-pointer border-[#7A152E] ring-2 ring-[#7A152E]/20 shadow-xs';
+          setActiveImage(idx);
         };
         thumbsContainer.appendChild(btn);
       });
+    }
+
+    // Touch Swipe & Mouse Drag on Main Image
+    const mainImgWrapper = document.querySelector('.aspect-square.w-full') || (mainImg ? mainImg.parentElement : null);
+    if (mainImgWrapper) {
+      let touchStartX = 0;
+      let touchStartY = 0;
+      let isDragging = false;
+      let mouseStartX = 0;
+
+      mainImgWrapper.addEventListener('touchstart', (e) => {
+        touchStartX = e.touches[0].clientX;
+        touchStartY = e.touches[0].clientY;
+      }, { passive: true });
+
+      mainImgWrapper.addEventListener('touchend', (e) => {
+        const touchEndX = e.changedTouches[0].clientX;
+        const touchEndY = e.changedTouches[0].clientY;
+        const diffX = touchEndX - touchStartX;
+        const diffY = touchEndY - touchStartY;
+
+        // Horizontal swipe detected
+        if (Math.abs(diffX) > 40 && Math.abs(diffX) > Math.abs(diffY)) {
+          if (diffX < 0) {
+            setActiveImage(currentImageIndex + 1); // Next
+          } else {
+            setActiveImage(currentImageIndex - 1); // Prev
+          }
+        }
+      }, { passive: true });
+
+      mainImgWrapper.addEventListener('mousedown', (e) => {
+        isDragging = true;
+        mouseStartX = e.clientX;
+      });
+
+      window.addEventListener('mouseup', (e) => {
+        if (!isDragging) return;
+        isDragging = false;
+        const diffX = e.clientX - mouseStartX;
+        if (Math.abs(diffX) > 50) {
+          if (diffX < 0) {
+            setActiveImage(currentImageIndex + 1);
+          } else {
+            setActiveImage(currentImageIndex - 1);
+          }
+        }
+      });
+    }
+
+    // Enlarge Magnifier Button
+    const enlargeBtn = document.querySelector('button[aria-label="Enlarge Image"]');
+    if (enlargeBtn) {
+      enlargeBtn.onclick = function (e) {
+        e.stopPropagation();
+        window.openImageLightbox(mainImg ? mainImg.src : productImages[0], product);
+      };
     }
 
     // 5. Title, Subtitle, Price, MRP, Discount
@@ -1045,63 +1147,338 @@
       };
     }
 
-    // 8. Design Story & Description
+    // 8. Wishlist Toggle Buttons on PDP
+    const wishlistButtons = document.querySelectorAll('button[aria-label="Wishlist"]');
+    function updateWishlistButtonState() {
+      const isWish = window.isInWishlist(product.id);
+      wishlistButtons.forEach(btn => {
+        const svg = btn.querySelector('svg');
+        if (isWish) {
+          btn.className = 'p-2.5 rounded-full bg-white text-[#7A152E] border border-[#7A152E]/40 shadow-xs cursor-pointer';
+          if (svg) svg.classList.add('fill-[#7A152E]', 'text-[#7A152E]');
+        } else {
+          btn.className = 'p-2.5 rounded-full bg-white/90 text-stone-700 hover:text-[#7A152E] border border-stone-200 shadow-xs cursor-pointer';
+          if (svg) svg.classList.remove('fill-[#7A152E]', 'text-[#7A152E]');
+        }
+      });
+    }
+    updateWishlistButtonState();
+
+    wishlistButtons.forEach(btn => {
+      btn.onclick = function (e) {
+        e.stopPropagation();
+        window.toggleWishlist(product);
+        updateWishlistButtonState();
+      };
+    });
+
+    // Share Button
+    const shareBtn = document.querySelector('button[aria-label="Share"]');
+    if (shareBtn) {
+      shareBtn.onclick = function () {
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(window.location.href).then(() => {
+            window.showToast('Piece Link Copied!', 'Atelier product link copied to your clipboard.');
+          }).catch(() => {
+            window.showToast('Solystra Atelier', window.location.href);
+          });
+        } else {
+          window.showToast('Solystra Atelier', window.location.href);
+        }
+      };
+    }
+
+    // Laser Engraving Checkbox
+    const engraveCheckbox = document.querySelector('input[type="checkbox"][class*="accent-black"]');
+    if (engraveCheckbox) {
+      engraveCheckbox.onchange = function () {
+        let engraveInput = document.getElementById('pdp-engrave-text-box');
+        if (this.checked) {
+          if (!engraveInput) {
+            engraveInput = document.createElement('div');
+            engraveInput.id = 'pdp-engrave-text-box';
+            engraveInput.className = 'mt-2 pt-2 border-t border-stone-100 flex items-center gap-2 animate-fade-in';
+            engraveInput.innerHTML = `
+              <input type="text" maxlength="8" placeholder="Enter initials (max 8 chars)" class="flex-1 px-3 py-1.5 border border-stone-200 rounded-lg text-xs uppercase font-mono tracking-wider focus:outline-none focus:border-[#7A152E]" />
+              <span class="text-[10px] text-stone-400 font-mono">Complimentary</span>
+            `;
+            engraveCheckbox.closest('.border-y').appendChild(engraveInput);
+          }
+          engraveInput.style.display = 'flex';
+          window.showToast('Laser Engraving Added', 'Complimentary custom engraving enabled.');
+        } else if (engraveInput) {
+          engraveInput.style.display = 'none';
+        }
+      };
+    }
+
+    // 9. Mobile Accordion Stack with See More / See Less Toggle
+    const mobileAccordionCards = document.querySelectorAll('.md\\:hidden.divide-y.divide-stone-200 > div');
+    mobileAccordionCards.forEach(card => {
+      const header = card.querySelector('.cursor-pointer');
+      const btn = card.querySelector('button');
+      const content = card.querySelector('.transition-all.duration-300');
+      const span = btn ? btn.querySelector('span') : null;
+      const svg = btn ? btn.querySelector('svg') : null;
+
+      function toggleAccordion() {
+        if (!content) return;
+        const isExpanded = content.classList.contains('opacity-100');
+        if (isExpanded) {
+          content.classList.remove('max-h-[1200px]', 'opacity-100', 'pb-4', 'px-4');
+          content.classList.add('max-h-0', 'opacity-0');
+          if (span) span.textContent = 'See More';
+          if (svg) svg.classList.replace('rotate-180', 'rotate-0');
+        } else {
+          content.classList.remove('max-h-0', 'opacity-0');
+          content.classList.add('max-h-[1200px]', 'opacity-100', 'pb-4', 'px-4');
+          if (span) span.textContent = 'See Less';
+          if (svg) svg.classList.replace('rotate-0', 'rotate-180');
+        }
+      }
+
+      if (header) {
+        header.onclick = function (e) {
+          e.preventDefault();
+          toggleAccordion();
+        };
+      }
+      if (btn && btn !== header) {
+        btn.onclick = function (e) {
+          e.preventDefault();
+          e.stopPropagation();
+          toggleAccordion();
+        };
+      }
+    });
+
+    // 10. Desktop Specifications Tabs
+    const desktopTabs = document.querySelectorAll('.hidden.md\\:grid.grid-cols-5 button');
+    const desktopTabContentContainer = document.querySelector('.hidden.md\\:block.p-6.sm\\:p-10');
+
+    if (desktopTabs.length > 0 && desktopTabContentContainer) {
+      const tabPanelsData = [
+        // Tab 0: Specifications & Purity
+        `
+        <div class="space-y-4 animate-fade-in">
+          <div class="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1 mb-2">
+            <h3 class="font-serif text-2xl text-stone-900 font-normal">Certified Craftsmanship Specifications</h3>
+            <span class="text-[11px] text-[#7A152E] font-semibold uppercase tracking-wider">BIS 925 Hallmark Verified</span>
+          </div>
+          <p class="text-xs text-stone-500 font-light mb-4">Every Solystra creation is individually hallmarked and micro-set in pure 925 sterling silver.</p>
+          <div id="pdp-specs-grid" class="grid grid-cols-1 md:grid-cols-2 gap-3.5 sm:gap-4 text-xs">
+            <div class="flex justify-between items-center p-3.5 rounded-xl bg-[#FAF8F5] border border-[#EAE4DC] hover:border-stone-300 transition-colors">
+              <span class="text-stone-500 font-medium text-xs">Metal Purity</span>
+              <span class="font-semibold text-stone-800 text-xs sm:text-[13px] text-right ml-2">${(product.specs && product.specs['Metal Purity']) || 'BIS Certified 925 Sterling Silver'}</span>
+            </div>
+            <div class="flex justify-between items-center p-3.5 rounded-xl bg-[#FAF8F5] border border-[#EAE4DC] hover:border-stone-300 transition-colors">
+              <span class="text-stone-500 font-medium text-xs">Plating Finish</span>
+              <span class="font-semibold text-stone-800 text-xs sm:text-[13px] text-right ml-2">${(product.specs && product.specs['Plating Finish']) || 'Anti-Tarnish Rhodium & Micron E-Coat'}</span>
+            </div>
+            <div class="flex justify-between items-center p-3.5 rounded-xl bg-[#FAF8F5] border border-[#EAE4DC] hover:border-stone-300 transition-colors">
+              <span class="text-stone-500 font-medium text-xs">Stone Setting</span>
+              <span class="font-semibold text-stone-800 text-xs sm:text-[13px] text-right ml-2">${(product.specs && product.specs['Stone Setting']) || 'AAA+ Austrian Solitaire Crystals'}</span>
+            </div>
+            <div class="flex justify-between items-center p-3.5 rounded-xl bg-[#FAF8F5] border border-[#EAE4DC] hover:border-stone-300 transition-colors">
+              <span class="text-stone-500 font-medium text-xs">Hallmark Verification</span>
+              <span class="font-semibold text-stone-800 text-xs sm:text-[13px] text-right ml-2">${(product.specs && product.specs['Hallmark Verification']) || 'Certified 925 Stamp on Clasp/Band'}</span>
+            </div>
+            <div class="flex justify-between items-center p-3.5 rounded-xl bg-[#FAF8F5] border border-[#EAE4DC] hover:border-stone-300 transition-colors">
+              <span class="text-stone-500 font-medium text-xs">Warranty Coverage</span>
+              <span class="font-semibold text-stone-800 text-xs sm:text-[13px] text-right ml-2">${(product.specs && product.specs['Warranty Coverage']) || '6 Months Free Replating Assurance'}</span>
+            </div>
+            <div class="flex justify-between items-center p-3.5 rounded-xl bg-[#FAF8F5] border border-[#EAE4DC] hover:border-stone-300 transition-colors">
+              <span class="text-stone-500 font-medium text-xs">Packaging</span>
+              <span class="font-semibold text-stone-800 text-xs sm:text-[13px] text-right ml-2">${(product.specs && product.specs['Packaging']) || 'Luxury Suede Box with Authenticity Card'}</span>
+            </div>
+            <div class="flex justify-between items-center p-3.5 rounded-xl bg-[#FAF8F5] border border-[#EAE4DC] hover:border-stone-300 transition-colors col-span-1 md:col-span-2">
+              <span class="text-stone-500 font-medium text-xs">Shipping</span>
+              <span class="font-semibold text-stone-800 text-xs sm:text-[13px] text-right ml-2">${(product.specs && product.specs['Shipping']) || 'Free Insured Express Delivery Across India'}</span>
+            </div>
+          </div>
+        </div>`,
+        // Tab 1: Shipping & Details
+        `
+        <div class="space-y-5 animate-fade-in text-xs text-stone-700">
+          <div class="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1 mb-2">
+            <h3 class="font-serif text-2xl text-stone-900 font-normal">Express Insured Courier & Seamless Returns</h3>
+            <span class="text-[11px] text-[#7A152E] font-semibold uppercase tracking-wider">BlueDart Express Air</span>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div class="p-4 rounded-xl bg-[#FAF8F5] border border-[#EAE4DC] space-y-2">
+              <h5 class="font-semibold text-stone-900 text-sm">24-48 Hr Dispatch</h5>
+              <p class="text-stone-600 leading-relaxed font-light">Every creation undergoes a 7-point microscopic quality inspection and hallmarking verification before immediate dispatch.</p>
+            </div>
+            <div class="p-4 rounded-xl bg-[#FAF8F5] border border-[#EAE4DC] space-y-2">
+              <h5 class="font-semibold text-stone-900 text-sm">Transit Insurance</h5>
+              <p class="text-stone-600 leading-relaxed font-light">100% door-to-door transit coverage. In the rare event of transit damage or delay, replacement or full refund is expedited.</p>
+            </div>
+            <div class="p-4 rounded-xl bg-[#FAF8F5] border border-[#EAE4DC] space-y-2">
+              <h5 class="font-semibold text-stone-900 text-sm">15-Day Easy Returns</h5>
+              <p class="text-stone-600 leading-relaxed font-light">Complimentary doorstep pickup across 19,000+ PIN codes with full refund to original payment source within 48 hours.</p>
+            </div>
+          </div>
+        </div>`,
+        // Tab 2: Jewelry Care Guide
+        `
+        <div class="space-y-5 animate-fade-in text-xs text-stone-700">
+          <div class="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1 mb-2">
+            <h3 class="font-serif text-2xl text-stone-900 font-normal">Preserving Your Atelier Radiance</h3>
+            <span class="text-[11px] text-[#7A152E] font-semibold uppercase tracking-wider">Lifelong Silver Preservation</span>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div class="p-4 rounded-xl bg-[#FAF8F5] border border-[#EAE4DC] space-y-2">
+              <h5 class="font-semibold text-stone-900 text-sm">The "Last On, First Off" Rule</h5>
+              <p class="text-stone-600 leading-relaxed font-light">Always wear your jewelry after applying makeup, perfumes, and lotions. Remove before swimming, showers, or intensive workouts to preserve the dual-micron rhodium shield.</p>
+            </div>
+            <div class="p-4 rounded-xl bg-[#FAF8F5] border border-[#EAE4DC] space-y-2">
+              <h5 class="font-semibold text-stone-900 text-sm">Signature Microfiber Buffing</h5>
+              <p class="text-stone-600 leading-relaxed font-light">Gently polish stones and bands using the enclosed Solystra suede polishing cloth. Avoid abrasive chemical dips or ultrasonic bath solutions.</p>
+            </div>
+          </div>
+        </div>`,
+        // Tab 3: Packaging & Gifting
+        `
+        <div class="space-y-5 animate-fade-in text-xs text-stone-700">
+          <div class="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1 mb-2">
+            <h3 class="font-serif text-2xl text-stone-900 font-normal">The Royal Solystra Unboxing Experience</h3>
+            <span class="text-[11px] text-[#7A152E] font-semibold uppercase tracking-wider">Complimentary Keepsake Vault</span>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div class="p-4 rounded-xl bg-[#FAF8F5] border border-[#EAE4DC] space-y-2">
+              <h5 class="font-semibold text-stone-900 text-sm">Burgundy Suede Vault</h5>
+              <p class="text-stone-600 leading-relaxed font-light">Custom fitted plush velvet interior with anti-tarnish micro-cushioning and embossed gold foil branding.</p>
+            </div>
+            <div class="p-4 rounded-xl bg-[#FAF8F5] border border-[#EAE4DC] space-y-2">
+              <h5 class="font-semibold text-stone-900 text-sm">Embossed Purity Certificate</h5>
+              <p class="text-stone-600 leading-relaxed font-light">Individual serial certificate confirming BIS hallmarked 925 sterling silver purity and Austrian crystal grade.</p>
+            </div>
+            <div class="p-4 rounded-xl bg-[#FAF8F5] border border-[#EAE4DC] space-y-2">
+              <h5 class="font-semibold text-stone-900 text-sm">Gift Ready Presentation</h5>
+              <p class="text-stone-600 leading-relaxed font-light">Delivered in a rigid satin-ribbon gift carrier bag with a personalized handwritten greeting card upon request.</p>
+            </div>
+          </div>
+        </div>`,
+        // Tab 4: Warranty & Authenticity
+        `
+        <div class="space-y-5 animate-fade-in text-xs text-stone-700">
+          <div class="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1 mb-2">
+            <h3 class="font-serif text-2xl text-stone-900 font-normal">Authenticity & 6-Month Plating Warranty</h3>
+            <span class="text-[11px] text-[#7A152E] font-semibold uppercase tracking-wider">Hallmark Certified</span>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div class="p-4 rounded-xl bg-[#FAF8F5] border border-[#EAE4DC] space-y-2">
+              <h5 class="font-semibold text-stone-900 text-sm">BIS 925 Hallmark Guarantee</h5>
+              <p class="text-stone-600 leading-relaxed font-light">Bureau of Indian Standards certified pure silver content (92.5%). Every item carries the official triangular BIS stamp and Solystra atelier hallmark punch.</p>
+            </div>
+            <div class="p-4 rounded-xl bg-[#FAF8F5] border border-[#EAE4DC] space-y-2">
+              <h5 class="font-semibold text-stone-900 text-sm">6 Months Free Replating</h5>
+              <p class="text-stone-600 leading-relaxed font-light">Should your creation encounter unexpected tarnish or surface discoloration within 6 months, we replating and service your piece with complimentary reverse courier pickup.</p>
+            </div>
+          </div>
+        </div>`
+      ];
+
+      desktopTabs.forEach((tabBtn, tabIdx) => {
+        tabBtn.onclick = function () {
+          desktopTabs.forEach((b, i) => {
+            if (i === tabIdx) {
+              b.className = 'py-4 px-2 lg:px-3 text-[11px] lg:text-xs uppercase tracking-wider transition-all text-center cursor-pointer border-r border-stone-200 last:border-r-0 border-b-2 border-b-[#7A152E] text-[#7A152E] bg-white font-bold shadow-2xs';
+            } else {
+              b.className = 'py-4 px-2 lg:px-3 text-[11px] lg:text-xs uppercase tracking-wider transition-all text-center cursor-pointer border-r border-stone-200 last:border-r-0 text-stone-500 hover:text-stone-900 hover:bg-stone-100/60 font-medium';
+            }
+          });
+          desktopTabContentContainer.innerHTML = tabPanelsData[tabIdx] || tabPanelsData[0];
+        };
+      });
+    }
+
+    // 11. Design Story & Description
     const storyDesc = document.getElementById('pdp-story-desc');
     if (storyDesc) {
       storyDesc.textContent = product.desc || 'Handcrafted in certified 925 sterling silver with dual-micron rhodium for enduring brilliance and hypoallergenic comfort.';
     }
 
-    // 9. Specifications Table
-    const specsGrid = document.getElementById('pdp-specs-grid');
-    if (specsGrid && product.specs) {
-      const specs = product.specs;
-      specsGrid.innerHTML = `
-        <div class="flex justify-between items-center p-3.5 rounded-xl bg-[#FAF8F5] border border-[#EAE4DC] hover:border-stone-300 transition-colors">
-          <span class="text-stone-500 font-medium text-xs">Metal Purity</span>
-          <span class="font-semibold text-stone-800 text-xs sm:text-[13px] text-right ml-2">${specs['Metal Purity'] || 'BIS Certified 925 Sterling Silver'}</span>
-        </div>
-        <div class="flex justify-between items-center p-3.5 rounded-xl bg-[#FAF8F5] border border-[#EAE4DC] hover:border-stone-300 transition-colors">
-          <span class="text-stone-500 font-medium text-xs">Plating Finish</span>
-          <span class="font-semibold text-stone-800 text-xs sm:text-[13px] text-right ml-2">${specs['Plating Finish'] || 'Anti-Tarnish Rhodium & Micron E-Coat'}</span>
-        </div>
-        <div class="flex justify-between items-center p-3.5 rounded-xl bg-[#FAF8F5] border border-[#EAE4DC] hover:border-stone-300 transition-colors">
-          <span class="text-stone-500 font-medium text-xs">Stone Setting</span>
-          <span class="font-semibold text-stone-800 text-xs sm:text-[13px] text-right ml-2">${specs['Stone Setting'] || 'AAA+ Austrian Solitaire Crystals'}</span>
-        </div>
-        <div class="flex justify-between items-center p-3.5 rounded-xl bg-[#FAF8F5] border border-[#EAE4DC] hover:border-stone-300 transition-colors">
-          <span class="text-stone-500 font-medium text-xs">Hallmark Verification</span>
-          <span class="font-semibold text-stone-800 text-xs sm:text-[13px] text-right ml-2">${specs['Hallmark Verification'] || 'Certified 925 Stamp on Clasp/Band'}</span>
-        </div>
-        <div class="flex justify-between items-center p-3.5 rounded-xl bg-[#FAF8F5] border border-[#EAE4DC] hover:border-stone-300 transition-colors">
-          <span class="text-stone-500 font-medium text-xs">Warranty Coverage</span>
-          <span class="font-semibold text-stone-800 text-xs sm:text-[13px] text-right ml-2">${specs['Warranty Coverage'] || '6 Months Free Replating Assurance'}</span>
-        </div>
-        <div class="flex justify-between items-center p-3.5 rounded-xl bg-[#FAF8F5] border border-[#EAE4DC] hover:border-stone-300 transition-colors">
-          <span class="text-stone-500 font-medium text-xs">Packaging</span>
-          <span class="font-semibold text-stone-800 text-xs sm:text-[13px] text-right ml-2">${specs['Packaging'] || 'Luxury Suede Box with Authenticity Card'}</span>
-        </div>
-        <div class="flex justify-between items-center p-3.5 rounded-xl bg-[#FAF8F5] border border-[#EAE4DC] hover:border-stone-300 transition-colors col-span-1 md:col-span-2">
-          <span class="text-stone-500 font-medium text-xs">Shipping</span>
-          <span class="font-semibold text-stone-800 text-xs sm:text-[13px] text-right ml-2">${specs['Shipping'] || 'Free Insured Express Delivery Across India'}</span>
-        </div>
-      `;
-    }
-
-    // 10. Reviews & FAQ action buttons
+    // 12. Reviews Section Wiring & 5-Star Triggers
+    const writeReviewBtns = document.querySelectorAll('button:has(svg.lucide-message-square), button:contains("Write a Review"), button:contains("Write Customer Review")');
     document.querySelectorAll('button').forEach(btn => {
       const txt = btn.textContent.trim();
-      if (txt.includes('Write a Review') || txt.includes('Review this creation')) {
-        btn.onclick = function () {
-          window.openReviewModal(product);
+      if (txt.includes('Write a Review') || txt.includes('Review this creation') || txt.includes('Write Customer Review')) {
+        btn.onclick = function (e) {
+          e.preventDefault();
+          window.openReviewModal(product, 5);
         };
       } else if (txt.includes('Ask a Question') || txt.includes('Ask Concierge Desk')) {
-        btn.onclick = function () {
+        btn.onclick = function (e) {
+          e.preventDefault();
           window.openAskQuestionModal(product);
         };
       }
     });
 
-    // 11. FAQ Accordion Interaction
+    // Wire individual star buttons in review summary prompt card
+    const promptStarButtons = document.querySelectorAll('button[title*="Rate"]');
+    promptStarButtons.forEach(btn => {
+      const title = btn.getAttribute('title') || '';
+      const match = title.match(/Rate (\d+)/);
+      const starRating = match ? parseInt(match[1], 10) : 5;
+      btn.onclick = function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+        window.openReviewModal(product, starRating);
+      };
+    });
+
+    // Load custom reviews stored in localStorage
+    try {
+      const storedReviews = JSON.parse(localStorage.getItem('solystra_reviews_' + product.id) || '[]');
+      const reviewsList = document.querySelector('.divide-y.divide-\\[\\#EAE4DC\\].pt-2');
+      if (storedReviews.length > 0 && reviewsList) {
+        storedReviews.forEach(rev => {
+          const revArticle = document.createElement('article');
+          revArticle.className = 'py-6 sm:py-7 space-y-3';
+          revArticle.innerHTML = `
+            <div class="flex items-start justify-between gap-2">
+              <div class="flex items-center gap-3 min-w-0">
+                <div class="w-10 h-10 rounded-full bg-[#FAF0F2] text-[#7A152E] font-serif font-bold text-xs flex items-center justify-center shrink-0 border border-[#EAD5DA]">
+                  ${rev.initials || 'VP'}
+                </div>
+                <div class="min-w-0">
+                  <div class="flex flex-wrap items-center gap-1.5">
+                    <span class="font-medium text-stone-900 text-sm">${rev.author}</span>
+                    <span class="inline-flex items-center gap-1 text-[10px] font-semibold text-[#8B6B38] bg-[#FAF6EE] px-2 py-0.5 rounded-full border border-[#E8DCC4] shrink-0">
+                      <svg class="lucide lucide-shield-check w-2.5 h-2.5 text-[#C5A059]" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="24"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"></path><path d="m9 12 2 2 4-4"></path></svg>
+                      <span>Verified Patron</span>
+                    </span>
+                  </div>
+                  <div class="text-[11px] text-stone-400 mt-0.5 flex items-center gap-2">
+                    <span>${rev.city}</span>
+                    <span>•</span>
+                    <span class="text-[#7A152E] font-medium">${rev.date}</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="flex flex-wrap items-center gap-2">
+              <div class="flex items-center gap-0.5">
+                ${[...Array(5)].map((_, i) => `
+                  <svg class="w-3.5 h-3.5 ${i < rev.rating ? 'text-[#C5A059] fill-[#C5A059]' : 'text-stone-300 fill-none'}" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"></path>
+                  </svg>
+                `).join('')}
+              </div>
+              <h5 class="font-semibold text-stone-900 text-xs sm:text-sm">${rev.title}</h5>
+            </div>
+            <p class="text-xs sm:text-[13px] text-stone-600 leading-relaxed font-light">${rev.comment}</p>
+          `;
+          reviewsList.insertBefore(revArticle, reviewsList.firstChild);
+        });
+      }
+    } catch (e) {
+      console.warn(e);
+    }
+
+    // 13. FAQ Accordion Interaction
     document.querySelectorAll('#qna-section .border, section:has(#qna-section) .border').forEach(card => {
       const qBtn = card.querySelector('button') || card.querySelector('h4');
       if (qBtn) {
@@ -1116,7 +1493,7 @@
       }
     });
 
-    // 12. Pincode checker
+    // 14. Pincode checker
     const pinBtn = document.querySelector('button:has(svg.lucide-truck)');
     const pinInput = document.querySelector('input[placeholder*="pincode"], input[placeholder*="Pincode"]');
     if (pinBtn && pinInput) {
@@ -1129,6 +1506,474 @@
           window.showToast('Invalid Pincode', 'Please enter a valid 6-digit Indian PIN code.', 'info');
         }
       };
+    }
+  }
+
+  // Products Catalog Page Filtering & Sorting Engine
+  window.initProductsPage = initProductsPage;
+  function initProductsPage() {
+    const grid = document.getElementById('products-catalog-grid') ||
+                 document.querySelector('main .grid.grid-cols-2') ||
+                 document.querySelector('.grid.xl\\:grid-cols-4') ||
+                 document.querySelector('main .grid');
+    if (!grid) return;
+    grid.id = 'products-catalog-grid';
+
+    const cards = Array.from(grid.children).filter(el => el.classList.contains('group'));
+    if (cards.length === 0) return;
+
+    // Build product lookup map by ID
+    const productMap = {};
+    if (window.PRODUCTS && Array.isArray(window.PRODUCTS)) {
+      window.PRODUCTS.forEach(p => {
+        productMap[p.id] = p;
+      });
+    }
+
+    // Tag each card with metadata
+    cards.forEach((card, idx) => {
+      card.setAttribute('data-original-index', idx);
+      const onclickAttr = card.getAttribute('onclick') || '';
+      const match = onclickAttr.match(/id=([a-zA-Z0-9_-]+)/);
+      const prodId = match ? match[1] : '';
+      const prod = productMap[prodId] || {};
+
+      card.setAttribute('data-id', prodId);
+      card.setAttribute('data-name', (prod.name || card.querySelector('h3, h4, p')?.textContent || '').toLowerCase());
+      card.setAttribute('data-category', (prod.category || 'all').toLowerCase());
+      card.setAttribute('data-metal', (prod.metalType || 'silver').toLowerCase());
+      card.setAttribute('data-price', prod.price || parseInt(card.querySelector('[class*="font-bold"]')?.textContent.replace(/[^0-9]/g, '') || '2999', 10));
+      card.setAttribute('data-mrp', prod.mrp || 0);
+      card.setAttribute('data-rating', prod.rating || 4.8);
+      card.setAttribute('data-bestseller', (prod.isBestseller || prod.badge === 'Bestseller') ? 'true' : 'false');
+      card.setAttribute('data-new', (prod.isNew || prod.badge === 'New Arrival') ? 'true' : 'false');
+
+      // Wire quick-view / add-to-bag button on card
+      const addBagBtn = card.querySelector('button');
+      if (addBagBtn) {
+        addBagBtn.onclick = function (e) {
+          e.stopPropagation();
+          if (window.addToCart && prod.id) {
+            window.addToCart(prod);
+          } else {
+            window.location.href = `product.html?id=${prodId}`;
+          }
+        };
+      }
+    });
+
+    // Filter states
+    const params = new URLSearchParams(window.location.search);
+    let activeCategory = (params.get('category') || 'all').toLowerCase();
+    let activeMetal = (params.get('metal') || 'all').toLowerCase();
+    let activeFilter = (params.get('filter') || 'all').toLowerCase();
+    let maxPrice = parseInt(params.get('maxPrice') || '80000', 10);
+    let activePriceRange = params.get('priceRange') || 'all';
+    let searchQuery = (params.get('search') || '').trim().toLowerCase();
+    let currentSort = params.get('sort') || 'featured';
+
+    const searchInput = document.getElementById('catalog-search-input');
+    if (searchInput && searchQuery) {
+      searchInput.value = searchQuery;
+    }
+
+    const priceSlider = document.getElementById('catalog-price-slider');
+    const priceDisplay = document.querySelector('input#catalog-price-slider')?.parentElement?.querySelector('.text-\\[\\#7A152E\\]');
+    if (priceSlider) {
+      priceSlider.value = maxPrice;
+      if (priceDisplay) priceDisplay.textContent = `₹${maxPrice.toLocaleString('en-IN')}`;
+    }
+
+    // Function to apply filters
+    function applyFilters() {
+      let visibleCount = 0;
+
+      cards.forEach(card => {
+        const cat = card.getAttribute('data-category') || '';
+        const metal = card.getAttribute('data-metal') || '';
+        const price = parseInt(card.getAttribute('data-price') || '0', 10);
+        const name = card.getAttribute('data-name') || '';
+        const isBestseller = card.getAttribute('data-bestseller') === 'true';
+        const isNew = card.getAttribute('data-new') === 'true';
+
+        // Category match
+        let catMatch = false;
+        if (activeCategory === 'all') {
+          catMatch = true;
+        } else if (activeCategory === 'bestseller' || activeCategory === 'bestsellers') {
+          catMatch = isBestseller;
+        } else if (activeCategory === 'new') {
+          catMatch = isNew;
+        } else if (activeCategory === 'complete_sets' || activeCategory === 'gift sets & suites' || activeCategory === 'sets') {
+          catMatch = cat === 'complete_sets' || cat === 'sets' || name.includes('set') || name.includes('suite');
+        } else if (activeCategory === 'layering chains' || activeCategory === 'chains') {
+          catMatch = cat === 'necklaces' && (name.includes('chain') || name.includes('lariat'));
+        } else if (activeCategory === 'silver anklets' || activeCategory === 'anklets') {
+          catMatch = cat === 'anklets' || name.includes('anklet');
+        } else if (activeCategory === 'bracelets & kadas' || activeCategory === 'bracelets') {
+          catMatch = cat === 'bracelets' || name.includes('bracelet') || name.includes('bangle') || name.includes('cuff') || name.includes('kada');
+        } else if (activeCategory === 'necklaces & pendants' || activeCategory === 'necklaces') {
+          catMatch = cat === 'necklaces' || name.includes('necklace') || name.includes('pendant');
+        } else if (activeCategory === 'rings & bands' || activeCategory === 'rings') {
+          catMatch = cat === 'rings' || name.includes('ring') || name.includes('band') || name.includes('solitaire');
+        } else if (activeCategory === 'earrings & studs' || activeCategory === 'earrings') {
+          catMatch = cat === 'earrings' || name.includes('earring') || name.includes('stud') || name.includes('hoop') || name.includes('drop');
+        } else {
+          catMatch = cat.includes(activeCategory) || activeCategory.includes(cat);
+        }
+
+        // Metal match
+        let metalMatch = false;
+        if (activeMetal === 'all') {
+          metalMatch = true;
+        } else if (activeMetal === 'silver' || activeMetal === '925 silver') {
+          metalMatch = metal === 'silver';
+        } else if (activeMetal === 'gold' || activeMetal === '18k gold') {
+          metalMatch = metal === 'gold';
+        } else if (activeMetal === 'rose' || activeMetal === 'rose gold') {
+          metalMatch = metal === 'rose';
+        }
+
+        // Filter badge match (bestseller / new)
+        let filterMatch = true;
+        if (activeFilter === 'bestseller') {
+          filterMatch = isBestseller;
+        } else if (activeFilter === 'new') {
+          filterMatch = isNew;
+        }
+
+        // Price slider match
+        let priceMatch = price <= maxPrice;
+
+        // Quick price pill match
+        if (activePriceRange !== 'all') {
+          if (activePriceRange === 'under-3000') priceMatch = priceMatch && price < 3000;
+          else if (activePriceRange === '3000-7000') priceMatch = priceMatch && price >= 3000 && price <= 7000;
+          else if (activePriceRange === '7000-15000') priceMatch = priceMatch && price >= 7000 && price <= 15000;
+          else if (activePriceRange === '15000-30000') priceMatch = priceMatch && price >= 15000 && price <= 30000;
+          else if (activePriceRange === 'above-30000') priceMatch = priceMatch && price > 30000;
+        }
+
+        // Search match
+        let searchMatch = true;
+        if (searchQuery) {
+          searchMatch = name.includes(searchQuery) || cat.includes(searchQuery) || metal.includes(searchQuery);
+        }
+
+        if (catMatch && metalMatch && filterMatch && priceMatch && searchMatch) {
+          card.style.display = '';
+          visibleCount++;
+        } else {
+          card.style.display = 'none';
+        }
+      });
+
+      // Update counters
+      const countEl = document.querySelector('.text-stone-400.font-light');
+      if (countEl) {
+        countEl.textContent = `(${visibleCount} creations)`;
+      }
+
+      // Show/Hide Empty State
+      let emptyState = document.getElementById('catalog-empty-state');
+      if (visibleCount === 0) {
+        if (!emptyState) {
+          emptyState = document.createElement('div');
+          emptyState.id = 'catalog-empty-state';
+          emptyState.className = 'col-span-full py-16 text-center space-y-4 bg-white rounded-2xl border border-[#EAE4DC] p-8 shadow-xs';
+          emptyState.innerHTML = `
+            <div class="w-14 h-14 rounded-full bg-[#FAF0F2] text-[#7A152E] flex items-center justify-center mx-auto border border-[#EAD5DA]">
+              <svg class="w-6 h-6 stroke-[1.8]" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="24"><circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.3-4.3"></path></svg>
+            </div>
+            <h4 class="font-serif text-xl text-stone-900 font-normal">No creations match your filter criteria</h4>
+            <p class="text-xs text-stone-500 max-w-md mx-auto leading-relaxed">Try adjusting your budget, selecting all precious finishes, or resetting your filter preferences to explore the complete Solystra atelier collection.</p>
+            <button onclick="window.resetCatalogFilters()" class="px-5 py-2.5 bg-[#7A152E] hover:bg-[#590D1E] text-white text-xs font-semibold uppercase tracking-wider rounded-xl shadow-xs transition-colors cursor-pointer">Reset All Filters</button>
+          `;
+          grid.appendChild(emptyState);
+        }
+        emptyState.style.display = 'block';
+      } else if (emptyState) {
+        emptyState.style.display = 'none';
+      }
+    }
+
+    // Sorting function
+    function applySort(sortKey) {
+      currentSort = sortKey;
+      const visibleCards = cards.slice();
+
+      visibleCards.sort((a, b) => {
+        if (sortKey === 'price-low') {
+          return parseInt(a.getAttribute('data-price') || '0', 10) - parseInt(b.getAttribute('data-price') || '0', 10);
+        } else if (sortKey === 'price-high') {
+          return parseInt(b.getAttribute('data-price') || '0', 10) - parseInt(a.getAttribute('data-price') || '0', 10);
+        } else if (sortKey === 'rating') {
+          return parseFloat(b.getAttribute('data-rating') || '0') - parseFloat(a.getAttribute('data-rating') || '0');
+        } else if (sortKey === 'newest') {
+          const aNew = a.getAttribute('data-new') === 'true' ? 1 : 0;
+          const bNew = b.getAttribute('data-new') === 'true' ? 1 : 0;
+          return bNew - aNew;
+        } else {
+          return parseInt(a.getAttribute('data-original-index') || '0', 10) - parseInt(b.getAttribute('data-original-index') || '0', 10);
+        }
+      });
+
+      visibleCards.forEach(c => grid.appendChild(c));
+    }
+
+    // Attach global filterCatalog for oninput/onchange
+    window.filterCatalog = function () {
+      if (searchInput) searchQuery = searchInput.value.trim().toLowerCase();
+      applyFilters();
+    };
+
+    window.setCatalogMaxPrice = function (val) {
+      maxPrice = parseInt(val, 10);
+      if (priceDisplay) priceDisplay.textContent = `₹${maxPrice.toLocaleString('en-IN')}`;
+      applyFilters();
+    };
+
+    window.resetCatalogFilters = function () {
+      activeCategory = 'all';
+      activeMetal = 'all';
+      activeFilter = 'all';
+      maxPrice = 80000;
+      activePriceRange = 'all';
+      searchQuery = '';
+      if (searchInput) searchInput.value = '';
+      if (priceSlider) priceSlider.value = 80000;
+      if (priceDisplay) priceDisplay.textContent = '₹80,000';
+      highlightCategoryPills();
+      highlightMetalButtons();
+      highlightPricePills();
+      applyFilters();
+      applySort('featured');
+    };
+
+    // Category button click handlers
+    function highlightCategoryPills() {
+      const topPills = document.querySelectorAll('section.bg-white.border-b button');
+      topPills.forEach(btn => {
+        const text = btn.textContent.trim().toLowerCase();
+        let isMatch = false;
+        if (activeCategory === 'all' && text.includes('all')) isMatch = true;
+        else if (activeCategory === 'bracelets' && text.includes('bracelet')) isMatch = true;
+        else if (activeCategory === 'necklaces' && text.includes('necklace')) isMatch = true;
+        else if (activeCategory === 'rings' && text.includes('ring')) isMatch = true;
+        else if (activeCategory === 'earrings' && text.includes('earring')) isMatch = true;
+        else if (activeCategory === 'complete_sets' && (text.includes('suite') || text.includes('set'))) isMatch = true;
+        else if (activeCategory === 'anklets' && text.includes('anklet')) isMatch = true;
+        else if (activeCategory === 'bestseller' && text.includes('bestseller')) isMatch = true;
+        else if (text.includes(activeCategory)) isMatch = true;
+
+        if (isMatch) {
+          btn.className = 'px-3.5 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap transition-all cursor-pointer active:scale-95 bg-[#7A152E] text-white shadow-xs';
+        } else {
+          btn.className = 'px-3.5 py-1.5 rounded-full text-xs font-medium whitespace-nowrap transition-all cursor-pointer active:scale-95 bg-stone-100 hover:bg-stone-200/80 text-stone-700';
+        }
+      });
+
+      const sideCatButtons = document.querySelectorAll('aside button');
+      sideCatButtons.forEach(btn => {
+        const text = btn.textContent.trim().toLowerCase();
+        if (text.includes('all metals') || text.includes('silver') || text.includes('gold') || text.includes('rose')) return;
+        let isMatch = false;
+        if (activeCategory === 'all' && text.includes('all designs')) isMatch = true;
+        else if (activeCategory === 'bracelets' && text.includes('bracelet')) isMatch = true;
+        else if (activeCategory === 'necklaces' && text.includes('necklace')) isMatch = true;
+        else if (activeCategory === 'rings' && text.includes('ring')) isMatch = true;
+        else if (activeCategory === 'earrings' && text.includes('earring')) isMatch = true;
+        else if (activeCategory === 'complete_sets' && (text.includes('suite') || text.includes('set'))) isMatch = true;
+        else if (activeCategory === 'anklets' && text.includes('anklet')) isMatch = true;
+
+        if (isMatch) {
+          btn.className = 'w-full flex items-center justify-between px-2.5 py-1.5 rounded-lg text-xs transition-colors text-left cursor-pointer bg-[#7A152E]/10 text-[#7A152E] font-semibold';
+        } else {
+          btn.className = 'w-full flex items-center justify-between px-2.5 py-1.5 rounded-lg text-xs transition-colors text-left cursor-pointer text-stone-600 hover:bg-stone-50';
+        }
+      });
+    }
+
+    const topPills = document.querySelectorAll('section.bg-white.border-b button');
+    topPills.forEach(btn => {
+      btn.onclick = function () {
+        const text = btn.textContent.trim().toLowerCase();
+        if (text.includes('all')) activeCategory = 'all';
+        else if (text.includes('bracelet')) activeCategory = 'bracelets';
+        else if (text.includes('necklace')) activeCategory = 'necklaces';
+        else if (text.includes('ring')) activeCategory = 'rings';
+        else if (text.includes('earring')) activeCategory = 'earrings';
+        else if (text.includes('suite') || text.includes('set')) activeCategory = 'complete_sets';
+        else if (text.includes('chain')) activeCategory = 'necklaces';
+        else if (text.includes('anklet')) activeCategory = 'anklets';
+        else if (text.includes('bestseller')) activeCategory = 'bestseller';
+        else activeCategory = text;
+
+        highlightCategoryPills();
+        applyFilters();
+      };
+    });
+
+    const sideCatButtons = document.querySelectorAll('aside button');
+    sideCatButtons.forEach(btn => {
+      const text = btn.textContent.trim().toLowerCase();
+      if (text.includes('all metals') || text.includes('silver') || text.includes('gold') || text.includes('rose')) return;
+      btn.onclick = function () {
+        if (text.includes('all designs')) activeCategory = 'all';
+        else if (text.includes('bracelet')) activeCategory = 'bracelets';
+        else if (text.includes('necklace')) activeCategory = 'necklaces';
+        else if (text.includes('ring')) activeCategory = 'rings';
+        else if (text.includes('earring')) activeCategory = 'earrings';
+        else if (text.includes('suite') || text.includes('set')) activeCategory = 'complete_sets';
+        else if (text.includes('chain')) activeCategory = 'necklaces';
+        else if (text.includes('anklet')) activeCategory = 'anklets';
+        else activeCategory = text;
+
+        highlightCategoryPills();
+        applyFilters();
+      };
+    });
+
+    // Sidebar Metal polish buttons
+    function highlightMetalButtons() {
+      const metalButtons = Array.from(document.querySelectorAll('aside button')).filter(btn => {
+        const t = btn.textContent.trim().toLowerCase();
+        return t.includes('all metals') || t.includes('silver') || t.includes('gold') || t.includes('rose');
+      });
+
+      metalButtons.forEach(btn => {
+        const t = btn.textContent.trim().toLowerCase();
+        let isMatch = false;
+        if (activeMetal === 'all' && t.includes('all metals')) isMatch = true;
+        else if (activeMetal === 'silver' && t.includes('silver')) isMatch = true;
+        else if (activeMetal === 'gold' && t.includes('gold') && !t.includes('rose')) isMatch = true;
+        else if (activeMetal === 'rose' && t.includes('rose')) isMatch = true;
+
+        if (isMatch) {
+          btn.className = 'w-full flex items-center justify-between px-2.5 py-1.5 rounded-lg text-xs transition-colors text-left cursor-pointer bg-[#7A152E]/10 text-[#7A152E] font-semibold';
+        } else {
+          btn.className = 'w-full flex items-center justify-between px-2.5 py-1.5 rounded-lg text-xs transition-colors text-left cursor-pointer text-stone-600 hover:bg-stone-50';
+        }
+      });
+    }
+
+    const metalButtons = Array.from(document.querySelectorAll('aside button')).filter(btn => {
+      const t = btn.textContent.trim().toLowerCase();
+      return t.includes('all metals') || t.includes('silver') || t.includes('gold') || t.includes('rose');
+    });
+
+    metalButtons.forEach(btn => {
+      btn.onclick = function () {
+        const t = btn.textContent.trim().toLowerCase();
+        if (t.includes('all metals')) activeMetal = 'all';
+        else if (t.includes('silver')) activeMetal = 'silver';
+        else if (t.includes('rose')) activeMetal = 'rose';
+        else if (t.includes('gold')) activeMetal = 'gold';
+
+        highlightMetalButtons();
+        applyFilters();
+      };
+    });
+
+    // Quick Price range buttons
+    function highlightPricePills() {
+      const priceButtons = document.querySelectorAll('main .flex.items-center.gap-1\\.5 button');
+      priceButtons.forEach(btn => {
+        const t = btn.textContent.trim().toLowerCase();
+        if (!t.includes('price') && !t.includes('under') && !t.includes('3,000') && !t.includes('7,000') && !t.includes('15,000') && !t.includes('above')) return;
+        let isMatch = false;
+        if (activePriceRange === 'all' && t.includes('all prices')) isMatch = true;
+        else if (activePriceRange === 'under-3000' && t.includes('under')) isMatch = true;
+        else if (activePriceRange === '3000-7000' && t.includes('3,000')) isMatch = true;
+        else if (activePriceRange === '7000-15000' && t.includes('7,000')) isMatch = true;
+        else if (activePriceRange === '15000-30000' && t.includes('15,000')) isMatch = true;
+        else if (activePriceRange === 'above-30000' && t.includes('above')) isMatch = true;
+
+        if (isMatch) {
+          btn.className = 'px-3 py-1.5 rounded-xl text-xs transition-all cursor-pointer font-semibold bg-[#7A152E] text-white shadow-2xs';
+        } else {
+          btn.className = 'px-3 py-1.5 rounded-xl text-xs transition-all cursor-pointer font-medium bg-white hover:bg-[#FAF8F5] border border-[#EAE4DC] text-stone-700 hover:border-[#7A152E]/30';
+        }
+      });
+    }
+
+    const priceButtons = document.querySelectorAll('main .flex.items-center.gap-1\\.5 button');
+    priceButtons.forEach(btn => {
+      const t = btn.textContent.trim().toLowerCase();
+      if (!t.includes('price') && !t.includes('under') && !t.includes('3,000') && !t.includes('7,000') && !t.includes('15,000') && !t.includes('above')) return;
+      btn.onclick = function () {
+        if (t.includes('all prices')) activePriceRange = 'all';
+        else if (t.includes('under')) activePriceRange = 'under-3000';
+        else if (t.includes('3,000')) activePriceRange = '3000-7000';
+        else if (t.includes('7,000')) activePriceRange = '7000-15000';
+        else if (t.includes('15,000')) activePriceRange = '15000-30000';
+        else if (t.includes('above')) activePriceRange = 'above-30000';
+
+        highlightPricePills();
+        applyFilters();
+      };
+    });
+
+    // Sort Dropdown
+    const sortButtons = document.querySelectorAll('button[aria-haspopup="listbox"]');
+    sortButtons.forEach(sortBtn => {
+      const container = sortBtn.parentElement;
+      if (!container) return;
+
+      let sortMenu = container.querySelector('.catalog-sort-menu');
+      if (!sortMenu) {
+        sortMenu = document.createElement('div');
+        sortMenu.className = 'catalog-sort-menu hidden absolute right-0 mt-2 w-48 bg-white border border-[#EAE4DC] rounded-xl shadow-xl z-40 py-1 font-sans text-xs';
+        sortMenu.innerHTML = `
+          <button data-sort="featured" class="w-full text-left px-3.5 py-2 hover:bg-[#FAF0F2] hover:text-[#7A152E] transition-colors font-medium text-stone-800">Featured Curated</button>
+          <button data-sort="price-low" class="w-full text-left px-3.5 py-2 hover:bg-[#FAF0F2] hover:text-[#7A152E] transition-colors font-medium text-stone-800">Price: Low to High</button>
+          <button data-sort="price-high" class="w-full text-left px-3.5 py-2 hover:bg-[#FAF0F2] hover:text-[#7A152E] transition-colors font-medium text-stone-800">Price: High to Low</button>
+          <button data-sort="rating" class="w-full text-left px-3.5 py-2 hover:bg-[#FAF0F2] hover:text-[#7A152E] transition-colors font-medium text-stone-800">Customer Rating ★</button>
+          <button data-sort="newest" class="w-full text-left px-3.5 py-2 hover:bg-[#FAF0F2] hover:text-[#7A152E] transition-colors font-medium text-stone-800">Newest Arrivals</button>
+        `;
+        container.appendChild(sortMenu);
+
+        sortMenu.querySelectorAll('button').forEach(item => {
+          item.onclick = function (e) {
+            e.stopPropagation();
+            const sKey = item.getAttribute('data-sort');
+            const label = item.textContent.trim();
+            const labelSpan = sortBtn.querySelector('.truncate') || sortBtn.querySelector('span');
+            if (labelSpan) labelSpan.textContent = label;
+            sortMenu.classList.add('hidden');
+            applySort(sKey);
+          };
+        });
+      }
+
+      sortBtn.onclick = function (e) {
+        e.stopPropagation();
+        document.querySelectorAll('.catalog-sort-menu').forEach(m => {
+          if (m !== sortMenu) m.classList.add('hidden');
+        });
+        sortMenu.classList.toggle('hidden');
+      };
+    });
+
+    document.addEventListener('click', () => {
+      document.querySelectorAll('.catalog-sort-menu').forEach(m => m.classList.add('hidden'));
+    });
+
+    // Mobile Filters Drawer Button
+    const mobileFilterBtn = document.querySelector('section.lg\\:hidden button:has(svg.lucide-sliders-horizontal)');
+    if (mobileFilterBtn) {
+      mobileFilterBtn.onclick = function () {
+        window.openMobileFilterModal();
+      };
+    }
+
+    // Initial setup
+    highlightCategoryPills();
+    highlightMetalButtons();
+    highlightPricePills();
+    applyFilters();
+    if (currentSort !== 'featured') {
+      applySort(currentSort);
     }
   }
 
@@ -2600,46 +3445,110 @@
     window.showToast('Courier Verified', 'Tracking telemetry refreshed with BlueDart Express.');
   };
 
-  // Review Modal
-  window.openReviewModal = function (product) {
+  // Review Modal with 5 Interactive Stars & Full Patron Submission
+  let currentReviewProduct = null;
+  let currentReviewRating = 5;
+
+  const RATING_DESCRIPTIONS = {
+    5: '★ 5.0 — Outstanding Luxury & Craftsmanship',
+    4: '★ 4.0 — High Quality & Elegant Finish',
+    3: '★ 3.0 — Satisfactory Design',
+    2: '★ 2.0 — Fair / Average',
+    1: '★ 1.0 — Needs Improvement'
+  };
+
+  window.openReviewModal = function (product, initialRating = 5) {
+    currentReviewProduct = product || (window.PRODUCTS ? window.PRODUCTS[0] : null);
+    currentReviewRating = initialRating || 5;
+
     let modal = document.getElementById('review-modal-root');
     if (!modal) {
       modal = document.createElement('div');
       modal.id = 'review-modal-root';
-      modal.className = 'fixed inset-0 z-50 bg-black/70 backdrop-blur-xs flex items-center justify-center p-4 font-sans';
-      modal.innerHTML = `
-        <div class="bg-white rounded-2xl max-w-md w-full p-6 space-y-4 shadow-2xl border border-stone-200 animate-slide-up">
-          <div class="flex justify-between items-center border-b border-stone-200 pb-3">
-            <h3 class="font-serif text-lg text-stone-900 font-normal">Share Patron Review</h3>
-            <button onclick="window.closeReviewModal()" class="p-1 text-stone-400 hover:text-stone-800 cursor-pointer">
-              <svg class="lucide lucide-x w-5 h-5" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="24"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg>
-            </button>
-          </div>
-          <div class="space-y-3 text-xs">
-            <div>
-              <label class="block text-stone-700 font-medium mb-1">Your Full Name</label>
-              <input id="rev-name-input" type="text" placeholder="e.g. Radhika Sharma" class="w-full px-3 py-2 border border-stone-200 rounded-xl focus:outline-none focus:border-[#7A152E]" />
-            </div>
-            <div>
-              <label class="block text-stone-700 font-medium mb-1">Rating Score</label>
-              <div class="flex gap-2">
-                <button type="button" onclick="window.setReviewScore(5, this)" class="rev-star-btn px-3 py-1.5 bg-[#7A152E] text-white rounded-lg font-bold border border-[#7A152E]">5.0 ★</button>
-                <button type="button" onclick="window.setReviewScore(4, this)" class="rev-star-btn px-3 py-1.5 bg-white text-stone-700 rounded-lg font-medium border border-stone-200 hover:border-[#7A152E]">4.0 ★</button>
-                <button type="button" onclick="window.setReviewScore(3, this)" class="rev-star-btn px-3 py-1.5 bg-white text-stone-700 rounded-lg font-medium border border-stone-200 hover:border-[#7A152E]">3.0 ★</button>
-              </div>
-            </div>
-            <div>
-              <label class="block text-stone-700 font-medium mb-1">Review Comments</label>
-              <textarea id="rev-comment-input" rows="3" placeholder="Share your experience with the silver luster, stone sparkle, or gifting box..." class="w-full px-3 py-2 border border-stone-200 rounded-xl focus:outline-none focus:border-[#7A152E]"></textarea>
-            </div>
-          </div>
-          <button onclick="window.submitReview()" class="w-full py-2.5 bg-[#7A152E] text-white text-xs uppercase tracking-wider font-semibold rounded-xl hover:bg-[#590D1E] transition-colors cursor-pointer">
-            Submit Review
-          </button>
-        </div>
-      `;
+      modal.className = 'fixed inset-0 z-50 bg-black/75 backdrop-blur-xs flex items-center justify-center p-4 font-sans';
       document.body.appendChild(modal);
     }
+
+    modal.innerHTML = `
+      <div class="bg-white rounded-2xl max-w-lg w-full p-6 sm:p-7 space-y-5 shadow-2xl border border-stone-200 animate-slide-up max-h-[92vh] overflow-y-auto no-scrollbar">
+        <div class="flex justify-between items-center border-b border-stone-200 pb-3.5">
+          <div>
+            <span class="text-[10px] uppercase tracking-wider text-[#7A152E] font-bold block mb-0.5">Verified Patron Reflections</span>
+            <h3 class="font-serif text-xl sm:text-2xl text-stone-900 font-normal">Share Patron Review</h3>
+          </div>
+          <button onclick="window.closeReviewModal()" class="w-8 h-8 rounded-full flex items-center justify-center text-stone-400 hover:text-stone-800 hover:bg-stone-100 transition-colors cursor-pointer">
+            <svg class="lucide lucide-x w-5 h-5" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="24"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg>
+          </button>
+        </div>
+
+        <div class="flex items-center gap-3 p-3 rounded-xl bg-[#FAF8F5] border border-[#EAE4DC]">
+          <img src="${(currentReviewProduct && currentReviewProduct.images && currentReviewProduct.images[0]) || 'solystra_assets/solystra_logo.png'}" class="w-12 h-12 rounded-lg object-cover bg-white border border-[#EAE4DC] shrink-0" alt="" />
+          <div class="min-w-0 flex-1">
+            <h4 class="font-semibold text-xs sm:text-sm text-stone-900 truncate">${currentReviewProduct ? currentReviewProduct.name : 'Solystra Fine Jewelry'}</h4>
+            <p class="text-[11px] text-stone-500 truncate">100% Certified BIS 925 Hallmarked</p>
+          </div>
+        </div>
+
+        <div class="space-y-1.5 p-3.5 rounded-xl bg-[#FAF6EE] border border-[#E8DCC4]/80">
+          <label class="block text-stone-800 font-semibold text-xs uppercase tracking-wider">Overall Rating *</label>
+          <div class="flex items-center gap-1.5 py-1 select-none" id="review-stars-row">
+            ${[1, 2, 3, 4, 5].map(star => `
+              <button type="button" data-star="${star}"
+                onmouseenter="window.hoverReviewStars(${star})"
+                onmouseleave="window.resetReviewStars()"
+                onclick="window.selectReviewRating(${star})"
+                class="review-star-btn p-1 transition-transform hover:scale-115 cursor-pointer focus:outline-none"
+                title="Rate ${star} star${star > 1 ? 's' : ''}">
+                <svg class="w-7 h-7 sm:w-8 sm:h-8 transition-colors ${star <= currentReviewRating ? 'text-[#C5A059] fill-[#C5A059]' : 'text-stone-300 fill-none'}" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+                  <path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"></path>
+                </svg>
+              </button>
+            `).join('')}
+          </div>
+          <div id="review-rating-label" class="text-xs font-semibold text-[#8B6B38] font-serif pt-0.5">
+            ${RATING_DESCRIPTIONS[currentReviewRating]}
+          </div>
+        </div>
+
+        <div class="space-y-3 text-xs">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <div>
+              <label class="block text-stone-700 font-medium mb-1">Your Full Name *</label>
+              <input id="rev-name-input" type="text" placeholder="e.g. Radhika Sharma" class="w-full px-3.5 py-2.5 bg-stone-50 border border-stone-200 rounded-xl focus:outline-none focus:border-[#7A152E] focus:bg-white text-xs transition-colors" />
+            </div>
+            <div>
+              <label class="block text-stone-700 font-medium mb-1">City / Location</label>
+              <input id="rev-city-input" type="text" placeholder="e.g. Mumbai, MH" class="w-full px-3.5 py-2.5 bg-stone-50 border border-stone-200 rounded-xl focus:outline-none focus:border-[#7A152E] focus:bg-white text-xs transition-colors" />
+            </div>
+          </div>
+
+          <div>
+            <label class="block text-stone-700 font-medium mb-1">Review Headline *</label>
+            <input id="rev-title-input" type="text" placeholder="e.g. Immaculate Austrian stone sparkle and pure silver finish" class="w-full px-3.5 py-2.5 bg-stone-50 border border-stone-200 rounded-xl focus:outline-none focus:border-[#7A152E] focus:bg-white text-xs transition-colors" />
+          </div>
+
+          <div>
+            <label class="block text-stone-700 font-medium mb-1">Detailed Patron Reflections *</label>
+            <textarea id="rev-comment-input" rows="3" placeholder="Share your experience regarding the silver luster, chain weight, clasp comfort, or royal velvet unboxing..." class="w-full px-3.5 py-2.5 bg-stone-50 border border-stone-200 rounded-xl focus:outline-none focus:border-[#7A152E] focus:bg-white text-xs transition-colors"></textarea>
+          </div>
+
+          <label class="flex items-center gap-2 cursor-pointer text-stone-600 pt-1">
+            <input id="rev-verified-check" type="checkbox" checked class="w-4 h-4 accent-[#7A152E] rounded cursor-pointer" />
+            <span class="text-[11.5px]">Verified Solystra Patron Delivery (+100 Club Reward Points)</span>
+          </label>
+        </div>
+
+        <div class="pt-2 flex gap-3">
+          <button type="button" onclick="window.closeReviewModal()" class="w-1/3 py-3 border border-stone-300 text-stone-700 text-xs font-semibold rounded-xl hover:bg-stone-50 transition-colors cursor-pointer text-center">
+            Cancel
+          </button>
+          <button type="button" onclick="window.submitReview()" class="w-2/3 py-3 bg-[#7A152E] hover:bg-[#590D1E] text-white text-xs font-bold uppercase tracking-widest rounded-xl shadow-md transition-all cursor-pointer active:scale-98 text-center flex items-center justify-center gap-2">
+            <span>Publish Patron Review</span>
+            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
+          </button>
+        </div>
+      </div>
+    `;
     modal.classList.remove('hidden');
   };
 
@@ -2648,25 +3557,365 @@
     if (modal) modal.classList.add('hidden');
   };
 
-  window.setReviewScore = function (score, btn) {
-    document.querySelectorAll('.rev-star-btn').forEach(b => {
-      b.className = 'rev-star-btn px-3 py-1.5 bg-white text-stone-700 rounded-lg font-medium border border-stone-200 hover:border-[#7A152E]';
+  window.hoverReviewStars = function (starIndex) {
+    const starButtons = document.querySelectorAll('#review-stars-row button');
+    starButtons.forEach((btn, idx) => {
+      const svg = btn.querySelector('svg');
+      if (idx < starIndex) {
+        svg.setAttribute('class', 'w-7 h-7 sm:w-8 sm:h-8 transition-colors text-[#C5A059] fill-[#C5A059]');
+      } else {
+        svg.setAttribute('class', 'w-7 h-7 sm:w-8 sm:h-8 transition-colors text-stone-300 fill-none');
+      }
     });
-    btn.className = 'rev-star-btn px-3 py-1.5 bg-[#7A152E] text-white rounded-lg font-bold border border-[#7A152E]';
+    const label = document.getElementById('review-rating-label');
+    if (label && RATING_DESCRIPTIONS[starIndex]) {
+      label.textContent = RATING_DESCRIPTIONS[starIndex];
+    }
+  };
+
+  window.resetReviewStars = function () {
+    window.hoverReviewStars(currentReviewRating);
+  };
+
+  window.selectReviewRating = function (rating) {
+    currentReviewRating = rating;
+    window.hoverReviewStars(rating);
   };
 
   window.submitReview = function () {
-    const comm = document.getElementById('rev-comment-input');
-    if (!comm || !comm.value.trim()) {
-      window.showToast('Please enter your review', 'A short comment helps other patrons.', 'info');
+    const nameInput = document.getElementById('rev-name-input');
+    const cityInput = document.getElementById('rev-city-input');
+    const titleInput = document.getElementById('rev-title-input');
+    const commentInput = document.getElementById('rev-comment-input');
+
+    const name = nameInput ? nameInput.value.trim() : '';
+    const city = cityInput ? cityInput.value.trim() : 'Verified Patron, India';
+    const title = titleInput ? titleInput.value.trim() : 'Exceptional Handcrafted Piece';
+    const comment = commentInput ? commentInput.value.trim() : '';
+
+    if (!name) {
+      window.showToast('Name Required', 'Please enter your name for the verified review.', 'info');
+      if (nameInput) nameInput.focus();
       return;
     }
+    if (!comment) {
+      window.showToast('Review Required', 'Please write a brief reflection on your piece.', 'info');
+      if (commentInput) commentInput.focus();
+      return;
+    }
+
+    const prodId = currentReviewProduct ? currentReviewProduct.id : 'accent-circle-925-silver-necklace';
+    const initials = name.split(' ').map(n => n[0]).join('').slice(0, 2).toUpperCase() || 'SP';
+
+    const newRev = {
+      id: 'rev_' + Date.now(),
+      author: name,
+      initials: initials,
+      city: city,
+      title: title,
+      comment: comment,
+      rating: currentReviewRating,
+      date: 'Just now',
+      verified: true,
+      helpful: 0
+    };
+
+    // Save to localStorage
+    try {
+      const storageKey = 'solystra_reviews_' + prodId;
+      const existing = JSON.parse(localStorage.getItem(storageKey) || '[]');
+      existing.unshift(newRev);
+      localStorage.setItem(storageKey, JSON.stringify(existing));
+    } catch (e) {
+      console.warn('Could not save review to localStorage', e);
+    }
+
+    // Prepend to PDP reviews list
+    const reviewsList = document.querySelector('.divide-y.divide-\\[\\#EAE4DC\\].pt-2');
+    if (reviewsList) {
+      const revArticle = document.createElement('article');
+      revArticle.className = 'py-6 sm:py-7 space-y-3 animate-fade-in';
+      revArticle.innerHTML = `
+        <div class="flex items-start justify-between gap-2">
+          <div class="flex items-center gap-3 min-w-0">
+            <div class="w-10 h-10 rounded-full bg-[#FAF0F2] text-[#7A152E] font-serif font-bold text-xs flex items-center justify-center shrink-0 border border-[#EAD5DA]">
+              ${newRev.initials}
+            </div>
+            <div class="min-w-0">
+              <div class="flex flex-wrap items-center gap-1.5">
+                <span class="font-medium text-stone-900 text-sm">${newRev.author}</span>
+                <span class="inline-flex items-center gap-1 text-[10px] font-semibold text-[#8B6B38] bg-[#FAF6EE] px-2 py-0.5 rounded-full border border-[#E8DCC4] shrink-0">
+                  <svg class="lucide lucide-shield-check w-2.5 h-2.5 text-[#C5A059]" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="24"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"></path><path d="m9 12 2 2 4-4"></path></svg>
+                  <span>Verified Patron</span>
+                </span>
+              </div>
+              <div class="text-[11px] text-stone-400 mt-0.5 flex items-center gap-2">
+                <span>${newRev.city}</span>
+                <span>•</span>
+                <span class="text-[#7A152E] font-medium">${newRev.date}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="flex flex-wrap items-center gap-2">
+          <div class="flex items-center gap-0.5">
+            ${[...Array(5)].map((_, i) => `
+              <svg class="w-3.5 h-3.5 ${i < newRev.rating ? 'text-[#C5A059] fill-[#C5A059]' : 'text-stone-300 fill-none'}" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"></path>
+              </svg>
+            `).join('')}
+          </div>
+          <h5 class="font-semibold text-stone-900 text-xs sm:text-sm">${newRev.title}</h5>
+        </div>
+        <p class="text-xs sm:text-[13px] text-stone-600 leading-relaxed font-light">${newRev.comment}</p>
+      `;
+      reviewsList.insertBefore(revArticle, reviewsList.firstChild);
+    }
+
     window.closeReviewModal();
-    window.showToast('Review Verified &amp; Posted', 'Thank you! Your feedback is now published in patron reflections.');
-    if (comm) comm.value = '';
+    window.showToast('Patron Review Published!', 'Thank you! Your verified reflection is now live for all atelier patrons.');
   };
 
-  // Ask Question Modal
+  // Lightbox Magnifier Fullscreen Modal
+  let lightboxCurrentIndex = 0;
+  let lightboxImages = [];
+  let lightboxZoomLevel = 1;
+
+  window.openImageLightbox = function (initialSrc, product) {
+    if (!product && window.PRODUCTS) {
+      const params = new URLSearchParams(window.location.search);
+      const prodId = params.get('id');
+      product = window.PRODUCTS.find(p => p.id === prodId) || window.PRODUCTS[0];
+    }
+    lightboxImages = (product && product.images && product.images.length > 0)
+      ? product.images
+      : [initialSrc || 'solystra_assets/solystra_logo.png'];
+
+    lightboxCurrentIndex = Math.max(0, lightboxImages.indexOf(initialSrc));
+    lightboxZoomLevel = 1;
+
+    let lb = document.getElementById('pdp-lightbox-modal');
+    if (!lb) {
+      lb = document.createElement('div');
+      lb.id = 'pdp-lightbox-modal';
+      lb.className = 'fixed inset-0 z-50 bg-black/95 backdrop-blur-md flex flex-col justify-between p-3 sm:p-6 text-white font-sans select-none';
+      document.body.appendChild(lb);
+    }
+
+    function renderLightbox() {
+      const currentImg = lightboxImages[lightboxCurrentIndex] || lightboxImages[0];
+      const prodName = product ? product.name : 'Solystra Fine Jewelry Atelier';
+
+      lb.innerHTML = `
+        <div class="flex items-center justify-between border-b border-white/10 pb-3 z-20">
+          <div class="min-w-0 pr-4">
+            <h3 class="font-serif text-base sm:text-lg text-white font-normal truncate">${prodName}</h3>
+            <span class="text-[11px] text-[#EAD7AE] font-mono">Angle ${lightboxCurrentIndex + 1} of ${lightboxImages.length} • 100% Certified 925 Hallmark</span>
+          </div>
+          <div class="flex items-center gap-2 shrink-0">
+            <button onclick="window.zoomLightbox(0.25)" class="w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-white transition-colors cursor-pointer text-sm font-bold" title="Zoom In">+</button>
+            <button onclick="window.zoomLightbox(-0.25)" class="w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-white transition-colors cursor-pointer text-sm font-bold" title="Zoom Out">-</button>
+            <button onclick="window.resetLightboxZoom()" class="px-2.5 py-1 rounded-full bg-white/10 hover:bg-white/20 text-[11px] text-white transition-colors cursor-pointer font-mono" title="Reset Zoom">Reset</button>
+            <button onclick="window.closeImageLightbox()" class="w-9 h-9 rounded-full bg-[#7A152E] hover:bg-[#590D1E] flex items-center justify-center text-white transition-colors cursor-pointer ml-1" title="Close Lightbox (Esc)">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg>
+            </button>
+          </div>
+        </div>
+
+        <div class="relative flex-1 flex items-center justify-center overflow-hidden my-2" onclick="if(event.target === this) window.closeImageLightbox()">
+          <button onclick="window.prevLightboxImage(event)" class="absolute left-2 sm:left-4 z-20 w-11 h-11 rounded-full bg-black/60 hover:bg-[#7A152E] border border-white/20 flex items-center justify-center text-white transition-all cursor-pointer shadow-xl active:scale-95" title="Previous Angle (Left Arrow)">
+            <svg class="w-5 h-5 -translate-x-px" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="m15 18-6-6 6-6"></path></svg>
+          </button>
+
+          <div class="relative max-h-[75vh] max-w-[85vw] flex items-center justify-center overflow-hidden">
+            <img id="lightbox-main-img" src="${currentImg}" alt="${prodName}"
+              style="transform: scale(${lightboxZoomLevel}); transition: transform 0.25s ease;"
+              class="max-h-[75vh] max-w-[85vw] object-contain rounded-xl shadow-2xl cursor-zoom-in"
+              onclick="window.toggleLightboxZoom()" />
+          </div>
+
+          <button onclick="window.nextLightboxImage(event)" class="absolute right-2 sm:right-4 z-20 w-11 h-11 rounded-full bg-black/60 hover:bg-[#7A152E] border border-white/20 flex items-center justify-center text-white transition-all cursor-pointer shadow-xl active:scale-95" title="Next Angle (Right Arrow)">
+            <svg class="w-5 h-5 translate-x-px" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="m9 18 6-6-6-6"></path></svg>
+          </button>
+        </div>
+
+        <div class="flex items-center justify-center gap-2 pt-2 border-t border-white/10 z-20 overflow-x-auto no-scrollbar">
+          ${lightboxImages.map((src, i) => `
+            <button onclick="window.selectLightboxIndex(${i})" class="relative w-14 h-14 sm:w-16 sm:h-16 rounded-xl overflow-hidden border-2 transition-all cursor-pointer shrink-0 ${i === lightboxCurrentIndex ? 'border-[#C5A059] ring-2 ring-[#C5A059]/40 scale-105' : 'border-white/20 opacity-60 hover:opacity-100'}">
+              <img src="${src}" class="w-full h-full object-cover" alt="Angle ${i + 1}" />
+            </button>
+          `).join('')}
+        </div>
+      `;
+      lb.classList.remove('hidden');
+    }
+
+    window.closeImageLightbox = function () {
+      if (lb) lb.classList.add('hidden');
+      lightboxZoomLevel = 1;
+    };
+
+    window.prevLightboxImage = function (e) {
+      if (e) e.stopPropagation();
+      lightboxCurrentIndex = (lightboxCurrentIndex - 1 + lightboxImages.length) % lightboxImages.length;
+      lightboxZoomLevel = 1;
+      renderLightbox();
+    };
+
+    window.nextLightboxImage = function (e) {
+      if (e) e.stopPropagation();
+      lightboxCurrentIndex = (lightboxCurrentIndex + 1) % lightboxImages.length;
+      lightboxZoomLevel = 1;
+      renderLightbox();
+    };
+
+    window.selectLightboxIndex = function (idx) {
+      lightboxCurrentIndex = idx;
+      lightboxZoomLevel = 1;
+      renderLightbox();
+    };
+
+    window.zoomLightbox = function (delta) {
+      lightboxZoomLevel = Math.min(3, Math.max(0.75, lightboxZoomLevel + delta));
+      const img = document.getElementById('lightbox-main-img');
+      if (img) img.style.transform = `scale(${lightboxZoomLevel})`;
+    };
+
+    window.resetLightboxZoom = function () {
+      lightboxZoomLevel = 1;
+      const img = document.getElementById('lightbox-main-img');
+      if (img) img.style.transform = 'scale(1)';
+    };
+
+    window.toggleLightboxZoom = function () {
+      lightboxZoomLevel = lightboxZoomLevel > 1.2 ? 1 : 2;
+      const img = document.getElementById('lightbox-main-img');
+      if (img) img.style.transform = `scale(${lightboxZoomLevel})`;
+    };
+
+    function handleKeyDown(e) {
+      if (lb.classList.contains('hidden')) return;
+      if (e.key === 'Escape') window.closeImageLightbox();
+      else if (e.key === 'ArrowLeft') window.prevLightboxImage();
+      else if (e.key === 'ArrowRight') window.nextLightboxImage();
+      else if (e.key === '+' || e.key === '=') window.zoomLightbox(0.25);
+      else if (e.key === '-') window.zoomLightbox(-0.25);
+    }
+    window.removeEventListener('keydown', handleKeyDown);
+    window.addEventListener('keydown', handleKeyDown);
+
+    renderLightbox();
+  };
+
+  // Mobile Filter Drawer Modal for Catalog
+  window.openMobileFilterModal = function () {
+    let m = document.getElementById('mobile-filter-modal');
+    if (!m) {
+      m = document.createElement('div');
+      m.id = 'mobile-filter-modal';
+      m.className = 'fixed inset-0 z-50 bg-black/70 backdrop-blur-xs flex items-end sm:items-center justify-center font-sans';
+      m.innerHTML = `
+        <div class="bg-white w-full max-w-lg rounded-t-3xl sm:rounded-2xl p-6 space-y-4 max-h-[85vh] overflow-y-auto no-scrollbar shadow-2xl border border-stone-200 animate-slide-up">
+          <div class="flex items-center justify-between pb-3 border-b border-stone-200">
+            <h3 class="font-serif text-lg font-normal text-stone-900">Filter Atelier Creations</h3>
+            <button onclick="window.closeMobileFilterModal()" class="p-1 text-stone-400 hover:text-stone-800">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg>
+            </button>
+          </div>
+          <div class="space-y-4 text-xs">
+            <div>
+              <span class="font-bold text-stone-800 uppercase tracking-wider block mb-2">Category</span>
+              <div class="grid grid-cols-2 gap-2" id="mobile-filter-categories">
+                <button type="button" onclick="window.applyMobileCategory('all')" class="p-2 rounded-xl border border-[#7A152E] bg-[#FAF0F2] text-[#7A152E] font-semibold text-center">All Creations</button>
+                <button type="button" onclick="window.applyMobileCategory('bracelets')" class="p-2 rounded-xl border border-stone-200 hover:border-[#7A152E] text-stone-800 font-medium text-center">Bracelets & Kadas</button>
+                <button type="button" onclick="window.applyMobileCategory('necklaces')" class="p-2 rounded-xl border border-stone-200 hover:border-[#7A152E] text-stone-800 font-medium text-center">Necklaces & Pendants</button>
+                <button type="button" onclick="window.applyMobileCategory('rings')" class="p-2 rounded-xl border border-stone-200 hover:border-[#7A152E] text-stone-800 font-medium text-center">Rings & Bands</button>
+                <button type="button" onclick="window.applyMobileCategory('earrings')" class="p-2 rounded-xl border border-stone-200 hover:border-[#7A152E] text-stone-800 font-medium text-center">Earrings & Studs</button>
+                <button type="button" onclick="window.applyMobileCategory('complete_sets')" class="p-2 rounded-xl border border-stone-200 hover:border-[#7A152E] text-stone-800 font-medium text-center">Gift Sets & Suites</button>
+              </div>
+            </div>
+            <div>
+              <span class="font-bold text-stone-800 uppercase tracking-wider block mb-2">Precious Finish</span>
+              <div class="grid grid-cols-2 gap-2" id="mobile-filter-metals">
+                <button type="button" onclick="window.applyMobileMetal('all')" class="p-2 rounded-xl border border-[#7A152E] bg-[#FAF0F2] text-[#7A152E] font-semibold text-center">All Finishes</button>
+                <button type="button" onclick="window.applyMobileMetal('silver')" class="p-2 rounded-xl border border-stone-200 hover:border-[#7A152E] text-stone-800 font-medium text-center">Pure 925 Silver</button>
+                <button type="button" onclick="window.applyMobileMetal('gold')" class="p-2 rounded-xl border border-stone-200 hover:border-[#7A152E] text-stone-800 font-medium text-center">18K Gold Vermeil</button>
+                <button type="button" onclick="window.applyMobileMetal('rose')" class="p-2 rounded-xl border border-stone-200 hover:border-[#7A152E] text-stone-800 font-medium text-center">18K Rose Gold</button>
+              </div>
+            </div>
+          </div>
+          <div class="pt-3 flex gap-2">
+            <button type="button" onclick="window.resetCatalogFilters(); window.closeMobileFilterModal();" class="w-1/2 py-2.5 border border-stone-300 rounded-xl text-xs font-semibold text-stone-700">Reset Filters</button>
+            <button type="button" onclick="window.closeMobileFilterModal()" class="w-1/2 py-2.5 bg-[#7A152E] text-white rounded-xl text-xs font-bold uppercase tracking-wider">Apply Filters</button>
+          </div>
+        </div>
+      `;
+      document.body.appendChild(m);
+    }
+    m.classList.remove('hidden');
+  };
+
+  window.closeMobileFilterModal = function () {
+    const m = document.getElementById('mobile-filter-modal');
+    if (m) m.classList.add('hidden');
+  };
+
+  window.applyMobileCategory = function (cat) {
+    const params = new URLSearchParams(window.location.search);
+    params.set('category', cat);
+    window.location.search = params.toString();
+  };
+
+  window.applyMobileMetal = function (metal) {
+    const params = new URLSearchParams(window.location.search);
+    params.set('metal', metal);
+    window.location.search = params.toString();
+  };
+
+  // Size Guide Modal
+  window.openSizeGuideModal = function () {
+    let m = document.getElementById('size-guide-modal-root');
+    if (!m) {
+      m = document.createElement('div');
+      m.id = 'size-guide-modal-root';
+      m.className = 'fixed inset-0 z-50 bg-black/75 backdrop-blur-xs flex items-center justify-center p-4 font-sans';
+      m.innerHTML = `
+        <div class="bg-white rounded-2xl max-w-lg w-full p-6 space-y-4 shadow-2xl border border-stone-200 animate-slide-up max-h-[90vh] overflow-y-auto no-scrollbar">
+          <div class="flex justify-between items-center border-b border-stone-200 pb-3">
+            <div>
+              <span class="text-[10px] uppercase tracking-wider text-[#7A152E] font-bold block mb-0.5">Atelier Fit Assurance</span>
+              <h3 class="font-serif text-xl text-stone-900 font-normal">Fine Jewelry Sizing Guide</h3>
+            </div>
+            <button onclick="document.getElementById('size-guide-modal-root').classList.add('hidden')" class="p-1 text-stone-400 hover:text-stone-800 cursor-pointer">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg>
+            </button>
+          </div>
+          <div class="space-y-4 text-xs">
+            <div>
+              <h5 class="font-semibold text-stone-900 mb-2">Ring Sizing Chart (Indian Standard)</h5>
+              <div class="grid grid-cols-3 gap-2 text-center text-[11px]">
+                <div class="p-2 bg-stone-50 rounded-lg border border-stone-200 font-medium">Size 10 • 15.7 mm</div>
+                <div class="p-2 bg-stone-50 rounded-lg border border-stone-200 font-medium">Size 12 • 16.5 mm</div>
+                <div class="p-2 bg-stone-50 rounded-lg border border-stone-200 font-medium">Size 14 • 17.3 mm</div>
+                <div class="p-2 bg-stone-50 rounded-lg border border-stone-200 font-medium">Size 16 • 18.1 mm</div>
+                <div class="p-2 bg-stone-50 rounded-lg border border-stone-200 font-medium">Size 18 • 18.9 mm</div>
+                <div class="p-2 bg-[#FAF0F2] text-[#7A152E] rounded-lg border border-[#7A152E]/30 font-semibold">Adjustable Fit</div>
+              </div>
+            </div>
+            <div class="p-3 bg-[#FAF8F5] rounded-xl border border-[#EAE4DC] space-y-1">
+              <span class="font-semibold text-stone-900 block">How to Measure at Home:</span>
+              <p class="text-stone-600 leading-relaxed font-light">Wrap a strip of paper around the base of your finger. Mark where the paper overlaps and measure the millimeters with a ruler. All Solystra rings include complimentary size exchanges within 15 days.</p>
+            </div>
+          </div>
+          <button onclick="document.getElementById('size-guide-modal-root').classList.add('hidden')" class="w-full py-2.5 bg-[#7A152E] text-white text-xs font-semibold uppercase tracking-wider rounded-xl cursor-pointer">Close Sizing Guide</button>
+        </div>
+      `;
+      document.body.appendChild(m);
+    }
+    m.classList.remove('hidden');
+  };
+
+    // Ask Question Modal
   window.openAskQuestionModal = function (product) {
     let modal = document.getElementById('ask-question-modal-root');
     if (!modal) {
