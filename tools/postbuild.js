@@ -20,22 +20,36 @@ function copyDirRecursive(src, dest) {
     if (entry.isDirectory()) {
       copyDirRecursive(srcPath, destPath);
     } else {
-      fs.copyFileSync(srcPath, destPath);
+      try {
+        if (!fs.existsSync(destPath) || fs.statSync(srcPath).size !== fs.statSync(destPath).size) {
+          fs.copyFileSync(srcPath, destPath);
+        }
+      } catch (e) {
+        // Safe fallback for locked files
+      }
     }
   }
 }
 
 // 1. Copy solystra_assets into dist/solystra_assets for Netlify self-contained hosting
 console.log('Postbuild: Syncing solystra_assets into dist/solystra_assets...');
-if (fs.existsSync(path.join(rootDir, 'public', 'solystra_assets'))) {
-  copyDirRecursive(path.join(rootDir, 'public', 'solystra_assets'), path.join(distDir, 'solystra_assets'));
+try {
+  if (fs.existsSync(path.join(rootDir, 'public', 'solystra_assets'))) {
+    copyDirRecursive(path.join(rootDir, 'public', 'solystra_assets'), path.join(distDir, 'solystra_assets'));
+  }
+  copyDirRecursive(path.join(rootDir, 'solystra_assets'), path.join(distDir, 'solystra_assets'));
+} catch (e) {
+  console.warn('Postbuild: Note on solystra_assets sync:', e.message);
 }
-copyDirRecursive(path.join(rootDir, 'solystra_assets'), path.join(distDir, 'solystra_assets'));
 
 // 1b. Copy assets into dist/assets
 if (fs.existsSync(path.join(rootDir, 'assets'))) {
   console.log('Postbuild: Syncing assets into dist/assets...');
-  copyDirRecursive(path.join(rootDir, 'assets'), path.join(distDir, 'assets'));
+  try {
+    copyDirRecursive(path.join(rootDir, 'assets'), path.join(distDir, 'assets'));
+  } catch (e) {
+    console.warn('Postbuild: Note on assets sync:', e.message);
+  }
 }
 
 // 1c. Copy ONLY active video and poster assets into dist/zavya_assets (prevents 600MB+ of unused file bloat)
@@ -64,11 +78,17 @@ const activeZavyaAssets = [
 
 console.log('Postbuild: Syncing active product video and poster assets into dist/zavya_assets...');
 for (const relPath of activeZavyaAssets) {
-  const srcFile = path.join(rootDir, 'zavya_assets', relPath);
-  const destFile = path.join(distDir, 'zavya_assets', relPath);
-  if (fs.existsSync(srcFile)) {
-    fs.mkdirSync(path.dirname(destFile), { recursive: true });
-    fs.copyFileSync(srcFile, destFile);
+  try {
+    const srcFile = path.join(rootDir, 'zavya_assets', relPath);
+    const destFile = path.join(distDir, 'zavya_assets', relPath);
+    if (fs.existsSync(srcFile)) {
+      fs.mkdirSync(path.dirname(destFile), { recursive: true });
+      if (!fs.existsSync(destFile) || fs.statSync(srcFile).size !== fs.statSync(destFile).size) {
+        fs.copyFileSync(srcFile, destFile);
+      }
+    }
+  } catch (e) {
+    console.warn(`Postbuild: Warning copying ${relPath}:`, e.message);
   }
 }
 
@@ -124,33 +144,39 @@ if (fs.existsSync(distAssets)) {
   }
 }
 
-// 6. Ensure dist folder and files have accurate current timestamp in Windows File Explorer
+// 6. Ensure dist folder and all its contents have accurate current timestamp in Windows File Explorer
 const now = new Date();
-try {
-  fs.utimesSync(distDir, now, now);
-  const distHtmlPath = path.join(distDir, 'index.html');
-  if (fs.existsSync(distHtmlPath)) {
-    fs.utimesSync(distHtmlPath, now, now);
-  }
-} catch (e) {}
+function touchAll(dir) {
+  try {
+    fs.utimesSync(dir, now, now);
+    const entries = fs.readdirSync(dir, { withFileTypes: true });
+    for (const ent of entries) {
+      const full = path.join(dir, ent.name);
+      try {
+        fs.utimesSync(full, now, now);
+      } catch (e) {}
+      if (ent.isDirectory()) {
+        touchAll(full);
+      }
+    }
+  } catch (e) {}
+}
+touchAll(distDir);
 
-// 7. Generate a clean dist.zip for 1-click Netlify Drop upload
+// 7. Generate clean production dist.zip for 1-click Netlify Drop upload
 try {
   const zipPath = path.join(rootDir, 'dist.zip');
   if (fs.existsSync(zipPath)) fs.unlinkSync(zipPath);
   console.log('Postbuild: Creating dist.zip for lightning-fast Netlify Drop upload...');
-  if (process.platform === 'win32') {
-    execSync(`powershell -Command "Compress-Archive -Path dist\\* -DestinationPath dist.zip -Force"`, { cwd: rootDir, stdio: 'inherit' });
-  } else {
-    execSync(`cd "${distDir}" && zip -rq "${zipPath}" . -x "*.DS_Store"`, { stdio: 'inherit' });
-  }
+  execSync(`python tools/build_clean_dist_zip.py`, { cwd: rootDir, stdio: 'inherit' });
   if (fs.existsSync(zipPath)) {
     fs.utimesSync(zipPath, now, now);
   }
   console.log('Postbuild: Created dist.zip successfully!');
 } catch (err) {
-  console.warn('Postbuild: Note: Could not create dist.zip automatically:', err.message);
+  console.warn('Postbuild: Note: Error creating dist.zip:', err.message);
 }
+
 
 // 8. Restore root index.html with /src/main.jsx so active Vite dev server continues hot-reloading
 try {
