@@ -52,44 +52,13 @@ if (fs.existsSync(path.join(rootDir, 'assets'))) {
   }
 }
 
-// 1c. Copy ONLY active video and poster assets into dist/zavya_assets (prevents 600MB+ of unused file bloat)
-const activeZavyaAssets = [
-  'products/pendant/pen-30277-g/video_01_pen-30277-g.mp4',
-  'products/pendant/pen-30277-g/01_pen-30277-g.jpg',
-  'products/drop_earrings/ear-21096-g/video_01_ear-21096-g.mp4',
-  'products/drop_earrings/ear-21096-g/07_ear-21096-g.jpg',
-  'products/bracelet/br-80505-g/video_01_br-80505-g.mp4',
-  'products/bracelet/br-80505-g/01_br-80505-g.jpg',
-  'products/diamond_stud_earrings/0-75-ct-halo-heart-solitaire-gold-stud-earring/01_0-75-ct-halo-heart-solitaire-gold-stud-earring.jpg',
-  'products/diamond_solitaire_ring/0-75-ct-lambency-solitaire-diamond-ring/01_0-75-ct-lambency-solitaire-diamond-ring.jpg',
-  'products/necklace/nl-30455-g/video_01_nl-30455-g.mp4',
-  'products/necklace/nl-30455-g/01_nl-30455-g.jpg',
-  'products/diamond_pendant/0-75-ct-celestial-solitaire-lab-grown-diamond-pendant-without-chain/01_0-75-ct-celestial-solitaire-lab-grown-diamond-pendant-without-chain.jpg',
-  'products/kada_bracelet/peacock-925-sterling-silver-bracelet-in-rose-gold-valentine-hamper/01_peacock-925-sterling-silver-bracelet-in-rose-gold-valentine-hamper.jpg',
-  'products/kada_bracelet_men/bold-and-striking-rhodium-plated-925-sterling-silver-mens-bangle/video_01_bold-and-striking-rhodium-plated-925-sterling-silver-mens-bangle.mp4',
-  'products/kada_bracelet_men/bold-and-striking-rhodium-plated-925-sterling-silver-mens-bangle/01_bold-and-striking-rhodium-plated-925-sterling-silver-mens-bangle.jpg',
-  'products/jewellery_sets/radiant-bloom-gold-plated-cz-pendant-earrings-set/video_01_radiant-bloom-gold-plated-cz-pendant-earrings-set.mp4',
-  'products/jewellery_sets/eternal-spark-rose-gold-sterling-silver-jewellery-set/01_eternal-spark-rose-gold-sterling-silver-jewellery-set.jpg',
-  'products/evil_eye_bracelet/infinity-charm-rhodium-plated-bracelet-with-evil-eye-cubic-zirconia/01_infinity-charm-rhodium-plated-bracelet-with-evil-eye-cubic-zirconia.jpg',
-  'products/anklets/rose-gold-plated-glimmering-fusion-cz-925-sterling-silver-anklet-x-kama/video_01_rose-gold-plated-glimmering-fusion-cz-925-sterling-silver-anklet-x-kama.mp4',
-  'products/anklets/rose-gold-plated-glimmering-fusion-cz-925-sterling-silver-anklet-x-kama/01_rose-gold-plated-glimmering-fusion-cz-925-sterling-silver-anklet-x-kama.jpg',
-  'products/diamond_stud_earrings/0-75-ct-solitaire-halo-gold-earrings-with-lab-grown-diamonds/video_01_0-75-ct-solitaire-halo-gold-earrings-with-lab-grown-diamonds.mp4'
-];
-
-console.log('Postbuild: Syncing active product video and poster assets into dist/zavya_assets...');
-for (const relPath of activeZavyaAssets) {
+// 1c. Clean up any obsolete zavya_assets from dist/ (all posters now live in solystra_assets/videos/posters)
+const distZavya = path.join(distDir, 'zavya_assets');
+if (fs.existsSync(distZavya)) {
   try {
-    const srcFile = path.join(rootDir, 'zavya_assets', relPath);
-    const destFile = path.join(distDir, 'zavya_assets', relPath);
-    if (fs.existsSync(srcFile)) {
-      fs.mkdirSync(path.dirname(destFile), { recursive: true });
-      if (!fs.existsSync(destFile) || fs.statSync(srcFile).size !== fs.statSync(destFile).size) {
-        fs.copyFileSync(srcFile, destFile);
-      }
-    }
-  } catch (e) {
-    console.warn(`Postbuild: Warning copying ${relPath}:`, e.message);
-  }
+    fs.rmSync(distZavya, { recursive: true, force: true });
+    console.log('Postbuild: Removed obsolete dist/zavya_assets directory.');
+  } catch (e) {}
 }
 
 // 3. Create Netlify SPA _redirects file in dist/
@@ -175,6 +144,15 @@ try {
   console.log('Postbuild: Created dist.zip successfully!');
 } catch (err) {
   console.warn('Postbuild: Note: Error creating dist.zip:', err.message);
+}
+
+// 7b. Generate clean production jewellery-design-html-dist.zip
+try {
+  console.log('Postbuild: Creating jewellery-design-html-dist.zip...');
+  execSync(`python tools/build_html_dist_zip.py`, { cwd: rootDir, stdio: 'inherit' });
+  console.log('Postbuild: Created jewellery-design-html-dist.zip successfully!');
+} catch (err) {
+  console.warn('Postbuild: Note: Error creating html dist zip:', err.message);
 }
 
 

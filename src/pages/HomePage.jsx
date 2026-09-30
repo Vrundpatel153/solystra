@@ -328,7 +328,7 @@ const VIDEO_REELS = [
     price: 2799,
     mrp: 3999,
     videoSrc: 'solystra_assets/videos/reel_01_pen-30277-g.mp4',
-    productImage: 'zavya_assets/products/pendant/pen-30277-g/01_pen-30277-g.webp',
+    productImage: 'solystra_assets/videos/posters/poster_01_pen-30277-g.webp',
     desc: 'Watch the 57-facet Austrian solitaire refract pure white fire under unedited studio lighting.'
   },
   {
@@ -339,7 +339,7 @@ const VIDEO_REELS = [
     price: 2499,
     mrp: 3499,
     videoSrc: 'solystra_assets/videos/reel_02_ear-21096-g.mp4',
-    productImage: 'zavya_assets/products/drop_earrings/ear-21096-g/07_ear-21096-g.webp',
+    productImage: 'solystra_assets/videos/posters/poster_02_ear-21096-g.webp',
     desc: 'Seamless snap-lock closure and fluid movement designed for featherlight all-day wear.'
   },
   {
@@ -350,7 +350,7 @@ const VIDEO_REELS = [
     price: 3899,
     mrp: 5499,
     videoSrc: 'solystra_assets/videos/reel_03_br-80505-g.mp4',
-    productImage: 'zavya_assets/products/bracelet/br-80505-g/01_br-80505-g.webp',
+    productImage: 'solystra_assets/videos/posters/poster_03_br-80505-g.webp',
     desc: 'Individually articulated links that drape effortlessly around the wrist with a double safety clasp.'
   },
   {
@@ -361,7 +361,7 @@ const VIDEO_REELS = [
     price: 2199,
     mrp: 2999,
     videoSrc: 'solystra_assets/videos/reel_04_halo-heart.mp4',
-    productImage: 'zavya_assets/products/diamond_stud_earrings/0-75-ct-halo-heart-solitaire-gold-stud-earring/01_0-75-ct-halo-heart-solitaire-gold-stud-earring.webp',
+    productImage: 'solystra_assets/videos/posters/poster_04_halo-heart.webp',
     desc: 'Brilliant heart solitaire halo studs catching every ray of light with exceptional diamond clarity.'
   },
   {
@@ -372,7 +372,7 @@ const VIDEO_REELS = [
     price: 3199,
     mrp: 4499,
     videoSrc: 'solystra_assets/videos/reel_05_lambency.mp4',
-    productImage: 'zavya_assets/products/diamond_solitaire_ring/0-75-ct-lambency-solitaire-diamond-ring/01_0-75-ct-lambency-solitaire-diamond-ring.webp',
+    productImage: 'solystra_assets/videos/posters/poster_05_lambency.webp',
     desc: 'Precision prong-set Austrian lab diamond solitaire displaying prismatic spectral dispersion.'
   },
   {
@@ -383,7 +383,7 @@ const VIDEO_REELS = [
     price: 4299,
     mrp: 5999,
     videoSrc: 'solystra_assets/videos/reel_06_nl-30455-g.mp4',
-    productImage: 'zavya_assets/products/necklace/nl-30455-g/01_nl-30455-g.webp',
+    productImage: 'solystra_assets/videos/posters/poster_06_nl-30455-g.webp',
     desc: 'Statement festive neckline brilliance paired with matching sparkling drop earrings.'
   },
   {
@@ -394,7 +394,7 @@ const VIDEO_REELS = [
     price: 2799,
     mrp: 3999,
     videoSrc: 'solystra_assets/videos/reel_07_celestial.mp4',
-    productImage: 'zavya_assets/products/diamond_pendant/0-75-ct-celestial-solitaire-lab-grown-diamond-pendant-without-chain/01_0-75-ct-celestial-solitaire-lab-grown-diamond-pendant-without-chain.webp',
+    productImage: 'solystra_assets/videos/posters/poster_07_celestial.webp',
     desc: 'A pure solitaire focal stone handset in an open gallery to maximize ambient light transmission.'
   },
   {
@@ -405,7 +405,7 @@ const VIDEO_REELS = [
     price: 3699,
     mrp: 4999,
     videoSrc: 'solystra_assets/videos/reel_08_peacock.mp4',
-    productImage: 'zavya_assets/products/kada_bracelet/peacock-925-sterling-silver-bracelet-in-rose-gold-valentine-hamper/01_peacock-925-sterling-silver-bracelet-in-rose-gold-valentine-hamper.webp',
+    productImage: 'solystra_assets/videos/posters/poster_08_peacock.webp',
     desc: 'Sculpted artisan peacock motif cuffs finished with high-luster rose gold vermeil.'
   },
   {
@@ -416,7 +416,7 @@ const VIDEO_REELS = [
     price: 4599,
     mrp: 6499,
     videoSrc: 'solystra_assets/videos/reel_09_mens-bangle.mp4',
-    productImage: 'zavya_assets/products/kada_bracelet_men/bold-and-striking-rhodium-plated-925-sterling-silver-mens-bangle/01_bold-and-striking-rhodium-plated-925-sterling-silver-mens-bangle.webp',
+    productImage: 'solystra_assets/videos/posters/poster_09_mens-bangle.webp',
     desc: 'Substantial solid 925 sterling silver kada cuff with precision beveled edges and high-gloss polish.'
   },
   {
@@ -427,7 +427,7 @@ const VIDEO_REELS = [
     price: 4799,
     mrp: 6999,
     videoSrc: 'solystra_assets/videos/reel_10_eternal-spark.mp4',
-    productImage: 'zavya_assets/products/jewellery_sets/eternal-spark-rose-gold-sterling-silver-jewellery-set/01_eternal-spark-rose-gold-sterling-silver-jewellery-set.webp',
+    productImage: 'solystra_assets/videos/posters/poster_10_eternal-spark.webp',
     desc: 'Harmonious necklace, earrings, and ring ensemble delivered in royal velvet keepsake vault.'
   },
   {
@@ -438,7 +438,7 @@ const VIDEO_REELS = [
     price: 1899,
     mrp: 2599,
     videoSrc: 'solystra_assets/videos/reel_11_evil-eye.mp4',
-    productImage: 'zavya_assets/products/evil_eye_bracelet/infinity-charm-rhodium-plated-bracelet-with-evil-eye-cubic-zirconia/01_infinity-charm-rhodium-plated-bracelet-with-evil-eye-cubic-zirconia.webp',
+    productImage: 'solystra_assets/videos/posters/poster_11_evil-eye.webp',
     desc: 'Protective evil eye talisman framed with micro-pavé Austrian cubic zirconia.'
   },
   {
@@ -449,7 +449,7 @@ const VIDEO_REELS = [
     price: 1999,
     mrp: 2799,
     videoSrc: 'solystra_assets/videos/reel_12_anklet.mp4',
-    productImage: 'zavya_assets/products/anklets/rose-gold-plated-glimmering-fusion-cz-925-sterling-silver-anklet-x-kama/01_rose-gold-plated-glimmering-fusion-cz-925-sterling-silver-anklet-x-kama.webp',
+    productImage: 'solystra_assets/videos/posters/poster_12_anklet.webp',
     desc: 'Whisper-soft chain with micro-beaded clusters and anti-tarnish protective sealing.'
   }
 ];
