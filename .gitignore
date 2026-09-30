@@ -2,10 +2,13 @@
 node_modules/
 
 # Production build outputs & archives
-dist/
+!dist/**
+!jewellery-design-html-dist/**
 dist-final/
 *.zip
 assets-bundle/
+
+
 
 # Local & temporary artifacts
 scratch/
