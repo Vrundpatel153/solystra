@@ -9,7 +9,7 @@ const RAW_CATEGORIES = [
     shortName: 'Bracelets',
     filterCategory: 'bracelets',
     desc: 'Italian gold vermeil tennis links, kada cuffs & charm bracelets.',
-    img: 'solystra_assets/categories/zavya_style/bracelets.png'
+    img: 'solystra_assets/categories/zavya_style/bracelets.webp'
   },
   {
     id: 'necklaces',
@@ -17,7 +17,7 @@ const RAW_CATEGORIES = [
     shortName: 'Necklaces',
     filterCategory: 'necklaces',
     desc: 'Austrian crystal solitaires, layering lariats & choker suites.',
-    img: 'solystra_assets/categories/zavya_style/necklaces.png'
+    img: 'solystra_assets/categories/zavya_style/necklaces.webp'
   },
   {
     id: 'rings',
@@ -25,7 +25,7 @@ const RAW_CATEGORIES = [
     shortName: 'Rings',
     filterCategory: 'rings',
     desc: 'Eternity promise bands, cocktail solitaires & adjustable rings.',
-    img: 'solystra_assets/categories/zavya_style/rings.png'
+    img: 'solystra_assets/categories/zavya_style/rings.webp'
   },
   {
     id: 'earrings',
@@ -33,7 +33,7 @@ const RAW_CATEGORIES = [
     shortName: 'Earrings',
     filterCategory: 'earrings',
     desc: 'Classic studs, huggies, drops & statement chandelier earrings.',
-    img: 'solystra_assets/categories/zavya_style/earrings.png'
+    img: 'solystra_assets/categories/zavya_style/earrings.webp'
   },
   {
     id: 'complete_sets',
@@ -41,7 +41,7 @@ const RAW_CATEGORIES = [
     shortName: 'Gift Suites',
     filterCategory: 'complete_sets',
     desc: 'Complete necklace, earring & bracelet sets in velvet keepsake boxes.',
-    img: 'solystra_assets/categories/zavya_style/complete_sets.png'
+    img: 'solystra_assets/categories/zavya_style/complete_sets.webp'
   },
   {
     id: 'chains',
@@ -49,7 +49,7 @@ const RAW_CATEGORIES = [
     shortName: 'Chains',
     filterCategory: 'chains',
     desc: 'Timeless Italian curb, box & rope chains for everyday luxury.',
-    img: 'solystra_assets/categories/zavya_style/chains.png'
+    img: 'solystra_assets/categories/zavya_style/chains.webp'
   },
   {
     id: 'anklets',
@@ -57,7 +57,7 @@ const RAW_CATEGORIES = [
     shortName: 'Anklets',
     filterCategory: 'anklets',
     desc: 'Delicate pure 925 sterling silver payals & barefoot shimmer chains.',
-    img: 'solystra_assets/categories/zavya_style/anklets.png'
+    img: 'solystra_assets/categories/zavya_style/anklets.webp'
   },
   {
     id: 'mangalsutras',
@@ -65,7 +65,7 @@ const RAW_CATEGORIES = [
     shortName: 'Mangalsutra',
     filterCategory: 'necklaces',
     desc: 'Traditional auspicious black bead craftsmanship with contemporary flair.',
-    img: 'solystra_assets/categories/zavya_style/mangalsutras.png'
+    img: 'solystra_assets/categories/zavya_style/mangalsutras.webp'
   },
   {
     id: 'nose_pins',
@@ -73,7 +73,7 @@ const RAW_CATEGORIES = [
     shortName: 'Nose Pins',
     filterCategory: 'earrings',
     desc: 'Micro-prong Austrian crystal solitaires in solid 925 sterling silver.',
-    img: 'solystra_assets/categories/zavya_style/nose_pins.png'
+    img: 'solystra_assets/categories/zavya_style/nose_pins.webp'
   },
   {
     id: 'mens_collection',
@@ -81,7 +81,7 @@ const RAW_CATEGORIES = [
     shortName: "Men's Silver",
     filterCategory: 'bracelets',
     desc: 'Bold kada cuffs, heavy link bracelets & minimalist signet rings.',
-    img: 'solystra_assets/categories/zavya_style/mens.png'
+    img: 'solystra_assets/categories/zavya_style/mens.webp'
   }
 ];
 
@@ -126,7 +126,7 @@ export const CategoriesPage = ({ onSelectCategory, onBackToStore }) => {
       <section className="relative overflow-hidden bg-stone-900 border-b border-[#EAE4DC]">
         <div className="relative w-full h-36 xs:h-40 sm:h-48 md:h-56">
           <img
-            src="solystra_assets/banners/explore_editorial_banner.jpg"
+            src="solystra_assets/banners/explore_editorial_banner.webp"
             alt="Solystra Jewelry Categories Archive"
             className="w-full h-full object-cover object-center"
           />

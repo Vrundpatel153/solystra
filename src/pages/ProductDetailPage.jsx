@@ -457,7 +457,20 @@ export const ProductDetailPage = ({ productId }) => {
                     }`}
                     aria-label={`View angle ${idx + 1}`}
                   >
-                    <img src={img} alt={`${product.name} angle ${idx + 1}`} className="w-full h-full object-cover block" />
+                    <img
+                      src={img && !img.startsWith('http') && !img.startsWith('/') ? `/${img}` : img}
+                      alt={`${product.name} angle ${idx + 1}`}
+                      onError={(e) => {
+                        if (!e.currentTarget.dataset.fallbackTried) {
+                          e.currentTarget.dataset.fallbackTried = '1';
+                          const c = e.currentTarget.src;
+                          if (c.endsWith('.webp')) e.currentTarget.src = c.slice(0, -5) + '.png';
+                          else if (c.endsWith('.png')) e.currentTarget.src = c.slice(0, -4) + '.jpg';
+                          else if (c.endsWith('.jpg')) e.currentTarget.src = c.slice(0, -4) + '.webp';
+                        }
+                      }}
+                      className="w-full h-full object-cover block"
+                    />
                   </button>
                 ))}
               </div>
@@ -472,8 +485,20 @@ export const ProductDetailPage = ({ productId }) => {
                 className="relative aspect-square w-full rounded-2xl overflow-hidden bg-white border border-stone-200 shadow-xs group select-none touch-pan-y"
               >
                 <img
-                  src={product.images[selectedImageIndex] || product.images[0]}
+                  src={(() => {
+                    const raw = product.images[selectedImageIndex] || product.images[0] || '';
+                    return raw && !raw.startsWith('http') && !raw.startsWith('/') ? `/${raw}` : raw;
+                  })()}
                   alt={product.name}
+                  onError={(e) => {
+                    if (!e.currentTarget.dataset.fallbackTried) {
+                      e.currentTarget.dataset.fallbackTried = '1';
+                      const c = e.currentTarget.src;
+                      if (c.endsWith('.webp')) e.currentTarget.src = c.slice(0, -5) + '.png';
+                      else if (c.endsWith('.png')) e.currentTarget.src = c.slice(0, -4) + '.jpg';
+                      else if (c.endsWith('.jpg')) e.currentTarget.src = c.slice(0, -4) + '.webp';
+                    }
+                  }}
                   className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500 cursor-zoom-in block"
                   onClick={() => setIsLightboxOpen(true)}
                   draggable={false}
@@ -798,7 +823,7 @@ export const ProductDetailPage = ({ productId }) => {
             {/* 6. ATELIER LUXURY BRAND HERITAGE BANNER (THEME QUOTE) */}
             <div className="relative w-full rounded-2xl overflow-hidden border border-[#D4AF37]/35 shadow-md group bg-[#3B0713]">
               <img
-                src="/solystra_assets/promos/atelier_luxury_banner.jpg"
+                src="/solystra_assets/promos/atelier_luxury_banner.webp"
                 alt="Soulystra Jewels - Timeless Elegance, Crafted Forever"
                 className="w-full aspect-[16/9] object-cover object-center group-hover:scale-103 transition-transform duration-700 block"
                 loading="lazy"

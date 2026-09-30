@@ -206,8 +206,14 @@ export const Navbar = ({ activeCategory, onSelectCategory, onOpenBoutique }) => 
               }}
             >
               <img
-                src="solystra_assets/solystra_logo.png"
+                src="/solystra_assets/solystra_logo.webp"
                 alt="Solystra Jewels"
+                onError={(e) => {
+                  if (!e.currentTarget.dataset.err) {
+                    e.currentTarget.dataset.err = '1';
+                    e.currentTarget.src = 'solystra_assets/solystra_logo.webp';
+                  }
+                }}
                 className="h-7 sm:h-9 md:h-10 w-auto max-w-[130px] sm:max-w-[185px] md:max-w-[205px] object-contain hover:opacity-90 transition-opacity"
               />
             </div>
@@ -432,7 +438,7 @@ export const Navbar = ({ activeCategory, onSelectCategory, onOpenBoutique }) => 
                 className="relative rounded-2xl overflow-hidden bg-stone-900 group cursor-pointer aspect-[16/11] border border-[#EAE4DC] shadow-md flex flex-col justify-end p-4 transition-all duration-300 hover:shadow-xl"
               >
                 <img
-                  src="solystra_assets/categories/zavya_style/necklaces.png"
+                  src="solystra_assets/categories/zavya_style/necklaces.webp"
                   alt="Atelier Royal Gala Solitaires"
                   className="absolute inset-0 w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 opacity-80"
                 />

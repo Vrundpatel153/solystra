@@ -20,9 +20,9 @@ window.PRODUCTS = [
     ],
     "desc": "A minimal circular pendant elevated with delicate stone accents, creating a soft focal point within a clean, modern silhouette. The open circle design represents continuity and balance, while the subtle sparkle adds just the right touch of elegance. Understated yet refined, it’s perfect for effortless everyday styling. Product Details: 925 Sterling Silver Lightweight &amp; comfortable Open circle pendant with stone accents Minimal, modern aesthetic Fine chain with secure closure Gifting Note: A thoughtful piece that symbolizes wholeness and connection — perfect for someone who brings balance and meaning into your life.",
     "images": [
-      "solystra_assets/products/accent-circle-925-silver-necklace/angle_1.png",
-      "assets/craftsmanship-atelier.jpg",
-      "assets/bento-craftsmanship-macro.jpg"
+      "solystra_assets/products/accent-circle-925-silver-necklace/angle_1.webp",
+      "assets/craftsmanship-atelier.webp",
+      "assets/bento-craftsmanship-macro.webp"
     ],
     "specs": {
       "Metal Purity": "BIS Certified 925 Sterling Silver",
@@ -55,9 +55,9 @@ window.PRODUCTS = [
     ],
     "desc": "Inspired by the delicate beauty of spring blossoms, the Amethyst Bloom Necklace Set features a charming five-petal floral design with rich plum enamel detailing and a brushed, textured finish. Polished sterling silver edges and sparkling cubic zirconia accents bring a touch of modern elegance to the nature-inspired motif. The unique lariat-style pendant cascades down to a glittering baguette drop, perfectly complemented by a pair of matching floral stud earrings. This versatile set offers an effortless blend of everyday charm and refined sophistication. The set includes a 925 sterling silver lariat necklace and a matching pair of floral stud earrings. Product Specifications Product Name: Amethyst Bloom Necklace Set Metal: 925 Sterling Silver Includes: Lariat-Style Necklace &amp; Matching Floral Stud Earrings Style: Floral | Contemporary | Elegant | Enamel Detail Occasion: Daily Wear | Office | Brunch | Gifting | Evening Out Styling Tip Elevate neutral basics or pastel dresses with this set for a pop of rich color. Wear the necklace and earrings together for a complete, polished look, or style the necklace alone to let the unique lariat drop take center stage. Care Tip Gently wipe with a soft, dry cloth after each wear. Store separately in a jewelry pouch and avoid direct contact with perfumes, cosmetics, water, and harsh chemicals to protect the enamel finish and silver shine.",
     "images": [
-      "solystra_assets/products/amethyst-bloom-necklace-set-925-sterling-silver/angle_1.png",
-      "assets/craftsmanship-atelier.jpg",
-      "assets/bento-craftsmanship-macro.jpg"
+      "solystra_assets/products/amethyst-bloom-necklace-set-925-sterling-silver/angle_1.webp",
+      "assets/craftsmanship-atelier.webp",
+      "assets/bento-craftsmanship-macro.webp"
     ],
     "specs": {
       "Metal Purity": "18K Rose Gold Micron (BIS Certified)",
@@ -90,9 +90,9 @@ window.PRODUCTS = [
     ],
     "desc": "Romantic elegance meets classic design in the Amour Heart Tennis Bracelet. Crafted from gleaming 925 sterling silver, this delicate piece features a continuous strand of sparkling round Swarovski crystals that wrap gracefully around the wrist. Three beautifully faceted, clear heart-cut Swarovski crystals are evenly spaced along the band, catching the light with every movement to symbolize love and refinement. Finished with a secure lobster clasp and an adjustable extender chain for a customized fit, this bracelet is the ultimate expression of timeless charm and effortless glamour. Product Specifications Product Name: Amour Heart Tennis Bracelet Metal: 925 Sterling Silver Stones: Swarovski Crystals (Clear Round-Cut &amp; Clear Heart-Cut) Closure: Secure Lobster Clasp with Adjustable Extender Chain Style: Tennis | Heart Motif | Romantic | Minimalist Glam Occasion: Date Nights | Anniversaries | Weddings | Valentine’s Day | Gifting Styling Tip Wear it solo to let the three heart accents take center stage, or layer it with a slim silver bangle or watch for a chic, stacked wrist look. It complements both romantic dresses and crisp, tailored shirts beautifully. Care Tip Gently polish with a soft, dry jewelry cloth after each wear to maintain its bright silver shine. Store in a lined jewelry pouch and avoid contact with perfumes, lotions, and harsh cleaning products to preserve the brilliance of the Swarovski crystals.",
     "images": [
-      "solystra_assets/products/amour-heart-tennis-bracelet-925-sterling-silver/angle_1.png",
-      "assets/craftsmanship-atelier.jpg",
-      "assets/bento-craftsmanship-macro.jpg"
+      "solystra_assets/products/amour-heart-tennis-bracelet-925-sterling-silver/angle_1.webp",
+      "assets/craftsmanship-atelier.webp",
+      "assets/bento-craftsmanship-macro.webp"
     ],
     "specs": {
       "Metal Purity": "BIS Certified 925 Sterling Silver",
@@ -125,9 +125,9 @@ window.PRODUCTS = [
     ],
     "desc": "A bold yet minimal design featuring anchor-inspired elements paired with textured accents, giving it a modern, edgy feel. Product Details: • Crafted in 925 sterling silver • Anchor-inspired motif with circular textured accents • Combination of sleek and detailed elements for contrast • High-polish finish for a sharp, clean shine • Modern, edgy, and statement style • Ideal for everyday wear with a bold touch • Lightweight yet impactful design • Secure clasp closure for easy wear",
     "images": [
-      "solystra_assets/products/anchor-charm-925-silver-bracelet/angle_1.png",
-      "assets/craftsmanship-atelier.jpg",
-      "assets/bento-craftsmanship-macro.jpg"
+      "solystra_assets/products/anchor-charm-925-silver-bracelet/angle_1.webp",
+      "assets/craftsmanship-atelier.webp",
+      "assets/bento-craftsmanship-macro.webp"
     ],
     "specs": {
       "Metal Purity": "BIS Certified 925 Sterling Silver",
@@ -160,9 +160,9 @@ window.PRODUCTS = [
     ],
     "desc": "Bold yet refined, our Arc Bar Hoops feature a sleek curved design accented with a smooth central bar, creating a modern and sculptural silhouette. Crafted in Italy, these earrings reflect exceptional craftsmanship, flawless finishing, and a rich gold polish that enhances their contemporary appeal. The clean lines and unique shape make them a standout piece for those who love distinctive, fashion-forward jewellery. With a weight of 3.710 grams , these hoops offer a substantial presence while remaining comfortable for wear. Designed to be both attractive and versatile, they effortlessly elevate everyday styling as well as evening looks. A statement Italian-made piece that blends elegance with modern edge. ✨",
     "images": [
-      "solystra_assets/products/arc-bar-hoops/angle_1.png",
-      "assets/craftsmanship-atelier.jpg",
-      "assets/bento-craftsmanship-macro.jpg"
+      "solystra_assets/products/arc-bar-hoops/angle_1.webp",
+      "assets/craftsmanship-atelier.webp",
+      "assets/bento-craftsmanship-macro.webp"
     ],
     "specs": {
       "Metal Purity": "18K Gold Vermeil (BIS Certified)",
@@ -195,9 +195,9 @@ window.PRODUCTS = [
     ],
     "desc": "Brighten up your jewelry collection with the cheerful elegance of the Azure Daisy Tennis Bracelet. Crafted from high-polish 925 sterling silver, this piece features a timeless tennis-style strand of sparkling round Swarovski crystals that catch the light beautifully. The design is punctuated by three charming daisy motifs, each finished with vibrant sky-blue enamel petals and a polished silver center. Secured with a sturdy lobster clasp and an adjustable extender chain, this bracelet brings a playful yet refined touch of nature-inspired color to any outfit. Product Specifications Product Name: Azure Daisy Tennis Bracelet Metal: 925 Sterling Silver Stones: Swarovski Crystals (Clear Round-Cut) Details: Sky-Blue Enamel Floral Accents Closure: Secure Lobster Clasp with Adjustable Extender Chain Style: Tennis | Floral | Enamel Detail | Playful Elegance Occasion: Daywear | Brunch | Summer Getaways | Casual Chic | Gifting Styling Tip Let the vibrant blue pop by pairing it with crisp white, denim, or pastel summer dresses. Wear it alone to highlight the daisy details, or mix it with delicate silver chains for a trendy, stacked wrist aesthetic. Care Tip Gently wipe with a soft, dry cloth to maintain the silver shine. Store in a lined jewelry pouch away from other pieces to prevent scratching. Avoid direct contact with perfumes, lotions, and harsh chemicals to protect the enamel finish and preserve the brilliance of the Swarovski crystals.",
     "images": [
-      "solystra_assets/products/azure-daisy-tennis-bracelet-925-sterling-silver/angle_1.png",
-      "assets/craftsmanship-atelier.jpg",
-      "assets/bento-craftsmanship-macro.jpg"
+      "solystra_assets/products/azure-daisy-tennis-bracelet-925-sterling-silver/angle_1.webp",
+      "assets/craftsmanship-atelier.webp",
+      "assets/bento-craftsmanship-macro.webp"
     ],
     "specs": {
       "Metal Purity": "BIS Certified 925 Sterling Silver",
@@ -230,9 +230,9 @@ window.PRODUCTS = [
     ],
     "desc": "A cute and delicate necklace featuring a bunny motif with subtle sparkle detailing, adding a playful yet elegant touch. Product Details: • Crafted in 925 sterling silver • Bunny-shaped pendant with stone-studded texture • Fine, delicate silver chain included • Polished finish with subtle sparkle accents • Lightweight and comfortable for daily wear • Cute, minimal, and playful aesthetic • Perfect for layering or wearing solo",
     "images": [
-      "solystra_assets/products/baby-bunny-925-silver-necklace/angle_1.jpg",
-      "solystra_assets/products/baby-bunny-925-silver-necklace/angle_1.png",
-      "solystra_assets/products/baby-bunny-925-silver-necklace/angle_2.jpg"
+      "solystra_assets/products/baby-bunny-925-silver-necklace/angle_1.webp",
+      "solystra_assets/products/baby-bunny-925-silver-necklace/angle_1.webp",
+      "solystra_assets/products/baby-bunny-925-silver-necklace/angle_2.webp"
     ],
     "specs": {
       "Metal Purity": "BIS Certified 925 Sterling Silver",
@@ -265,9 +265,9 @@ window.PRODUCTS = [
     ],
     "desc": "A playful yet delicate design featuring a sparkling circular charm paired with a tiny bee motif. The combination brings a light, whimsical charm while still keeping a clean, minimal aesthetic. Perfect for adding a hint of personality and sweetness to your everyday look. Product Details: 925 Sterling Silver Lightweight &amp; comfortable Dual charm design (bee + textured circle) Fine detailing with subtle sparkle Minimal yet playful aesthetic Elegant everyday wear piece Gifting Note: A cute little way to say “be mine” —perfect for someone who adds sweetness and warmth to your world. 🐝✨",
     "images": [
-      "solystra_assets/products/be-my-bee-925-sterling-silver-necklace/angle_1.png",
-      "assets/craftsmanship-atelier.jpg",
-      "assets/bento-craftsmanship-macro.jpg"
+      "solystra_assets/products/be-my-bee-925-sterling-silver-necklace/angle_1.webp",
+      "assets/craftsmanship-atelier.webp",
+      "assets/bento-craftsmanship-macro.webp"
     ],
     "specs": {
       "Metal Purity": "BIS Certified 925 Sterling Silver",
@@ -300,9 +300,9 @@ window.PRODUCTS = [
     ],
     "desc": "A graceful pendant featuring a delicate butterfly motif, symbolizing transformation, growth, and self-evolution. Paired with a modern dual-chain style, this piece blends softness with strength—perfect for marking personal journeys and new beginnings. Inspired by the idea of becoming her , this necklace reflects growth, finding your wings, and stepping into your most confident self. Product Details: 925 Sterling Silver Lightweight &amp; comfortable Butterfly motif symbolizing growth and transformation Dual-chain design for a modern layered look Minimal yet meaningful everyday piece Secure closure Gifting Note: A beautiful reminder for someone stepping into a new version of herself — stronger, freer, and truly her own.",
     "images": [
-      "solystra_assets/products/becoming-her-925-sterling-silver-necklace/angle_1.png",
-      "assets/craftsmanship-atelier.jpg",
-      "assets/bento-craftsmanship-macro.jpg"
+      "solystra_assets/products/becoming-her-925-sterling-silver-necklace/angle_1.webp",
+      "assets/craftsmanship-atelier.webp",
+      "assets/bento-craftsmanship-macro.webp"
     ],
     "specs": {
       "Metal Purity": "BIS Certified 925 Sterling Silver",
@@ -335,9 +335,9 @@ window.PRODUCTS = [
     ],
     "desc": "Charming and elegant, the Blue Heart Halo Pendant Chain features a delicate pendant that combines soft color with refined detailing. At the centre sits a tiny blue heart accent, beautifully framed within a circular halo design that adds a subtle sparkle and highlights the centrepiece. Above the halo sits a graceful twin-loop detail that gives the pendant a soft flowing shape, adding character and dimension to the design. The combination of the heart motif and halo frame creates a playful yet sophisticated look that stands out while remaining minimal. Suspended on a fine gold chain, the pendant rests elegantly along the neckline, making it perfect for everyday wear. The gentle contrast of the blue heart against the polished gold finish adds a unique touch, making this necklace both delicate and eye-catching. Product Details • Gross Weight: 3.540 grams • Net Gold Weight: 3.484 grams • Blue heart centrepiece with halo design • Fine chain necklace • Lightweight and comfortable for daily wear",
     "images": [
-      "solystra_assets/products/blue-halo-heart-chain/angle_1.jpg",
-      "assets/craftsmanship-atelier.jpg",
-      "assets/bento-craftsmanship-macro.jpg"
+      "solystra_assets/products/blue-halo-heart-chain/angle_1.webp",
+      "assets/craftsmanship-atelier.webp",
+      "assets/bento-craftsmanship-macro.webp"
     ],
     "specs": {
       "Metal Purity": "18K Gold Vermeil (BIS Certified)",
@@ -370,9 +370,9 @@ window.PRODUCTS = [
     ],
     "desc": "Graceful and eye-catching, the Blue Marquise Layered Necklace pairs vibrant marquise-shaped blue opal accents with a delicate freshwater pearl on the upper layer. The elegant dual-layer design adds a refreshing pop of colour while maintaining a refined, everyday look. Product Specifications Product Name: Blue Marquise Layered Necklace Metal: 18K BIS Hallmarked Gold Gross Weight: 2.860 g Net Weight: 2.813 g Style: Layered | Contemporary | Elegant Occasion: Everyday Wear | Office | Brunch | Vacation | Evening Styling Tip Pair it with solid-coloured outfits to let the vibrant blue accents stand out, or wear it solo for an effortlessly layered look. Care Tip Store flat in a soft jewellery pouch to prevent tangling, and avoid contact with perfumes, lotions, and harsh chemicals to maintain its shine and the beauty of the pearl and opal accents.",
     "images": [
-      "solystra_assets/products/blue-marquise-layered-necklace/angle_1.png",
-      "assets/craftsmanship-atelier.jpg",
-      "assets/bento-craftsmanship-macro.jpg"
+      "solystra_assets/products/blue-marquise-layered-necklace/angle_1.webp",
+      "assets/craftsmanship-atelier.webp",
+      "assets/bento-craftsmanship-macro.webp"
     ],
     "specs": {
       "Metal Purity": "18K Gold Vermeil (BIS Certified)",
@@ -405,12 +405,12 @@ window.PRODUCTS = [
     ],
     "desc": "A refined take on the classic tennis style, this bracelet features a sleek line of shimmering stones accented with delicate blush-toned highlights for a subtle pop of color. The balance of sparkle and soft pink details adds a fresh, feminine touch while keeping the look timeless and elegant. Designed to sit gracefully on the wrist, it transitions effortlessly from day to evening. Product Details: 925 Sterling Silver Lightweight &amp; comfortable for daily wear Tennis-style design with blush stone accents Fine, continuous sparkle with subtle color detailing Secure clasp closure Perfect for stacking or wearing solo",
     "images": [
-      "solystra_assets/products/blush-spark-tennis-bracelet-925-sterling-silver/angle_1.jpg",
-      "solystra_assets/products/blush-spark-tennis-bracelet-925-sterling-silver/angle_1.png",
-      "solystra_assets/products/blush-spark-tennis-bracelet-925-sterling-silver/angle_2.jpg",
-      "solystra_assets/products/blush-spark-tennis-bracelet-925-sterling-silver/angle_2.png",
-      "solystra_assets/products/blush-spark-tennis-bracelet-925-sterling-silver/angle_3.jpg",
-      "solystra_assets/products/blush-spark-tennis-bracelet-925-sterling-silver/angle_3.png"
+      "solystra_assets/products/blush-spark-tennis-bracelet-925-sterling-silver/angle_1.webp",
+      "solystra_assets/products/blush-spark-tennis-bracelet-925-sterling-silver/angle_1.webp",
+      "solystra_assets/products/blush-spark-tennis-bracelet-925-sterling-silver/angle_2.webp",
+      "solystra_assets/products/blush-spark-tennis-bracelet-925-sterling-silver/angle_2.webp",
+      "solystra_assets/products/blush-spark-tennis-bracelet-925-sterling-silver/angle_3.webp",
+      "solystra_assets/products/blush-spark-tennis-bracelet-925-sterling-silver/angle_3.webp"
     ],
     "specs": {
       "Metal Purity": "18K Rose Gold Micron (BIS Certified)",
@@ -443,9 +443,9 @@ window.PRODUCTS = [
     ],
     "desc": "Playful yet elegant, the Bow Spiral Open Ring features a delicate spiral band that gently wraps around the finger, creating a layered and modern look. The design is accented with a charming bow motif that adds a soft, feminine touch, while a polished gold bead on the opposite end balances the overall composition. The spiral structure gives the ring a light and contemporary feel, making it a standout piece while still maintaining a minimal aesthetic. The bow detail adds a subtle hint of charm and sweetness, making it perfect for everyday wear. Thanks to its spiral open-band design, the ring offers a partially adjustable fit , allowing for comfortable wear across nearby sizes while maintaining its elegant shape. Designed to be both delicate and distinctive, this ring pairs beautifully with other stackable pieces or can be worn alone as a subtle statement accessory. Product Details • Gold Weight: 1.07 grams • Polished gold finish • Spiral open band design • Bow motif with gold bead accent • Partially adjustable fit due to spiral structure • Lightweight and comfortable for daily wear",
     "images": [
-      "solystra_assets/products/bow-spiral-open-ring/angle_1.png",
-      "assets/craftsmanship-atelier.jpg",
-      "assets/bento-craftsmanship-macro.jpg"
+      "solystra_assets/products/bow-spiral-open-ring/angle_1.webp",
+      "assets/craftsmanship-atelier.webp",
+      "assets/bento-craftsmanship-macro.webp"
     ],
     "specs": {
       "Metal Purity": "18K Gold Vermeil (BIS Certified)",
@@ -478,9 +478,9 @@ window.PRODUCTS = [
     ],
     "desc": "Elegant and meaningful, the Black Bead Heart Bracelet blends delicate design with symbolic charm. The bracelet features a fine chain accented with a row of glossy black beads, creating a beautiful contrast against the warm gold tone. At the centre sits a distinctive heart motif that combines two elements — a smooth open heart paired with a radiant sunburst-style heart. This dual-heart design adds a touch of character and symbolism, representing connection and warmth while giving the bracelet a modern yet romantic feel. The black bead detailing gives the bracelet a classic look often associated with protective and traditional styles, while the contemporary heart design keeps the piece refined and stylish. Lightweight and comfortable, this bracelet is perfect for everyday wear and can be worn alone or layered with other bracelets for a more curated look. Product Details • Gold Weight: 2.29 grams • Fine chain bracelet with black bead accents • Dual heart centrepiece design • Secure clasp closure • Lightweight and comfortable for daily wear",
     "images": [
-      "solystra_assets/products/bracelet/angle_1.png",
-      "solystra_assets/products/bracelet/angle_2.jpg",
-      "solystra_assets/products/bracelet/angle_3.jpg"
+      "solystra_assets/products/bracelet/angle_1.webp",
+      "solystra_assets/products/bracelet/angle_2.webp",
+      "solystra_assets/products/bracelet/angle_3.webp"
     ],
     "specs": {
       "Metal Purity": "18K Rose Gold Micron (BIS Certified)",
@@ -513,9 +513,9 @@ window.PRODUCTS = [
     ],
     "desc": "Delicate, meaningful, and effortlessly elegant, the Butterfly Charm Tennis Bracelet blends timeless sparkle with symbolic design. Crafted in 925 sterling silver , the bracelet features a sleek tennis-style silhouette accented with charming butterfly motifs, each carrying a classic evil eye design believed to symbolize protection, positivity, and good fortune. The combination of graceful butterflies and meaningful evil eye accents creates a piece that's both stylish and symbolic, making it perfect for everyday wear. Product Specifications Product Name: Butterfly Charm Tennis Bracelet Metal: 925 Sterling Silver Design: Tennis Bracelet with Butterfly Evil Eye Charms Style: Contemporary | Minimalist | Symbolic Occasion: Everyday Wear | Office | Casual | Gifting Styling Tip Pair it with a silver watch or stack it with delicate bracelets for a chic layered wrist look, or wear it solo to let the butterfly evil eye charms stand out. Care Tip Store in a soft jewellery pouch after use and avoid exposure to perfumes, lotions, water, and harsh chemicals to maintain the shine of the sterling silver and preserve the bracelet's finish.",
     "images": [
-      "solystra_assets/products/butterfly-charm-tennis-bracelet-925-sterling-silver/angle_1.png",
-      "assets/craftsmanship-atelier.jpg",
-      "assets/bento-craftsmanship-macro.jpg"
+      "solystra_assets/products/butterfly-charm-tennis-bracelet-925-sterling-silver/angle_1.webp",
+      "assets/craftsmanship-atelier.webp",
+      "assets/bento-craftsmanship-macro.webp"
     ],
     "specs": {
       "Metal Purity": "BIS Certified 925 Sterling Silver",
@@ -548,9 +548,9 @@ window.PRODUCTS = [
     ],
     "desc": "Playful yet meaningful, this pendant features a split heart design with contrasting tones—one side bold and the other soft—symbolizing two sides of love coming together. The delicate detailing and subtle shine make it a charming piece that feels both youthful and expressive. Product Details: 925 Sterling Silver Lightweight &amp; comfortable Split heart pendant with dual-tone finish “Love” detailing for added meaning Smooth enamel and polished shine Cute, expressive everyday piece Gifting Note: A sweet reminder that love isn’t perfect—it’s beautifully balanced. 💖✨",
     "images": [
-      "solystra_assets/products/candy-heart-925-sterling-silver-necklace/angle_1.jpg",
-      "assets/craftsmanship-atelier.jpg",
-      "assets/bento-craftsmanship-macro.jpg"
+      "solystra_assets/products/candy-heart-925-sterling-silver-necklace/angle_1.webp",
+      "assets/craftsmanship-atelier.webp",
+      "assets/bento-craftsmanship-macro.webp"
     ],
     "specs": {
       "Metal Purity": "BIS Certified 925 Sterling Silver",
@@ -583,9 +583,9 @@ window.PRODUCTS = [
     ],
     "desc": "A delicate charm bracelet featuring intricate motifs and a soft statement centerpiece, designed to add a graceful and feminine touch to your everyday look. Product Details: • Gross Weight: 2.590 grams • Net Weight: 2.541 grams • Crafted in 18K gold • Multi-charm design with detailed elements • Intricate central motif with subtle texture • Polished finish for a refined shine • Lightweight and comfortable for daily wear • Perfect for layering or wearing solo for a minimal statement",
     "images": [
-      "solystra_assets/products/celeste-charm-bracelet/angle_1.png",
-      "assets/craftsmanship-atelier.jpg",
-      "assets/bento-craftsmanship-macro.jpg"
+      "solystra_assets/products/celeste-charm-bracelet/angle_1.webp",
+      "assets/craftsmanship-atelier.webp",
+      "assets/bento-craftsmanship-macro.webp"
     ],
     "specs": {
       "Metal Purity": "18K Gold Vermeil (BIS Certified)",
@@ -618,9 +618,9 @@ window.PRODUCTS = [
     ],
     "desc": "A delicate and modern charm design featuring a sleek drop element paired with a subtle accent, creating a refined and elegant everyday piece. Designed to be worn effortlessly, this pendant comes with a matching chain for a complete look. Product Details: • Gross Weight: 4.400 grams • Net Weight: 4.338 grams • Crafted in 18K gold • Contemporary charm-style pendant design • Chain included with the pendant (sold as a complete set) • Smooth polished finish with subtle detailing • Lightweight yet eye-catching • Perfect for daily wear, layering, or gifting",
     "images": [
-      "solystra_assets/products/celeste-charm-pendant/angle_1.jpg",
-      "assets/craftsmanship-atelier.jpg",
-      "assets/bento-craftsmanship-macro.jpg"
+      "solystra_assets/products/celeste-charm-pendant/angle_1.webp",
+      "assets/craftsmanship-atelier.webp",
+      "assets/bento-craftsmanship-macro.webp"
     ],
     "specs": {
       "Metal Purity": "18K Gold Vermeil (BIS Certified)",
@@ -653,10 +653,10 @@ window.PRODUCTS = [
     ],
     "desc": "A luminous, celestial-inspired pendant featuring a soft glowing centerpiece embraced by a delicate crescent arc with subtle sparkle. The design feels dreamy and fluid, capturing the essence of moonlight and quiet elegance. Perfect for adding a gentle glow and refined charm to your everyday look. Product Details: 925 Sterling Silver Lightweight &amp; comfortable Celestial crescent with glowing center stone Fine stone detailing for subtle shimmer Soft, radiant finish Elegant and minimal design Gifting Note: A piece that feels like carrying a little light within—perfect for someone who shines effortlessly, even in the quietest moments. ✨",
     "images": [
-      "solystra_assets/products/celeste-glow-925-sterling-silver-necklace/angle_1.jpg",
-      "solystra_assets/products/celeste-glow-925-sterling-silver-necklace/angle_1.png",
-      "solystra_assets/products/celeste-glow-925-sterling-silver-necklace/angle_2.jpg",
-      "solystra_assets/products/celeste-glow-925-sterling-silver-necklace/angle_2.png"
+      "solystra_assets/products/celeste-glow-925-sterling-silver-necklace/angle_1.webp",
+      "solystra_assets/products/celeste-glow-925-sterling-silver-necklace/angle_1.webp",
+      "solystra_assets/products/celeste-glow-925-sterling-silver-necklace/angle_2.webp",
+      "solystra_assets/products/celeste-glow-925-sterling-silver-necklace/angle_2.webp"
     ],
     "specs": {
       "Metal Purity": "BIS Certified 925 Sterling Silver",
@@ -689,9 +689,9 @@ window.PRODUCTS = [
     ],
     "desc": "Elegant and contemporary, the Twin Loop Stud Earrings feature a circular design highlighted by an interlocking twin-loop motif at the center. The layered pattern creates a balanced and refined look, giving the earrings a subtle statement while maintaining a clean and minimal aesthetic. The smooth circular frame surrounds a soft, luminous inlay that enhances the design and adds a gentle contrast to the polished gold finish. The interlocking loops symbolize harmony and connection, making these studs both stylish and meaningful. Compact and versatile, these earrings are perfect for everyday wear. Their classic stud style allows them to complement both casual and formal outfits effortlessly, making them a timeless addition to any jewelry collection. Product Details • Gold Weight: 1.31 grams • Circular stud design • Twin loop motif centrepiece • Secure stud back closure • Lightweight and comfortable for daily wear",
     "images": [
-      "solystra_assets/products/celestial-monogram-studs-18k-gold-plated-anti-tarnish-earrings/angle_1.jpg",
-      "assets/craftsmanship-atelier.jpg",
-      "assets/bento-craftsmanship-macro.jpg"
+      "solystra_assets/products/celestial-monogram-studs-18k-gold-plated-anti-tarnish-earrings/angle_1.webp",
+      "assets/craftsmanship-atelier.webp",
+      "assets/bento-craftsmanship-macro.webp"
     ],
     "specs": {
       "Metal Purity": "18K Gold Vermeil (BIS Certified)",
@@ -724,8 +724,8 @@ window.PRODUCTS = [
     ],
     "desc": "Sophisticated and modern, the Ceramic Pendant Set is designed for those who appreciate clean lines with a subtle statement. The pendant features an elegant interlocking silhouette enhanced with smooth ceramic detailing that creates a beautiful contrast against the polished gold finish. The flowing curves of the design give the piece a refined and contemporary character while maintaining a minimal aesthetic. Suspended from a delicate chain, the pendant rests gracefully along the neckline, making it perfect for both everyday wear and special occasions. The set is completed with matching ceramic stud earrings that mirror the same design, creating a balanced and coordinated look. Stylish yet lightweight, this pendant set adds a modern charm to any jewellery collection. Product Details • Gross Weight: 4.952 grams • Net Gold Weight: 4.943 grams • Weight includes chain, pendant and earrings together • Set includes: Chain, pendant and matching stud earrings • Ceramic accented design • Lightweight and comfortable for everyday wear",
     "images": [
-      "solystra_assets/products/ceramic-pendant-set/angle_1.png",
-      "solystra_assets/products/ceramic-pendant-set/angle_2.png"
+      "solystra_assets/products/ceramic-pendant-set/angle_1.webp",
+      "solystra_assets/products/ceramic-pendant-set/angle_2.webp"
     ],
     "specs": {
       "Metal Purity": "18K Rose Gold Micron (BIS Certified)",
@@ -758,8 +758,8 @@ window.PRODUCTS = [
     ],
     "desc": "A delicate blend of symbolism and sparkle, this bracelet features repeating infinity motifs paired with graceful butterfly-accented heart elements. The fine stone detailing adds a soft shimmer, while the design flows effortlessly across the wrist, creating a look that feels both feminine and meaningful. Light, elegant, and easy to style, it’s perfect for everyday wear with a subtle statement. Product Details: 925 Sterling Silver Lightweight &amp; comfortable for daily wear Infinity and butterfly-heart design with fine stone accents Secure clasp closure Ideal for stacking or wearing solo",
     "images": [
-      "solystra_assets/products/charming-flutter-925-sterling-silver-bracelet/angle_1.jpg",
-      "solystra_assets/products/charming-flutter-925-sterling-silver-bracelet/angle_2.jpg"
+      "solystra_assets/products/charming-flutter-925-sterling-silver-bracelet/angle_1.webp",
+      "solystra_assets/products/charming-flutter-925-sterling-silver-bracelet/angle_2.webp"
     ],
     "specs": {
       "Metal Purity": "BIS Certified 925 Sterling Silver",
@@ -792,8 +792,8 @@ window.PRODUCTS = [
     ],
     "desc": "Timeless and sophisticated, the Classic Knot Stud Earrings feature a beautifully intertwined knot design that symbolizes unity and elegance. The interlocking bands create a graceful structure, combining smooth polished gold with a subtly textured finish that adds depth and character to the piece. The contrast between the polished curves and the finely textured surfaces enhances the dimensional look of the knot, making the earrings both eye-catching and refined. Their compact stud style sits comfortably on the ear, offering a balanced blend of classic design and contemporary sophistication. Perfect for everyday elegance or special occasions, these knot studs bring a touch of timeless charm to any jewellery collection while remaining versatile enough to pair effortlessly with other pieces. Product Details • Gold Weight: 2.03 grams • Classic interlocking knot design • Combination of polished and textured gold finish • Stud style earrings • Lightweight and comfortable for daily wear",
     "images": [
-      "solystra_assets/products/classic-knot-earrings/angle_1.jpg",
-      "solystra_assets/products/classic-knot-earrings/angle_2.jpg"
+      "solystra_assets/products/classic-knot-earrings/angle_1.webp",
+      "solystra_assets/products/classic-knot-earrings/angle_2.webp"
     ],
     "specs": {
       "Metal Purity": "18K Gold Vermeil (BIS Certified)",
@@ -826,8 +826,8 @@ window.PRODUCTS = [
     ],
     "desc": "Strong. Polished. Effortlessly timeless. The Classic Ridge Band features a smooth, structured silhouette with a subtle raised ridge detail that adds depth and character without overpowering the design. Its clean, high-polish finish gives it a refined presence — minimal, yet undeniably confident. With a gold weight of 2.236 grams , this band offers a solid, comfortable feel on the finger. Perfect as an everyday statement piece, a modern stacking ring, or even a sleek unisex style. Understated luxury at its finest — a piece that never goes out of style. ✨ • Ring Size: Standard size (12) — Custom sizes available on request",
     "images": [
-      "solystra_assets/products/classic-ridge-band/angle_1.png",
-      "solystra_assets/products/classic-ridge-band/angle_2.jpg"
+      "solystra_assets/products/classic-ridge-band/angle_1.webp",
+      "solystra_assets/products/classic-ridge-band/angle_2.webp"
     ],
     "specs": {
       "Metal Purity": "18K Rose Gold Micron (BIS Certified)",
@@ -860,9 +860,9 @@ window.PRODUCTS = [
     ],
     "desc": "Delicate and feminine, our Clover Charms Bracelet features a beautifully crafted clover motif at its center, symbolizing luck, grace, and timeless elegance. The fine double-chain design adds a subtle layered effect, enhancing its charm while maintaining a minimal and refined look. Its polished gold finish gives it a soft, radiant glow that complements every style effortlessly. With a gold weight of 2.121 grams , this bracelet is lightweight and comfortable for everyday wear. Perfect for stacking or wearing alone as a delicate statement piece, it is designed for customers who appreciate understated luxury with meaningful detailing. A graceful addition to any fine jewellery collection. ✨",
     "images": [
-      "solystra_assets/products/clover-charm-bracelet/angle_1.png",
-      "solystra_assets/products/clover-charm-bracelet/angle_2.png",
-      "solystra_assets/products/clover-charm-bracelet/angle_3.png"
+      "solystra_assets/products/clover-charm-bracelet/angle_1.webp",
+      "solystra_assets/products/clover-charm-bracelet/angle_2.webp",
+      "solystra_assets/products/clover-charm-bracelet/angle_3.webp"
     ],
     "specs": {
       "Metal Purity": "18K Rose Gold Micron (BIS Certified)",
@@ -895,10 +895,10 @@ window.PRODUCTS = [
     ],
     "desc": "A delicate bracelet featuring a clover-inspired centerpiece with a subtle lock detail at its heart, symbolizing protection and quiet strength. The fine chain is accented with minimal bead elements, adding a soft rhythm and movement to the design. Elegant yet meaningful, this piece blends charm and symbolism in a very wearable, everyday style. Product Details: 925 Sterling Silver Lightweight &amp; comfortable Clover-inspired central motif with lock detail Fine chain with subtle bead accents Adjustable length for a perfect fit Minimal, modern everyday piece",
     "images": [
-      "solystra_assets/products/clover-lock-charm-925-sterling-silver-bracelet/angle_1.jpg",
-      "solystra_assets/products/clover-lock-charm-925-sterling-silver-bracelet/angle_2.jpg",
-      "solystra_assets/products/clover-lock-charm-925-sterling-silver-bracelet/angle_3.jpg",
-      "solystra_assets/products/clover-lock-charm-925-sterling-silver-bracelet/angle_3.png"
+      "solystra_assets/products/clover-lock-charm-925-sterling-silver-bracelet/angle_1.webp",
+      "solystra_assets/products/clover-lock-charm-925-sterling-silver-bracelet/angle_2.webp",
+      "solystra_assets/products/clover-lock-charm-925-sterling-silver-bracelet/angle_3.webp",
+      "solystra_assets/products/clover-lock-charm-925-sterling-silver-bracelet/angle_3.webp"
     ],
     "specs": {
       "Metal Purity": "BIS Certified 925 Sterling Silver",
@@ -931,9 +931,9 @@ window.PRODUCTS = [
     ],
     "desc": "• Design: A delicate spiral-style ring featuring a small clover motif paired with a polished gold bead, creating a soft and feminine look. The spiral wraps gently around the finger, giving the ring a layered and modern appearance. • Partially Adjustable Fit: The open spiral design allows the ring to be partially adjustable , making it comfortable to wear across nearby sizes while maintaining its shape. • Gold Weight: 1.12 grams • Finish: Smooth, polished finish that gives the gold a subtle shine and enhances the delicate details of the clover design. • Style: Minimal, playful, and elegant — perfect for everyday wear or for stacking with other rings. • Versatility: The floral element adds a soft charm, making it suitable for both casual outfits and light festive styling. • Lightweight Comfort: Designed to be lightweight and easy to wear throughout the day without feeling bulky. • Ideal For: Those who love subtle floral jewellery, adjustable rings, and delicate gold designs that can be worn daily.",
     "images": [
-      "solystra_assets/products/clover-spiral-ring/angle_1.png",
-      "assets/craftsmanship-atelier.jpg",
-      "assets/bento-craftsmanship-macro.jpg"
+      "solystra_assets/products/clover-spiral-ring/angle_1.webp",
+      "assets/craftsmanship-atelier.webp",
+      "assets/bento-craftsmanship-macro.webp"
     ],
     "specs": {
       "Metal Purity": "18K Gold Vermeil (BIS Certified)",
@@ -966,9 +966,9 @@ window.PRODUCTS = [
     ],
     "desc": "Delicate and playful, the Crown Spiral Open Ring features a graceful open-band design that wraps softly around the finger. One end of the spiral is finished with a polished gold bead, while the other highlights a tiny crown motif that adds a charming and distinctive touch to the design. The spiral structure creates a layered look that feels both modern and elegant. The crown detail gives the ring a subtle statement element while still maintaining a light, minimal aesthetic. Designed for everyday wear, the open spiral structure allows the ring to be partially adjustable , offering a flexible and comfortable fit while maintaining its shape. Minimal yet unique, this ring pairs beautifully with other stackable pieces or can be worn alone as a delicate statement. Product Details • Gold Weight: 1.2 grams • Polished gold finish • Spiral open band design • Mini crown motif with gold bead accent • Partially adjustable fit due to spiral structure • Lightweight and comfortable for daily wear",
     "images": [
-      "solystra_assets/products/crown-spiral-ring/angle_1.png",
-      "assets/craftsmanship-atelier.jpg",
-      "assets/bento-craftsmanship-macro.jpg"
+      "solystra_assets/products/crown-spiral-ring/angle_1.webp",
+      "assets/craftsmanship-atelier.webp",
+      "assets/bento-craftsmanship-macro.webp"
     ],
     "specs": {
       "Metal Purity": "18K Gold Vermeil (BIS Certified)",
@@ -1001,8 +1001,8 @@ window.PRODUCTS = [
     ],
     "desc": "A sleek bracelet featuring structured barrel links with subtle stone detailing, designed for a clean and refined statement. Product Details: • Crafted in 925 sterling silver • Structured barrel-style link design • Stone-studded segments for added sparkle • Polished finish with reflective shine • Lightweight and comfortable for daily wear • Modern, minimal, and refined aesthetic • Perfect for layering or wearing solo",
     "images": [
-      "solystra_assets/products/crystal-barrel-link-bracelet-925-silver/angle_1.jpg",
-      "solystra_assets/products/crystal-barrel-link-bracelet-925-silver/angle_2.jpg"
+      "solystra_assets/products/crystal-barrel-link-bracelet-925-silver/angle_1.webp",
+      "solystra_assets/products/crystal-barrel-link-bracelet-925-silver/angle_2.webp"
     ],
     "specs": {
       "Metal Purity": "BIS Certified 925 Sterling Silver",
@@ -1035,9 +1035,9 @@ window.PRODUCTS = [
     ],
     "desc": "Add a touch of luck and sparkle to your steps with the Crystal Clover Anklet Set. Crafted from polished 925 sterling silver, this charming pair features a delicate, fine box chain adorned with dainty four-leaf clover charms, each pavé-set with brilliant clear crystals. The design is finished with small silver ball accents and an adjustable extender chain, ensuring a comfortable and customized fit for any ankle size. Whether worn for beach getaways or casual sunny days, these matching anklets offer a subtle, elegant shimmer with a playful edge. The set includes two matching 925 sterling silver charm anklets. Product Specifications Product Name: Crystal Clover Anklet Set (Pair) Metal: 925 Sterling Silver Stones: Clear Round-Cut Crystals (Pavé Set) Includes: 2 x Matching Clover Charm Anklets Closure: Secure Lobster Clasp with Adjustable Extender Chain Style: Clover Motif | Charm | Delicate | Playful Occasion: Beach Vacations | Casual Outings | Summer Wear | Gifting Styling Tip Wear one on each ankle for a balanced look, or stack both on one side for a trendy, layered boho vibe. Care Tip Store each anklet separately in a soft jewelry pouch to avoid tangling. Gently wipe with a dry cloth after wear to maintain the silver shine. Avoid exposure to perfumes, lotions, and harsh chemicals to preserve the sparkle of the crystals and the finish of the sterling silver.",
     "images": [
-      "solystra_assets/products/crystal-clover-anklet-set-925-sterling-silver/angle_1.png",
-      "assets/craftsmanship-atelier.jpg",
-      "assets/bento-craftsmanship-macro.jpg"
+      "solystra_assets/products/crystal-clover-anklet-set-925-sterling-silver/angle_1.webp",
+      "assets/craftsmanship-atelier.webp",
+      "assets/bento-craftsmanship-macro.webp"
     ],
     "specs": {
       "Metal Purity": "BIS Certified 925 Sterling Silver",
@@ -1070,12 +1070,12 @@ window.PRODUCTS = [
     ],
     "desc": "A delicate bracelet featuring heart motifs paired with subtle stone accents, designed for a soft and elegant everyday look. Product Details: • Crafted in 925 sterling silver • Heart-shaped links with stone detailing • Round crystal accents between links • Polished finish with subtle sparkle • Lightweight and comfortable for daily wear • Feminine, minimal, and elegant style • Perfect for layering or wearing solo",
     "images": [
-      "solystra_assets/products/crystal-heart-link-bracelet-925-silver/angle_1.jpg",
-      "solystra_assets/products/crystal-heart-link-bracelet-925-silver/angle_1.png",
-      "solystra_assets/products/crystal-heart-link-bracelet-925-silver/angle_2.jpg",
-      "solystra_assets/products/crystal-heart-link-bracelet-925-silver/angle_2.png",
-      "solystra_assets/products/crystal-heart-link-bracelet-925-silver/angle_3.jpg",
-      "solystra_assets/products/crystal-heart-link-bracelet-925-silver/angle_3.png"
+      "solystra_assets/products/crystal-heart-link-bracelet-925-silver/angle_1.webp",
+      "solystra_assets/products/crystal-heart-link-bracelet-925-silver/angle_1.webp",
+      "solystra_assets/products/crystal-heart-link-bracelet-925-silver/angle_2.webp",
+      "solystra_assets/products/crystal-heart-link-bracelet-925-silver/angle_2.webp",
+      "solystra_assets/products/crystal-heart-link-bracelet-925-silver/angle_3.webp",
+      "solystra_assets/products/crystal-heart-link-bracelet-925-silver/angle_3.webp"
     ],
     "specs": {
       "Metal Purity": "BIS Certified 925 Sterling Silver",
@@ -1108,9 +1108,9 @@ window.PRODUCTS = [
     ],
     "desc": "Minimal, elegant, and timeless, the Dainty Curb Gold Chain is designed for effortless everyday wear. Featuring finely crafted curb links, this chain offers a smooth and fluid silhouette that rests beautifully along the neckline. Its subtle shine and delicate profile make it a perfect piece for those who love understated jewellery. Lightweight and versatile, this chain can be worn on its own for a refined look or paired with a pendant for a more personalized style. Its classic design also makes it ideal for layering with other necklaces. Expertly crafted with Italian workmanship, this chain reflects a balance of durability and delicate beauty. Product Details • Gold Weight: 1.14 grams • Italian made chain • Classic dainty curb link design • Lightweight and comfortable for everyday wear • Perfect for layering or adding a pendant",
     "images": [
-      "solystra_assets/products/dainty-curb-chain/angle_1.jpg",
-      "assets/craftsmanship-atelier.jpg",
-      "assets/bento-craftsmanship-macro.jpg"
+      "solystra_assets/products/dainty-curb-chain/angle_1.webp",
+      "assets/craftsmanship-atelier.webp",
+      "assets/bento-craftsmanship-macro.webp"
     ],
     "specs": {
       "Metal Purity": "18K Gold Vermeil (BIS Certified)",
@@ -1143,8 +1143,8 @@ window.PRODUCTS = [
     ],
     "desc": "Elegant and timeless, our Dual Chain Pearl Bracelet features a delicate double-chain design beautifully adorned with evenly spaced pearls. The soft shimmer of the pearls paired with the warm gold finish creates a graceful balance of sophistication and femininity. Its refined detailing makes it perfect for both everyday elegance and special occasions. With a gold weight of 2.545 grams , this bracelet is lightweight and comfortable for all-day wear. The layered chain adds subtle dimension while maintaining a minimal and classy look, making it an attractive choice for customers who love delicate, pearl-accented jewellery. A charming piece that effortlessly enhances any outfit. ✨",
     "images": [
-      "solystra_assets/products/dual-chain-pearl-bracelet/angle_1.png",
-      "solystra_assets/products/dual-chain-pearl-bracelet/angle_2.jpg"
+      "solystra_assets/products/dual-chain-pearl-bracelet/angle_1.webp",
+      "solystra_assets/products/dual-chain-pearl-bracelet/angle_2.webp"
     ],
     "specs": {
       "Metal Purity": "18K Rose Gold Micron (BIS Certified)",
@@ -1177,9 +1177,9 @@ window.PRODUCTS = [
     ],
     "desc": "Elegant and modern, the Dual Charm Open Ring features a delicate open-band design with two distinctive elements that create a balanced yet eye-catching look. One side showcases a sparkling round cluster detail that adds subtle brilliance, while the other side features a sleek pyramid stud for a bold geometric contrast. Crafted in a rose gold finish , the ring brings a warm and refined touch that enhances its contemporary design. The open structure gives it a light, adjustable feel, making it comfortable for everyday wear while still standing out with its unique dual-element style. Perfect for those who love minimal jewelry with a modern twist, this ring pairs beautifully with other stackable pieces or can be worn alone as a delicate statement. Product Details • Gold Weight: 1.824 grams • Rose gold finish • Open band design • Dual charm detail (pyramid stud and sparkling cluster) • Lightweight and comfortable for daily wear • Ring Size: Standard size (10)— Custom sizes available on request",
     "images": [
-      "solystra_assets/products/dual-charm-open-ring/angle_1.png",
-      "assets/craftsmanship-atelier.jpg",
-      "assets/bento-craftsmanship-macro.jpg"
+      "solystra_assets/products/dual-charm-open-ring/angle_1.webp",
+      "assets/craftsmanship-atelier.webp",
+      "assets/bento-craftsmanship-macro.webp"
     ],
     "specs": {
       "Metal Purity": "18K Rose Gold Micron (BIS Certified)",
@@ -1212,9 +1212,9 @@ window.PRODUCTS = [
     ],
     "desc": "A sleek and modern heart design featuring a contrast of smooth polish and textured detailing, creating a subtle yet eye-catching balance. Product Details: • Crafted in 925 sterling silver • Dual-finish heart pendant – half polished, half textured • Paperclip-style chain detailing for a contemporary touch • High-polish accents for a refined shine • Minimal, modern, and easy-to-style piece • Perfect for everyday wear and layering • Lightweight and comfortable for all-day wear • A cute and thoughtful gift for her, symbolising love with a modern twist",
     "images": [
-      "solystra_assets/products/dual-finish-heart-925-silver-necklace/angle_1.png",
-      "assets/craftsmanship-atelier.jpg",
-      "assets/bento-craftsmanship-macro.jpg"
+      "solystra_assets/products/dual-finish-heart-925-silver-necklace/angle_1.webp",
+      "assets/craftsmanship-atelier.webp",
+      "assets/bento-craftsmanship-macro.webp"
     ],
     "specs": {
       "Metal Purity": "BIS Certified 925 Sterling Silver",
@@ -1247,8 +1247,8 @@ window.PRODUCTS = [
     ],
     "desc": "Two hearts, one story. This delicate ring features intertwined heart motifs — one polished in warm gold and the other softly highlighted with shimmering stones. The subtle contrast creates a beautiful balance of romance and sparkle without feeling overdone. With a gold weight of 1.097 grams , it’s ultra-light and designed for effortless everyday wear. The slim band keeps the look refined and feminine, making it perfect for stacking or wearing alone as a meaningful symbol of love and connection. Minimal in weight, rich in sentiment — a tiny reminder of bonds that matter most. • Ring Size: (16) — Custom sizes available on request",
     "images": [
-      "solystra_assets/products/dual-heart-charm-ring/angle_1.png",
-      "solystra_assets/products/dual-heart-charm-ring/angle_2.jpg"
+      "solystra_assets/products/dual-heart-charm-ring/angle_1.webp",
+      "solystra_assets/products/dual-heart-charm-ring/angle_2.webp"
     ],
     "specs": {
       "Metal Purity": "18K Rose Gold Micron (BIS Certified)",
@@ -1281,9 +1281,9 @@ window.PRODUCTS = [
     ],
     "desc": "Clean lines. Confident presence. Zero overcomplication. This dual-tone band ring features alternating polished rose gold and white gold segments, creating a structured, modern rhythm around the finger. The smooth rectangular links give it a contemporary, almost architectural feel — minimal yet impactful. With a gold weight of 1.913 grams , it’s lightweight but visually bold. Comfortable for daily wear, strong enough to stand alone, and versatile enough to stack. Perfect for someone who loves subtle contrast and sharp design — a refined everyday essential with a modern edge. ✨ • Ring Size: Standard size (13) — Custom sizes available on request",
     "images": [
-      "solystra_assets/products/dual-tone-band-ring/angle_1.png",
-      "assets/craftsmanship-atelier.jpg",
-      "assets/bento-craftsmanship-macro.jpg"
+      "solystra_assets/products/dual-tone-band-ring/angle_1.webp",
+      "assets/craftsmanship-atelier.webp",
+      "assets/bento-craftsmanship-macro.webp"
     ],
     "specs": {
       "Metal Purity": "18K Rose Gold Micron (BIS Certified)",
@@ -1316,9 +1316,9 @@ window.PRODUCTS = [
     ],
     "desc": "Inspired by the beauty of nature, the Earth &amp; Bloom Pendant Set features a graceful floral motif with warm earthy tones and a delicate layered necklace design that creates an effortlessly elegant look. The set combines a dainty solitaire accent on the shorter layer with a beautifully detailed floral pendant on the longer layer, adding depth and sophistication. Complete with matching floral stud earrings , this coordinated set is perfect for everyday elegance as well as special occasions. The set includes a layered 925 sterling silver necklace with a floral pendant and a matching pair of floral stud earrings. Product Specifications Product Name: Earth &amp; Bloom Pendant Set Metal: 925 Sterling Silver Includes: Layered Necklace with Floral Pendant &amp; Matching Stud Earrings Style: Layered | Floral | Contemporary | Nature-Inspired Occasion: Everyday Wear | Office | Brunch | Festive | Gifting Styling Tip Let the layered necklace shine by pairing it with V-neck, sweetheart, or open-neck outfits. Complete the look with the matching floral earrings for a beautifully coordinated finish. Care Tip Store each piece separately in a soft jewellery pouch and avoid contact with perfumes, lotions, water, and harsh chemicals to preserve the sterling silver finish and intricate detailing.",
     "images": [
-      "solystra_assets/products/earth-bloom-pendant-set-925-sterling-silver/angle_1.png",
-      "assets/craftsmanship-atelier.jpg",
-      "assets/bento-craftsmanship-macro.jpg"
+      "solystra_assets/products/earth-bloom-pendant-set-925-sterling-silver/angle_1.webp",
+      "assets/craftsmanship-atelier.webp",
+      "assets/bento-craftsmanship-macro.webp"
     ],
     "specs": {
       "Metal Purity": "BIS Certified 925 Sterling Silver",
@@ -1351,8 +1351,8 @@ window.PRODUCTS = [
     ],
     "desc": "Modern and distinctive, our Edge Hoops feature a unique angular silhouette that adds a bold touch to a classic hoop style. The softly textured finish enhances the warm rose gold tone, creating a subtle shimmer that beautifully catches the light. Their geometric design makes them a standout piece while still remaining elegant and wearable. With a weight of 1.971 grams , these hoops are lightweight and comfortable for all-day styling. Perfect for customers who love contemporary jewellery with a refined edge, they effortlessly elevate both casual and dressy looks. A chic rose gold essential that blends minimalism with personality. ✨",
     "images": [
-      "solystra_assets/products/edge-hoops/angle_1.png",
-      "solystra_assets/products/edge-hoops/angle_2.png"
+      "solystra_assets/products/edge-hoops/angle_1.webp",
+      "solystra_assets/products/edge-hoops/angle_2.webp"
     ],
     "specs": {
       "Metal Purity": "18K Rose Gold Micron (BIS Certified)",
@@ -1385,9 +1385,9 @@ window.PRODUCTS = [
     ],
     "desc": "A refined cross pendant wrapped in a delicate twisted band, creating a unique interplay of structure and fluidity. The subtle sparkle enhances its graceful form, giving it a modern yet timeless presence. Minimal with a statement edge, this piece blends elegance with meaning effortlessly. Product Details: 925 Sterling Silver Lightweight &amp; comfortable Cross pendant with twisted wrap detail Fine stone embellishments for subtle sparkle Minimal, modern design Fine chain with secure closure Gifting Note: A meaningful piece that symbolizes strength with grace — perfect for someone who carries both beautifully.",
     "images": [
-      "solystra_assets/products/elara-twist-925-sterling-silver-necklace/angle_1.png",
-      "assets/craftsmanship-atelier.jpg",
-      "assets/bento-craftsmanship-macro.jpg"
+      "solystra_assets/products/elara-twist-925-sterling-silver-necklace/angle_1.webp",
+      "assets/craftsmanship-atelier.webp",
+      "assets/bento-craftsmanship-macro.webp"
     ],
     "specs": {
       "Metal Purity": "BIS Certified 925 Sterling Silver",
@@ -1420,9 +1420,9 @@ window.PRODUCTS = [
     ],
     "desc": "A delicate statement with a hint of mystery, the Emerald Cat Eye Gold Chain features a finely crafted openwork cat face design accented with striking emerald-green stone eyes. Set on a lightweight gold chain, the pendant brings together playful charm and elegant minimalism. The intricate cut-out detailing keeps the piece airy and modern, making it perfect for everyday wear while still standing out as a unique conversation piece. Subtle yet expressive, this necklace adds a touch of personality to your jewellery collection and layers beautifully with other chains. Product Details • Gold Weight: 1.02 grams • Lightweight everyday design • Emerald-green stone eyes • Minimal openwork pendant style • Ideal for daily wear or layering.",
     "images": [
-      "solystra_assets/products/emrald-cat-eye-chain/angle_1.jpg",
-      "assets/craftsmanship-atelier.jpg",
-      "assets/bento-craftsmanship-macro.jpg"
+      "solystra_assets/products/emrald-cat-eye-chain/angle_1.webp",
+      "assets/craftsmanship-atelier.webp",
+      "assets/bento-craftsmanship-macro.webp"
     ],
     "specs": {
       "Metal Purity": "18K Gold Vermeil (BIS Certified)",
@@ -1455,8 +1455,8 @@ window.PRODUCTS = [
     ],
     "desc": "Modern and meaningful, our Evil Eye Link Bracelet beautifully combines sleek elongated links with delicate evil eye motifs at the center. The subtle mix of tones adds depth and character, while the polished gold finish enhances its refined appeal. Designed to symbolize protection and positivity, this bracelet blends style with significance in the most elegant way. With a gold weight of 3.20 grams , this piece offers a comfortable yet noticeable presence on the wrist. Lightweight enough for everyday wear yet striking enough to stand out, it is perfect for customers who love contemporary jewellery with a touch of symbolism. A stylish protective charm for your fine jewellery collection. ✨",
     "images": [
-      "solystra_assets/products/evil-eye-link-bracelet/angle_1.png",
-      "solystra_assets/products/evil-eye-link-bracelet/angle_2.png"
+      "solystra_assets/products/evil-eye-link-bracelet/angle_1.webp",
+      "solystra_assets/products/evil-eye-link-bracelet/angle_2.webp"
     ],
     "specs": {
       "Metal Purity": "18K Rose Gold Micron (BIS Certified)",
@@ -1489,9 +1489,9 @@ window.PRODUCTS = [
     ],
     "desc": "Elegant and graceful, the Feather Drop Necklace features a delicate feather-inspired pendant that flows beautifully along the neckline. The openwork feather design adds a sense of lightness and movement, while the fine detailing within the pendant enhances its natural, organic look. A small polished gold drop hangs from the tip of the feather, adding a subtle accent that gently catches the light and brings a touch of sophistication to the piece. Suspended on a fine chain, the pendant sits comfortably and creates a refined, minimal statement. Inspired by the softness and freedom of a feather, this necklace blends modern elegance with nature-inspired design. Its delicate structure makes it perfect for everyday wear, whether styled alone or layered with other necklaces for a more curated look. Product Details • Gold Weight: 3.55 grams • Feather-inspired pendant design • Fine chain necklace • Polished drop accent detail • Lightweight and comfortable for daily wear",
     "images": [
-      "solystra_assets/products/feather-drop-necklace/angle_1.jpg",
-      "assets/craftsmanship-atelier.jpg",
-      "assets/bento-craftsmanship-macro.jpg"
+      "solystra_assets/products/feather-drop-necklace/angle_1.webp",
+      "assets/craftsmanship-atelier.webp",
+      "assets/bento-craftsmanship-macro.webp"
     ],
     "specs": {
       "Metal Purity": "18K Gold Vermeil (BIS Certified)",
@@ -1524,9 +1524,9 @@ window.PRODUCTS = [
     ],
     "desc": "Delicate, refined, and effortlessly elegant, the Fine Box Rose Gold Chain is designed for those who appreciate minimal sophistication. Crafted with sleek box-style links, this chain creates a smooth, structured silhouette that reflects light beautifully while maintaining a subtle and graceful appearance. The warm rose gold tone adds a soft feminine touch, making it perfect for everyday wear. Its fine and lightweight design allows it to sit elegantly on the neckline, whether worn on its own for a minimal look or paired with a pendant for a personalized style. A timeless essential, this chain blends simplicity with modern elegance, making it a versatile addition to any jewellery collection. Product Details • Length: 16 inches • Gold Weight: 1.620 grams • Rose gold finish • Fine box link design • Lightweight and ideal for daily wear",
     "images": [
-      "solystra_assets/products/fine-box-rose-gold-chain/angle_1.jpg",
-      "assets/craftsmanship-atelier.jpg",
-      "assets/bento-craftsmanship-macro.jpg"
+      "solystra_assets/products/fine-box-rose-gold-chain/angle_1.webp",
+      "assets/craftsmanship-atelier.webp",
+      "assets/bento-craftsmanship-macro.webp"
     ],
     "specs": {
       "Metal Purity": "18K Rose Gold Micron (BIS Certified)",
@@ -1559,8 +1559,8 @@ window.PRODUCTS = [
     ],
     "desc": "A refined take on classic hoops, the Flora Band Hoops feature intricate floral-inspired detailing set against a smooth gold band. The delicate black enamel accents create beautiful contrast, highlighting the elegant pattern and adding a touch of vintage charm. The openwork interior reflects fine Italian craftsmanship, giving the piece both structure and lightness. With a gold weight of 1.880 grams , these hoops feel comfortable and easy to wear while still offering distinctive character. Perfect for those who love subtle artistry in their jewellery, this Italian-made pair blends tradition and modern styling in one graceful design. ✨",
     "images": [
-      "solystra_assets/products/flora-band-hoops/angle_1.png",
-      "solystra_assets/products/flora-band-hoops/angle_2.png"
+      "solystra_assets/products/flora-band-hoops/angle_1.webp",
+      "solystra_assets/products/flora-band-hoops/angle_2.webp"
     ],
     "specs": {
       "Metal Purity": "18K Gold Vermeil (BIS Certified)",
@@ -1593,9 +1593,9 @@ window.PRODUCTS = [
     ],
     "desc": "Add a touch of delicate charm to your steps with the Floral Crystal Anklet Set. Crafted from gleaming 925 sterling silver, this elegant pair features a fine, dainty box chain interspersed with five beautifully crafted floral stations. Each flower is composed of clustered, sparkling clear crystals that catch the light with every movement. Finished with a secure lobster clasp and an adjustable extender chain for a customized fit, these matching anklets offer a subtle yet sophisticated accent, making them the perfect finishing touch for both summer ensembles and everyday wear. Product Specifications Product Name: Floral Crystal Anklet Set (Pair) Metal: 925 Sterling Silver Stones: Clear Round-Cut Crystals Includes: 2 x Matching Floral Anklets Closure: Secure Lobster Clasp with Adjustable Extender Chain Style: Floral | Delicate | Minimalist | Summer Essential Occasion: Beach Days | Vacations | Casual Outings | Gifting Styling Tip Wear one anklet on each ankle for a balanced, symmetrical look, or stack them together on one ankle for a more layered, boho-chic vibe. They pair beautifully with cropped pants, flowy skirts, summer dresses, or barefoot beachwear. Care Tip Gently wipe the silver and crystals with a soft, dry cloth after each wear. Store each anklet separately or in a lined jewelry pouch to avoid tangling. Keep away from perfumes, lotions, and harsh chemicals to preserve the sterling silver finish and maintain the sparkle of the crystals.",
     "images": [
-      "solystra_assets/products/floral-crystal-anklet-set-925-sterling-silver/angle_1.png",
-      "assets/craftsmanship-atelier.jpg",
-      "assets/bento-craftsmanship-macro.jpg"
+      "solystra_assets/products/floral-crystal-anklet-set-925-sterling-silver/angle_1.webp",
+      "assets/craftsmanship-atelier.webp",
+      "assets/bento-craftsmanship-macro.webp"
     ],
     "specs": {
       "Metal Purity": "BIS Certified 925 Sterling Silver",
@@ -1628,9 +1628,9 @@ window.PRODUCTS = [
     ],
     "desc": "A soft, organic heart-shaped pendant with a frosted texture that gives it a delicate, almost melted-silver look. The subtle uneven edges add character, making it feel raw yet refined. Minimal and expressive, it’s a piece that stands out quietly with its unique finish. Product Details: 925 Sterling Silver Lightweight &amp; comfortable Textured frosted heart pendant Organic, slightly irregular shape Soft matte-meets-polished finish Fine, minimal chain Gifting Note: A gentle reminder of love in its most real form—imperfect, honest, and beautifully yours. ✨",
     "images": [
-      "solystra_assets/products/frosted-heart-925-silver-necklace/angle_1.png",
-      "assets/craftsmanship-atelier.jpg",
-      "assets/bento-craftsmanship-macro.jpg"
+      "solystra_assets/products/frosted-heart-925-silver-necklace/angle_1.webp",
+      "assets/craftsmanship-atelier.webp",
+      "assets/bento-craftsmanship-macro.webp"
     ],
     "specs": {
       "Metal Purity": "BIS Certified 925 Sterling Silver",
@@ -1663,9 +1663,9 @@ window.PRODUCTS = [
     ],
     "desc": "A modern take on a timeless symbol, the Fusion Heart Ring features two intertwined heart-inspired curves brought together by a sleek, stone-studded band. Its fluid silhouette creates an elegant balance of sparkle and polished gold, making it a graceful statement for everyday wear. Product Specifications Product Name: Fusion Heart Ring Metal: 18K BIS Hallmarked Gold Gross Weight: 1.960 g Net Weight: 1.925 g Style: Contemporary | Elegant | Statement Occasion: Everyday Wear | Office | Brunch | Evening Styling Tip Pair it with a delicate gold bracelet or wear it as a standalone statement piece for an effortlessly refined look. Care Tip Store in a soft pouch when not in use and avoid contact with perfumes, lotions, and harsh chemicals to preserve its shine and finish.",
     "images": [
-      "solystra_assets/products/fusion-heart-ring/angle_1.png",
-      "assets/craftsmanship-atelier.jpg",
-      "assets/bento-craftsmanship-macro.jpg"
+      "solystra_assets/products/fusion-heart-ring/angle_1.webp",
+      "assets/craftsmanship-atelier.webp",
+      "assets/bento-craftsmanship-macro.webp"
     ],
     "specs": {
       "Metal Purity": "18K Gold Vermeil (BIS Certified)",
@@ -1698,9 +1698,9 @@ window.PRODUCTS = [
     ],
     "desc": "Sleek and contemporary, our Hexa Charm Bracelet features a beautifully crafted hexagon centerpiece accented with delicate sparkling stones. The geometric design adds a modern edge, while the fine dual-chain detailing enhances its elegance and balance. The warm gold finish gives it a refined glow, making it a perfect blend of minimal and statement styling. With a gold weight of 2.712 grams , this bracelet is lightweight and comfortable for everyday wear. Its clean lines and subtle brilliance make it an attractive choice for customers who appreciate modern, delicate jewellery with a touch of sparkle. A stylish addition to any fine gold collection.",
     "images": [
-      "solystra_assets/products/geometric-radiance-hexagon-bracelet/angle_1.jpg",
-      "solystra_assets/products/geometric-radiance-hexagon-bracelet/angle_2.png",
-      "solystra_assets/products/geometric-radiance-hexagon-bracelet/angle_3.png"
+      "solystra_assets/products/geometric-radiance-hexagon-bracelet/angle_1.webp",
+      "solystra_assets/products/geometric-radiance-hexagon-bracelet/angle_2.webp",
+      "solystra_assets/products/geometric-radiance-hexagon-bracelet/angle_3.webp"
     ],
     "specs": {
       "Metal Purity": "18K Rose Gold Micron (BIS Certified)",
@@ -1733,8 +1733,8 @@ window.PRODUCTS = [
     ],
     "desc": "Inspired by a blooming wildflower meadow, the Golden Meadow Necklace Set showcases an elegant arrangement of intricately textured floral motifs in warm dual-tone finishes. Delicate petals with fine engraved detailing are beautifully paired with polished sterling silver accents, creating a design that feels graceful, artistic, and timeless. The statement necklace is perfectly complemented by a pair of matching floral drop earrings , making this coordinated set ideal for adding a sophisticated touch to both everyday and occasion wear. The set includes a 925 sterling silver statement necklace and a matching pair of floral drop earrings. Product Specifications Product Name: Golden Meadow Necklace Set Metal: 925 Sterling Silver Includes: Statement Necklace &amp; Matching Floral Drop Earrings Style: Floral | Nature-Inspired | Contemporary | Dual-Tone Occasion: Festive | Wedding | Brunch | Evening Wear | Gifting Styling Tip Pair it with solid-colored outfits or elegant ethnic wear to let the intricate floral details stand out. Wear the necklace and matching earrings together for a polished, coordinated look. Care Tip Store each piece separately in a soft jewellery pouch and avoid exposure to perfumes, lotions, water, and harsh chemicals to preserve the sterling silver finish and the intricate floral detailing.",
     "images": [
-      "solystra_assets/products/golden-meadow-necklace-set-925-sterling-silver/angle_1.png",
-      "solystra_assets/products/golden-meadow-necklace-set-925-sterling-silver/angle_2.png"
+      "solystra_assets/products/golden-meadow-necklace-set-925-sterling-silver/angle_1.webp",
+      "solystra_assets/products/golden-meadow-necklace-set-925-sterling-silver/angle_2.webp"
     ],
     "specs": {
       "Metal Purity": "18K Gold Vermeil (BIS Certified)",
@@ -1767,9 +1767,9 @@ window.PRODUCTS = [
     ],
     "desc": "Timeless and refined, the Greek Pattern Band Ring features a sleek band detailed with a classic Greek key pattern that wraps seamlessly around the ring. The geometric motif adds a subtle architectural touch, giving the piece a sophisticated and structured look while maintaining a minimal aesthetic. The slim profile makes the ring elegant and versatile, allowing it to blend effortlessly with both modern and classic jewelry styles. Its clean lines and continuous pattern create a balanced design that stands out without being overpowering. Lightweight and comfortable, this ring is perfect for everyday wear. It can be worn alone as a minimal statement band or layered with other rings to create a stylish stacked look. Product Details • Gold Weight: 0.610 grams • Ring Size: 12 • Classic Greek key pattern design • Slim band profile • Suitable for solo wear or layering • Lightweight and comfortable for daily wear.",
     "images": [
-      "solystra_assets/products/greek-pattern-band-ring/angle_1.png",
-      "assets/craftsmanship-atelier.jpg",
-      "assets/bento-craftsmanship-macro.jpg"
+      "solystra_assets/products/greek-pattern-band-ring/angle_1.webp",
+      "assets/craftsmanship-atelier.webp",
+      "assets/bento-craftsmanship-macro.webp"
     ],
     "specs": {
       "Metal Purity": "18K Gold Vermeil (BIS Certified)",
@@ -1802,9 +1802,9 @@ window.PRODUCTS = [
     ],
     "desc": "Bold heritage meets contemporary shine in these striking dual-tone hoop earrings. Designed with a classic Greek key motif running through the center, the textured yellow gold detailing contrasts beautifully against the smooth white gold borders — creating depth, dimension, and unmistakable character. With a gold weight of 2.870 grams , these hoops offer a solid yet comfortable feel, making them perfect for everyday luxury or statement styling. The structured silhouette and intricate engraving add a refined edge, ideal for those who appreciate timeless patterns with a modern finish. A powerful blend of tradition and sophistication — made to stand out effortlessly.",
     "images": [
-      "solystra_assets/products/greek-pattern-hoops/angle_1.png",
-      "solystra_assets/products/greek-pattern-hoops/angle_2.png",
-      "solystra_assets/products/greek-pattern-hoops/angle_3.jpg"
+      "solystra_assets/products/greek-pattern-hoops/angle_1.webp",
+      "solystra_assets/products/greek-pattern-hoops/angle_2.webp",
+      "solystra_assets/products/greek-pattern-hoops/angle_3.webp"
     ],
     "specs": {
       "Metal Purity": "18K Gold Vermeil (BIS Certified)",
@@ -1837,9 +1837,9 @@ window.PRODUCTS = [
     ],
     "desc": "A modern, asymmetrical necklace featuring a heart and halo detail with a delicate drop charm for an elegant yet statement look. Product Details: • Crafted in 925 sterling silver • Dual-chain design (paperclip + fine chain) • Open heart motif linked with a halo ring element • Drop-down chain with polished heart charm • Clean, polished finish for a subtle shine • Lightweight and comfortable for daily wear • Contemporary, minimal statement style • Perfect for layering or wearing solo",
     "images": [
-      "solystra_assets/products/heart-and-halo-drop-925-silver-necklace/angle_1.jpg",
-      "solystra_assets/products/heart-and-halo-drop-925-silver-necklace/angle_1.png",
-      "solystra_assets/products/heart-and-halo-drop-925-silver-necklace/angle_2.jpg"
+      "solystra_assets/products/heart-and-halo-drop-925-silver-necklace/angle_1.webp",
+      "solystra_assets/products/heart-and-halo-drop-925-silver-necklace/angle_1.webp",
+      "solystra_assets/products/heart-and-halo-drop-925-silver-necklace/angle_2.webp"
     ],
     "specs": {
       "Metal Purity": "BIS Certified 925 Sterling Silver",
@@ -1872,9 +1872,9 @@ window.PRODUCTS = [
     ],
     "desc": "Delicate, feminine, and effortlessly stylish, the Heart Charm Hoops are designed to add a touch of romance to your everyday look. Each polished gold hoop is adorned with a smooth, three-dimensional heart charm that catches the light beautifully, creating a subtle yet eye‑catching shine. Their minimalist design makes them easy to pair with any outfit, from casual daytime looks to elegant evening ensembles, making them a versatile staple in your jewelry collection. Weighing just 0.590 grams, these hoops are exceptionally lightweight, ensuring all‑day comfort without pulling on the earlobes. Despite their featherlight feel, they retain a refined, premium appearance that instantly elevates your style. Ideal for daily wear or as a charming gift, Heart Charm Hoops offer the perfect balance of comfort, elegance, and modern appeal that customers love.",
     "images": [
-      "solystra_assets/products/heart-charm-hoop/angle_1.png",
-      "assets/craftsmanship-atelier.jpg",
-      "assets/bento-craftsmanship-macro.jpg"
+      "solystra_assets/products/heart-charm-hoop/angle_1.webp",
+      "assets/craftsmanship-atelier.webp",
+      "assets/bento-craftsmanship-macro.webp"
     ],
     "specs": {
       "Metal Purity": "18K Gold Vermeil (BIS Certified)",
@@ -1907,9 +1907,9 @@ window.PRODUCTS = [
     ],
     "desc": "Delicate and romantic, the Heart Charm Layered Necklace features two graceful chains adorned with sparkling heart-shaped accents and a vibrant pink heart at the center. The layered silhouette and floating charms create a playful yet elegant look, making it perfect for everyday styling or special moments. Product Specifications Product Name: Heart Charm Layered Necklace Metal: 18K BIS Hallmarked Gold Gross Weight: 4.680 g Net Weight: 4.465 g Style: Layered | Romantic | Contemporary Occasion: Everyday Wear | Date Night | Brunch | Party | Gifting Styling Tip Wear it with a sweetheart or V-neck neckline and pair it with simple heart studs for a coordinated, elegant look. Care Tip Store flat in a soft jewellery pouch to prevent tangling, and avoid contact with perfumes, lotions, and harsh chemicals to maintain its shine and brilliance.",
     "images": [
-      "solystra_assets/products/heart-charm-layered-necklace/angle_1.png",
-      "assets/craftsmanship-atelier.jpg",
-      "assets/bento-craftsmanship-macro.jpg"
+      "solystra_assets/products/heart-charm-layered-necklace/angle_1.webp",
+      "assets/craftsmanship-atelier.webp",
+      "assets/bento-craftsmanship-macro.webp"
     ],
     "specs": {
       "Metal Purity": "18K Gold Vermeil (BIS Certified)",
@@ -1942,8 +1942,8 @@ window.PRODUCTS = [
     ],
     "desc": "The Intertwined Heart Set features a delicate open double-heart design with a subtle stud detail placed gracefully in between — adding just the right touch of sparkle. The pendant rests softly along the neckline, while the matching earrings mirror the same romantic silhouette for a perfectly coordinated look. The design blends polished gold curves with a fine shimmering accent at the centre, symbolising connection, love, and closeness. Elegant yet minimal, it’s crafted to feel light, feminine, and easy to wear from day to evening. Chain + Pendant Weight: 3.732 grams Earrings Weight: 1.595 grams Total Set Gold Weight: 5.327 grams Refined, meaningful, and effortlessly graceful — this is the kind of set that becomes part of your everyday story. ✨",
     "images": [
-      "solystra_assets/products/heart-stone-pendant-stone/angle_1.png",
-      "solystra_assets/products/heart-stone-pendant-stone/angle_2.png"
+      "solystra_assets/products/heart-stone-pendant-stone/angle_1.webp",
+      "solystra_assets/products/heart-stone-pendant-stone/angle_2.webp"
     ],
     "specs": {
       "Metal Purity": "18K Rose Gold Micron (BIS Certified)",
@@ -1976,9 +1976,9 @@ window.PRODUCTS = [
     ],
     "desc": "A timeless symbol of endless connection and continuity, this bracelet features a sleek infinity motif designed with a modern minimal touch. Its refined structure and subtle shine make it perfect for everyday elegance. Product Details: • Gross Weight: 2.139 grams • Net Weight: 2.102 grams • Crafted in 18K gold • Infinity motif design symbolizing eternity • Fine chain with a delicate and elegant look • Smooth polished finish • Lightweight and comfortable for daily wear • Perfect for gifting or everyday styling",
     "images": [
-      "solystra_assets/products/infinity-bracelet/angle_1.png",
-      "assets/craftsmanship-atelier.jpg",
-      "assets/bento-craftsmanship-macro.jpg"
+      "solystra_assets/products/infinity-bracelet/angle_1.webp",
+      "assets/craftsmanship-atelier.webp",
+      "assets/bento-craftsmanship-macro.webp"
     ],
     "specs": {
       "Metal Purity": "18K Rose Gold Micron (BIS Certified)",
@@ -2011,9 +2011,9 @@ window.PRODUCTS = [
     ],
     "desc": "A delicate blend of sparkle, colour, and modern romance, the Infinity Charm Ring is designed to stand out with graceful charm. Featuring an elegant infinity-inspired loop motif paired with a vivid crimson heart-shaped stone and a fine studded accent, this ring brings together softness and statement in one refined design. Set in a rose gold finish , its warm tone beautifully complements the rich pop of colour, making it a lovely choice for both everyday elegance and special gifting. Feminine, modern, and eye-catching, this ring adds a romantic touch to any jewellery collection. Product Details • Gross Weight: 1.224 grams • Net Weight: 1.190 grams • Finish: Rose gold • Infinity-inspired design • Heart-shaped crimson centre stone • Studded accent for added sparkle • Lightweight and comfortable for daily wear Ring size: Standard size (11) ; other custom sizes can be made on order",
     "images": [
-      "solystra_assets/products/infinity-charm-ring/angle_1.jpg",
-      "assets/craftsmanship-atelier.jpg",
-      "assets/bento-craftsmanship-macro.jpg"
+      "solystra_assets/products/infinity-charm-ring/angle_1.webp",
+      "assets/craftsmanship-atelier.webp",
+      "assets/bento-craftsmanship-macro.webp"
     ],
     "specs": {
       "Metal Purity": "18K Rose Gold Micron (BIS Certified)",
@@ -2046,9 +2046,9 @@ window.PRODUCTS = [
     ],
     "desc": "A modern take on a timeless symbol, this bracelet features a sleek infinity motif paired with a dual chain design for added depth and style. Finished in elegant rose gold, it offers a soft, feminine glow perfect for everyday wear. Product Details: • Gross Weight: 2.79 grams • Net Weight: 2.79 grams • Crafted in 18K gold • Rose gold finish for a warm, elegant tone • Infinity motif symbolizing continuity and connection • Dual chain design for a layered look • Smooth polished finish • Lightweight and comfortable for daily wear • Perfect for stacking or wearing as a statement piece",
     "images": [
-      "solystra_assets/products/infinity-dual-chain-bracelet/angle_1.png",
-      "assets/craftsmanship-atelier.jpg",
-      "assets/bento-craftsmanship-macro.jpg"
+      "solystra_assets/products/infinity-dual-chain-bracelet/angle_1.webp",
+      "assets/craftsmanship-atelier.webp",
+      "assets/bento-craftsmanship-macro.webp"
     ],
     "specs": {
       "Metal Purity": "18K Rose Gold Micron (BIS Certified)",
@@ -2081,11 +2081,11 @@ window.PRODUCTS = [
     ],
     "desc": "A graceful bracelet featuring alternating heart and circle links, creating a soft and elegant rhythm with subtle sparkle accents. Product Details: • Crafted in 925 sterling silver • Alternating heart and circular link design • Textured and stone-accented elements for added shine • Polished finish with a refined look • Lightweight and comfortable for daily wear • Feminine, elegant, and slightly statement style • Perfect for occasions or everyday styling",
     "images": [
-      "solystra_assets/products/interlinked-heart-circle-bracelet-925-silver/angle_1.jpg",
-      "solystra_assets/products/interlinked-heart-circle-bracelet-925-silver/angle_2.jpg",
-      "solystra_assets/products/interlinked-heart-circle-bracelet-925-silver/angle_2.png",
-      "solystra_assets/products/interlinked-heart-circle-bracelet-925-silver/angle_3.jpg",
-      "solystra_assets/products/interlinked-heart-circle-bracelet-925-silver/angle_3.png"
+      "solystra_assets/products/interlinked-heart-circle-bracelet-925-silver/angle_1.webp",
+      "solystra_assets/products/interlinked-heart-circle-bracelet-925-silver/angle_2.webp",
+      "solystra_assets/products/interlinked-heart-circle-bracelet-925-silver/angle_2.webp",
+      "solystra_assets/products/interlinked-heart-circle-bracelet-925-silver/angle_3.webp",
+      "solystra_assets/products/interlinked-heart-circle-bracelet-925-silver/angle_3.webp"
     ],
     "specs": {
       "Metal Purity": "BIS Certified 925 Sterling Silver",
@@ -2118,9 +2118,9 @@ window.PRODUCTS = [
     ],
     "desc": "A modern minimal piece featuring two interlinked oval forms that symbolize connection and flow. Designed for effortless everyday elegance, this pendant comes paired with a sleek chain for a complete, ready-to-wear look. Product Details: • Total Gold Weight: 4.10 grams • (Combined weight of chain and pendant) • Crafted in 18K gold • Interlinked oval design for a contemporary aesthetic • Pendant and chain sold together as a set • Smooth polished finish for a refined shine • Lightweight yet statement-worthy • Perfect for daily wear, layering, or gifting",
     "images": [
-      "solystra_assets/products/interloop-oval-pendant-with-chain/angle_1.png",
-      "assets/craftsmanship-atelier.jpg",
-      "assets/bento-craftsmanship-macro.jpg"
+      "solystra_assets/products/interloop-oval-pendant-with-chain/angle_1.webp",
+      "assets/craftsmanship-atelier.webp",
+      "assets/bento-craftsmanship-macro.webp"
     ],
     "specs": {
       "Metal Purity": "18K Gold Vermeil (BIS Certified)",
@@ -2153,9 +2153,9 @@ window.PRODUCTS = [
     ],
     "desc": "A refined bracelet featuring dual interlocked oval motifs with delicate stone detailing, creating a graceful blend of structure and sparkle. Product Details: • Crafted in 925 sterling silver • Intertwined oval centerpiece design • Accented with fine pavé stones for subtle shimmer • Balanced with sleek bar connectors for a modern look • Smooth, high-polish finish for a premium shine • Elegant, minimal, and statement-ready style • Suitable for both everyday wear and occasions • Lightweight and comfortable on the wrist • Secure clasp closure for easy wear",
     "images": [
-      "solystra_assets/products/intertwined-oval-spark-925-silver-bracelet/angle_1.jpg",
-      "solystra_assets/products/intertwined-oval-spark-925-silver-bracelet/angle_1.png",
-      "solystra_assets/products/intertwined-oval-spark-925-silver-bracelet/angle_2.jpg"
+      "solystra_assets/products/intertwined-oval-spark-925-silver-bracelet/angle_1.webp",
+      "solystra_assets/products/intertwined-oval-spark-925-silver-bracelet/angle_1.webp",
+      "solystra_assets/products/intertwined-oval-spark-925-silver-bracelet/angle_2.webp"
     ],
     "specs": {
       "Metal Purity": "BIS Certified 925 Sterling Silver",
@@ -2188,9 +2188,9 @@ window.PRODUCTS = [
     ],
     "desc": "A minimal yet meaningful piece featuring a delicate lock pendant with a subtle stone detail at its center. Symbolizing commitment, trust, and a bond that stays, this necklace carries a quiet emotional depth while maintaining a clean, everyday aesthetic. Its fine chain and compact design make it effortless to style across looks. A thoughtful piece to gift her when you want to say “I’m yours, always.” Product Details: 925 Sterling Silver Lightweight &amp; comfortable for daily wear Lock motif with subtle stone detailing Fine, minimal chain design Secure clasp closure Perfect for layering or wearing solo A thoughtful piece to gift her when you want to say “I’m yours, always.”",
     "images": [
-      "solystra_assets/products/keep-me-locked-925-sterling-silver-necklace/angle_1.png",
-      "assets/craftsmanship-atelier.jpg",
-      "assets/bento-craftsmanship-macro.jpg"
+      "solystra_assets/products/keep-me-locked-925-sterling-silver-necklace/angle_1.webp",
+      "assets/craftsmanship-atelier.webp",
+      "assets/bento-craftsmanship-macro.webp"
     ],
     "specs": {
       "Metal Purity": "BIS Certified 925 Sterling Silver",
@@ -2223,8 +2223,8 @@ window.PRODUCTS = [
     ],
     "desc": "Romantic and meaningful, our Key to My Heart Bracelet features delicate heart charms paired with finely detailed key motifs, symbolizing love, trust, and connection. The sleek gold chain enhances the playful yet elegant design, creating a charming piece that feels both sentimental and stylish. Its polished finish gives it a soft shine that beautifully complements everyday and occasion wear. With a gold weight of 3.39 grams , this bracelet offers a graceful presence while remaining comfortable for all-day wear. Lightweight yet eye-catching, it is perfect for customers who love jewellery with emotional value and timeless appeal. A beautiful expression of love wrapped in fine gold craftsmanship.",
     "images": [
-      "solystra_assets/products/key-to-my-heart/angle_1.png",
-      "solystra_assets/products/key-to-my-heart/angle_2.png"
+      "solystra_assets/products/key-to-my-heart/angle_1.webp",
+      "solystra_assets/products/key-to-my-heart/angle_2.webp"
     ],
     "specs": {
       "Metal Purity": "18K Gold Vermeil (BIS Certified)",
@@ -2257,9 +2257,9 @@ window.PRODUCTS = [
     ],
     "desc": "A refined pendant featuring a delicate key design topped with a radiant circular detail, subtly accented with fine stones for a soft sparkle. Symbolizing access to the heart and meaningful connections, this piece blends minimal elegance with emotional depth. Its sleek silhouette makes it perfect for effortless, everyday wear. A beautiful piece to gift her when she holds the key to everything that matters. Product Details: 925 Sterling Silver Lightweight &amp; comfortable for daily wear Key motif with radiant stone detailing Fine, minimal chain design Secure clasp closure Perfect for layering or wearing solo A beautiful piece to gift her when she holds the key to everything that matters.",
     "images": [
-      "solystra_assets/products/key-to-you-925-sterling-silver-necklace/angle_1.png",
-      "assets/craftsmanship-atelier.jpg",
-      "assets/bento-craftsmanship-macro.jpg"
+      "solystra_assets/products/key-to-you-925-sterling-silver-necklace/angle_1.webp",
+      "assets/craftsmanship-atelier.webp",
+      "assets/bento-craftsmanship-macro.webp"
     ],
     "specs": {
       "Metal Purity": "BIS Certified 925 Sterling Silver",
@@ -2292,8 +2292,8 @@ window.PRODUCTS = [
     ],
     "desc": "Flirty and expressive, this pendant features a delicate lips motif adorned with subtle sparkle, capturing the essence of playful confidence. The sleek silhouette and shimmering finish make it a standout yet wearable piece, perfect for adding a touch of bold femininity to your look. Product Details: 925 Sterling Silver Lightweight &amp; comfortable Lips-shaped charm with fine stone detailing Subtle sparkle with polished finish Chic, playful design Perfect for everyday styling Gifting Note: A little kiss of confidence—perfect for someone who owns their charm effortlessly.",
     "images": [
-      "solystra_assets/products/kiss-charm-925-sterling-silver-necklace/angle_1.jpg",
-      "solystra_assets/products/kiss-charm-925-sterling-silver-necklace/angle_2.png"
+      "solystra_assets/products/kiss-charm-925-sterling-silver-necklace/angle_1.webp",
+      "solystra_assets/products/kiss-charm-925-sterling-silver-necklace/angle_2.webp"
     ],
     "specs": {
       "Metal Purity": "BIS Certified 925 Sterling Silver",
@@ -2326,9 +2326,9 @@ window.PRODUCTS = [
     ],
     "desc": "Exude timeless sophistication with the Knot Pearl Drop Earrings. Crafted from high-polish 925 sterling silver, these exquisite earrings feature a delicate, intertwined knot design pavé-set with brilliant clear crystals. A slender, crystal-studded bar gracefully descends from the knot, culminating in a lustrous, perfectly round white pearl drop that adds a classic, refined touch. Combining modern crystal glamour with the traditional elegance of pearls, these earrings offer a graceful, eye-catching sway that beautifully frames the face for any special occasion. Product Specifications Product Name: Knot Pearl Drop Earrings Metal: 925 Sterling Silver Stones: Clear Round-Cut Crystals Gemstone: Lustrous White Pearl Drop Closure: Secure Push-Back/Butterfly Post Style: Knot Motif | Pearl Drops | Elegant | Glamorous Occasion: Weddings | Formal Events | Anniversary Dinners | Cocktail Parties | Gifting Styling Tip Let these graceful drop earrings take center stage by sweeping your hair back into an elegant updo or low chignon. They pair beautifully with silks, satins, and evening gowns, or add a touch of luxe sophistication to a simple white blouse. Care Tip Gently wipe the sterling silver and crystals with a soft, dry cloth. Store separately in a lined jewelry pouch to prevent tangling or scratching the pearls. Avoid direct contact with perfumes, hairsprays, and harsh chemicals, as these can dull the silver finish, cloud the crystals, and damage the delicate pearl luster.",
     "images": [
-      "solystra_assets/products/knot-pearl-drop-earrings/angle_1.png",
-      "assets/craftsmanship-atelier.jpg",
-      "assets/bento-craftsmanship-macro.jpg"
+      "solystra_assets/products/knot-pearl-drop-earrings/angle_1.webp",
+      "assets/craftsmanship-atelier.webp",
+      "assets/bento-craftsmanship-macro.webp"
     ],
     "specs": {
       "Metal Purity": "BIS Certified 925 Sterling Silver",
@@ -2361,9 +2361,9 @@ window.PRODUCTS = [
     ],
     "desc": "Embrace delicate charm with the Lavender Wreath Necklace Set. Crafted from polished 925 sterling silver, this enchanting design features a cascading floral wreath pendant suspended gracefully from a fine box chain. The pendant is adorned with intricately pavé-set clear and soft lavender crystals, forming beautiful star-shaped blossoms that bloom across overlapping silver rings. Accompanying the necklace is a pair of matching crystal-studded flower stud earrings, creating a beautifully coordinated look. This set strikes the perfect balance between whimsical nature-inspired beauty and refined sophistication. The set includes a 925 sterling silver pendant necklace and a matching pair of floral stud earrings. Product Specifications Product Name: Lavender Wreath Necklace Set Metal: 925 Sterling Silver Stones: Clear &amp; Lavender Round-Cut Crystals (Pavé Set) Includes: Floral Wreath Pendant Necklace &amp; Matching Floral Stud Earrings Style: Floral Wreath | Pavé Setting | Whimsical | Elegant Occasion: Brunch | Garden Parties | Casual Wear | Date Nights | Gifting Styling Tip Allow the intricate floral wreath to stand out by pairing this set with solid-colored necklines, such as crisp white, soft grey, or pale pinks. The dangling pendant looks particularly stunning against scoop or deep V-neck tops. Care Tip Store the necklace and earrings separately in a lined jewelry pouch to prevent the fine chain from tangling and to protect the delicate crystals. Gently wipe with a soft, dry cloth after wear. Avoid exposure to perfumes, hairsprays, and harsh chemicals to maintain the sterling silver shine and the brilliant pavé setting.",
     "images": [
-      "solystra_assets/products/lavender-wreath-necklace-set-925-sterling-silver/angle_1.png",
-      "assets/craftsmanship-atelier.jpg",
-      "assets/bento-craftsmanship-macro.jpg"
+      "solystra_assets/products/lavender-wreath-necklace-set-925-sterling-silver/angle_1.webp",
+      "assets/craftsmanship-atelier.webp",
+      "assets/bento-craftsmanship-macro.webp"
     ],
     "specs": {
       "Metal Purity": "BIS Certified 925 Sterling Silver",
@@ -2396,9 +2396,9 @@ window.PRODUCTS = [
     ],
     "desc": "Sleek, polished, and undeniably refined — the Linear Luxe Bangle is designed for those who appreciate clean lines and quiet luxury. Its smooth rose gold silhouette wraps gracefully around the wrist, highlighted by a modern central link detail that adds structure and character without overpowering the design. Minimal in form, yet strong in presence. With a gold weight of 4.19 grams , this bangle offers a luxurious feel while maintaining comfortable wearability. The rigid bangle style gives it a premium finish, making it perfect as a standalone statement or paired with delicate bracelets for a layered look. A sophisticated rose gold essential that speaks elegance in the most effortless way.",
     "images": [
-      "solystra_assets/products/linear-luxe-bangle/angle_1.png",
-      "assets/craftsmanship-atelier.jpg",
-      "assets/bento-craftsmanship-macro.jpg"
+      "solystra_assets/products/linear-luxe-bangle/angle_1.webp",
+      "assets/craftsmanship-atelier.webp",
+      "assets/bento-craftsmanship-macro.webp"
     ],
     "specs": {
       "Metal Purity": "18K Rose Gold Micron (BIS Certified)",
@@ -2431,9 +2431,9 @@ window.PRODUCTS = [
     ],
     "desc": "Minimal yet distinctive, the Link Band Rose Gold Ring features a sleek chain-inspired design that wraps gracefully around the finger. The interlocking link pattern creates a modern, fluid look that feels both delicate and stylish. Crafted in a soft rose gold tone, this ring adds a subtle warmth and elegance to everyday styling. Its lightweight and refined structure makes it comfortable for daily wear while still standing out with its unique linked silhouette. Perfect for stacking or wearing on its own, this ring brings a contemporary edge to a classic minimalist aesthetic. Product Details • Gold Weight: 1.445 grams • Ring Size: Standard size (13)— Custom sizes available on request • Rose gold finish • Link-style band design • Lightweight and comfortable for everyday wear",
     "images": [
-      "solystra_assets/products/link-band-ring/angle_1.png",
-      "assets/craftsmanship-atelier.jpg",
-      "assets/bento-craftsmanship-macro.jpg"
+      "solystra_assets/products/link-band-ring/angle_1.webp",
+      "assets/craftsmanship-atelier.webp",
+      "assets/bento-craftsmanship-macro.webp"
     ],
     "specs": {
       "Metal Purity": "18K Rose Gold Micron (BIS Certified)",
@@ -2466,9 +2466,9 @@ window.PRODUCTS = [
     ],
     "desc": "Link Chain Bracelet – Ultra Lightweight Sleek, structured, and strikingly minimal — this link chain bracelet is designed for effortless everyday styling. The alternating geometric links create a subtle rhythm across the wrist, blending modern edge with refined simplicity. Weighing just 0.690 grams , it’s exceptionally lightweight, making it perfect for all-day wear. Ideal for layering with other bracelets or wearing solo for a clean, understated look. A delicate piece with contemporary Italian-inspired detailing — proof that luxury doesn’t have to feel heavy. ✨",
     "images": [
-      "solystra_assets/products/link-chain-bracelet/angle_1.png",
-      "assets/craftsmanship-atelier.jpg",
-      "assets/bento-craftsmanship-macro.jpg"
+      "solystra_assets/products/link-chain-bracelet/angle_1.webp",
+      "assets/craftsmanship-atelier.webp",
+      "assets/bento-craftsmanship-macro.webp"
     ],
     "specs": {
       "Metal Purity": "18K Gold Vermeil (BIS Certified)",
@@ -2501,8 +2501,8 @@ window.PRODUCTS = [
     ],
     "desc": "A subtle expression of love, the Linked Hearts Bracelet brings together three open-heart motifs delicately spaced along a fine 18K gold chain. The design feels airy and graceful, with tiny gold bead accents adding a soft rhythm and balance to the piece. Its minimal silhouette makes it effortlessly modern while still carrying a romantic essence. Weighing just 1.18 grams , this bracelet is beautifully lightweight — almost feather-soft on the wrist. It’s perfect for everyday wear, whether styled alone for a refined look or layered with other delicate pieces. An understated yet meaningful design for those who appreciate fine gold jewellery with a sentimental touch. ✨",
     "images": [
-      "solystra_assets/products/linked-hearts-chain-bracelet/angle_1.png",
-      "solystra_assets/products/linked-hearts-chain-bracelet/angle_2.jpg"
+      "solystra_assets/products/linked-hearts-chain-bracelet/angle_1.webp",
+      "solystra_assets/products/linked-hearts-chain-bracelet/angle_2.webp"
     ],
     "specs": {
       "Metal Purity": "18K Gold Vermeil (BIS Certified)",
@@ -2535,9 +2535,9 @@ window.PRODUCTS = [
     ],
     "desc": "Charming and playful, this adorable robot-inspired pendant features a tiny heart at its center, symbolizing love with a fun, modern twist. With its delicate detailing and subtle sparkle, it adds a quirky yet meaningful touch to your everyday style. Product Details: 925 Sterling Silver Lightweight &amp; comfortable Cute robot motif with heart detail Fine stone accents for soft sparkle Polished, minimal finish Fun and unique everyday piece Gifting Note: For the one who loves a little differently—cute, strong, and full of heart. 🤍✨",
     "images": [
-      "solystra_assets/products/little-love-bot-925-sterling-silver-necklace/angle_1.jpg",
-      "solystra_assets/products/little-love-bot-925-sterling-silver-necklace/angle_1.png",
-      "solystra_assets/products/little-love-bot-925-sterling-silver-necklace/angle_2.png"
+      "solystra_assets/products/little-love-bot-925-sterling-silver-necklace/angle_1.webp",
+      "solystra_assets/products/little-love-bot-925-sterling-silver-necklace/angle_1.webp",
+      "solystra_assets/products/little-love-bot-925-sterling-silver-necklace/angle_2.webp"
     ],
     "specs": {
       "Metal Purity": "BIS Certified 925 Sterling Silver",
@@ -2570,9 +2570,9 @@ window.PRODUCTS = [
     ],
     "desc": "A minimal and meaningful design featuring a polished disc engraved with “LOVE” paired with a delicate open heart charm for a soft, romantic touch. Product Details: • Crafted in 925 sterling silver • Dual charm design – engraved “LOVE” disc + open heart motif • Fine, lightweight chain for a delicate look • High-polish finish for a clean shine • Minimal, romantic, and everyday wearable style • Perfect for gifting or daily layering • Comfortable and lightweight for all-day wear",
     "images": [
-      "solystra_assets/products/love-duo-charm-925-silver-necklace/angle_1.png",
-      "assets/craftsmanship-atelier.jpg",
-      "assets/bento-craftsmanship-macro.jpg"
+      "solystra_assets/products/love-duo-charm-925-silver-necklace/angle_1.webp",
+      "assets/craftsmanship-atelier.webp",
+      "assets/bento-craftsmanship-macro.webp"
     ],
     "specs": {
       "Metal Purity": "BIS Certified 925 Sterling Silver",
@@ -2605,9 +2605,9 @@ window.PRODUCTS = [
     ],
     "desc": "A graceful symbol of love that comes full circle, this pendant features a delicate loop design accented with a tiny heart and an arrow detail. The circular form represents endless connection, while the arrow adds a touch of intention and direction—making it both meaningful and effortlessly stylish. Product Details: 925 Sterling Silver Lightweight &amp; comfortable Circular loop with heart and arrow motif Minimal yet meaningful design Smooth polished finish Perfect for everyday wear Gifting Note: A reminder that love always finds its way back—perfect for someone who believes in timeless connections. 💫",
     "images": [
-      "solystra_assets/products/love-loop-necklace-925-sterling-silver/angle_1.png",
-      "assets/craftsmanship-atelier.jpg",
-      "assets/bento-craftsmanship-macro.jpg"
+      "solystra_assets/products/love-loop-necklace-925-sterling-silver/angle_1.webp",
+      "assets/craftsmanship-atelier.webp",
+      "assets/bento-craftsmanship-macro.webp"
     ],
     "specs": {
       "Metal Purity": "BIS Certified 925 Sterling Silver",
@@ -2640,9 +2640,9 @@ window.PRODUCTS = [
     ],
     "desc": "A sleek and minimal drop-style necklace featuring a smooth, curved charm paired with a delicate hanging accent. The fluid silhouette creates a soft, graceful fall on the neckline, making it effortlessly elegant yet modern. Subtle, refined, and quietly eye-catching—perfect for everyday styling. Product Details: 925 Sterling Silver Lightweight &amp; comfortable Unique drop-style pendant design Polished finish with smooth curves Minimal, modern aesthetic Fine chain with secure closure Gifting Note: A little symbol of luck and good energy—perfect for someone you wish beautiful beginnings and effortless wins. ✨",
     "images": [
-      "solystra_assets/products/lucky-drop-925-sterling-silver-necklace/angle_1.png",
-      "assets/craftsmanship-atelier.jpg",
-      "assets/bento-craftsmanship-macro.jpg"
+      "solystra_assets/products/lucky-drop-925-sterling-silver-necklace/angle_1.webp",
+      "assets/craftsmanship-atelier.webp",
+      "assets/bento-craftsmanship-macro.webp"
     ],
     "specs": {
       "Metal Purity": "BIS Certified 925 Sterling Silver",
@@ -2675,9 +2675,9 @@ window.PRODUCTS = [
     ],
     "desc": "Playful, vibrant, and full of meaning — this Lucky Charm Bracelet blends colorful enamel charms with protective evil eye details for a look that feels both trendy and symbolic. The mix of elongated gold links and delicate chain elements creates a stylish contrast, while the heart and clover-inspired accents add a youthful, positive energy to the design. Crafted in fine gold with a weight of 3.570 grams , this bracelet offers a noticeable yet comfortable presence on the wrist. It’s the perfect piece for someone who loves expressive jewellery with personality — easy to style, eye-catching, and believed to carry a touch of luck and protection wherever you go. ✨",
     "images": [
-      "solystra_assets/products/lucky-eye-charm-bracelet/angle_1.png",
-      "assets/craftsmanship-atelier.jpg",
-      "assets/bento-craftsmanship-macro.jpg"
+      "solystra_assets/products/lucky-eye-charm-bracelet/angle_1.webp",
+      "assets/craftsmanship-atelier.webp",
+      "assets/bento-craftsmanship-macro.webp"
     ],
     "specs": {
       "Metal Purity": "18K Rose Gold Micron (BIS Certified)",
@@ -2710,9 +2710,9 @@ window.PRODUCTS = [
     ],
     "desc": "A sleek and modern design featuring elongated marquise-shaped links that create a fluid, elegant silhouette. With subtle stone detailing and a refined finish, this bracelet adds just the right amount of shine to elevate everyday looks. Product Details: • Gross Weight: 2.938 grams • Net Weight: 2.891 grams • Crafted in 18K gold • Marquise-shaped link design with modern appeal • Subtle stone accents for added sparkle • Fine chain with a delicate, structured look • Smooth polished finish • Lightweight and comfortable for daily wear • Perfect for layering or wearing as a statement piece",
     "images": [
-      "solystra_assets/products/marquise-link-bracelet/angle_1.png",
-      "assets/craftsmanship-atelier.jpg",
-      "assets/bento-craftsmanship-macro.jpg"
+      "solystra_assets/products/marquise-link-bracelet/angle_1.webp",
+      "assets/craftsmanship-atelier.webp",
+      "assets/bento-craftsmanship-macro.webp"
     ],
     "specs": {
       "Metal Purity": "18K Gold Vermeil (BIS Certified)",
@@ -2745,8 +2745,8 @@ window.PRODUCTS = [
     ],
     "desc": "Crafted with precision and elegance, our Meander Hoops showcase a timeless Greek key pattern beautifully engraved along the surface, giving them a refined yet bold appeal. Made in Italy, these hoops reflect superior craftsmanship, smooth finishing, and a rich gold shine that instantly elevates any look — whether styled for everyday wear or special occasions. Weighing just 1.840 grams , these earrings are exceptionally lightweight, ensuring all-day comfort without compromising on style. Their sleek, modern design makes them effortlessly attractive and versatile, perfect for customers who love minimal yet statement-making gold jewellery. A delicate addition to your collection that blends sophistication with ease.",
     "images": [
-      "solystra_assets/products/meander-hoops/angle_1.png",
-      "solystra_assets/products/meander-hoops/angle_2.png"
+      "solystra_assets/products/meander-hoops/angle_1.webp",
+      "solystra_assets/products/meander-hoops/angle_2.webp"
     ],
     "specs": {
       "Metal Purity": "18K Gold Vermeil (BIS Certified)",
@@ -2779,9 +2779,9 @@ window.PRODUCTS = [
     ],
     "desc": "A playful and minimal design featuring an abstract, uneven heart form layered with a delicate inner detail, giving it a soft “imperfectly perfect” charm. Product Details: • Crafted in 925 sterling silver • Abstract “messy” heart pendant design • Layered heart detailing with a subtle stone accent • Fine, minimal chain for an elegant look • High-polish finish for a soft shine • Modern, quirky, and romantic style • Perfect for everyday wear and gifting • Lightweight and comfortable for all-day wear",
     "images": [
-      "solystra_assets/products/messy-heart-925-silver-necklace/angle_1.png",
-      "assets/craftsmanship-atelier.jpg",
-      "assets/bento-craftsmanship-macro.jpg"
+      "solystra_assets/products/messy-heart-925-silver-necklace/angle_1.webp",
+      "assets/craftsmanship-atelier.webp",
+      "assets/bento-craftsmanship-macro.webp"
     ],
     "specs": {
       "Metal Purity": "BIS Certified 925 Sterling Silver",
@@ -2814,10 +2814,10 @@ window.PRODUCTS = [
     ],
     "desc": "A refined tennis bracelet elevated with delicate mini heart accents placed seamlessly along a continuous line of shimmering stones. The subtle heart details add just the right touch of softness to an otherwise classic silhouette, making it feel both timeless and feminine. Perfect for those who love understated romance with everyday elegance. Product Details: 925 Sterling Silver Lightweight &amp; comfortable Classic tennis style with mini heart accents Fine, continuous stone setting Secure clasp closure Ideal for both daily wear and occasion styling",
     "images": [
-      "solystra_assets/products/mini-heart-accent-tennis-bracelet-925-silver-bracelet/angle_1.jpg",
-      "solystra_assets/products/mini-heart-accent-tennis-bracelet-925-silver-bracelet/angle_1.png",
-      "solystra_assets/products/mini-heart-accent-tennis-bracelet-925-silver-bracelet/angle_2.jpg",
-      "solystra_assets/products/mini-heart-accent-tennis-bracelet-925-silver-bracelet/angle_2.png"
+      "solystra_assets/products/mini-heart-accent-tennis-bracelet-925-silver-bracelet/angle_1.webp",
+      "solystra_assets/products/mini-heart-accent-tennis-bracelet-925-silver-bracelet/angle_1.webp",
+      "solystra_assets/products/mini-heart-accent-tennis-bracelet-925-silver-bracelet/angle_2.webp",
+      "solystra_assets/products/mini-heart-accent-tennis-bracelet-925-silver-bracelet/angle_2.webp"
     ],
     "specs": {
       "Metal Purity": "BIS Certified 925 Sterling Silver",
@@ -2850,9 +2850,9 @@ window.PRODUCTS = [
     ],
     "desc": "Mini Oval Hoops – 18K Gold Delicate and effortlessly stylish, our Mini Oval Hoops are designed for those who love minimal yet modern jewellery. Featuring a sleek oval silhouette with subtle detailing, these earrings offer a refined look that complements both everyday outfits and elevated ensembles. Crafted in rich 18K gold, they bring a soft, luxurious glow that enhances their timeless appeal. Weighing just 0.740 grams , these hoops are extremely lightweight and comfortable for all-day wear. Their compact size makes them perfect for daily styling, second piercings, or layered ear looks, while still being attractive enough to stand out with elegance. A versatile essential for customers who appreciate fine, minimal gold jewellery. ✨",
     "images": [
-      "solystra_assets/products/mini-oval-hoops/angle_1.png",
-      "assets/craftsmanship-atelier.jpg",
-      "assets/bento-craftsmanship-macro.jpg"
+      "solystra_assets/products/mini-oval-hoops/angle_1.webp",
+      "assets/craftsmanship-atelier.webp",
+      "assets/bento-craftsmanship-macro.webp"
     ],
     "specs": {
       "Metal Purity": "18K Gold Vermeil (BIS Certified)",
@@ -2885,9 +2885,9 @@ window.PRODUCTS = [
     ],
     "desc": "A dreamy celestial piece featuring a shimmering crescent moon paired with a delicate cascading drop of star accents. The soft curve of the moon combined with the vertical fall creates a graceful, eye-catching silhouette that feels both magical and refined. Perfect for adding a subtle sparkle to everyday looks. Product Details: 925 Sterling Silver Lightweight &amp; comfortable Crescent moon with star drop design Fine detailing with subtle sparkle Elegant hanging silhouette Minimal yet statement-worthy Gifting Note: A poetic piece that feels like a quiet moonlit promise —perfect for someone who brings calm, light, and a little magic into your life. ✨",
     "images": [
-      "solystra_assets/products/moon-kiss-drop-925-sterling-silver-necklace/angle_1.png",
-      "assets/craftsmanship-atelier.jpg",
-      "assets/bento-craftsmanship-macro.jpg"
+      "solystra_assets/products/moon-kiss-drop-925-sterling-silver-necklace/angle_1.webp",
+      "assets/craftsmanship-atelier.webp",
+      "assets/bento-craftsmanship-macro.webp"
     ],
     "specs": {
       "Metal Purity": "BIS Certified 925 Sterling Silver",
@@ -2920,9 +2920,9 @@ window.PRODUCTS = [
     ],
     "desc": "A dreamy, celestial-inspired piece featuring a delicate crescent moon adorned with subtle sparkle, paired with dainty star charms that gently dangle across the wrist. The design captures a soft, night-sky elegance while keeping the look minimal and lightweight. Perfect for adding a touch of magic and femininity to everyday styling. Product Details: 925 Sterling Silver Lightweight &amp; comfortable for daily wear Crescent moon with star charm detailing Fine stone accents for subtle sparkle Secure clasp closure Perfect for stacking or wearing solo",
     "images": [
-      "solystra_assets/products/moonlit-wish-bracelet-925-sterling-silver/angle_1.jpg",
-      "assets/craftsmanship-atelier.jpg",
-      "assets/bento-craftsmanship-macro.jpg"
+      "solystra_assets/products/moonlit-wish-bracelet-925-sterling-silver/angle_1.webp",
+      "assets/craftsmanship-atelier.webp",
+      "assets/bento-craftsmanship-macro.webp"
     ],
     "specs": {
       "Metal Purity": "BIS Certified 925 Sterling Silver",
@@ -2955,9 +2955,9 @@ window.PRODUCTS = [
     ],
     "desc": "Playful yet elegant, the Olive Heart Cascade Necklace features two delicate layers with floating heart charms, polished gold beads, and a striking olive-green teardrop pendant. The layered design creates beautiful movement, making it a standout piece for both everyday wear and special occasions. Product Specifications Product Name: Olive Heart Cascade Necklace Metal: 18K BIS Hallmarked Gold Gross Weight: 3.098 g Net Weight: 2.915 g Style: Layered | Romantic | Contemporary Occasion: Everyday Wear | Brunch | Date Night | Evening | Gifting Styling Tip Pair it with a V-neck or sweetheart neckline to highlight the layered chains, or wear it as a statement piece with minimal earrings. Care Tip Store flat in a soft jewellery pouch to prevent tangling, and avoid contact with perfumes, lotions, and harsh chemicals to maintain its shine and the brilliance of the gemstone.",
     "images": [
-      "solystra_assets/products/olive-heart-cascade-necklace/angle_1.png",
-      "assets/craftsmanship-atelier.jpg",
-      "assets/bento-craftsmanship-macro.jpg"
+      "solystra_assets/products/olive-heart-cascade-necklace/angle_1.webp",
+      "assets/craftsmanship-atelier.webp",
+      "assets/bento-craftsmanship-macro.webp"
     ],
     "specs": {
       "Metal Purity": "18K Gold Vermeil (BIS Certified)",
@@ -2990,9 +2990,9 @@ window.PRODUCTS = [
     ],
     "desc": "Light, delicate, and full of meaning — this open heart ring is designed to feel effortless yet expressive. The minimal outline heart sits gracefully on a slim gold band, creating a soft romantic silhouette without any heaviness. With a gold weight of 1.720 grams , it offers a comfortable everyday fit while still making a subtle statement. The open design keeps it airy and modern, perfect for stacking or wearing solo as a symbol of love, self-love, or something personal to you. Simple. Sentimental. Timeless. ✨ • Ring Size: Standard size (13) — Custom sizes available on request",
     "images": [
-      "solystra_assets/products/open-heart-ring/angle_1.png",
-      "solystra_assets/products/open-heart-ring/angle_2.jpg",
-      "solystra_assets/products/open-heart-ring/angle_2.png"
+      "solystra_assets/products/open-heart-ring/angle_1.webp",
+      "solystra_assets/products/open-heart-ring/angle_2.webp",
+      "solystra_assets/products/open-heart-ring/angle_2.webp"
     ],
     "specs": {
       "Metal Purity": "18K Rose Gold Micron (BIS Certified)",
@@ -3025,9 +3025,9 @@ window.PRODUCTS = [
     ],
     "desc": "Delicate and romantic, the Open Heart Studded Ring features a graceful heart-shaped centerpiece designed with a beautiful open form that gives it a light and elegant look. One side of the heart is accented with fine sparkling stones, while the other side is finished in smooth polished metal, creating a balanced contrast that feels both modern and feminine. Crafted in a rose gold finish , the ring has a warm and refined glow that enhances its soft heart silhouette. The slim band keeps the design minimal and comfortable, making it ideal for everyday wear while still adding a subtle statement to your jewellery collection. Elegant on its own and easy to pair with other delicate rings, this piece is perfect for those who love romantic jewellery with a contemporary touch. Product Details • Gross Weight: 1.161 grams • Net Gold Weight: 1.140 grams • Rose gold finish • Open heart motif with studded detailing • Slim and elegant band design • Lightweight and comfortable for daily wear • Ring Size: (14)— Custom sizes available on request",
     "images": [
-      "solystra_assets/products/open-heart-studded-ring/angle_1.png",
-      "assets/craftsmanship-atelier.jpg",
-      "assets/bento-craftsmanship-macro.jpg"
+      "solystra_assets/products/open-heart-studded-ring/angle_1.webp",
+      "assets/craftsmanship-atelier.webp",
+      "assets/bento-craftsmanship-macro.webp"
     ],
     "specs": {
       "Metal Purity": "18K Rose Gold Micron (BIS Certified)",
@@ -3060,9 +3060,9 @@ window.PRODUCTS = [
     ],
     "desc": "Open heart studs Description Elegant in their simplicity, the Open Heart Studs celebrate timeless love with a modern silhouette. Featuring a delicate open-heart design adorned with sparkling cubic zirconia, these earrings are crafted in 18K BIS Hallmarked Gold for effortless everyday elegance. Lightweight and refined, they're the perfect finishing touch for everything from office looks to special occasions. Product Details Metal: 18K BIS Hallmarked Gold Gross Weight: 2.003 g Net Weight: 1.948 g Finish: High Polish Closure: Screw Back Style: Everyday • Office • Party • Occasion Wear Skin Friendly Lightweight &amp; Comfortable Gifting Note A timeless symbol of love, beautifully crafted to be cherished every day.",
     "images": [
-      "solystra_assets/products/open-heart-studs/angle_1.png",
-      "assets/craftsmanship-atelier.jpg",
-      "assets/bento-craftsmanship-macro.jpg"
+      "solystra_assets/products/open-heart-studs/angle_1.webp",
+      "assets/craftsmanship-atelier.webp",
+      "assets/bento-craftsmanship-macro.webp"
     ],
     "specs": {
       "Metal Purity": "18K Gold Vermeil (BIS Certified)",
@@ -3095,9 +3095,9 @@ window.PRODUCTS = [
     ],
     "desc": "Elegant in form and beautifully minimal, this open marquise set features a sleek teardrop-inspired silhouette finished with polished gold bead accents at the base. The open design keeps it airy and contemporary, making it perfect for both everyday wear and light festive styling. The smooth high-polish finish reflects light effortlessly, giving the set a refined glow without any added stones — pure gold, clean design, timeless appeal. Total Gold Weight: 2.08 grams (Weight mentioned is the combined total of the pendant and earrings. Chain is not included.) Simple. Sculptural. Sophisticated. ✨",
     "images": [
-      "solystra_assets/products/open-marquise-set/angle_1.png",
-      "assets/craftsmanship-atelier.jpg",
-      "assets/bento-craftsmanship-macro.jpg"
+      "solystra_assets/products/open-marquise-set/angle_1.webp",
+      "assets/craftsmanship-atelier.webp",
+      "assets/bento-craftsmanship-macro.webp"
     ],
     "specs": {
       "Metal Purity": "18K Gold Vermeil (BIS Certified)",
@@ -3130,9 +3130,9 @@ window.PRODUCTS = [
     ],
     "desc": "The Open Triangle Stud Earrings feature a bold geometric silhouette softened with shimmering AD stones, creating the perfect blend of contemporary design and timeless elegance. Crafted in 18K BIS Hallmarked Gold, these lightweight studs are made to effortlessly elevate your everyday style. Product Details Metal: 18K BIS Hallmarked Gold Gross Weight: 2.310 g Net Weight: 2.277 g Stone: AD Stones Finish: High Polish Closure: Screw Back Style: Everyday • Office • Party • Occasion Wear Skin Friendly Lightweight &amp; Comfortable Styling Tip Pair these geometric studs with a sleek gold chain or a structured outfit for a modern, effortlessly chic look. Care Instructions Store in a soft jewellery pouch when not in use. Avoid contact with perfumes, lotions, and harsh chemicals. Remove before swimming or exercising, and gently wipe with a soft cloth after every wear to maintain its shine. Gifting Note A modern statement piece designed for those who love effortless elegance. ✨",
     "images": [
-      "solystra_assets/products/open-triangle-studs/angle_1.png",
-      "assets/craftsmanship-atelier.jpg",
-      "assets/bento-craftsmanship-macro.jpg"
+      "solystra_assets/products/open-triangle-studs/angle_1.webp",
+      "assets/craftsmanship-atelier.webp",
+      "assets/bento-craftsmanship-macro.webp"
     ],
     "specs": {
       "Metal Purity": "18K Gold Vermeil (BIS Certified)",
@@ -3165,9 +3165,9 @@ window.PRODUCTS = [
     ],
     "desc": "A romantic celestial design featuring a heart at the center, gently encircled by a shimmering orbit ring. Accented with delicate star details, this piece captures movement, emotion, and connection in a beautifully balanced form. Subtle yet expressive, it adds a soft, dreamy charm to any look. Product Details: 925 Sterling Silver Lightweight &amp; comfortable Heart with orbit ring design Fine stone detailing for subtle sparkle Star accents on chain and pendant Elegant everyday statement piece Gifting Note: A meaningful piece that says your love is my center —perfect for someone who your world naturally revolves around. ✨",
     "images": [
-      "solystra_assets/products/orbit-of-love-925-sterling-silver-necklace/angle_1.png",
-      "assets/craftsmanship-atelier.jpg",
-      "assets/bento-craftsmanship-macro.jpg"
+      "solystra_assets/products/orbit-of-love-925-sterling-silver-necklace/angle_1.webp",
+      "assets/craftsmanship-atelier.webp",
+      "assets/bento-craftsmanship-macro.webp"
     ],
     "specs": {
       "Metal Purity": "BIS Certified 925 Sterling Silver",
@@ -3200,9 +3200,9 @@ window.PRODUCTS = [
     ],
     "desc": "A graceful blend of sparkle and structure, these Oval Drop Studs are designed to catch the light with every movement. The delicate oval top is accented with shimmering stones, flowing into a polished lower element that adds depth and dimension. The rose gold tone enhances their warmth, giving the design a refined yet modern appeal. With a gold weight of 1.714 grams , these studs are lightweight while still offering a noticeable presence. Perfect for elevating everyday looks or complementing evening wear, they deliver elegance without feeling heavy. A beautifully balanced piece for those who love subtle glamour in fine gold jewellery. ✨",
     "images": [
-      "solystra_assets/products/oval-drop-studs/angle_1.png",
-      "assets/craftsmanship-atelier.jpg",
-      "assets/bento-craftsmanship-macro.jpg"
+      "solystra_assets/products/oval-drop-studs/angle_1.webp",
+      "assets/craftsmanship-atelier.webp",
+      "assets/bento-craftsmanship-macro.webp"
     ],
     "specs": {
       "Metal Purity": "18K Rose Gold Micron (BIS Certified)",
@@ -3235,9 +3235,9 @@ window.PRODUCTS = [
     ],
     "desc": "Elegant and refined, the Oval Halo Band Ring features a delicate oval centerpiece accented with a halo of sparkling stones that adds subtle brilliance to the design. The sleek band enhances the oval shape, creating a balanced and graceful silhouette that feels both modern and timeless. Crafted in 18KT gold , the ring combines minimal elegance with a hint of sparkle, making it perfect for everyday wear or as a delicate statement piece. The halo detailing catches light beautifully, giving the ring a refined shimmer while maintaining a lightweight and comfortable feel. Its slim band design allows it to be worn effortlessly on its own or paired with other rings for a layered, contemporary look. Product Details • Gross Weight: 0.930 grams • Net Gold Weight: 0.899 grams • Gold Purity: 18KT • Ring Size: 13 (Other sizes can be custom made on order) • Oval halo studded centerpiece • Sleek minimal band design • Lightweight and comfortable for everyday wear Gold (0.899g | 18Kt): ₹ 10922 Making Charges (14%): ₹ 1529 GST @ 3%: ₹ 373 Final Selling Price: ₹ 12824",
     "images": [
-      "solystra_assets/products/oval-halo-band-ring/angle_1.png",
-      "assets/craftsmanship-atelier.jpg",
-      "assets/bento-craftsmanship-macro.jpg"
+      "solystra_assets/products/oval-halo-band-ring/angle_1.webp",
+      "assets/craftsmanship-atelier.webp",
+      "assets/bento-craftsmanship-macro.webp"
     ],
     "specs": {
       "Metal Purity": "18K Gold Vermeil (BIS Certified)",
@@ -3270,11 +3270,11 @@ window.PRODUCTS = [
     ],
     "desc": "A refined statement bracelet featuring alternating oval links with subtle stone detailing, creating a sleek balance of shine and texture. Product Details: • Crafted in 925 sterling silver • Alternating oval and textured circular link design • Select links accented with fine stone detailing for added sparkle • Smooth, high-polish finish for a premium look • Modern, structured, and elegant style • Ideal for both everyday wear and occasion styling • Lightweight yet statement-making design • Secure clasp closure for comfortable wear",
     "images": [
-      "solystra_assets/products/oval-link-925-silver-bracelet/angle_1.jpg",
-      "solystra_assets/products/oval-link-925-silver-bracelet/angle_1.png",
-      "solystra_assets/products/oval-link-925-silver-bracelet/angle_2.jpg",
-      "solystra_assets/products/oval-link-925-silver-bracelet/angle_3.jpg",
-      "solystra_assets/products/oval-link-925-silver-bracelet/angle_3.png"
+      "solystra_assets/products/oval-link-925-silver-bracelet/angle_1.webp",
+      "solystra_assets/products/oval-link-925-silver-bracelet/angle_1.webp",
+      "solystra_assets/products/oval-link-925-silver-bracelet/angle_2.webp",
+      "solystra_assets/products/oval-link-925-silver-bracelet/angle_3.webp",
+      "solystra_assets/products/oval-link-925-silver-bracelet/angle_3.webp"
     ],
     "specs": {
       "Metal Purity": "BIS Certified 925 Sterling Silver",
@@ -3307,9 +3307,9 @@ window.PRODUCTS = [
     ],
     "desc": "Refined, modern, and effortlessly versatile, the Italian Paperclip Link Gold Chain features sleek elongated links inspired by the iconic paperclip silhouette. Crafted with Italian finesse, this chain reflects clean design and exceptional finishing, making it a timeless everyday piece. Its lightweight structure allows it to sit gracefully on the neckline, creating a subtle yet sophisticated statement. The minimal link design makes it perfect to wear alone for a polished look or layered with other necklaces for a more styled appearance. Elegant and contemporary, this chain is a staple addition to any fine jewellery collection. Product Details • Gold Weight: 1.48 grams • Italian chain design • Modern paperclip-style elongated links • Lightweight and comfortable for daily wear • Perfect for layering or wearing on its own",
     "images": [
-      "solystra_assets/products/paperclip-link-chain/angle_1.png",
-      "assets/craftsmanship-atelier.jpg",
-      "assets/bento-craftsmanship-macro.jpg"
+      "solystra_assets/products/paperclip-link-chain/angle_1.webp",
+      "assets/craftsmanship-atelier.webp",
+      "assets/bento-craftsmanship-macro.webp"
     ],
     "specs": {
       "Metal Purity": "18K Gold Vermeil (BIS Certified)",
@@ -3342,8 +3342,8 @@ window.PRODUCTS = [
     ],
     "desc": "Soft, feminine, and effortlessly elegant, the Pastel Clover Rose Gold Chain features delicate pastel enamel clover charms placed along a fine rose gold chain. The warm rose gold tone beautifully complements the gentle pastel hues, creating a graceful piece that feels both modern and playful. Designed with subtle oval link accents, the necklace adds a refined detail while maintaining a lightweight and delicate appearance. It sits elegantly on the neckline, making it perfect for everyday wear while still offering a unique and charming touch. Whether worn alone for a subtle statement or layered with other necklaces, this piece adds a soft pop of color and warmth to any jewellery collection. Product Details • Gold Weight: 4.3 grams • Rose gold finish • Pastel enamel clover charms • Elegant oval link accents • Perfect for layering or wearing solo",
     "images": [
-      "solystra_assets/products/pastel-clover-chain/angle_1.jpg",
-      "solystra_assets/products/pastel-clover-chain/angle_2.png"
+      "solystra_assets/products/pastel-clover-chain/angle_1.webp",
+      "solystra_assets/products/pastel-clover-chain/angle_2.webp"
     ],
     "specs": {
       "Metal Purity": "18K Rose Gold Micron (BIS Certified)",
@@ -3376,9 +3376,9 @@ window.PRODUCTS = [
     ],
     "desc": "A modern bracelet featuring elongated rectangular bars with fine stone detailing, creating a clean, structured look with subtle sparkle. Product Details: • Crafted in 925 sterling silver • Elongated bar-style design • Select bars detailed with fine pavé stones • Smooth, high-polish finish for a refined shine • Minimal, structured, and contemporary style • Perfect for everyday wear and layering • Lightweight and comfortable on the wrist • Secure clasp closure for easy wear",
     "images": [
-      "solystra_assets/products/pave-bar-chain-925-silver-bracelet/angle_1.png",
-      "assets/craftsmanship-atelier.jpg",
-      "assets/bento-craftsmanship-macro.jpg"
+      "solystra_assets/products/pave-bar-chain-925-silver-bracelet/angle_1.webp",
+      "assets/craftsmanship-atelier.webp",
+      "assets/bento-craftsmanship-macro.webp"
     ],
     "specs": {
       "Metal Purity": "BIS Certified 925 Sterling Silver",
@@ -3411,9 +3411,9 @@ window.PRODUCTS = [
     ],
     "desc": "Modern minimalism meets brilliant sparkle with the Pavé Link Slider Bracelet. Crafted from polished 925 sterling silver, this contemporary piece features a series of interlocking paperclip-style links, each densely pavé-set with sparkling clear crystals for a stunning, light-catching effect. The design is framed by a fine, sleek box chain and finished with an adjustable sliding bead mechanism, allowing you to effortlessly customize the fit to any wrist size. Combining urban chain aesthetics with delicate glamour, this bracelet is the ultimate versatile accessory for daily wear. Product Specifications Product Name: Pavé Link Slider Bracelet Metal: 925 Sterling Silver Stones: Clear Round-Cut Crystals (Pavé Set) Closure: Adjustable Sliding Bead Mechanism (Bolo/Slider Style) Style: Paperclip Link | Pavé Setting | Modern | Minimalist Glam Occasion: Casual Chic | Office Wear | Weekend Outings | Gifting Styling Tip Stack it loosely with a sleek silver watch or wear it snugly solo for a chic, modern wrist look. Care Tip Gently wipe with a soft, dry cloth to maintain the bright silver finish. Store in a lined jewelry pouch away from other pieces to prevent the crystals from scratching. Avoid direct contact with perfumes, lotions, and harsh chemicals to protect the sterling silver and keep the pavé crystals brilliantly sparkling.",
     "images": [
-      "solystra_assets/products/pave-link-slider-bracelet-925-sterling-silver/angle_1.png",
-      "assets/craftsmanship-atelier.jpg",
-      "assets/bento-craftsmanship-macro.jpg"
+      "solystra_assets/products/pave-link-slider-bracelet-925-sterling-silver/angle_1.webp",
+      "assets/craftsmanship-atelier.webp",
+      "assets/bento-craftsmanship-macro.webp"
     ],
     "specs": {
       "Metal Purity": "BIS Certified 925 Sterling Silver",
@@ -3446,9 +3446,9 @@ window.PRODUCTS = [
     ],
     "desc": "Delicate and romantic, the Dual Heart Bracelet features two beautifully crafted heart motifs placed side by side on a fine chain, symbolizing connection and harmony. One heart is designed in a smooth polished finish, while the other features a soft white pearly finish that adds a gentle contrast and subtle elegance to the piece. Crafted with a rose gold finish , the bracelet has a warm and refined glow that enhances its feminine and minimal aesthetic. The combination of polished metal and pearly detailing creates a balanced look that feels both modern and timeless. Lightweight and elegant, this bracelet sits comfortably on the wrist, making it perfect for everyday wear. It can be worn alone for a soft, minimal look or layered with other bracelets for a more styled stack. Product Details • Gold Weight: 1.92 grams • Rose gold finish • Dual heart motif design • One polished heart &amp; one white pearly finish heart • Fine lightweight chain bracelet • Elegant and comfortable for daily wear",
     "images": [
-      "solystra_assets/products/pearl-heart-chain-bracelet/angle_1.png",
-      "assets/craftsmanship-atelier.jpg",
-      "assets/bento-craftsmanship-macro.jpg"
+      "solystra_assets/products/pearl-heart-chain-bracelet/angle_1.webp",
+      "assets/craftsmanship-atelier.webp",
+      "assets/bento-craftsmanship-macro.webp"
     ],
     "specs": {
       "Metal Purity": "18K Gold Vermeil (BIS Certified)",
@@ -3481,9 +3481,9 @@ window.PRODUCTS = [
     ],
     "desc": "Elegant and effortlessly refined, the Pearl Layered Necklace features two delicate layers—one adorned with luminous freshwater pearls and the other accented with bezel-set stones. The layered silhouette creates a graceful, contemporary look that transitions seamlessly from day to evening. Product Specifications Product Name: Pearl Layered Necklace Metal: 18K BIS Hallmarked Gold Gross Weight: 3.328 g Net Weight: 2.969 g Style: Layered | Elegant | Contemporary Occasion: Everyday Wear | Office | Brunch | Evening | Gifting Styling Tip Pair it with a V-neck or scoop-neck outfit to highlight the layered design, or wear it on its own for an effortlessly elegant look. Care Tip Store flat in a soft jewellery pouch to prevent tangling, and keep away from perfumes, lotions, and moisture to preserve the finish and the natural beauty of t",
     "images": [
-      "solystra_assets/products/pearl-layered-necklace/angle_1.png",
-      "assets/craftsmanship-atelier.jpg",
-      "assets/bento-craftsmanship-macro.jpg"
+      "solystra_assets/products/pearl-layered-necklace/angle_1.webp",
+      "assets/craftsmanship-atelier.webp",
+      "assets/bento-craftsmanship-macro.webp"
     ],
     "specs": {
       "Metal Purity": "18K Gold Vermeil (BIS Certified)",
@@ -3516,10 +3516,10 @@ window.PRODUCTS = [
     ],
     "desc": "Pinned With Love 925 Silver Necklace Description: A sleek safety-pin inspired pendant reimagined with a refined sparkle finish, symbolizing protection wrapped in affection. The clean silhouette paired with delicate stone detailing creates a modern yet meaningful piece that stands out effortlessly. Minimal, edgy, and elegant — perfect for everyday styling or layering. Product Details: 925 Sterling Silver Lightweight &amp; comfortable for daily wear Safety-pin inspired pendant with subtle stone detailing Minimal, modern aesthetic Fine chain with secure closure Gifting Note: A sweet and meaningful way to say “I’ll always hold you close” — perfect for someone who means everything to you.",
     "images": [
-      "solystra_assets/products/pinned-with-love-925-silver-necklace/angle_1.jpg",
-      "solystra_assets/products/pinned-with-love-925-silver-necklace/angle_1.png",
-      "solystra_assets/products/pinned-with-love-925-silver-necklace/angle_2.jpg",
-      "solystra_assets/products/pinned-with-love-925-silver-necklace/angle_2.png"
+      "solystra_assets/products/pinned-with-love-925-silver-necklace/angle_1.webp",
+      "solystra_assets/products/pinned-with-love-925-silver-necklace/angle_1.webp",
+      "solystra_assets/products/pinned-with-love-925-silver-necklace/angle_2.webp",
+      "solystra_assets/products/pinned-with-love-925-silver-necklace/angle_2.webp"
     ],
     "specs": {
       "Metal Purity": "BIS Certified 925 Sterling Silver",
@@ -3552,9 +3552,9 @@ window.PRODUCTS = [
     ],
     "desc": "A fun and expressive bracelet featuring a mix of cute, character-inspired charms, each detailed with subtle stone accents for a hint of sparkle. The delicate chain keeps it lightweight while the varied motifs add personality and movement to the piece. Designed to feel youthful, quirky, and effortlessly stylish. Product Details: 925 Sterling Silver Lightweight &amp; comfortable for daily wear Multi-charm design with fine stone detailing Secure clasp closure Perfect for stacking or wearing solo",
     "images": [
-      "solystra_assets/products/playful-charm-story-925-sterling-silver-bracelet/angle_1.png",
-      "assets/craftsmanship-atelier.jpg",
-      "assets/bento-craftsmanship-macro.jpg"
+      "solystra_assets/products/playful-charm-story-925-sterling-silver-bracelet/angle_1.webp",
+      "assets/craftsmanship-atelier.webp",
+      "assets/bento-craftsmanship-macro.webp"
     ],
     "specs": {
       "Metal Purity": "BIS Certified 925 Sterling Silver",
@@ -3587,9 +3587,9 @@ window.PRODUCTS = [
     ],
     "desc": "A bold geometric design with a modern edge, the Prism Halo Ring features a sleek pyramid centerpiece enclosed within a sparkling open halo. The split band adds depth and elegance, making it a standout piece that effortlessly blends contemporary style with everyday sophistication. Product Specifications Product Name: Prism Halo Ring Metal: 18K BIS Hallmarked Gold Gross Weight: 3.005 g Net Weight: 2.883 g Style: Contemporary | Geometric | Statement Occasion: Everyday Wear | Office | Evening | Special Occasions Styling Tip Let this ring be the focal point by pairing it with sleek gold bands or wearing it solo for a modern, refined look. Care Tip Store separately in a soft jewellery pouch and avoid contact with perfumes, lotions, and harsh chemicals to maintain its shine and finish.",
     "images": [
-      "solystra_assets/products/prism-halo-ring/angle_1.png",
-      "assets/craftsmanship-atelier.jpg",
-      "assets/bento-craftsmanship-macro.jpg"
+      "solystra_assets/products/prism-halo-ring/angle_1.webp",
+      "assets/craftsmanship-atelier.webp",
+      "assets/bento-craftsmanship-macro.webp"
     ],
     "specs": {
       "Metal Purity": "18K Gold Vermeil (BIS Certified)",
@@ -3622,8 +3622,8 @@ window.PRODUCTS = [
     ],
     "desc": "Bold with a touch of sophistication, the Radiant Buckle Bracelet reimagines the classic buckle silhouette with shimmering stone detailing and a sleek sterling silver finish. Its elegant design makes it a statement piece that effortlessly elevates both everyday and occasion wear. Product Specifications Product Name: Radiant Buckle Bracelet Metal: 925 Sterling Silver Style: Bangle Bracelet | Contemporary | Statement Occasion: Everyday Wear | Office | Evening | Party | Gifting Styling Tip Wear it on its own for a refined statement or stack it with sleek silver bangles and a watch for a modern layered look. Care Tip Store in a soft jewellery pouch after use and avoid exposure to perfumes, lotions, water, and harsh chemicals to maintain its shine.",
     "images": [
-      "solystra_assets/products/radiant-buckle-925-sterling-silver-bracelet/angle_1.png",
-      "solystra_assets/products/radiant-buckle-925-sterling-silver-bracelet/angle_2.png"
+      "solystra_assets/products/radiant-buckle-925-sterling-silver-bracelet/angle_1.webp",
+      "solystra_assets/products/radiant-buckle-925-sterling-silver-bracelet/angle_2.webp"
     ],
     "specs": {
       "Metal Purity": "BIS Certified 925 Sterling Silver",
@@ -3656,9 +3656,9 @@ window.PRODUCTS = [
     ],
     "desc": "A delicate symbol of love and brilliance, this bracelet features a heart motif adorned with subtle sparkle, designed to catch the light beautifully. Its refined silhouette and minimal chain make it perfect for effortless everyday elegance. Product Details: • Gross Weight: 2.724 grams • Net Weight: 2.643 grams • Crafted in 18K gold • Heart motif with sparkling stone detailing • Fine chain bracelet with an adjustable fit • Smooth polished finish with radiant shine • Lightweight and comfortable for daily wear • Perfect for gifting or adding a touch of sparkle to any look",
     "images": [
-      "solystra_assets/products/radiant-heart-bracelet/angle_1.png",
-      "assets/craftsmanship-atelier.jpg",
-      "assets/bento-craftsmanship-macro.jpg"
+      "solystra_assets/products/radiant-heart-bracelet/angle_1.webp",
+      "assets/craftsmanship-atelier.webp",
+      "assets/bento-craftsmanship-macro.webp"
     ],
     "specs": {
       "Metal Purity": "18K Rose Gold Micron (BIS Certified)",
@@ -3691,9 +3691,9 @@ window.PRODUCTS = [
     ],
     "desc": "Modern and elegant, the Radiant Sphere Pendant Set features a sleek geometric pendant paired with matching stud earrings for a perfectly coordinated look. The circular design, accented with sparkling details and polished gold finishes, makes this versatile set ideal for both everyday wear and special occasions. The set includes an 18K gold chain, pendant, and a matching pair of stud earrings. Product Specifications Chain &amp; Pendant Metal: 18K BIS Hallmarked Gold Gross Weight: 3.690 g Net Weight: 3.633 g Matching Earrings Metal: 18K BIS Hallmarked Gold Gross Weight: 2.400 g Net Weight: 2.369 g Total Set Weight Total Gross Weight: 6.090 g Total Net Weight: 6.002 g Style: Contemporary | Geometric | Minimalist Occasion: Everyday Wear | Office | Brunch | Evening | Gifting Styling Tip Wear the complete set for a polished, coordinated look, or style the pendant and earrings separately for effortless everyday elegance. Care Tip Store each piece separately in a soft jewellery pouch to prevent scratches, and avoid contact with perfumes, lotions, and harsh chemicals to preserve its shine.",
     "images": [
-      "solystra_assets/products/radiant-sphere-pendant-set/angle_1.png",
-      "assets/craftsmanship-atelier.jpg",
-      "assets/bento-craftsmanship-macro.jpg"
+      "solystra_assets/products/radiant-sphere-pendant-set/angle_1.webp",
+      "assets/craftsmanship-atelier.webp",
+      "assets/bento-craftsmanship-macro.webp"
     ],
     "specs": {
       "Metal Purity": "18K Gold Vermeil (BIS Certified)",
@@ -3726,8 +3726,8 @@ window.PRODUCTS = [
     ],
     "desc": "Wrap your wrist in refined elegance with the Regal Bow Tennis Bracelet. Crafted from lustrous 925 sterling silver, this exquisite piece features a flawless row of brilliant round Swarovski crystals that glisten with every movement. The focal point is a beautifully sculpted bow motif, sparkling with pavé-set clear crystals and accented with striking emerald-green baguette-cut Swarovski stones, adding a sophisticated pop of color. Finished with a secure lobster clasp and an adjustable extender chain, this bracelet perfectly blends classic tennis styling with a touch of royal-inspired charm. Product Specifications Product Name: Regal Bow Tennis Bracelet Metal: 925 Sterling Silver Stones: Swarovski Crystals (Clear Round-Cut &amp; Emerald-Green Baguette-Cut) Closure: Secure Lobster Clasp with Adjustable Extender Chain Style: Tennis | Bow Motif | Classic | Sophisticated Glam Occasion: Cocktail Parties | Formal Events | Weddings | Anniversaries | Gifting Styling Tip Showcase the delicate bow by wearing the bracelet on its own as a statement piece. It pairs effortlessly with cocktail dresses, formal evening gowns, or even a crisp white blouse for a touch of elevated everyday luxury. Care Tip Gently polish with a soft, dry jewelry cloth to keep the sterling silver bright and shiny. Store separately in a padded jewelry pouch to prevent scratches. Avoid exposure to perfumes, lotions, and harsh chemicals to protect the finish and ensure the lasting brilliance of the Swarovski crystals.",
     "images": [
-      "solystra_assets/products/regal-bow-tennis-bracelet-925-sterling-silver/angle_1.png",
-      "solystra_assets/products/regal-bow-tennis-bracelet-925-sterling-silver/angle_2.png"
+      "solystra_assets/products/regal-bow-tennis-bracelet-925-sterling-silver/angle_1.webp",
+      "solystra_assets/products/regal-bow-tennis-bracelet-925-sterling-silver/angle_2.webp"
     ],
     "specs": {
       "Metal Purity": "BIS Certified 925 Sterling Silver",
@@ -3760,9 +3760,9 @@ window.PRODUCTS = [
     ],
     "desc": "A delicate celestial-inspired pendant featuring a central stone encircled by a sleek orbit-like ring. The design beautifully captures movement and balance, creating a soft statement that feels both modern and meaningful. Minimal yet distinctive, it adds a refined touch to everyday styling. Product Details: 925 Sterling Silver Lightweight &amp; comfortable Orbit-inspired circular pendant design Subtle stone detailing at the center Smooth polished finish Elegant fine chain Gifting Note: A thoughtful piece that quietly says “my world revolves around you” —perfect for someone who holds your universe together. ✨",
     "images": [
-      "solystra_assets/products/revolve-around-you-925-sterling-silver-necklace/angle_1.png",
-      "assets/craftsmanship-atelier.jpg",
-      "assets/bento-craftsmanship-macro.jpg"
+      "solystra_assets/products/revolve-around-you-925-sterling-silver-necklace/angle_1.webp",
+      "assets/craftsmanship-atelier.webp",
+      "assets/bento-craftsmanship-macro.webp"
     ],
     "specs": {
       "Metal Purity": "BIS Certified 925 Sterling Silver",
@@ -3795,9 +3795,9 @@ window.PRODUCTS = [
     ],
     "desc": "Delicate, feminine, and full of charm, the Rosé Heart Whisper Ring is designed with a graceful open-heart motif that captures the beauty of soft romance. At its centre sits a sparkling stone that adds just the right touch of brilliance, while the flowing rose gold silhouette keeps the look elegant and refined. Crafted in a rose gold finish , this ring offers a warm, luminous tone that makes it perfect for everyday wear as well as thoughtful gifting. Its lightweight yet expressive design makes it a lovely addition to any jewellery collection. Product Details • Gross Weight: 1.856 grams • Net Weight: 1.851 grams • Finish: Rose gold • Ring Size: 13 • Open-heart design with centre stone • Lightweight and elegant • Ideal for daily wear or gifting Ring size: Size 13 available; other sizes can be made on order.",
     "images": [
-      "solystra_assets/products/rose-heart-whisper-ring/angle_1.jpg",
-      "assets/craftsmanship-atelier.jpg",
-      "assets/bento-craftsmanship-macro.jpg"
+      "solystra_assets/products/rose-heart-whisper-ring/angle_1.webp",
+      "assets/craftsmanship-atelier.webp",
+      "assets/bento-craftsmanship-macro.webp"
     ],
     "specs": {
       "Metal Purity": "18K Rose Gold Micron (BIS Certified)",
@@ -3830,11 +3830,11 @@ window.PRODUCTS = [
     ],
     "desc": "A graceful tennis-style bracelet featuring a seamless row of round-cut shimmering stones, accented with soft rose-toned highlights for a refined touch of color. The alternating sparkle creates a delicate contrast, giving the piece a fresh yet timeless appeal. Elegant and versatile, it’s designed to elevate both everyday looks and special occasions. Product Details: 925 Sterling Silver Lightweight &amp; comfortable for daily wear Round-cut tennis design with rose-toned stone accents Fine, continuous sparkle detailing Secure clasp closure Perfect for stacking or wearing solo",
     "images": [
-      "solystra_assets/products/rose-round-spark-tennis-bracelet-925-sterling-silver/angle_1.jpg",
-      "solystra_assets/products/rose-round-spark-tennis-bracelet-925-sterling-silver/angle_1.png",
-      "solystra_assets/products/rose-round-spark-tennis-bracelet-925-sterling-silver/angle_2.jpg",
-      "solystra_assets/products/rose-round-spark-tennis-bracelet-925-sterling-silver/angle_3.jpg",
-      "solystra_assets/products/rose-round-spark-tennis-bracelet-925-sterling-silver/angle_3.png"
+      "solystra_assets/products/rose-round-spark-tennis-bracelet-925-sterling-silver/angle_1.webp",
+      "solystra_assets/products/rose-round-spark-tennis-bracelet-925-sterling-silver/angle_1.webp",
+      "solystra_assets/products/rose-round-spark-tennis-bracelet-925-sterling-silver/angle_2.webp",
+      "solystra_assets/products/rose-round-spark-tennis-bracelet-925-sterling-silver/angle_3.webp",
+      "solystra_assets/products/rose-round-spark-tennis-bracelet-925-sterling-silver/angle_3.webp"
     ],
     "specs": {
       "Metal Purity": "18K Rose Gold Micron (BIS Certified)",
@@ -3867,9 +3867,9 @@ window.PRODUCTS = [
     ],
     "desc": "Modern, sleek, and effortlessly refined, the Rosé Wave Ring features a sculpted wave-inspired centre that brings a soft sense of movement to its minimal silhouette. The flowing design gives the piece a contemporary edge while keeping it delicate enough for everyday wear. Crafted in a rose gold finish , this ring has a warm, elegant glow that enhances its polished curves beautifully. Its clean lines and lightweight feel make it perfect for stacking, styling solo, or adding a subtle statement to your daily jewellery look. A graceful piece with a modern touch, the Rosé Wave Ring is designed for those who love minimal jewellery with a distinctive twist. Product Details • Gold Weight: 1.47 grams • Finish: Rose gold • Wave-inspired contemporary design • Lightweight and elegant for daily wear • Ideal for stacking or wearing solo Ring size: (14)- other custom sizes can be made on order.",
     "images": [
-      "solystra_assets/products/rose-wave-ring/angle_1.png",
-      "assets/craftsmanship-atelier.jpg",
-      "assets/bento-craftsmanship-macro.jpg"
+      "solystra_assets/products/rose-wave-ring/angle_1.webp",
+      "assets/craftsmanship-atelier.webp",
+      "assets/bento-craftsmanship-macro.webp"
     ],
     "specs": {
       "Metal Purity": "18K Rose Gold Micron (BIS Certified)",
@@ -3902,9 +3902,9 @@ window.PRODUCTS = [
     ],
     "desc": "Graceful and refined, our Round Stud Tops feature a delicate circular design beautifully accented with sparkling stones that add just the right touch of brilliance. The warm rose gold finish enhances their soft glow, creating an elegant balance between shine and sophistication. Their minimal yet eye-catching design makes them perfect for both everyday wear and special occasions. With a gold weight of 1.661 grams , these studs are lightweight and comfortable for long hours of wear. Designed for customers who appreciate subtle luxury, they offer timeless charm while remaining effortlessly stylish. A versatile rose gold essential that adds a hint of sparkle to any look. ✨",
     "images": [
-      "solystra_assets/products/round-stud/angle_1.png",
-      "assets/craftsmanship-atelier.jpg",
-      "assets/bento-craftsmanship-macro.jpg"
+      "solystra_assets/products/round-stud/angle_1.webp",
+      "assets/craftsmanship-atelier.webp",
+      "assets/bento-craftsmanship-macro.webp"
     ],
     "specs": {
       "Metal Purity": "18K Rose Gold Micron (BIS Certified)",
@@ -3937,8 +3937,8 @@ window.PRODUCTS = [
     ],
     "desc": "Elevate your wrist with the timeless elegance of the Ruby Radiance Tennis Bracelet. Crafted in gleaming 925 sterling silver, this piece features a continuous line of brilliant, clear Swarovski crystals that catch the light from every angle. At its heart, three vivid magenta-pink emerald-cut Swarovski stones—each encircled by a delicate pavé halo—create stunning focal points of color and radiant sparkle. Complete with an adjustable extender chain for a perfect, comfortable fit, this bracelet is a sophisticated statement piece that transitions seamlessly from daytime glamour to evening sophistication. Product Specifications Product Name: Ruby Radiance Tennis Bracelet Metal: 925 Sterling Silver Stones: Swarovski Crystals (Clear Round-Cut &amp; Magenta-Pink Emerald-Cut) Closure: Secure Lobster Clasp with Adjustable Extender Chain Style: Tennis | Halo Setting | Classic | Glamorous Occasion: Formal Events | Weddings | Anniversary | Cocktail Party | Gifting Styling Tip Wear it alone to let the vibrant magenta Swarovski stones stand out, or stack it with a sleek silver watch or delicate chain bracelet for a modern, layered wrist stack. It pairs beautifully with both evening gowns and structured office wear. Care Tip Gently polish with a soft, lint-free cloth to maintain the sterling silver shine. Avoid contact with perfumes, lotions, and harsh chemicals. Store in a lined jewelry pouch or box, separate from other pieces, to prevent scratches and preserve the brilliance of the Swarovski crystals.",
     "images": [
-      "solystra_assets/products/ruby-radiance-tennis-bracelet-925-sterling-silver/angle_1.png",
-      "solystra_assets/products/ruby-radiance-tennis-bracelet-925-sterling-silver/angle_2.png"
+      "solystra_assets/products/ruby-radiance-tennis-bracelet-925-sterling-silver/angle_1.webp",
+      "solystra_assets/products/ruby-radiance-tennis-bracelet-925-sterling-silver/angle_2.webp"
     ],
     "specs": {
       "Metal Purity": "BIS Certified 925 Sterling Silver",
@@ -3971,9 +3971,9 @@ window.PRODUCTS = [
     ],
     "desc": "A delicate fusion of elegance and subtle color, this pendant features a radiant circular halo design centered with a striking red accent drop. The soft shimmer of the surrounding stones enhances the richness of the red detail, creating a balanced look that is both refined and eye-catching. Minimal yet distinctive, it adds a graceful pop of color to everyday styling. Product Details: 925 Sterling Silver Lightweight &amp; comfortable Circular halo pendant design Central red accent for a subtle statement Fine stone detailing for soft sparkle Minimal, elegant finish Gifting Note: A symbol of warmth and quiet strength—perfect for someone who carries a touch of boldness in their elegance. ❤️✨",
     "images": [
-      "solystra_assets/products/scarlet-halo-drop-necklace-925-sterling-silver/angle_1.jpg",
-      "assets/craftsmanship-atelier.jpg",
-      "assets/bento-craftsmanship-macro.jpg"
+      "solystra_assets/products/scarlet-halo-drop-necklace-925-sterling-silver/angle_1.webp",
+      "assets/craftsmanship-atelier.webp",
+      "assets/bento-craftsmanship-macro.webp"
     ],
     "specs": {
       "Metal Purity": "BIS Certified 925 Sterling Silver",
@@ -4006,9 +4006,9 @@ window.PRODUCTS = [
     ],
     "desc": "Elegant and expressive, the Love Script Chain features a delicate chain accented with a beautifully crafted “Love” script at the center. The flowing handwritten-style lettering gives the piece a romantic and contemporary feel, making it a meaningful addition to any jewellery collection. The minimalist design allows the script centerpiece to stand out while maintaining a soft and refined look along the neckline. Its lightweight structure makes it perfect for everyday wear, whether worn alone as a subtle statement or layered with other chains for a more styled look. Thoughtfully designed to celebrate affection and connection, this necklace adds a charming and personal touch to any outfit. Product Details • Gold Weight: 3.67 grams • Script-style “Love” centrepiece • Fine chain design • Lightweight and comfortable for daily wear.",
     "images": [
-      "solystra_assets/products/script-chain/angle_1.jpg",
-      "assets/craftsmanship-atelier.jpg",
-      "assets/bento-craftsmanship-macro.jpg"
+      "solystra_assets/products/script-chain/angle_1.webp",
+      "assets/craftsmanship-atelier.webp",
+      "assets/bento-craftsmanship-macro.webp"
     ],
     "specs": {
       "Metal Purity": "18K Gold Vermeil (BIS Certified)",
@@ -4041,9 +4041,9 @@ window.PRODUCTS = [
     ],
     "desc": "Embrace understated luxury with the Sienna Bloom Lariat Set, a beautifully crafted jewelry ensemble featuring a warm dual-tone floral design. The five-petal blossoms showcase rich, earthy caramel and muted mustard enamel with an elegant brushed texture, giving the piece an artisanal, modern charm. A petal on each piece is gracefully dusted with sparkling Swarovski crystals, while the pendant drops down to a sleek baguette-cut crystal at the end, creating a chic, flattering Y-silhouette. Paired with matching floral stud earrings, this set perfectly balances natural inspiration with contemporary refinement. The set includes a 925 sterling silver lariat necklace and a matching pair of floral stud earrings. Product Specifications Product Name: Sienna Bloom Lariat Set Metal: 925 Sterling Silver Stones: Swarovski Crystals (Clear Round-Cut &amp; Baguette-Cut) Includes: Y-Style Lariat Necklace &amp; Matching Floral Stud Earrings Style: Floral | Earthy-Tone | Modern Sophistication | Dual-Tone Occasion: Workwear | Weekend Brunch | Casual Gatherings | Gifting Styling Tip Let the warm enamel tones shine by styling this set with cream, beige, olive green, or terracotta outfits. The lariat drop pairs beautifully with V-necklines, making it an easy statement piece for both casual and dressy ensembles. Care Tip Gently wipe with a soft, dry cloth after each wear. Store the necklace and earrings separately in a jewellery pouch to avoid tangling and scratching. Keep away from perfumes, hairsprays, and harsh chemicals to protect the sterling silver finish and the brilliance of the Swarovski crystals.",
     "images": [
-      "solystra_assets/products/sienna-bloom-lariat-set-925-sterling-silver/angle_1.png",
-      "assets/craftsmanship-atelier.jpg",
-      "assets/bento-craftsmanship-macro.jpg"
+      "solystra_assets/products/sienna-bloom-lariat-set-925-sterling-silver/angle_1.webp",
+      "assets/craftsmanship-atelier.webp",
+      "assets/bento-craftsmanship-macro.webp"
     ],
     "specs": {
       "Metal Purity": "BIS Certified 925 Sterling Silver",
@@ -4076,9 +4076,9 @@ window.PRODUCTS = [
     ],
     "desc": "A timeless symbol of love, the Signature Heart Ring features a delicate heart-shaped cluster set on a sleek, minimal band. Its refined silhouette and subtle sparkle make it perfect for everyday wear, adding a touch of elegance and romance to any look. Product Specifications Product Name: Signature Heart Ring Metal: 18K BIS Hallmarked Gold Gross Weight: 2.540 g Net Weight: 2.395 g Style: Minimal | Romantic | Everyday Occasion: Daily Wear | Office | Date Night | Gifting Styling Tip Wear it solo for a delicate statement or stack it with slim gold bands for a chic layered look. Care Tip Store in a soft jewellery pouch and avoid exposure to perfumes, lotions, and harsh chemicals to preserve its shine and finish.",
     "images": [
-      "solystra_assets/products/signature-heart-ring/angle_1.png",
-      "assets/craftsmanship-atelier.jpg",
-      "assets/bento-craftsmanship-macro.jpg"
+      "solystra_assets/products/signature-heart-ring/angle_1.webp",
+      "assets/craftsmanship-atelier.webp",
+      "assets/bento-craftsmanship-macro.webp"
     ],
     "specs": {
       "Metal Purity": "18K Gold Vermeil (BIS Certified)",
@@ -4111,8 +4111,8 @@ window.PRODUCTS = [
     ],
     "desc": "Understated and effortlessly graceful, this rose gold single chain bracelet is adorned with evenly spaced glossy pearls that create a soft, luminous rhythm along the wrist. The simplicity of the fine chain allows each pearl to stand out, giving the piece a clean and refined aesthetic that feels timeless rather than trendy. With a gold weight of 1.552 grams , it is beautifully lightweight and designed for everyday comfort. Whether worn alone for a subtle feminine touch or layered with other delicate bracelets, this piece adds quiet sophistication and charm to any look. A minimal essential for lovers of elegant, pearl-accented jewellery. ✨",
     "images": [
-      "solystra_assets/products/single-chain-pearl-bracelet/angle_1.png",
-      "solystra_assets/products/single-chain-pearl-bracelet/angle_2.png"
+      "solystra_assets/products/single-chain-pearl-bracelet/angle_1.webp",
+      "solystra_assets/products/single-chain-pearl-bracelet/angle_2.webp"
     ],
     "specs": {
       "Metal Purity": "18K Rose Gold Micron (BIS Certified)",
@@ -4145,9 +4145,9 @@ window.PRODUCTS = [
     ],
     "desc": "✨ Sol Stud Earrings A clean, minimal name that pairs well with your existing names like Celeste Glow , Orbit of Love , and Love Loop . Product Description Meet the Sol Stud Earrings —a timeless pair designed to brighten every look. Featuring a softly sculpted gold silhouette with a sparkling pavé center, these studs strike the perfect balance between modern elegance and everyday versatility. Lightweight, refined, and effortlessly chic, they're the pair you'll reach for from morning meetings to evening celebrations. Product Details Product Name: Sol Stud Earrings Gross Weight: 2.694 g Net Weight: 2.588 g Metal: 18K BIS Hallmarked Gold Finish: High Polish Closure: Push Back Occasion: Everyday • Office • Brunch • Evening Wear A little sunshine for every day. The Sol Stud Earrings feature a radiant pavé center framed by a fluid gold silhouette, making them the perfect pair for effortless everyday elegance.",
     "images": [
-      "solystra_assets/products/sol-stud-earrings/angle_1.png",
-      "assets/craftsmanship-atelier.jpg",
-      "assets/bento-craftsmanship-macro.jpg"
+      "solystra_assets/products/sol-stud-earrings/angle_1.webp",
+      "assets/craftsmanship-atelier.webp",
+      "assets/bento-craftsmanship-macro.webp"
     ],
     "specs": {
       "Metal Purity": "18K Gold Vermeil (BIS Certified)",
@@ -4180,9 +4180,9 @@ window.PRODUCTS = [
     ],
     "desc": "Delicate yet eye-catching, the Spark Cluster Ring features a sleek open-band design finished with a cluster of brilliant round stones. The asymmetrical arrangement creates a modern, floating effect that catches the light beautifully, making it perfect for everyday elegance or effortless stacking. Product Specifications Product Name: Spark Cluster Ring Metal: 18K BIS Hallmarked Gold Gross Weight: 1.578 g Net Weight: 1.462 g Style: Minimal | Contemporary | Stackable Occasion: Everyday Wear | Office | Brunch | Evening Styling Tip Wear it solo for a refined look or stack it with slim gold bands to create a chic, layered ring stack. Care Tip Store separately in a soft pouch and avoid contact with perfumes, lotions, and harsh chemicals to keep its shine intact.",
     "images": [
-      "solystra_assets/products/spark-cluster-ring/angle_1.png",
-      "assets/craftsmanship-atelier.jpg",
-      "assets/bento-craftsmanship-macro.jpg"
+      "solystra_assets/products/spark-cluster-ring/angle_1.webp",
+      "assets/craftsmanship-atelier.webp",
+      "assets/bento-craftsmanship-macro.webp"
     ],
     "specs": {
       "Metal Purity": "18K Gold Vermeil (BIS Certified)",
@@ -4215,9 +4215,9 @@ window.PRODUCTS = [
     ],
     "desc": "A sleek bracelet featuring alternating smooth and stone-studded rounded links, creating a balanced play of shine and texture. Product Details: • Crafted in 925 sterling silver • Alternating polished and stone-studded rounded link design • Fine stone detailing for subtle sparkle • Smooth, high-polish finish for a clean look • Modern, minimal, and versatile style • Suitable for everyday wear and occasion styling • Lightweight and comfortable on the wrist • Secure clasp closure for easy wear",
     "images": [
-      "solystra_assets/products/sparkling-pebble-link-925-silver-bracelet/angle_1.jpg",
-      "assets/craftsmanship-atelier.jpg",
-      "assets/bento-craftsmanship-macro.jpg"
+      "solystra_assets/products/sparkling-pebble-link-925-silver-bracelet/angle_1.webp",
+      "assets/craftsmanship-atelier.webp",
+      "assets/bento-craftsmanship-macro.webp"
     ],
     "specs": {
       "Metal Purity": "BIS Certified 925 Sterling Silver",
@@ -4250,8 +4250,8 @@ window.PRODUCTS = [
     ],
     "desc": "Sleek and sophisticated, the Square Edge Bangle features a clean geometric silhouette with a shimmering pavé front adorned with micro Swarovski stones that beautifully catch the light. Crafted in polished 925 sterling silver, its minimalist yet luxurious design makes it a timeless piece for everyday elegance and special occasions alike. Product Specifications Product Name: Square Edge Bangle Metal: 925 Sterling Silver Stone: Micro Swarovski Stones Style: Bangle | Contemporary | Minimalist Occasion: Everyday Wear | Office | Evening | Party | Gifting Styling Tip Wear it solo for a refined statement or stack it with slim silver bangles and a watch for a chic layered look. Care Tip Store in a soft jewellery pouch after use and avoid exposure to perfumes, lotions, water, and harsh chemicals to preserve the brilliance of the sterling silver and the sparkle of the micro Swarovski stones.",
     "images": [
-      "solystra_assets/products/square-edge-925-sterling-silver-bangle/angle_1.png",
-      "solystra_assets/products/square-edge-925-sterling-silver-bangle/angle_2.png"
+      "solystra_assets/products/square-edge-925-sterling-silver-bangle/angle_1.webp",
+      "solystra_assets/products/square-edge-925-sterling-silver-bangle/angle_2.webp"
     ],
     "specs": {
       "Metal Purity": "BIS Certified 925 Sterling Silver",
@@ -4284,9 +4284,9 @@ window.PRODUCTS = [
     ],
     "desc": "The Square Frame Stud Earrings bring together clean geometry and subtle sparkle in a timeless design. Crafted in 18K Hallmarked Gold with shimmering AD stones, these modern studs are lightweight, elegant, and perfect for elevating your everyday style. Product Details Metal: 18K BIS Hallmarked Gold Gross Weight: 2.000 g Net Weight: 1.882 g Stone: AD Stones Finish: High Polish Closure: Screw Back Style: Everyday • Office • Party • Occasion Wear Skin Friendly Lightweight &amp; Comfortable Styling Tip Pair these studs with a sleek gold chain or stack them with delicate hoops and cuffs for a polished, contemporary ear stack. Care Instructions Store separately in a soft jewellery pouch. Avoid direct contact with perfumes, lotions, and harsh chemicals. Remove before swimming, showering, or exercising. Wipe gently with a soft microfiber cloth after each wear to maintain its shine.",
     "images": [
-      "solystra_assets/products/square-frame-stud-earrings/angle_1.png",
-      "assets/craftsmanship-atelier.jpg",
-      "assets/bento-craftsmanship-macro.jpg"
+      "solystra_assets/products/square-frame-stud-earrings/angle_1.webp",
+      "assets/craftsmanship-atelier.webp",
+      "assets/bento-craftsmanship-macro.webp"
     ],
     "specs": {
       "Metal Purity": "18K Gold Vermeil (BIS Certified)",
@@ -4319,9 +4319,9 @@ window.PRODUCTS = [
     ],
     "desc": "Inspired by a sky full of shimmer, the Starlight Bracelet brings together delicate star and floral-inspired motifs, each detailed with fine texture and sparkle. The evenly spaced charms create a graceful flow across the wrist, giving the piece a light, celestial feel while maintaining a refined gold finish. It’s feminine, intricate, and beautifully balanced in rose gold finish. With a gold weight of 3.51 grams , this bracelet has a noticeable yet elegant presence. Designed to catch the light with every movement, it’s perfect for adding a subtle glow to both day and evening looks. A charming piece for those who love jewellery that feels dreamy, detailed, and effortlessly radiant.",
     "images": [
-      "solystra_assets/products/starlight-bracelet/angle_1.png",
-      "assets/craftsmanship-atelier.jpg",
-      "assets/bento-craftsmanship-macro.jpg"
+      "solystra_assets/products/starlight-bracelet/angle_1.webp",
+      "assets/craftsmanship-atelier.webp",
+      "assets/bento-craftsmanship-macro.webp"
     ],
     "specs": {
       "Metal Purity": "18K Rose Gold Micron (BIS Certified)",
@@ -4354,9 +4354,9 @@ window.PRODUCTS = [
     ],
     "desc": "A dreamy and playful design featuring delicate star and crescent charms that shimmer with every movement. Inspired by the night sky, this bracelet adds a soft celestial touch to your everyday style. Product Details: • Gold Weight: 2.85 grams • Crafted in 18K gold • Star and crescent charm detailing • Fine chain with fluid movement • Polished finish for a subtle shine • Lightweight and comfortable for daily wear • Perfect for layering or wearing as a statement piece",
     "images": [
-      "solystra_assets/products/starlit-charm-bracelet/angle_1.png",
-      "assets/craftsmanship-atelier.jpg",
-      "assets/bento-craftsmanship-macro.jpg"
+      "solystra_assets/products/starlit-charm-bracelet/angle_1.webp",
+      "assets/craftsmanship-atelier.webp",
+      "assets/bento-craftsmanship-macro.webp"
     ],
     "specs": {
       "Metal Purity": "18K Gold Vermeil (BIS Certified)",
@@ -4389,9 +4389,9 @@ window.PRODUCTS = [
     ],
     "desc": "Elegant and refined, the Studded Halo Pendant Set showcases a graceful layered design featuring delicately interlocking circular forms. At the center, a sparkling stone is beautifully framed within a halo-inspired setting, adding a subtle brilliance that enhances the pendant’s contemporary silhouette. The softly overlapping circles create a sense of movement and balance, giving the design a modern yet timeless appeal. Suspended from a fine chain, the pendant rests delicately along the neckline, reflecting light with every movement and adding a touch of understated luxury. Complementing the pendant, the matching stud earrings mirror the same elegant design, creating a harmonious and polished set. Perfect for both everyday sophistication and special occasions, this pendant set blends minimal design with refined detailing for a truly graceful statement. Product Details • Gross Weight: 5.644 grams • Net Gold Weight: 5.459 grams • Weight includes chain, pendant, and earrings together • Studded halo centerpiece design • Includes pendant with chain and matching stud earrings • Elegant layered circular motif • Lightweight and comfortable for everyday luxury",
     "images": [
-      "solystra_assets/products/studded-halo-pendant-set/angle_1.png",
-      "solystra_assets/products/studded-halo-pendant-set/angle_2.jpg",
-      "solystra_assets/products/studded-halo-pendant-set/angle_2.png"
+      "solystra_assets/products/studded-halo-pendant-set/angle_1.webp",
+      "solystra_assets/products/studded-halo-pendant-set/angle_2.webp",
+      "solystra_assets/products/studded-halo-pendant-set/angle_2.webp"
     ],
     "specs": {
       "Metal Purity": "18K Rose Gold Micron (BIS Certified)",
@@ -4424,8 +4424,8 @@ window.PRODUCTS = [
     ],
     "desc": "Graceful and romantic, the Swan Heart Pendant Set features a beautifully crafted swan motif that symbolizes elegance, love, and purity. The pendant showcases a delicate swan silhouette with softly sculpted wings, accented by a vibrant heart-shaped stone that adds a charming pop of color to the design. The flowing curves of the swan create a refined and feminine aesthetic, allowing the pendant to sit gracefully along the neckline. Suspended from a fine gold chain, the piece brings a subtle yet eye-catching detail that makes it perfect for everyday wear or special occasions. The set is completed with matching swan stud earrings that mirror the same elegant design, creating a cohesive and sophisticated look. Lightweight yet distinctive, this pendant set blends delicate craftsmanship with a playful romantic touch. Product Details • Gross Weight: 4.914 grams • Net Gold Weight: 4.809 grams • Weight includes chain, pendant, and earrings together • Swan motif with heart-shaped accent stone • Includes pendant with chain and matching stud earrings • Lightweight and comfortable for everyday wear.",
     "images": [
-      "solystra_assets/products/swan-pendant-set/angle_1.png",
-      "solystra_assets/products/swan-pendant-set/angle_2.png"
+      "solystra_assets/products/swan-pendant-set/angle_1.webp",
+      "solystra_assets/products/swan-pendant-set/angle_2.webp"
     ],
     "specs": {
       "Metal Purity": "18K Rose Gold Micron (BIS Certified)",
@@ -4458,9 +4458,9 @@ window.PRODUCTS = [
     ],
     "desc": "A playful and adorable piece featuring glossy red heart charms paired with a delicate teddy motif at the center. The subtle sparkle detail adds just the right amount of shine, while the dainty chain keeps it light and easy to wear. Designed to bring a soft, youthful charm to your everyday styling. Product Details: 925 Sterling Silver Lightweight &amp; comfortable for daily wear Red enamel heart charms with teddy centerpiece Fine stone detailing for subtle sparkle Secure clasp closure Perfect for stacking or wearing solo",
     "images": [
-      "solystra_assets/products/sweetheart-teddy-charm-925-sterling-silver-bracelet/angle_1.png",
-      "solystra_assets/products/sweetheart-teddy-charm-925-sterling-silver-bracelet/angle_2.jpg",
-      "solystra_assets/products/sweetheart-teddy-charm-925-sterling-silver-bracelet/angle_2.png"
+      "solystra_assets/products/sweetheart-teddy-charm-925-sterling-silver-bracelet/angle_1.webp",
+      "solystra_assets/products/sweetheart-teddy-charm-925-sterling-silver-bracelet/angle_2.webp",
+      "solystra_assets/products/sweetheart-teddy-charm-925-sterling-silver-bracelet/angle_2.webp"
     ],
     "specs": {
       "Metal Purity": "BIS Certified 925 Sterling Silver",
@@ -4493,9 +4493,9 @@ window.PRODUCTS = [
     ],
     "desc": "A celebration of contrast and craftsmanship, this Italian-made tri-color bracelet blends yellow, rose, and white gold in a seamless geometric link design. The alternating tones create a dynamic visual rhythm, giving the piece depth and dimension while maintaining a sleek, modern silhouette. Each angular link reflects light differently, making the bracelet subtly eye-catching from every angle. Expertly crafted in Italy, it showcases precision detailing and a polished finish that speaks of refined artistry. Perfect for pairing with mixed-metal jewellery or wearing as a statement on its own, this bracelet offers versatility with a sophisticated edge — a contemporary essential for those who appreciate distinctive, high-quality gold pieces.",
     "images": [
-      "solystra_assets/products/tri-color-link-bracelet/angle_1.png",
-      "solystra_assets/products/tri-color-link-bracelet/angle_2.png",
-      "solystra_assets/products/tri-color-link-bracelet/angle_3.jpg"
+      "solystra_assets/products/tri-color-link-bracelet/angle_1.webp",
+      "solystra_assets/products/tri-color-link-bracelet/angle_2.webp",
+      "solystra_assets/products/tri-color-link-bracelet/angle_3.webp"
     ],
     "specs": {
       "Metal Purity": "18K Rose Gold Micron (BIS Certified)",
@@ -4528,9 +4528,9 @@ window.PRODUCTS = [
     ],
     "desc": "Elegant and contemporary, the Triple Arc Ring features three flowing bands that gracefully sweep across the finger, accented with sparkling stones for a refined finish. Its sculptural silhouette creates a bold yet sophisticated statement, making it perfect for elevating both everyday and occasion looks. Product Specifications Product Name: Triple Arc Ring Metal: 18K BIS Hallmarked Gold Gross Weight: 1.970 g Net Weight: 1.861 g Style: Contemporary | Statement | Elegant Occasion: Everyday Wear | Office | Evening | Celebrations Styling Tip Let this ring shine on its own, or pair it with slim gold bands for a modern stacked look without overpowering its unique design. Care Tip Store separately in a soft pouch and avoid contact with perfumes, lotions, and harsh chemicals to maintain its brilliance.",
     "images": [
-      "solystra_assets/products/triple-arc-ring/angle_1.png",
-      "assets/craftsmanship-atelier.jpg",
-      "assets/bento-craftsmanship-macro.jpg"
+      "solystra_assets/products/triple-arc-ring/angle_1.webp",
+      "assets/craftsmanship-atelier.webp",
+      "assets/bento-craftsmanship-macro.webp"
     ],
     "specs": {
       "Metal Purity": "18K Gold Vermeil (BIS Certified)",
@@ -4563,8 +4563,8 @@ window.PRODUCTS = [
     ],
     "desc": "Graceful and nature-inspired, the Twin Leaf Pendant Set features a delicate design that draws inspiration from soft leaf forms. The pendant showcases two overlapping leaf elements that create a fluid and elegant silhouette, symbolising harmony and natural beauty. The set is paired with matching stud earrings that mirror the same twin-leaf motif, creating a coordinated and refined look. The subtle detailing within the leaf design adds texture and depth while maintaining a minimal and contemporary aesthetic. Finished with a soft rose gold tone , the set brings a warm and elegant glow that enhances the delicate leaf design. Suspended on a fine chain, the pendant sits beautifully along the neckline, making it perfect for everyday wear as well as light occasion styling. Lightweight and elegant, this set is designed to bring a soft, organic charm to your overall look while remaining simple enough for daily wear. Product Details • Gold Weight: 4.17 grams • Weight mentioned includes chain, pendant, and earrings together • Twin leaf motif design • Rose gold finish • Matching pendant and stud earrings set • Lightweight and comfortable for daily wear",
     "images": [
-      "solystra_assets/products/twin-leaf-pendant-set/angle_1.png",
-      "solystra_assets/products/twin-leaf-pendant-set/angle_2.png"
+      "solystra_assets/products/twin-leaf-pendant-set/angle_1.webp",
+      "solystra_assets/products/twin-leaf-pendant-set/angle_2.webp"
     ],
     "specs": {
       "Metal Purity": "18K Rose Gold Micron (BIS Certified)",
@@ -4597,9 +4597,9 @@ window.PRODUCTS = [
     ],
     "desc": "Elegant and contemporary, the Twist Loop Ring features a fluid overlapping design that creates a graceful loop silhouette across the finger. The combination of a smooth polished band and a twisted rope-textured band adds depth and contrast, giving the ring a refined yet modern character. Crafted in a rose gold finish , the ring has a warm and sophisticated glow that beautifully enhances its minimal design. Its open loop-inspired form brings a sense of movement, while the polished and textured details create a balanced blend of softness and structure. Delicate yet distinctive, this ring is perfect for everyday styling and can be worn beautifully on its own or paired with other rings for a layered look. With its timeless design and elegant finish, it makes a subtle statement while remaining lightweight and comfortable. Product Details • Gold Weight: 1.720 grams • Rose gold finish • Twist loop design • Combination of polished and rope-textured detailing • Elegant and lightweight for daily wear • Ring Size: Standard size (11)— Custom sizes available on request",
     "images": [
-      "solystra_assets/products/twist-loop-ring/angle_1.png",
-      "assets/craftsmanship-atelier.jpg",
-      "assets/bento-craftsmanship-macro.jpg"
+      "solystra_assets/products/twist-loop-ring/angle_1.webp",
+      "assets/craftsmanship-atelier.webp",
+      "assets/bento-craftsmanship-macro.webp"
     ],
     "specs": {
       "Metal Purity": "18K Rose Gold Micron (BIS Certified)",
@@ -4632,8 +4632,8 @@ window.PRODUCTS = [
     ],
     "desc": "A modern geometric silhouette with a delicate twist. The Twisted Hexa Ring features an open hexagon design, partially accented with subtle stones that add just the right amount of sparkle. The asymmetrical flow gives it a contemporary, artistic feel — minimal, yet distinctive. Crafted with a slim, refined band and weighing 1.203 grams , it’s lightweight, comfortable, and perfect for everyday wear. Whether worn solo for a clean statement or stacked with other rings, this piece adds a touch of effortless sophistication. Sharp lines, soft sparkle — designed for those who love understated elegance with a modern edge. • Ring Size: Standard size (13) — Custom sizes available on request",
     "images": [
-      "solystra_assets/products/twisted-hexa-ring/angle_1.png",
-      "solystra_assets/products/twisted-hexa-ring/angle_2.jpg"
+      "solystra_assets/products/twisted-hexa-ring/angle_1.webp",
+      "solystra_assets/products/twisted-hexa-ring/angle_2.webp"
     ],
     "specs": {
       "Metal Purity": "18K Rose Gold Micron (BIS Certified)",
@@ -4666,8 +4666,8 @@ window.PRODUCTS = [
     ],
     "desc": "Elegant and eye-catching, our Twisted Layered Hoops feature a beautifully intertwined design that creates a graceful layered effect. The smooth, polished finish enhances the rich gold tone, giving these hoops a refined shine that effortlessly elevates both everyday and occasion wear. Their modern twist detail adds dimension, making them a standout yet versatile piece in any jewellery collection. Weighing 2.950 grams , these hoops offer the perfect balance between presence and comfort. Lightweight enough for extended wear while still delivering a bold, attractive look, they are ideal for customers who appreciate contemporary gold jewellery with a stylish edge. A timeless design with a modern twist. ✨",
     "images": [
-      "solystra_assets/products/twisted-layered-hoops/angle_1.png",
-      "solystra_assets/products/twisted-layered-hoops/angle_2.png"
+      "solystra_assets/products/twisted-layered-hoops/angle_1.webp",
+      "solystra_assets/products/twisted-layered-hoops/angle_2.webp"
     ],
     "specs": {
       "Metal Purity": "18K Gold Vermeil (BIS Certified)",
@@ -4700,8 +4700,8 @@ window.PRODUCTS = [
     ],
     "desc": "Sleek and contemporary, the Interlocking Circle Bracelet features two polished circular rings linked together to create a clean and symbolic design. The interlocking circles represent connection and continuity, giving the bracelet a subtle meaning while maintaining a minimal aesthetic. The smooth gold finish highlights the circular shapes, allowing the design to stand out while still feeling delicate and refined. Suspended on a fine chain, the centerpiece sits gracefully on the wrist and adds a modern touch to everyday jewellery styling. Lightweight and elegant, this bracelet is perfect for daily wear and pairs beautifully with other bracelets for a layered look or can be worn alone for a subtle statement. Product Details • Gold Weight: 0.97 grams • Interlocking circle design • Fine lightweight chain bracelet • Minimal and modern aesthetic • Comfortable for everyday wear",
     "images": [
-      "solystra_assets/products/unity-circle/angle_1.png",
-      "solystra_assets/products/unity-circle/angle_2.jpg"
+      "solystra_assets/products/unity-circle/angle_1.webp",
+      "solystra_assets/products/unity-circle/angle_2.webp"
     ],
     "specs": {
       "Metal Purity": "BIS Certified 925 Sterling Silver",
@@ -4734,9 +4734,9 @@ window.PRODUCTS = [
     ],
     "desc": "This ultra-delicate V-shaped chevron ring is designed to contour beautifully along the finger. One side features a fine row of shimmering stones, while the other remains sleek and polished — creating a modern asymmetrical balance that feels light yet refined. With a gold weight of just 0.589 grams , it’s incredibly lightweight and perfect for stacking. Wear it alone for a minimal look or pair it with a solitaire or band ring to create a layered, curated style. Subtle, sculpted, and effortlessly chic — a tiny detail that makes a big impact. ✨ • Ring Size: Standard size (12) — Custom sizes available on request",
     "images": [
-      "solystra_assets/products/v-chevron-ring/angle_1.png",
-      "assets/craftsmanship-atelier.jpg",
-      "assets/bento-craftsmanship-macro.jpg"
+      "solystra_assets/products/v-chevron-ring/angle_1.webp",
+      "assets/craftsmanship-atelier.webp",
+      "assets/bento-craftsmanship-macro.webp"
     ],
     "specs": {
       "Metal Purity": "18K Rose Gold Micron (BIS Certified)",
@@ -4769,9 +4769,9 @@ window.PRODUCTS = [
     ],
     "desc": "Classic sophistication meets romantic symbolism in the Verdant Heart Tennis Bracelet. Crafted from radiant 925 sterling silver, this timeless piece features a continuous line of brilliant round Swarovski crystals that shimmer around the wrist. At its center sits a single, beautifully faceted heart-cut Swarovski crystal in a striking, rich emerald-green hue, held securely in a classic prong setting. Equipped with a reliable lobster clasp and an adjustable extender chain for a customized, comfortable fit, this bracelet offers a minimalist yet captivating design that elevates any ensemble. Product Specifications Product Name: Verdant Heart Tennis Bracelet Metal: 925 Sterling Silver Stones: Swarovski Crystals (Clear Round-Cut &amp; Emerald-Green Heart-Cut) Closure: Secure Lobster Clasp with Adjustable Extender Chain Style: Tennis | Heart Motif | Minimalist | Elegant Occasion: Everyday Wear | Date Nights | Anniversaries | Gifting | Bridal Styling Tip Let the vivid green heart take center stage by wearing this bracelet alone for a refined, singular statement. It looks exceptionally elegant when paired with neutral tones, black, or silver evening wear, adding a vibrant yet sophisticated pop of color. Care Tip Gently polish with a soft, dry cloth to maintain the high-shine finish of the sterling silver. Store in a lined jewelry pouch away from other items to prevent scratches. Avoid direct contact with perfumes, lotions, and harsh chemicals to protect the silver and preserve the brilliant sparkle of the Swarovski crystals.",
     "images": [
-      "solystra_assets/products/verdant-heart-tennis-bracelet-925-sterling-silver/angle_1.png",
-      "assets/craftsmanship-atelier.jpg",
-      "assets/bento-craftsmanship-macro.jpg"
+      "solystra_assets/products/verdant-heart-tennis-bracelet-925-sterling-silver/angle_1.webp",
+      "assets/craftsmanship-atelier.webp",
+      "assets/bento-craftsmanship-macro.webp"
     ],
     "specs": {
       "Metal Purity": "BIS Certified 925 Sterling Silver",
@@ -4804,10 +4804,10 @@ window.PRODUCTS = [
     ],
     "desc": "A sleek and fluid ring featuring a soft wave design that wraps elegantly across the finger, adding a modern and minimal touch. Product Details: • Gold Weight: 2.140 grams • Crafted in 18K gold • Unique wave-line design with a smooth flow • Polished finish for a subtle shine • Lightweight and comfortable for everyday wear • Minimal and contemporary style • Perfect for stacking or wearing as a statement piece",
     "images": [
-      "solystra_assets/products/wave-lines-ring/angle_1.jpg",
-      "solystra_assets/products/wave-lines-ring/angle_1.png",
-      "solystra_assets/products/wave-lines-ring/angle_2.jpg",
-      "solystra_assets/products/wave-lines-ring/angle_2.png"
+      "solystra_assets/products/wave-lines-ring/angle_1.webp",
+      "solystra_assets/products/wave-lines-ring/angle_1.webp",
+      "solystra_assets/products/wave-lines-ring/angle_2.webp",
+      "solystra_assets/products/wave-lines-ring/angle_2.webp"
     ],
     "specs": {
       "Metal Purity": "18K Gold Vermeil (BIS Certified)",
@@ -4840,9 +4840,9 @@ window.PRODUCTS = [
     ],
     "desc": "The Weave Studded Ring blends a graceful braided design with a sparkling row of AD stones, creating a look that's both elegant and contemporary. Crafted in 18K BIS Hallmarked Gold, this lightweight ring is perfect for everyday wear or adding a refined touch to special occasions. Product Details Metal: 18K BIS Hallmarked Gold Gross Weight: 2.050 g Net Weight: 1.980 g Stone: AD Stones Finish: High Polish Style: Everyday • Office • Party • Occasion Wear Skin Friendly Lightweight &amp; Comfortable Styling Tip Wear it solo for a refined statement or stack it with slim gold bands for a chic, layered look. Care Instructions Store in a soft jewellery pouch when not in use. Avoid contact with perfumes, lotions, and harsh chemicals. Remove before swimming or exercising, and gently wipe with a soft cloth after every wear to maintain its shine. Gifting Note A timeless piece that beautifully weaves elegance into every moment. ✨",
     "images": [
-      "solystra_assets/products/weave-studded-ring/angle_1.png",
-      "assets/craftsmanship-atelier.jpg",
-      "assets/bento-craftsmanship-macro.jpg"
+      "solystra_assets/products/weave-studded-ring/angle_1.webp",
+      "assets/craftsmanship-atelier.webp",
+      "assets/bento-craftsmanship-macro.webp"
     ],
     "specs": {
       "Metal Purity": "18K Gold Vermeil (BIS Certified)",
@@ -4875,9 +4875,9 @@ window.PRODUCTS = [
     ],
     "desc": "A minimal and meaningful design where a delicate heart sits within a sleek geometric frame, symbolising love held close and protected. Product Details: • Crafted in 925 sterling silver • Heart-within-frame pendant design • Clean, minimal lines with a modern aesthetic • Fine, lightweight chain for an elegant finish • High-polish surface for a subtle shine • Contemporary, symbolic, and easy-to-style piece • Perfect for everyday wear and layering • Lightweight and comfortable for all-day wear • A cute and meaningful gift for her, representing love kept close to the heart",
     "images": [
-      "solystra_assets/products/within-my-heart-925-silver-necklace/angle_1.png",
-      "assets/craftsmanship-atelier.jpg",
-      "assets/bento-craftsmanship-macro.jpg"
+      "solystra_assets/products/within-my-heart-925-silver-necklace/angle_1.webp",
+      "assets/craftsmanship-atelier.webp",
+      "assets/bento-craftsmanship-macro.webp"
     ],
     "specs": {
       "Metal Purity": "BIS Certified 925 Sterling Silver",
@@ -4910,9 +4910,9 @@ window.PRODUCTS = [
     ],
     "desc": "A beautifully balanced pendant featuring a soft dual-finish surface paired with a delicate heart detail at its center. The contrast of textures adds depth and quiet elegance, making it a subtle yet meaningful piece. Minimal in form but rich in sentiment, it’s designed for effortless everyday wear. Product Details: 925 Sterling Silver Lightweight &amp; comfortable Dual-finish pendant with central heart detail Soft, minimal and elegant design Fine chain with secure closure Gifting Note: A gentle reminder that they always have a place within your heart — perfect for someone truly special.",
     "images": [
-      "solystra_assets/products/within-my-heart-925-silver-necklace-1/angle_1.png",
-      "assets/craftsmanship-atelier.jpg",
-      "assets/bento-craftsmanship-macro.jpg"
+      "solystra_assets/products/within-my-heart-925-silver-necklace-1/angle_1.webp",
+      "assets/craftsmanship-atelier.webp",
+      "assets/bento-craftsmanship-macro.webp"
     ],
     "specs": {
       "Metal Purity": "BIS Certified 925 Sterling Silver",
@@ -4945,8 +4945,8 @@ window.PRODUCTS = [
     ],
     "desc": "Sleek and contemporary, the Interlocking Circle Bracelet features two polished circular rings linked together to create a clean and symbolic design. The interlocking circles represent connection and continuity, giving the bracelet a subtle meaning while maintaining a minimal aesthetic. The smooth gold finish highlights the circular shapes, allowing the design to stand out while still feeling delicate and refined. Suspended on a fine chain, the centerpiece sits gracefully on the wrist and adds a modern touch to everyday jewellery styling. Lightweight and elegant, this bracelet is perfect for daily wear and pairs beautifully with other bracelets for a layered look or can be worn alone for a subtle statement. Product Details • Gold Weight: 0.97 grams • Interlocking circle design • Fine lightweight chain bracelet • Minimal and modern aesthetic • Comfortable for everyday wear",
     "images": [
-      "solystra_assets/products/unity-circle/angle_1.png",
-      "solystra_assets/products/unity-circle/angle_2.jpg"
+      "solystra_assets/products/unity-circle/angle_1.webp",
+      "solystra_assets/products/unity-circle/angle_2.webp"
     ],
     "specs": {
       "Metal Purity": "BIS Certified 925 Sterling Silver",
@@ -4979,9 +4979,9 @@ window.PRODUCTS = [
     ],
     "desc": "A bold geometric design with a modern edge, the Prism Halo Ring features a sleek pyramid centerpiece enclosed within a sparkling open halo. The split band adds depth and elegance, making it a standout piece that effortlessly blends contemporary style with everyday sophistication. Product Specifications Product Name: Prism Halo Ring Metal: 18K BIS Hallmarked Gold Gross Weight: 3.005 g Net Weight: 2.883 g Style: Contemporary | Geometric | Statement Occasion: Everyday Wear | Office | Evening | Special Occasions Styling Tip Let this ring be the focal point by pairing it with sleek gold bands or wearing it solo for a modern, refined look. Care Tip Store separately in a soft jewellery pouch and avoid contact with perfumes, lotions, and harsh chemicals to maintain its shine and finish.",
     "images": [
-      "solystra_assets/products/prism-halo-ring/angle_1.png",
-      "assets/craftsmanship-atelier.jpg",
-      "assets/bento-craftsmanship-macro.jpg"
+      "solystra_assets/products/prism-halo-ring/angle_1.webp",
+      "assets/craftsmanship-atelier.webp",
+      "assets/bento-craftsmanship-macro.webp"
     ],
     "specs": {
       "Metal Purity": "18K Gold Vermeil (BIS Certified)",
@@ -5001,49 +5001,49 @@ window.CATEGORIES = [
     "id": "necklaces",
     "name": "Necklaces & Lariats",
     "tagline": "Timeless cascading pendants, solitaires & bridal lariats in 925 silver",
-    "image": "solystra_assets/categories/cat_necklaces.png",
+    "image": "solystra_assets/categories/cat_necklaces.webp",
     "count": 29
   },
   {
     "id": "bracelets",
     "name": "Tennis & Charm Bracelets",
     "tagline": "Gleaming wristwear adorned with Austrian crystals & fine enamel charms",
-    "image": "solystra_assets/categories/cat_bracelets.png",
+    "image": "solystra_assets/categories/cat_bracelets.webp",
     "count": 45
   },
   {
     "id": "earrings",
     "name": "Fine Earrings & Studs",
     "tagline": "From minimalist solitaires to statement floral drop earrings",
-    "image": "solystra_assets/categories/cat_earrings.png",
+    "image": "solystra_assets/categories/cat_earrings.webp",
     "count": 16
   },
   {
     "id": "rings",
     "name": "Crowned Solitaires & Bands",
     "tagline": "Precision micro-pave eternity bands & certified solitaire showstoppers",
-    "image": "solystra_assets/categories/cat_rings.png",
+    "image": "solystra_assets/categories/cat_rings.webp",
     "count": 26
   },
   {
     "id": "complete_sets",
     "name": "Gift Suites & Sets",
     "tagline": "Complete matching necklace, earring & bracelet sets in luxury boxes",
-    "image": "solystra_assets/categories/cat_complete_sets.png",
+    "image": "solystra_assets/categories/cat_complete_sets.webp",
     "count": 12
   },
   {
     "id": "chains",
     "name": "Classic Layering Chains",
     "tagline": "Italian curb, rope & box link chains in pure 925 silver and 18K vermeil",
-    "image": "solystra_assets/categories/zavya_style/chains.png",
+    "image": "solystra_assets/categories/zavya_style/chains.webp",
     "count": 11
   },
   {
     "id": "anklets",
     "name": "Sterling Anklets & Sets",
     "tagline": "Dainty anklet chains with anti-tarnish micro-shield finish",
-    "image": "solystra_assets/categories/cat_anklets.png",
+    "image": "solystra_assets/categories/cat_anklets.webp",
     "count": 2
   }
 ];
@@ -5090,28 +5090,28 @@ window.TRUST_PILLARS = [
     "title": "BIS Certified 925 Silver",
     "description": "Every piece carries the official government 925 hallmark stamp of purity.",
     "icon": "ShieldCheck",
-    "badgeImg": "solystra_assets/features/feat_hallmark.png"
+    "badgeImg": "solystra_assets/features/feat_hallmark.webp"
   },
   {
     "id": "warranty",
     "title": "6-Month Replating Warranty",
     "description": "Complimentary replating assurance to keep your jewels gleaming forever.",
     "icon": "Sparkles",
-    "badgeImg": "solystra_assets/features/feat_warranty.png"
+    "badgeImg": "solystra_assets/features/feat_warranty.webp"
   },
   {
     "id": "shipping",
     "title": "Insured Express Delivery",
     "description": "Tamper-evident transit protection and express door delivery across India.",
     "icon": "Truck",
-    "badgeImg": "solystra_assets/features/feat_shipping.png"
+    "badgeImg": "solystra_assets/features/feat_shipping.webp"
   },
   {
     "id": "returns",
     "title": "15-Day Easy Exchange",
     "description": "Zero questions asked exchange guarantee for ultimate peace of mind.",
     "icon": "RotateCcw",
-    "badgeImg": "solystra_assets/features/feat_returns.png"
+    "badgeImg": "solystra_assets/features/feat_returns.webp"
   }
 ];
 

@@ -32,8 +32,8 @@ import {
 const HERO_BANNERS = [
   {
     id: 1,
-    desktopImg: 'solystra_assets/banners/banner_pc_2.jpg',
-    mobileImg: 'solystra_assets/banners/banner_mob_2.jpg',
+    desktopImg: 'solystra_assets/banners/banner_pc_2.webp',
+    mobileImg: 'solystra_assets/banners/banner_mob_2.webp',
     title: 'The 18K Gold Suite',
     subtitle: 'Layered tennis bracelets and kada cuffs in 18K Italian gold vermeil.',
     desc: 'Crafted in pure 925 sterling silver with a rich, radiant gold polish built for daily elegance.',
@@ -43,8 +43,8 @@ const HERO_BANNERS = [
   },
   {
     id: 2,
-    desktopImg: 'solystra_assets/banners/banner_blush_tones_pc.jpg',
-    mobileImg: 'solystra_assets/banners/banner_blush_tones_mob.jpg',
+    desktopImg: 'solystra_assets/banners/banner_blush_tones_pc.webp',
+    mobileImg: 'solystra_assets/banners/banner_blush_tones_mob.webp',
     title: 'Blush Tones Collection',
     subtitle: 'Delicate pink enamel blossoms and brilliant solitaires.',
     desc: 'Feminine, radiant silhouettes handcrafted for everyday elegance and festive celebrations.',
@@ -54,8 +54,8 @@ const HERO_BANNERS = [
   },
   {
     id: 3,
-    desktopImg: 'solystra_assets/banners/banner_pc_3.jpg',
-    mobileImg: 'solystra_assets/banners/banner_mob_3.jpg',
+    desktopImg: 'solystra_assets/banners/banner_pc_3.webp',
+    mobileImg: 'solystra_assets/banners/banner_mob_3.webp',
     title: 'Modern Classics',
     subtitle: 'Certified 925 silver bands, huggies and solitaires.',
     desc: 'Finished with dual-micron anti-tarnish rhodium for a lifetime of mirror brilliance.',
@@ -65,8 +65,8 @@ const HERO_BANNERS = [
   },
   {
     id: 4,
-    desktopImg: 'solystra_assets/banners/banner_gift_sets_pc.jpg',
-    mobileImg: 'solystra_assets/banners/banner_gift_sets_mob.jpg',
+    desktopImg: 'solystra_assets/banners/banner_gift_sets_pc.webp',
+    mobileImg: 'solystra_assets/banners/banner_gift_sets_mob.webp',
     title: 'Signature Gift Sets',
     subtitle: 'Delivered in bespoke velvet keepsake vault with hallmark certificate.',
     desc: 'Complete jewelry sets paired for weddings, anniversaries, and personal milestones.',
@@ -82,61 +82,61 @@ const CATEGORY_CARDS = [
     id: 'necklaces',
     name: 'Necklaces',
     count: '14 Designs',
-    img: 'solystra_assets/categories/zavya_style/necklaces.png'
+    img: 'solystra_assets/categories/zavya_style/necklaces.webp'
   },
   {
     id: 'earrings',
     name: 'Earrings',
     count: '10 Designs',
-    img: 'solystra_assets/categories/zavya_style/earrings.png'
+    img: 'solystra_assets/categories/zavya_style/earrings.webp'
   },
   {
     id: 'bracelets',
     name: 'Bracelets',
     count: '12 Designs',
-    img: 'solystra_assets/categories/zavya_style/bracelets.png'
+    img: 'solystra_assets/categories/zavya_style/bracelets.webp'
   },
   {
     id: 'rings',
     name: 'Rings',
     count: '8 Designs',
-    img: 'solystra_assets/categories/zavya_style/rings.png'
+    img: 'solystra_assets/categories/zavya_style/rings.webp'
   },
   {
     id: 'anklets',
     name: 'Anklets',
     count: '6 Designs',
-    img: 'solystra_assets/categories/zavya_style/anklets.png'
+    img: 'solystra_assets/categories/zavya_style/anklets.webp'
   },
   {
     id: 'complete_sets',
     name: 'Gift Suites',
     count: '6 Sets',
-    img: 'solystra_assets/categories/zavya_style/complete_sets.png'
+    img: 'solystra_assets/categories/zavya_style/complete_sets.webp'
   },
   {
     id: 'chains',
     name: 'Chains',
     count: '8 Designs',
-    img: 'solystra_assets/categories/zavya_style/chains.png'
+    img: 'solystra_assets/categories/zavya_style/chains.webp'
   },
   {
     id: 'mangalsutras',
     name: 'Mangalsutra',
     count: '8 Designs',
-    img: 'solystra_assets/categories/zavya_style/mangalsutras.png'
+    img: 'solystra_assets/categories/zavya_style/mangalsutras.webp'
   },
   {
     id: 'nose_pins',
     name: 'Nose Pins',
     count: '6 Designs',
-    img: 'solystra_assets/categories/zavya_style/nose_pins.png'
+    img: 'solystra_assets/categories/zavya_style/nose_pins.webp'
   },
   {
     id: 'mens_collection',
     name: "Men's Silver",
     count: '7 Designs',
-    img: 'solystra_assets/categories/zavya_style/mens.png'
+    img: 'solystra_assets/categories/zavya_style/mens.webp'
   }
 ];
 
@@ -147,7 +147,7 @@ const TOP_COLLECTIONS = [
     title: 'Ombre',
     subtitle: 'COLLECTION',
     desc: 'Gradient pink sapphires and warm rose vermeil cuffs.',
-    img: '/solystra_assets/collections/collection_ombre.jpg',
+    img: '/solystra_assets/collections/collection_ombre.webp',
     category: 'rings',
     tag: 'BESTSELLER'
   },
@@ -156,7 +156,7 @@ const TOP_COLLECTIONS = [
     title: 'Celestial',
     subtitle: 'COLLECTION',
     desc: 'Starlight solitaire drops and cosmic pavé earrings.',
-    img: '/solystra_assets/collections/collection_celestial.jpg',
+    img: '/solystra_assets/collections/collection_celestial.webp',
     category: 'earrings',
     tag: 'NEW DROP'
   },
@@ -165,7 +165,7 @@ const TOP_COLLECTIONS = [
     title: 'Heart Echoes',
     subtitle: 'COLLECTION',
     desc: 'Romantic heart pendants and intertwined keepsake chains.',
-    img: '/solystra_assets/collections/collection_heart.jpg',
+    img: '/solystra_assets/collections/collection_heart.webp',
     category: 'complete_sets',
     tag: 'ROMANCE'
   },
@@ -174,7 +174,7 @@ const TOP_COLLECTIONS = [
     title: 'Infinite Bond',
     subtitle: 'COLLECTION',
     desc: 'Continuous loop cuffs and eternal silver tennis bracelets.',
-    img: '/solystra_assets/collections/collection_infinite.jpg',
+    img: '/solystra_assets/collections/collection_infinite.webp',
     category: 'bracelets',
     tag: 'GIFTING'
   },
@@ -183,7 +183,7 @@ const TOP_COLLECTIONS = [
     title: 'Ruby Radiance',
     subtitle: 'COLLECTION',
     desc: 'Deep pigeon-blood rubies prong-set in 18K gold vermeil.',
-    img: '/solystra_assets/collections/collection_ruby.jpg',
+    img: '/solystra_assets/collections/collection_ruby.webp',
     category: 'rings',
     tag: 'ROYAL EDIT'
   },
@@ -192,7 +192,7 @@ const TOP_COLLECTIONS = [
     title: 'Solitaire Studs',
     subtitle: 'COLLECTION',
     desc: 'Brilliant round-cut Austrian crystal studs in pure 925 silver.',
-    img: '/solystra_assets/collections/collection_studs.jpg',
+    img: '/solystra_assets/collections/collection_studs.webp',
     category: 'earrings',
     tag: 'TIMELESS'
   },
@@ -201,7 +201,7 @@ const TOP_COLLECTIONS = [
     title: 'Drop Elegance',
     subtitle: 'COLLECTION',
     desc: 'Graceful cascading silhouette earrings and matching pendants.',
-    img: '/solystra_assets/collections/collection_drops.jpg',
+    img: '/solystra_assets/collections/collection_drops.webp',
     category: 'necklaces',
     tag: 'SIGNATURE'
   }
@@ -216,7 +216,7 @@ const STYLING_COMBOS = [
     name: 'Amethyst Floral Blossom Set',
     tag: 'ROSE GOLD VERMEIL',
     desc: 'Handcrafted floral blossom necklace paired with matching petal drop earrings.',
-    editorialImg: '/solystra_assets/banners/banner_blush_tones_pc.jpg',
+    editorialImg: '/solystra_assets/banners/banner_blush_tones_pc.webp',
     imagePosition: 'object-[75%_center]',
     items: [
       {
@@ -227,7 +227,7 @@ const STYLING_COMBOS = [
         metal: 'Rose Gold Vermeil • Handcrafted Setting',
         price: 9585,
         mrp: 11981,
-        image: '/solystra_assets/products/amethyst-bloom-necklace-set-925-sterling-silver/angle_1.png',
+        image: '/solystra_assets/products/amethyst-bloom-necklace-set-925-sterling-silver/angle_1.webp',
         hotspot: { x: 75.1, y: 55.0, label: 'Floral Blossom Necklace' }
       },
       {
@@ -238,7 +238,7 @@ const STYLING_COMBOS = [
         metal: 'Rose Gold Vermeil • Double-Micron Rhodium',
         price: 2499,
         mrp: 3499,
-        image: '/solystra_assets/categories/cat_earrings.png',
+        image: '/solystra_assets/products/flora-band-hoops/angle_1.webp',
         hotspot: { x: 78.6, y: 27.1, label: 'Blossom Drop Earrings' }
       }
     ],
@@ -251,7 +251,7 @@ const STYLING_COMBOS = [
     name: 'Classic Solitaire Set',
     tag: 'PURE 925 STERLING SILVER',
     desc: 'Brilliant Austrian solitaire pendant paired with matching solitaire drop earrings.',
-    editorialImg: '/solystra_assets/banners/banner_pc_1.jpg',
+    editorialImg: '/solystra_assets/banners/banner_pc_1.webp',
     imagePosition: 'object-[72%_center]',
     items: [
       {
@@ -262,7 +262,7 @@ const STYLING_COMBOS = [
         metal: 'Pure 925 Silver • Brilliant Cut Solitaire',
         price: 2799,
         mrp: 3999,
-        image: '/solystra_assets/categories/cat_necklaces.png',
+        image: '/solystra_assets/products/unity-circle/angle_1.webp',
         hotspot: { x: 32.3, y: 76.2, pcX: 46.1, pcY: 78.2, label: 'Solitaire Pendant Necklace' }
       },
       {
@@ -273,7 +273,7 @@ const STYLING_COMBOS = [
         metal: 'Pure 925 Silver • Cushion Cut Drop',
         price: 2299,
         mrp: 3299,
-        image: '/solystra_assets/categories/cat_earrings.png',
+        image: '/solystra_assets/products/classic-knot-earrings/angle_1.webp',
         hotspot: { x: 42.7, y: 40.6, pcX: 53.6, pcY: 41.8, label: 'Solitaire Drop Earrings' }
       }
     ],
@@ -286,7 +286,7 @@ const STYLING_COMBOS = [
     name: 'Gala Choker & Chandelier Set',
     tag: 'FINE EVENING WEAR',
     desc: 'Graduated tennis choker in pure silver paired with tiered chandelier drops.',
-    editorialImg: '/solystra_assets/generated/cocktail_glam.jpg',
+    editorialImg: '/solystra_assets/generated/cocktail_glam.webp',
     imagePosition: 'object-center',
     items: [
       {
@@ -297,7 +297,7 @@ const STYLING_COMBOS = [
         metal: 'Pure 925 Silver • Graduated Tennis Links',
         price: 5499,
         mrp: 7999,
-        image: '/solystra_assets/categories/cat_necklaces.png',
+        image: '/solystra_assets/products/golden-meadow-necklace-set-925-sterling-silver/angle_1.webp',
         hotspot: { x: 52.5, y: 50.5, label: 'Graduated Tennis Choker' }
       },
       {
@@ -308,7 +308,7 @@ const STYLING_COMBOS = [
         metal: 'Pure 925 Silver • Multi-Tier Drops',
         price: 3499,
         mrp: 4999,
-        image: '/solystra_assets/categories/cat_earrings.png',
+        image: '/solystra_assets/products/greek-pattern-hoops/angle_1.webp',
         hotspot: { x: 60.8, y: 34.5, label: 'Imperial Chandelier Drops' }
       }
     ],
@@ -328,7 +328,7 @@ const VIDEO_REELS = [
     price: 2799,
     mrp: 3999,
     videoSrc: 'solystra_assets/videos/reel_01_pen-30277-g.mp4',
-    productImage: 'zavya_assets/products/pendant/pen-30277-g/01_pen-30277-g.jpg',
+    productImage: 'zavya_assets/products/pendant/pen-30277-g/01_pen-30277-g.webp',
     desc: 'Watch the 57-facet Austrian solitaire refract pure white fire under unedited studio lighting.'
   },
   {
@@ -339,7 +339,7 @@ const VIDEO_REELS = [
     price: 2499,
     mrp: 3499,
     videoSrc: 'solystra_assets/videos/reel_02_ear-21096-g.mp4',
-    productImage: 'zavya_assets/products/drop_earrings/ear-21096-g/07_ear-21096-g.jpg',
+    productImage: 'zavya_assets/products/drop_earrings/ear-21096-g/07_ear-21096-g.webp',
     desc: 'Seamless snap-lock closure and fluid movement designed for featherlight all-day wear.'
   },
   {
@@ -350,7 +350,7 @@ const VIDEO_REELS = [
     price: 3899,
     mrp: 5499,
     videoSrc: 'solystra_assets/videos/reel_03_br-80505-g.mp4',
-    productImage: 'zavya_assets/products/bracelet/br-80505-g/01_br-80505-g.jpg',
+    productImage: 'zavya_assets/products/bracelet/br-80505-g/01_br-80505-g.webp',
     desc: 'Individually articulated links that drape effortlessly around the wrist with a double safety clasp.'
   },
   {
@@ -361,7 +361,7 @@ const VIDEO_REELS = [
     price: 2199,
     mrp: 2999,
     videoSrc: 'solystra_assets/videos/reel_04_halo-heart.mp4',
-    productImage: 'zavya_assets/products/diamond_stud_earrings/0-75-ct-halo-heart-solitaire-gold-stud-earring/01_0-75-ct-halo-heart-solitaire-gold-stud-earring.jpg',
+    productImage: 'zavya_assets/products/diamond_stud_earrings/0-75-ct-halo-heart-solitaire-gold-stud-earring/01_0-75-ct-halo-heart-solitaire-gold-stud-earring.webp',
     desc: 'Brilliant heart solitaire halo studs catching every ray of light with exceptional diamond clarity.'
   },
   {
@@ -372,7 +372,7 @@ const VIDEO_REELS = [
     price: 3199,
     mrp: 4499,
     videoSrc: 'solystra_assets/videos/reel_05_lambency.mp4',
-    productImage: 'zavya_assets/products/diamond_solitaire_ring/0-75-ct-lambency-solitaire-diamond-ring/01_0-75-ct-lambency-solitaire-diamond-ring.jpg',
+    productImage: 'zavya_assets/products/diamond_solitaire_ring/0-75-ct-lambency-solitaire-diamond-ring/01_0-75-ct-lambency-solitaire-diamond-ring.webp',
     desc: 'Precision prong-set Austrian lab diamond solitaire displaying prismatic spectral dispersion.'
   },
   {
@@ -383,7 +383,7 @@ const VIDEO_REELS = [
     price: 4299,
     mrp: 5999,
     videoSrc: 'solystra_assets/videos/reel_06_nl-30455-g.mp4',
-    productImage: 'zavya_assets/products/necklace/nl-30455-g/01_nl-30455-g.jpg',
+    productImage: 'zavya_assets/products/necklace/nl-30455-g/01_nl-30455-g.webp',
     desc: 'Statement festive neckline brilliance paired with matching sparkling drop earrings.'
   },
   {
@@ -394,7 +394,7 @@ const VIDEO_REELS = [
     price: 2799,
     mrp: 3999,
     videoSrc: 'solystra_assets/videos/reel_07_celestial.mp4',
-    productImage: 'zavya_assets/products/diamond_pendant/0-75-ct-celestial-solitaire-lab-grown-diamond-pendant-without-chain/01_0-75-ct-celestial-solitaire-lab-grown-diamond-pendant-without-chain.jpg',
+    productImage: 'zavya_assets/products/diamond_pendant/0-75-ct-celestial-solitaire-lab-grown-diamond-pendant-without-chain/01_0-75-ct-celestial-solitaire-lab-grown-diamond-pendant-without-chain.webp',
     desc: 'A pure solitaire focal stone handset in an open gallery to maximize ambient light transmission.'
   },
   {
@@ -405,7 +405,7 @@ const VIDEO_REELS = [
     price: 3699,
     mrp: 4999,
     videoSrc: 'solystra_assets/videos/reel_08_peacock.mp4',
-    productImage: 'zavya_assets/products/kada_bracelet/peacock-925-sterling-silver-bracelet-in-rose-gold-valentine-hamper/01_peacock-925-sterling-silver-bracelet-in-rose-gold-valentine-hamper.jpg',
+    productImage: 'zavya_assets/products/kada_bracelet/peacock-925-sterling-silver-bracelet-in-rose-gold-valentine-hamper/01_peacock-925-sterling-silver-bracelet-in-rose-gold-valentine-hamper.webp',
     desc: 'Sculpted artisan peacock motif cuffs finished with high-luster rose gold vermeil.'
   },
   {
@@ -416,7 +416,7 @@ const VIDEO_REELS = [
     price: 4599,
     mrp: 6499,
     videoSrc: 'solystra_assets/videos/reel_09_mens-bangle.mp4',
-    productImage: 'zavya_assets/products/kada_bracelet_men/bold-and-striking-rhodium-plated-925-sterling-silver-mens-bangle/01_bold-and-striking-rhodium-plated-925-sterling-silver-mens-bangle.jpg',
+    productImage: 'zavya_assets/products/kada_bracelet_men/bold-and-striking-rhodium-plated-925-sterling-silver-mens-bangle/01_bold-and-striking-rhodium-plated-925-sterling-silver-mens-bangle.webp',
     desc: 'Substantial solid 925 sterling silver kada cuff with precision beveled edges and high-gloss polish.'
   },
   {
@@ -427,7 +427,7 @@ const VIDEO_REELS = [
     price: 4799,
     mrp: 6999,
     videoSrc: 'solystra_assets/videos/reel_10_eternal-spark.mp4',
-    productImage: 'zavya_assets/products/jewellery_sets/eternal-spark-rose-gold-sterling-silver-jewellery-set/01_eternal-spark-rose-gold-sterling-silver-jewellery-set.jpg',
+    productImage: 'zavya_assets/products/jewellery_sets/eternal-spark-rose-gold-sterling-silver-jewellery-set/01_eternal-spark-rose-gold-sterling-silver-jewellery-set.webp',
     desc: 'Harmonious necklace, earrings, and ring ensemble delivered in royal velvet keepsake vault.'
   },
   {
@@ -438,7 +438,7 @@ const VIDEO_REELS = [
     price: 1899,
     mrp: 2599,
     videoSrc: 'solystra_assets/videos/reel_11_evil-eye.mp4',
-    productImage: 'zavya_assets/products/evil_eye_bracelet/infinity-charm-rhodium-plated-bracelet-with-evil-eye-cubic-zirconia/01_infinity-charm-rhodium-plated-bracelet-with-evil-eye-cubic-zirconia.jpg',
+    productImage: 'zavya_assets/products/evil_eye_bracelet/infinity-charm-rhodium-plated-bracelet-with-evil-eye-cubic-zirconia/01_infinity-charm-rhodium-plated-bracelet-with-evil-eye-cubic-zirconia.webp',
     desc: 'Protective evil eye talisman framed with micro-pavé Austrian cubic zirconia.'
   },
   {
@@ -449,7 +449,7 @@ const VIDEO_REELS = [
     price: 1999,
     mrp: 2799,
     videoSrc: 'solystra_assets/videos/reel_12_anklet.mp4',
-    productImage: 'zavya_assets/products/anklets/rose-gold-plated-glimmering-fusion-cz-925-sterling-silver-anklet-x-kama/01_rose-gold-plated-glimmering-fusion-cz-925-sterling-silver-anklet-x-kama.jpg',
+    productImage: 'zavya_assets/products/anklets/rose-gold-plated-glimmering-fusion-cz-925-sterling-silver-anklet-x-kama/01_rose-gold-plated-glimmering-fusion-cz-925-sterling-silver-anklet-x-kama.webp',
     desc: 'Whisper-soft chain with micro-beaded clusters and anti-tarnish protective sealing.'
   }
 ];
@@ -1278,7 +1278,7 @@ export const HomePage = ({ activeCategory, onSelectCategory }) => {
             <div className="relative w-full h-full rounded-[14px] sm:rounded-[20.5px] overflow-hidden bg-[#181109] flex flex-col justify-end p-2.5 xs:p-3.5 sm:p-5 z-10">
               {/* Full-bleed high fashion model portrait */}
               <img
-                src="/solystra_assets/metals/gold_model.jpg"
+                src="/solystra_assets/metals/gold_model.webp"
                 alt="18K Gold Vermeil Collection"
                 className="absolute inset-0 w-full h-full object-cover object-top group-hover:scale-106 transition-transform duration-700 ease-out"
                 loading="lazy"
@@ -1337,7 +1337,7 @@ export const HomePage = ({ activeCategory, onSelectCategory }) => {
             <div className="relative w-full h-full rounded-[14px] sm:rounded-[20.5px] overflow-hidden bg-[#0A101D] flex flex-col justify-end p-2.5 xs:p-3.5 sm:p-5 z-10">
               {/* Full-bleed high fashion model portrait */}
               <img
-                src="/solystra_assets/metals/silver_model.jpg"
+                src="/solystra_assets/metals/silver_model.webp"
                 alt="925 Sterling Silver Collection"
                 className="absolute inset-0 w-full h-full object-cover object-top group-hover:scale-106 transition-transform duration-700 ease-out"
                 loading="lazy"

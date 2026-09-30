@@ -29,37 +29,37 @@ const categoryMeta = {
   'necklaces': {
     name: 'Necklaces & Lariats',
     tagline: 'Timeless cascading pendants, solitaires & bridal lariats in 925 silver',
-    bannerImg: 'solystra_assets/categories/cat_necklaces.png'
+    bannerImg: 'solystra_assets/categories/cat_necklaces.webp'
   },
   'bracelets': {
     name: 'Tennis & Charm Bracelets',
     tagline: 'Gleaming wristwear adorned with Austrian crystals & fine enamel charms',
-    bannerImg: 'solystra_assets/categories/cat_bracelets.png'
+    bannerImg: 'solystra_assets/categories/cat_bracelets.webp'
   },
   'earrings': {
     name: 'Fine Earrings & Studs',
     tagline: 'From minimalist solitaires to statement floral drop earrings',
-    bannerImg: 'solystra_assets/categories/cat_earrings.png'
+    bannerImg: 'solystra_assets/categories/cat_earrings.webp'
   },
   'rings': {
     name: 'Crowned Solitaires & Bands',
     tagline: 'Precision micro-pave eternity bands & certified solitaire showstoppers',
-    bannerImg: 'solystra_assets/categories/cat_rings.png'
+    bannerImg: 'solystra_assets/categories/cat_rings.webp'
   },
   'complete_sets': {
     name: 'Gift Suites & Sets',
     tagline: 'Complete matching necklace, earring & bracelet sets in luxury boxes',
-    bannerImg: 'solystra_assets/categories/cat_complete_sets.png'
+    bannerImg: 'solystra_assets/categories/cat_complete_sets.webp'
   },
   'chains': {
     name: 'Classic Layering Chains',
     tagline: 'Italian curb, rope & box link chains in pure 925 silver and 18K vermeil',
-    bannerImg: 'solystra_assets/categories/zavya_style/chains.png'
+    bannerImg: 'solystra_assets/categories/zavya_style/chains.webp'
   },
   'anklets': {
     name: 'Sterling Anklets & Sets',
     tagline: 'Dainty anklet chains with anti-tarnish micro-shield finish',
-    bannerImg: 'solystra_assets/categories/cat_anklets.png'
+    bannerImg: 'solystra_assets/categories/cat_anklets.webp'
   }
 };
 
@@ -337,8 +337,11 @@ dirs.forEach((id, index) => {
 
   // Collect all valid images
   let images = [];
-  const files = fs.readdirSync(dir)
-    .filter(f => /\.(png|jpg|jpeg|webp)$/i.test(f))
+  const allDirFiles = fs.readdirSync(dir);
+  const webpFiles = allDirFiles.filter(f => /\.webp$/i.test(f));
+  const candidateFiles = webpFiles.length > 0 ? webpFiles : allDirFiles.filter(f => /\.(png|jpg|jpeg)$/i.test(f));
+
+  const files = candidateFiles
     .sort((a, b) => {
       const getScore = (name) => {
         if (name.includes('angle_1')) return 1;
@@ -354,10 +357,10 @@ dirs.forEach((id, index) => {
   images.push(...files);
 
   if (images.length === 1) {
-    images.push('assets/craftsmanship-atelier.jpg');
-    images.push('assets/bento-craftsmanship-macro.jpg');
+    images.push('assets/craftsmanship-atelier.webp');
+    images.push('assets/bento-craftsmanship-macro.webp');
   } else if (images.length === 0) {
-    images.push('assets/craftsmanship-atelier.jpg');
+    images.push('assets/craftsmanship-atelier.webp');
   }
 
   // Pricing from Shopify variants or overrides
@@ -514,28 +517,28 @@ const trustPillars = [
     title: 'BIS Certified 925 Silver',
     description: 'Every piece carries the official government 925 hallmark stamp of purity.',
     icon: 'ShieldCheck',
-    badgeImg: 'solystra_assets/features/feat_hallmark.png'
+    badgeImg: 'solystra_assets/features/feat_hallmark.webp'
   },
   {
     id: 'warranty',
     title: '6-Month Replating Warranty',
     description: 'Complimentary replating assurance to keep your jewels gleaming forever.',
     icon: 'Sparkles',
-    badgeImg: 'solystra_assets/features/feat_warranty.png'
+    badgeImg: 'solystra_assets/features/feat_warranty.webp'
   },
   {
     id: 'shipping',
     title: 'Insured Express Delivery',
     description: 'Tamper-evident transit protection and express door delivery across India.',
     icon: 'Truck',
-    badgeImg: 'solystra_assets/features/feat_shipping.png'
+    badgeImg: 'solystra_assets/features/feat_shipping.webp'
   },
   {
     id: 'returns',
     title: '15-Day Easy Exchange',
     description: 'Zero questions asked exchange guarantee for ultimate peace of mind.',
     icon: 'RotateCcw',
-    badgeImg: 'solystra_assets/features/feat_returns.png'
+    badgeImg: 'solystra_assets/features/feat_returns.webp'
   }
 ];
 

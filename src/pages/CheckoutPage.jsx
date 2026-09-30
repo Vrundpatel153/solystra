@@ -349,8 +349,14 @@ Status: Confirmed & Hallmarked
 
             <a href="#/" className="flex items-center gap-2.5">
               <img
-                src="solystra_assets/solystra_logo.png"
+                src="/solystra_assets/solystra_logo.webp"
                 alt="Solystra Jewels"
+                onError={(e) => {
+                  if (!e.currentTarget.dataset.err) {
+                    e.currentTarget.dataset.err = '1';
+                    e.currentTarget.src = 'solystra_assets/solystra_logo.webp';
+                  }
+                }}
                 className="h-7 sm:h-9 w-auto object-contain"
               />
               <span className="text-[10px] uppercase tracking-widest text-[#C5A059] font-sans font-bold border-l border-stone-300 pl-2.5 hidden sm:inline">

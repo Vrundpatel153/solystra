@@ -106,7 +106,7 @@ export const OffersPage = ({ onBackToStore }) => {
       <section className="relative overflow-hidden bg-stone-900 border-b border-[#EAE4DC]">
         <div className="relative w-full h-36 xs:h-40 sm:h-48 md:h-56">
           <img
-            src="solystra_assets/banners/offers_privilege_vault_banner.jpg"
+            src="solystra_assets/banners/offers_privilege_vault_banner.webp"
             alt="Solystra Fine Jewelry Offers Campaign"
             className="w-full h-full object-cover object-center"
           />

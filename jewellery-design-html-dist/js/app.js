@@ -173,7 +173,7 @@
         name: product.name,
         price: product.price,
         mrp: product.mrp || product.price,
-        image: (product.images && product.images[0]) || 'solystra_assets/categories/zavya_style/necklaces.png',
+        image: (product.images && product.images[0]) || 'solystra_assets/categories/zavya_style/necklaces.webp',
         category: product.category,
         metal: selectedMetal,
         size: selectedSize,
@@ -951,6 +951,20 @@
     if (mainImg) {
       mainImg.src = productImages[0];
       mainImg.alt = product.name;
+      mainImg.onerror = function () {
+        if (!this.dataset.fallbackTried) {
+          this.dataset.fallbackTried = '1';
+          if (this.src.endsWith('.webp')) {
+            this.src = this.src.slice(0, -5) + '.png';
+          } else if (this.src.endsWith('.png')) {
+            this.src = this.src.slice(0, -4) + '.jpg';
+          } else if (this.src.endsWith('.jpg')) {
+            this.src = this.src.slice(0, -4) + '.webp';
+          } else if (!this.src.startsWith('/') && !this.src.startsWith('http')) {
+            this.src = '/' + this.src;
+          }
+        }
+      };
       mainImg.classList.add('cursor-zoom-in');
       mainImg.onclick = function () {
         window.openImageLightbox(mainImg.src, product);
@@ -973,6 +987,7 @@
       if (mainImg) {
         mainImg.style.opacity = '0.5';
         setTimeout(() => {
+          mainImg.dataset.fallbackTried = '';
           mainImg.src = productImages[currentImageIndex];
           mainImg.style.opacity = '1';
         }, 120);
@@ -1006,7 +1021,7 @@
         btn.type = 'button';
         btn.setAttribute('aria-label', `View angle ${idx + 1}`);
         btn.className = `relative w-16 h-16 sm:w-20 sm:h-20 rounded-xl overflow-hidden bg-white border transition-all shrink-0 cursor-pointer ${idx === 0 ? 'border-[#7A152E] ring-2 ring-[#7A152E]/20 shadow-xs' : 'border-stone-200 opacity-75 hover:opacity-100 hover:border-stone-400'}`;
-        btn.innerHTML = `<img src="${imgSrc}" alt="${product.name} angle ${idx + 1}" class="w-full h-full object-cover block" />`;
+        btn.innerHTML = `<img src="${imgSrc}" alt="${product.name} angle ${idx + 1}" onerror="if(!this.dataset.fallbackTried){this.dataset.fallbackTried='1';if(this.src.endsWith('.webp')){this.src=this.src.slice(0,-5)+'.png';}else if(this.src.endsWith('.png')){this.src=this.src.slice(0,-4)+'.jpg';}}" class="w-full h-full object-cover block" />`;
         btn.onclick = function () {
           setActiveImage(idx);
         };
@@ -1994,7 +2009,7 @@
         name: 'Accent Circle 925 Silver Necklace',
         price: 2798,
         mrp: 3861,
-        image: 'solystra_assets/products/accent-circle-925-silver-necklace/angle_1.png',
+        image: 'solystra_assets/products/accent-circle-925-silver-necklace/angle_1.webp',
         metal: 'Pure 925 Silver',
         quantity: 1
       }];
@@ -2835,7 +2850,7 @@
       name: 'Amethyst Floral Blossom Set',
       tag: 'ROSE GOLD VERMEIL',
       desc: 'Handcrafted floral blossom necklace paired with matching petal drop earrings.',
-      editorialImg: 'solystra_assets/banners/banner_blush_tones_pc.jpg',
+      editorialImg: 'solystra_assets/banners/banner_blush_tones_pc.webp',
       imagePosition: 'object-[75%_center]',
       items: [
         {
@@ -2846,7 +2861,7 @@
           metal: 'Rose Gold Vermeil • Handcrafted Setting',
           price: 9585,
           mrp: 11981,
-          image: 'solystra_assets/products/amethyst-bloom-necklace-set-925-sterling-silver/angle_1.png',
+          image: 'solystra_assets/products/amethyst-bloom-necklace-set-925-sterling-silver/angle_1.webp',
           hotspot: { x: 75.1, y: 55.0, pcX: 75.1, pcY: 55.0, label: 'Floral Blossom Necklace' }
         },
         {
@@ -2857,7 +2872,7 @@
           metal: 'Rose Gold Vermeil • Double-Micron Rhodium',
           price: 2499,
           mrp: 3499,
-          image: 'solystra_assets/categories/cat_earrings.png',
+          image: 'solystra_assets/products/flora-band-hoops/angle_1.webp',
           hotspot: { x: 78.6, y: 27.1, pcX: 78.6, pcY: 27.1, label: 'Blossom Drop Earrings' }
         }
       ],
@@ -2870,7 +2885,7 @@
       name: 'Classic Solitaire Set',
       tag: 'PURE 925 STERLING SILVER',
       desc: 'Brilliant Austrian solitaire pendant paired with matching solitaire drop earrings.',
-      editorialImg: 'solystra_assets/banners/banner_pc_1.jpg',
+      editorialImg: 'solystra_assets/banners/banner_pc_1.webp',
       imagePosition: 'object-[72%_center]',
       items: [
         {
@@ -2881,7 +2896,7 @@
           metal: 'Pure 925 Silver • Brilliant Cut Solitaire',
           price: 2799,
           mrp: 3999,
-          image: 'solystra_assets/categories/cat_necklaces.png',
+          image: 'solystra_assets/products/unity-circle/angle_1.webp',
           hotspot: { x: 32.3, y: 76.2, pcX: 46.1, pcY: 78.2, label: 'Solitaire Pendant Necklace' }
         },
         {
@@ -2892,7 +2907,7 @@
           metal: 'Pure 925 Silver • Cushion Cut Drop',
           price: 2299,
           mrp: 3299,
-          image: 'solystra_assets/categories/cat_earrings.png',
+          image: 'solystra_assets/products/classic-knot-earrings/angle_1.webp',
           hotspot: { x: 42.7, y: 40.6, pcX: 53.6, pcY: 41.8, label: 'Solitaire Drop Earrings' }
         }
       ],
@@ -2905,7 +2920,7 @@
       name: 'Gala Choker & Chandelier Set',
       tag: 'FINE EVENING WEAR',
       desc: 'Graduated tennis choker in pure silver paired with tiered chandelier drops.',
-      editorialImg: 'solystra_assets/generated/cocktail_glam.jpg',
+      editorialImg: 'solystra_assets/generated/cocktail_glam.webp',
       imagePosition: 'object-center',
       items: [
         {
@@ -2916,7 +2931,7 @@
           metal: 'Pure 925 Silver • Graduated Tennis Links',
           price: 5499,
           mrp: 7999,
-          image: 'solystra_assets/categories/cat_necklaces.png',
+          image: 'solystra_assets/products/golden-meadow-necklace-set-925-sterling-silver/angle_1.webp',
           hotspot: { x: 52.5, y: 50.5, pcX: 52.5, pcY: 50.5, label: 'Graduated Tennis Choker' }
         },
         {
@@ -2927,7 +2942,7 @@
           metal: 'Pure 925 Silver • Multi-Tier Drops',
           price: 3499,
           mrp: 4999,
-          image: 'solystra_assets/categories/cat_earrings.png',
+          image: 'solystra_assets/products/greek-pattern-hoops/angle_1.webp',
           hotspot: { x: 60.8, y: 34.5, pcX: 60.8, pcY: 34.5, label: 'Imperial Chandelier Drops' }
         }
       ],
@@ -2999,7 +3014,7 @@
               <div data-popover="${item.id}"
                    class="absolute z-30 transition-all duration-300 pointer-events-auto ${popoverPos} opacity-0 scale-95 invisible min-w-[210px] sm:min-w-[230px] p-2.5 rounded-xl bg-[#1C1819]/95 backdrop-blur-md border border-[#C5A059]/60 shadow-[0_15px_35px_rgba(0,0,0,0.6)]">
                 <div class="flex items-center gap-2.5">
-                  <img src="${item.image}" alt="${item.name}" class="w-11 h-11 rounded-lg object-cover bg-white/10 border border-white/20 shrink-0">
+                  <img src="${item.image}" alt="${item.name}" onerror="if(!this.dataset.err){this.dataset.err=1; this.src=this.src.endsWith('.webp')?this.src.replace('.webp','.png'):(this.src.endsWith('.png')?this.src.replace('.png','.jpg'):this.src.replace('.jpg','.webp'));}" class="w-11 h-11 rounded-lg object-cover bg-white/10 border border-white/20 shrink-0">
                   <div class="flex-1 min-w-0 text-left">
                     <span class="text-[9px] uppercase tracking-wider font-bold text-[#E5C985] block">${item.type}</span>
                     <h5 class="text-xs font-serif font-normal text-white truncate">${item.name}</h5>
@@ -3025,7 +3040,7 @@
              data-product-id="${item.productId}"
              class="flex items-center gap-3.5 p-3 rounded-xl transition-all cursor-pointer group border bg-[#FAF8F5]/80 border-[#EAE4DC] hover:border-[#7A152E]/60 hover:bg-white hover:shadow-2xs"
              title="Click to view product details">
-          <img src="${item.image}" alt="${item.name}" class="w-14 h-14 rounded-xl object-cover border border-[#EAE4DC] bg-white shrink-0 group-hover:scale-105 transition-transform">
+          <img src="${item.image}" alt="${item.name}" onerror="if(!this.dataset.err){this.dataset.err=1; this.src=this.src.endsWith('.webp')?this.src.replace('.webp','.png'):(this.src.endsWith('.png')?this.src.replace('.png','.jpg'):this.src.replace('.jpg','.webp'));}" class="w-14 h-14 rounded-xl object-cover border border-[#EAE4DC] bg-white shrink-0 group-hover:scale-105 transition-transform">
           <div class="flex-1 min-w-0">
             <div class="flex items-center gap-2">
               <span class="text-[9.5px] text-[#7A152E] uppercase font-bold tracking-wider block">${item.type}</span>
@@ -3485,7 +3500,7 @@
         </div>
 
         <div class="flex items-center gap-3 p-3 rounded-xl bg-[#FAF8F5] border border-[#EAE4DC]">
-          <img src="${(currentReviewProduct && currentReviewProduct.images && currentReviewProduct.images[0]) || 'solystra_assets/solystra_logo.png'}" class="w-12 h-12 rounded-lg object-cover bg-white border border-[#EAE4DC] shrink-0" alt="" />
+          <img src="${(currentReviewProduct && currentReviewProduct.images && currentReviewProduct.images[0]) || 'solystra_assets/solystra_logo.webp'}" class="w-12 h-12 rounded-lg object-cover bg-white border border-[#EAE4DC] shrink-0" alt="" />
           <div class="min-w-0 flex-1">
             <h4 class="font-semibold text-xs sm:text-sm text-stone-900 truncate">${currentReviewProduct ? currentReviewProduct.name : 'Solystra Fine Jewelry'}</h4>
             <p class="text-[11px] text-stone-500 truncate">100% Certified BIS 925 Hallmarked</p>
@@ -3692,7 +3707,7 @@
     }
     lightboxImages = (product && product.images && product.images.length > 0)
       ? product.images
-      : [initialSrc || 'solystra_assets/solystra_logo.png'];
+      : [initialSrc || 'solystra_assets/solystra_logo.webp'];
 
     lightboxCurrentIndex = Math.max(0, lightboxImages.indexOf(initialSrc));
     lightboxZoomLevel = 1;
@@ -4320,7 +4335,7 @@
       name: 'Accent Circle 925 Silver Necklace',
       price: 2798,
       mrp: 3861,
-      image: 'solystra_assets/products/accent-circle-925-silver-necklace/angle_1.png',
+      image: 'solystra_assets/products/accent-circle-925-silver-necklace/angle_1.webp',
       metal: 'Pure 925 Silver'
     };
   }
