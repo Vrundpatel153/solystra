@@ -3,10 +3,12 @@ node_modules/
 
 # Production build outputs & archives
 !dist/**
+!dist/assets-bundle/**
 !jewellery-design-html-dist/**
 dist-final/
 *.zip
-assets-bundle/
+/assets-bundle/
+
 
 
 
@@ -27,6 +29,9 @@ walkthrough.md
 !assets/**
 !public/**
 !zavya_assets/**
+!dist/**
+!jewellery-design-html-dist/**
+
 
 # Legacy static scrape files
 /index_legacy.html
