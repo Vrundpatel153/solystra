@@ -11683,3 +11683,75 @@ video {
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
+
+
+/* === Solystra Luxury Enhanced Utilities & Backdrop Fixes === */
+.bg-black\/95 {
+  background-color: rgba(0, 0, 0, 0.95) !important;
+}
+.bg-black\/90 {
+  background-color: rgba(0, 0, 0, 0.90) !important;
+}
+.bg-black\/75 {
+  background-color: rgba(0, 0, 0, 0.75) !important;
+}
+.bg-black\/70 {
+  background-color: rgba(0, 0, 0, 0.70) !important;
+}
+.backdrop-blur-xs {
+  -webkit-backdrop-filter: blur(4px) !important;
+  backdrop-filter: blur(4px) !important;
+}
+.backdrop-blur-md {
+  -webkit-backdrop-filter: blur(12px) !important;
+  backdrop-filter: blur(12px) !important;
+}
+.group:hover .group-hover\:scale-105 {
+  transform: scale(1.05);
+}
+.group:hover .group-hover\:scale-103 {
+  transform: scale(1.03);
+}
+.animate-slide-up {
+  animation: toastSlideIn 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Mobile-Proof Luxury Toast Notifications */
+#toast-container {
+  position: fixed !important;
+  bottom: 1rem !important;
+  left: 1rem !important;
+  right: 1rem !important;
+  z-index: 99999 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 0.625rem !important;
+  pointer-events: none !important;
+  max-width: calc(100vw - 2rem) !important;
+  width: auto !important;
+}
+@media (min-width: 640px) {
+  #toast-container {
+    left: auto !important;
+    right: 1.5rem !important;
+    bottom: 1.5rem !important;
+    max-width: 26rem !important;
+    width: 100% !important;
+  }
+}
+
+/* Luxury PDP Interactive Magnifier */
+.pdp-magnifier-stage {
+  overflow: hidden;
+  position: relative;
+  cursor: zoom-in;
+}
+.pdp-magnifier-stage img {
+  transition: transform 0.2s cubic-bezier(0.2, 0, 0.2, 1);
+  transform-origin: center center;
+}
+
+/* FAQ Accordion Transitions */
+.faq-answer-container {
+  transition: max-height 0.3s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.25s ease;
+}

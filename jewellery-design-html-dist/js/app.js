@@ -85,28 +85,27 @@
     if (!container) return;
 
     const toast = document.createElement('div');
-    toast.className = 'toast-item pointer-events-auto bg-white border border-[#EAE4DC] shadow-2xl rounded-2xl p-4 flex items-center justify-between gap-3 text-stone-900 border-l-4 ' +
-      (type === 'success' ? 'border-l-[#7A152E]' : 'border-l-[#C5A059]');
-
+    toast.className = 'toast-item pointer-events-auto flex items-start gap-3 p-3.5 sm:p-4 bg-[#380A15] border border-[#C5A059]/40 rounded-xl shadow-2xl text-white animate-slide-up transition-all w-full';
     toast.innerHTML = `
-      <div class="flex items-center gap-3">
-        <div class="w-8 h-8 rounded-xl bg-[#7A152E]/10 flex items-center justify-center text-[#7A152E] shrink-0">
-          <svg class="lucide lucide-sparkles w-4 h-4" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="24"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"></path></svg>
-        </div>
-        <div>
-          <div class="font-serif text-xs sm:text-sm font-bold text-stone-900">${title}</div>
-          <div class="text-[11px] text-stone-500">${message}</div>
-        </div>
+      <div class="w-5 h-5 rounded-full bg-[#7A152E] flex items-center justify-center shrink-0 text-white mt-0.5 border border-[#C5A059]/40">
+        ${type === 'info' 
+          ? '<svg class="w-3.5 h-3.5 text-[#EAD7AE]" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>'
+          : '<svg class="w-3.5 h-3.5 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="m9 11 3 3L22 4"/></svg>'
+        }
       </div>
-      <button onclick="this.parentElement.remove()" class="p-1 rounded-full text-stone-400 hover:text-stone-800 transition-colors cursor-pointer">
-        <svg class="lucide lucide-x w-4 h-4" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="24"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg>
+      <div class="flex-1 min-w-0">
+        <div class="font-serif text-xs sm:text-sm font-semibold text-[#FAF8F5] leading-tight">${title}</div>
+        ${message ? `<div class="text-[11px] sm:text-xs text-[#FAF8F5]/80 mt-1 leading-snug">${message}</div>` : ''}
+      </div>
+      <button onclick="this.parentElement.remove()" class="text-[#FAF8F5]/60 hover:text-white shrink-0 p-1 cursor-pointer" aria-label="Close notification">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
       </button>
     `;
 
     container.appendChild(toast);
     setTimeout(() => {
       if (toast.parentElement) toast.remove();
-    }, 3500);
+    }, 4000);
   };
 
   // Badges update
@@ -966,6 +965,21 @@
         }
       };
       mainImg.classList.add('cursor-zoom-in');
+      const stageContainer = mainImg.parentElement;
+      if (stageContainer) {
+        stageContainer.classList.add('pdp-magnifier-stage');
+        stageContainer.onmousemove = function (e) {
+          const rect = stageContainer.getBoundingClientRect();
+          const x = ((e.clientX - rect.left) / rect.width) * 100;
+          const y = ((e.clientY - rect.top) / rect.height) * 100;
+          mainImg.style.transformOrigin = `${x}% ${y}%`;
+          mainImg.style.transform = 'scale(1.35)';
+        };
+        stageContainer.onmouseleave = function () {
+          mainImg.style.transformOrigin = 'center center';
+          mainImg.style.transform = 'scale(1)';
+        };
+      }
       mainImg.onclick = function () {
         window.openImageLightbox(mainImg.src, product);
       };
@@ -1414,16 +1428,16 @@
       storyDesc.textContent = product.desc || 'Handcrafted in certified 925 sterling silver with dual-micron rhodium for enduring brilliance and hypoallergenic comfort.';
     }
 
-    // 12. Reviews Section Wiring & 5-Star Triggers
-    const writeReviewBtns = document.querySelectorAll('button:has(svg.lucide-message-square), button:contains("Write a Review"), button:contains("Write Customer Review")');
+    // 12. Reviews Section Safe Wiring & 5-Star Triggers
+    // Robust case-insensitive button binding
     document.querySelectorAll('button').forEach(btn => {
-      const txt = btn.textContent.trim();
-      if (txt.includes('Write a Review') || txt.includes('Review this creation') || txt.includes('Write Customer Review')) {
+      const txt = (btn.textContent || '').trim().toLowerCase();
+      if (txt.includes('write a review') || txt.includes('review this creation') || txt.includes('write customer review')) {
         btn.onclick = function (e) {
           e.preventDefault();
           window.openReviewModal(product, 5);
         };
-      } else if (txt.includes('Ask a Question') || txt.includes('Ask Concierge Desk')) {
+      } else if (txt.includes('ask a question') || txt.includes('ask concierge')) {
         btn.onclick = function (e) {
           e.preventDefault();
           window.openAskQuestionModal(product);
@@ -1431,12 +1445,12 @@
       }
     });
 
-    // Wire individual star buttons in review summary prompt card
-    const promptStarButtons = document.querySelectorAll('button[title*="Rate"]');
-    promptStarButtons.forEach(btn => {
+    // Wire individual star buttons in review prompt card
+    const promptStarButtons = document.querySelectorAll('#pdp-prompt-stars-row button, button[title*="Rate"]');
+    promptStarButtons.forEach((btn, idx) => {
       const title = btn.getAttribute('title') || '';
       const match = title.match(/Rate (\d+)/);
-      const starRating = match ? parseInt(match[1], 10) : 5;
+      const starRating = match ? parseInt(match[1], 10) : (idx + 1);
       btn.onclick = function (e) {
         e.preventDefault();
         e.stopPropagation();
@@ -1447,7 +1461,7 @@
     // Load custom reviews stored in localStorage
     try {
       const storedReviews = JSON.parse(localStorage.getItem('solystra_reviews_' + product.id) || '[]');
-      const reviewsList = document.querySelector('.divide-y.divide-\\[\\#EAE4DC\\].pt-2');
+      const reviewsList = document.querySelector('.divide-y.divide-\\[\\#EAE4DC\\].pt-2, #pdp-reviews-list');
       if (storedReviews.length > 0 && reviewsList) {
         storedReviews.forEach(rev => {
           const revArticle = document.createElement('article');
@@ -1467,17 +1481,17 @@
                     </span>
                   </div>
                   <div class="text-[11px] text-stone-400 mt-0.5 flex items-center gap-2">
-                    <span>${rev.city}</span>
+                    <span>${rev.city || 'Patron Location'}</span>
                     <span>•</span>
-                    <span class="text-[#7A152E] font-medium">${rev.date}</span>
+                    <span class="text-[#7A152E] font-medium">${rev.date || 'Recent Order'}</span>
                   </div>
                 </div>
               </div>
             </div>
             <div class="flex flex-wrap items-center gap-2">
               <div class="flex items-center gap-0.5">
-                ${[...Array(5)].map((_, i) => `
-                  <svg class="w-3.5 h-3.5 ${i < rev.rating ? 'text-[#C5A059] fill-[#C5A059]' : 'text-stone-300 fill-none'}" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                ${[1, 2, 3, 4, 5].map(s => `
+                  <svg class="w-3.5 h-3.5 ${s <= (rev.rating || 5) ? 'text-[#C5A059] fill-[#C5A059]' : 'text-stone-300 fill-none'}" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
                     <path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"></path>
                   </svg>
                 `).join('')}
@@ -1490,23 +1504,104 @@
         });
       }
     } catch (e) {
-      console.warn(e);
+      console.warn('Reviews render error:', e);
     }
 
-    // 13. FAQ Accordion Interaction
-    document.querySelectorAll('#qna-section .border, section:has(#qna-section) .border').forEach(card => {
-      const qBtn = card.querySelector('button') || card.querySelector('h4');
-      if (qBtn) {
-        qBtn.style.cursor = 'pointer';
-        qBtn.onclick = function () {
-          const ans = card.querySelector('p');
-          if (ans) {
-            ans.classList.toggle('line-clamp-2');
-            ans.classList.toggle('line-clamp-none');
+    // 13. Interactive FAQ Accordion & Search Engine
+    const qnaSection = document.getElementById('qna-section') || document.querySelector('section:has(#qna-section)');
+    if (qnaSection) {
+      const qnaCards = qnaSection.querySelectorAll('.divide-y > div');
+      qnaCards.forEach(card => {
+        const questionHeader = card.querySelector('h4');
+        const readMoreBtn = card.querySelector('button');
+        const answerP = card.querySelector('p');
+        const answerTextSpan = answerP ? answerP.querySelector('span') : null;
+
+        // Store full answer if available
+        if (answerP && !card.dataset.fullAnswer) {
+          card.dataset.fullAnswer = (answerTextSpan ? answerTextSpan.textContent : answerP.textContent).trim();
+        }
+
+        function toggleQna() {
+          const isExpanded = card.dataset.expanded === 'true';
+          if (isExpanded) {
+            card.dataset.expanded = 'false';
+            if (answerP) {
+              const full = card.dataset.fullAnswer || '';
+              const snippet = full.length > 130 ? full.slice(0, 130).replace(/[,\s]+$/, '') + '...' : full;
+              answerP.innerHTML = `<span>${snippet}</span> <button class="inline font-semibold text-[#7A152E] hover:underline cursor-pointer select-none text-xs ml-1" type="button">Read more</button>`;
+              const newBtn = answerP.querySelector('button');
+              if (newBtn) newBtn.onclick = function(ev) { ev.stopPropagation(); toggleQna(); };
+            }
+          } else {
+            card.dataset.expanded = 'true';
+            if (answerP) {
+              const full = card.dataset.fullAnswer || '';
+              answerP.innerHTML = `<span>${full}</span> <button class="inline font-semibold text-[#7A152E] hover:underline cursor-pointer select-none text-xs ml-1" type="button">See less</button>`;
+              const newBtn = answerP.querySelector('button');
+              if (newBtn) newBtn.onclick = function(ev) { ev.stopPropagation(); toggleQna(); };
+            }
           }
+        }
+
+        if (questionHeader) {
+          questionHeader.parentElement.style.cursor = 'pointer';
+          questionHeader.parentElement.onclick = function (e) {
+            e.preventDefault();
+            toggleQna();
+          };
+        }
+        if (readMoreBtn) {
+          readMoreBtn.onclick = function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+            toggleQna();
+          };
+        }
+      });
+
+      // FAQ Live Search Filter
+      const qnaSearchInput = qnaSection.querySelector('input[type="text"]');
+      if (qnaSearchInput) {
+        qnaSearchInput.oninput = function () {
+          const query = this.value.toLowerCase().trim();
+          qnaCards.forEach(card => {
+            const text = (card.textContent || '').toLowerCase();
+            if (!query || text.includes(query)) {
+              card.style.display = '';
+            } else {
+              card.style.display = 'none';
+            }
+          });
         };
       }
-    });
+
+      // FAQ Category Filter Pills
+      const categoryButtons = qnaSection.querySelectorAll('.overflow-x-auto button');
+      categoryButtons.forEach(btn => {
+        btn.onclick = function () {
+          categoryButtons.forEach(b => {
+            b.className = 'px-3.5 py-1.5 rounded-full text-xs font-medium transition-all whitespace-nowrap cursor-pointer bg-[#FAF8F5] text-stone-700 border border-[#EAE4DC] hover:border-[#7A152E]/30';
+          });
+          this.className = 'px-3.5 py-1.5 rounded-full text-xs font-medium transition-all whitespace-nowrap cursor-pointer bg-[#7A152E] text-white shadow-xs';
+          const cat = this.textContent.toLowerCase().trim();
+          qnaCards.forEach(card => {
+            const text = (card.textContent || '').toLowerCase();
+            if (cat.includes('all')) {
+              card.style.display = '';
+            } else if (cat.includes('purity') || cat.includes('hallmark')) {
+              card.style.display = (text.includes('hallmark') || text.includes('silver') || text.includes('purity') || text.includes('tarnish')) ? '' : 'none';
+            } else if (cat.includes('shipping') || cat.includes('returns')) {
+              card.style.display = (text.includes('shipping') || text.includes('courier') || text.includes('return') || text.includes('exchange')) ? '' : 'none';
+            } else if (cat.includes('care') || cat.includes('daily')) {
+              card.style.display = (text.includes('care') || text.includes('shower') || text.includes('swimming') || text.includes('clean')) ? '' : 'none';
+            } else {
+              card.style.display = '';
+            }
+          });
+        };
+      });
+    }
 
     // 14. Pincode checker
     const pinBtn = document.querySelector('button:has(svg.lucide-truck)');
@@ -3280,19 +3375,38 @@
   // Global Interactive Modals & Redirects Helpers
   // ==========================================
 
-  // Global Newsletter Form Submit Handler
+  // Global Newsletter Form Submit Handler (Single Authority)
   document.addEventListener('submit', function (e) {
     const form = e.target;
+    // Never intercept checkout form
+    if (form.id === 'checkout-form' || form.closest('#checkout-form')) return;
+
     const emailInput = form.querySelector('input[type="email"]');
-    if (emailInput && !form.closest('#checkout-form')) {
-      e.preventDefault();
-      const email = emailInput.value.trim();
-      if (email) {
-        window.showToast('Privilege Discount Unlocked', 'Welcome to the Solystra Club! Code SOULY10 (10% off) copied to clipboard.', 'success');
-        try { navigator.clipboard.writeText('SOULY10'); } catch (_) {}
-        emailInput.value = '';
-      }
+    if (!emailInput) return;
+
+    e.preventDefault();
+    const email = (emailInput.value || '').trim();
+
+    // Standard RFC-compliant email regex
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+    if (!email || !emailRegex.test(email)) {
+      window.showToast('Invalid Email', 'Please enter a valid email address (e.g. name@example.com).', 'info');
+      emailInput.focus();
+      return;
     }
+
+    try {
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText('SOULY10');
+      }
+    } catch (_) {}
+
+    window.showToast(
+      'Welcome to Solystra Privé!',
+      'Privilege Code SOULY10 (10% OFF) copied to your clipboard.',
+      'success'
+    );
+    emailInput.value = '';
   });
 
   // Mobile Footer Accordions
@@ -3355,7 +3469,7 @@
     if (!modal) {
       modal = document.createElement('div');
       modal.id = 'size-guide-modal-root';
-      modal.className = 'fixed inset-0 z-50 bg-black/70 backdrop-blur-xs flex items-center justify-center p-4 font-sans';
+      modal.className = 'fixed inset-0 z-50 flex items-center justify-center p-4 font-sans'; modal.style.cssText = 'position:fixed; inset:0; z-index:99999; background:rgba(0,0,0,0.80); backdrop-filter:blur(8px); -webkit-backdrop-filter:blur(8px); display:flex; align-items:center; justify-content:center; padding:1rem;';
       modal.innerHTML = `
         <div class="bg-white rounded-2xl max-w-lg w-full p-6 sm:p-8 space-y-4 shadow-2xl border border-stone-200 animate-slide-up">
           <div class="flex justify-between items-center border-b border-stone-200 pb-3">
@@ -3413,7 +3527,7 @@
     if (!modal) {
       modal = document.createElement('div');
       modal.id = 'track-order-modal-root';
-      modal.className = 'fixed inset-0 z-50 bg-black/70 backdrop-blur-xs flex items-center justify-center p-4 font-sans';
+      modal.className = 'fixed inset-0 z-50 flex items-center justify-center p-4 font-sans'; modal.style.cssText = 'position:fixed; inset:0; z-index:99999; background:rgba(0,0,0,0.80); backdrop-filter:blur(8px); -webkit-backdrop-filter:blur(8px); display:flex; align-items:center; justify-content:center; padding:1rem;';
       modal.innerHTML = `
         <div class="bg-white rounded-2xl max-w-md w-full p-6 space-y-4 shadow-2xl border border-stone-200 animate-slide-up">
           <div class="flex justify-between items-center border-b border-stone-200 pb-3">
@@ -3483,7 +3597,7 @@
     if (!modal) {
       modal = document.createElement('div');
       modal.id = 'review-modal-root';
-      modal.className = 'fixed inset-0 z-50 bg-black/75 backdrop-blur-xs flex items-center justify-center p-4 font-sans';
+      modal.className = 'fixed inset-0 z-50 flex items-center justify-center p-4 font-sans'; modal.style.cssText = 'position:fixed; inset:0; z-index:99999; background:rgba(0,0,0,0.80); backdrop-filter:blur(8px); -webkit-backdrop-filter:blur(8px); display:flex; align-items:center; justify-content:center; padding:1rem;';
       document.body.appendChild(modal);
     }
 
@@ -3694,7 +3808,7 @@
     window.showToast('Patron Review Published!', 'Thank you! Your verified reflection is now live for all atelier patrons.');
   };
 
-  // Lightbox Magnifier Fullscreen Modal
+  // Lightbox Magnifier Fullscreen Modal (Luxury Solystra Atelier UI/UX Matching React)
   let lightboxCurrentIndex = 0;
   let lightboxImages = [];
   let lightboxZoomLevel = 1;
@@ -3716,60 +3830,69 @@
     if (!lb) {
       lb = document.createElement('div');
       lb.id = 'pdp-lightbox-modal';
-      lb.className = 'fixed inset-0 z-50 bg-black/95 backdrop-blur-md flex flex-col justify-between p-3 sm:p-6 text-white font-sans select-none';
       document.body.appendChild(lb);
     }
+    lb.style.cssText = 'position:fixed; inset:0; z-index:99999; background:rgba(0,0,0,0.94); backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px); display:flex; flex-direction:column; justify-content:space-between; padding:1rem sm:padding:1.5rem; font-family:"Plus Jakarta Sans", sans-serif; user-select:none;';
 
     function renderLightbox() {
       const currentImg = lightboxImages[lightboxCurrentIndex] || lightboxImages[0];
       const prodName = product ? product.name : 'Solystra Fine Jewelry Atelier';
 
       lb.innerHTML = `
-        <div class="flex items-center justify-between border-b border-white/10 pb-3 z-20">
+        <!-- Top Bar Header with High-Contrast Typography & React Close Button -->
+        <div class="flex items-center justify-between border-b border-white/15 pb-3.5 z-20 px-2 sm:px-4">
           <div class="min-w-0 pr-4">
-            <h3 class="font-serif text-base sm:text-lg text-white font-normal truncate">${prodName}</h3>
-            <span class="text-[11px] text-[#EAD7AE] font-mono">Angle ${lightboxCurrentIndex + 1} of ${lightboxImages.length} • 100% Certified 925 Hallmark</span>
+            <h3 class="font-serif text-base sm:text-xl text-white font-normal truncate tracking-wide">${prodName}</h3>
+            <span class="text-[11px] sm:text-xs text-[#EAD7AE] font-mono tracking-wider block mt-0.5">Angle ${lightboxCurrentIndex + 1} of ${lightboxImages.length} • 100% Certified BIS 925 Hallmark</span>
           </div>
-          <div class="flex items-center gap-2 shrink-0">
-            <button onclick="window.zoomLightbox(0.25)" class="w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-white transition-colors cursor-pointer text-sm font-bold" title="Zoom In">+</button>
-            <button onclick="window.zoomLightbox(-0.25)" class="w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-white transition-colors cursor-pointer text-sm font-bold" title="Zoom Out">-</button>
-            <button onclick="window.resetLightboxZoom()" class="px-2.5 py-1 rounded-full bg-white/10 hover:bg-white/20 text-[11px] text-white transition-colors cursor-pointer font-mono" title="Reset Zoom">Reset</button>
-            <button onclick="window.closeImageLightbox()" class="w-9 h-9 rounded-full bg-[#7A152E] hover:bg-[#590D1E] flex items-center justify-center text-white transition-colors cursor-pointer ml-1" title="Close Lightbox (Esc)">
-              <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg>
+          <div class="flex items-center gap-3 shrink-0">
+            <div class="hidden sm:flex items-center gap-1.5 bg-white/10 rounded-full px-3 py-1 text-xs text-white/90 font-mono">
+              <button onclick="window.zoomLightbox(0.25)" class="w-6 h-6 rounded-full hover:bg-white/20 flex items-center justify-center font-bold cursor-pointer" title="Zoom In">+</button>
+              <span class="px-1">${Math.round(lightboxZoomLevel * 100)}%</span>
+              <button onclick="window.zoomLightbox(-0.25)" class="w-6 h-6 rounded-full hover:bg-white/20 flex items-center justify-center font-bold cursor-pointer" title="Zoom Out">-</button>
+            </div>
+            <button onclick="window.closeImageLightbox()" class="p-2.5 sm:p-3 rounded-full bg-white/10 hover:bg-white text-white hover:text-black transition-all cursor-pointer shadow-lg active:scale-95 flex items-center justify-center" title="Close (Esc)">
+              <svg class="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
             </button>
           </div>
         </div>
 
-        <div class="relative flex-1 flex items-center justify-center overflow-hidden my-2" onclick="if(event.target === this) window.closeImageLightbox()">
-          <button onclick="window.prevLightboxImage(event)" class="absolute left-2 sm:left-4 z-20 w-11 h-11 rounded-full bg-black/60 hover:bg-[#7A152E] border border-white/20 flex items-center justify-center text-white transition-all cursor-pointer shadow-xl active:scale-95" title="Previous Angle (Left Arrow)">
-            <svg class="w-5 h-5 -translate-x-px" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="m15 18-6-6 6-6"></path></svg>
-          </button>
+        <!-- Center Image Stage with Frosted Chevrons and Click-to-Zoom -->
+        <div class="relative flex-1 flex items-center justify-center overflow-hidden my-3" onclick="if(event.target === this) window.closeImageLightbox()">
+          ${lightboxImages.length > 1 ? `
+            <button onclick="window.prevLightboxImage(event)" class="absolute left-2 sm:left-6 z-20 w-11 h-11 sm:w-12 sm:h-12 rounded-full bg-white/10 hover:bg-white/25 border border-white/20 flex items-center justify-center text-white transition-all cursor-pointer shadow-2xl active:scale-95" title="Previous Angle (Left Arrow)">
+              <svg class="w-6 h-6 -translate-x-px" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="m15 18-6-6 6-6"/></svg>
+            </button>
+          ` : ''}
 
-          <div class="relative max-h-[75vh] max-w-[85vw] flex items-center justify-center overflow-hidden">
+          <div class="relative max-h-[72vh] sm:max-h-[76vh] max-w-[85vw] flex items-center justify-center overflow-hidden rounded-2xl shadow-2xl">
             <img id="lightbox-main-img" src="${currentImg}" alt="${prodName}"
-              style="transform: scale(${lightboxZoomLevel}); transition: transform 0.25s ease;"
-              class="max-h-[75vh] max-w-[85vw] object-contain rounded-xl shadow-2xl cursor-zoom-in"
+              style="transform: scale(${lightboxZoomLevel}); transition: transform 0.3s cubic-bezier(0.2, 0, 0.2, 1);"
+              class="max-h-[72vh] sm:max-h-[76vh] max-w-[85vw] object-contain rounded-2xl shadow-2xl cursor-zoom-in"
               onclick="window.toggleLightboxZoom()" />
           </div>
 
-          <button onclick="window.nextLightboxImage(event)" class="absolute right-2 sm:right-4 z-20 w-11 h-11 rounded-full bg-black/60 hover:bg-[#7A152E] border border-white/20 flex items-center justify-center text-white transition-all cursor-pointer shadow-xl active:scale-95" title="Next Angle (Right Arrow)">
-            <svg class="w-5 h-5 translate-x-px" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="m9 18 6-6-6-6"></path></svg>
-          </button>
+          ${lightboxImages.length > 1 ? `
+            <button onclick="window.nextLightboxImage(event)" class="absolute right-2 sm:right-6 z-20 w-11 h-11 sm:w-12 sm:h-12 rounded-full bg-white/10 hover:bg-white/25 border border-white/20 flex items-center justify-center text-white transition-all cursor-pointer shadow-2xl active:scale-95" title="Next Angle (Right Arrow)">
+              <svg class="w-6 h-6 translate-x-px" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="m9 18 6-6-6-6"/></svg>
+            </button>
+          ` : ''}
         </div>
 
-        <div class="flex items-center justify-center gap-2 pt-2 border-t border-white/10 z-20 overflow-x-auto no-scrollbar">
+        <!-- Bottom Horizontal Thumbnail Strip with Gold Ring -->
+        <div class="flex items-center justify-center gap-2.5 sm:gap-3 pt-3 pb-2 border-t border-white/15 z-20 overflow-x-auto no-scrollbar">
           ${lightboxImages.map((src, i) => `
-            <button onclick="window.selectLightboxIndex(${i})" class="relative w-14 h-14 sm:w-16 sm:h-16 rounded-xl overflow-hidden border-2 transition-all cursor-pointer shrink-0 ${i === lightboxCurrentIndex ? 'border-[#C5A059] ring-2 ring-[#C5A059]/40 scale-105' : 'border-white/20 opacity-60 hover:opacity-100'}">
+            <button onclick="window.selectLightboxIndex(${i})" class="relative w-12 h-12 sm:w-16 sm:h-16 rounded-xl overflow-hidden border-2 transition-all cursor-pointer shrink-0 ${i === lightboxCurrentIndex ? 'border-[#C5A059] ring-2 ring-[#C5A059]/60 scale-105 shadow-lg' : 'border-white/20 opacity-60 hover:opacity-100'}">
               <img src="${src}" class="w-full h-full object-cover" alt="Angle ${i + 1}" />
             </button>
           `).join('')}
         </div>
       `;
-      lb.classList.remove('hidden');
+      lb.style.display = 'flex';
     }
 
     window.closeImageLightbox = function () {
-      if (lb) lb.classList.add('hidden');
+      if (lb) lb.style.display = 'none';
       lightboxZoomLevel = 1;
     };
 
@@ -3806,13 +3929,13 @@
     };
 
     window.toggleLightboxZoom = function () {
-      lightboxZoomLevel = lightboxZoomLevel > 1.2 ? 1 : 2;
+      lightboxZoomLevel = lightboxZoomLevel > 1.2 ? 1 : 1.8;
       const img = document.getElementById('lightbox-main-img');
       if (img) img.style.transform = `scale(${lightboxZoomLevel})`;
     };
 
     function handleKeyDown(e) {
-      if (lb.classList.contains('hidden')) return;
+      if (lb.style.display === 'none') return;
       if (e.key === 'Escape') window.closeImageLightbox();
       else if (e.key === 'ArrowLeft') window.prevLightboxImage();
       else if (e.key === 'ArrowRight') window.nextLightboxImage();
@@ -3939,7 +4062,7 @@
     if (!modal) {
       modal = document.createElement('div');
       modal.id = 'ask-question-modal-root';
-      modal.className = 'fixed inset-0 z-50 bg-black/70 backdrop-blur-xs flex items-center justify-center p-4 font-sans';
+      modal.className = 'fixed inset-0 z-50 flex items-center justify-center p-4 font-sans'; modal.style.cssText = 'position:fixed; inset:0; z-index:99999; background:rgba(0,0,0,0.80); backdrop-filter:blur(8px); -webkit-backdrop-filter:blur(8px); display:flex; align-items:center; justify-content:center; padding:1rem;';
       modal.innerHTML = `
         <div class="bg-white rounded-2xl max-w-md w-full p-6 space-y-4 shadow-2xl border border-stone-200 animate-slide-up">
           <div class="flex justify-between items-center border-b border-stone-200 pb-3">
@@ -4524,25 +4647,7 @@
     if (modal) modal.classList.add('hidden');
   };
 
-  // 10. Global Newsletter Form Handler
-  document.addEventListener('submit', function (e) {
-    const form = e.target;
-    const isNewsletter = form.classList.contains('newsletter-form') || form.querySelector('input[type="email"][placeholder*="Privé"], input[type="email"][placeholder*="email"], input[type="email"][placeholder*="newsletter"]');
-    if (isNewsletter) {
-      e.preventDefault();
-      const emailInput = form.querySelector('input[type="email"]');
-      const email = emailInput ? emailInput.value.trim() : '';
-      if (!email || !email.includes('@')) {
-        window.showToast('Invalid Email', 'Please enter a valid email address.', 'info');
-        return;
-      }
-      try {
-        navigator.clipboard.writeText('SOULY10');
-      } catch (err) {}
-      window.showToast('Welcome to Solystra Privé!', 'Code SOULY10 (10% OFF) copied to clipboard!');
-      if (emailInput) emailInput.value = '';
-    }
-  });
+  // 10. Global Newsletter Form Handler (Handled centrally above)
 
   // 11. Initial Mobile Accordion Toggle for PDP Details
   function initPdpMobileAccordions() {

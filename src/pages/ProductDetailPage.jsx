@@ -1531,7 +1531,7 @@ export const ProductDetailPage = ({ productId }) => {
               <p className="text-xs text-stone-500 font-light leading-relaxed">
                 Share your impressions with fellow collectors and receive 100 Solystra Club Reward Points.
               </p>
-              <div className="flex items-center gap-1 py-1 text-stone-300">
+              <div className="flex items-center gap-1.5 py-1 text-[#C5A059]">
                 {[1, 2, 3, 4, 5].map((s) => (
                   <button
                     key={s}
@@ -1540,10 +1540,10 @@ export const ProductDetailPage = ({ productId }) => {
                       setReviewForm(prev => ({ ...prev, rating: s }));
                       setShowReviewModal(true);
                     }}
-                    className="hover:text-[#C5A059] hover:scale-110 transition-transform cursor-pointer"
+                    className="hover:text-[#9B7B38] hover:scale-110 transition-transform cursor-pointer"
                     title={`Rate ${s} stars`}
                   >
-                    <Star className="w-5 h-5 fill-current" />
+                    <Star className="w-5 h-5 fill-[#C5A059] text-[#C5A059]" />
                   </button>
                 ))}
               </div>
