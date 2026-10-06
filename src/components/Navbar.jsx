@@ -137,7 +137,7 @@ export const Navbar = ({ activeCategory, onSelectCategory, onOpenBoutique }) => 
       {/* ============================================================ */}
       <header className="relative w-full z-50 bg-[#FAF8F5] border-b border-[#EAE4DC] shadow-sm transition-all">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="relative flex items-center justify-between h-[54px] sm:h-[64px]">
+          <div className="solystra-nav-inner relative flex items-center justify-between h-[60px] sm:h-[68px] lg:h-[74px]">
             
             {/* ---------------------------------------------------- */}
             {/* LEFT: MOBILE MENU TOGGLE / DESKTOP NAV LINKS        */}
@@ -206,12 +206,12 @@ export const Navbar = ({ activeCategory, onSelectCategory, onOpenBoutique }) => 
               }}
             >
               <img
-                src="/solystra_assets/solystra_logo.webp"
+                src="/solystra_assets/solystra_logo.webp?v=emblem"
                 alt="Solystra Jewels"
                 onError={(e) => {
                   if (!e.currentTarget.dataset.err) {
                     e.currentTarget.dataset.err = '1';
-                    e.currentTarget.src = 'solystra_assets/solystra_logo.webp';
+                    e.currentTarget.src = 'solystra_assets/solystra_logo.webp?v=emblem';
                   }
                 }}
                 className="h-7 sm:h-9 md:h-10 w-auto max-w-[130px] sm:max-w-[185px] md:max-w-[205px] object-contain hover:opacity-90 transition-opacity"
@@ -290,7 +290,7 @@ export const Navbar = ({ activeCategory, onSelectCategory, onOpenBoutique }) => 
       {/* 2. FROSTED GLASS BACKGROUND DIMMING OVERLAY                  */}
       {/* ============================================================ */}
       <div
-        className={`fixed inset-0 top-[52px] sm:top-[62px] z-40 transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] ${
+        className={`solystra-nav-overlay fixed inset-0 top-[60px] sm:top-[68px] lg:top-[74px] z-40 transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] ${
           isMenuOpen
             ? 'opacity-100 pointer-events-auto bg-stone-900/40 backdrop-blur-md'
             : 'opacity-0 pointer-events-none bg-stone-900/0 backdrop-blur-none'

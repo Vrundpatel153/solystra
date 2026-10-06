@@ -300,26 +300,62 @@ Status: Confirmed & Hallmarked
   // If cart is empty and not on confirmation step
   if (cart.length === 0 && currentStep !== 3) {
     return (
-      <div className="min-h-[70vh] bg-[#FAF8F5] flex items-center justify-center p-6 text-center font-sans">
-        <div className="max-w-md bg-white p-8 rounded-3xl border border-[#EAE4DC] shadow-xl">
-          <div className="w-16 h-16 rounded-2xl bg-[#FAF8F5] border border-[#EAE4DC] flex items-center justify-center text-[#7A152E] mx-auto mb-4">
-            <Package className="w-8 h-8" />
+      <div className="bg-[#FAF8F5] min-h-screen text-[#231F20] font-sans pb-20">
+        <header className="sticky top-0 z-30 bg-white/90 backdrop-blur-md border-b border-[#EAE4DC]">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 sm:h-20 flex items-center justify-between">
+            <div className="flex items-center gap-3">
+              <button
+                onClick={() => {
+                  if (onBackToStore) onBackToStore();
+                  else window.location.hash = '#/';
+                }}
+                className="p-2 rounded-xl hover:bg-stone-100 text-stone-600 transition-colors cursor-pointer flex items-center gap-1.5 text-xs font-medium"
+              >
+                <ArrowLeft className="w-4 h-4" />
+                <span className="hidden sm:inline">Back</span>
+              </button>
+              <a href="#/" className="flex items-center gap-2.5">
+                <img
+                  src="/solystra_assets/solystra_logo.webp?v=emblem"
+                  alt="Solystra Jewels"
+                  onError={(e) => {
+                    if (!e.currentTarget.dataset.err) {
+                      e.currentTarget.dataset.err = '1';
+                      e.currentTarget.src = 'solystra_assets/solystra_logo.webp?v=emblem';
+                    }
+                  }}
+                  className="solystra-checkout-logo h-[34px] sm:h-[38px] md:h-[42px] w-auto object-contain"
+                  width="2024"
+                  height="577"
+                />
+                <span className="text-[10px] uppercase tracking-widest text-[#C5A059] font-sans font-bold border-l border-stone-300 pl-2.5 hidden sm:inline">
+                  Secure Checkout
+                </span>
+              </a>
+            </div>
           </div>
-          <h2 className="font-serif text-2xl text-stone-900 font-normal">
-            Your Shopping Bag is Empty
-          </h2>
-          <p className="text-xs text-stone-500 mt-2 leading-relaxed">
-            Please add your favorite certified 925 sterling silver or 18K gold vermeil pieces before proceeding to checkout.
-          </p>
-          <button
-            onClick={() => {
-              if (onBackToStore) onBackToStore();
-              else window.location.hash = '#/';
-            }}
-            className="mt-6 px-8 py-3.5 bg-[#7A152E] hover:bg-[#590D1E] text-white text-xs font-semibold uppercase tracking-wider rounded-xl shadow-md transition-all cursor-pointer"
-          >
-            Explore Atelier Catalog
-          </button>
+        </header>
+        <div className="min-h-[60vh] flex items-center justify-center p-6 text-center font-sans">
+          <div className="max-w-md bg-white p-8 rounded-3xl border border-[#EAE4DC] shadow-xl">
+            <div className="w-16 h-16 rounded-2xl bg-[#FAF8F5] border border-[#EAE4DC] flex items-center justify-center text-[#7A152E] mx-auto mb-4">
+              <Package className="w-8 h-8" />
+            </div>
+            <h2 className="font-serif text-2xl text-stone-900 font-normal">
+              Your Shopping Bag is Empty
+            </h2>
+            <p className="text-xs text-stone-500 mt-2 leading-relaxed">
+              Please add your favorite certified 925 sterling silver or 18K gold vermeil pieces before proceeding to checkout.
+            </p>
+            <button
+              onClick={() => {
+                if (onBackToStore) onBackToStore();
+                else window.location.hash = '#/';
+              }}
+              className="mt-6 px-8 py-3.5 bg-[#7A152E] hover:bg-[#590D1E] text-white text-xs font-semibold uppercase tracking-wider rounded-xl shadow-md transition-all cursor-pointer"
+            >
+              Explore Atelier Catalog
+            </button>
+          </div>
         </div>
       </div>
     );
@@ -349,15 +385,17 @@ Status: Confirmed & Hallmarked
 
             <a href="#/" className="flex items-center gap-2.5">
               <img
-                src="/solystra_assets/solystra_logo.webp"
+                src="/solystra_assets/solystra_logo.webp?v=emblem"
                 alt="Solystra Jewels"
                 onError={(e) => {
                   if (!e.currentTarget.dataset.err) {
                     e.currentTarget.dataset.err = '1';
-                    e.currentTarget.src = 'solystra_assets/solystra_logo.webp';
+                    e.currentTarget.src = 'solystra_assets/solystra_logo.webp?v=emblem';
                   }
                 }}
-                className="h-7 sm:h-9 w-auto object-contain"
+                className="solystra-checkout-logo h-[34px] sm:h-[38px] md:h-[42px] w-auto object-contain"
+                width="2024"
+                height="577"
               />
               <span className="text-[10px] uppercase tracking-widest text-[#C5A059] font-sans font-bold border-l border-stone-300 pl-2.5 hidden sm:inline">
                 Secure Checkout

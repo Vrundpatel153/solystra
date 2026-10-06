@@ -71,12 +71,12 @@ export const Footer = () => {
           <div className="p-4 bg-white/70 rounded-2xl border border-stone-200/80 space-y-2">
             <div className="cursor-pointer" onClick={() => { window.location.hash = '#/'; }}>
               <img
-                src="/solystra_assets/solystra_logo.webp"
+                src="/solystra_assets/solystra_logo.webp?v=emblem"
                 alt="Solystra Jewels"
                 onError={(e) => {
                   if (!e.currentTarget.dataset.err) {
                     e.currentTarget.dataset.err = '1';
-                    e.currentTarget.src = 'solystra_assets/solystra_logo.webp';
+                    e.currentTarget.src = 'solystra_assets/solystra_logo.webp?v=emblem';
                   }
                 }}
                 className="h-7 w-auto object-contain"
@@ -170,12 +170,12 @@ export const Footer = () => {
           <div className="space-y-4">
             <div className="cursor-pointer" onClick={() => { window.location.hash = '#/'; }}>
               <img
-                src="/solystra_assets/solystra_logo.webp"
+                src="/solystra_assets/solystra_logo.webp?v=emblem"
                 alt="Solystra Jewels"
                 onError={(e) => {
                   if (!e.currentTarget.dataset.err) {
                     e.currentTarget.dataset.err = '1';
-                    e.currentTarget.src = 'solystra_assets/solystra_logo.webp';
+                    e.currentTarget.src = 'solystra_assets/solystra_logo.webp?v=emblem';
                   }
                 }}
                 className="h-9 w-auto object-contain"

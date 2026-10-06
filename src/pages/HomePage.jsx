@@ -26,7 +26,9 @@ import {
   Crown,
   ShieldCheck,
   Sparkles,
-  Gem
+  Gem,
+  Leaf,
+  Feather
 } from 'lucide-react';
 
 const HERO_BANNERS = [
@@ -1249,72 +1251,88 @@ export const HomePage = ({ activeCategory, onSelectCategory }) => {
 
       {/* ========================================================
           5. CURATED METALS: 18K GOLD & 925 SILVER
-             ("FOR HIM / FOR HER" CARD ARCHITECTURE: BOTH IN ONE ROW ON MOBILE)
+          (EXACT MATCH TO REFERENCE MOCKUP: BOTH IN ONE ROW ON MOBILE & DESKTOP)
           ======================================================== */}
-      <section className="py-4 sm:py-7 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-6 sm:py-10 max-w-6xl mx-auto px-2.5 sm:px-6 lg:px-8">
         
-        {/* Luxury Section Header - Max 2 Headlines */}
-        <div className="text-center max-w-2xl mx-auto mb-3 sm:mb-5">
-          <span className="text-[11px] uppercase tracking-widest text-[#7A152E] font-bold block mb-1">
+        {/* Luxury Section Header - Clean (No Emdashes) */}
+        <div className="text-center max-w-2xl mx-auto mb-4 sm:mb-8">
+          <span className="text-[10px] sm:text-xs uppercase tracking-[0.25em] text-[#8C6B38] font-semibold block mb-1">
             CURATED METALS
           </span>
-          <h2 className="font-serif text-2xl sm:text-4xl text-stone-900 font-normal">
+          <h2 className="font-serif text-2xl sm:text-4xl lg:text-[40px] text-[#1C1917] font-normal leading-tight">
             18K Gold Vermeil & 925 Silver
           </h2>
+          <p className="text-[11px] sm:text-sm text-[#78716C] font-normal mt-1 sm:mt-1.5">
+            Two timeless metals. Endless ways to express you.
+          </p>
         </div>
 
-        {/* Both Cards In ONE Row on Mobile (grid-cols-2) & PC - Luxury Editorial Full-Bleed Design */}
-        <div className="grid grid-cols-2 gap-3 sm:gap-6 lg:gap-8 max-w-4xl mx-auto">
+        {/* Both Cards In ONE Row on Mobile (grid-cols-2) & Desktop */}
+        <div className="grid grid-cols-2 gap-2 sm:gap-6 lg:gap-7">
           
-          {/* Card 1: 18K Gold Vermeil (Authentic Luminous Gold Theme & Smooth Laser Border Loop) */}
+          {/* Card 1: 18K Gold Vermeil */}
           <div
             onClick={() => handleCategorySelect('gold')}
-            className="laser-card-gold group relative rounded-2xl sm:rounded-3xl p-[2px] sm:p-[3.5px] transition-all duration-500 cursor-pointer flex flex-col aspect-[3/4.3] sm:aspect-[4/5]"
+            className="solystra-card-gold group relative rounded-2xl sm:rounded-3xl border border-[#CBB393] bg-gradient-to-b from-[#F7EFE6] via-[#EFE5D7] to-[#E8D9C5] sm:bg-gradient-to-br transition-all duration-300 hover:shadow-xl hover:border-[#B8986C] hover:-translate-y-0.5 cursor-pointer flex flex-col justify-between overflow-hidden shadow-[0_8px_25px_rgba(180,130,60,0.08)] sm:min-h-[290px] md:min-h-[320px] lg:min-h-[350px]"
           >
-            {/* Automatic Smooth Looped Gold Laser Border */}
-            <div className="laser-beam-gold pointer-events-none" />
-
-            {/* Inner Card Container (masks center, revealing only the animated laser border) */}
-            <div className="relative w-full h-full rounded-[14px] sm:rounded-[20.5px] overflow-hidden bg-[#181109] flex flex-col justify-end p-2.5 xs:p-3.5 sm:p-5 z-10">
-              {/* Full-bleed high fashion model portrait */}
+            {/* Mobile-only Top Seamless Image Fading Naturally (Zero Sharp Lines) */}
+            <div className="sm:hidden relative w-full aspect-[3/3.3] overflow-hidden">
               <img
                 src="/solystra_assets/metals/gold_model.webp"
-                alt="18K Gold Vermeil Collection"
-                className="absolute inset-0 w-full h-full object-cover object-top group-hover:scale-106 transition-transform duration-700 ease-out"
+                alt="18K Gold Vermeil"
+                style={{
+                  maskImage: 'linear-gradient(to bottom, black 50%, rgba(0,0,0,0.6) 75%, transparent 100%)',
+                  WebkitMaskImage: 'linear-gradient(to bottom, black 50%, rgba(0,0,0,0.6) 75%, transparent 100%)'
+                }}
+                className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500"
                 loading="lazy"
               />
+            </div>
 
-              {/* Warm Gold Ambient Luminance Overlay */}
-              <div className="absolute inset-0 bg-gradient-to-tr from-[#D4AF37]/20 via-transparent to-[#E5C985]/15 pointer-events-none" />
+            {/* Desktop-only Right Arched Image */}
+            <div className="hidden sm:block absolute right-0 top-0 bottom-0 w-[49%] lg:w-[48%] h-full pointer-events-none overflow-hidden rounded-r-2xl sm:rounded-r-3xl">
+              <img
+                src="/solystra_assets/metals/gold_model.webp"
+                alt="18K Gold Vermeil"
+                style={{
+                  maskImage: 'linear-gradient(to right, transparent 0%, black 15%)',
+                  WebkitMaskImage: 'linear-gradient(to right, transparent 0%, black 15%)'
+                }}
+                className="w-full h-full object-cover object-left-top group-hover:scale-104 transition-transform duration-700 ease-out"
+                loading="lazy"
+              />
+            </div>
 
-              {/* Smooth High-Contrast Scrim Gradient for Razor-Sharp Typography */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/35 via-45% to-transparent pointer-events-none" />
-
-              {/* Modern Luxury Studio Diffused Gold Sheen */}
-              <div className="absolute inset-0 overflow-hidden pointer-events-none z-20">
-                <div className="gold-modern-sheen" />
+            {/* Content Container */}
+            <div className="relative z-10 p-2.5 xs:p-3 sm:p-7 lg:p-8 sm:max-w-[53%] lg:max-w-[54%] flex flex-col justify-center flex-1 text-center sm:text-left">
+              {/* Kicker (Clean, No Emdash) */}
+              <div className="mb-0.5 sm:mb-2">
+                <span className="text-[7.5px] xs:text-[8.5px] sm:text-[11px] font-semibold tracking-[0.22em] text-[#8C6B38] uppercase">
+                  GOLD VERMEIL
+                </span>
               </div>
 
-              {/* Bottom Editorial Content with Real Brushed Metallic Gold CTA */}
-              <div className="relative z-20 flex flex-col items-center text-center">
-                <span className="text-[7px] xs:text-[8px] sm:text-[10px] uppercase tracking-[0.25em] font-semibold text-[#E5C378] block drop-shadow-xs">
-                  SOLYSTRA ATELIER
-                </span>
-                <h3 className="font-serif text-[15px] xs:text-lg sm:text-2xl lg:text-3xl font-normal text-white mt-0.5 leading-tight drop-shadow-sm">
-                  18K Gold Vermeil
-                </h3>
-                <p className="hidden sm:block text-[11px] text-stone-200/90 font-light mt-1">
-                  2.5-Micron Thick Gold over Pure 925 Silver
-                </p>
-                
-                <div className="mt-2 sm:mt-3.5 btn-real-gold inline-flex items-center justify-center gap-1 sm:gap-1.5 px-3 xs:px-3.5 sm:px-6 py-1 sm:py-2 rounded-full font-sans font-bold text-[8.5px] xs:text-[9.5px] sm:text-xs uppercase tracking-wider whitespace-nowrap transition-all duration-300 group-hover:scale-103 shadow-md">
-                  <span>Explore Gold</span>
+              {/* Title */}
+              <h3 className="font-serif text-[14px] xs:text-[16px] sm:text-2xl lg:text-[34px] font-normal text-[#24180E] leading-tight sm:leading-[1.12] tracking-tight">
+                18K Gold<span className="hidden sm:inline"><br /></span> Vermeil
+              </h3>
+
+              {/* Description (Desktop Only for Clean Luxury Look) */}
+              <p className="hidden sm:block text-xs lg:text-[13px] text-[#68594C] font-normal mt-2.5 leading-relaxed">
+                Luxurious 18K gold over pure 925 silver, designed to shine every day.
+              </p>
+
+              {/* CTA Button with Sleek Arrow Design */}
+              <div className="mt-2 sm:mt-5 lg:mt-6">
+                <div className="solystra-btn-gold inline-flex items-center justify-center gap-1.5 sm:gap-2 px-3 xs:px-4 sm:px-6 py-1.5 sm:py-2.5 rounded-full bg-[#7B5327] hover:bg-[#68441E] text-white text-[8px] xs:text-[9px] sm:text-[11px] lg:text-xs font-semibold tracking-wider uppercase transition-all shadow-md group-hover:scale-102">
+                  <span>EXPLORE GOLD</span>
                   <svg 
-                    className="w-2.5 h-2.5 sm:w-3.5 sm:h-3.5 group-hover:translate-x-0.5 transition-transform duration-300 shrink-0" 
+                    className="w-2.5 h-2.5 sm:w-3.5 sm:h-3.5 transition-transform duration-300 group-hover:translate-x-1 shrink-0" 
                     viewBox="0 0 16 16" 
                     fill="none" 
                     stroke="currentColor" 
-                    strokeWidth="2.2" 
+                    strokeWidth="2" 
                     strokeLinecap="round" 
                     strokeLinejoin="round"
                   >
@@ -1325,55 +1343,68 @@ export const HomePage = ({ activeCategory, onSelectCategory }) => {
             </div>
           </div>
 
-          {/* Card 2: 925 Sterling Silver (Authentic Moonlit Platinum Theme & Smooth Laser Border Loop) */}
+          {/* Card 2: 925 Sterling Silver */}
           <div
             onClick={() => handleCategorySelect('silver')}
-            className="laser-card-silver group relative rounded-2xl sm:rounded-3xl p-[2px] sm:p-[3.5px] transition-all duration-500 cursor-pointer flex flex-col aspect-[3/4.3] sm:aspect-[4/5]"
+            className="solystra-card-silver group relative rounded-2xl sm:rounded-3xl border border-[#B8C2CC] bg-gradient-to-b from-[#F2F4F6] via-[#E8EBEE] to-[#DDE1E5] sm:bg-gradient-to-br transition-all duration-300 hover:shadow-xl hover:border-[#9BA7B4] hover:-translate-y-0.5 cursor-pointer flex flex-col justify-between overflow-hidden shadow-[0_8px_25px_rgba(40,50,60,0.06)] sm:min-h-[290px] md:min-h-[320px] lg:min-h-[350px]"
           >
-            {/* Automatic Smooth Looped Silver Laser Border */}
-            <div className="laser-beam-silver pointer-events-none" />
-
-            {/* Inner Card Container (masks center, revealing only the animated laser border) */}
-            <div className="relative w-full h-full rounded-[14px] sm:rounded-[20.5px] overflow-hidden bg-[#0A101D] flex flex-col justify-end p-2.5 xs:p-3.5 sm:p-5 z-10">
-              {/* Full-bleed high fashion model portrait */}
+            {/* Mobile-only Top Seamless Image Fading Naturally (Zero Sharp Lines) */}
+            <div className="sm:hidden relative w-full aspect-[3/3.3] overflow-hidden">
               <img
                 src="/solystra_assets/metals/silver_model.webp"
-                alt="925 Sterling Silver Collection"
-                className="absolute inset-0 w-full h-full object-cover object-top group-hover:scale-106 transition-transform duration-700 ease-out"
+                alt="925 Sterling Silver"
+                style={{
+                  maskImage: 'linear-gradient(to bottom, black 50%, rgba(0,0,0,0.6) 75%, transparent 100%)',
+                  WebkitMaskImage: 'linear-gradient(to bottom, black 50%, rgba(0,0,0,0.6) 75%, transparent 100%)'
+                }}
+                className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500"
                 loading="lazy"
               />
+            </div>
 
-              {/* Cool Silver/Rhodium Ambient Lustre Overlay */}
-              <div className="absolute inset-0 bg-gradient-to-tr from-slate-200/20 via-transparent to-white/15 pointer-events-none" />
+            {/* Desktop-only Right Arched Image */}
+            <div className="hidden sm:block absolute right-0 top-0 bottom-0 w-[49%] lg:w-[48%] h-full pointer-events-none overflow-hidden rounded-r-2xl sm:rounded-r-3xl">
+              <img
+                src="/solystra_assets/metals/silver_model.webp"
+                alt="925 Sterling Silver"
+                style={{
+                  maskImage: 'linear-gradient(to right, transparent 0%, black 15%)',
+                  WebkitMaskImage: 'linear-gradient(to right, transparent 0%, black 15%)'
+                }}
+                className="w-full h-full object-cover object-left-top group-hover:scale-104 transition-transform duration-700 ease-out"
+                loading="lazy"
+              />
+            </div>
 
-              {/* Smooth High-Contrast Scrim Gradient for Razor-Sharp Typography */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/35 via-45% to-transparent pointer-events-none" />
-
-              {/* Modern Luxury Studio Diffused Silver Sheen (Alternating Phase) */}
-              <div className="absolute inset-0 overflow-hidden pointer-events-none z-20">
-                <div className="silver-modern-sheen" />
+            {/* Content Container */}
+            <div className="relative z-10 p-2.5 xs:p-3 sm:p-7 lg:p-8 sm:max-w-[53%] lg:max-w-[54%] flex flex-col justify-center flex-1 text-center sm:text-left">
+              {/* Kicker (Clean, No Emdash) */}
+              <div className="mb-0.5 sm:mb-2">
+                <span className="text-[7.5px] xs:text-[8.5px] sm:text-[11px] font-semibold tracking-[0.22em] text-[#5C6570] uppercase">
+                  STERLING SILVER
+                </span>
               </div>
 
-              {/* Bottom Editorial Content with Real Brushed Metallic Silver CTA */}
-              <div className="relative z-20 flex flex-col items-center text-center">
-                <span className="text-[7px] xs:text-[8px] sm:text-[10px] uppercase tracking-[0.25em] font-semibold text-slate-200 block drop-shadow-xs">
-                  SOLYSTRA ATELIER
-                </span>
-                <h3 className="font-serif text-[15px] xs:text-lg sm:text-2xl lg:text-3xl font-normal text-white mt-0.5 leading-tight drop-shadow-sm">
-                  925 Sterling Silver
-                </h3>
-                <p className="hidden sm:block text-[11px] text-stone-200/90 font-light mt-1">
-                  Anti-Tarnish Mirror Rhodium Dipped Solid 925
-                </p>
-                
-                <div className="mt-2 sm:mt-3.5 btn-real-silver inline-flex items-center justify-center gap-1 sm:gap-1.5 px-3 xs:px-3.5 sm:px-6 py-1 sm:py-2 rounded-full font-sans font-bold text-[8.5px] xs:text-[9.5px] sm:text-xs uppercase tracking-wider whitespace-nowrap transition-all duration-300 group-hover:scale-103 shadow-md">
-                  <span>Explore Silver</span>
+              {/* Title */}
+              <h3 className="font-serif text-[14px] xs:text-[16px] sm:text-2xl lg:text-[34px] font-normal text-[#1B2129] leading-tight sm:leading-[1.12] tracking-tight">
+                925 Sterling<span className="hidden sm:inline"><br /></span> Silver
+              </h3>
+
+              {/* Description (Desktop Only for Clean Luxury Look) */}
+              <p className="hidden sm:block text-xs lg:text-[13px] text-[#565F6B] font-normal mt-2.5 leading-relaxed">
+                Modern, versatile and timeless 925 silver for everyday elegance.
+              </p>
+
+              {/* CTA Button with Sleek Arrow Design */}
+              <div className="mt-2 sm:mt-5 lg:mt-6">
+                <div className="solystra-btn-silver inline-flex items-center justify-center gap-1.5 sm:gap-2 px-3 xs:px-4 sm:px-6 py-1.5 sm:py-2.5 rounded-full bg-[#343A40] hover:bg-[#212529] text-white text-[8px] xs:text-[9px] sm:text-[11px] lg:text-xs font-semibold tracking-wider uppercase transition-all shadow-md group-hover:scale-102">
+                  <span>EXPLORE SILVER</span>
                   <svg 
-                    className="w-2.5 h-2.5 sm:w-3.5 sm:h-3.5 group-hover:translate-x-0.5 transition-transform duration-300 shrink-0" 
+                    className="w-2.5 h-2.5 sm:w-3.5 sm:h-3.5 transition-transform duration-300 group-hover:translate-x-1 shrink-0" 
                     viewBox="0 0 16 16" 
                     fill="none" 
                     stroke="currentColor" 
-                    strokeWidth="2.2" 
+                    strokeWidth="2" 
                     strokeLinecap="round" 
                     strokeLinejoin="round"
                   >
@@ -1383,6 +1414,7 @@ export const HomePage = ({ activeCategory, onSelectCategory }) => {
               </div>
             </div>
           </div>
+
         </div>
       </section>
 

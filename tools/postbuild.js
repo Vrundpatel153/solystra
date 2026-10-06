@@ -133,11 +133,15 @@ function touchAll(dir) {
 touchAll(distDir);
 
 // 7. Generate clean production dist.zip for 1-click Netlify Drop upload
+const realPy = fs.existsSync('C:\\Users\\vrund\\AppData\\Local\\Python\\bin\\python.exe')
+  ? '"C:\\Users\\vrund\\AppData\\Local\\Python\\bin\\python.exe"'
+  : 'py';
+
 try {
   const zipPath = path.join(rootDir, 'dist.zip');
-  if (fs.existsSync(zipPath)) fs.unlinkSync(zipPath);
+  try { if (fs.existsSync(zipPath)) fs.unlinkSync(zipPath); } catch (e) {}
   console.log('Postbuild: Creating dist.zip for lightning-fast Netlify Drop upload...');
-  execSync(`python tools/build_clean_dist_zip.py`, { cwd: rootDir, stdio: 'inherit' });
+  execSync(`${realPy} tools/build_clean_dist_zip.py`, { cwd: rootDir, stdio: 'inherit' });
   if (fs.existsSync(zipPath)) {
     fs.utimesSync(zipPath, now, now);
   }
@@ -149,7 +153,7 @@ try {
 // 7b. Generate clean production jewellery-design-html-dist.zip
 try {
   console.log('Postbuild: Creating jewellery-design-html-dist.zip...');
-  execSync(`python tools/build_html_dist_zip.py`, { cwd: rootDir, stdio: 'inherit' });
+  execSync(`${realPy} tools/build_html_dist_zip.py`, { cwd: rootDir, stdio: 'inherit' });
   console.log('Postbuild: Created jewellery-design-html-dist.zip successfully!');
 } catch (err) {
   console.warn('Postbuild: Note: Error creating html dist zip:', err.message);
@@ -165,7 +169,10 @@ try {
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Solystra Jewels | Fine 925 Sterling Silver &amp; 18K Gold Atelier</title>
   <meta name="description" content="Explore Solystra Jewels' handcrafted 925 sterling silver and 18K gold jewelry. Certified BIS hallmark, Austrian solitaires, necklaces, rings, earrings, and tennis bracelets with free insured express delivery across India.">
-  <link rel="icon" type="image/webp" href="solystra_assets/solystra_logo.webp">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" type="image/webp" href="/solystra_assets/solystra_favicon.webp">
+  <link rel="alternate icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="apple-touch-icon" href="/solystra_assets/solystra_favicon.webp">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,400;1,9..144,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">

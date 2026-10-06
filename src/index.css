@@ -632,4 +632,53 @@
   animation: fadeIn 0.45s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
+/* ============================================================ */
+/* CURATED METALS: GOLD & SILVER LUXURY CARDS & BUTTONS         */
+/* ============================================================ */
+.solystra-card-gold {
+  background: linear-gradient(135deg, #FBF6EF 0%, #F5ECE0 50%, #ECE0CF 100%) !important;
+  border: 1px solid #D5C2A5 !important;
+  box-shadow: 0 8px 30px rgba(180, 130, 60, 0.08) !important;
+}
+.solystra-card-gold:hover {
+  border-color: #B8986C !important;
+  box-shadow: 0 16px 40px rgba(180, 130, 60, 0.16) !important;
+}
 
+.solystra-card-silver {
+  background: linear-gradient(135deg, #F5F7FA 0%, #ECEEF2 50%, #E0E4E9 100%) !important;
+  border: 1px solid #C4CDD5 !important;
+  box-shadow: 0 8px 30px rgba(40, 50, 60, 0.06) !important;
+}
+.solystra-card-silver:hover {
+  border-color: #9BA7B4 !important;
+  box-shadow: 0 16px 40px rgba(40, 50, 60, 0.14) !important;
+}
+
+.solystra-btn-gold {
+  background-color: #7B5327 !important;
+  color: #FFFFFF !important;
+  box-shadow: 0 4px 14px rgba(123, 83, 39, 0.3) !important;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+.solystra-btn-gold:hover {
+  background-color: #68441E !important;
+  box-shadow: 0 6px 18px rgba(123, 83, 39, 0.42) !important;
+  transform: translateY(-1px) scale(1.02);
+}
+
+.solystra-btn-silver {
+  background-color: #343A40 !important;
+  color: #FFFFFF !important;
+  box-shadow: 0 4px 14px rgba(52, 58, 64, 0.3) !important;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+.solystra-btn-silver:hover {
+  background-color: #212529 !important;
+  box-shadow: 0 6px 18px rgba(52, 58, 64, 0.42) !important;
+  transform: translateY(-1px) scale(1.02);
+}
+
+.aspect-\[3\/3\.3\] {
+  aspect-ratio: 3 / 3.3 !important;
+}

@@ -11755,3 +11755,137 @@ video {
 .faq-answer-container {
   transition: max-height 0.3s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.25s ease;
 }
+
+
+/* ============================================================ */
+/* CURATED METALS: GOLD & SILVER LUXURY CARDS & BUTTONS         */
+/* ============================================================ */
+.solystra-card-gold {
+  background: linear-gradient(135deg, #FBF6EF 0%, #F5ECE0 50%, #ECE0CF 100%) !important;
+  border: 1px solid #D5C2A5 !important;
+  box-shadow: 0 8px 30px rgba(180, 130, 60, 0.08) !important;
+}
+.solystra-card-gold:hover {
+  border-color: #B8986C !important;
+  box-shadow: 0 16px 40px rgba(180, 130, 60, 0.16) !important;
+}
+
+.solystra-card-silver {
+  background: linear-gradient(135deg, #F5F7FA 0%, #ECEEF2 50%, #E0E4E9 100%) !important;
+  border: 1px solid #C4CDD5 !important;
+  box-shadow: 0 8px 30px rgba(40, 50, 60, 0.06) !important;
+}
+.solystra-card-silver:hover {
+  border-color: #9BA7B4 !important;
+  box-shadow: 0 16px 40px rgba(40, 50, 60, 0.14) !important;
+}
+
+.solystra-btn-gold {
+  background-color: #7B5327 !important;
+  color: #FFFFFF !important;
+  box-shadow: 0 4px 14px rgba(123, 83, 39, 0.3) !important;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+.solystra-btn-gold:hover {
+  background-color: #68441E !important;
+  box-shadow: 0 6px 18px rgba(123, 83, 39, 0.42) !important;
+  transform: translateY(-1px) scale(1.02);
+}
+
+.solystra-btn-silver {
+  background-color: #343A40 !important;
+  color: #FFFFFF !important;
+  box-shadow: 0 4px 14px rgba(52, 58, 64, 0.3) !important;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+.solystra-btn-silver:hover {
+  background-color: #212529 !important;
+  box-shadow: 0 6px 18px rgba(52, 58, 64, 0.42) !important;
+  transform: translateY(-1px) scale(1.02);
+}
+
+/* Missing utility classes for full parity */
+.bg-\\[\\#7B5327\\] { background-color: #7B5327 !important; }
+.hover\\:bg-\\[\\#68441E\\]:hover { background-color: #68441E !important; }
+.bg-\\[\\#343A40\\] { background-color: #343A40 !important; }
+.hover\\:bg-\\[\\#212529\\]:hover { background-color: #212529 !important; }
+
+.text-\\[\\#8C6B38\\] { color: #8C6B38 !important; }
+.text-\\[\\#24180E\\] { color: #24180E !important; }
+.text-\\[\\#68594C\\] { color: #68594C !important; }
+.text-\\[\\#5C6570\\] { color: #5C6570 !important; }
+.text-\\[\\#1B2129\\] { color: #1B2129 !important; }
+.text-\\[\\#565F6B\\] { color: #565F6B !important; }
+.text-\\[\\#1C1917\\] { color: #1C1917 !important; }
+.text-\\[\\#78716C\\] { color: #78716C !important; }
+
+.border-\\[\\#CBB393\\] { border-color: #CBB393 !important; }
+.border-\\[\\#B8C2CC\\] { border-color: #B8C2CC !important; }
+.hover\\:border-\\[\\#B8986C\\]:hover { border-color: #B8986C !important; }
+.hover\\:border-\\[\\#9BA7B4\\]:hover { border-color: #9BA7B4 !important; }
+
+.aspect-\\[3\\/3\\.3\\] { aspect-ratio: 3 / 3.3 !important; }
+.group\\:hover .group-hover\\:scale-102, .group-hover\\:scale-102:hover { transform: scale(1.02) !important; }
+.group\\:hover .group-hover\\:scale-104, .group-hover\\:scale-104:hover { transform: scale(1.04) !important; }
+.group\\:hover .group-hover\\:scale-105, .group-hover\\:scale-105:hover { transform: scale(1.05) !important; }
+
+
+/* ============================================================ */
+/* CURATED METALS & RESPONSIVE LUXURY PARITY CLASSES             */
+/* ============================================================ */
+.w-\[49\%\] { width: 49% !important; }
+
+@media (min-width: 640px) {
+  .sm\:min-h-\[290px\] { min-height: 290px !important; }
+  .sm\:max-w-\[53\%\] { max-width: 53% !important; }
+  .sm\:leading-\[1\.12\] { line-height: 1.12 !important; }
+}
+
+@media (min-width: 768px) {
+  .md\:min-h-\[320px\] { min-height: 320px !important; }
+}
+
+@media (min-width: 1024px) {
+  .lg\:min-h-\[350px\] { min-height: 350px !important; }
+  .lg\:w-\[48\%\] { width: 48% !important; }
+  .lg\:max-w-\[54\%\] { max-width: 54% !important; }
+  .lg\:text-\[34px\] { font-size: 34px !important; line-height: 1.12 !important; }
+  .lg\:text-\[40px\] { font-size: 40px !important; line-height: 1.15 !important; }
+}
+
+
+/* ============================================================ */
+/* NAVBAR CONTAINER HEIGHT (EXACT MATCH TO REACT SPEC: 60/68/74px) */
+/* ============================================================ */
+.h-\[60px\] { height: 60px !important; }
+.solystra-nav-inner {
+  height: 60px !important;
+}
+
+@media (min-width: 640px) {
+  .sm\:h-\[68px\] { height: 68px !important; }
+  .solystra-nav-inner {
+    height: 68px !important;
+  }
+}
+
+@media (min-width: 1024px) {
+  .lg\:h-\[74px\] { height: 74px !important; }
+  .solystra-nav-inner {
+    height: 74px !important;
+  }
+}
+
+.solystra-nav-overlay {
+  top: 60px !important;
+}
+@media (min-width: 640px) {
+  .solystra-nav-overlay {
+    top: 68px !important;
+  }
+}
+@media (min-width: 1024px) {
+  .solystra-nav-overlay {
+    top: 74px !important;
+  }
+}
