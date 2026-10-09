@@ -70,13 +70,13 @@ export const InfiniteProductCarousel = ({
           <div>
             <div className="flex items-center gap-2 mb-1">
               {pill && (
-                <span className="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-[#7A152E] text-white tracking-wide shadow-2xs">
+                <span className="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-[#145C59] text-white tracking-wide shadow-2xs">
                   {pill}
                 </span>
               )}
               {code ? (
                 <span className="text-[11px] font-mono font-semibold text-stone-600 tracking-wider">
-                  CODE: <strong className="text-[#7A152E]">{code}</strong>
+                  CODE: <strong className="text-[#145C59]">{code}</strong>
                 </span>
               ) : (
                 <span className="text-[11px] font-sans font-medium text-[#8B6B38]">
@@ -103,15 +103,15 @@ export const InfiniteProductCarousel = ({
                 onClick={() => onCopyCode(code)}
                 className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl border text-xs font-medium tracking-wide transition-all cursor-pointer shadow-2xs active:scale-95 ${
                   isCopied
-                    ? 'bg-[#FAF0F2] border-[#7A152E] text-[#7A152E] font-bold shadow-xs'
-                    : 'bg-[#FAF8F5] hover:bg-[#7A152E] hover:text-white border-[#EAE4DC] text-stone-800 hover:border-[#7A152E]'
+                    ? 'bg-[#F0F7F6] border-[#145C59] text-[#145C59] font-bold shadow-xs'
+                    : 'bg-[#FAF8F5] hover:bg-[#145C59] hover:text-white border-[#EAE4DC] text-stone-800 hover:border-[#145C59]'
                 }`}
                 title={`Copy code ${code}`}
               >
                 {isCopied ? (
                   <>
-                    <span className="w-1.5 h-1.5 rounded-full bg-[#7A152E] animate-ping" />
-                    <span className="font-bold text-[#7A152E]">COPIED!</span>
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#145C59] animate-ping" />
+                    <span className="font-bold text-[#145C59]">COPIED!</span>
                   </>
                 ) : (
                   <>

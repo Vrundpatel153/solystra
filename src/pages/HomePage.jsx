@@ -78,7 +78,7 @@ const HERO_BANNERS = [
   }
 ];
 
-// Architectural Zavya-Style Category Cards (Squircle Pods with Burgundy & Champagne Gold Halo)
+// Architectural Zavya-Style Category Cards (Squircle Pods with Emerald & Champagne Gold Halo)
 const CATEGORY_CARDS = [
   {
     id: 'necklaces',
@@ -976,7 +976,7 @@ export const HomePage = ({ activeCategory, onSelectCategory }) => {
                           setViewFullCatalog(true);
                           document.getElementById('bestsellers-showcase')?.scrollIntoView({ behavior: 'smooth' });
                         }}
-                        className="inline-flex items-center gap-2 px-5 sm:px-8 py-2.5 sm:py-3 bg-[#7A152E] hover:bg-[#590D1E] text-white text-xs sm:text-sm font-medium rounded-lg shadow-lg hover:shadow-xl transition-all cursor-pointer"
+                        className="inline-flex items-center gap-2 px-5 sm:px-8 py-2.5 sm:py-3 bg-[#145C59] hover:bg-[#0D3F3D] text-white text-xs sm:text-sm font-medium rounded-lg shadow-lg hover:shadow-xl transition-all cursor-pointer"
                       >
                         <span>{banner.cta}</span>
                         <ArrowRight className="w-4 h-4 text-white/90" />
@@ -1030,7 +1030,7 @@ export const HomePage = ({ activeCategory, onSelectCategory }) => {
           
           {/* Header with Title */}
           <div className="mb-3 sm:mb-4 px-1">
-            <span className="text-[10px] sm:text-[10.5px] uppercase tracking-widest text-[#7A152E] font-semibold block mb-0.5">
+            <span className="text-[10px] sm:text-[10.5px] uppercase tracking-widest text-[#145C59] font-semibold block mb-0.5">
               SHOP BY CATEGORY
             </span>
             <h2 className="font-serif text-lg sm:text-2xl md:text-3xl text-stone-900 font-normal">
@@ -1048,11 +1048,11 @@ export const HomePage = ({ activeCategory, onSelectCategory }) => {
                   onClick={() => handleCategorySelect(cat.id)}
                   className="group cursor-pointer flex flex-col items-center select-none"
                 >
-                  {/* Zavya-Style Squircle Card with Aurelia Royal Burgundy & Champagne Gold Gradient Halo */}
+                  {/* Zavya-Style Squircle Card with Aurelia Royal Emerald & Champagne Gold Gradient Halo */}
                   <div className={`w-full relative p-[2px] rounded-[22px] lg:rounded-[26px] bg-gradient-to-tr transition-all duration-300 ${
                     isSelected 
-                      ? 'from-[#7A152E] via-[#C5A059] to-[#7A152E] shadow-[0_6px_20px_rgba(122,21,46,0.25)] scale-[1.03]' 
-                      : 'from-[#7A152E]/80 via-[#D4AF37] to-[#F6E3B8] group-hover:from-[#D4AF37] group-hover:via-[#F6E3B8] group-hover:to-[#7A152E] shadow-2xs group-hover:shadow-[0_8px_20px_rgba(122,21,46,0.18)] group-hover:-translate-y-1'
+                      ? 'from-[#145C59] via-[#C5A059] to-[#145C59] shadow-[0_6px_20px_rgba(20, 92, 89,0.25)] scale-[1.03]' 
+                      : 'from-[#145C59]/80 via-[#D4AF37] to-[#F6E3B8] group-hover:from-[#D4AF37] group-hover:via-[#F6E3B8] group-hover:to-[#145C59] shadow-2xs group-hover:shadow-[0_8px_20px_rgba(20, 92, 89,0.18)] group-hover:-translate-y-1'
                   }`}>
                     <div className="w-full aspect-square rounded-[20px] lg:rounded-[24px] overflow-hidden bg-white relative flex items-center justify-center border border-white/60">
                       <img
@@ -1064,15 +1064,15 @@ export const HomePage = ({ activeCategory, onSelectCategory }) => {
                       />
 
                       {/* Ambient Specular Hover Sheen */}
-                      <div className="absolute inset-0 bg-gradient-to-t from-[#7A152E]/15 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                      <div className="absolute inset-0 bg-gradient-to-t from-[#145C59]/15 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                     </div>
                   </div>
 
                   {/* Clean Centered Typography */}
                   <span className={`font-serif text-[13px] lg:text-[15px] transition-colors text-center mt-2.5 line-clamp-1 tracking-tight ${
                     isSelected 
-                      ? 'text-[#7A152E] font-bold' 
-                      : 'text-stone-900 font-medium group-hover:text-[#7A152E]'
+                      ? 'text-[#145C59] font-bold' 
+                      : 'text-stone-900 font-medium group-hover:text-[#145C59]'
                   }`}>
                     {cat.name}
                   </span>
@@ -1097,8 +1097,8 @@ export const HomePage = ({ activeCategory, onSelectCategory }) => {
                 >
                   <div className={`w-full relative p-[1.5px] rounded-[18px] bg-gradient-to-tr transition-all duration-300 ${
                     isSelected
-                      ? 'from-[#7A152E] via-[#C5A059] to-[#7A152E] shadow-[0_4px_14px_rgba(122,21,46,0.2)]'
-                      : 'from-[#7A152E]/85 via-[#D4AF37] to-[#F6E3B8] shadow-2xs'
+                      ? 'from-[#145C59] via-[#C5A059] to-[#145C59] shadow-[0_4px_14px_rgba(20, 92, 89,0.2)]'
+                      : 'from-[#145C59]/85 via-[#D4AF37] to-[#F6E3B8] shadow-2xs'
                   }`}>
                     <div className="w-full aspect-square rounded-[16.5px] overflow-hidden bg-white relative flex items-center justify-center border border-white/60">
                       <img
@@ -1112,7 +1112,7 @@ export const HomePage = ({ activeCategory, onSelectCategory }) => {
                   </div>
 
                   <span className={`font-serif text-[10.5px] xs:text-[11.5px] sm:text-[12.5px] text-center mt-1.5 line-clamp-1 tracking-tight ${
-                    isSelected ? 'text-[#7A152E] font-bold' : 'text-stone-900 font-semibold'
+                    isSelected ? 'text-[#145C59] font-bold' : 'text-stone-900 font-semibold'
                   }`}>
                     {cat.name}
                   </span>
@@ -1127,17 +1127,17 @@ export const HomePage = ({ activeCategory, onSelectCategory }) => {
               })}
               className="w-[76px] xs:w-[84px] sm:w-[96px] shrink-0 group cursor-pointer flex flex-col items-center select-none"
             >
-              <div className="w-full relative p-[1.5px] rounded-[18px] bg-gradient-to-tr from-[#7A152E]/40 via-[#D4AF37]/50 to-[#7A152E]/40 shadow-2xs">
+              <div className="w-full relative p-[1.5px] rounded-[18px] bg-gradient-to-tr from-[#145C59]/40 via-[#D4AF37]/50 to-[#145C59]/40 shadow-2xs">
                 <div className="w-full aspect-square rounded-[16.5px] bg-[#FAF8F5] flex flex-col items-center justify-center p-2 text-center border border-[#EAE4DC]">
-                  <div className="w-6 h-6 rounded-full bg-[#7A152E]/10 flex items-center justify-center mb-1">
-                    <ChevronRight className="w-3.5 h-3.5 text-[#7A152E]" />
+                  <div className="w-6 h-6 rounded-full bg-[#145C59]/10 flex items-center justify-center mb-1">
+                    <ChevronRight className="w-3.5 h-3.5 text-[#145C59]" />
                   </div>
-                  <span className="text-[8px] font-bold uppercase tracking-wider text-[#7A152E]">
+                  <span className="text-[8px] font-bold uppercase tracking-wider text-[#145C59]">
                     Explore
                   </span>
                 </div>
               </div>
-              <span className="font-serif text-[10.5px] xs:text-[11.5px] sm:text-[12.5px] font-semibold text-[#7A152E] text-center mt-1.5 line-clamp-1 tracking-tight">
+              <span className="font-serif text-[10.5px] xs:text-[11.5px] sm:text-[12.5px] font-semibold text-[#145C59] text-center mt-1.5 line-clamp-1 tracking-tight">
                 View All
               </span>
             </div>
@@ -1154,7 +1154,7 @@ export const HomePage = ({ activeCategory, onSelectCategory }) => {
           
           <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-3 pb-2 border-b border-[#EAE4DC] gap-3">
             <div>
-              <span className="text-xs uppercase tracking-widest text-[#7A152E] font-semibold block mb-1">
+              <span className="text-xs uppercase tracking-widest text-[#145C59] font-semibold block mb-1">
                 {viewFullCatalog ? 'FULL CATALOG' : 'BESTSELLERS'}
               </span>
               <h2 className="font-serif text-2xl sm:text-4xl font-normal text-stone-900">
@@ -1170,7 +1170,7 @@ export const HomePage = ({ activeCategory, onSelectCategory }) => {
                 {selectedMaxPrice && (
                   <button
                     onClick={() => setSelectedMaxPrice(null)}
-                    className="px-3 py-1.5 rounded-full text-xs font-semibold bg-[#7A152E] text-white flex items-center gap-1.5 shadow-xs hover:bg-[#590D1E] transition-colors cursor-pointer"
+                    className="px-3 py-1.5 rounded-full text-xs font-semibold bg-[#145C59] text-white flex items-center gap-1.5 shadow-xs hover:bg-[#0D3F3D] transition-colors cursor-pointer"
                   >
                     <span>Under ₹{selectedMaxPrice.toLocaleString('en-IN')}</span>
                     <X className="w-3.5 h-3.5" />
@@ -1195,7 +1195,7 @@ export const HomePage = ({ activeCategory, onSelectCategory }) => {
                     }}
                     className={`px-3 py-1.5 rounded-full text-xs font-medium transition-colors cursor-pointer ${
                       selectedCategory === cat.id
-                        ? 'bg-[#7A152E] text-white shadow-xs'
+                        ? 'bg-[#145C59] text-white shadow-xs'
                         : 'bg-stone-100 text-stone-700 hover:bg-stone-200'
                     }`}
                   >
@@ -1225,10 +1225,10 @@ export const HomePage = ({ activeCategory, onSelectCategory }) => {
                 onClick={() => {
                   window.location.hash = '#/products';
                 }}
-                className="px-8 py-3.5 bg-white hover:bg-stone-50 text-[#7A152E] border border-stone-300 font-medium text-xs sm:text-sm rounded-xl transition-all shadow-sm hover:shadow-md cursor-pointer inline-flex items-center gap-2"
+                className="px-8 py-3.5 bg-white hover:bg-stone-50 text-[#145C59] border border-stone-300 font-medium text-xs sm:text-sm rounded-xl transition-all shadow-sm hover:shadow-md cursor-pointer inline-flex items-center gap-2"
               >
                 <span>Explore Full Catalog</span>
-                <ArrowRight className="w-4 h-4 text-[#7A152E]" />
+                <ArrowRight className="w-4 h-4 text-[#145C59]" />
               </button>
             </div>
           )}
@@ -1425,7 +1425,7 @@ export const HomePage = ({ activeCategory, onSelectCategory }) => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
           <div className="mb-3 pb-2 border-b border-[#EAE4DC]">
-            <span className="text-[10px] tracking-[0.25em] uppercase font-semibold text-[#7A152E] block mb-1">
+            <span className="text-[10px] tracking-[0.25em] uppercase font-semibold text-[#145C59] block mb-1">
               Fresh Drops &bull; Atelier Debut
             </span>
             <h2 className="font-serif text-2xl sm:text-4xl font-normal text-stone-900">
@@ -1470,7 +1470,7 @@ export const HomePage = ({ activeCategory, onSelectCategory }) => {
           
           {/* Header without dot */}
           <div className="mb-3 sm:mb-5">
-            <span className="text-xs uppercase tracking-widest text-[#7A152E] font-semibold block mb-1">
+            <span className="text-xs uppercase tracking-widest text-[#145C59] font-semibold block mb-1">
               SIGNATURE EDITS
             </span>
             <h2 className="font-serif text-2xl sm:text-4xl text-stone-900 font-normal">
@@ -1493,9 +1493,9 @@ export const HomePage = ({ activeCategory, onSelectCategory }) => {
                   key={col.loopId}
                   data-collection-card="true"
                   onClick={topCollectionsDrag.handleItemClick(() => handleCollectionCardClick(col, idx))}
-                  className={`w-[66vw] xs:w-[60vw] sm:w-[250px] md:w-[280px] aspect-[303/423] shrink-0 snap-center relative rounded-[24px] sm:rounded-[28px] p-[2.5px] sm:p-[3px] bg-gradient-to-b from-[#D4AF37] via-[#7A152E] to-[#590D1E] transition-all duration-500 ease-out cursor-pointer group select-none origin-center ${
+                  className={`w-[66vw] xs:w-[60vw] sm:w-[250px] md:w-[280px] aspect-[303/423] shrink-0 snap-center relative rounded-[24px] sm:rounded-[28px] p-[2.5px] sm:p-[3px] bg-gradient-to-b from-[#D4AF37] via-[#145C59] to-[#0D3F3D] transition-all duration-500 ease-out cursor-pointer group select-none origin-center ${
                     isCenter
-                      ? 'scale-100 sm:scale-105 opacity-100 z-20 shadow-[0_16px_40px_rgba(122,21,46,0.32)] ring-1 ring-[#D4AF37]/40'
+                      ? 'scale-100 sm:scale-105 opacity-100 z-20 shadow-[0_16px_40px_rgba(20, 92, 89,0.32)] ring-1 ring-[#D4AF37]/40'
                       : 'scale-[0.76] sm:scale-[0.80] opacity-55 hover:opacity-75 z-0 shadow-sm filter contrast-95'
                   }`}
                 >
@@ -1525,7 +1525,7 @@ export const HomePage = ({ activeCategory, onSelectCategory }) => {
           {/* Section Header with Carousel Navigation & Dot Indicators */}
           <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-2 pb-1 border-b border-[#EAE4DC] gap-3">
             <div>
-              <span className="text-[11px] uppercase tracking-widest text-[#7A152E] font-bold block">
+              <span className="text-[11px] uppercase tracking-widest text-[#145C59] font-bold block">
                 CURATED LOOKS
               </span>
               <h2 className="font-serif text-2xl sm:text-3xl text-stone-900 font-normal mt-0.5">
@@ -1549,7 +1549,7 @@ export const HomePage = ({ activeCategory, onSelectCategory }) => {
                       setActiveHotspotId(null);
                     }}
                     className={`h-1.5 rounded-full transition-all duration-300 cursor-pointer ${
-                      idx === currentComboIndex ? 'w-5 bg-[#7A152E]' : 'w-1.5 bg-stone-300 hover:bg-stone-400'
+                      idx === currentComboIndex ? 'w-5 bg-[#145C59]' : 'w-1.5 bg-stone-300 hover:bg-stone-400'
                     }`}
                     aria-label={`Go to combo ${idx + 1}`}
                   />
@@ -1608,15 +1608,15 @@ export const HomePage = ({ activeCategory, onSelectCategory }) => {
                     {/* Delicate Luxury Pinpoint */}
                     <div className="relative group/hotspot cursor-pointer">
                       {/* Subtle micro pulse */}
-                      <span className="absolute -inset-0.5 rounded-full bg-[#7A152E]/35 animate-ping pointer-events-none" />
+                      <span className="absolute -inset-0.5 rounded-full bg-[#145C59]/35 animate-ping pointer-events-none" />
 
-                      {/* Small Proper Luxury Pinpoint (Delicate 12px, brand burgundy & gold) */}
+                      {/* Small Proper Luxury Pinpoint (Delicate 12px, brand emerald & gold) */}
                       <button
                         type="button"
                         className={`w-3 h-3 sm:w-3.5 sm:h-3.5 rounded-full flex items-center justify-center transition-all duration-300 border border-[#D4AF37] shadow-sm cursor-pointer ${
                           isHovered
-                            ? 'scale-125 bg-[#7A152E] ring-2 ring-[#D4AF37]'
-                            : 'bg-[#7A152E] hover:scale-115'
+                            ? 'scale-125 bg-[#145C59] ring-2 ring-[#D4AF37]'
+                            : 'bg-[#145C59] hover:scale-115'
                         }`}
                         aria-label={`View ${item.name}`}
                       >
@@ -1690,14 +1690,14 @@ export const HomePage = ({ activeCategory, onSelectCategory }) => {
               <div>
                 <div className="flex items-start justify-between pb-3 border-b border-[#EAE4DC] gap-2">
                   <div>
-                    <span className="text-[9.5px] text-[#7A152E] uppercase tracking-widest font-bold block">
+                    <span className="text-[9.5px] text-[#145C59] uppercase tracking-widest font-bold block">
                       {activeCombo.tag}
                     </span>
                     <h3 className="text-sm sm:text-base font-serif font-normal text-stone-900 leading-tight mt-0.5">
                       {activeCombo.name}
                     </h3>
                   </div>
-                  <span className="text-[10.5px] text-[#7A152E] font-bold bg-[#7A152E]/8 px-2.5 py-1 rounded-full border border-[#7A152E]/20 uppercase tracking-wider shrink-0">
+                  <span className="text-[10.5px] text-[#145C59] font-bold bg-[#145C59]/8 px-2.5 py-1 rounded-full border border-[#145C59]/20 uppercase tracking-wider shrink-0">
                     Save ₹{activeCombo.savings.toLocaleString('en-IN')}
                   </span>
                 </div>
@@ -1714,8 +1714,8 @@ export const HomePage = ({ activeCategory, onSelectCategory }) => {
                       onMouseLeave={() => setActiveHotspotId(null)}
                       className={`flex items-center gap-3.5 p-3 rounded-xl transition-all cursor-pointer group border ${
                         activeHotspotId === item.id
-                          ? 'bg-[#7A152E]/5 border-[#7A152E] shadow-sm ring-1 ring-[#7A152E]/20'
-                          : 'bg-[#FAF8F5]/80 border-[#EAE4DC] hover:border-[#7A152E]/60 hover:bg-white hover:shadow-2xs'
+                          ? 'bg-[#145C59]/5 border-[#145C59] shadow-sm ring-1 ring-[#145C59]/20'
+                          : 'bg-[#FAF8F5]/80 border-[#EAE4DC] hover:border-[#145C59]/60 hover:bg-white hover:shadow-2xs'
                       }`}
                       title="Click to view product details"
                     >
@@ -1726,20 +1726,20 @@ export const HomePage = ({ activeCategory, onSelectCategory }) => {
                       />
                       <div className="flex-1 min-w-0">
                         <div className="flex items-center gap-2">
-                          <span className="text-[9.5px] text-[#7A152E] uppercase font-bold tracking-wider block">
+                          <span className="text-[9.5px] text-[#145C59] uppercase font-bold tracking-wider block">
                             {item.type}
                           </span>
                           <span className="text-[9px] text-[#C5A059] opacity-0 group-hover:opacity-100 transition-opacity font-semibold">
                             View Piece ↗
                           </span>
                         </div>
-                        <h4 className="font-serif text-sm font-normal text-stone-900 truncate group-hover:text-[#7A152E] transition-colors mt-0.5">
+                        <h4 className="font-serif text-sm font-normal text-stone-900 truncate group-hover:text-[#145C59] transition-colors mt-0.5">
                           {item.name}
                         </h4>
                         <div className="text-[11px] text-stone-500 truncate mt-0.5">{item.metal}</div>
                       </div>
                       <div className="text-right shrink-0">
-                        <div className="font-bold text-sm text-[#7A152E]">
+                        <div className="font-bold text-sm text-[#145C59]">
                           ₹{item.price.toLocaleString('en-IN')}
                         </div>
                         <div className="text-[11px] text-stone-400 line-through">
@@ -1756,13 +1756,13 @@ export const HomePage = ({ activeCategory, onSelectCategory }) => {
                 <div>
                   <div className="text-[10px] text-stone-500 uppercase tracking-wider font-semibold">Complete Set Price</div>
                   <div className="flex items-baseline gap-2 mt-0.5">
-                    <span className="font-serif text-2xl sm:text-3xl font-bold text-[#7A152E]">
+                    <span className="font-serif text-2xl sm:text-3xl font-bold text-[#145C59]">
                       ₹{activeCombo.bundlePrice.toLocaleString('en-IN')}
                     </span>
                     <span className="text-xs text-stone-400 line-through font-sans">
                       ₹{activeCombo.originalPrice.toLocaleString('en-IN')}
                     </span>
-                    <span className="text-[10px] font-bold text-[#7A152E] uppercase bg-[#7A152E]/10 px-2 py-0.5 rounded-full border border-[#7A152E]/20">
+                    <span className="text-[10px] font-bold text-[#145C59] uppercase bg-[#145C59]/10 px-2 py-0.5 rounded-full border border-[#145C59]/20">
                       Save ₹{activeCombo.savings.toLocaleString('en-IN')}
                     </span>
                   </div>
@@ -1770,7 +1770,7 @@ export const HomePage = ({ activeCategory, onSelectCategory }) => {
 
                 <button
                   onClick={handleAddCurrentComboToBag}
-                  className="px-6 py-2.5 bg-[#7A152E] hover:bg-[#590D1E] text-white text-xs font-bold uppercase tracking-wider rounded-xl shadow-md hover:shadow-lg transition-all cursor-pointer flex items-center justify-center gap-2 active:scale-98 shrink-0 group"
+                  className="px-6 py-2.5 bg-[#145C59] hover:bg-[#0D3F3D] text-white text-xs font-bold uppercase tracking-wider rounded-xl shadow-md hover:shadow-lg transition-all cursor-pointer flex items-center justify-center gap-2 active:scale-98 shrink-0 group"
                 >
                   <GoldShoppingBag className="w-4 h-4 shrink-0 -translate-y-px transition-transform group-hover:-translate-y-0.5" />
                   <span className="leading-none">Add Look to Bag</span>
@@ -1792,7 +1792,7 @@ export const HomePage = ({ activeCategory, onSelectCategory }) => {
           
           <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-3 pb-2 border-b border-[#EAE4DC] gap-3">
             <div>
-              <span className="text-[10px] tracking-[0.25em] uppercase font-semibold text-[#7A152E] block mb-1">
+              <span className="text-[10px] tracking-[0.25em] uppercase font-semibold text-[#145C59] block mb-1">
                 The Atelier in Motion
               </span>
               <h2 className="font-serif text-2xl sm:text-4xl text-stone-900 font-normal">
@@ -1818,7 +1818,7 @@ export const HomePage = ({ activeCategory, onSelectCategory }) => {
             {TRIPLE_VIDEO_REELS.map((reel) => (
               <div
                 key={reel.loopId}
-                className="w-[205px] sm:w-[235px] md:w-[255px] shrink-0 group relative rounded-2xl overflow-hidden bg-white border border-[#EAE4DC] hover:border-[#7A152E]/60 shadow-xs hover:shadow-xl transition-all duration-300 flex flex-col"
+                className="w-[205px] sm:w-[235px] md:w-[255px] shrink-0 group relative rounded-2xl overflow-hidden bg-white border border-[#EAE4DC] hover:border-[#145C59]/60 shadow-xs hover:shadow-xl transition-all duration-300 flex flex-col"
               >
                 {/* Clean Video Viewport - Balanced Aspect Ratio */}
                 <div
@@ -1862,7 +1862,7 @@ export const HomePage = ({ activeCategory, onSelectCategory }) => {
                     <div className="min-w-0 flex-1">
                       <p
                         onClick={() => setActiveVideoModal(reel)}
-                        className="text-xs sm:text-[12.5px] font-semibold text-stone-900 truncate cursor-pointer hover:text-[#7A152E] transition-colors leading-tight"
+                        className="text-xs sm:text-[12.5px] font-semibold text-stone-900 truncate cursor-pointer hover:text-[#145C59] transition-colors leading-tight"
                         title={reel.title}
                       >
                         {reel.title}
@@ -1874,7 +1874,7 @@ export const HomePage = ({ activeCategory, onSelectCategory }) => {
 
                     {/* Price */}
                     <div className="text-right shrink-0">
-                      <span className="text-xs sm:text-[13px] font-bold text-[#7A152E] block">
+                      <span className="text-xs sm:text-[13px] font-bold text-[#145C59] block">
                         ₹{reel.price.toLocaleString('en-IN')}
                       </span>
                       <span className="text-[9.5px] text-stone-400 line-through block -mt-0.5">
@@ -1891,7 +1891,7 @@ export const HomePage = ({ activeCategory, onSelectCategory }) => {
                         e.stopPropagation();
                         handleAddVideoProduct(reel);
                       }}
-                      className="w-full py-2 px-2.5 rounded-lg bg-[#7A152E] hover:bg-[#590D1E] text-white font-sans text-xs font-semibold flex items-center justify-center gap-1.5 transition-all duration-150 cursor-pointer active:scale-95 shadow-2xs group/video-cart"
+                      className="w-full py-2 px-2.5 rounded-lg bg-[#145C59] hover:bg-[#0D3F3D] text-white font-sans text-xs font-semibold flex items-center justify-center gap-1.5 transition-all duration-150 cursor-pointer active:scale-95 shadow-2xs group/video-cart"
                       title="Add to Cart"
                     >
                       <GoldShoppingBag className="w-3.5 h-3.5 shrink-0 -translate-y-px transition-transform duration-200 group-hover/video-cart:-translate-y-0.5" />
@@ -1922,7 +1922,7 @@ export const HomePage = ({ activeCategory, onSelectCategory }) => {
             {/* Close Button */}
             <button
               onClick={() => setActiveVideoModal(null)}
-              className="absolute top-3 right-3 z-30 w-9 h-9 rounded-full bg-[#7A152E]/80 hover:bg-[#7A152E] text-white flex items-center justify-center transition-colors cursor-pointer shadow-md"
+              className="absolute top-3 right-3 z-30 w-9 h-9 rounded-full bg-[#145C59]/80 hover:bg-[#145C59] text-white flex items-center justify-center transition-colors cursor-pointer shadow-md"
               aria-label="Close video"
             >
               <X className="w-5 h-5" />
@@ -1942,7 +1942,7 @@ export const HomePage = ({ activeCategory, onSelectCategory }) => {
               {/* Mute Toggle */}
               <button
                 onClick={() => setIsVideoMuted((prev) => !prev)}
-                className="absolute bottom-4 left-4 z-20 w-8 h-8 rounded-full bg-[#7A152E]/80 hover:bg-[#7A152E] text-white flex items-center justify-center transition-colors cursor-pointer shadow-md"
+                className="absolute bottom-4 left-4 z-20 w-8 h-8 rounded-full bg-[#145C59]/80 hover:bg-[#145C59] text-white flex items-center justify-center transition-colors cursor-pointer shadow-md"
               >
                 {isVideoMuted ? <VolumeX className="w-4 h-4" /> : <Volume2 className="w-4 h-4" />}
               </button>
@@ -1951,7 +1951,7 @@ export const HomePage = ({ activeCategory, onSelectCategory }) => {
             {/* Product Details Column */}
             <div className="p-6 sm:p-8 sm:w-1/2 flex flex-col justify-between bg-white text-stone-900">
               <div>
-                <span className="text-[10.5px] uppercase tracking-widest text-[#7A152E] font-bold block mb-1">
+                <span className="text-[10.5px] uppercase tracking-widest text-[#145C59] font-bold block mb-1">
                   {activeVideoModal.metal}
                 </span>
                 <div className="flex items-center gap-3 mb-2 p-2 rounded-xl bg-stone-50 border border-stone-200">
@@ -1969,7 +1969,7 @@ export const HomePage = ({ activeCategory, onSelectCategory }) => {
                 </div>
                 
                 <div className="flex items-baseline gap-2 mt-2">
-                  <span className="font-serif text-2xl font-bold text-[#7A152E]">
+                  <span className="font-serif text-2xl font-bold text-[#145C59]">
                     ₹{activeVideoModal.price.toLocaleString('en-IN')}
                   </span>
                   <span className="text-sm text-stone-400 line-through">
@@ -2007,7 +2007,7 @@ export const HomePage = ({ activeCategory, onSelectCategory }) => {
                     handleAddVideoProduct(activeVideoModal);
                     setActiveVideoModal(null);
                   }}
-                  className="w-full py-3.5 px-5 rounded-xl bg-[#7A152E] hover:bg-[#590D1E] text-white font-sans text-xs sm:text-sm font-bold uppercase tracking-wider rounded-xl shadow-md hover:shadow-lg transition-all cursor-pointer flex items-center justify-center gap-2 group"
+                  className="w-full py-3.5 px-5 rounded-xl bg-[#145C59] hover:bg-[#0D3F3D] text-white font-sans text-xs sm:text-sm font-bold uppercase tracking-wider rounded-xl shadow-md hover:shadow-lg transition-all cursor-pointer flex items-center justify-center gap-2 group"
                 >
                   <GoldShoppingBag className="w-4 h-4 shrink-0 -translate-y-px transition-transform group-hover:-translate-y-0.5" />
                   <span className="leading-none">Add to Bag &bull; ₹{activeVideoModal.price.toLocaleString('en-IN')}</span>
@@ -2027,13 +2027,13 @@ export const HomePage = ({ activeCategory, onSelectCategory }) => {
           ======================================================== */}
       <section id="reviews-section" className="py-6 sm:py-10 bg-[#FAF8F5] border-y border-[#EAE4DC] relative overflow-hidden">
         {/* Soft Royal Ambient Hue */}
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-3/4 h-32 bg-gradient-to-b from-[#7A152E]/4 to-transparent pointer-events-none" />
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-3/4 h-32 bg-gradient-to-b from-[#145C59]/4 to-transparent pointer-events-none" />
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
           
           {/* Section Header */}
           <div className="text-center max-w-2xl mx-auto mb-5 sm:mb-8">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white border border-[#EAE4DC] text-[#7A152E] mb-3 shadow-2xs">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white border border-[#EAE4DC] text-[#145C59] mb-3 shadow-2xs">
               <Crown className="w-3.5 h-3.5 text-[#C5A059]" />
               <span className="text-[11px] uppercase tracking-[0.2em] font-bold">
                 PATRON TESTIMONIALS
@@ -2057,7 +2057,7 @@ export const HomePage = ({ activeCategory, onSelectCategory }) => {
               </div>
 
               <div className="hidden sm:inline-flex items-center gap-1.5 bg-white/70 px-3 py-1.5 rounded-full border border-[#EAE4DC] text-xs text-stone-600 font-medium">
-                <ShieldCheck className="w-3.5 h-3.5 text-[#7A152E]" />
+                <ShieldCheck className="w-3.5 h-3.5 text-[#145C59]" />
                 <span>100% BIS Hallmarked Purity</span>
               </div>
             </div>
@@ -2072,7 +2072,7 @@ export const HomePage = ({ activeCategory, onSelectCategory }) => {
               return (
                 <div
                   key={review.id}
-                  className="w-[85vw] sm:w-[70vw] md:w-auto shrink-0 snap-center relative rounded-2xl bg-white border border-[#EAE4DC] p-6 sm:p-7 flex flex-col justify-between shadow-[0_2px_12px_rgba(0,0,0,0.03)] hover:shadow-[0_12px_28px_rgba(122,21,46,0.08)] hover:border-[#C5A059]/60 transition-all duration-300 group"
+                  className="w-[85vw] sm:w-[70vw] md:w-auto shrink-0 snap-center relative rounded-2xl bg-white border border-[#EAE4DC] p-6 sm:p-7 flex flex-col justify-between shadow-[0_2px_12px_rgba(0,0,0,0.03)] hover:shadow-[0_12px_28px_rgba(20, 92, 89,0.08)] hover:border-[#C5A059]/60 transition-all duration-300 group"
                 >
                   {/* Watermark Quote Mark */}
                   <span className="absolute top-4 right-5 font-serif text-5xl text-[#C5A059]/15 select-none pointer-events-none leading-none">
@@ -2091,8 +2091,8 @@ export const HomePage = ({ activeCategory, onSelectCategory }) => {
                         <span className="text-xs font-bold text-stone-900 font-sans">5.0</span>
                       </div>
 
-                      <span className="inline-flex items-center gap-1 text-[10.5px] font-medium text-[#7A152E] bg-[#7A152E]/6 px-2.5 py-0.5 rounded-full border border-[#7A152E]/12">
-                        <Check className="w-2.5 h-2.5 text-[#7A152E] stroke-[2.5]" />
+                      <span className="inline-flex items-center gap-1 text-[10.5px] font-medium text-[#145C59] bg-[#145C59]/6 px-2.5 py-0.5 rounded-full border border-[#145C59]/12">
+                        <Check className="w-2.5 h-2.5 text-[#145C59] stroke-[2.5]" />
                         <span>Verified Buyer</span>
                       </span>
                     </div>
@@ -2125,7 +2125,7 @@ export const HomePage = ({ activeCategory, onSelectCategory }) => {
                       <span className="text-[9px] uppercase tracking-widest text-stone-400 font-medium block">
                         Acquired Piece
                       </span>
-                      <span className="text-xs font-semibold text-[#7A152E] block max-w-[145px] sm:max-w-[165px] truncate" title={productName}>
+                      <span className="text-xs font-semibold text-[#145C59] block max-w-[145px] sm:max-w-[165px] truncate" title={productName}>
                         {productName}
                       </span>
                     </div>

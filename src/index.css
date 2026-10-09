@@ -37,7 +37,7 @@
   }
 
   ::selection {
-    background-color: #7A152E;
+    background-color: #145C59;
     color: #FFFFFF;
   }
 
@@ -89,9 +89,9 @@
   background: #9E7B35;
 }
 
-/* Luxury Royal Red & Champagne Gold Gradients */
+/* Luxury Royal Emerald & Champagne Gold Gradients */
 .royal-gradient-bg {
-  background: linear-gradient(135deg, #8B1E3F 0%, #7A152E 50%, #590D1E 100%);
+  background: linear-gradient(135deg, #1A6E6B 0%, #145C59 50%, #0D3F3D 100%);
 }
 
 .champagne-gradient-bg {

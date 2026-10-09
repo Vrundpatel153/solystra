@@ -56,7 +56,7 @@ const MenuToggleButton = ({ isOpen, onClick, className = '' }) => (
     onClick={onClick}
     className={`w-8 h-8 sm:w-9 sm:h-9 rounded-full flex items-center justify-center transition-all duration-500 cursor-pointer active:scale-95 group ${
       isOpen
-        ? 'bg-[#7A152E]/10 text-[#7A152E]'
+        ? 'bg-[#145C59]/10 text-[#145C59]'
         : 'bg-stone-200/50 hover:bg-stone-200/80 text-[#231F20]'
     } ${className}`}
     aria-label={isOpen ? "Close menu" : "Open menu"}
@@ -67,16 +67,16 @@ const MenuToggleButton = ({ isOpen, onClick, className = '' }) => (
       <span
         className={`absolute left-1/2 -translate-x-1/2 w-[18px] h-[2px] rounded-full transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] origin-center ${
           isOpen
-            ? 'top-1/2 -translate-y-1/2 rotate-45 bg-[#7A152E]'
-            : 'top-[6px] -translate-y-0 rotate-0 bg-[#231F20] group-hover:bg-[#7A152E]'
+            ? 'top-1/2 -translate-y-1/2 rotate-45 bg-[#145C59]'
+            : 'top-[6px] -translate-y-0 rotate-0 bg-[#231F20] group-hover:bg-[#145C59]'
         }`}
       />
       {/* Bottom Bar: EXACT SAME 18px width, centered. In closed: top: 13px. In open: centered at top: 50%, rotated -45deg */}
       <span
         className={`absolute left-1/2 -translate-x-1/2 w-[18px] h-[2px] rounded-full transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] origin-center ${
           isOpen
-            ? 'top-1/2 -translate-y-1/2 -rotate-45 bg-[#7A152E]'
-            : 'top-[13px] -translate-y-0 rotate-0 bg-[#231F20] group-hover:bg-[#7A152E]'
+            ? 'top-1/2 -translate-y-1/2 -rotate-45 bg-[#145C59]'
+            : 'top-[13px] -translate-y-0 rotate-0 bg-[#231F20] group-hover:bg-[#145C59]'
         }`}
       />
     </div>
@@ -158,7 +158,7 @@ export const Navbar = ({ activeCategory, onSelectCategory, onOpenBoutique }) => 
                     window.location.hash = '#/products';
                     setIsMenuOpen(false);
                   }}
-                  className="py-1 text-[13px] font-sans tracking-wide transition-colors cursor-pointer text-stone-800 hover:text-[#7A152E] font-medium"
+                  className="py-1 text-[13px] font-sans tracking-wide transition-colors cursor-pointer text-stone-800 hover:text-[#145C59] font-medium"
                 >
                   Explore All
                 </button>
@@ -168,10 +168,10 @@ export const Navbar = ({ activeCategory, onSelectCategory, onOpenBoutique }) => 
                     window.location.hash = '#/offers';
                     setIsMenuOpen(false);
                   }}
-                  className="py-1 text-[13px] font-sans tracking-wide transition-colors cursor-pointer text-[#7A152E] hover:text-[#5A0F22] font-semibold flex items-center gap-1.5 group"
+                  className="py-1 text-[13px] font-sans tracking-wide transition-colors cursor-pointer text-[#145C59] hover:text-[#0F4745] font-semibold flex items-center gap-1.5 group"
                 >
-                  <span className="text-[#7A152E] group-hover:text-[#5A0F22] transition-colors">Offers</span>
-                  <span className="bg-[#7A152E] text-white text-[9px] font-bold px-2 py-0.5 rounded-full uppercase tracking-wider shadow-2xs group-hover:bg-[#5A0F22] transition-colors">
+                  <span className="text-[#145C59] group-hover:text-[#0F4745] transition-colors">Offers</span>
+                  <span className="bg-[#145C59] text-white text-[9px] font-bold px-2 py-0.5 rounded-full uppercase tracking-wider shadow-2xs group-hover:bg-[#0F4745] transition-colors">
                     Privilege
                   </span>
                 </button>
@@ -180,14 +180,14 @@ export const Navbar = ({ activeCategory, onSelectCategory, onOpenBoutique }) => 
                   onClick={() => setIsMenuOpen(prev => !prev)}
                   className={`py-1 flex items-center gap-1.5 text-[13px] font-sans tracking-wide transition-colors cursor-pointer group ${
                     isMenuOpen
-                      ? 'text-[#7A152E] font-semibold'
-                      : 'text-stone-800 hover:text-[#7A152E] font-medium'
+                      ? 'text-[#145C59] font-semibold'
+                      : 'text-stone-800 hover:text-[#145C59] font-medium'
                   }`}
                 >
                   <span>Collections</span>
                   <ChevronDown
-                    className={`w-3.5 h-3.5 text-stone-400 group-hover:text-[#7A152E] transition-transform duration-300 ${
-                      isMenuOpen ? 'rotate-180 text-[#7A152E]' : ''
+                    className={`w-3.5 h-3.5 text-stone-400 group-hover:text-[#145C59] transition-transform duration-300 ${
+                      isMenuOpen ? 'rotate-180 text-[#145C59]' : ''
                     }`}
                   />
                 </button>
@@ -226,17 +226,17 @@ export const Navbar = ({ activeCategory, onSelectCategory, onOpenBoutique }) => 
               {/* Ateliers Trigger (Desktop) */}
               <button
                 onClick={onOpenBoutique}
-                className="hidden lg:flex items-center gap-1.5 px-2.5 py-1 text-[11.5px] font-sans text-stone-700 hover:text-[#7A152E] hover:bg-stone-100/80 rounded-full transition-all cursor-pointer"
+                className="hidden lg:flex items-center gap-1.5 px-2.5 py-1 text-[11.5px] font-sans text-stone-700 hover:text-[#145C59] hover:bg-stone-100/80 rounded-full transition-all cursor-pointer"
                 title="Find Solystra Boutiques"
               >
-                <MapPin className="w-3.5 h-3.5 text-[#7A152E]" />
+                <MapPin className="w-3.5 h-3.5 text-[#145C59]" />
                 <span>Ateliers</span>
               </button>
 
               {/* Search Trigger (Mobile + Desktop) */}
               <button
                 onClick={() => setIsSearchOpen(true)}
-                className="p-1.5 sm:p-2 text-stone-700 hover:text-[#7A152E] transition-colors rounded-full hover:bg-stone-100 cursor-pointer"
+                className="p-1.5 sm:p-2 text-stone-700 hover:text-[#145C59] transition-colors rounded-full hover:bg-stone-100 cursor-pointer"
                 aria-label="Search jewelry collection"
               >
                 <Search className="w-4 h-4 sm:w-[18px] sm:h-[18px] stroke-[1.7]" />
@@ -245,12 +245,12 @@ export const Navbar = ({ activeCategory, onSelectCategory, onOpenBoutique }) => 
               {/* Wishlist Trigger (Mobile + Desktop) */}
               <button
                 onClick={() => setIsWishlistOpen(true)}
-                className="relative p-1.5 sm:p-2 text-stone-700 hover:text-[#7A152E] transition-colors rounded-full hover:bg-stone-100 cursor-pointer"
+                className="relative p-1.5 sm:p-2 text-stone-700 hover:text-[#145C59] transition-colors rounded-full hover:bg-stone-100 cursor-pointer"
                 aria-label="Open wishlist"
               >
                 <Heart className="w-4 h-4 sm:w-[18px] sm:h-[18px] stroke-[1.7]" />
                 {wishlist.length > 0 && (
-                  <span className="absolute top-0.5 right-0.5 bg-[#7A152E] text-white text-[8.5px] sm:text-[9.5px] font-bold w-3.5 h-3.5 sm:w-4 sm:h-4 rounded-full flex items-center justify-center shadow-xs">
+                  <span className="absolute top-0.5 right-0.5 bg-[#145C59] text-white text-[8.5px] sm:text-[9.5px] font-bold w-3.5 h-3.5 sm:w-4 sm:h-4 rounded-full flex items-center justify-center shadow-xs">
                     {wishlist.length}
                   </span>
                 )}
@@ -259,16 +259,16 @@ export const Navbar = ({ activeCategory, onSelectCategory, onOpenBoutique }) => 
               {/* Shopping Bag Trigger (Mobile + Desktop) */}
               <button
                 onClick={() => setIsCartOpen(true)}
-                className="relative p-1.5 sm:p-2 text-stone-700 hover:text-[#7A152E] transition-colors rounded-full hover:bg-stone-100 cursor-pointer flex items-center gap-1.5"
+                className="relative p-1.5 sm:p-2 text-stone-700 hover:text-[#145C59] transition-colors rounded-full hover:bg-stone-100 cursor-pointer flex items-center gap-1.5"
                 aria-label="Open shopping bag"
               >
                 <ShoppingBag className="w-4 h-4 sm:w-[18px] sm:h-[18px] stroke-[1.7]" />
                 {cartItemCount > 0 && (
-                  <span className="absolute top-0.5 right-0.5 lg:hidden bg-[#7A152E] text-white text-[8.5px] font-bold w-3.5 h-3.5 rounded-full flex items-center justify-center shadow-xs">
+                  <span className="absolute top-0.5 right-0.5 lg:hidden bg-[#145C59] text-white text-[8.5px] font-bold w-3.5 h-3.5 rounded-full flex items-center justify-center shadow-xs">
                     {cartItemCount}
                   </span>
                 )}
-                <span className="hidden lg:inline text-[12.5px] font-sans font-medium text-stone-800 hover:text-[#7A152E] tracking-tight">
+                <span className="hidden lg:inline text-[12.5px] font-sans font-medium text-stone-800 hover:text-[#145C59] tracking-tight">
                   Bag {cartItemCount > 0 ? `(${cartItemCount})` : '(0)'}
                 </span>
               </button>
@@ -326,7 +326,7 @@ export const Navbar = ({ activeCategory, onSelectCategory, onOpenBoutique }) => 
             
             {/* Column 1: Featured Collections (3 cols) */}
             <div className="col-span-3 space-y-3 border-r border-[#EAE4DC]/80 pr-6">
-              <div className="text-[11px] uppercase tracking-[0.2em] text-[#7A152E] font-bold pb-2 border-b border-[#EAE4DC]/60">
+              <div className="text-[11px] uppercase tracking-[0.2em] text-[#145C59] font-bold pb-2 border-b border-[#EAE4DC]/60">
                 Curated Collections
               </div>
               <div className="space-y-0.5 pt-1">
@@ -334,17 +334,17 @@ export const Navbar = ({ activeCategory, onSelectCategory, onOpenBoutique }) => 
                   <button
                     key={idx}
                     onClick={() => handleNavClick(item.category)}
-                    className="w-full text-left py-2 px-2.5 -mx-2.5 rounded-xl hover:bg-[#FAF0F2] transition-all cursor-pointer group flex items-center justify-between"
+                    className="w-full text-left py-2 px-2.5 -mx-2.5 rounded-xl hover:bg-[#F0F7F6] transition-all cursor-pointer group flex items-center justify-between"
                   >
                     <div>
-                      <div className="text-[13px] font-sans font-semibold text-stone-900 group-hover:text-[#7A152E] transition-colors leading-tight">
+                      <div className="text-[13px] font-sans font-semibold text-stone-900 group-hover:text-[#145C59] transition-colors leading-tight">
                         {item.label}
                       </div>
                       <div className="text-[11px] text-stone-400 font-light mt-0.5">
                         {item.desc}
                       </div>
                     </div>
-                    <ChevronRight className="w-3.5 h-3.5 text-stone-300 group-hover:text-[#7A152E] group-hover:translate-x-0.5 transition-all opacity-0 group-hover:opacity-100" />
+                    <ChevronRight className="w-3.5 h-3.5 text-stone-300 group-hover:text-[#145C59] group-hover:translate-x-0.5 transition-all opacity-0 group-hover:opacity-100" />
                   </button>
                 ))}
               </div>
@@ -363,14 +363,14 @@ export const Navbar = ({ activeCategory, onSelectCategory, onOpenBoutique }) => 
                     className="w-full text-left py-2 px-2.5 -mx-2.5 rounded-xl hover:bg-[#FAF8F5] transition-all cursor-pointer group flex items-center justify-between"
                   >
                     <div>
-                      <div className="text-[13px] font-sans font-semibold text-stone-900 group-hover:text-[#7A152E] transition-colors leading-tight">
+                      <div className="text-[13px] font-sans font-semibold text-stone-900 group-hover:text-[#145C59] transition-colors leading-tight">
                         {cat.label}
                       </div>
                       <div className="text-[11px] text-stone-400 font-light mt-0.5">
                         {cat.desc}
                       </div>
                     </div>
-                    <ChevronRight className="w-3.5 h-3.5 text-stone-300 group-hover:text-[#7A152E] group-hover:translate-x-0.5 transition-all opacity-0 group-hover:opacity-100" />
+                    <ChevronRight className="w-3.5 h-3.5 text-stone-300 group-hover:text-[#145C59] group-hover:translate-x-0.5 transition-all opacity-0 group-hover:opacity-100" />
                   </button>
                 ))}
                 
@@ -379,9 +379,9 @@ export const Navbar = ({ activeCategory, onSelectCategory, onOpenBoutique }) => 
                     window.location.hash = '#/categories';
                     setIsMenuOpen(false);
                   }}
-                  className="w-full text-left py-2 px-2.5 -mx-2.5 rounded-xl hover:bg-[#FAF0F2] transition-all cursor-pointer group flex items-center justify-between mt-2 pt-2 border-t border-[#EAE4DC]/60"
+                  className="w-full text-left py-2 px-2.5 -mx-2.5 rounded-xl hover:bg-[#F0F7F6] transition-all cursor-pointer group flex items-center justify-between mt-2 pt-2 border-t border-[#EAE4DC]/60"
                 >
-                  <div className="text-[12px] font-semibold text-[#7A152E] group-hover:text-[#590D1E] flex items-center gap-1.5">
+                  <div className="text-[12px] font-semibold text-[#145C59] group-hover:text-[#0D3F3D] flex items-center gap-1.5">
                     <span>Explore All Categories</span>
                     <ChevronRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
                   </div>
@@ -399,10 +399,10 @@ export const Navbar = ({ activeCategory, onSelectCategory, onOpenBoutique }) => 
                   <button
                     key={idx}
                     onClick={() => handleNavClick(tone.category)}
-                    className="w-full text-left p-2.5 rounded-xl bg-white hover:bg-[#FAF8F5] border border-[#EAE4DC] hover:border-[#7A152E]/30 transition-all cursor-pointer group shadow-2xs"
+                    className="w-full text-left p-2.5 rounded-xl bg-white hover:bg-[#FAF8F5] border border-[#EAE4DC] hover:border-[#145C59]/30 transition-all cursor-pointer group shadow-2xs"
                   >
                     <div className="flex items-center justify-between mb-1">
-                      <span className="text-[12px] font-sans font-semibold text-stone-900 group-hover:text-[#7A152E] transition-colors">
+                      <span className="text-[12px] font-sans font-semibold text-stone-900 group-hover:text-[#145C59] transition-colors">
                         {tone.name}
                       </span>
                       <div className="flex items-center -space-x-1">
@@ -464,7 +464,7 @@ export const Navbar = ({ activeCategory, onSelectCategory, onOpenBoutique }) => 
 
               {/* Atelier Trust Assurance Strip */}
               <div className="p-2.5 rounded-xl bg-[#FAF8F5] border border-[#EAE4DC] flex items-center gap-2 text-stone-600">
-                <ShieldCheck className="w-4 h-4 text-[#7A152E] shrink-0" />
+                <ShieldCheck className="w-4 h-4 text-[#145C59] shrink-0" />
                 <span className="text-[10px] font-medium leading-tight text-stone-700">
                   100% Certified BIS 925 Hallmark &bull; Insured Delivery
                 </span>
@@ -491,7 +491,7 @@ export const Navbar = ({ activeCategory, onSelectCategory, onOpenBoutique }) => 
                   window.location.hash = '#/offers';
                   setIsMenuOpen(false);
                 }}
-                className="py-2.5 px-3 bg-[#7A152E] hover:bg-[#590D1E] text-white rounded-xl text-xs font-semibold flex items-center justify-center gap-1.5 shadow-xs active:scale-95 transition-all cursor-pointer"
+                className="py-2.5 px-3 bg-[#145C59] hover:bg-[#0D3F3D] text-white rounded-xl text-xs font-semibold flex items-center justify-center gap-1.5 shadow-xs active:scale-95 transition-all cursor-pointer"
               >
                 <span>Offers Privilege %</span>
               </button>
@@ -499,7 +499,7 @@ export const Navbar = ({ activeCategory, onSelectCategory, onOpenBoutique }) => 
 
             {/* Curated Collections List */}
             <div className="space-y-1 pb-3 border-b border-[#EAE4DC]">
-              <div className="text-[11px] font-bold uppercase tracking-wider text-[#7A152E] mb-1.5">
+              <div className="text-[11px] font-bold uppercase tracking-wider text-[#145C59] mb-1.5">
                 Curated Collections
               </div>
               <div className="grid grid-cols-1 gap-1">
@@ -538,7 +538,7 @@ export const Navbar = ({ activeCategory, onSelectCategory, onOpenBoutique }) => 
                     window.location.hash = '#/categories';
                     setIsMenuOpen(false);
                   }}
-                  className="col-span-2 p-2.5 bg-[#FAF0F2] rounded-lg border border-[#7A152E]/20 text-center text-xs font-semibold text-[#7A152E] hover:bg-[#F3E2E6] transition-colors cursor-pointer flex items-center justify-center gap-1.5"
+                  className="col-span-2 p-2.5 bg-[#F0F7F6] rounded-lg border border-[#145C59]/20 text-center text-xs font-semibold text-[#145C59] hover:bg-[#E1EFEB] transition-colors cursor-pointer flex items-center justify-center gap-1.5"
                 >
                   <span>Explore All Categories Archive</span>
                   <ChevronRight className="w-3.5 h-3.5" />

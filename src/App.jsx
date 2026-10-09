@@ -181,7 +181,7 @@ export const App = () => {
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-[#FAF8F5] selection:bg-[#7A152E] selection:text-white font-sans pb-16 lg:pb-0">
+    <div className="min-h-screen flex flex-col bg-[#FAF8F5] selection:bg-[#145C59] selection:text-white font-sans pb-16 lg:pb-0">
       {/* If on checkout page, show distraction-free luxury checkout */}
       {currentRoute.isCheckout ? (
         <CheckoutPage onBackToStore={() => navigateToHome('all')} />

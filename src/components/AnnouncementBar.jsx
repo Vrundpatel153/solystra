@@ -17,7 +17,7 @@ export const AnnouncementBar = () => {
   }, []);
 
   return (
-    <div className="bg-[#7A152E] text-white py-1.5 sm:py-2 px-3 sm:px-4 border-b border-[#590D1E] font-sans text-xs">
+    <div className="bg-[#145C59] text-white py-1.5 sm:py-2 px-3 sm:px-4 border-b border-[#0D3F3D] font-sans text-xs">
       <div className="max-w-7xl mx-auto flex items-center justify-between">
         
         {/* Left: Brand Support */}

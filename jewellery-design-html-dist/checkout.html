@@ -13,7 +13,7 @@
 </head>
 <body class="bg-[#FAF8F5]">
 
-  <div class="min-h-screen flex flex-col bg-[#FAF8F5] selection:bg-[#7A152E] selection:text-white font-sans">
+  <div class="min-h-screen flex flex-col bg-[#FAF8F5] selection:bg-[#145C59] selection:text-white font-sans">
     
     <!-- Top Header Navigation -->
     <header class="sticky top-0 z-30 bg-white/90 backdrop-blur-md border-b border-[#EAE4DC]">
@@ -34,8 +34,8 @@
         <!-- Center: 3-Step Breadcrumbs -->
         <div class="hidden md:flex items-center gap-3 text-xs">
           <!-- Step 1 Indicator -->
-          <div id="breadcrumb-step-1" class="flex items-center gap-1.5 text-[#7A152E] font-bold">
-            <span class="w-5 h-5 rounded-full bg-[#7A152E] text-white text-[10px] flex items-center justify-center font-mono">1</span>
+          <div id="breadcrumb-step-1" class="flex items-center gap-1.5 text-[#145C59] font-bold">
+            <span class="w-5 h-5 rounded-full bg-[#145C59] text-white text-[10px] flex items-center justify-center font-mono">1</span>
             <span>Delivery</span>
           </div>
           <span class="text-stone-300">•••</span>
@@ -67,10 +67,10 @@
     <div class="lg:hidden bg-white border-b border-[#EAE4DC] px-4 py-3">
       <button type="button" onclick="document.getElementById('mobile-summary-drawer')?.classList.toggle('hidden')" class="w-full flex items-center justify-between text-xs text-stone-800 font-medium">
         <div class="flex items-center gap-2">
-          <span class="text-[#7A152E] font-bold">Toggle Order Summary</span>
+          <span class="text-[#145C59] font-bold">Toggle Order Summary</span>
           <svg class="lucide lucide-chevron-down w-4 h-4 text-stone-500" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="24"><path d="m6 9 6 6 6-6"></path></svg>
         </div>
-        <span id="mobile-summary-total" class="font-serif text-sm font-bold text-[#7A152E]">₹0</span>
+        <span id="mobile-summary-total" class="font-serif text-sm font-bold text-[#145C59]">₹0</span>
       </button>
       <div id="mobile-summary-drawer" class="hidden pt-3 border-t border-stone-100 mt-2 space-y-2 text-xs text-stone-600">
         <div id="mobile-summary-items-list" class="divide-y divide-stone-100 max-h-48 overflow-y-auto"></div>
@@ -89,11 +89,11 @@
         <div class="lg:col-span-7 space-y-8">
           
           <!-- STEP 1: CONTACT & DELIVERY ADDRESS -->
-          <div id="checkout-step-1-card" class="bg-white rounded-3xl border border-[#EAE4DC] p-6 sm:p-8 shadow-md transition-all ring-2 ring-[#7A152E]/10">
+          <div id="checkout-step-1-card" class="bg-white rounded-3xl border border-[#EAE4DC] p-6 sm:p-8 shadow-md transition-all ring-2 ring-[#145C59]/10">
             
             <div class="flex items-center justify-between pb-6 border-b border-[#EAE4DC]">
               <div class="flex items-center gap-3">
-                <div id="step-1-badge" class="w-8 h-8 rounded-full bg-[#7A152E] text-white text-xs font-bold flex items-center justify-center font-mono">
+                <div id="step-1-badge" class="w-8 h-8 rounded-full bg-[#145C59] text-white text-xs font-bold flex items-center justify-center font-mono">
                   1
                 </div>
                 <div>
@@ -107,7 +107,7 @@
               </div>
 
               <!-- Edit button when collapsed -->
-              <button type="button" id="btn-edit-step-1" onclick="window.editDeliveryStep()" class="hidden text-xs font-bold text-[#7A152E] hover:underline cursor-pointer">
+              <button type="button" id="btn-edit-step-1" onclick="window.editDeliveryStep()" class="hidden text-xs font-bold text-[#145C59] hover:underline cursor-pointer">
                 Edit Address
               </button>
             </div>
@@ -122,7 +122,7 @@
                     Email Address <span class="text-red-500">*</span>
                   </label>
                   <div class="relative">
-                    <input id="input-email" required class="w-full px-3.5 py-2.5 rounded-xl border border-stone-200 focus:border-[#7A152E] focus:outline-none bg-stone-50/50" placeholder="your.email@example.com" type="email" value="vrund.solystra@gmail.com"/>
+                    <input id="input-email" required class="w-full px-3.5 py-2.5 rounded-xl border border-stone-200 focus:border-[#145C59] focus:outline-none bg-stone-50/50" placeholder="your.email@example.com" type="email" value="vrund.solystra@gmail.com"/>
                     <svg class="lucide lucide-mail w-4 h-4 text-stone-400 absolute right-3 top-3" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="24"><rect height="16" rx="2" width="20" x="2" y="4"></rect><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path></svg>
                   </div>
                 </div>
@@ -133,7 +133,7 @@
                   </label>
                   <div class="relative flex">
                     <span class="inline-flex items-center px-3 rounded-l-xl border border-r-0 border-stone-200 bg-stone-100 text-stone-600 font-mono text-xs">+91</span>
-                    <input id="input-phone" required class="w-full px-3.5 py-2.5 rounded-r-xl border border-stone-200 focus:border-[#7A152E] focus:outline-none bg-stone-50/50 font-mono" maxlength="10" placeholder="98765 43210" type="tel" value="9876543210"/>
+                    <input id="input-phone" required class="w-full px-3.5 py-2.5 rounded-r-xl border border-stone-200 focus:border-[#145C59] focus:outline-none bg-stone-50/50 font-mono" maxlength="10" placeholder="98765 43210" type="tel" value="9876543210"/>
                   </div>
                 </div>
               </div>
@@ -142,31 +142,31 @@
               <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
                   <label class="block text-stone-700 font-semibold mb-1">First Name <span class="text-red-500">*</span></label>
-                  <input id="input-first-name" required class="w-full px-3.5 py-2.5 rounded-xl border border-stone-200 focus:border-[#7A152E] focus:outline-none bg-stone-50/50" placeholder="First Name" type="text" value="Vrund"/>
+                  <input id="input-first-name" required class="w-full px-3.5 py-2.5 rounded-xl border border-stone-200 focus:border-[#145C59] focus:outline-none bg-stone-50/50" placeholder="First Name" type="text" value="Vrund"/>
                 </div>
                 <div>
                   <label class="block text-stone-700 font-semibold mb-1">Last Name <span class="text-red-500">*</span></label>
-                  <input id="input-last-name" required class="w-full px-3.5 py-2.5 rounded-xl border border-stone-200 focus:border-[#7A152E] focus:outline-none bg-stone-50/50" placeholder="Last Name" type="text" value="Shah"/>
+                  <input id="input-last-name" required class="w-full px-3.5 py-2.5 rounded-xl border border-stone-200 focus:border-[#145C59] focus:outline-none bg-stone-50/50" placeholder="Last Name" type="text" value="Shah"/>
                 </div>
               </div>
 
               <!-- Flat/Building -->
               <div>
                 <label class="block text-stone-700 font-semibold mb-1">Flat / House No. &amp; Building Name <span class="text-red-500">*</span></label>
-                <input id="input-address" required class="w-full px-3.5 py-2.5 rounded-xl border border-stone-200 focus:border-[#7A152E] focus:outline-none bg-stone-50/50" placeholder="Apartment, Studio, Floor, Building" type="text" value="Boutique Residence 402, High Street"/>
+                <input id="input-address" required class="w-full px-3.5 py-2.5 rounded-xl border border-stone-200 focus:border-[#145C59] focus:outline-none bg-stone-50/50" placeholder="Apartment, Studio, Floor, Building" type="text" value="Boutique Residence 402, High Street"/>
               </div>
 
               <!-- Street/Area -->
               <div>
                 <label class="block text-stone-700 font-semibold mb-1">Street, Area &amp; Landmark</label>
-                <input id="input-locality" class="w-full px-3.5 py-2.5 rounded-xl border border-stone-200 focus:border-[#7A152E] focus:outline-none bg-stone-50/50" placeholder="Near Landmark / Road" type="text" value="Heritage Enclave"/>
+                <input id="input-locality" class="w-full px-3.5 py-2.5 rounded-xl border border-stone-200 focus:border-[#145C59] focus:outline-none bg-stone-50/50" placeholder="Near Landmark / Road" type="text" value="Heritage Enclave"/>
               </div>
 
               <!-- PIN, City, State -->
               <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
                 <div>
                   <label class="block text-stone-700 font-semibold mb-1">PIN Code <span class="text-red-500">*</span></label>
-                  <input id="input-pincode" required class="w-full px-3.5 py-2.5 rounded-xl border border-stone-200 focus:border-[#7A152E] focus:outline-none bg-stone-50/50 font-mono font-bold text-stone-900" maxlength="6" placeholder="e.g. 400001" type="text" value="400001"/>
+                  <input id="input-pincode" required class="w-full px-3.5 py-2.5 rounded-xl border border-stone-200 focus:border-[#145C59] focus:outline-none bg-stone-50/50 font-mono font-bold text-stone-900" maxlength="6" placeholder="e.g. 400001" type="text" value="400001"/>
                 </div>
                 <div>
                   <label class="block text-stone-700 font-semibold mb-1">City</label>
@@ -182,9 +182,9 @@
               <div class="pt-2">
                 <label class="block text-stone-800 font-bold mb-2">Select Delivery Speed</label>
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                  <label class="p-3.5 rounded-xl border cursor-pointer flex items-center justify-between transition-all border-[#7A152E] bg-[#FAF8F5] ring-1 ring-[#7A152E]">
+                  <label class="p-3.5 rounded-xl border cursor-pointer flex items-center justify-between transition-all border-[#145C59] bg-[#FAF8F5] ring-1 ring-[#145C59]">
                     <div class="flex items-center gap-2.5">
-                      <input checked class="text-[#7A152E] focus:ring-[#7A152E]" name="deliveryMethod" type="radio" value="free"/>
+                      <input checked class="text-[#145C59] focus:ring-[#145C59]" name="deliveryMethod" type="radio" value="free"/>
                       <div>
                         <div class="font-bold text-stone-900">BlueDart Air Express</div>
                         <div class="text-[11px] text-stone-500">2-3 Business Days • Insured</div>
@@ -194,7 +194,7 @@
                   </label>
                   <label class="p-3.5 rounded-xl border cursor-pointer flex items-center justify-between transition-all border-stone-200 bg-white hover:border-stone-300">
                     <div class="flex items-center gap-2.5">
-                      <input class="text-[#7A152E] focus:ring-[#7A152E]" name="deliveryMethod" type="radio" value="express"/>
+                      <input class="text-[#145C59] focus:ring-[#145C59]" name="deliveryMethod" type="radio" value="express"/>
                       <div>
                         <div class="font-bold text-stone-900">White-Glove Courier</div>
                         <div class="text-[11px] text-stone-500">Next-Day Priority Handover</div>
@@ -207,13 +207,13 @@
 
               <!-- Packaging checkbox -->
               <label class="flex items-center gap-2 pt-2 cursor-pointer">
-                <input checked class="rounded text-[#7A152E] focus:ring-[#7A152E]" type="checkbox"/>
+                <input checked class="rounded text-[#145C59] focus:ring-[#145C59]" type="checkbox"/>
                 <span class="text-[11px] text-stone-600">Deliver in unbranded, tamper-proof outer packaging for discreet gifting surprises.</span>
               </label>
 
               <!-- Submit CTA -->
               <div class="pt-4">
-                <button type="button" onclick="window.handleAddressSubmit(event)" class="w-full py-3.5 bg-[#7A152E] hover:bg-[#590D1E] text-white text-xs sm:text-sm font-semibold uppercase tracking-wider rounded-xl shadow-lg transition-all cursor-pointer flex items-center justify-center gap-2"><span>Continue to Payment Method</span>
+                <button type="button" onclick="window.handleAddressSubmit(event)" class="w-full py-3.5 bg-[#145C59] hover:bg-[#0D3F3D] text-white text-xs sm:text-sm font-semibold uppercase tracking-wider rounded-xl shadow-lg transition-all cursor-pointer flex items-center justify-center gap-2"><span>Continue to Payment Method</span>
                   <svg class="lucide lucide-arrow-right w-4 h-4" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="24"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
                 </button>
               </div>
@@ -249,7 +249,7 @@
                   </p>
                 </div>
               </div>
-              <span id="payable-amount-header" class="text-xs font-serif font-bold text-[#7A152E]">
+              <span id="payable-amount-header" class="text-xs font-serif font-bold text-[#145C59]">
                 Payable: ₹0
               </span>
             </div>
@@ -260,13 +260,13 @@
               <!-- Payment Mode Selector Tabs -->
               <div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
                 <!-- UPI -->
-                <button type="button" onclick="window.selectPaymentTab('upi')" id="tab-btn-upi" class="p-3 rounded-2xl border text-left transition-all cursor-pointer flex flex-col justify-between border-[#7A152E] bg-[#FAF8F5] ring-2 ring-[#7A152E]/15 shadow-sm">
+                <button type="button" onclick="window.selectPaymentTab('upi')" id="tab-btn-upi" class="p-3 rounded-2xl border text-left transition-all cursor-pointer flex flex-col justify-between border-[#145C59] bg-[#FAF8F5] ring-2 ring-[#145C59]/15 shadow-sm">
                   <div class="flex items-center justify-between">
-                    <svg class="lucide lucide-qr-code w-5 h-5 text-[#7A152E]" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="24"><rect width="5" height="5" x="3" y="3" rx="1"></rect><rect width="5" height="5" x="16" y="3" rx="1"></rect><rect width="5" height="5" x="3" y="16" rx="1"></rect><path d="M21 16h-3a2 2 0 0 0-2 2v3"></path><path d="M21 21v.01"></path><path d="M12 7v3a2 2 0 0 1-2 2H7"></path><path d="M3 12h.01"></path><path d="M12 3h.01"></path><path d="M12 16v.01"></path><path d="M16 12h1"></path><path d="M21 12v.01"></path><path d="M12 21v-1"></path></svg>
-                    <span class="w-2 h-2 rounded-full bg-[#7A152E]"></span>
+                    <svg class="lucide lucide-qr-code w-5 h-5 text-[#145C59]" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="24"><rect width="5" height="5" x="3" y="3" rx="1"></rect><rect width="5" height="5" x="16" y="3" rx="1"></rect><rect width="5" height="5" x="3" y="16" rx="1"></rect><path d="M21 16h-3a2 2 0 0 0-2 2v3"></path><path d="M21 21v.01"></path><path d="M12 7v3a2 2 0 0 1-2 2H7"></path><path d="M3 12h.01"></path><path d="M12 3h.01"></path><path d="M12 16v.01"></path><path d="M16 12h1"></path><path d="M21 12v.01"></path><path d="M12 21v-1"></path></svg>
+                    <span class="w-2 h-2 rounded-full bg-[#145C59]"></span>
                   </div>
                   <div class="mt-3">
-                    <div class="font-bold text-xs text-[#7A152E]">UPI Instant</div>
+                    <div class="font-bold text-xs text-[#145C59]">UPI Instant</div>
                     <div class="text-[10px] text-stone-500 mt-0.5">Zero Fee • Fast</div>
                   </div>
                 </button>
@@ -313,7 +313,7 @@
                 <div>
                   <label class="block text-xs font-bold text-stone-800 mb-2">Select Preferred UPI App</label>
                   <div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
-                    <button type="button" onclick="window.selectUpiApp(this)" class="upi-app-btn py-2.5 px-3 rounded-xl border text-xs font-semibold flex items-center justify-center gap-1.5 transition-all cursor-pointer bg-white border-[#7A152E] text-[#7A152E] shadow-sm ring-1 ring-[#7A152E]">
+                    <button type="button" onclick="window.selectUpiApp(this)" class="upi-app-btn py-2.5 px-3 rounded-xl border text-xs font-semibold flex items-center justify-center gap-1.5 transition-all cursor-pointer bg-white border-[#145C59] text-[#145C59] shadow-sm ring-1 ring-[#145C59]">
                       <span class="w-2 h-2 rounded-full bg-[#4285F4]"></span>
                       <span>Google Pay</span>
                     </button>
@@ -334,15 +334,15 @@
 
                 <!-- Dynamic QR Code Card -->
                 <div class="flex flex-col sm:flex-row items-center gap-6 p-5 rounded-2xl bg-white border border-stone-200 shadow-xs">
-                  <div class="relative p-3 bg-white rounded-2xl border-2 border-[#7A152E]/30 shadow-md shrink-0">
+                  <div class="relative p-3 bg-white rounded-2xl border-2 border-[#145C59]/30 shadow-md shrink-0">
                     <svg width="130" height="130" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
                       <rect width="100" height="100" fill="white" />
                       <rect x="5" y="5" width="26" height="26" stroke="#231F20" stroke-width="4" fill="none" rx="4" />
-                      <rect x="11" y="11" width="14" height="14" fill="#7A152E" rx="2" />
+                      <rect x="11" y="11" width="14" height="14" fill="#145C59" rx="2" />
                       <rect x="69" y="5" width="26" height="26" stroke="#231F20" stroke-width="4" fill="none" rx="4" />
-                      <rect x="75" y="11" width="14" height="14" fill="#7A152E" rx="2" />
+                      <rect x="75" y="11" width="14" height="14" fill="#145C59" rx="2" />
                       <rect x="5" y="69" width="26" height="26" stroke="#231F20" stroke-width="4" fill="none" rx="4" />
-                      <rect x="11" y="75" width="14" height="14" fill="#7A152E" rx="2" />
+                      <rect x="11" y="75" width="14" height="14" fill="#145C59" rx="2" />
                       <rect x="36" y="10" width="8" height="8" fill="#231F20" />
                       <rect x="48" y="15" width="12" height="6" fill="#231F20" />
                       <rect x="36" y="24" width="6" height="12" fill="#231F20" />
@@ -356,7 +356,7 @@
                       <rect x="72" y="72" width="18" height="18" fill="#231F20" />
                     </svg>
                     <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
-                      <span class="w-6 h-6 rounded-full bg-white border border-[#C5A059] flex items-center justify-center text-[8px] font-bold text-[#7A152E]">925</span>
+                      <span class="w-6 h-6 rounded-full bg-white border border-[#C5A059] flex items-center justify-center text-[8px] font-bold text-[#145C59]">925</span>
                     </div>
                   </div>
 
@@ -370,7 +370,7 @@
                     <p class="text-xs text-stone-500 leading-relaxed font-light">
                       Scan this secure dynamic QR code to authorize instantaneous payment of <strong id="qr-payable-text" class="text-stone-900">₹0</strong>.
                     </p>
-                    <div class="text-[11px] text-[#7A152E] font-mono font-semibold flex items-center gap-1.5 pt-1">
+                    <div class="text-[11px] text-[#145C59] font-mono font-semibold flex items-center gap-1.5 pt-1">
                       <svg class="lucide lucide-clock w-3.5 h-3.5" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="24"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
                       <span>QR Code expires in <strong id="upi-countdown">09:45</strong></span>
                     </div>
@@ -383,7 +383,7 @@
                     Or Enter Virtual Payment Address (VPA) / UPI ID
                   </label>
                   <div class="flex gap-2">
-                    <input id="upi-vpa-input" type="text" placeholder="e.g. yourname@okhdfcbank" class="flex-1 px-3.5 py-2.5 rounded-xl border border-stone-200 bg-white text-xs focus:border-[#7A152E] focus:outline-none font-mono"/>
+                    <input id="upi-vpa-input" type="text" placeholder="e.g. yourname@okhdfcbank" class="flex-1 px-3.5 py-2.5 rounded-xl border border-stone-200 bg-white text-xs focus:border-[#145C59] focus:outline-none font-mono"/>
                     <button type="button" onclick="window.verifyUpiId()" class="px-4 py-2.5 rounded-xl border border-stone-300 bg-white hover:bg-stone-50 text-stone-800 text-xs font-semibold cursor-pointer">
                       Verify
                     </button>
@@ -396,7 +396,7 @@
                    ========================================== -->
               <div id="payment-panel-card" class="hidden p-6 rounded-2xl bg-[#FAF8F5] border border-[#EAE4DC] space-y-6">
                 <!-- 3D Luxury Card Preview -->
-                <div class="relative w-full max-w-sm mx-auto aspect-[1.586/1] rounded-2xl p-6 text-white bg-gradient-to-tr from-[#1E1E24] via-[#2A1520] to-[#7A152E] shadow-2xl border border-white/20 flex flex-col justify-between overflow-hidden">
+                <div class="relative w-full max-w-sm mx-auto aspect-[1.586/1] rounded-2xl p-6 text-white bg-gradient-to-tr from-[#1E1E24] via-[#2A1520] to-[#145C59] shadow-2xl border border-white/20 flex flex-col justify-between overflow-hidden">
                   <div class="flex items-center justify-between">
                     <div class="w-11 h-8 rounded-md bg-gradient-to-r from-[#D5B980] via-[#F3E5C8] to-[#C5A059] border border-[#C5A059]/60 flex items-center justify-center shadow-xs">
                       <div class="w-8 h-5 border border-[#9E7B35]/40 rounded-xs"></div>
@@ -424,7 +424,7 @@
                 </div>
 
                 <div class="flex justify-end">
-                  <button type="button" onclick="window.prefillDemoCard()" class="text-xs font-semibold text-[#7A152E] hover:underline flex items-center gap-1 cursor-pointer">
+                  <button type="button" onclick="window.prefillDemoCard()" class="text-xs font-semibold text-[#145C59] hover:underline flex items-center gap-1 cursor-pointer">
                     <svg class="lucide lucide-credit-card w-3.5 h-3.5" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="24"><rect width="20" height="14" x="2" y="5" rx="2"></rect><line x1="2" x2="22" y1="10" y2="10"></line></svg>
                     <span>Prefill Test Visa Card</span>
                   </button>
@@ -433,24 +433,24 @@
                 <div class="space-y-4 text-xs">
                   <div>
                     <label class="block text-stone-700 font-semibold mb-1">Card Number</label>
-                    <input id="input-card-number" oninput="window.updateCardPreview()" type="text" maxlength="19" placeholder="4532 •••• •••• ••••" class="w-full px-3.5 py-2.5 rounded-xl border border-stone-200 bg-white font-mono text-xs focus:border-[#7A152E] focus:outline-none"/>
+                    <input id="input-card-number" oninput="window.updateCardPreview()" type="text" maxlength="19" placeholder="4532 •••• •••• ••••" class="w-full px-3.5 py-2.5 rounded-xl border border-stone-200 bg-white font-mono text-xs focus:border-[#145C59] focus:outline-none"/>
                   </div>
                   <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
                     <div class="sm:col-span-2">
                       <label class="block text-stone-700 font-semibold mb-1">Cardholder Name</label>
-                      <input id="input-card-name" oninput="window.updateCardPreview()" type="text" placeholder="NAME AS ON CARD" class="w-full px-3.5 py-2.5 rounded-xl border border-stone-200 bg-white uppercase text-xs focus:border-[#7A152E] focus:outline-none"/>
+                      <input id="input-card-name" oninput="window.updateCardPreview()" type="text" placeholder="NAME AS ON CARD" class="w-full px-3.5 py-2.5 rounded-xl border border-stone-200 bg-white uppercase text-xs focus:border-[#145C59] focus:outline-none"/>
                     </div>
                     <div>
                       <label class="block text-stone-700 font-semibold mb-1">Expiry (MM/YY)</label>
-                      <input id="input-card-expiry" oninput="window.updateCardPreview()" type="text" maxlength="5" placeholder="MM/YY" class="w-full px-3.5 py-2.5 rounded-xl border border-stone-200 bg-white font-mono text-xs focus:border-[#7A152E] focus:outline-none"/>
+                      <input id="input-card-expiry" oninput="window.updateCardPreview()" type="text" maxlength="5" placeholder="MM/YY" class="w-full px-3.5 py-2.5 rounded-xl border border-stone-200 bg-white font-mono text-xs focus:border-[#145C59] focus:outline-none"/>
                     </div>
                   </div>
                   <div class="w-32">
                     <label class="block text-stone-700 font-semibold mb-1">CVV / CVC</label>
-                    <input id="input-card-cvv" type="password" maxlength="4" placeholder="•••" class="w-full px-3.5 py-2.5 rounded-xl border border-stone-200 bg-white font-mono text-xs focus:border-[#7A152E] focus:outline-none"/>
+                    <input id="input-card-cvv" type="password" maxlength="4" placeholder="•••" class="w-full px-3.5 py-2.5 rounded-xl border border-stone-200 bg-white font-mono text-xs focus:border-[#145C59] focus:outline-none"/>
                   </div>
                   <label class="flex items-center gap-2 pt-1 cursor-pointer">
-                    <input type="checkbox" checked class="rounded text-[#7A152E] focus:ring-[#7A152E]"/>
+                    <input type="checkbox" checked class="rounded text-[#145C59] focus:ring-[#145C59]"/>
                     <span class="text-[11px] text-stone-600">Securely save this card as per RBI tokenization directives.</span>
                   </label>
                 </div>
@@ -462,7 +462,7 @@
               <div id="payment-panel-netbanking" class="hidden p-6 rounded-2xl bg-[#FAF8F5] border border-[#EAE4DC] space-y-4">
                 <label class="block text-xs font-bold text-stone-800">Popular Indian Banks</label>
                 <div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
-                  <button type="button" onclick="window.selectBank(this, 'HDFC Bank')" class="bank-btn p-3 rounded-xl border text-xs font-semibold text-center transition-all cursor-pointer border-[#7A152E] bg-white text-[#7A152E] shadow-sm ring-1 ring-[#7A152E]">HDFC Bank</button>
+                  <button type="button" onclick="window.selectBank(this, 'HDFC Bank')" class="bank-btn p-3 rounded-xl border text-xs font-semibold text-center transition-all cursor-pointer border-[#145C59] bg-white text-[#145C59] shadow-sm ring-1 ring-[#145C59]">HDFC Bank</button>
                   <button type="button" onclick="window.selectBank(this, 'ICICI Bank')" class="bank-btn p-3 rounded-xl border text-xs font-semibold text-center transition-all cursor-pointer border-stone-200 bg-white/60 text-stone-700 hover:bg-white">ICICI Bank</button>
                   <button type="button" onclick="window.selectBank(this, 'State Bank of India')" class="bank-btn p-3 rounded-xl border text-xs font-semibold text-center transition-all cursor-pointer border-stone-200 bg-white/60 text-stone-700 hover:bg-white">State Bank of India</button>
                   <button type="button" onclick="window.selectBank(this, 'Axis Bank')" class="bank-btn p-3 rounded-xl border text-xs font-semibold text-center transition-all cursor-pointer border-stone-200 bg-white/60 text-stone-700 hover:bg-white">Axis Bank</button>
@@ -476,7 +476,7 @@
                    ========================================== -->
               <div id="payment-panel-cod" class="hidden p-6 rounded-2xl bg-[#FAF8F5] border border-[#EAE4DC] space-y-4 text-xs">
                 <div class="flex items-start gap-3 p-4 rounded-xl bg-stone-50 border border-stone-200 text-stone-800">
-                  <svg class="lucide lucide-alert-circle w-5 h-5 text-[#7A152E] shrink-0 mt-0.5" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="24"><circle cx="12" cy="12" r="10"></circle><line x1="12" x2="12" y1="8" y2="12"></line><line x1="12" x2="12.01" y1="16" y2="16"></line></svg>
+                  <svg class="lucide lucide-alert-circle w-5 h-5 text-[#145C59] shrink-0 mt-0.5" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="24"><circle cx="12" cy="12" r="10"></circle><line x1="12" x2="12" y1="8" y2="12"></line><line x1="12" x2="12.01" y1="16" y2="16"></line></svg>
                   <div class="leading-relaxed">
                     <strong>Doorstep Cash / UPI Verification:</strong> BlueDart courier will present your BIS Hallmarked Keepsake Vault. You can pay via Cash or any UPI QR code directly to the delivery personnel upon inspection.
                   </div>
@@ -494,7 +494,7 @@
 
               <!-- Place Order Button -->
               <div class="pt-4">
-                <button type="button" onclick="window.handlePlaceOrder()" id="btn-place-order" class="w-full py-4 bg-[#7A152E] hover:bg-[#590D1E] text-white text-xs sm:text-sm font-semibold uppercase tracking-wider rounded-xl shadow-xl transition-all cursor-pointer flex items-center justify-center gap-2">
+                <button type="button" onclick="window.handlePlaceOrder()" id="btn-place-order" class="w-full py-4 bg-[#145C59] hover:bg-[#0D3F3D] text-white text-xs sm:text-sm font-semibold uppercase tracking-wider rounded-xl shadow-xl transition-all cursor-pointer flex items-center justify-center gap-2">
                   <svg class="lucide lucide-lock w-4 h-4 text-white/90" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="24"><rect height="11" rx="2" ry="2" width="18" x="3" y="11"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
                   <span id="btn-place-order-text">Place Order &amp; Pay ₹0</span>
                 </button>
@@ -529,7 +529,7 @@
             <!-- Complimentary Velvet Keepsake Vault Toggle -->
             <div class="p-3.5 rounded-2xl bg-[#FAF8F5] border border-[#EAE4DC] flex items-center justify-between gap-3">
               <div class="flex items-center gap-2.5">
-                <svg class="lucide lucide-package w-5 h-5 text-[#7A152E] shrink-0" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="24"><path d="M11 21.73a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73z"></path><path d="M12 22V12"></path><polyline points="3.29 7 12 12 20.71 7"></polyline><path d="m7.5 4.27 9 5.15"></path></svg>
+                <svg class="lucide lucide-package w-5 h-5 text-[#145C59] shrink-0" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="24"><path d="M11 21.73a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73z"></path><path d="M12 22V12"></path><polyline points="3.29 7 12 12 20.71 7"></polyline><path d="m7.5 4.27 9 5.15"></path></svg>
                 <div>
                   <div class="text-xs font-bold text-stone-900">Velvet Keepsake Vault</div>
                   <div class="text-[10.5px] text-stone-500">Hallmark card + Royal velvet box</div>
@@ -537,20 +537,20 @@
               </div>
               <label class="relative inline-flex items-center cursor-pointer">
                 <input id="checkout-velvet-checkbox" checked class="sr-only peer" type="checkbox" onchange="window.toggleVelvetVault(this.checked)"/>
-                <div class="w-9 h-5 bg-stone-300 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-stone-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-[#7A152E]"></div>
+                <div class="w-9 h-5 bg-stone-300 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-stone-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-[#145C59]"></div>
               </label>
             </div>
 
             <!-- Coupon Input -->
             <form onsubmit="window.applyCheckoutCoupon(event)" class="flex gap-2">
-              <input id="checkout-coupon-input" class="flex-1 text-xs px-3.5 py-2.5 rounded-xl border border-stone-200 bg-stone-50/50 uppercase tracking-wider focus:outline-none focus:border-[#7A152E]" placeholder="Promo Code (e.g. ROYAL10)" type="text"/>
+              <input id="checkout-coupon-input" class="flex-1 text-xs px-3.5 py-2.5 rounded-xl border border-stone-200 bg-stone-50/50 uppercase tracking-wider focus:outline-none focus:border-[#145C59]" placeholder="Promo Code (e.g. ROYAL10)" type="text"/>
               <button class="px-4 py-2.5 bg-stone-900 hover:bg-black text-white text-xs font-semibold rounded-xl transition-colors cursor-pointer" type="submit">Apply</button>
             </form>
             <div class="flex items-center gap-2 text-[10.5px] text-stone-500 -mt-3">
               <span>Try:</span>
-              <button type="button" onclick="window.useCheckoutPromo('ROYAL10')" class="text-[#7A152E] font-mono font-bold hover:underline cursor-pointer">ROYAL10</button>
+              <button type="button" onclick="window.useCheckoutPromo('ROYAL10')" class="text-[#145C59] font-mono font-bold hover:underline cursor-pointer">ROYAL10</button>
               <span>•</span>
-              <button type="button" onclick="window.useCheckoutPromo('VAULT500')" class="text-[#7A152E] font-mono font-bold hover:underline cursor-pointer">VAULT500</button>
+              <button type="button" onclick="window.useCheckoutPromo('VAULT500')" class="text-[#145C59] font-mono font-bold hover:underline cursor-pointer">VAULT500</button>
             </div>
 
             <!-- Pricing Breakdown -->
@@ -563,7 +563,7 @@
                 <span>Atelier Direct Savings</span>
                 <span id="summary-savings-total">-₹0</span>
               </div>
-              <div id="summary-discount-row" class="hidden flex justify-between text-[#7A152E] font-bold">
+              <div id="summary-discount-row" class="hidden flex justify-between text-[#145C59] font-bold">
                 <span id="summary-discount-label">Coupon Discount</span>
                 <span id="summary-discount-val">-₹0</span>
               </div>
@@ -577,7 +577,7 @@
               </div>
               <div class="pt-3 border-t border-[#EAE4DC] flex justify-between items-baseline">
                 <span class="font-serif text-base font-bold text-stone-900">Grand Total</span>
-                <span id="summary-grand-total" class="font-serif text-2xl font-bold text-[#7A152E]">₹0</span>
+                <span id="summary-grand-total" class="font-serif text-2xl font-bold text-[#145C59]">₹0</span>
               </div>
               <div class="text-[10.5px] text-stone-400 text-right">Includes all central &amp; state GST taxes</div>
             </div>
@@ -589,7 +589,7 @@
                 <span>Government BIS 925 Hallmark Certified</span>
               </div>
               <div class="flex items-center gap-2">
-                <svg class="lucide lucide-award w-4 h-4 text-[#7A152E]" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="24"><path d="m15.477 12.89 1.515 8.526a.5.5 0 0 1-.81.47l-3.58-2.687a1 1 0 0 0-1.197 0l-3.586 2.686a.5.5 0 0 1-.81-.469l1.514-8.526"></path><circle cx="12" cy="8" r="6"></circle></svg>
+                <svg class="lucide lucide-award w-4 h-4 text-[#145C59]" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="24"><path d="m15.477 12.89 1.515 8.526a.5.5 0 0 1-.81.47l-3.58-2.687a1 1 0 0 0-1.197 0l-3.586 2.686a.5.5 0 0 1-.81-.469l1.514-8.526"></path><circle cx="12" cy="8" r="6"></circle></svg>
                 <span>2.0µm Rhodium Anti-Tarnish Platinum Clad</span>
               </div>
               <div class="flex items-center gap-2">
@@ -629,7 +629,7 @@
           <div class="p-5 rounded-2xl bg-[#FAF8F5] border border-[#EAE4DC] grid grid-cols-1 sm:grid-cols-2 gap-4 text-left text-xs">
             <div class="space-y-1">
               <span class="text-stone-400 font-mono text-[10px] uppercase">Official Order Number</span>
-              <div id="confirmed-order-id" class="font-mono text-base font-bold text-[#7A152E]">SLY-894210</div>
+              <div id="confirmed-order-id" class="font-mono text-base font-bold text-[#145C59]">SLY-894210</div>
               <div class="text-stone-500 pt-1 text-[11px]">Confirmation dispatched to SMS &amp; Email</div>
             </div>
             <div class="space-y-1">
@@ -652,19 +652,19 @@
 
           <!-- Action Buttons -->
           <div class="flex flex-col sm:flex-row gap-3 pt-2">
-            <button type="button" onclick="window.downloadInvoiceMock()" class="flex-1 py-3.5 px-4 rounded-xl border border-stone-300 hover:border-[#7A152E] bg-white hover:bg-stone-50 text-stone-800 text-xs font-semibold flex items-center justify-center gap-2 transition-all cursor-pointer shadow-xs">
-              <svg class="lucide lucide-download w-4 h-4 text-[#7A152E]" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" x2="12" y1="15" y2="3"></line></svg>
+            <button type="button" onclick="window.downloadInvoiceMock()" class="flex-1 py-3.5 px-4 rounded-xl border border-stone-300 hover:border-[#145C59] bg-white hover:bg-stone-50 text-stone-800 text-xs font-semibold flex items-center justify-center gap-2 transition-all cursor-pointer shadow-xs">
+              <svg class="lucide lucide-download w-4 h-4 text-[#145C59]" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" x2="12" y1="15" y2="3"></line></svg>
               <span>Download Tax Invoice (Mock PDF)</span>
             </button>
 
-            <button type="button" onclick="window.openBlueDartModal()" class="flex-1 py-3.5 px-4 rounded-xl border border-stone-300 hover:border-[#7A152E] bg-white hover:bg-stone-50 text-stone-800 text-xs font-semibold flex items-center justify-center gap-2 transition-all cursor-pointer shadow-xs">
+            <button type="button" onclick="window.openBlueDartModal()" class="flex-1 py-3.5 px-4 rounded-xl border border-stone-300 hover:border-[#145C59] bg-white hover:bg-stone-50 text-stone-800 text-xs font-semibold flex items-center justify-center gap-2 transition-all cursor-pointer shadow-xs">
               <svg class="lucide lucide-truck w-4 h-4 text-[#C5A059]" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="24"><path d="M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2"></path><path d="M15 18H9"></path><path d="M19 18h2a1 1 0 0 0 1-1v-3.65a1 1 0 0 0-.22-.624l-3.48-4.35A1 1 0 0 0 17.52 8H14"></path><circle cx="17" cy="18" r="2"></circle><circle cx="7" cy="18" r="2"></circle></svg>
               <span>Track Consignment on BlueDart</span>
             </button>
           </div>
 
           <div class="pt-2 text-center">
-            <button type="button" onclick="window.location.href='index.html'" class="px-8 py-3.5 bg-[#7A152E] hover:bg-[#590D1E] text-white text-xs uppercase tracking-widest font-semibold rounded-xl shadow-lg transition-all cursor-pointer">
+            <button type="button" onclick="window.location.href='index.html'" class="px-8 py-3.5 bg-[#145C59] hover:bg-[#0D3F3D] text-white text-xs uppercase tracking-widest font-semibold rounded-xl shadow-lg transition-all cursor-pointer">
               Continue Shopping Atelier
             </button>
           </div>
@@ -695,7 +695,7 @@
       <div class="bg-white rounded-3xl p-6 sm:p-8 max-w-lg w-full border border-stone-200 shadow-2xl space-y-5">
         <div class="flex items-center justify-between pb-3 border-b border-stone-200">
           <div class="flex items-center gap-2">
-            <svg class="lucide lucide-truck w-5 h-5 text-[#7A152E]" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="24"><path d="M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2"></path><path d="M15 18H9"></path><path d="M19 18h2a1 1 0 0 0 1-1v-3.65a1 1 0 0 0-.22-.624l-3.48-4.35A1 1 0 0 0 17.52 8H14"></path><circle cx="17" cy="18" r="2"></circle><circle cx="7" cy="18" r="2"></circle></svg>
+            <svg class="lucide lucide-truck w-5 h-5 text-[#145C59]" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="24"><path d="M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2"></path><path d="M15 18H9"></path><path d="M19 18h2a1 1 0 0 0 1-1v-3.65a1 1 0 0 0-.22-.624l-3.48-4.35A1 1 0 0 0 17.52 8H14"></path><circle cx="17" cy="18" r="2"></circle><circle cx="7" cy="18" r="2"></circle></svg>
             <h3 class="font-serif text-lg font-bold text-stone-900">
               BlueDart Air Tracking Status
             </h3>
@@ -711,7 +711,7 @@
             <span class="text-emerald-700 font-bold">In Transit (Air)</span>
           </div>
 
-          <div class="border-l-2 border-[#7A152E] pl-4 space-y-4 pt-2">
+          <div class="border-l-2 border-[#145C59] pl-4 space-y-4 pt-2">
             <div>
               <div class="font-bold text-stone-900">Consignment Manifested &amp; Picked Up</div>
               <div class="text-[11px] text-stone-500">Mumbai Central Aviation Facility &bull; Today, 9:45 PM</div>

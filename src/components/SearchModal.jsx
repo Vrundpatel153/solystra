@@ -33,7 +33,7 @@ export const SearchModal = () => {
         
         {/* Search Header Bar */}
         <div className="p-4 sm:p-6 border-b border-[#E8E5DF] flex items-center gap-3 bg-[#FAF8F5]">
-          <Search className="w-5 h-5 text-[#7A152E] shrink-0" />
+          <Search className="w-5 h-5 text-[#145C59] shrink-0" />
           <input
             type="text"
             value={searchTerm}
@@ -52,7 +52,7 @@ export const SearchModal = () => {
           )}
           <button
             onClick={() => setIsSearchOpen(false)}
-            className="px-3 py-1.5 rounded-lg border border-[#E8E5DF] text-xs uppercase tracking-wider font-semibold text-[#111111] hover:bg-[#7A152E] hover:text-white transition-all"
+            className="px-3 py-1.5 rounded-lg border border-[#E8E5DF] text-xs uppercase tracking-wider font-semibold text-[#111111] hover:bg-[#145C59] hover:text-white transition-all"
           >
             ESC
           </button>
@@ -67,8 +67,8 @@ export const SearchModal = () => {
               onClick={() => setSelectedCategory(cat)}
               className={`px-3 py-1 rounded-lg capitalize shrink-0 transition-all ${
                 selectedCategory === cat
-                  ? 'bg-[#7A152E] text-white font-bold shadow-sm'
-                  : 'bg-[#FAF8F5] text-[#111111] border border-[#E8E5DF] hover:bg-[#7A152E]/10'
+                  ? 'bg-[#145C59] text-white font-bold shadow-sm'
+                  : 'bg-[#FAF8F5] text-[#111111] border border-[#E8E5DF] hover:bg-[#145C59]/10'
               }`}
             >
               {cat === 'all' ? 'All Catalog' : cat}
@@ -78,7 +78,7 @@ export const SearchModal = () => {
 
         {/* Results */}
         <div className="max-h-[60vh] overflow-y-auto p-6 divide-y divide-[#E8E5DF]">
-          <div className="text-xs uppercase tracking-widest text-[#7A152E] font-bold mb-3 flex items-center justify-between">
+          <div className="text-xs uppercase tracking-widest text-[#145C59] font-bold mb-3 flex items-center justify-between">
             <span>
               {searchTerm ? `Search Results (${filteredProducts.length})` : 'Curated Highlights'}
             </span>
@@ -109,13 +109,13 @@ export const SearchModal = () => {
                     />
                   </div>
                   <div>
-                    <div className="font-serif text-sm font-semibold text-[#111111] group-hover:text-[#7A152E] transition-colors">
+                    <div className="font-serif text-sm font-semibold text-[#111111] group-hover:text-[#145C59] transition-colors">
                       {product.name}
                     </div>
                     <div className="flex items-center gap-2 mt-0.5 text-xs text-[#717171]">
                       <span className="capitalize">{product.categoryName}</span>
                       <span>•</span>
-                      <span className="text-[#7A152E] font-bold">Rated {product.rating}</span>
+                      <span className="text-[#145C59] font-bold">Rated {product.rating}</span>
                       <span>•</span>
                       <span className="text-[#111111] font-semibold">925 Silver</span>
                     </div>
@@ -124,7 +124,7 @@ export const SearchModal = () => {
 
                 <div className="text-right flex items-center gap-4">
                   <div>
-                    <div className="font-serif text-sm font-bold text-[#7A152E]">
+                    <div className="font-serif text-sm font-bold text-[#145C59]">
                       ₹{product.price.toLocaleString('en-IN')}
                     </div>
                     {product.mrp && product.mrp > product.price && (
@@ -133,7 +133,7 @@ export const SearchModal = () => {
                       </div>
                     )}
                   </div>
-                  <div className="w-8 h-8 rounded-full bg-[#FAF8F5] border border-[#E8E5DF] flex items-center justify-center text-[#111111] group-hover:bg-[#7A152E] group-hover:text-white transition-all">
+                  <div className="w-8 h-8 rounded-full bg-[#FAF8F5] border border-[#E8E5DF] flex items-center justify-center text-[#111111] group-hover:bg-[#145C59] group-hover:text-white transition-all">
                     <ArrowUpRight className="w-4 h-4" />
                   </div>
                 </div>

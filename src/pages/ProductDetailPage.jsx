@@ -422,12 +422,12 @@ export const ProductDetailPage = ({ productId }) => {
       {/* Breadcrumb Bar (Hidden on Mobile View Only) */}
       <nav className="hidden sm:block border-b border-stone-200 bg-white py-3 px-4 sm:px-6 lg:px-8 text-xs text-stone-500">
         <div className="max-w-7xl mx-auto flex items-center gap-2 overflow-x-auto whitespace-nowrap">
-          <a href="#/" className="hover:text-[#7A152E] transition-colors">Home</a>
+          <a href="#/" className="hover:text-[#145C59] transition-colors">Home</a>
           <ChevronRight className="w-3 h-3 text-stone-300" />
           <a
             href="#/"
             onClick={() => { window.location.hash = '#/'; }}
-            className="capitalize hover:text-[#7A152E] transition-colors"
+            className="capitalize hover:text-[#145C59] transition-colors"
           >
             {product.categoryName}
           </a>
@@ -452,7 +452,7 @@ export const ProductDetailPage = ({ productId }) => {
                     onClick={() => setSelectedImageIndex(idx)}
                     className={`relative w-16 h-16 sm:w-20 sm:h-20 rounded-xl overflow-hidden bg-white border transition-all shrink-0 cursor-pointer ${
                       selectedImageIndex === idx
-                        ? 'border-[#7A152E] ring-2 ring-[#7A152E]/20 shadow-xs'
+                        ? 'border-[#145C59] ring-2 ring-[#145C59]/20 shadow-xs'
                         : 'border-stone-200 opacity-75 hover:opacity-100 hover:border-stone-400'
                     }`}
                     aria-label={`View angle ${idx + 1}`}
@@ -507,7 +507,7 @@ export const ProductDetailPage = ({ productId }) => {
                 {/* Marketing Status Tag (Top-Left) */}
                 {product.badge && (
                   <div className="absolute top-4 left-4 pointer-events-none z-10">
-                    <span className="px-3 py-1 bg-[#7A152E] text-white text-[10.5px] uppercase tracking-wider font-semibold rounded-full shadow-md border border-white/25">
+                    <span className="px-3 py-1 bg-[#145C59] text-white text-[10.5px] uppercase tracking-wider font-semibold rounded-full shadow-md border border-white/25">
                       {product.badge}
                     </span>
                   </div>
@@ -517,7 +517,7 @@ export const ProductDetailPage = ({ productId }) => {
                 <div className="absolute top-4 right-4 flex items-center gap-2 z-10">
                   <button
                     onClick={() => setIsLightboxOpen(true)}
-                    className="p-2.5 rounded-full bg-white/90 hover:bg-[#7A152E] text-stone-700 hover:text-white transition-all shadow-xs border border-stone-200 cursor-pointer"
+                    className="p-2.5 rounded-full bg-white/90 hover:bg-[#145C59] text-stone-700 hover:text-white transition-all shadow-xs border border-stone-200 cursor-pointer"
                     aria-label="Enlarge Image"
                   >
                     <Maximize2 className="w-4 h-4" />
@@ -525,11 +525,11 @@ export const ProductDetailPage = ({ productId }) => {
                   <button
                     onClick={() => toggleWishlist(product.id)}
                     className={`p-2.5 rounded-full backdrop-blur-xs transition-all shadow-xs border border-stone-200 cursor-pointer ${
-                      isWishlisted ? 'bg-white text-[#7A152E]' : 'bg-white/90 text-stone-700 hover:text-[#7A152E]'
+                      isWishlisted ? 'bg-white text-[#145C59]' : 'bg-white/90 text-stone-700 hover:text-[#145C59]'
                     }`}
                     aria-label="Wishlist"
                   >
-                    <Heart className={`w-4 h-4 ${isWishlisted ? 'fill-[#7A152E]' : ''}`} />
+                    <Heart className={`w-4 h-4 ${isWishlisted ? 'fill-[#145C59]' : ''}`} />
                   </button>
                 </div>
 
@@ -542,7 +542,7 @@ export const ProductDetailPage = ({ productId }) => {
                         <span
                           key={idx}
                           className={`h-1.5 rounded-full transition-all duration-300 ${
-                            selectedImageIndex === idx ? 'w-5 bg-[#7A152E]' : 'w-1.5 bg-black/25'
+                            selectedImageIndex === idx ? 'w-5 bg-[#145C59]' : 'w-1.5 bg-black/25'
                           }`}
                         />
                       ))}
@@ -591,12 +591,12 @@ export const ProductDetailPage = ({ productId }) => {
                   type="button"
                   onClick={() => toggleWishlist(product.id)}
                   className={`w-9 h-9 rounded-full flex items-center justify-center transition-colors cursor-pointer ${
-                    isWishlisted ? 'text-[#7A152E] bg-rose-50' : 'text-stone-600 hover:text-stone-900 hover:bg-stone-100'
+                    isWishlisted ? 'text-[#145C59] bg-[#F0F7F6]' : 'text-stone-600 hover:text-stone-900 hover:bg-stone-100'
                   }`}
                   title={isWishlisted ? "In your Wishlist" : "Add to Wishlist"}
                   aria-label="Wishlist"
                 >
-                  <Heart className={`w-4 h-4 stroke-[1.8] ${isWishlisted ? 'fill-[#7A152E] text-[#7A152E]' : ''}`} />
+                  <Heart className={`w-4 h-4 stroke-[1.8] ${isWishlisted ? 'fill-[#145C59] text-[#145C59]' : ''}`} />
                 </button>
               </div>
             </div>
@@ -621,7 +621,7 @@ export const ProductDetailPage = ({ productId }) => {
                       <span className="text-xs font-semibold text-stone-800">
                         Select Ring Size:
                       </span>
-                      <span className="text-xs font-bold text-[#7A152E] bg-[#7A152E]/10 px-2 py-0.5 rounded-md border border-[#7A152E]/20">
+                      <span className="text-xs font-bold text-[#145C59] bg-[#145C59]/10 px-2 py-0.5 rounded-md border border-[#145C59]/20">
                         Size {selectedSize}
                       </span>
                     </div>
@@ -630,7 +630,7 @@ export const ProductDetailPage = ({ productId }) => {
                     <button
                       type="button"
                       onClick={() => setShowSizeGuide(true)}
-                      className="text-[11px] text-[#7A152E] hover:text-[#590D1E] hover:underline font-semibold flex items-center gap-1 cursor-pointer transition-colors"
+                      className="text-[11px] text-[#145C59] hover:text-[#0D3F3D] hover:underline font-semibold flex items-center gap-1 cursor-pointer transition-colors"
                     >
                       <Ruler className="w-3.5 h-3.5" />
                       <span>Size Guide</span>
@@ -648,8 +648,8 @@ export const ProductDetailPage = ({ productId }) => {
                           onClick={() => setSelectedSize(s)}
                           className={`min-w-[42px] sm:min-w-[46px] h-9 px-3 text-xs sm:text-[13px] font-bold rounded-xl border transition-all duration-200 cursor-pointer flex items-center justify-center active:scale-95 ${
                             isSelected
-                              ? 'bg-[#7A152E] text-white border-[#7A152E] shadow-sm ring-2 ring-[#7A152E]/25'
-                              : 'bg-white text-stone-700 border-stone-200 hover:border-[#7A152E] hover:text-[#7A152E] hover:bg-[#FAF8F5]'
+                              ? 'bg-[#145C59] text-white border-[#145C59] shadow-sm ring-2 ring-[#145C59]/25'
+                              : 'bg-white text-stone-700 border-stone-200 hover:border-[#145C59] hover:text-[#145C59] hover:bg-[#FAF8F5]'
                           }`}
                         >
                           {s}
@@ -672,7 +672,7 @@ export const ProductDetailPage = ({ productId }) => {
                       <span className="text-xs font-semibold text-stone-800">
                         Select Wrist Size:
                       </span>
-                      <span className="text-xs font-bold text-[#7A152E] bg-[#7A152E]/10 px-2 py-0.5 rounded-md border border-[#7A152E]/20">
+                      <span className="text-xs font-bold text-[#145C59] bg-[#145C59]/10 px-2 py-0.5 rounded-md border border-[#145C59]/20">
                         {selectedSize}
                       </span>
                     </div>
@@ -688,8 +688,8 @@ export const ProductDetailPage = ({ productId }) => {
                           onClick={() => setSelectedSize(s)}
                           className={`min-w-[50px] h-9 px-3 text-xs font-bold rounded-xl border transition-all duration-200 cursor-pointer flex items-center justify-center active:scale-95 ${
                             isSelected
-                              ? 'bg-[#7A152E] text-white border-[#7A152E] shadow-sm ring-2 ring-[#7A152E]/25'
-                              : 'bg-white text-stone-700 border-stone-200 hover:border-[#7A152E] hover:text-[#7A152E] hover:bg-[#FAF8F5]'
+                              ? 'bg-[#145C59] text-white border-[#145C59] shadow-sm ring-2 ring-[#145C59]/25'
+                              : 'bg-white text-stone-700 border-stone-200 hover:border-[#145C59] hover:text-[#145C59] hover:bg-[#FAF8F5]'
                           }`}
                         >
                           {s}
@@ -733,7 +733,7 @@ export const ProductDetailPage = ({ productId }) => {
               <button
                 type="button"
                 onClick={handleAddToCart}
-                className="w-full py-4 px-6 rounded-xl bg-[#7A152E] hover:bg-[#590D1E] text-white font-sans text-xs sm:text-sm font-bold uppercase tracking-widest transition-all cursor-pointer active:scale-[0.98] shadow-md hover:shadow-lg text-center flex items-center justify-center gap-2.5 group"
+                className="w-full py-4 px-6 rounded-xl bg-[#145C59] hover:bg-[#0D3F3D] text-white font-sans text-xs sm:text-sm font-bold uppercase tracking-widest transition-all cursor-pointer active:scale-[0.98] shadow-md hover:shadow-lg text-center flex items-center justify-center gap-2.5 group"
               >
                 <GoldShoppingBag className="w-4 h-4 shrink-0 -translate-y-px transition-transform group-hover:-translate-y-0.5" />
                 <span className="leading-none">ADD TO CART</span>
@@ -746,10 +746,10 @@ export const ProductDetailPage = ({ productId }) => {
               {/* 4 Official Fine Jewellery Trust Badges */}
               <TrustBadgesRow variant="product" />
 
-              {/* Solystra Royal Burgundy 1-Year Plating Warranty Pill (Responsive Zero Clipping Layout) */}
+              {/* Solystra Royal Emerald 1-Year Plating Warranty Pill (Responsive Zero Clipping Layout) */}
               <div
                 onClick={() => showToast('Complimentary replating & ultrasonic spa cleaning covered under our 1-year warranty!')}
-                className="relative overflow-hidden rounded-xl bg-gradient-to-r from-[#4A0A19] via-[#7A152E] to-[#4A0A19] border border-[#8E1B38] py-2 px-3 sm:px-4 flex items-center justify-center gap-1.5 sm:gap-2 cursor-pointer hover:shadow-md transition-all shadow-xs select-none"
+                className="relative overflow-hidden rounded-xl bg-gradient-to-r from-[#4A0A19] via-[#145C59] to-[#4A0A19] border border-[#8E1B38] py-2 px-3 sm:px-4 flex items-center justify-center gap-1.5 sm:gap-2 cursor-pointer hover:shadow-md transition-all shadow-xs select-none"
               >
                 <ShieldCheck className="w-3.5 h-3.5 text-[#EAD7AE] shrink-0 relative z-10" />
                 <span className="relative z-10 font-sans text-[9.5px] min-[360px]:text-[10.5px] sm:text-xs font-semibold uppercase tracking-wide sm:tracking-wider text-white whitespace-nowrap text-center">
@@ -760,11 +760,11 @@ export const ProductDetailPage = ({ productId }) => {
               {/* Delivery Estimation Concierge */}
               <div>
                 <div className="flex items-center gap-1.5 text-xs font-semibold text-stone-900 mb-2">
-                  <Truck className="w-3.5 h-3.5 text-[#7A152E]" />
+                  <Truck className="w-3.5 h-3.5 text-[#145C59]" />
                   <span>Estimated Delivery</span>
                 </div>
 
-                <form onSubmit={handlePincodeCheck} className="flex h-10 rounded-xl overflow-hidden border border-stone-300 focus-within:border-[#7A152E] transition-colors bg-white shadow-2xs">
+                <form onSubmit={handlePincodeCheck} className="flex h-10 rounded-xl overflow-hidden border border-stone-300 focus-within:border-[#145C59] transition-colors bg-white shadow-2xs">
                   <input
                     type="text"
                     maxLength={6}
@@ -775,7 +775,7 @@ export const ProductDetailPage = ({ productId }) => {
                   />
                   <button
                     type="submit"
-                    className="px-5 bg-[#7A152E] hover:bg-[#590D1E] text-white text-xs font-bold uppercase tracking-wider transition-colors cursor-pointer active:scale-95"
+                    className="px-5 bg-[#145C59] hover:bg-[#0D3F3D] text-white text-xs font-bold uppercase tracking-wider transition-colors cursor-pointer active:scale-95"
                   >
                     Check
                   </button>
@@ -807,13 +807,13 @@ export const ProductDetailPage = ({ productId }) => {
                     key={offer.code}
                     type="button"
                     onClick={() => handleApplyOffer(offer.code)}
-                    className="min-w-[130px] sm:min-w-[140px] p-3 rounded-xl bg-[#FAF5F0] border border-[#EAE0D3] text-left hover:border-[#7A152E] hover:bg-[#FDFBF7] transition-all cursor-pointer group shrink-0 active:scale-95 shadow-2xs"
+                    className="min-w-[130px] sm:min-w-[140px] p-3 rounded-xl bg-[#FAF5F0] border border-[#EAE0D3] text-left hover:border-[#145C59] hover:bg-[#FDFBF7] transition-all cursor-pointer group shrink-0 active:scale-95 shadow-2xs"
                   >
                     <p className="text-xs font-semibold text-stone-900 leading-tight">{offer.discount}</p>
                     <p className="text-[10px] text-stone-600 mt-0.5">{offer.min}</p>
                     <div className="mt-2 text-[10.5px] font-mono tracking-wide flex items-center justify-between">
-                      <span className="text-stone-700">use <strong className="text-[#7A152E] font-bold">{offer.code}</strong></span>
-                      <span className="text-[8.5px] uppercase font-sans font-semibold text-stone-400 group-hover:text-[#7A152E]">Apply</span>
+                      <span className="text-stone-700">use <strong className="text-[#145C59] font-bold">{offer.code}</strong></span>
+                      <span className="text-[8.5px] uppercase font-sans font-semibold text-stone-400 group-hover:text-[#145C59]">Apply</span>
                     </div>
                   </button>
                 ))}
@@ -821,7 +821,7 @@ export const ProductDetailPage = ({ productId }) => {
             </div>
 
             {/* 6. ATELIER LUXURY BRAND HERITAGE BANNER (THEME QUOTE) */}
-            <div className="relative w-full rounded-2xl overflow-hidden border border-[#D4AF37]/35 shadow-md group bg-[#3B0713]">
+            <div className="relative w-full rounded-2xl overflow-hidden border border-[#D4AF37]/35 shadow-md group bg-[#082827]">
               <img
                 src="/solystra_assets/promos/atelier_luxury_banner.webp"
                 alt="Soulystra Jewels - Timeless Elegance, Crafted Forever"
@@ -854,7 +854,7 @@ export const ProductDetailPage = ({ productId }) => {
                 onClick={() => setActiveTab(tab.id)}
                 className={`py-4 px-2 lg:px-3 text-[11px] lg:text-xs uppercase tracking-wider transition-all text-center cursor-pointer border-r border-stone-200 last:border-r-0 ${
                   activeTab === tab.id
-                    ? 'border-b-2 border-b-[#7A152E] text-[#7A152E] bg-white font-bold shadow-2xs'
+                    ? 'border-b-2 border-b-[#145C59] text-[#145C59] bg-white font-bold shadow-2xs'
                     : 'text-stone-500 hover:text-stone-900 hover:bg-stone-100/60 font-medium'
                 }`}
               >
@@ -871,7 +871,7 @@ export const ProductDetailPage = ({ productId }) => {
                   <h3 className="font-serif text-2xl text-stone-900 font-normal">
                     Certified Craftsmanship Specifications
                   </h3>
-                  <span className="text-[11px] text-[#7A152E] font-semibold uppercase tracking-wider">
+                  <span className="text-[11px] text-[#145C59] font-semibold uppercase tracking-wider">
                     BIS 925 Hallmark Verified
                   </span>
                 </div>
@@ -923,7 +923,7 @@ export const ProductDetailPage = ({ productId }) => {
                 {/* 4 Shipping & Delivery Pillars */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 text-xs">
                   <div className="p-4 rounded-xl bg-white border border-stone-200 shadow-2xs space-y-1.5">
-                    <div className="w-8 h-8 rounded-lg bg-[#FAF5EE] text-[#7A152E] flex items-center justify-center font-bold">
+                    <div className="w-8 h-8 rounded-lg bg-[#FAF5EE] text-[#145C59] flex items-center justify-center font-bold">
                       <Truck className="w-4 h-4 stroke-[2]" />
                     </div>
                     <h5 className="font-semibold text-stone-900 text-[13px]">24-48 Hr Dispatch</h5>
@@ -933,7 +933,7 @@ export const ProductDetailPage = ({ productId }) => {
                   </div>
 
                   <div className="p-4 rounded-xl bg-white border border-stone-200 shadow-2xs space-y-1.5">
-                    <div className="w-8 h-8 rounded-lg bg-[#FAF5EE] text-[#7A152E] flex items-center justify-center font-bold">
+                    <div className="w-8 h-8 rounded-lg bg-[#FAF5EE] text-[#145C59] flex items-center justify-center font-bold">
                       <RotateCcw className="w-4 h-4 stroke-[2]" />
                     </div>
                     <h5 className="font-semibold text-stone-900 text-[13px]">15-Day Easy Returns</h5>
@@ -943,7 +943,7 @@ export const ProductDetailPage = ({ productId }) => {
                   </div>
 
                   <div className="p-4 rounded-xl bg-white border border-stone-200 shadow-2xs space-y-1.5">
-                    <div className="w-8 h-8 rounded-lg bg-[#FAF5EE] text-[#7A152E] flex items-center justify-center font-bold">
+                    <div className="w-8 h-8 rounded-lg bg-[#FAF5EE] text-[#145C59] flex items-center justify-center font-bold">
                       <ShieldCheck className="w-4 h-4 stroke-[2]" />
                     </div>
                     <h5 className="font-semibold text-stone-900 text-[13px]">100% Insured Transit</h5>
@@ -953,7 +953,7 @@ export const ProductDetailPage = ({ productId }) => {
                   </div>
 
                   <div className="p-4 rounded-xl bg-white border border-stone-200 shadow-2xs space-y-1.5">
-                    <div className="w-8 h-8 rounded-lg bg-[#FAF5EE] text-[#7A152E] flex items-center justify-center font-bold">
+                    <div className="w-8 h-8 rounded-lg bg-[#FAF5EE] text-[#145C59] flex items-center justify-center font-bold">
                       <CreditCard className="w-4 h-4 stroke-[2]" />
                     </div>
                     <h5 className="font-semibold text-stone-900 text-[13px]">Cash on Delivery</h5>
@@ -971,7 +971,7 @@ export const ProductDetailPage = ({ productId }) => {
                   <h3 className="font-serif text-2xl text-stone-900 font-normal">
                     Jewelry Care &amp; Longevity Rituals
                   </h3>
-                  <span className="text-[11px] text-[#7A152E] font-semibold uppercase tracking-wider">
+                  <span className="text-[11px] text-[#145C59] font-semibold uppercase tracking-wider">
                     Daily Preservation
                   </span>
                 </div>
@@ -981,7 +981,7 @@ export const ProductDetailPage = ({ productId }) => {
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 text-xs">
                   <div className="p-4 rounded-xl bg-[#FAF8F5] border border-[#EAE4DC] space-y-2">
-                    <div className="w-8 h-8 rounded-lg bg-white border border-stone-200 text-[#7A152E] flex items-center justify-center font-bold shadow-2xs">
+                    <div className="w-8 h-8 rounded-lg bg-white border border-stone-200 text-[#145C59] flex items-center justify-center font-bold shadow-2xs">
                       <X className="w-4 h-4 stroke-[2]" />
                     </div>
                     <h5 className="font-semibold text-stone-900 text-[13px]">Avoid Direct Sprays</h5>
@@ -991,7 +991,7 @@ export const ProductDetailPage = ({ productId }) => {
                   </div>
 
                   <div className="p-4 rounded-xl bg-[#FAF8F5] border border-[#EAE4DC] space-y-2">
-                    <div className="w-8 h-8 rounded-lg bg-white border border-stone-200 text-[#7A152E] flex items-center justify-center font-bold shadow-2xs">
+                    <div className="w-8 h-8 rounded-lg bg-white border border-stone-200 text-[#145C59] flex items-center justify-center font-bold shadow-2xs">
                       <Package className="w-4 h-4 stroke-[2]" />
                     </div>
                     <h5 className="font-semibold text-stone-900 text-[13px]">Velvet Vault Storage</h5>
@@ -1001,7 +1001,7 @@ export const ProductDetailPage = ({ productId }) => {
                   </div>
 
                   <div className="p-4 rounded-xl bg-[#FAF8F5] border border-[#EAE4DC] space-y-2">
-                    <div className="w-8 h-8 rounded-lg bg-white border border-stone-200 text-[#7A152E] flex items-center justify-center font-bold shadow-2xs">
+                    <div className="w-8 h-8 rounded-lg bg-white border border-stone-200 text-[#145C59] flex items-center justify-center font-bold shadow-2xs">
                       <Feather className="w-4 h-4 stroke-[2]" />
                     </div>
                     <h5 className="font-semibold text-stone-900 text-[13px]">Microfiber Polishing</h5>
@@ -1011,7 +1011,7 @@ export const ProductDetailPage = ({ productId }) => {
                   </div>
 
                   <div className="p-4 rounded-xl bg-[#FAF8F5] border border-[#EAE4DC] space-y-2">
-                    <div className="w-8 h-8 rounded-lg bg-white border border-stone-200 text-[#7A152E] flex items-center justify-center font-bold shadow-2xs">
+                    <div className="w-8 h-8 rounded-lg bg-white border border-stone-200 text-[#145C59] flex items-center justify-center font-bold shadow-2xs">
                       <ShieldCheck className="w-4 h-4 stroke-[2]" />
                     </div>
                     <h5 className="font-semibold text-stone-900 text-[13px]">Water &amp; Chlorine Care</h5>
@@ -1029,7 +1029,7 @@ export const ProductDetailPage = ({ productId }) => {
                   <h3 className="font-serif text-2xl text-stone-900 font-normal">
                     Luxury Packaging &amp; Unboxing Experience
                   </h3>
-                  <span className="text-[11px] text-[#7A152E] font-semibold uppercase tracking-wider">
+                  <span className="text-[11px] text-[#145C59] font-semibold uppercase tracking-wider">
                     Gift Ready Presentation
                   </span>
                 </div>
@@ -1039,17 +1039,17 @@ export const ProductDetailPage = ({ productId }) => {
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 text-xs">
                   <div className="p-4 rounded-xl bg-white border border-stone-200 shadow-2xs space-y-2">
-                    <div className="w-8 h-8 rounded-lg bg-[#FAF5EE] text-[#7A152E] flex items-center justify-center font-bold">
+                    <div className="w-8 h-8 rounded-lg bg-[#FAF5EE] text-[#145C59] flex items-center justify-center font-bold">
                       <Package className="w-4 h-4 stroke-[2]" />
                     </div>
                     <h5 className="font-semibold text-stone-900 text-[13px]">Royal Velvet Vault</h5>
                     <p className="text-stone-500 text-[11.5px] leading-relaxed">
-                      Encased in a bespoke deep-burgundy suede velvet keepsake box with gold foil emblem and plush satin interior.
+                      Encased in a bespoke bespoke deep-emerald suede velvet keepsake box with gold foil emblem and plush satin interior.
                     </p>
                   </div>
 
                   <div className="p-4 rounded-xl bg-white border border-stone-200 shadow-2xs space-y-2">
-                    <div className="w-8 h-8 rounded-lg bg-[#FAF5EE] text-[#7A152E] flex items-center justify-center font-bold">
+                    <div className="w-8 h-8 rounded-lg bg-[#FAF5EE] text-[#145C59] flex items-center justify-center font-bold">
                       <Award className="w-4 h-4 stroke-[2]" />
                     </div>
                     <h5 className="font-semibold text-stone-900 text-[13px]">Authenticity Certificate</h5>
@@ -1059,7 +1059,7 @@ export const ProductDetailPage = ({ productId }) => {
                   </div>
 
                   <div className="p-4 rounded-xl bg-white border border-stone-200 shadow-2xs space-y-2">
-                    <div className="w-8 h-8 rounded-lg bg-[#FAF5EE] text-[#7A152E] flex items-center justify-center font-bold">
+                    <div className="w-8 h-8 rounded-lg bg-[#FAF5EE] text-[#145C59] flex items-center justify-center font-bold">
                       <Lock className="w-4 h-4 stroke-[2]" />
                     </div>
                     <h5 className="font-semibold text-stone-900 text-[13px]">Tamper-Evident Seal</h5>
@@ -1069,7 +1069,7 @@ export const ProductDetailPage = ({ productId }) => {
                   </div>
 
                   <div className="p-4 rounded-xl bg-white border border-stone-200 shadow-2xs space-y-2">
-                    <div className="w-8 h-8 rounded-lg bg-[#FAF5EE] text-[#7A152E] flex items-center justify-center font-bold">
+                    <div className="w-8 h-8 rounded-lg bg-[#FAF5EE] text-[#145C59] flex items-center justify-center font-bold">
                       <Heart className="w-4 h-4 stroke-[2]" />
                     </div>
                     <h5 className="font-semibold text-stone-900 text-[13px]">Complimentary Gifting</h5>
@@ -1087,7 +1087,7 @@ export const ProductDetailPage = ({ productId }) => {
                   <h3 className="font-serif text-2xl text-stone-900 font-normal">
                     1-Year Warranty &amp; Authenticity Guarantee
                   </h3>
-                  <span className="text-[11px] text-[#7A152E] font-semibold uppercase tracking-wider">
+                  <span className="text-[11px] text-[#145C59] font-semibold uppercase tracking-wider">
                     Comprehensive Coverage
                   </span>
                 </div>
@@ -1097,7 +1097,7 @@ export const ProductDetailPage = ({ productId }) => {
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 text-xs">
                   <div className="p-4 rounded-xl bg-[#FAF8F5] border border-[#EAE4DC] space-y-2">
-                    <div className="w-8 h-8 rounded-lg bg-white border border-stone-200 text-[#7A152E] flex items-center justify-center font-bold shadow-2xs">
+                    <div className="w-8 h-8 rounded-lg bg-white border border-stone-200 text-[#145C59] flex items-center justify-center font-bold shadow-2xs">
                       <ShieldCheck className="w-4 h-4 stroke-[2]" />
                     </div>
                     <h5 className="font-semibold text-stone-900 text-[13px]">1-Year Plating Warranty</h5>
@@ -1107,7 +1107,7 @@ export const ProductDetailPage = ({ productId }) => {
                   </div>
 
                   <div className="p-4 rounded-xl bg-[#FAF8F5] border border-[#EAE4DC] space-y-2">
-                    <div className="w-8 h-8 rounded-lg bg-white border border-stone-200 text-[#7A152E] flex items-center justify-center font-bold shadow-2xs">
+                    <div className="w-8 h-8 rounded-lg bg-white border border-stone-200 text-[#145C59] flex items-center justify-center font-bold shadow-2xs">
                       <Award className="w-4 h-4 stroke-[2]" />
                     </div>
                     <h5 className="font-semibold text-stone-900 text-[13px]">Government BIS Hallmark</h5>
@@ -1117,7 +1117,7 @@ export const ProductDetailPage = ({ productId }) => {
                   </div>
 
                   <div className="p-4 rounded-xl bg-[#FAF8F5] border border-[#EAE4DC] space-y-2">
-                    <div className="w-8 h-8 rounded-lg bg-white border border-stone-200 text-[#7A152E] flex items-center justify-center font-bold shadow-2xs">
+                    <div className="w-8 h-8 rounded-lg bg-white border border-stone-200 text-[#145C59] flex items-center justify-center font-bold shadow-2xs">
                       <RotateCcw className="w-4 h-4 stroke-[2]" />
                     </div>
                     <h5 className="font-semibold text-stone-900 text-[13px]">Free Ultrasonic Spa</h5>
@@ -1127,7 +1127,7 @@ export const ProductDetailPage = ({ productId }) => {
                   </div>
 
                   <div className="p-4 rounded-xl bg-[#FAF8F5] border border-[#EAE4DC] space-y-2">
-                    <div className="w-8 h-8 rounded-lg bg-white border border-stone-200 text-[#7A152E] flex items-center justify-center font-bold shadow-2xs">
+                    <div className="w-8 h-8 rounded-lg bg-white border border-stone-200 text-[#145C59] flex items-center justify-center font-bold shadow-2xs">
                       <Check className="w-4 h-4 stroke-[2]" />
                     </div>
                     <h5 className="font-semibold text-stone-900 text-[13px]">100% Skin Safe Guarantee</h5>
@@ -1186,14 +1186,14 @@ export const ProductDetailPage = ({ productId }) => {
                     </div>
                     <div className="grid grid-cols-1 gap-2 text-xs">
                       <div className="p-3 rounded-lg bg-white border border-stone-200 flex items-start gap-2.5">
-                        <Truck className="w-4 h-4 text-[#7A152E] shrink-0 mt-0.5" />
+                        <Truck className="w-4 h-4 text-[#145C59] shrink-0 mt-0.5" />
                         <div>
                           <p className="font-semibold text-stone-900 text-xs">24-48 Hr BlueDart Express Air</p>
                           <p className="text-[11px] text-stone-500">Free delivery nationwide with live tracking.</p>
                         </div>
                       </div>
                       <div className="p-3 rounded-lg bg-white border border-stone-200 flex items-start gap-2.5">
-                        <RotateCcw className="w-4 h-4 text-[#7A152E] shrink-0 mt-0.5" />
+                        <RotateCcw className="w-4 h-4 text-[#145C59] shrink-0 mt-0.5" />
                         <div>
                           <p className="font-semibold text-stone-900 text-xs">15-Day Doorstep Returns</p>
                           <p className="text-[11px] text-stone-500">Zero-friction exchanges with free pickup.</p>
@@ -1211,21 +1211,21 @@ export const ProductDetailPage = ({ productId }) => {
                 content: (
                   <div className="space-y-2 pt-2 text-xs">
                     <div className="p-3 rounded-lg bg-[#FAF8F5] border border-[#EAE4DC] flex items-start gap-2.5">
-                      <X className="w-4 h-4 text-[#7A152E] shrink-0 mt-0.5" />
+                      <X className="w-4 h-4 text-[#145C59] shrink-0 mt-0.5" />
                       <div>
                         <p className="font-semibold text-stone-900 text-xs">Avoid Direct Sprays</p>
                         <p className="text-[11px] text-stone-600">Apply perfumes and lotions before putting on jewelry.</p>
                       </div>
                     </div>
                     <div className="p-3 rounded-lg bg-[#FAF8F5] border border-[#EAE4DC] flex items-start gap-2.5">
-                      <Package className="w-4 h-4 text-[#7A152E] shrink-0 mt-0.5" />
+                      <Package className="w-4 h-4 text-[#145C59] shrink-0 mt-0.5" />
                       <div>
                         <p className="font-semibold text-stone-900 text-xs">Velvet Vault Storage</p>
                         <p className="text-[11px] text-stone-600">Store individually in your velvet box to prevent scratches.</p>
                       </div>
                     </div>
                     <div className="p-3 rounded-lg bg-[#FAF8F5] border border-[#EAE4DC] flex items-start gap-2.5">
-                      <Feather className="w-4 h-4 text-[#7A152E] shrink-0 mt-0.5" />
+                      <Feather className="w-4 h-4 text-[#145C59] shrink-0 mt-0.5" />
                       <div>
                         <p className="font-semibold text-stone-900 text-xs">Microfiber Polishing</p>
                         <p className="text-[11px] text-stone-600">Buff gently with soft lint-free cloth after wearing.</p>
@@ -1242,21 +1242,21 @@ export const ProductDetailPage = ({ productId }) => {
                 content: (
                   <div className="space-y-2 pt-2 text-xs">
                     <div className="p-3 rounded-lg bg-white border border-stone-200 flex items-start gap-2.5">
-                      <Package className="w-4 h-4 text-[#7A152E] shrink-0 mt-0.5" />
+                      <Package className="w-4 h-4 text-[#145C59] shrink-0 mt-0.5" />
                       <div>
                         <p className="font-semibold text-stone-900 text-xs">Royal Velvet Keepsake Vault</p>
-                        <p className="text-[11px] text-stone-500">Deep burgundy suede box with plush satin cushion.</p>
+                        <p className="text-[11px] text-stone-500">Deep emerald suede box with plush satin cushion.</p>
                       </div>
                     </div>
                     <div className="p-3 rounded-lg bg-white border border-stone-200 flex items-start gap-2.5">
-                      <Award className="w-4 h-4 text-[#7A152E] shrink-0 mt-0.5" />
+                      <Award className="w-4 h-4 text-[#145C59] shrink-0 mt-0.5" />
                       <div>
                         <p className="font-semibold text-stone-900 text-xs">BIS Hallmark Certificate Card</p>
                         <p className="text-[11px] text-stone-500">Official serialized purity verification included.</p>
                       </div>
                     </div>
                     <div className="p-3 rounded-lg bg-white border border-stone-200 flex items-start gap-2.5">
-                      <Heart className="w-4 h-4 text-[#7A152E] shrink-0 mt-0.5" />
+                      <Heart className="w-4 h-4 text-[#145C59] shrink-0 mt-0.5" />
                       <div>
                         <p className="font-semibold text-stone-900 text-xs">Complimentary Gifting</p>
                         <p className="text-[11px] text-stone-500">Gold-foiled bag &amp; custom handwritten celebration note.</p>
@@ -1273,21 +1273,21 @@ export const ProductDetailPage = ({ productId }) => {
                 content: (
                   <div className="space-y-2 pt-2 text-xs">
                     <div className="p-3 rounded-lg bg-[#FAF8F5] border border-[#EAE4DC] flex items-start gap-2.5">
-                      <ShieldCheck className="w-4 h-4 text-[#7A152E] shrink-0 mt-0.5" />
+                      <ShieldCheck className="w-4 h-4 text-[#145C59] shrink-0 mt-0.5" />
                       <div>
                         <p className="font-semibold text-stone-900 text-xs">1-Year Plating Warranty</p>
                         <p className="text-[11px] text-stone-600">Free replating &amp; refinishing if any tarnish occurs within 365 days.</p>
                       </div>
                     </div>
                     <div className="p-3 rounded-lg bg-[#FAF8F5] border border-[#EAE4DC] flex items-start gap-2.5">
-                      <Award className="w-4 h-4 text-[#7A152E] shrink-0 mt-0.5" />
+                      <Award className="w-4 h-4 text-[#145C59] shrink-0 mt-0.5" />
                       <div>
                         <p className="font-semibold text-stone-900 text-xs">Government BIS 925 Hallmark</p>
                         <p className="text-[11px] text-stone-600">Certified 92.5% pure silver with official purity stamp.</p>
                       </div>
                     </div>
                     <div className="p-3 rounded-lg bg-[#FAF8F5] border border-[#EAE4DC] flex items-start gap-2.5">
-                      <Check className="w-4 h-4 text-[#7A152E] shrink-0 mt-0.5" />
+                      <Check className="w-4 h-4 text-[#145C59] shrink-0 mt-0.5" />
                       <div>
                         <p className="font-semibold text-stone-900 text-xs">100% Skin Safe &amp; Hypoallergenic</p>
                         <p className="text-[11px] text-stone-600">Nickel &amp; lead free, biocompatible dual-micron rhodium barrier.</p>
@@ -1306,7 +1306,7 @@ export const ProductDetailPage = ({ productId }) => {
                     className="p-4 flex items-center justify-between cursor-pointer active:bg-stone-50 transition-colors select-none"
                   >
                     <div className="flex items-center gap-2.5 min-w-0 pr-2">
-                      <span className="w-7 h-7 rounded-full bg-[#FAF5EE] border border-[#EADCC8] text-[#7A152E] flex items-center justify-center shrink-0">
+                      <span className="w-7 h-7 rounded-full bg-[#FAF5EE] border border-[#EADCC8] text-[#145C59] flex items-center justify-center shrink-0">
                         {tab.icon}
                       </span>
                       <div className="min-w-0">
@@ -1321,11 +1321,11 @@ export const ProductDetailPage = ({ productId }) => {
 
                     <button
                       type="button"
-                      className="text-[11px] font-semibold text-[#7A152E] flex items-center gap-1 shrink-0 px-2.5 py-1 rounded-md bg-[#FAF5EE] border border-[#EADCC8] hover:bg-[#F3EAD9] transition-all cursor-pointer"
+                      className="text-[11px] font-semibold text-[#145C59] flex items-center gap-1 shrink-0 px-2.5 py-1 rounded-md bg-[#FAF5EE] border border-[#EADCC8] hover:bg-[#F3EAD9] transition-all cursor-pointer"
                     >
                       <span>{isExpanded ? 'See Less' : 'See More'}</span>
                       <ChevronDown
-                        className={`w-3.5 h-3.5 text-[#7A152E] transition-transform duration-300 ease-in-out ${
+                        className={`w-3.5 h-3.5 text-[#145C59] transition-transform duration-300 ease-in-out ${
                           isExpanded ? 'rotate-180' : 'rotate-0'
                         }`}
                       />
@@ -1353,7 +1353,7 @@ export const ProductDetailPage = ({ productId }) => {
         <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-8 sm:mt-10 overflow-hidden">
           <div className="flex items-end justify-between mb-4 sm:mb-6">
             <div>
-              <span className="text-xs uppercase tracking-wider text-[#7A152E] font-semibold block mb-1">
+              <span className="text-xs uppercase tracking-wider text-[#145C59] font-semibold block mb-1">
                 Complete The Look
               </span>
               <h3 className="font-serif text-2xl sm:text-3xl text-stone-900 font-normal">
@@ -1403,7 +1403,7 @@ export const ProductDetailPage = ({ productId }) => {
             <button
               type="button"
               onClick={() => setShowReviewModal(true)}
-              className="px-5 py-2.5 bg-[#7A152E] hover:bg-[#590D1E] text-white text-xs font-semibold uppercase tracking-wider rounded-xl shadow-xs transition-all flex items-center gap-2 self-start sm:self-auto cursor-pointer active:scale-98 shrink-0"
+              className="px-5 py-2.5 bg-[#145C59] hover:bg-[#0D3F3D] text-white text-xs font-semibold uppercase tracking-wider rounded-xl shadow-xs transition-all flex items-center gap-2 self-start sm:self-auto cursor-pointer active:scale-98 shrink-0"
             >
               <MessageSquare className="w-3.5 h-3.5 text-[#EAD7AE]" />
               <span>Write a Review</span>
@@ -1417,7 +1417,7 @@ export const ProductDetailPage = ({ productId }) => {
             <div className="md:col-span-4 flex flex-col justify-between bg-[#FAF8F5] rounded-2xl p-5 sm:p-6 border border-[#EAE4DC]">
               <div>
                 <div className="flex items-baseline gap-3">
-                  <span className="font-serif text-5xl sm:text-6xl font-normal text-[#7A152E] leading-none">
+                  <span className="font-serif text-5xl sm:text-6xl font-normal text-[#145C59] leading-none">
                     {product.rating || 4.9}
                   </span>
                   <div>
@@ -1435,10 +1435,10 @@ export const ProductDetailPage = ({ productId }) => {
                   </div>
                 </div>
 
-                {/* Recommend Badge (Solystra Champagne Gold & Burgundy Theme) */}
+                {/* Recommend Badge (Solystra Champagne Gold & Emerald Theme) */}
                 <div className="mt-4 pt-4 border-t border-[#EAE4DC]">
-                  <div className="inline-flex items-center gap-2 px-3 py-2 rounded-xl bg-[#FAF6EE] text-[#7A152E] text-xs font-medium border border-[#E8DCC4] w-full">
-                    <CheckCircle2 className="w-4 h-4 text-[#7A152E] shrink-0" />
+                  <div className="inline-flex items-center gap-2 px-3 py-2 rounded-xl bg-[#FAF6EE] text-[#145C59] text-xs font-medium border border-[#E8DCC4] w-full">
+                    <CheckCircle2 className="w-4 h-4 text-[#145C59] shrink-0" />
                     <span className="font-serif text-sm">98% of collectors recommend this creation</span>
                   </div>
                   <p className="text-[11px] text-stone-500 mt-2 font-light">
@@ -1488,19 +1488,19 @@ export const ProductDetailPage = ({ productId }) => {
                     type="button"
                     onClick={() => setReviewRatingFilter(isSelected ? 'all' : item.star)}
                     className={`w-full flex items-center gap-3 group text-left transition-colors cursor-pointer rounded-lg p-1.5 ${
-                      isSelected ? 'bg-[#FAF0F2] ring-1 ring-[#7A152E]/30' : 'hover:bg-[#FAF8F5]'
+                      isSelected ? 'bg-[#F0F7F6] ring-1 ring-[#145C59]/30' : 'hover:bg-[#FAF8F5]'
                     }`}
                   >
-                    <span className="text-xs font-medium text-stone-700 w-12 flex items-center gap-1 group-hover:text-[#7A152E]">
+                    <span className="text-xs font-medium text-stone-700 w-12 flex items-center gap-1 group-hover:text-[#145C59]">
                       <span>{item.star} star</span>
                     </span>
                     <div className="flex-1 h-2.5 bg-[#F3EFE9] rounded-full overflow-hidden border border-[#EAE4DC]/60 relative">
                       <div
-                        className="h-full bg-linear-to-r from-[#C5A059] to-[#7A152E] rounded-full transition-all duration-500"
+                        className="h-full bg-linear-to-r from-[#C5A059] to-[#145C59] rounded-full transition-all duration-500"
                         style={{ width: `${item.pct}%` }}
                       />
                     </div>
-                    <span className="text-xs text-stone-500 font-medium w-10 text-right group-hover:text-[#7A152E]">
+                    <span className="text-xs text-stone-500 font-medium w-10 text-right group-hover:text-[#145C59]">
                       {item.pct}%
                     </span>
                   </button>
@@ -1515,7 +1515,7 @@ export const ProductDetailPage = ({ productId }) => {
                   <button
                     type="button"
                     onClick={() => setReviewRatingFilter('all')}
-                    className="text-xs text-[#7A152E] hover:underline font-semibold cursor-pointer"
+                    className="text-xs text-[#145C59] hover:underline font-semibold cursor-pointer"
                   >
                     Clear Filter
                   </button>
@@ -1550,7 +1550,7 @@ export const ProductDetailPage = ({ productId }) => {
               <button
                 type="button"
                 onClick={() => setShowReviewModal(true)}
-                className="w-full py-2 bg-[#7A152E] hover:bg-[#590D1E] text-white text-xs font-medium rounded-lg transition-colors cursor-pointer text-center shadow-xs"
+                className="w-full py-2 bg-[#145C59] hover:bg-[#0D3F3D] text-white text-xs font-medium rounded-lg transition-colors cursor-pointer text-center shadow-xs"
               >
                 Write Customer Review
               </button>
@@ -1573,8 +1573,8 @@ export const ProductDetailPage = ({ productId }) => {
                   onClick={() => setReviewRatingFilter(filter.id)}
                   className={`px-3 py-1 rounded-full text-xs font-medium transition-all whitespace-nowrap cursor-pointer shrink-0 ${
                     reviewRatingFilter === filter.id
-                      ? 'bg-[#7A152E] text-white shadow-2xs'
-                      : 'bg-[#FAF8F5] text-stone-700 border border-[#EAE4DC] hover:border-[#7A152E]/30'
+                      ? 'bg-[#145C59] text-white shadow-2xs'
+                      : 'bg-[#FAF8F5] text-stone-700 border border-[#EAE4DC] hover:border-[#145C59]/30'
                   }`}
                 >
                   {filter.label}
@@ -1587,14 +1587,14 @@ export const ProductDetailPage = ({ productId }) => {
               <button
                 type="button"
                 onClick={() => setIsSortDropdownOpen(!isSortDropdownOpen)}
-                className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-xl bg-[#FAF8F5] hover:bg-[#FAF0F2] border border-[#EAE4DC] hover:border-[#7A152E]/40 text-xs font-medium text-stone-800 transition-all cursor-pointer shadow-2xs select-none active:scale-98"
+                className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-xl bg-[#FAF8F5] hover:bg-[#F0F7F6] border border-[#EAE4DC] hover:border-[#145C59]/40 text-xs font-medium text-stone-800 transition-all cursor-pointer shadow-2xs select-none active:scale-98"
                 aria-haspopup="listbox"
                 aria-expanded={isSortDropdownOpen}
               >
                 <span className="text-stone-400 font-normal">Sort:</span>
                 <span className="text-stone-900 font-semibold">{currentSortLabel}</span>
                 <ChevronDown
-                  className={`w-3.5 h-3.5 text-[#7A152E] transition-transform duration-200 ${
+                  className={`w-3.5 h-3.5 text-[#145C59] transition-transform duration-200 ${
                     isSortDropdownOpen ? 'rotate-180' : ''
                   }`}
                 />
@@ -1616,7 +1616,7 @@ export const ProductDetailPage = ({ productId }) => {
                       }}
                       className={`w-full flex items-center justify-between px-3.5 py-2 text-xs text-left transition-colors cursor-pointer ${
                         reviewSortBy === option.id
-                          ? 'bg-[#FAF0F2] text-[#7A152E] font-semibold'
+                          ? 'bg-[#F0F7F6] text-[#145C59] font-semibold'
                           : 'text-stone-700 hover:bg-[#FAF8F5] hover:text-stone-900'
                       }`}
                       role="option"
@@ -1624,7 +1624,7 @@ export const ProductDetailPage = ({ productId }) => {
                     >
                       <span>{option.label}</span>
                       {reviewSortBy === option.id && (
-                        <Check className="w-3.5 h-3.5 text-[#7A152E]" />
+                        <Check className="w-3.5 h-3.5 text-[#145C59]" />
                       )}
                     </button>
                   ))}
@@ -1643,7 +1643,7 @@ export const ProductDetailPage = ({ productId }) => {
                   {/* User Profile Header (Zero wrapping collisions on mobile) */}
                   <div className="flex items-start justify-between gap-2">
                     <div className="flex items-center gap-3 min-w-0">
-                      <div className="w-10 h-10 rounded-full bg-[#FAF0F2] text-[#7A152E] font-serif font-bold text-xs flex items-center justify-center shrink-0 border border-[#EAD5DA]">
+                      <div className="w-10 h-10 rounded-full bg-[#F0F7F6] text-[#145C59] font-serif font-bold text-xs flex items-center justify-center shrink-0 border border-[#EAD5DA]">
                         {review.avatar}
                       </div>
                       <div className="min-w-0">
@@ -1690,7 +1690,7 @@ export const ProductDetailPage = ({ productId }) => {
                   {(review.metal || review.finish) && (
                     <div className="inline-flex flex-wrap items-center gap-1.5 text-[11px] text-stone-600 bg-[#FAF8F5] px-2.5 py-1 rounded-lg border border-[#EAE4DC]">
                       <span className="text-stone-400">Specification:</span>
-                      <span className="font-medium text-[#7A152E]">{review.metal}</span>
+                      <span className="font-medium text-[#145C59]">{review.metal}</span>
                       {review.finish && (
                         <>
                           <span className="text-stone-300">•</span>
@@ -1718,7 +1718,7 @@ export const ProductDetailPage = ({ productId }) => {
                               <button
                                 type="button"
                                 onClick={() => toggleReview(review.id)}
-                                className="inline font-semibold text-[#7A152E] hover:underline cursor-pointer select-none text-xs ml-1"
+                                className="inline font-semibold text-[#145C59] hover:underline cursor-pointer select-none text-xs ml-1"
                               >
                                 See less
                               </button>
@@ -1730,7 +1730,7 @@ export const ProductDetailPage = ({ productId }) => {
                             <button
                               type="button"
                               onClick={() => toggleReview(review.id)}
-                              className="inline font-semibold text-[#7A152E] hover:underline cursor-pointer select-none text-xs"
+                              className="inline font-semibold text-[#145C59] hover:underline cursor-pointer select-none text-xs"
                             >
                               Read more
                             </button>
@@ -1747,8 +1747,8 @@ export const ProductDetailPage = ({ productId }) => {
                       onClick={() => handleHelpfulReview(review.id)}
                       className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium transition-all cursor-pointer border active:scale-95 ${
                         isHelpfulVoted
-                          ? 'bg-[#FAF0F2] border-[#7A152E] text-[#7A152E]'
-                          : 'bg-[#FAF8F5] border-[#EAE4DC] hover:border-[#7A152E]/40 text-stone-700 hover:text-[#7A152E]'
+                          ? 'bg-[#F0F7F6] border-[#145C59] text-[#145C59]'
+                          : 'bg-[#FAF8F5] border-[#EAE4DC] hover:border-[#145C59]/40 text-stone-700 hover:text-[#145C59]'
                       }`}
                     >
                       <ThumbsUp className="w-3.5 h-3.5 text-[#C5A059]" />
@@ -1757,7 +1757,7 @@ export const ProductDetailPage = ({ productId }) => {
                     <button
                       type="button"
                       onClick={() => showToast('Feedback recorded. Thank you!')}
-                      className="text-stone-400 hover:text-[#7A152E] transition-colors text-[11px] cursor-pointer"
+                      className="text-stone-400 hover:text-[#145C59] transition-colors text-[11px] cursor-pointer"
                     >
                       Report
                     </button>
@@ -1791,7 +1791,7 @@ export const ProductDetailPage = ({ productId }) => {
             <button
               type="button"
               onClick={() => setShowAskQuestionModal(true)}
-              className="px-5 py-2.5 bg-[#7A152E] hover:bg-[#590D1E] text-white text-xs font-semibold uppercase tracking-wider rounded-xl shadow-xs transition-colors flex items-center gap-2 self-start sm:self-auto cursor-pointer shrink-0 active:scale-98"
+              className="px-5 py-2.5 bg-[#145C59] hover:bg-[#0D3F3D] text-white text-xs font-semibold uppercase tracking-wider rounded-xl shadow-xs transition-colors flex items-center gap-2 self-start sm:self-auto cursor-pointer shrink-0 active:scale-98"
             >
               <HelpCircle className="w-3.5 h-3.5 text-[#EAD7AE]" />
               <span>Ask a Question</span>
@@ -1807,7 +1807,7 @@ export const ProductDetailPage = ({ productId }) => {
                 value={qnaSearchQuery}
                 onChange={(e) => setQnaSearchQuery(e.target.value)}
                 placeholder="Search answers, purity, sizing, courier dispatch, care..."
-                className="w-full pl-10 pr-10 py-2.5 bg-[#FAF8F5] border border-[#EAE4DC] rounded-xl text-xs sm:text-sm text-stone-900 placeholder:text-stone-400 focus:outline-none focus:border-[#7A152E] focus:bg-white focus:ring-1 focus:ring-[#7A152E]/20 transition-all shadow-2xs"
+                className="w-full pl-10 pr-10 py-2.5 bg-[#FAF8F5] border border-[#EAE4DC] rounded-xl text-xs sm:text-sm text-stone-900 placeholder:text-stone-400 focus:outline-none focus:border-[#145C59] focus:bg-white focus:ring-1 focus:ring-[#145C59]/20 transition-all shadow-2xs"
               />
               {qnaSearchQuery && (
                 <button
@@ -1835,8 +1835,8 @@ export const ProductDetailPage = ({ productId }) => {
                 onClick={() => setSelectedQnaCategory(cat.id)}
                 className={`px-3.5 py-1.5 rounded-full text-xs font-medium transition-all whitespace-nowrap cursor-pointer ${
                   selectedQnaCategory === cat.id
-                    ? 'bg-[#7A152E] text-white shadow-xs'
-                    : 'bg-[#FAF8F5] text-stone-700 border border-[#EAE4DC] hover:border-[#7A152E]/30'
+                    ? 'bg-[#145C59] text-white shadow-xs'
+                    : 'bg-[#FAF8F5] text-stone-700 border border-[#EAE4DC] hover:border-[#145C59]/30'
                 }`}
               >
                 {cat.label}
@@ -1861,7 +1861,7 @@ export const ProductDetailPage = ({ productId }) => {
                     
                     {/* Question Row with Q Badge (Pure Title, No Dropdown Button) */}
                     <div className="flex items-start gap-3">
-                      <span className="px-2 py-0.5 bg-[#FAF0F2] text-[#7A152E] border border-[#EAD5DA] text-[11px] font-cinzel font-bold rounded-md shrink-0 mt-0.5 tracking-wide">
+                      <span className="px-2 py-0.5 bg-[#F0F7F6] text-[#145C59] border border-[#EAD5DA] text-[11px] font-cinzel font-bold rounded-md shrink-0 mt-0.5 tracking-wide">
                         Q
                       </span>
                       <h4 className="font-serif text-base sm:text-lg font-normal text-stone-900 leading-snug">
@@ -1883,7 +1883,7 @@ export const ProductDetailPage = ({ productId }) => {
                                 <button
                                   type="button"
                                   onClick={() => toggleQna(item.id)}
-                                  className="inline font-semibold text-[#7A152E] hover:underline cursor-pointer select-none text-xs ml-1"
+                                  className="inline font-semibold text-[#145C59] hover:underline cursor-pointer select-none text-xs ml-1"
                                 >
                                   See less
                                 </button>
@@ -1895,7 +1895,7 @@ export const ProductDetailPage = ({ productId }) => {
                               <button
                                 type="button"
                                 onClick={() => toggleQna(item.id)}
-                                className="inline font-semibold text-[#7A152E] hover:underline cursor-pointer select-none text-xs"
+                                className="inline font-semibold text-[#145C59] hover:underline cursor-pointer select-none text-xs"
                               >
                                 Read more
                               </button>
@@ -1906,7 +1906,7 @@ export const ProductDetailPage = ({ productId }) => {
                         {/* Atelier Attribution & Helpful Count */}
                         <div className="flex flex-wrap items-center justify-between gap-3 pt-2 text-[11px] text-stone-400 border-t border-[#FAF5EE]">
                           <div className="flex flex-wrap items-center gap-2">
-                            <span className="font-medium text-[#7A152E]">
+                            <span className="font-medium text-[#145C59]">
                               {item.author}
                             </span>
                             <span>•</span>
@@ -1921,8 +1921,8 @@ export const ProductDetailPage = ({ productId }) => {
                             onClick={() => handleHelpfulQna(item.id)}
                             className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium transition-all cursor-pointer border active:scale-95 ${
                               isVoted
-                                ? 'bg-[#FAF0F2] border-[#7A152E] text-[#7A152E]'
-                                : 'bg-[#FAF8F5] border-[#EAE4DC] hover:border-[#7A152E]/30 text-stone-700 hover:text-[#7A152E]'
+                                ? 'bg-[#F0F7F6] border-[#145C59] text-[#145C59]'
+                                : 'bg-[#FAF8F5] border-[#EAE4DC] hover:border-[#145C59]/30 text-stone-700 hover:text-[#145C59]'
                             }`}
                           >
                             <ThumbsUp className="w-3 h-3 text-[#C5A059]" />
@@ -1951,7 +1951,7 @@ export const ProductDetailPage = ({ productId }) => {
                   setQuestionForm(prev => ({ ...prev, question: qnaSearchQuery }));
                   setShowAskQuestionModal(true);
                 }}
-                className="px-5 py-2 bg-[#7A152E] hover:bg-[#590D1E] text-white text-xs font-semibold rounded-xl shadow-xs transition-colors inline-flex items-center gap-2 cursor-pointer mt-2"
+                className="px-5 py-2 bg-[#145C59] hover:bg-[#0D3F3D] text-white text-xs font-semibold rounded-xl shadow-xs transition-colors inline-flex items-center gap-2 cursor-pointer mt-2"
               >
                 <HelpCircle className="w-3.5 h-3.5 text-[#EAD7AE]" />
                 <span>Ask Atelier Team Directly</span>
@@ -1962,8 +1962,8 @@ export const ProductDetailPage = ({ productId }) => {
           {/* Concierge Desk Help Banner */}
           <div className="mt-8 p-4 sm:p-5 rounded-xl bg-[#FAF8F5] border border-[#EAE4DC] flex flex-col sm:flex-row sm:items-center justify-between gap-4">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-full bg-[#FAF0F2] text-[#7A152E] border border-[#EAD5DA] flex items-center justify-center shrink-0">
-                <Award className="w-5 h-5 text-[#7A152E]" />
+              <div className="w-10 h-10 rounded-full bg-[#F0F7F6] text-[#145C59] border border-[#EAD5DA] flex items-center justify-center shrink-0">
+                <Award className="w-5 h-5 text-[#145C59]" />
               </div>
               <div>
                 <h5 className="text-xs sm:text-sm font-semibold text-stone-900">
@@ -1978,7 +1978,7 @@ export const ProductDetailPage = ({ productId }) => {
             <button
               type="button"
               onClick={() => setShowAskQuestionModal(true)}
-              className="px-4 py-2 bg-white hover:bg-[#FAF8F5] text-[#7A152E] text-xs font-semibold rounded-xl border border-[#7A152E]/30 shadow-2xs transition-all shrink-0 cursor-pointer self-start sm:self-auto inline-flex items-center gap-1.5 group"
+              className="px-4 py-2 bg-white hover:bg-[#FAF8F5] text-[#145C59] text-xs font-semibold rounded-xl border border-[#145C59]/30 shadow-2xs transition-all shrink-0 cursor-pointer self-start sm:self-auto inline-flex items-center gap-1.5 group"
             >
               <span>Ask Concierge Desk</span>
               <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
@@ -2050,7 +2050,7 @@ export const ProductDetailPage = ({ productId }) => {
             </div>
             <button
               onClick={() => setShowSizeGuide(false)}
-              className="w-full py-2.5 bg-[#7A152E] text-white text-xs uppercase tracking-wider font-medium rounded-lg hover:bg-[#590D1E] transition-colors cursor-pointer"
+              className="w-full py-2.5 bg-[#145C59] text-white text-xs uppercase tracking-wider font-medium rounded-lg hover:bg-[#0D3F3D] transition-colors cursor-pointer"
             >
               Got It
             </button>
@@ -2079,7 +2079,7 @@ export const ProductDetailPage = ({ productId }) => {
                   value={reviewForm.name}
                   onChange={(e) => setReviewForm({ ...reviewForm, name: e.target.value })}
                   placeholder="e.g. Radhika Sharma"
-                  className="w-full px-3 py-2 border border-stone-200 rounded-lg focus:outline-none focus:border-[#7A152E]"
+                  className="w-full px-3 py-2 border border-stone-200 rounded-lg focus:outline-none focus:border-[#145C59]"
                 />
               </div>
               <div>
@@ -2092,8 +2092,8 @@ export const ProductDetailPage = ({ productId }) => {
                       onClick={() => setReviewForm({ ...reviewForm, rating: score })}
                       className={`w-9 h-9 rounded-lg border text-xs font-semibold transition-all cursor-pointer ${
                         reviewForm.rating === score
-                          ? 'bg-[#7A152E] text-white border-[#7A152E]'
-                          : 'bg-white border-stone-200 text-stone-700 hover:border-[#7A152E]'
+                          ? 'bg-[#145C59] text-white border-[#145C59]'
+                          : 'bg-white border-stone-200 text-stone-700 hover:border-[#145C59]'
                       }`}
                     >
                       {score}.0
@@ -2108,7 +2108,7 @@ export const ProductDetailPage = ({ productId }) => {
                   value={reviewForm.comment}
                   onChange={(e) => setReviewForm({ ...reviewForm, comment: e.target.value })}
                   placeholder="Share details about the silver luster, packaging, and fit..."
-                  className="w-full px-3 py-2 border border-stone-200 rounded-lg focus:outline-none focus:border-[#7A152E]"
+                  className="w-full px-3 py-2 border border-stone-200 rounded-lg focus:outline-none focus:border-[#145C59]"
                 />
               </div>
             </div>
@@ -2137,7 +2137,7 @@ export const ProductDetailPage = ({ productId }) => {
                 setShowReviewModal(false);
                 setReviewForm({ name: '', rating: 5, comment: '' });
               }}
-              className="w-full py-2.5 bg-[#7A152E] text-white text-xs uppercase tracking-wider font-medium rounded-lg hover:bg-[#590D1E] transition-colors cursor-pointer"
+              className="w-full py-2.5 bg-[#145C59] text-white text-xs uppercase tracking-wider font-medium rounded-lg hover:bg-[#0D3F3D] transition-colors cursor-pointer"
             >
               Submit Review
             </button>
@@ -2151,7 +2151,7 @@ export const ProductDetailPage = ({ productId }) => {
           <div className="bg-white rounded-2xl max-w-md w-full p-6 space-y-4 shadow-2xl border border-stone-200">
             <div className="flex justify-between items-center border-b border-stone-200 pb-3">
               <div>
-                <span className="text-[10px] uppercase tracking-wider text-[#7A152E] font-bold block">
+                <span className="text-[10px] uppercase tracking-wider text-[#145C59] font-bold block">
                   Atelier Inquiry
                 </span>
                 <h3 className="font-serif text-xl text-stone-900 font-normal">Ask a Question</h3>
@@ -2172,7 +2172,7 @@ export const ProductDetailPage = ({ productId }) => {
                   value={questionForm.name}
                   onChange={(e) => setQuestionForm({ ...questionForm, name: e.target.value })}
                   placeholder="e.g. Radhika Sharma"
-                  className="w-full px-3 py-2 border border-stone-200 rounded-lg focus:outline-none focus:border-[#7A152E]"
+                  className="w-full px-3 py-2 border border-stone-200 rounded-lg focus:outline-none focus:border-[#145C59]"
                 />
               </div>
 
@@ -2183,7 +2183,7 @@ export const ProductDetailPage = ({ productId }) => {
                   value={questionForm.email}
                   onChange={(e) => setQuestionForm({ ...questionForm, email: e.target.value })}
                   placeholder="radhika@example.com"
-                  className="w-full px-3 py-2 border border-stone-200 rounded-lg focus:outline-none focus:border-[#7A152E]"
+                  className="w-full px-3 py-2 border border-stone-200 rounded-lg focus:outline-none focus:border-[#145C59]"
                 />
               </div>
 
@@ -2194,7 +2194,7 @@ export const ProductDetailPage = ({ productId }) => {
                   value={questionForm.question}
                   onChange={(e) => setQuestionForm({ ...questionForm, question: e.target.value })}
                   placeholder="e.g. Can this necklace be adjusted in length? Is the hallmark stamped on the clasp?"
-                  className="w-full px-3 py-2 border border-stone-200 rounded-lg focus:outline-none focus:border-[#7A152E]"
+                  className="w-full px-3 py-2 border border-stone-200 rounded-lg focus:outline-none focus:border-[#145C59]"
                 />
               </div>
             </div>
@@ -2209,7 +2209,7 @@ export const ProductDetailPage = ({ productId }) => {
                 setShowAskQuestionModal(false);
                 setQuestionForm({ name: '', email: '', question: '' });
               }}
-              className="w-full py-2.5 bg-[#7A152E] text-white text-xs uppercase tracking-wider font-bold rounded-lg hover:bg-[#590D1E] transition-colors cursor-pointer flex items-center justify-center gap-2"
+              className="w-full py-2.5 bg-[#145C59] text-white text-xs uppercase tracking-wider font-bold rounded-lg hover:bg-[#0D3F3D] transition-colors cursor-pointer flex items-center justify-center gap-2"
             >
               <Send className="w-3.5 h-3.5" />
               <span>Submit Inquiry</span>
@@ -2233,7 +2233,7 @@ export const ProductDetailPage = ({ productId }) => {
             </button>
 
             <div className="flex items-center gap-2 mb-1">
-              <div className="w-8 h-8 rounded-full bg-[#7A152E]/10 flex items-center justify-center text-[#7A152E]">
+              <div className="w-8 h-8 rounded-full bg-[#145C59]/10 flex items-center justify-center text-[#145C59]">
                 <Ruler className="w-4 h-4" />
               </div>
               <div>
@@ -2274,7 +2274,7 @@ export const ProductDetailPage = ({ productId }) => {
                       }}
                       className={`cursor-pointer transition-colors ${
                         selectedSize === row.size
-                          ? 'bg-[#7A152E]/10 font-bold text-[#7A152E]'
+                          ? 'bg-[#145C59]/10 font-bold text-[#145C59]'
                           : 'hover:bg-stone-50 text-stone-700'
                       }`}
                     >
@@ -2286,8 +2286,8 @@ export const ProductDetailPage = ({ productId }) => {
                           type="button"
                           className={`text-[11px] px-2 py-0.5 rounded-md font-semibold cursor-pointer ${
                             selectedSize === row.size
-                              ? 'bg-[#7A152E] text-white'
-                              : 'bg-stone-100 text-stone-600 hover:bg-[#7A152E] hover:text-white'
+                              ? 'bg-[#145C59] text-white'
+                              : 'bg-stone-100 text-stone-600 hover:bg-[#145C59] hover:text-white'
                           }`}
                         >
                           {selectedSize === row.size ? 'Selected' : 'Choose'}
@@ -2313,7 +2313,7 @@ export const ProductDetailPage = ({ productId }) => {
               <button
                 type="button"
                 onClick={() => setShowSizeGuide(false)}
-                className="px-5 py-2 bg-[#7A152E] text-white text-xs font-bold rounded-xl hover:bg-[#590D1E] cursor-pointer"
+                className="px-5 py-2 bg-[#145C59] text-white text-xs font-bold rounded-xl hover:bg-[#0D3F3D] cursor-pointer"
               >
                 Done
               </button>
@@ -2335,11 +2335,11 @@ export const ProductDetailPage = ({ productId }) => {
             : 'translate-y-16 scale-90 opacity-0 pointer-events-none'
         }`}
       >
-        <div className="backdrop-blur-2xl bg-[#FAF8F5]/95 border border-white/90 shadow-[0_16px_40px_rgba(0,0,0,0.18),0_2px_8px_rgba(122,21,46,0.1)] rounded-full p-1.5 flex items-center justify-center gap-2">
+        <div className="backdrop-blur-2xl bg-[#FAF8F5]/95 border border-white/90 shadow-[0_16px_40px_rgba(0,0,0,0.18),0_2px_8px_rgba(20, 92, 89,0.1)] rounded-full p-1.5 flex items-center justify-center gap-2">
           <button
             type="button"
             onClick={handleAddToCart}
-            className="flex-1 py-2.5 px-3 rounded-full border border-[#7A152E] text-[#7A152E] bg-white hover:bg-[#FAF8F5] text-xs sm:text-sm font-bold flex items-center justify-center gap-1.5 active:scale-95 transition-all cursor-pointer shadow-2xs"
+            className="flex-1 py-2.5 px-3 rounded-full border border-[#145C59] text-[#145C59] bg-white hover:bg-[#FAF8F5] text-xs sm:text-sm font-bold flex items-center justify-center gap-1.5 active:scale-95 transition-all cursor-pointer shadow-2xs"
             title="Add to Cart"
           >
             <ShoppingBag className="w-4 h-4" />
@@ -2349,7 +2349,7 @@ export const ProductDetailPage = ({ productId }) => {
           <button
             type="button"
             onClick={handleBuyNow}
-            className="flex-1 py-2.5 px-3 rounded-full bg-[#7A152E] hover:bg-[#590D1E] text-white text-xs sm:text-sm font-bold flex items-center justify-center gap-1.5 active:scale-95 transition-all cursor-pointer shadow-md tracking-wide"
+            className="flex-1 py-2.5 px-3 rounded-full bg-[#145C59] hover:bg-[#0D3F3D] text-white text-xs sm:text-sm font-bold flex items-center justify-center gap-1.5 active:scale-95 transition-all cursor-pointer shadow-md tracking-wide"
           >
             <span>Buy Now</span>
           </button>

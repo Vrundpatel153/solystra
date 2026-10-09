@@ -55,7 +55,7 @@ export const QuickViewModal = () => {
         
         <button
           onClick={() => setQuickViewProduct(null)}
-          className="absolute top-4 right-4 z-10 p-2 rounded-full bg-white/90 hover:bg-[#7A152E] text-[#111111] hover:text-white transition-all shadow-md"
+          className="absolute top-4 right-4 z-10 p-2 rounded-full bg-white/90 hover:bg-[#145C59] text-[#111111] hover:text-white transition-all shadow-md"
         >
           <X className="w-5 h-5" />
         </button>
@@ -78,7 +78,7 @@ export const QuickViewModal = () => {
                     key={idx}
                     onClick={() => setSelectedImageIndex(idx)}
                     className={`w-14 h-14 rounded-lg overflow-hidden border-2 transition-all ${
-                      selectedImageIndex === idx ? 'border-[#7A152E] shadow-sm' : 'border-[#E8E5DF] opacity-70 hover:opacity-100'
+                      selectedImageIndex === idx ? 'border-[#145C59] shadow-sm' : 'border-[#E8E5DF] opacity-70 hover:opacity-100'
                     }`}
                   >
                     <img src={img} alt="Angle" className="w-full h-full object-cover" />
@@ -91,7 +91,7 @@ export const QuickViewModal = () => {
           {/* Details */}
           <div className="p-6 sm:p-8 flex flex-col justify-between space-y-5">
             <div>
-              <div className="flex items-center gap-2 text-xs uppercase tracking-widest text-[#7A152E] font-bold">
+              <div className="flex items-center gap-2 text-xs uppercase tracking-widest text-[#145C59] font-bold">
                 <span>{product.categoryName}</span>
                 <span>•</span>
                 <span className="text-[#717171]">SKU: {product.sku}</span>
@@ -103,14 +103,14 @@ export const QuickViewModal = () => {
 
               {/* Rating - NO STAR ICON */}
               <div className="flex items-center gap-2 mt-2 text-xs font-sans text-[#717171]">
-                <span className="font-bold text-[#7A152E]">Rated {product.rating}</span>
+                <span className="font-bold text-[#145C59]">Rated {product.rating}</span>
                 <span>•</span>
                 <span>{product.reviewsCount} verified reviews</span>
               </div>
 
               {/* Pricing */}
               <div className="flex items-baseline gap-3 mt-4">
-                <span className="font-serif text-3xl font-bold text-[#7A152E]">
+                <span className="font-serif text-3xl font-bold text-[#145C59]">
                   ₹{product.price.toLocaleString('en-IN')}
                 </span>
                 {product.mrp && product.mrp > product.price && (
@@ -118,7 +118,7 @@ export const QuickViewModal = () => {
                     <span className="text-sm text-[#717171] line-through">
                       ₹{product.mrp.toLocaleString('en-IN')}
                     </span>
-                    <span className="px-2 py-0.5 bg-[#7A152E] text-white text-xs font-bold rounded">
+                    <span className="px-2 py-0.5 bg-[#145C59] text-white text-xs font-bold rounded">
                       {product.discount}
                     </span>
                   </>
@@ -128,7 +128,7 @@ export const QuickViewModal = () => {
               {/* Color Selection */}
               <div className="mt-5">
                 <label className="block text-xs uppercase tracking-wider font-semibold text-[#111111] mb-2">
-                  Metal Finish: <span className="text-[#7A152E] font-bold">{selectedMetal}</span>
+                  Metal Finish: <span className="text-[#145C59] font-bold">{selectedMetal}</span>
                 </label>
                 {product?.metals && product.metals.length > 1 ? (
                   <div className="flex gap-2">
@@ -138,8 +138,8 @@ export const QuickViewModal = () => {
                         onClick={() => setSelectedMetal(metal)}
                         className={`flex-1 py-2 px-2 text-xs rounded-xl border transition-all text-center cursor-pointer ${
                           selectedMetal === metal
-                            ? 'border-[#7A152E] bg-[#FDF2F4] text-[#7A152E] font-bold shadow-2xs'
-                            : 'border-[#E8E5DF] hover:border-[#7A152E]/50 text-[#111111]'
+                            ? 'border-[#145C59] bg-[#FDF2F4] text-[#145C59] font-bold shadow-2xs'
+                            : 'border-[#E8E5DF] hover:border-[#145C59]/50 text-[#111111]'
                         }`}
                       >
                         {metal.replace('Pure ', '').replace(' Plated', '').replace(' Vermeil', '')}
@@ -147,8 +147,8 @@ export const QuickViewModal = () => {
                     ))}
                   </div>
                 ) : (
-                  <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-xl border border-[#7A152E]/30 bg-[#FDF2F4] text-[#7A152E] text-xs font-semibold">
-                    <span className="w-2 h-2 rounded-full bg-[#7A152E]" />
+                  <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-xl border border-[#145C59]/30 bg-[#FDF2F4] text-[#145C59] text-xs font-semibold">
+                    <span className="w-2 h-2 rounded-full bg-[#145C59]" />
                     <span>{defaultMetal}</span>
                   </div>
                 )}
@@ -161,7 +161,7 @@ export const QuickViewModal = () => {
                     <label className="block text-xs uppercase tracking-wider font-semibold text-[#111111]">
                       Select Ring Size:
                     </label>
-                    <span className="text-xs font-bold text-[#7A152E]">
+                    <span className="text-xs font-bold text-[#145C59]">
                       Size {selectedSize}
                     </span>
                   </div>
@@ -172,8 +172,8 @@ export const QuickViewModal = () => {
                         onClick={() => setSelectedSize(size)}
                         className={`w-9 h-9 rounded-xl border text-xs font-bold transition-all cursor-pointer flex items-center justify-center active:scale-95 ${
                           selectedSize === size
-                            ? 'bg-[#7A152E] text-white border-[#7A152E] shadow-2xs'
-                            : 'border-[#E8E5DF] hover:border-[#7A152E] text-[#111111]'
+                            ? 'bg-[#145C59] text-white border-[#145C59] shadow-2xs'
+                            : 'border-[#E8E5DF] hover:border-[#145C59] text-[#111111]'
                         }`}
                       >
                         {size}
@@ -189,7 +189,7 @@ export const QuickViewModal = () => {
               <div className="flex gap-3">
                 <button
                   onClick={handleAddToCart}
-                  className="flex-1 py-3.5 bg-[#7A152E] text-white font-serif text-xs uppercase tracking-widest font-bold rounded-xl hover:bg-[#590D1E] transition-all shadow-md flex items-center justify-center gap-2 group"
+                  className="flex-1 py-3.5 bg-[#145C59] text-white font-serif text-xs uppercase tracking-widest font-bold rounded-xl hover:bg-[#0D3F3D] transition-all shadow-md flex items-center justify-center gap-2 group"
                 >
                   <GoldShoppingBag className="w-4 h-4 shrink-0 -translate-y-px transition-transform group-hover:-translate-y-0.5" />
                   <span className="leading-none">Add to Bag</span>
@@ -198,18 +198,18 @@ export const QuickViewModal = () => {
                   onClick={() => toggleWishlist(product.id)}
                   className={`p-3.5 rounded-xl border transition-all ${
                     isWishlisted
-                      ? 'bg-white border-[#7A152E] text-[#7A152E]'
-                      : 'border-[#E8E5DF] hover:border-[#7A152E] text-[#111111]'
+                      ? 'bg-white border-[#145C59] text-[#145C59]'
+                      : 'border-[#E8E5DF] hover:border-[#145C59] text-[#111111]'
                   }`}
                   aria-label="Wishlist"
                 >
-                  <Heart className={`w-5 h-5 ${isWishlisted ? 'fill-[#7A152E]' : ''}`} />
+                  <Heart className={`w-5 h-5 ${isWishlisted ? 'fill-[#145C59]' : ''}`} />
                 </button>
               </div>
 
               <button
                 onClick={handleNavigateToPdp}
-                className="w-full text-center text-xs uppercase tracking-widest font-semibold text-[#111111] hover:text-[#7A152E] transition-colors flex items-center justify-center gap-1.5 pt-1"
+                className="w-full text-center text-xs uppercase tracking-widest font-semibold text-[#111111] hover:text-[#145C59] transition-colors flex items-center justify-center gap-1.5 pt-1"
               >
                 <span>View Full Product Details &amp; Specs</span>
                 <ArrowRight className="w-3.5 h-3.5" />

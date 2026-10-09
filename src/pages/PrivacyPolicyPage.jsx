@@ -35,7 +35,7 @@ export const PrivacyPolicyPage = ({ onBackToStore }) => {
           <div className="hidden sm:flex items-center gap-2 mb-6">
             <button
               onClick={handleBack}
-              className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#7A152E] hover:text-[#590D1E] transition-colors cursor-pointer group"
+              className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#145C59] hover:text-[#0D3F3D] transition-colors cursor-pointer group"
             >
               <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
               <span>Back to Boutique</span>
@@ -47,7 +47,7 @@ export const PrivacyPolicyPage = ({ onBackToStore }) => {
           </div>
 
           <div className="max-w-3xl">
-            <span className="text-xs uppercase tracking-widest text-[#7A152E] font-bold block mb-2">
+            <span className="text-xs uppercase tracking-widest text-[#145C59] font-bold block mb-2">
               ATELIER PRIVACY &amp; SECURITY PROTOCOLS
             </span>
             <h1 className="font-serif text-3xl sm:text-5xl text-stone-900 font-normal leading-tight">
@@ -72,7 +72,7 @@ export const PrivacyPolicyPage = ({ onBackToStore }) => {
             ======================================================== */}
         <section className="bg-white rounded-3xl p-6 sm:p-8 border border-[#EAE4DC] shadow-xs">
           <div className="mb-6">
-            <span className="text-[10.5px] uppercase tracking-widest text-[#7A152E] font-bold block mb-1">
+            <span className="text-[10.5px] uppercase tracking-widest text-[#145C59] font-bold block mb-1">
               PATRON ASSURANCE &amp; INTEGRITY
             </span>
             <h2 className="font-serif text-xl sm:text-2xl text-stone-900 font-normal">
@@ -82,8 +82,8 @@ export const PrivacyPolicyPage = ({ onBackToStore }) => {
 
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6">
             {/* Guarantee 1 */}
-            <div className="flex items-center gap-3.5 bg-[#FAF8F5] p-4 rounded-2xl border border-[#EAE4DC] hover:border-[#7A152E]/40 transition-colors shadow-2xs">
-              <div className="w-10 h-10 rounded-full bg-[#7A152E]/10 flex items-center justify-center shrink-0 text-[#7A152E]">
+            <div className="flex items-center gap-3.5 bg-[#FAF8F5] p-4 rounded-2xl border border-[#EAE4DC] hover:border-[#145C59]/40 transition-colors shadow-2xs">
+              <div className="w-10 h-10 rounded-full bg-[#145C59]/10 flex items-center justify-center shrink-0 text-[#145C59]">
                 <ShieldCheck className="w-5 h-5" />
               </div>
               <div>
@@ -104,8 +104,8 @@ export const PrivacyPolicyPage = ({ onBackToStore }) => {
             </div>
 
             {/* Guarantee 3 */}
-            <div className="flex items-center gap-3.5 bg-[#FAF8F5] p-4 rounded-2xl border border-[#EAE4DC] hover:border-[#7A152E]/40 transition-colors shadow-2xs">
-              <div className="w-10 h-10 rounded-full bg-[#7A152E]/10 flex items-center justify-center shrink-0 text-[#7A152E]">
+            <div className="flex items-center gap-3.5 bg-[#FAF8F5] p-4 rounded-2xl border border-[#EAE4DC] hover:border-[#145C59]/40 transition-colors shadow-2xs">
+              <div className="w-10 h-10 rounded-full bg-[#145C59]/10 flex items-center justify-center shrink-0 text-[#145C59]">
                 <RefreshCw className="w-5 h-5" />
               </div>
               <div>
@@ -122,7 +122,7 @@ export const PrivacyPolicyPage = ({ onBackToStore }) => {
           {/* Section 1 */}
           <div className="bg-white rounded-2xl p-6 sm:p-8 border border-[#EAE4DC]">
             <h3 className="font-serif text-lg sm:text-xl text-stone-900 font-medium mb-3 flex items-center gap-3">
-              <span className="w-7 h-7 rounded-full bg-[#7A152E]/10 text-[#7A152E] text-xs font-bold flex items-center justify-center">
+              <span className="w-7 h-7 rounded-full bg-[#145C59]/10 text-[#145C59] text-xs font-bold flex items-center justify-center">
                 1
               </span>
               <span>Information We Collect &amp; Purpose</span>
@@ -140,7 +140,7 @@ export const PrivacyPolicyPage = ({ onBackToStore }) => {
           {/* Section 2 */}
           <div className="bg-white rounded-2xl p-6 sm:p-8 border border-[#EAE4DC]">
             <h3 className="font-serif text-lg sm:text-xl text-stone-900 font-medium mb-3 flex items-center gap-3">
-              <span className="w-7 h-7 rounded-full bg-[#7A152E]/10 text-[#7A152E] text-xs font-bold flex items-center justify-center">
+              <span className="w-7 h-7 rounded-full bg-[#145C59]/10 text-[#145C59] text-xs font-bold flex items-center justify-center">
                 2
               </span>
               <span>Bank-Grade Payment Security &amp; Zero Card Storage</span>
@@ -158,7 +158,7 @@ export const PrivacyPolicyPage = ({ onBackToStore }) => {
           {/* Section 3 */}
           <div className="bg-white rounded-2xl p-6 sm:p-8 border border-[#EAE4DC]">
             <h3 className="font-serif text-lg sm:text-xl text-stone-900 font-medium mb-3 flex items-center gap-3">
-              <span className="w-7 h-7 rounded-full bg-[#7A152E]/10 text-[#7A152E] text-xs font-bold flex items-center justify-center">
+              <span className="w-7 h-7 rounded-full bg-[#145C59]/10 text-[#145C59] text-xs font-bold flex items-center justify-center">
                 3
               </span>
               <span>Discreet &amp; Secure Packaging Protocol</span>
@@ -176,7 +176,7 @@ export const PrivacyPolicyPage = ({ onBackToStore }) => {
           {/* Section 4 */}
           <div className="bg-white rounded-2xl p-6 sm:p-8 border border-[#EAE4DC]">
             <h3 className="font-serif text-lg sm:text-xl text-stone-900 font-medium mb-3 flex items-center gap-3">
-              <span className="w-7 h-7 rounded-full bg-[#7A152E]/10 text-[#7A152E] text-xs font-bold flex items-center justify-center">
+              <span className="w-7 h-7 rounded-full bg-[#145C59]/10 text-[#145C59] text-xs font-bold flex items-center justify-center">
                 4
               </span>
               <span>No-Spam Policy &amp; Third-Party Non-Disclosure</span>
@@ -194,7 +194,7 @@ export const PrivacyPolicyPage = ({ onBackToStore }) => {
           {/* Section 5 */}
           <div className="bg-white rounded-2xl p-6 sm:p-8 border border-[#EAE4DC]">
             <h3 className="font-serif text-lg sm:text-xl text-stone-900 font-medium mb-3 flex items-center gap-3">
-              <span className="w-7 h-7 rounded-full bg-[#7A152E]/10 text-[#7A152E] text-xs font-bold flex items-center justify-center">
+              <span className="w-7 h-7 rounded-full bg-[#145C59]/10 text-[#145C59] text-xs font-bold flex items-center justify-center">
                 5
               </span>
               <span>Your Data Rights &amp; Information Access</span>
@@ -212,7 +212,7 @@ export const PrivacyPolicyPage = ({ onBackToStore }) => {
         </div>
 
         {/* Atelier Concierge Contact Banner */}
-        <div className="rounded-3xl p-8 bg-gradient-to-r from-[#7A152E] to-[#4A0D1C] text-white flex flex-col md:flex-row items-center justify-between gap-6 shadow-xl">
+        <div className="rounded-3xl p-8 bg-gradient-to-r from-[#145C59] to-[#082827] text-white flex flex-col md:flex-row items-center justify-between gap-6 shadow-xl">
           <div>
             <span className="text-xs text-[#F5E6CC] font-bold uppercase tracking-widest block mb-1">
               PRIVACY OR COMPLIANCE INQUIRIES?
@@ -228,7 +228,7 @@ export const PrivacyPolicyPage = ({ onBackToStore }) => {
           <div className="flex items-center gap-3 shrink-0">
             <a
               href="mailto:solystrajewels.official@gmail.com"
-              className="px-5 py-2.5 rounded-xl bg-white text-[#7A152E] text-xs font-bold hover:bg-stone-100 transition-colors shadow-sm inline-flex items-center gap-2"
+              className="px-5 py-2.5 rounded-xl bg-white text-[#145C59] text-xs font-bold hover:bg-stone-100 transition-colors shadow-sm inline-flex items-center gap-2"
             >
               <Mail className="w-4 h-4" />
               <span>Email Privacy Desk</span>

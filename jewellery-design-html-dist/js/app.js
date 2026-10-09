@@ -87,7 +87,7 @@
     const toast = document.createElement('div');
     toast.className = 'toast-item pointer-events-auto flex items-start gap-3 p-3.5 sm:p-4 bg-[#380A15] border border-[#C5A059]/40 rounded-xl shadow-2xl text-white animate-slide-up transition-all w-full';
     toast.innerHTML = `
-      <div class="w-5 h-5 rounded-full bg-[#7A152E] flex items-center justify-center shrink-0 text-white mt-0.5 border border-[#C5A059]/40">
+      <div class="w-5 h-5 rounded-full bg-[#145C59] flex items-center justify-center shrink-0 text-white mt-0.5 border border-[#C5A059]/40">
         ${type === 'info' 
           ? '<svg class="w-3.5 h-3.5 text-[#EAD7AE]" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>'
           : '<svg class="w-3.5 h-3.5 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="m9 11 3 3L22 4"/></svg>'
@@ -265,14 +265,14 @@
     if (cart.length === 0) {
       itemsContainer.innerHTML = `
         <div class="h-64 flex flex-col items-center justify-center text-center p-6 text-stone-400 space-y-4">
-          <div class="w-16 h-16 rounded-full bg-[#FAF8F5] border border-[#EAE4DC] flex items-center justify-center text-[#7A152E]">
+          <div class="w-16 h-16 rounded-full bg-[#FAF8F5] border border-[#EAE4DC] flex items-center justify-center text-[#145C59]">
             <svg class="lucide lucide-shopping-bag w-8 h-8 opacity-70" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="24"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"></path><path d="M3 6h18"></path><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
           </div>
           <div class="font-serif text-base sm:text-lg font-bold text-stone-900">Your Bag is Empty</div>
           <p class="text-xs text-stone-500 max-w-xs">
             Discover our handcrafted BIS hallmarked 925 sterling silver &amp; 18K gold collections.
           </p>
-          <a href="products.html" onclick="window.closeCartDrawer()" class="px-6 py-2.5 bg-[#7A152E] text-white text-xs uppercase tracking-widest font-semibold rounded-xl hover:bg-[#590D1E] transition-all shadow-sm">
+          <a href="products.html" onclick="window.closeCartDrawer()" class="px-6 py-2.5 bg-[#145C59] text-white text-xs uppercase tracking-widest font-semibold rounded-xl hover:bg-[#0D3F3D] transition-all shadow-sm">
             Explore Collection
           </a>
         </div>
@@ -303,7 +303,7 @@
             <img src="${item.image}" alt="${item.name}" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300">
           </div>
           <div class="flex-1 min-w-0 text-xs">
-            <h4 onclick="window.location.href='product.html?id=${item.id}'" class="font-serif text-sm font-normal text-stone-900 truncate hover:text-[#7A152E] transition-colors cursor-pointer">
+            <h4 onclick="window.location.href='product.html?id=${item.id}'" class="font-serif text-sm font-normal text-stone-900 truncate hover:text-[#145C59] transition-colors cursor-pointer">
               ${item.name}
             </h4>
             <div class="flex flex-wrap items-center gap-1.5 mt-1 text-[10.5px]">
@@ -322,7 +322,7 @@
                 </button>
               </div>
               <div class="text-right">
-                <span class="font-serif text-sm font-bold text-[#7A152E]">${formatINR(itemTotal)}</span>
+                <span class="font-serif text-sm font-bold text-[#145C59]">${formatINR(itemTotal)}</span>
                 ${item.mrp && item.mrp > item.price ? `<div class="text-[10px] text-stone-400 line-through">${formatINR(mrpTotal)}</div>` : ''}
               </div>
             </div>
@@ -393,14 +393,14 @@
     if (wishlist.length === 0) {
       container.innerHTML = `
         <div class="h-full flex flex-col items-center justify-center text-center p-6 text-[#717171] space-y-4">
-          <div class="w-16 h-16 rounded-full bg-[#FAF8F5] flex items-center justify-center text-[#7A152E] border border-[#E8E5DF]">
+          <div class="w-16 h-16 rounded-full bg-[#FAF8F5] flex items-center justify-center text-[#145C59] border border-[#E8E5DF]">
             <svg class="lucide lucide-heart w-8 h-8 opacity-70" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="24"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"></path></svg>
           </div>
           <div class="font-serif text-lg font-semibold text-[#111111]">No Favorites Saved Yet</div>
           <p class="text-xs text-[#717171] max-w-xs">
             Tap the heart icon on any jewelry piece to save it to your wishlist.
           </p>
-          <a href="products.html" onclick="window.closeWishlistDrawer()" class="px-6 py-2.5 bg-[#7A152E] text-white text-xs uppercase tracking-widest font-semibold rounded-lg hover:bg-[#590D1E] transition-all shadow-sm">
+          <a href="products.html" onclick="window.closeWishlistDrawer()" class="px-6 py-2.5 bg-[#145C59] text-white text-xs uppercase tracking-widest font-semibold rounded-lg hover:bg-[#0D3F3D] transition-all shadow-sm">
             Discover Pieces
           </a>
         </div>
@@ -417,18 +417,18 @@
             <img src="${p.images[0]}" alt="${p.name}" class="w-full h-full object-cover hover:scale-105 transition-transform">
           </div>
           <div class="flex-1 min-w-0">
-            <div onclick="window.location.href='product.html?id=${p.id}'" class="font-serif text-sm font-semibold text-[#111111] truncate cursor-pointer hover:text-[#7A152E] transition-colors">
+            <div onclick="window.location.href='product.html?id=${p.id}'" class="font-serif text-sm font-semibold text-[#111111] truncate cursor-pointer hover:text-[#145C59] transition-colors">
               ${p.shortName || p.name}
             </div>
-            <div class="font-serif text-sm font-bold text-[#7A152E] mt-1">
+            <div class="font-serif text-sm font-bold text-[#145C59] mt-1">
               ${formatINR(p.price)}
             </div>
             <div class="flex items-center gap-2 mt-2">
-              <button onclick="window.addToCart(window.PRODUCTS.find(x => x.id === '${p.id}')); window.toggleWishlist('${p.id}')" class="px-3 py-1 bg-[#7A152E] text-white text-[11px] uppercase tracking-wider font-semibold rounded hover:bg-[#590D1E] transition-colors flex items-center gap-1 shadow-sm cursor-pointer">
+              <button onclick="window.addToCart(window.PRODUCTS.find(x => x.id === '${p.id}')); window.toggleWishlist('${p.id}')" class="px-3 py-1 bg-[#145C59] text-white text-[11px] uppercase tracking-wider font-semibold rounded hover:bg-[#0D3F3D] transition-colors flex items-center gap-1 shadow-sm cursor-pointer">
                 <svg class="lucide lucide-shopping-bag w-3 h-3" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="24"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"></path><path d="M3 6h18"></path><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
                 Move to Bag
               </button>
-              <button onclick="window.toggleWishlist('${p.id}')" class="p-1 text-[#717171] hover:text-[#7A152E] transition-colors cursor-pointer" aria-label="Remove from wishlist">
+              <button onclick="window.toggleWishlist('${p.id}')" class="p-1 text-[#717171] hover:text-[#145C59] transition-colors cursor-pointer" aria-label="Remove from wishlist">
                 <svg class="lucide lucide-trash2 w-4 h-4" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="24"><path d="M3 6h18"></path><path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"></path><path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"></path><line x1="10" x2="10" y1="11" y2="17"></line><line x1="14" x2="14" y1="11" y2="17"></line></svg>
               </button>
             </div>
@@ -459,7 +459,7 @@
         ${p.images.length > 1 ? `
           <div class="flex gap-2 overflow-x-auto max-w-full pb-1 no-scrollbar">
             ${p.images.map((img, i) => `
-              <button onclick="document.getElementById('qv-main-img').src='${img}'" class="w-14 h-14 rounded-lg overflow-hidden border-2 border-[#E8E5DF] opacity-70 hover:opacity-100 hover:border-[#7A152E] transition-all cursor-pointer">
+              <button onclick="document.getElementById('qv-main-img').src='${img}'" class="w-14 h-14 rounded-lg overflow-hidden border-2 border-[#E8E5DF] opacity-70 hover:opacity-100 hover:border-[#145C59] transition-all cursor-pointer">
                 <img src="${img}" alt="Angle" class="w-full h-full object-cover">
               </button>
             `).join('')}
@@ -470,7 +470,7 @@
       <!-- Details -->
       <div class="p-6 sm:p-8 flex flex-col justify-between space-y-5">
         <div>
-          <div class="flex items-center gap-2 text-xs uppercase tracking-widest text-[#7A152E] font-bold">
+          <div class="flex items-center gap-2 text-xs uppercase tracking-widest text-[#145C59] font-bold">
             <span>${p.categoryName || p.category}</span>
             <span>•</span>
             <span class="text-[#717171]">SKU: ${p.sku}</span>
@@ -479,25 +479,25 @@
           <h2 class="font-serif text-2xl font-bold text-[#111111] mt-1">${p.name}</h2>
 
           <div class="flex items-center gap-2 mt-2 text-xs font-sans text-[#717171]">
-            <span class="font-bold text-[#7A152E]">Rated ${p.rating}</span>
+            <span class="font-bold text-[#145C59]">Rated ${p.rating}</span>
             <span>•</span>
             <span>${p.reviewsCount} verified reviews</span>
           </div>
 
           <div class="flex items-baseline gap-3 mt-4">
-            <span class="font-serif text-3xl font-bold text-[#7A152E]">${formatINR(p.price)}</span>
+            <span class="font-serif text-3xl font-bold text-[#145C59]">${formatINR(p.price)}</span>
             ${p.mrp && p.mrp > p.price ? `
               <span class="text-sm text-[#717171] line-through">${formatINR(p.mrp)}</span>
-              <span class="px-2 py-0.5 bg-[#7A152E] text-white text-xs font-bold rounded">${p.discount}</span>
+              <span class="px-2 py-0.5 bg-[#145C59] text-white text-xs font-bold rounded">${p.discount}</span>
             ` : ''}
           </div>
 
           <div class="mt-5">
             <label class="block text-xs uppercase tracking-wider font-semibold text-[#111111] mb-2">
-              Metal Finish: <span class="text-[#7A152E] font-bold">${defaultMetal}</span>
+              Metal Finish: <span class="text-[#145C59] font-bold">${defaultMetal}</span>
             </label>
-            <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-xl border border-[#7A152E]/30 bg-[#FDF2F4] text-[#7A152E] text-xs font-semibold">
-              <span class="w-2 h-2 rounded-full bg-[#7A152E]"></span>
+            <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-xl border border-[#145C59]/30 bg-[#FDF2F4] text-[#145C59] text-xs font-semibold">
+              <span class="w-2 h-2 rounded-full bg-[#145C59]"></span>
               <span>${defaultMetal}</span>
             </div>
           </div>
@@ -506,11 +506,11 @@
             <div class="mt-4">
               <div class="flex items-center justify-between mb-2">
                 <label class="block text-xs uppercase tracking-wider font-semibold text-[#111111]">Select Ring Size:</label>
-                <span class="text-xs font-bold text-[#7A152E]">Size 12</span>
+                <span class="text-xs font-bold text-[#145C59]">Size 12</span>
               </div>
               <div class="flex flex-wrap gap-2">
                 ${['10', '12', '14', '16', '18'].map(s => `
-                  <button class="w-9 h-9 rounded-xl border text-xs font-bold transition-all cursor-pointer flex items-center justify-center border-[#E8E5DF] hover:border-[#7A152E] text-[#111111]">
+                  <button class="w-9 h-9 rounded-xl border text-xs font-bold transition-all cursor-pointer flex items-center justify-center border-[#E8E5DF] hover:border-[#145C59] text-[#111111]">
                     ${s}
                   </button>
                 `).join('')}
@@ -521,15 +521,15 @@
 
         <div class="space-y-3 pt-4 border-t border-[#E8E5DF]">
           <div class="flex gap-3">
-            <button onclick="window.addToCart(window.PRODUCTS.find(x => x.id === '${p.id}')); window.closeQuickViewModal();" class="flex-1 py-3.5 bg-[#7A152E] text-white font-serif text-xs uppercase tracking-widest font-bold rounded-xl hover:bg-[#590D1E] transition-all shadow-md flex items-center justify-center gap-2 cursor-pointer">
+            <button onclick="window.addToCart(window.PRODUCTS.find(x => x.id === '${p.id}')); window.closeQuickViewModal();" class="flex-1 py-3.5 bg-[#145C59] text-white font-serif text-xs uppercase tracking-widest font-bold rounded-xl hover:bg-[#0D3F3D] transition-all shadow-md flex items-center justify-center gap-2 cursor-pointer">
               <svg class="lucide lucide-shopping-bag w-4 h-4" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="24"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"></path><path d="M3 6h18"></path><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
               <span>Add to Bag</span>
             </button>
-            <button onclick="window.toggleWishlist('${p.id}')" class="p-3.5 rounded-xl border border-[#E8E5DF] hover:border-[#7A152E] text-[#111111] transition-all cursor-pointer">
+            <button onclick="window.toggleWishlist('${p.id}')" class="p-3.5 rounded-xl border border-[#E8E5DF] hover:border-[#145C59] text-[#111111] transition-all cursor-pointer">
               <svg class="lucide lucide-heart w-5 h-5" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="24"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"></path></svg>
             </button>
           </div>
-          <a href="product.html?id=${p.id}" class="w-full text-center text-xs uppercase tracking-widest font-semibold text-[#111111] hover:text-[#7A152E] transition-colors flex items-center justify-center gap-1.5 pt-1">
+          <a href="product.html?id=${p.id}" class="w-full text-center text-xs uppercase tracking-widest font-semibold text-[#111111] hover:text-[#145C59] transition-colors flex items-center justify-center gap-1.5 pt-1">
             <span>View Full Product Details &amp; Specs</span>
             <svg class="lucide lucide-arrow-right w-3.5 h-3.5" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="24"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
           </a>
@@ -720,10 +720,10 @@
   window.setSearchFilterCategory = function (cat, btnEl) {
     currentSearchCategory = cat;
     document.querySelectorAll('.search-cat-pill').forEach(b => {
-      b.className = 'search-cat-pill px-3 py-1 rounded-lg capitalize shrink-0 transition-all bg-[#FAF8F5] text-[#111111] border border-[#E8E5DF] hover:bg-[#7A152E]/10 cursor-pointer';
+      b.className = 'search-cat-pill px-3 py-1 rounded-lg capitalize shrink-0 transition-all bg-[#FAF8F5] text-[#111111] border border-[#E8E5DF] hover:bg-[#145C59]/10 cursor-pointer';
     });
     if (btnEl) {
-      btnEl.className = 'search-cat-pill px-3 py-1 rounded-lg capitalize shrink-0 transition-all bg-[#7A152E] text-white font-bold shadow-sm cursor-pointer';
+      btnEl.className = 'search-cat-pill px-3 py-1 rounded-lg capitalize shrink-0 transition-all bg-[#145C59] text-white font-bold shadow-sm cursor-pointer';
     }
     const input = document.getElementById('search-input');
     window.handleSearchInput(input ? input.value : '');
@@ -775,11 +775,11 @@
             <img src="${p.images[0]}" alt="${p.name}" class="w-full h-full object-cover group-hover:scale-110 transition-transform">
           </div>
           <div>
-            <div class="font-serif text-sm font-semibold text-[#111111] group-hover:text-[#7A152E] transition-colors">${p.name}</div>
+            <div class="font-serif text-sm font-semibold text-[#111111] group-hover:text-[#145C59] transition-colors">${p.name}</div>
             <div class="flex items-center gap-2 mt-0.5 text-xs text-[#717171]">
               <span class="capitalize">${p.categoryName || p.category}</span>
               <span>•</span>
-              <span class="text-[#7A152E] font-bold">Rated ${p.rating}</span>
+              <span class="text-[#145C59] font-bold">Rated ${p.rating}</span>
               <span>•</span>
               <span class="text-[#111111] font-semibold">925 Silver</span>
             </div>
@@ -787,10 +787,10 @@
         </div>
         <div class="text-right flex items-center gap-4">
           <div>
-            <div class="font-serif text-sm font-bold text-[#7A152E]">${formatINR(p.price)}</div>
+            <div class="font-serif text-sm font-bold text-[#145C59]">${formatINR(p.price)}</div>
             ${p.mrp && p.mrp > p.price ? `<div class="text-[11px] text-[#717171] line-through">${formatINR(p.mrp)}</div>` : ''}
           </div>
-          <div class="w-8 h-8 rounded-full bg-[#FAF8F5] border border-[#E8E5DF] flex items-center justify-center text-[#111111] group-hover:bg-[#7A152E] group-hover:text-white transition-all">
+          <div class="w-8 h-8 rounded-full bg-[#FAF8F5] border border-[#E8E5DF] flex items-center justify-center text-[#111111] group-hover:bg-[#145C59] group-hover:text-white transition-all">
             <svg class="lucide lucide-arrow-up-right w-4 h-4" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="24"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg>
           </div>
         </div>
@@ -820,7 +820,7 @@
           inner.classList.add('opacity-100', 'translate-y-0');
         }
       }
-      if (chevron) chevron.classList.add('rotate-180', 'text-[#7A152E]');
+      if (chevron) chevron.classList.add('rotate-180', 'text-[#145C59]');
       document.body.style.overflow = 'hidden';
     } else {
       window.closeCollectionsMenu();
@@ -846,7 +846,7 @@
         inner.classList.remove('opacity-100', 'translate-y-0');
       }
     }
-    if (chevron) chevron.classList.remove('rotate-180', 'text-[#7A152E]');
+    if (chevron) chevron.classList.remove('rotate-180', 'text-[#145C59]');
     document.body.style.overflow = '';
   };
 
@@ -984,7 +984,7 @@
         window.openImageLightbox(mainImg.src, product);
       };
     }
-    const badgeEl = document.getElementById('pdp-badge') || document.querySelector('.lg\\:col-span-7 span.bg-\\[\\#7A152E\\]');
+    const badgeEl = document.getElementById('pdp-badge') || document.querySelector('.lg\\:col-span-7 span.bg-\\[\\#145C59\\]');
     if (badgeEl) {
       badgeEl.textContent = product.badge || (product.isNew ? 'New Arrival' : 'Bestseller');
     }
@@ -1010,7 +1010,7 @@
       if (thumbsContainer) {
         thumbsContainer.querySelectorAll('button').forEach((b, i) => {
           if (i === currentImageIndex) {
-            b.className = 'relative w-16 h-16 sm:w-20 sm:h-20 rounded-xl overflow-hidden bg-white border transition-all shrink-0 cursor-pointer border-[#7A152E] ring-2 ring-[#7A152E]/20 shadow-xs';
+            b.className = 'relative w-16 h-16 sm:w-20 sm:h-20 rounded-xl overflow-hidden bg-white border transition-all shrink-0 cursor-pointer border-[#145C59] ring-2 ring-[#145C59]/20 shadow-xs';
           } else {
             b.className = 'relative w-16 h-16 sm:w-20 sm:h-20 rounded-xl overflow-hidden bg-white border transition-all shrink-0 cursor-pointer border-stone-200 opacity-75 hover:opacity-100 hover:border-stone-400';
           }
@@ -1020,7 +1020,7 @@
       if (bottomDots && bottomDots.length > 0) {
         bottomDots.forEach((dot, i) => {
           if (i === currentImageIndex) {
-            dot.className = 'h-1.5 rounded-full transition-all duration-300 w-5 bg-[#7A152E]';
+            dot.className = 'h-1.5 rounded-full transition-all duration-300 w-5 bg-[#145C59]';
           } else {
             dot.className = 'h-1.5 rounded-full transition-all duration-300 w-1.5 bg-black/25';
           }
@@ -1034,7 +1034,7 @@
         const btn = document.createElement('button');
         btn.type = 'button';
         btn.setAttribute('aria-label', `View angle ${idx + 1}`);
-        btn.className = `relative w-16 h-16 sm:w-20 sm:h-20 rounded-xl overflow-hidden bg-white border transition-all shrink-0 cursor-pointer ${idx === 0 ? 'border-[#7A152E] ring-2 ring-[#7A152E]/20 shadow-xs' : 'border-stone-200 opacity-75 hover:opacity-100 hover:border-stone-400'}`;
+        btn.className = `relative w-16 h-16 sm:w-20 sm:h-20 rounded-xl overflow-hidden bg-white border transition-all shrink-0 cursor-pointer ${idx === 0 ? 'border-[#145C59] ring-2 ring-[#145C59]/20 shadow-xs' : 'border-stone-200 opacity-75 hover:opacity-100 hover:border-stone-400'}`;
         btn.innerHTML = `<img src="${imgSrc}" alt="${product.name} angle ${idx + 1}" onerror="if(!this.dataset.fallbackTried){this.dataset.fallbackTried='1';if(this.src.endsWith('.webp')){this.src=this.src.slice(0,-5)+'.png';}else if(this.src.endsWith('.png')){this.src=this.src.slice(0,-4)+'.jpg';}}" class="w-full h-full object-cover block" />`;
         btn.onclick = function () {
           setActiveImage(idx);
@@ -1133,7 +1133,7 @@
       metalsBox.innerHTML = `
         <div class="flex items-center justify-between text-xs">
           <span class="text-stone-600 font-medium">Selected Finish: <strong id="pdp-selected-metal-name" class="text-stone-900 font-semibold">${selectedMetal}</strong></span>
-          <span class="text-[11px] text-[#7A152E] font-medium">BIS 925 Hallmark</span>
+          <span class="text-[11px] text-[#145C59] font-medium">BIS 925 Hallmark</span>
         </div>
         <div id="pdp-metal-pills" class="flex flex-wrap gap-2"></div>
       `;
@@ -1144,7 +1144,7 @@
         const pillBtn = document.createElement('button');
         pillBtn.type = 'button';
         const isSel = m.toLowerCase().includes(selectedMetal.toLowerCase()) || selectedMetal.toLowerCase().includes(m.toLowerCase());
-        pillBtn.className = `px-3.5 py-1.5 rounded-xl text-xs font-semibold border transition-all cursor-pointer ${isSel ? 'bg-[#7A152E] text-white border-[#7A152E] shadow-xs' : 'bg-white text-stone-700 border-[#EAE4DC] hover:border-[#7A152E]/40'}`;
+        pillBtn.className = `px-3.5 py-1.5 rounded-xl text-xs font-semibold border transition-all cursor-pointer ${isSel ? 'bg-[#145C59] text-white border-[#145C59] shadow-xs' : 'bg-white text-stone-700 border-[#EAE4DC] hover:border-[#145C59]/40'}`;
         pillBtn.textContent = m;
         pillBtn.onclick = function () {
           selectedMetal = m;
@@ -1152,9 +1152,9 @@
           if (metalName) metalName.textContent = m;
           if (subtitleEl) subtitleEl.textContent = `Made with ${m}`;
           pillsContainer.querySelectorAll('button').forEach(b => {
-            b.className = 'px-3.5 py-1.5 rounded-xl text-xs font-semibold border transition-all cursor-pointer bg-white text-stone-700 border-[#EAE4DC] hover:border-[#7A152E]/40';
+            b.className = 'px-3.5 py-1.5 rounded-xl text-xs font-semibold border transition-all cursor-pointer bg-white text-stone-700 border-[#EAE4DC] hover:border-[#145C59]/40';
           });
-          pillBtn.className = 'px-3.5 py-1.5 rounded-xl text-xs font-semibold border transition-all cursor-pointer bg-[#7A152E] text-white border-[#7A152E] shadow-xs';
+          pillBtn.className = 'px-3.5 py-1.5 rounded-xl text-xs font-semibold border transition-all cursor-pointer bg-[#145C59] text-white border-[#145C59] shadow-xs';
           window.showToast('Finish Selected', `Atelier finish updated to ${m}`);
         };
         pillsContainer.appendChild(pillBtn);
@@ -1183,11 +1183,11 @@
       wishlistButtons.forEach(btn => {
         const svg = btn.querySelector('svg');
         if (isWish) {
-          btn.className = 'p-2.5 rounded-full bg-white text-[#7A152E] border border-[#7A152E]/40 shadow-xs cursor-pointer';
-          if (svg) svg.classList.add('fill-[#7A152E]', 'text-[#7A152E]');
+          btn.className = 'p-2.5 rounded-full bg-white text-[#145C59] border border-[#145C59]/40 shadow-xs cursor-pointer';
+          if (svg) svg.classList.add('fill-[#145C59]', 'text-[#145C59]');
         } else {
-          btn.className = 'p-2.5 rounded-full bg-white/90 text-stone-700 hover:text-[#7A152E] border border-stone-200 shadow-xs cursor-pointer';
-          if (svg) svg.classList.remove('fill-[#7A152E]', 'text-[#7A152E]');
+          btn.className = 'p-2.5 rounded-full bg-white/90 text-stone-700 hover:text-[#145C59] border border-stone-200 shadow-xs cursor-pointer';
+          if (svg) svg.classList.remove('fill-[#145C59]', 'text-[#145C59]');
         }
       });
     }
@@ -1228,7 +1228,7 @@
             engraveInput.id = 'pdp-engrave-text-box';
             engraveInput.className = 'mt-2 pt-2 border-t border-stone-100 flex items-center gap-2 animate-fade-in';
             engraveInput.innerHTML = `
-              <input type="text" maxlength="8" placeholder="Enter initials (max 8 chars)" class="flex-1 px-3 py-1.5 border border-stone-200 rounded-lg text-xs uppercase font-mono tracking-wider focus:outline-none focus:border-[#7A152E]" />
+              <input type="text" maxlength="8" placeholder="Enter initials (max 8 chars)" class="flex-1 px-3 py-1.5 border border-stone-200 rounded-lg text-xs uppercase font-mono tracking-wider focus:outline-none focus:border-[#145C59]" />
               <span class="text-[10px] text-stone-400 font-mono">Complimentary</span>
             `;
             engraveCheckbox.closest('.border-y').appendChild(engraveInput);
@@ -1292,7 +1292,7 @@
         <div class="space-y-4 animate-fade-in">
           <div class="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1 mb-2">
             <h3 class="font-serif text-2xl text-stone-900 font-normal">Certified Craftsmanship Specifications</h3>
-            <span class="text-[11px] text-[#7A152E] font-semibold uppercase tracking-wider">BIS 925 Hallmark Verified</span>
+            <span class="text-[11px] text-[#145C59] font-semibold uppercase tracking-wider">BIS 925 Hallmark Verified</span>
           </div>
           <p class="text-xs text-stone-500 font-light mb-4">Every Solystra creation is individually hallmarked and micro-set in pure 925 sterling silver.</p>
           <div id="pdp-specs-grid" class="grid grid-cols-1 md:grid-cols-2 gap-3.5 sm:gap-4 text-xs">
@@ -1331,7 +1331,7 @@
         <div class="space-y-5 animate-fade-in text-xs text-stone-700">
           <div class="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1 mb-2">
             <h3 class="font-serif text-2xl text-stone-900 font-normal">Express Insured Courier & Seamless Returns</h3>
-            <span class="text-[11px] text-[#7A152E] font-semibold uppercase tracking-wider">BlueDart Express Air</span>
+            <span class="text-[11px] text-[#145C59] font-semibold uppercase tracking-wider">BlueDart Express Air</span>
           </div>
           <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
             <div class="p-4 rounded-xl bg-[#FAF8F5] border border-[#EAE4DC] space-y-2">
@@ -1353,7 +1353,7 @@
         <div class="space-y-5 animate-fade-in text-xs text-stone-700">
           <div class="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1 mb-2">
             <h3 class="font-serif text-2xl text-stone-900 font-normal">Preserving Your Atelier Radiance</h3>
-            <span class="text-[11px] text-[#7A152E] font-semibold uppercase tracking-wider">Lifelong Silver Preservation</span>
+            <span class="text-[11px] text-[#145C59] font-semibold uppercase tracking-wider">Lifelong Silver Preservation</span>
           </div>
           <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div class="p-4 rounded-xl bg-[#FAF8F5] border border-[#EAE4DC] space-y-2">
@@ -1371,11 +1371,11 @@
         <div class="space-y-5 animate-fade-in text-xs text-stone-700">
           <div class="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1 mb-2">
             <h3 class="font-serif text-2xl text-stone-900 font-normal">The Royal Solystra Unboxing Experience</h3>
-            <span class="text-[11px] text-[#7A152E] font-semibold uppercase tracking-wider">Complimentary Keepsake Vault</span>
+            <span class="text-[11px] text-[#145C59] font-semibold uppercase tracking-wider">Complimentary Keepsake Vault</span>
           </div>
           <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
             <div class="p-4 rounded-xl bg-[#FAF8F5] border border-[#EAE4DC] space-y-2">
-              <h5 class="font-semibold text-stone-900 text-sm">Burgundy Suede Vault</h5>
+              <h5 class="font-semibold text-stone-900 text-sm">Emerald Suede Vault</h5>
               <p class="text-stone-600 leading-relaxed font-light">Custom fitted plush velvet interior with anti-tarnish micro-cushioning and embossed gold foil branding.</p>
             </div>
             <div class="p-4 rounded-xl bg-[#FAF8F5] border border-[#EAE4DC] space-y-2">
@@ -1393,7 +1393,7 @@
         <div class="space-y-5 animate-fade-in text-xs text-stone-700">
           <div class="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1 mb-2">
             <h3 class="font-serif text-2xl text-stone-900 font-normal">Authenticity & 6-Month Plating Warranty</h3>
-            <span class="text-[11px] text-[#7A152E] font-semibold uppercase tracking-wider">Hallmark Certified</span>
+            <span class="text-[11px] text-[#145C59] font-semibold uppercase tracking-wider">Hallmark Certified</span>
           </div>
           <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div class="p-4 rounded-xl bg-[#FAF8F5] border border-[#EAE4DC] space-y-2">
@@ -1412,7 +1412,7 @@
         tabBtn.onclick = function () {
           desktopTabs.forEach((b, i) => {
             if (i === tabIdx) {
-              b.className = 'py-4 px-2 lg:px-3 text-[11px] lg:text-xs uppercase tracking-wider transition-all text-center cursor-pointer border-r border-stone-200 last:border-r-0 border-b-2 border-b-[#7A152E] text-[#7A152E] bg-white font-bold shadow-2xs';
+              b.className = 'py-4 px-2 lg:px-3 text-[11px] lg:text-xs uppercase tracking-wider transition-all text-center cursor-pointer border-r border-stone-200 last:border-r-0 border-b-2 border-b-[#145C59] text-[#145C59] bg-white font-bold shadow-2xs';
             } else {
               b.className = 'py-4 px-2 lg:px-3 text-[11px] lg:text-xs uppercase tracking-wider transition-all text-center cursor-pointer border-r border-stone-200 last:border-r-0 text-stone-500 hover:text-stone-900 hover:bg-stone-100/60 font-medium';
             }
@@ -1469,7 +1469,7 @@
           revArticle.innerHTML = `
             <div class="flex items-start justify-between gap-2">
               <div class="flex items-center gap-3 min-w-0">
-                <div class="w-10 h-10 rounded-full bg-[#FAF0F2] text-[#7A152E] font-serif font-bold text-xs flex items-center justify-center shrink-0 border border-[#EAD5DA]">
+                <div class="w-10 h-10 rounded-full bg-[#F0F7F6] text-[#145C59] font-serif font-bold text-xs flex items-center justify-center shrink-0 border border-[#EAD5DA]">
                   ${rev.initials || 'VP'}
                 </div>
                 <div class="min-w-0">
@@ -1483,7 +1483,7 @@
                   <div class="text-[11px] text-stone-400 mt-0.5 flex items-center gap-2">
                     <span>${rev.city || 'Patron Location'}</span>
                     <span>•</span>
-                    <span class="text-[#7A152E] font-medium">${rev.date || 'Recent Order'}</span>
+                    <span class="text-[#145C59] font-medium">${rev.date || 'Recent Order'}</span>
                   </div>
                 </div>
               </div>
@@ -1529,7 +1529,7 @@
             if (answerP) {
               const full = card.dataset.fullAnswer || '';
               const snippet = full.length > 130 ? full.slice(0, 130).replace(/[,\s]+$/, '') + '...' : full;
-              answerP.innerHTML = `<span>${snippet}</span> <button class="inline font-semibold text-[#7A152E] hover:underline cursor-pointer select-none text-xs ml-1" type="button">Read more</button>`;
+              answerP.innerHTML = `<span>${snippet}</span> <button class="inline font-semibold text-[#145C59] hover:underline cursor-pointer select-none text-xs ml-1" type="button">Read more</button>`;
               const newBtn = answerP.querySelector('button');
               if (newBtn) newBtn.onclick = function(ev) { ev.stopPropagation(); toggleQna(); };
             }
@@ -1537,7 +1537,7 @@
             card.dataset.expanded = 'true';
             if (answerP) {
               const full = card.dataset.fullAnswer || '';
-              answerP.innerHTML = `<span>${full}</span> <button class="inline font-semibold text-[#7A152E] hover:underline cursor-pointer select-none text-xs ml-1" type="button">See less</button>`;
+              answerP.innerHTML = `<span>${full}</span> <button class="inline font-semibold text-[#145C59] hover:underline cursor-pointer select-none text-xs ml-1" type="button">See less</button>`;
               const newBtn = answerP.querySelector('button');
               if (newBtn) newBtn.onclick = function(ev) { ev.stopPropagation(); toggleQna(); };
             }
@@ -1581,9 +1581,9 @@
       categoryButtons.forEach(btn => {
         btn.onclick = function () {
           categoryButtons.forEach(b => {
-            b.className = 'px-3.5 py-1.5 rounded-full text-xs font-medium transition-all whitespace-nowrap cursor-pointer bg-[#FAF8F5] text-stone-700 border border-[#EAE4DC] hover:border-[#7A152E]/30';
+            b.className = 'px-3.5 py-1.5 rounded-full text-xs font-medium transition-all whitespace-nowrap cursor-pointer bg-[#FAF8F5] text-stone-700 border border-[#EAE4DC] hover:border-[#145C59]/30';
           });
-          this.className = 'px-3.5 py-1.5 rounded-full text-xs font-medium transition-all whitespace-nowrap cursor-pointer bg-[#7A152E] text-white shadow-xs';
+          this.className = 'px-3.5 py-1.5 rounded-full text-xs font-medium transition-all whitespace-nowrap cursor-pointer bg-[#145C59] text-white shadow-xs';
           const cat = this.textContent.toLowerCase().trim();
           qnaCards.forEach(card => {
             const text = (card.textContent || '').toLowerCase();
@@ -1688,7 +1688,7 @@
     }
 
     const priceSlider = document.getElementById('catalog-price-slider');
-    const priceDisplay = document.querySelector('input#catalog-price-slider')?.parentElement?.querySelector('.text-\\[\\#7A152E\\]');
+    const priceDisplay = document.querySelector('input#catalog-price-slider')?.parentElement?.querySelector('.text-\\[\\#145C59\\]');
     if (priceSlider) {
       priceSlider.value = maxPrice;
       if (priceDisplay) priceDisplay.textContent = `₹${maxPrice.toLocaleString('en-IN')}`;
@@ -1792,12 +1792,12 @@
           emptyState.id = 'catalog-empty-state';
           emptyState.className = 'col-span-full py-16 text-center space-y-4 bg-white rounded-2xl border border-[#EAE4DC] p-8 shadow-xs';
           emptyState.innerHTML = `
-            <div class="w-14 h-14 rounded-full bg-[#FAF0F2] text-[#7A152E] flex items-center justify-center mx-auto border border-[#EAD5DA]">
+            <div class="w-14 h-14 rounded-full bg-[#F0F7F6] text-[#145C59] flex items-center justify-center mx-auto border border-[#EAD5DA]">
               <svg class="w-6 h-6 stroke-[1.8]" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="24"><circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.3-4.3"></path></svg>
             </div>
             <h4 class="font-serif text-xl text-stone-900 font-normal">No creations match your filter criteria</h4>
             <p class="text-xs text-stone-500 max-w-md mx-auto leading-relaxed">Try adjusting your budget, selecting all precious finishes, or resetting your filter preferences to explore the complete Solystra atelier collection.</p>
-            <button onclick="window.resetCatalogFilters()" class="px-5 py-2.5 bg-[#7A152E] hover:bg-[#590D1E] text-white text-xs font-semibold uppercase tracking-wider rounded-xl shadow-xs transition-colors cursor-pointer">Reset All Filters</button>
+            <button onclick="window.resetCatalogFilters()" class="px-5 py-2.5 bg-[#145C59] hover:bg-[#0D3F3D] text-white text-xs font-semibold uppercase tracking-wider rounded-xl shadow-xs transition-colors cursor-pointer">Reset All Filters</button>
           `;
           grid.appendChild(emptyState);
         }
@@ -1877,7 +1877,7 @@
         else if (text.includes(activeCategory)) isMatch = true;
 
         if (isMatch) {
-          btn.className = 'px-3.5 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap transition-all cursor-pointer active:scale-95 bg-[#7A152E] text-white shadow-xs';
+          btn.className = 'px-3.5 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap transition-all cursor-pointer active:scale-95 bg-[#145C59] text-white shadow-xs';
         } else {
           btn.className = 'px-3.5 py-1.5 rounded-full text-xs font-medium whitespace-nowrap transition-all cursor-pointer active:scale-95 bg-stone-100 hover:bg-stone-200/80 text-stone-700';
         }
@@ -1897,7 +1897,7 @@
         else if (activeCategory === 'anklets' && text.includes('anklet')) isMatch = true;
 
         if (isMatch) {
-          btn.className = 'w-full flex items-center justify-between px-2.5 py-1.5 rounded-lg text-xs transition-colors text-left cursor-pointer bg-[#7A152E]/10 text-[#7A152E] font-semibold';
+          btn.className = 'w-full flex items-center justify-between px-2.5 py-1.5 rounded-lg text-xs transition-colors text-left cursor-pointer bg-[#145C59]/10 text-[#145C59] font-semibold';
         } else {
           btn.className = 'w-full flex items-center justify-between px-2.5 py-1.5 rounded-lg text-xs transition-colors text-left cursor-pointer text-stone-600 hover:bg-stone-50';
         }
@@ -1960,7 +1960,7 @@
         else if (activeMetal === 'rose' && t.includes('rose')) isMatch = true;
 
         if (isMatch) {
-          btn.className = 'w-full flex items-center justify-between px-2.5 py-1.5 rounded-lg text-xs transition-colors text-left cursor-pointer bg-[#7A152E]/10 text-[#7A152E] font-semibold';
+          btn.className = 'w-full flex items-center justify-between px-2.5 py-1.5 rounded-lg text-xs transition-colors text-left cursor-pointer bg-[#145C59]/10 text-[#145C59] font-semibold';
         } else {
           btn.className = 'w-full flex items-center justify-between px-2.5 py-1.5 rounded-lg text-xs transition-colors text-left cursor-pointer text-stone-600 hover:bg-stone-50';
         }
@@ -2000,9 +2000,9 @@
         else if (activePriceRange === 'above-30000' && t.includes('above')) isMatch = true;
 
         if (isMatch) {
-          btn.className = 'px-3 py-1.5 rounded-xl text-xs transition-all cursor-pointer font-semibold bg-[#7A152E] text-white shadow-2xs';
+          btn.className = 'px-3 py-1.5 rounded-xl text-xs transition-all cursor-pointer font-semibold bg-[#145C59] text-white shadow-2xs';
         } else {
-          btn.className = 'px-3 py-1.5 rounded-xl text-xs transition-all cursor-pointer font-medium bg-white hover:bg-[#FAF8F5] border border-[#EAE4DC] text-stone-700 hover:border-[#7A152E]/30';
+          btn.className = 'px-3 py-1.5 rounded-xl text-xs transition-all cursor-pointer font-medium bg-white hover:bg-[#FAF8F5] border border-[#EAE4DC] text-stone-700 hover:border-[#145C59]/30';
         }
       });
     }
@@ -2035,11 +2035,11 @@
         sortMenu = document.createElement('div');
         sortMenu.className = 'catalog-sort-menu hidden absolute right-0 mt-2 w-48 bg-white border border-[#EAE4DC] rounded-xl shadow-xl z-40 py-1 font-sans text-xs';
         sortMenu.innerHTML = `
-          <button data-sort="featured" class="w-full text-left px-3.5 py-2 hover:bg-[#FAF0F2] hover:text-[#7A152E] transition-colors font-medium text-stone-800">Featured Curated</button>
-          <button data-sort="price-low" class="w-full text-left px-3.5 py-2 hover:bg-[#FAF0F2] hover:text-[#7A152E] transition-colors font-medium text-stone-800">Price: Low to High</button>
-          <button data-sort="price-high" class="w-full text-left px-3.5 py-2 hover:bg-[#FAF0F2] hover:text-[#7A152E] transition-colors font-medium text-stone-800">Price: High to Low</button>
-          <button data-sort="rating" class="w-full text-left px-3.5 py-2 hover:bg-[#FAF0F2] hover:text-[#7A152E] transition-colors font-medium text-stone-800">Customer Rating ★</button>
-          <button data-sort="newest" class="w-full text-left px-3.5 py-2 hover:bg-[#FAF0F2] hover:text-[#7A152E] transition-colors font-medium text-stone-800">Newest Arrivals</button>
+          <button data-sort="featured" class="w-full text-left px-3.5 py-2 hover:bg-[#F0F7F6] hover:text-[#145C59] transition-colors font-medium text-stone-800">Featured Curated</button>
+          <button data-sort="price-low" class="w-full text-left px-3.5 py-2 hover:bg-[#F0F7F6] hover:text-[#145C59] transition-colors font-medium text-stone-800">Price: Low to High</button>
+          <button data-sort="price-high" class="w-full text-left px-3.5 py-2 hover:bg-[#F0F7F6] hover:text-[#145C59] transition-colors font-medium text-stone-800">Price: High to Low</button>
+          <button data-sort="rating" class="w-full text-left px-3.5 py-2 hover:bg-[#F0F7F6] hover:text-[#145C59] transition-colors font-medium text-stone-800">Customer Rating ★</button>
+          <button data-sort="newest" class="w-full text-left px-3.5 py-2 hover:bg-[#F0F7F6] hover:text-[#145C59] transition-colors font-medium text-stone-800">Newest Arrivals</button>
         `;
         container.appendChild(sortMenu);
 
@@ -2149,7 +2149,7 @@
         <div class="py-3 flex items-center gap-3.5">
           <div class="relative w-14 h-14 rounded-xl overflow-hidden border border-stone-200 shrink-0 bg-stone-50">
             <img src="${item.image}" alt="${item.name}" class="w-full h-full object-cover">
-            <span class="absolute top-0 right-0 w-4 h-4 rounded-bl-lg bg-[#7A152E] text-white text-[9px] flex items-center justify-center font-mono">${item.quantity}</span>
+            <span class="absolute top-0 right-0 w-4 h-4 rounded-bl-lg bg-[#145C59] text-white text-[9px] flex items-center justify-center font-mono">${item.quantity}</span>
           </div>
           <div class="flex-1 min-w-0 text-xs">
             <h4 class="font-serif font-medium text-stone-900 truncate">${item.name}</h4>
@@ -2270,21 +2270,21 @@
       const b2 = document.getElementById('breadcrumb-step-2');
       if (b1) b1.className = 'flex items-center gap-1.5 text-emerald-700 font-bold';
       if (b2) {
-        b2.className = 'flex items-center gap-1.5 text-[#7A152E] font-bold';
+        b2.className = 'flex items-center gap-1.5 text-[#145C59] font-bold';
         const circle = b2.querySelector('span');
-        if (circle) circle.className = 'w-5 h-5 rounded-full bg-[#7A152E] text-white text-[10px] flex items-center justify-center font-mono';
+        if (circle) circle.className = 'w-5 h-5 rounded-full bg-[#145C59] text-white text-[10px] flex items-center justify-center font-mono';
       }
 
       // Unlock Step 2 Payment Gateway
       const step2Card = document.getElementById('checkout-step-2-card');
       if (step2Card) {
         step2Card.classList.remove('opacity-70', 'pointer-events-none');
-        step2Card.classList.add('ring-2', 'ring-[#7A152E]/10');
+        step2Card.classList.add('ring-2', 'ring-[#145C59]/10');
       }
 
       const s2Badge = document.getElementById('step-2-badge');
       if (s2Badge) {
-        s2Badge.className = 'w-8 h-8 rounded-full bg-[#7A152E] text-white text-xs font-bold flex items-center justify-center font-mono';
+        s2Badge.className = 'w-8 h-8 rounded-full bg-[#145C59] text-white text-xs font-bold flex items-center justify-center font-mono';
       }
 
       currentStep = 2;
@@ -2303,14 +2303,14 @@
 
       const s1Badge = document.getElementById('step-1-badge');
       if (s1Badge) {
-        s1Badge.className = 'w-8 h-8 rounded-full bg-[#7A152E] text-white text-xs font-bold flex items-center justify-center font-mono';
+        s1Badge.className = 'w-8 h-8 rounded-full bg-[#145C59] text-white text-xs font-bold flex items-center justify-center font-mono';
         s1Badge.textContent = '1';
       }
 
       const step2Card = document.getElementById('checkout-step-2-card');
       if (step2Card) {
         step2Card.classList.add('opacity-70', 'pointer-events-none');
-        step2Card.classList.remove('ring-2', 'ring-[#7A152E]/10');
+        step2Card.classList.remove('ring-2', 'ring-[#145C59]/10');
       }
 
       const s2Badge = document.getElementById('step-2-badge');
@@ -2320,7 +2320,7 @@
 
       const b1 = document.getElementById('breadcrumb-step-1');
       const b2 = document.getElementById('breadcrumb-step-2');
-      if (b1) b1.className = 'flex items-center gap-1.5 text-[#7A152E] font-bold';
+      if (b1) b1.className = 'flex items-center gap-1.5 text-[#145C59] font-bold';
       if (b2) {
         b2.className = 'flex items-center gap-1.5 text-stone-400';
         const circle = b2.querySelector('span');
@@ -2340,18 +2340,18 @@
         const panel = document.getElementById('payment-panel-' + m);
         if (m === modeId) {
           if (btn) {
-            btn.className = 'p-3 rounded-2xl border text-left transition-all cursor-pointer flex flex-col justify-between border-[#7A152E] bg-[#FAF8F5] ring-2 ring-[#7A152E]/15 shadow-sm';
+            btn.className = 'p-3 rounded-2xl border text-left transition-all cursor-pointer flex flex-col justify-between border-[#145C59] bg-[#FAF8F5] ring-2 ring-[#145C59]/15 shadow-sm';
             const icon = btn.querySelector('svg');
-            if (icon) icon.className = icon.className.baseVal ? icon.className.baseVal.replace(/text-stone-400/g, 'text-[#7A152E]') : 'w-5 h-5 text-[#7A152E]';
+            if (icon) icon.className = icon.className.baseVal ? icon.className.baseVal.replace(/text-stone-400/g, 'text-[#145C59]') : 'w-5 h-5 text-[#145C59]';
             const label = btn.querySelector('.font-bold');
-            if (label) label.className = 'font-bold text-xs text-[#7A152E]';
+            if (label) label.className = 'font-bold text-xs text-[#145C59]';
           }
           if (panel) panel.classList.remove('hidden');
         } else {
           if (btn) {
             btn.className = 'p-3 rounded-2xl border text-left transition-all cursor-pointer flex flex-col justify-between border-stone-200 bg-white hover:border-stone-300';
             const icon = btn.querySelector('svg');
-            if (icon) icon.className = icon.className.baseVal ? icon.className.baseVal.replace(/text-\[#7A152E\]/g, 'text-stone-400') : 'w-5 h-5 text-stone-400';
+            if (icon) icon.className = icon.className.baseVal ? icon.className.baseVal.replace(/text-\[#145C59\]/g, 'text-stone-400') : 'w-5 h-5 text-stone-400';
             const label = btn.querySelector('.font-bold');
             if (label) label.className = 'font-bold text-xs text-stone-900';
           }
@@ -2365,7 +2365,7 @@
       document.querySelectorAll('.upi-app-btn').forEach(b => {
         b.className = 'upi-app-btn py-2.5 px-3 rounded-xl border text-xs font-semibold flex items-center justify-center gap-1.5 transition-all cursor-pointer bg-white/60 border-stone-200 text-stone-700 hover:bg-white';
       });
-      btn.className = 'upi-app-btn py-2.5 px-3 rounded-xl border text-xs font-semibold flex items-center justify-center gap-1.5 transition-all cursor-pointer bg-white border-[#7A152E] text-[#7A152E] shadow-sm ring-1 ring-[#7A152E]';
+      btn.className = 'upi-app-btn py-2.5 px-3 rounded-xl border text-xs font-semibold flex items-center justify-center gap-1.5 transition-all cursor-pointer bg-white border-[#145C59] text-[#145C59] shadow-sm ring-1 ring-[#145C59]';
     };
 
     // UPI ID verify
@@ -2450,7 +2450,7 @@
       document.querySelectorAll('.bank-btn').forEach(b => {
         b.className = 'bank-btn p-3 rounded-xl border text-xs font-semibold text-center transition-all cursor-pointer border-stone-200 bg-white/60 text-stone-700 hover:bg-white';
       });
-      btn.className = 'bank-btn p-3 rounded-xl border text-xs font-semibold text-center transition-all cursor-pointer border-[#7A152E] bg-white text-[#7A152E] shadow-sm ring-1 ring-[#7A152E]';
+      btn.className = 'bank-btn p-3 rounded-xl border text-xs font-semibold text-center transition-all cursor-pointer border-[#145C59] bg-white text-[#145C59] shadow-sm ring-1 ring-[#145C59]';
       window.showToast('Bank Selected', name + ' authorized for net banking checkout.');
     };
 
@@ -2461,7 +2461,7 @@
 
       wrapper.innerHTML = `
         <div class="flex gap-2 items-center">
-          <input id="input-cod-otp" type="text" maxlength="4" placeholder="Enter OTP (Use: 9250)" class="w-48 px-3.5 py-2 rounded-xl border border-stone-200 bg-white font-mono text-center tracking-widest text-sm focus:border-[#7A152E] focus:outline-none"/>
+          <input id="input-cod-otp" type="text" maxlength="4" placeholder="Enter OTP (Use: 9250)" class="w-48 px-3.5 py-2 rounded-xl border border-stone-200 bg-white font-mono text-center tracking-widest text-sm focus:border-[#145C59] focus:outline-none"/>
           <button type="button" onclick="window.verifyCodOtp()" class="px-4 py-2 bg-emerald-700 hover:bg-emerald-800 text-white rounded-xl font-semibold cursor-pointer">
             Verify OTP
           </button>
@@ -2597,9 +2597,9 @@
         if (b1) b1.className = 'flex items-center gap-1.5 text-emerald-700 font-bold';
         if (b2) b2.className = 'flex items-center gap-1.5 text-emerald-700 font-bold';
         if (b3) {
-          b3.className = 'flex items-center gap-1.5 text-[#7A152E] font-bold';
+          b3.className = 'flex items-center gap-1.5 text-[#145C59] font-bold';
           const circle = b3.querySelector('span');
-          if (circle) circle.className = 'w-5 h-5 rounded-full bg-[#7A152E] text-white text-[10px] flex items-center justify-center font-mono';
+          if (circle) circle.className = 'w-5 h-5 rounded-full bg-[#145C59] text-white text-[10px] flex items-center justify-center font-mono';
         }
 
         window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -2678,7 +2678,7 @@
     let hasMoved = false;
 
     // Center classes
-    const centerClasses = ['scale-100', 'sm:scale-105', 'opacity-100', 'z-20', 'shadow-[0_16px_40px_rgba(122,21,46,0.32)]', 'ring-1', 'ring-[#D4AF37]/40'];
+    const centerClasses = ['scale-100', 'sm:scale-105', 'opacity-100', 'z-20', 'shadow-[0_16px_40px_rgba(20, 92, 89,0.32)]', 'ring-1', 'ring-[#D4AF37]/40'];
     const sideClasses = ['scale-[0.76]', 'sm:scale-[0.80]', 'opacity-55', 'hover:opacity-75', 'z-0', 'shadow-sm', 'filter', 'contrast-95'];
 
     function applyCardClasses(targetIdx) {
@@ -3072,7 +3072,7 @@
       const dotButtons = document.querySelectorAll('#curated-combo-dots button');
       dotButtons.forEach((btn, dIdx) => {
         if (dIdx === idx) {
-          btn.className = 'h-1.5 rounded-full transition-all duration-300 cursor-pointer w-5 bg-[#7A152E]';
+          btn.className = 'h-1.5 rounded-full transition-all duration-300 cursor-pointer w-5 bg-[#145C59]';
         } else {
           btn.className = 'h-1.5 rounded-full transition-all duration-300 cursor-pointer w-1.5 bg-stone-300 hover:bg-stone-400';
         }
@@ -3095,12 +3095,12 @@
                style="--dot-x-mob: ${item.hotspot.x}%; --dot-y-mob: ${item.hotspot.y}%; --dot-x-pc: ${pcX}%; --dot-y-pc: ${pcY}%;">
             <div class="relative group/hotspot cursor-pointer">
               <!-- Subtle micro pulse -->
-              <span class="absolute -inset-0.5 rounded-full bg-[#7A152E]/35 animate-ping pointer-events-none"></span>
+              <span class="absolute -inset-0.5 rounded-full bg-[#145C59]/35 animate-ping pointer-events-none"></span>
 
               <!-- Small Luxury Pinpoint Button -->
               <button type="button"
                       data-pin-btn="${item.id}"
-                      class="w-3 h-3 sm:w-3.5 sm:h-3.5 rounded-full flex items-center justify-center transition-all duration-300 border border-[#D4AF37] shadow-sm cursor-pointer bg-[#7A152E] hover:scale-125"
+                      class="w-3 h-3 sm:w-3.5 sm:h-3.5 rounded-full flex items-center justify-center transition-all duration-300 border border-[#D4AF37] shadow-sm cursor-pointer bg-[#145C59] hover:scale-125"
                       aria-label="View ${item.name}">
                 <span class="w-1 h-1 rounded-full bg-white shadow-xs pointer-events-none"></span>
               </button>
@@ -3133,19 +3133,19 @@
       const itemsHtml = combo.items.map(item => `
         <div data-combo-item="${item.id}"
              data-product-id="${item.productId}"
-             class="flex items-center gap-3.5 p-3 rounded-xl transition-all cursor-pointer group border bg-[#FAF8F5]/80 border-[#EAE4DC] hover:border-[#7A152E]/60 hover:bg-white hover:shadow-2xs"
+             class="flex items-center gap-3.5 p-3 rounded-xl transition-all cursor-pointer group border bg-[#FAF8F5]/80 border-[#EAE4DC] hover:border-[#145C59]/60 hover:bg-white hover:shadow-2xs"
              title="Click to view product details">
           <img src="${item.image}" alt="${item.name}" onerror="if(!this.dataset.err){this.dataset.err=1; this.src=this.src.endsWith('.webp')?this.src.replace('.webp','.png'):(this.src.endsWith('.png')?this.src.replace('.png','.jpg'):this.src.replace('.jpg','.webp'));}" class="w-14 h-14 rounded-xl object-cover border border-[#EAE4DC] bg-white shrink-0 group-hover:scale-105 transition-transform">
           <div class="flex-1 min-w-0">
             <div class="flex items-center gap-2">
-              <span class="text-[9.5px] text-[#7A152E] uppercase font-bold tracking-wider block">${item.type}</span>
+              <span class="text-[9.5px] text-[#145C59] uppercase font-bold tracking-wider block">${item.type}</span>
               <span class="text-[9px] text-[#C5A059] opacity-0 group-hover:opacity-100 transition-opacity font-semibold">View Piece ↗</span>
             </div>
-            <h4 class="font-serif text-sm font-normal text-stone-900 truncate group-hover:text-[#7A152E] transition-colors mt-0.5">${item.name}</h4>
+            <h4 class="font-serif text-sm font-normal text-stone-900 truncate group-hover:text-[#145C59] transition-colors mt-0.5">${item.name}</h4>
             <div class="text-[11px] text-stone-500 truncate mt-0.5">${item.metal}</div>
           </div>
           <div class="text-right shrink-0">
-            <div class="font-bold text-sm text-[#7A152E]">₹${item.price.toLocaleString('en-IN')}</div>
+            <div class="font-bold text-sm text-[#145C59]">₹${item.price.toLocaleString('en-IN')}</div>
             <div class="text-[11px] text-stone-400 line-through">₹${item.mrp.toLocaleString('en-IN')}</div>
           </div>
         </div>
@@ -3175,10 +3175,10 @@
           <div>
             <div class="flex items-start justify-between pb-3 border-b border-[#EAE4DC] gap-2">
               <div>
-                <span class="text-[9.5px] text-[#7A152E] uppercase tracking-widest font-bold block">${combo.tag}</span>
+                <span class="text-[9.5px] text-[#145C59] uppercase tracking-widest font-bold block">${combo.tag}</span>
                 <h3 class="text-sm sm:text-base font-serif font-normal text-stone-900 leading-tight mt-0.5">${combo.name}</h3>
               </div>
-              <span class="text-[10.5px] text-[#7A152E] font-bold bg-[#7A152E]/8 px-2.5 py-1 rounded-full border border-[#7A152E]/20 uppercase tracking-wider shrink-0">
+              <span class="text-[10.5px] text-[#145C59] font-bold bg-[#145C59]/8 px-2.5 py-1 rounded-full border border-[#145C59]/20 uppercase tracking-wider shrink-0">
                 Save ₹${combo.savings.toLocaleString('en-IN')}
               </span>
             </div>
@@ -3194,13 +3194,13 @@
             <div>
               <div class="text-[10px] text-stone-500 uppercase tracking-wider font-semibold">Complete Set Price</div>
               <div class="flex items-baseline gap-2 mt-0.5">
-                <span class="font-serif text-2xl sm:text-3xl font-bold text-[#7A152E]">₹${combo.bundlePrice.toLocaleString('en-IN')}</span>
+                <span class="font-serif text-2xl sm:text-3xl font-bold text-[#145C59]">₹${combo.bundlePrice.toLocaleString('en-IN')}</span>
                 <span class="text-xs text-stone-400 line-through font-sans">₹${combo.originalPrice.toLocaleString('en-IN')}</span>
-                <span class="text-[10px] font-bold text-[#7A152E] uppercase bg-[#7A152E]/10 px-2 py-0.5 rounded-full border border-[#7A152E]/20">Save ₹${combo.savings.toLocaleString('en-IN')}</span>
+                <span class="text-[10px] font-bold text-[#145C59] uppercase bg-[#145C59]/10 px-2 py-0.5 rounded-full border border-[#145C59]/20">Save ₹${combo.savings.toLocaleString('en-IN')}</span>
               </div>
             </div>
 
-            <button type="button" id="btn-add-combo-to-bag" class="px-6 py-2.5 bg-[#7A152E] hover:bg-[#590D1E] text-white text-xs font-bold uppercase tracking-wider rounded-xl shadow-md hover:shadow-lg transition-all cursor-pointer flex items-center justify-center gap-2 active:scale-98 shrink-0 group">
+            <button type="button" id="btn-add-combo-to-bag" class="px-6 py-2.5 bg-[#145C59] hover:bg-[#0D3F3D] text-white text-xs font-bold uppercase tracking-wider rounded-xl shadow-md hover:shadow-lg transition-all cursor-pointer flex items-center justify-center gap-2 active:scale-98 shrink-0 group">
               <svg aria-hidden="true" class="w-4 h-4 shrink-0 -translate-y-px transition-transform group-hover:-translate-y-0.5" fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                 <defs><linearGradient id="solystraChampagneGoldCombo" x1="0%" x2="100%" y1="0%" y2="100%"><stop offset="0%" stop-color="#FFF6D8"></stop><stop offset="35%" stop-color="#F9E2A8"></stop><stop offset="70%" stop-color="#E5BE64"></stop><stop offset="100%" stop-color="#D4AF37"></stop></linearGradient></defs>
                 <path d="M6 2L3 6V20C3 21.1 3.9 22 5 22H19C20.1 22 21 21.1 21 20V6L18 2H6Z" stroke="url(#solystraChampagneGoldCombo)" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
@@ -3224,13 +3224,13 @@
           const btn = pin.querySelector('button');
           const popover = pin.querySelector('[data-popover]');
           if (pId === itemId) {
-            if (btn) btn.className = 'w-3 h-3 sm:w-3.5 sm:h-3.5 rounded-full flex items-center justify-center transition-all duration-300 border border-[#D4AF37] shadow-sm cursor-pointer scale-125 bg-[#7A152E] ring-2 ring-[#D4AF37]';
+            if (btn) btn.className = 'w-3 h-3 sm:w-3.5 sm:h-3.5 rounded-full flex items-center justify-center transition-all duration-300 border border-[#D4AF37] shadow-sm cursor-pointer scale-125 bg-[#145C59] ring-2 ring-[#D4AF37]';
             if (popover) {
               popover.classList.remove('opacity-0', 'scale-95', 'invisible');
               popover.classList.add('opacity-100', 'scale-100', 'visible');
             }
           } else {
-            if (btn) btn.className = 'w-3 h-3 sm:w-3.5 sm:h-3.5 rounded-full flex items-center justify-center transition-all duration-300 border border-[#D4AF37] shadow-sm cursor-pointer bg-[#7A152E] hover:scale-125';
+            if (btn) btn.className = 'w-3 h-3 sm:w-3.5 sm:h-3.5 rounded-full flex items-center justify-center transition-all duration-300 border border-[#D4AF37] shadow-sm cursor-pointer bg-[#145C59] hover:scale-125';
             if (popover) {
               popover.classList.remove('opacity-100', 'scale-100', 'visible');
               popover.classList.add('opacity-0', 'scale-95', 'invisible');
@@ -3241,9 +3241,9 @@
         allCards.forEach(card => {
           const cId = card.getAttribute('data-combo-item');
           if (cId === itemId) {
-            card.className = 'flex items-center gap-3.5 p-3 rounded-xl transition-all cursor-pointer group border bg-[#7A152E]/5 border-[#7A152E] shadow-sm ring-1 ring-[#7A152E]/20';
+            card.className = 'flex items-center gap-3.5 p-3 rounded-xl transition-all cursor-pointer group border bg-[#145C59]/5 border-[#145C59] shadow-sm ring-1 ring-[#145C59]/20';
           } else {
-            card.className = 'flex items-center gap-3.5 p-3 rounded-xl transition-all cursor-pointer group border bg-[#FAF8F5]/80 border-[#EAE4DC] hover:border-[#7A152E]/60 hover:bg-white hover:shadow-2xs';
+            card.className = 'flex items-center gap-3.5 p-3 rounded-xl transition-all cursor-pointer group border bg-[#FAF8F5]/80 border-[#EAE4DC] hover:border-[#145C59]/60 hover:bg-white hover:shadow-2xs';
           }
         });
       }
@@ -3423,23 +3423,23 @@
           if (title.includes('Collections')) {
             drawer.innerHTML = `
               <ul class="space-y-1.5">
-                <li><a class="text-[#7A152E] font-medium" href="products.html?category=necklaces">&bull; 925 Silver Necklaces</a></li>
-                <li><a class="hover:text-[#7A152E]" href="products.html?category=rings">&bull; Solitaire &amp; Stacking Rings</a></li>
-                <li><a class="hover:text-[#7A152E]" href="products.html?category=bracelets">&bull; Tennis Bracelets &amp; Cuffs</a></li>
-                <li><a class="hover:text-[#7A152E]" href="products.html?category=earrings">&bull; Earrings &amp; Huggies</a></li>
-                <li><a class="hover:text-[#7A152E]" href="products.html?category=anklets">&bull; Dainty Anklets</a></li>
-                <li><a class="hover:text-[#7A152E]" href="products.html?metal=gold">&bull; 18K Italian Gold Vermeil</a></li>
+                <li><a class="text-[#145C59] font-medium" href="products.html?category=necklaces">&bull; 925 Silver Necklaces</a></li>
+                <li><a class="hover:text-[#145C59]" href="products.html?category=rings">&bull; Solitaire &amp; Stacking Rings</a></li>
+                <li><a class="hover:text-[#145C59]" href="products.html?category=bracelets">&bull; Tennis Bracelets &amp; Cuffs</a></li>
+                <li><a class="hover:text-[#145C59]" href="products.html?category=earrings">&bull; Earrings &amp; Huggies</a></li>
+                <li><a class="hover:text-[#145C59]" href="products.html?category=anklets">&bull; Dainty Anklets</a></li>
+                <li><a class="hover:text-[#145C59]" href="products.html?metal=gold">&bull; 18K Italian Gold Vermeil</a></li>
               </ul>
             `;
           } else if (title.includes('Customer Care')) {
             drawer.innerHTML = `
               <ul class="space-y-1.5">
-                <li><a class="hover:text-[#7A152E]" href="terms.html#shipping" onclick="window.openTrackOrderModal(); return false;">&bull; Track Your Order</a></li>
-                <li><a class="hover:text-[#7A152E]" href="terms.html#shipping">&bull; Shipping &amp; Insured Express</a></li>
-                <li><a class="hover:text-[#7A152E]" href="terms.html#returns">&bull; 15-Day Easy Returns</a></li>
-                <li><a class="hover:text-[#7A152E]" href="terms.html#sizing" onclick="window.openSizeGuideModal(); return false;">&bull; Ring Sizing Guide</a></li>
-                <li><a class="hover:text-[#7A152E]" href="terms.html#care">&bull; Jewelry Care &amp; Spa Guide</a></li>
-                <li><a class="hover:text-[#7A152E]" href="privacy.html">&bull; Privacy &amp; Security Policy</a></li>
+                <li><a class="hover:text-[#145C59]" href="terms.html#shipping" onclick="window.openTrackOrderModal(); return false;">&bull; Track Your Order</a></li>
+                <li><a class="hover:text-[#145C59]" href="terms.html#shipping">&bull; Shipping &amp; Insured Express</a></li>
+                <li><a class="hover:text-[#145C59]" href="terms.html#returns">&bull; 15-Day Easy Returns</a></li>
+                <li><a class="hover:text-[#145C59]" href="terms.html#sizing" onclick="window.openSizeGuideModal(); return false;">&bull; Ring Sizing Guide</a></li>
+                <li><a class="hover:text-[#145C59]" href="terms.html#care">&bull; Jewelry Care &amp; Spa Guide</a></li>
+                <li><a class="hover:text-[#145C59]" href="privacy.html">&bull; Privacy &amp; Security Policy</a></li>
               </ul>
             `;
           } else {
@@ -3449,7 +3449,7 @@
                 <li>&bull; AAA+ Austrian 57-Facet Solitaires</li>
                 <li>&bull; 2.0-Micron Anti-Tarnish Rhodium</li>
                 <li>&bull; Free Insured Express Delivery</li>
-                <li><a class="text-[#7A152E] font-semibold underline mt-1 block" href="terms.html">&bull; Read Full Purity Terms</a></li>
+                <li><a class="text-[#145C59] font-semibold underline mt-1 block" href="terms.html">&bull; Read Full Purity Terms</a></li>
               </ul>
             `;
           }
@@ -3506,7 +3506,7 @@
               </table>
             </div>
           </div>
-          <button onclick="window.closeSizeGuideModal()" class="w-full py-2.5 bg-[#7A152E] text-white text-xs uppercase tracking-wider font-semibold rounded-xl hover:bg-[#590D1E] transition-colors cursor-pointer">
+          <button onclick="window.closeSizeGuideModal()" class="w-full py-2.5 bg-[#145C59] text-white text-xs uppercase tracking-wider font-semibold rounded-xl hover:bg-[#0D3F3D] transition-colors cursor-pointer">
             Close Guide
           </button>
         </div>
@@ -3532,7 +3532,7 @@
         <div class="bg-white rounded-2xl max-w-md w-full p-6 space-y-4 shadow-2xl border border-stone-200 animate-slide-up">
           <div class="flex justify-between items-center border-b border-stone-200 pb-3">
             <div class="flex items-center gap-2">
-              <svg class="lucide lucide-truck w-5 h-5 text-[#7A152E]" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="24"><path d="M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2"></path><path d="M15 18H9"></path><path d="M19 18h2a1 1 0 0 0 1-1v-3.65a1 1 0 0 0-.22-.624l-3.48-4.35A1 1 0 0 0 17.52 8H14v10h1"></path><circle cx="17" cy="18" r="2"></circle><circle cx="7" cy="18" r="2"></circle></svg>
+              <svg class="lucide lucide-truck w-5 h-5 text-[#145C59]" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="24"><path d="M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2"></path><path d="M15 18H9"></path><path d="M19 18h2a1 1 0 0 0 1-1v-3.65a1 1 0 0 0-.22-.624l-3.48-4.35A1 1 0 0 0 17.52 8H14v10h1"></path><circle cx="17" cy="18" r="2"></circle><circle cx="7" cy="18" r="2"></circle></svg>
               <h3 class="font-serif text-lg text-stone-900 font-bold">Track Insured Dispatch</h3>
             </div>
             <button onclick="window.closeTrackOrderModal()" class="p-1 text-stone-400 hover:text-stone-800 cursor-pointer">
@@ -3542,8 +3542,8 @@
           <div class="space-y-3 text-xs">
             <p class="text-stone-600">Enter your 10-digit Solystra Order ID or BlueDart Air Waybill (AWB) number:</p>
             <div class="flex gap-2">
-              <input id="track-order-input" type="text" placeholder="e.g. SOL-98241 or 382910482" class="flex-1 px-3 py-2 border border-stone-200 rounded-xl text-xs focus:outline-none focus:border-[#7A152E]" />
-              <button onclick="window.trackOrderSearch()" class="px-4 py-2 bg-[#7A152E] text-white font-semibold text-xs rounded-xl hover:bg-[#590D1E] cursor-pointer">Track</button>
+              <input id="track-order-input" type="text" placeholder="e.g. SOL-98241 or 382910482" class="flex-1 px-3 py-2 border border-stone-200 rounded-xl text-xs focus:outline-none focus:border-[#145C59]" />
+              <button onclick="window.trackOrderSearch()" class="px-4 py-2 bg-[#145C59] text-white font-semibold text-xs rounded-xl hover:bg-[#0D3F3D] cursor-pointer">Track</button>
             </div>
             <div id="track-order-result" class="p-3.5 bg-[#FAF8F5] rounded-xl border border-[#EAE4DC] hidden space-y-2">
               <div class="flex items-center justify-between">
@@ -3605,7 +3605,7 @@
       <div class="bg-white rounded-2xl max-w-lg w-full p-6 sm:p-7 space-y-5 shadow-2xl border border-stone-200 animate-slide-up max-h-[92vh] overflow-y-auto no-scrollbar">
         <div class="flex justify-between items-center border-b border-stone-200 pb-3.5">
           <div>
-            <span class="text-[10px] uppercase tracking-wider text-[#7A152E] font-bold block mb-0.5">Verified Patron Reflections</span>
+            <span class="text-[10px] uppercase tracking-wider text-[#145C59] font-bold block mb-0.5">Verified Patron Reflections</span>
             <h3 class="font-serif text-xl sm:text-2xl text-stone-900 font-normal">Share Patron Review</h3>
           </div>
           <button onclick="window.closeReviewModal()" class="w-8 h-8 rounded-full flex items-center justify-center text-stone-400 hover:text-stone-800 hover:bg-stone-100 transition-colors cursor-pointer">
@@ -3646,26 +3646,26 @@
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
             <div>
               <label class="block text-stone-700 font-medium mb-1">Your Full Name *</label>
-              <input id="rev-name-input" type="text" placeholder="e.g. Radhika Sharma" class="w-full px-3.5 py-2.5 bg-stone-50 border border-stone-200 rounded-xl focus:outline-none focus:border-[#7A152E] focus:bg-white text-xs transition-colors" />
+              <input id="rev-name-input" type="text" placeholder="e.g. Radhika Sharma" class="w-full px-3.5 py-2.5 bg-stone-50 border border-stone-200 rounded-xl focus:outline-none focus:border-[#145C59] focus:bg-white text-xs transition-colors" />
             </div>
             <div>
               <label class="block text-stone-700 font-medium mb-1">City / Location</label>
-              <input id="rev-city-input" type="text" placeholder="e.g. Mumbai, MH" class="w-full px-3.5 py-2.5 bg-stone-50 border border-stone-200 rounded-xl focus:outline-none focus:border-[#7A152E] focus:bg-white text-xs transition-colors" />
+              <input id="rev-city-input" type="text" placeholder="e.g. Mumbai, MH" class="w-full px-3.5 py-2.5 bg-stone-50 border border-stone-200 rounded-xl focus:outline-none focus:border-[#145C59] focus:bg-white text-xs transition-colors" />
             </div>
           </div>
 
           <div>
             <label class="block text-stone-700 font-medium mb-1">Review Headline *</label>
-            <input id="rev-title-input" type="text" placeholder="e.g. Immaculate Austrian stone sparkle and pure silver finish" class="w-full px-3.5 py-2.5 bg-stone-50 border border-stone-200 rounded-xl focus:outline-none focus:border-[#7A152E] focus:bg-white text-xs transition-colors" />
+            <input id="rev-title-input" type="text" placeholder="e.g. Immaculate Austrian stone sparkle and pure silver finish" class="w-full px-3.5 py-2.5 bg-stone-50 border border-stone-200 rounded-xl focus:outline-none focus:border-[#145C59] focus:bg-white text-xs transition-colors" />
           </div>
 
           <div>
             <label class="block text-stone-700 font-medium mb-1">Detailed Patron Reflections *</label>
-            <textarea id="rev-comment-input" rows="3" placeholder="Share your experience regarding the silver luster, chain weight, clasp comfort, or royal velvet unboxing..." class="w-full px-3.5 py-2.5 bg-stone-50 border border-stone-200 rounded-xl focus:outline-none focus:border-[#7A152E] focus:bg-white text-xs transition-colors"></textarea>
+            <textarea id="rev-comment-input" rows="3" placeholder="Share your experience regarding the silver luster, chain weight, clasp comfort, or royal velvet unboxing..." class="w-full px-3.5 py-2.5 bg-stone-50 border border-stone-200 rounded-xl focus:outline-none focus:border-[#145C59] focus:bg-white text-xs transition-colors"></textarea>
           </div>
 
           <label class="flex items-center gap-2 cursor-pointer text-stone-600 pt-1">
-            <input id="rev-verified-check" type="checkbox" checked class="w-4 h-4 accent-[#7A152E] rounded cursor-pointer" />
+            <input id="rev-verified-check" type="checkbox" checked class="w-4 h-4 accent-[#145C59] rounded cursor-pointer" />
             <span class="text-[11.5px]">Verified Solystra Patron Delivery (+100 Club Reward Points)</span>
           </label>
         </div>
@@ -3674,7 +3674,7 @@
           <button type="button" onclick="window.closeReviewModal()" class="w-1/3 py-3 border border-stone-300 text-stone-700 text-xs font-semibold rounded-xl hover:bg-stone-50 transition-colors cursor-pointer text-center">
             Cancel
           </button>
-          <button type="button" onclick="window.submitReview()" class="w-2/3 py-3 bg-[#7A152E] hover:bg-[#590D1E] text-white text-xs font-bold uppercase tracking-widest rounded-xl shadow-md transition-all cursor-pointer active:scale-98 text-center flex items-center justify-center gap-2">
+          <button type="button" onclick="window.submitReview()" class="w-2/3 py-3 bg-[#145C59] hover:bg-[#0D3F3D] text-white text-xs font-bold uppercase tracking-widest rounded-xl shadow-md transition-all cursor-pointer active:scale-98 text-center flex items-center justify-center gap-2">
             <span>Publish Patron Review</span>
             <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
           </button>
@@ -3770,7 +3770,7 @@
       revArticle.innerHTML = `
         <div class="flex items-start justify-between gap-2">
           <div class="flex items-center gap-3 min-w-0">
-            <div class="w-10 h-10 rounded-full bg-[#FAF0F2] text-[#7A152E] font-serif font-bold text-xs flex items-center justify-center shrink-0 border border-[#EAD5DA]">
+            <div class="w-10 h-10 rounded-full bg-[#F0F7F6] text-[#145C59] font-serif font-bold text-xs flex items-center justify-center shrink-0 border border-[#EAD5DA]">
               ${newRev.initials}
             </div>
             <div class="min-w-0">
@@ -3784,7 +3784,7 @@
               <div class="text-[11px] text-stone-400 mt-0.5 flex items-center gap-2">
                 <span>${newRev.city}</span>
                 <span>•</span>
-                <span class="text-[#7A152E] font-medium">${newRev.date}</span>
+                <span class="text-[#145C59] font-medium">${newRev.date}</span>
               </div>
             </div>
           </div>
@@ -3967,27 +3967,27 @@
             <div>
               <span class="font-bold text-stone-800 uppercase tracking-wider block mb-2">Category</span>
               <div class="grid grid-cols-2 gap-2" id="mobile-filter-categories">
-                <button type="button" onclick="window.applyMobileCategory('all')" class="p-2 rounded-xl border border-[#7A152E] bg-[#FAF0F2] text-[#7A152E] font-semibold text-center">All Creations</button>
-                <button type="button" onclick="window.applyMobileCategory('bracelets')" class="p-2 rounded-xl border border-stone-200 hover:border-[#7A152E] text-stone-800 font-medium text-center">Bracelets & Kadas</button>
-                <button type="button" onclick="window.applyMobileCategory('necklaces')" class="p-2 rounded-xl border border-stone-200 hover:border-[#7A152E] text-stone-800 font-medium text-center">Necklaces & Pendants</button>
-                <button type="button" onclick="window.applyMobileCategory('rings')" class="p-2 rounded-xl border border-stone-200 hover:border-[#7A152E] text-stone-800 font-medium text-center">Rings & Bands</button>
-                <button type="button" onclick="window.applyMobileCategory('earrings')" class="p-2 rounded-xl border border-stone-200 hover:border-[#7A152E] text-stone-800 font-medium text-center">Earrings & Studs</button>
-                <button type="button" onclick="window.applyMobileCategory('complete_sets')" class="p-2 rounded-xl border border-stone-200 hover:border-[#7A152E] text-stone-800 font-medium text-center">Gift Sets & Suites</button>
+                <button type="button" onclick="window.applyMobileCategory('all')" class="p-2 rounded-xl border border-[#145C59] bg-[#F0F7F6] text-[#145C59] font-semibold text-center">All Creations</button>
+                <button type="button" onclick="window.applyMobileCategory('bracelets')" class="p-2 rounded-xl border border-stone-200 hover:border-[#145C59] text-stone-800 font-medium text-center">Bracelets & Kadas</button>
+                <button type="button" onclick="window.applyMobileCategory('necklaces')" class="p-2 rounded-xl border border-stone-200 hover:border-[#145C59] text-stone-800 font-medium text-center">Necklaces & Pendants</button>
+                <button type="button" onclick="window.applyMobileCategory('rings')" class="p-2 rounded-xl border border-stone-200 hover:border-[#145C59] text-stone-800 font-medium text-center">Rings & Bands</button>
+                <button type="button" onclick="window.applyMobileCategory('earrings')" class="p-2 rounded-xl border border-stone-200 hover:border-[#145C59] text-stone-800 font-medium text-center">Earrings & Studs</button>
+                <button type="button" onclick="window.applyMobileCategory('complete_sets')" class="p-2 rounded-xl border border-stone-200 hover:border-[#145C59] text-stone-800 font-medium text-center">Gift Sets & Suites</button>
               </div>
             </div>
             <div>
               <span class="font-bold text-stone-800 uppercase tracking-wider block mb-2">Precious Finish</span>
               <div class="grid grid-cols-2 gap-2" id="mobile-filter-metals">
-                <button type="button" onclick="window.applyMobileMetal('all')" class="p-2 rounded-xl border border-[#7A152E] bg-[#FAF0F2] text-[#7A152E] font-semibold text-center">All Finishes</button>
-                <button type="button" onclick="window.applyMobileMetal('silver')" class="p-2 rounded-xl border border-stone-200 hover:border-[#7A152E] text-stone-800 font-medium text-center">Pure 925 Silver</button>
-                <button type="button" onclick="window.applyMobileMetal('gold')" class="p-2 rounded-xl border border-stone-200 hover:border-[#7A152E] text-stone-800 font-medium text-center">18K Gold Vermeil</button>
-                <button type="button" onclick="window.applyMobileMetal('rose')" class="p-2 rounded-xl border border-stone-200 hover:border-[#7A152E] text-stone-800 font-medium text-center">18K Rose Gold</button>
+                <button type="button" onclick="window.applyMobileMetal('all')" class="p-2 rounded-xl border border-[#145C59] bg-[#F0F7F6] text-[#145C59] font-semibold text-center">All Finishes</button>
+                <button type="button" onclick="window.applyMobileMetal('silver')" class="p-2 rounded-xl border border-stone-200 hover:border-[#145C59] text-stone-800 font-medium text-center">Pure 925 Silver</button>
+                <button type="button" onclick="window.applyMobileMetal('gold')" class="p-2 rounded-xl border border-stone-200 hover:border-[#145C59] text-stone-800 font-medium text-center">18K Gold Vermeil</button>
+                <button type="button" onclick="window.applyMobileMetal('rose')" class="p-2 rounded-xl border border-stone-200 hover:border-[#145C59] text-stone-800 font-medium text-center">18K Rose Gold</button>
               </div>
             </div>
           </div>
           <div class="pt-3 flex gap-2">
             <button type="button" onclick="window.resetCatalogFilters(); window.closeMobileFilterModal();" class="w-1/2 py-2.5 border border-stone-300 rounded-xl text-xs font-semibold text-stone-700">Reset Filters</button>
-            <button type="button" onclick="window.closeMobileFilterModal()" class="w-1/2 py-2.5 bg-[#7A152E] text-white rounded-xl text-xs font-bold uppercase tracking-wider">Apply Filters</button>
+            <button type="button" onclick="window.closeMobileFilterModal()" class="w-1/2 py-2.5 bg-[#145C59] text-white rounded-xl text-xs font-bold uppercase tracking-wider">Apply Filters</button>
           </div>
         </div>
       `;
@@ -4024,7 +4024,7 @@
         <div class="bg-white rounded-2xl max-w-lg w-full p-6 space-y-4 shadow-2xl border border-stone-200 animate-slide-up max-h-[90vh] overflow-y-auto no-scrollbar">
           <div class="flex justify-between items-center border-b border-stone-200 pb-3">
             <div>
-              <span class="text-[10px] uppercase tracking-wider text-[#7A152E] font-bold block mb-0.5">Atelier Fit Assurance</span>
+              <span class="text-[10px] uppercase tracking-wider text-[#145C59] font-bold block mb-0.5">Atelier Fit Assurance</span>
               <h3 class="font-serif text-xl text-stone-900 font-normal">Fine Jewelry Sizing Guide</h3>
             </div>
             <button onclick="document.getElementById('size-guide-modal-root').classList.add('hidden')" class="p-1 text-stone-400 hover:text-stone-800 cursor-pointer">
@@ -4040,7 +4040,7 @@
                 <div class="p-2 bg-stone-50 rounded-lg border border-stone-200 font-medium">Size 14 • 17.3 mm</div>
                 <div class="p-2 bg-stone-50 rounded-lg border border-stone-200 font-medium">Size 16 • 18.1 mm</div>
                 <div class="p-2 bg-stone-50 rounded-lg border border-stone-200 font-medium">Size 18 • 18.9 mm</div>
-                <div class="p-2 bg-[#FAF0F2] text-[#7A152E] rounded-lg border border-[#7A152E]/30 font-semibold">Adjustable Fit</div>
+                <div class="p-2 bg-[#F0F7F6] text-[#145C59] rounded-lg border border-[#145C59]/30 font-semibold">Adjustable Fit</div>
               </div>
             </div>
             <div class="p-3 bg-[#FAF8F5] rounded-xl border border-[#EAE4DC] space-y-1">
@@ -4048,7 +4048,7 @@
               <p class="text-stone-600 leading-relaxed font-light">Wrap a strip of paper around the base of your finger. Mark where the paper overlaps and measure the millimeters with a ruler. All Solystra rings include complimentary size exchanges within 15 days.</p>
             </div>
           </div>
-          <button onclick="document.getElementById('size-guide-modal-root').classList.add('hidden')" class="w-full py-2.5 bg-[#7A152E] text-white text-xs font-semibold uppercase tracking-wider rounded-xl cursor-pointer">Close Sizing Guide</button>
+          <button onclick="document.getElementById('size-guide-modal-root').classList.add('hidden')" class="w-full py-2.5 bg-[#145C59] text-white text-xs font-semibold uppercase tracking-wider rounded-xl cursor-pointer">Close Sizing Guide</button>
         </div>
       `;
       document.body.appendChild(m);
@@ -4074,11 +4074,11 @@
           <div class="space-y-3 text-xs">
             <div>
               <label class="block text-stone-700 font-medium mb-1">Your Email or Mobile</label>
-              <input id="q-contact-input" type="text" placeholder="care@solystrajewels.com or +91 98..." class="w-full px-3 py-2 border border-stone-200 rounded-xl focus:outline-none focus:border-[#7A152E]" />
+              <input id="q-contact-input" type="text" placeholder="care@solystrajewels.com or +91 98..." class="w-full px-3 py-2 border border-stone-200 rounded-xl focus:outline-none focus:border-[#145C59]" />
             </div>
             <div>
               <label class="block text-stone-700 font-medium mb-1">Inquiry Category</label>
-              <select class="w-full px-3 py-2 border border-stone-200 rounded-xl bg-white text-stone-800 focus:outline-none focus:border-[#7A152E]">
+              <select class="w-full px-3 py-2 border border-stone-200 rounded-xl bg-white text-stone-800 focus:outline-none focus:border-[#145C59]">
                 <option>Custom Ring/Wrist Sizing</option>
                 <option>Laser Engraving Consultation</option>
                 <option>BIS Hallmarking Verification</option>
@@ -4087,10 +4087,10 @@
             </div>
             <div>
               <label class="block text-stone-700 font-medium mb-1">Your Question</label>
-              <textarea id="q-msg-input" rows="3" placeholder="Ask about metal finish, stone settings, custom gifts..." class="w-full px-3 py-2 border border-stone-200 rounded-xl focus:outline-none focus:border-[#7A152E]"></textarea>
+              <textarea id="q-msg-input" rows="3" placeholder="Ask about metal finish, stone settings, custom gifts..." class="w-full px-3 py-2 border border-stone-200 rounded-xl focus:outline-none focus:border-[#145C59]"></textarea>
             </div>
           </div>
-          <button onclick="window.submitQuestion()" class="w-full py-2.5 bg-[#7A152E] text-white text-xs uppercase tracking-wider font-semibold rounded-xl hover:bg-[#590D1E] transition-colors cursor-pointer">
+          <button onclick="window.submitQuestion()" class="w-full py-2.5 bg-[#145C59] text-white text-xs uppercase tracking-wider font-semibold rounded-xl hover:bg-[#0D3F3D] transition-colors cursor-pointer">
             Send Inquiry to Atelier
           </button>
         </div>
@@ -4152,7 +4152,7 @@
     if (tabHeaders.length > 0) {
       tabHeaders.forEach((b, i) => {
         if (i === tabIdx) {
-          b.className = 'py-4 px-2 lg:px-3 text-[11px] lg:text-xs uppercase tracking-wider transition-all text-center cursor-pointer border-r border-stone-200 last:border-r-0 border-b-2 border-b-[#7A152E] text-[#7A152E] bg-white font-bold shadow-2xs';
+          b.className = 'py-4 px-2 lg:px-3 text-[11px] lg:text-xs uppercase tracking-wider transition-all text-center cursor-pointer border-r border-stone-200 last:border-r-0 border-b-2 border-b-[#145C59] text-[#145C59] bg-white font-bold shadow-2xs';
         } else {
           b.className = 'py-4 px-2 lg:px-3 text-[11px] lg:text-xs uppercase tracking-wider transition-all text-center cursor-pointer border-r border-stone-200 last:border-r-0 text-stone-500 hover:text-stone-900 hover:bg-stone-100/60 font-medium';
         }
@@ -4176,7 +4176,7 @@
       <div class="space-y-4 animate-fade-in font-sans">
         <div class="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1 mb-2">
           <h3 class="font-serif text-2xl text-stone-900 font-normal">Certified Craftsmanship Specifications</h3>
-          <span class="text-[11px] text-[#7A152E] font-semibold uppercase tracking-wider">BIS 925 Hallmark Verified</span>
+          <span class="text-[11px] text-[#145C59] font-semibold uppercase tracking-wider">BIS 925 Hallmark Verified</span>
         </div>
         <p class="text-xs text-stone-500 font-light mb-4">Every Solystra creation is individually hallmarked and micro-set in pure 925 sterling silver.</p>
         <div id="pdp-specs-grid" class="grid grid-cols-1 md:grid-cols-2 gap-3.5 sm:gap-4 text-xs">
@@ -4216,26 +4216,26 @@
       <div class="space-y-5 animate-fade-in font-sans text-xs text-stone-700">
         <div class="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1 mb-2">
           <h3 class="font-serif text-2xl text-stone-900 font-normal">Express Insured Courier & Seamless Returns</h3>
-          <span class="text-[11px] text-[#7A152E] font-semibold uppercase tracking-wider">BlueDart Express Air</span>
+          <span class="text-[11px] text-[#145C59] font-semibold uppercase tracking-wider">BlueDart Express Air</span>
         </div>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
           <div class="p-4 rounded-xl bg-[#FAF8F5] border border-[#EAE4DC] space-y-2">
             <div class="flex items-center gap-2 text-stone-900 font-semibold text-sm">
-              <svg class="w-4 h-4 text-[#7A152E]" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              <svg class="w-4 h-4 text-[#145C59]" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
               <span>24-48 Hr Dispatch</span>
             </div>
             <p class="text-stone-600 leading-relaxed font-light">Every creation undergoes a 7-point microscopic quality inspection and hallmarking verification before immediate dispatch.</p>
           </div>
           <div class="p-4 rounded-xl bg-[#FAF8F5] border border-[#EAE4DC] space-y-2">
             <div class="flex items-center gap-2 text-stone-900 font-semibold text-sm">
-              <svg class="w-4 h-4 text-[#7A152E]" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+              <svg class="w-4 h-4 text-[#145C59]" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
               <span>Transit Insurance</span>
             </div>
             <p class="text-stone-600 leading-relaxed font-light">100% door-to-door transit coverage. In the rare event of transit damage or delay, replacement or full refund is expedited.</p>
           </div>
           <div class="p-4 rounded-xl bg-[#FAF8F5] border border-[#EAE4DC] space-y-2">
             <div class="flex items-center gap-2 text-stone-900 font-semibold text-sm">
-              <svg class="w-4 h-4 text-[#7A152E]" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+              <svg class="w-4 h-4 text-[#145C59]" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
               <span>15-Day Easy Returns</span>
             </div>
             <p class="text-stone-600 leading-relaxed font-light">Complimentary doorstep pickup across 19,000+ PIN codes with full refund to original payment source within 48 hours.</p>
@@ -4248,7 +4248,7 @@
       <div class="space-y-5 animate-fade-in font-sans text-xs text-stone-700">
         <div class="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1 mb-2">
           <h3 class="font-serif text-2xl text-stone-900 font-normal">Preserving Your Atelier Radiance</h3>
-          <span class="text-[11px] text-[#7A152E] font-semibold uppercase tracking-wider">Lifelong Silver Preservation</span>
+          <span class="text-[11px] text-[#145C59] font-semibold uppercase tracking-wider">Lifelong Silver Preservation</span>
         </div>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div class="p-4 rounded-xl bg-[#FAF8F5] border border-[#EAE4DC] space-y-2">
@@ -4267,11 +4267,11 @@
       <div class="space-y-5 animate-fade-in font-sans text-xs text-stone-700">
         <div class="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1 mb-2">
           <h3 class="font-serif text-2xl text-stone-900 font-normal">The Royal Solystra Unboxing Experience</h3>
-          <span class="text-[11px] text-[#7A152E] font-semibold uppercase tracking-wider">Complimentary Keepsake Vault</span>
+          <span class="text-[11px] text-[#145C59] font-semibold uppercase tracking-wider">Complimentary Keepsake Vault</span>
         </div>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
           <div class="p-4 rounded-xl bg-[#FAF8F5] border border-[#EAE4DC] space-y-2">
-            <h5 class="font-semibold text-stone-900 text-sm">Burgundy Suede Vault</h5>
+            <h5 class="font-semibold text-stone-900 text-sm">Emerald Suede Vault</h5>
             <p class="text-stone-600 leading-relaxed font-light">Custom fitted plush velvet interior with anti-tarnish micro-cushioning and embossed gold foil branding.</p>
           </div>
           <div class="p-4 rounded-xl bg-[#FAF8F5] border border-[#EAE4DC] space-y-2">
@@ -4290,7 +4290,7 @@
       <div class="space-y-5 animate-fade-in font-sans text-xs text-stone-700">
         <div class="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1 mb-2">
           <h3 class="font-serif text-2xl text-stone-900 font-normal">Authenticity & 6-Month Plating Warranty</h3>
-          <span class="text-[11px] text-[#7A152E] font-semibold uppercase tracking-wider">Hallmark Certified</span>
+          <span class="text-[11px] text-[#145C59] font-semibold uppercase tracking-wider">Hallmark Certified</span>
         </div>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div class="p-4 rounded-xl bg-[#FAF8F5] border border-[#EAE4DC] space-y-2">
@@ -4312,10 +4312,10 @@
   window.filterPdpReviews = function (ratingScore, btn) {
     const filterButtons = document.querySelectorAll('#reviews-filter-bar button, .flex.items-center.gap-2.overflow-x-auto button');
     filterButtons.forEach(b => {
-      b.className = 'px-3 py-1 rounded-full text-xs font-medium transition-all whitespace-nowrap cursor-pointer shrink-0 bg-[#FAF8F5] text-stone-700 border border-[#EAE4DC] hover:border-[#7A152E]/30';
+      b.className = 'px-3 py-1 rounded-full text-xs font-medium transition-all whitespace-nowrap cursor-pointer shrink-0 bg-[#FAF8F5] text-stone-700 border border-[#EAE4DC] hover:border-[#145C59]/30';
     });
     if (btn) {
-      btn.className = 'px-3 py-1 rounded-full text-xs font-medium transition-all whitespace-nowrap cursor-pointer shrink-0 bg-[#7A152E] text-white shadow-2xs';
+      btn.className = 'px-3 py-1 rounded-full text-xs font-medium transition-all whitespace-nowrap cursor-pointer shrink-0 bg-[#145C59] text-white shadow-2xs';
     }
 
     const reviewsList = document.getElementById('pdp-reviews-list') || document.querySelector('.divide-y.divide-stone-200.pt-2') || document.querySelector('.divide-y.divide-\\[\\#EAE4DC\\].pt-2');
@@ -4402,16 +4402,16 @@
     if (!isLiked) {
       count++;
       btn.setAttribute('data-liked', 'true');
-      btn.classList.add('text-[#7A152E]', 'border-[#7A152E]', 'bg-[#FAF0F2]', 'font-bold');
+      btn.classList.add('text-[#145C59]', 'border-[#145C59]', 'bg-[#F0F7F6]', 'font-bold');
       btn.innerHTML = `
-        <svg class="w-3.5 h-3.5 fill-[#7A152E] text-[#7A152E] shrink-0" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M7 10v12"></path><path d="M15 5.88 14 10h5.83a2 2 0 0 1 1.92 2.56l-2.33 8A2 2 0 0 1 17.5 22H4a2 2 0 0 1-2-2v-8a2 2 0 0 1 2-2h2.76a2 2 0 0 0 1.79-1.11L12 2h0a3.13 3.13 0 0 1 3 3.88Z"></path></svg>
+        <svg class="w-3.5 h-3.5 fill-[#145C59] text-[#145C59] shrink-0" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M7 10v12"></path><path d="M15 5.88 14 10h5.83a2 2 0 0 1 1.92 2.56l-2.33 8A2 2 0 0 1 17.5 22H4a2 2 0 0 1-2-2v-8a2 2 0 0 1 2-2h2.76a2 2 0 0 0 1.79-1.11L12 2h0a3.13 3.13 0 0 1 3 3.88Z"></path></svg>
         <span>Helpful (${count})</span>
       `;
       window.showToast('Feedback Recorded', 'Thank you for supporting our patron community!');
     } else {
       count = Math.max(0, count - 1);
       btn.removeAttribute('data-liked');
-      btn.classList.remove('text-[#7A152E]', 'border-[#7A152E]', 'bg-[#FAF0F2]', 'font-bold');
+      btn.classList.remove('text-[#145C59]', 'border-[#145C59]', 'bg-[#F0F7F6]', 'font-bold');
       btn.innerHTML = `
         <svg class="w-3.5 h-3.5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M7 10v12"></path><path d="M15 5.88 14 10h5.83a2 2 0 0 1 1.92 2.56l-2.33 8A2 2 0 0 1 17.5 22H4a2 2 0 0 1-2-2v-8a2 2 0 0 1 2-2h2.76a2 2 0 0 0 1.79-1.11L12 2h0a3.13 3.13 0 0 1 3 3.88Z"></path></svg>
         <span>Helpful (${count})</span>
@@ -4433,7 +4433,7 @@
     if (!isExpanded) {
       // Expanded state: replace ellipsis with full text
       const fullText = pTag.getAttribute('data-full-text') || pTag.textContent.replace('Read more', '').replace('Read less', '').trim();
-      pTag.innerHTML = `"${fullText} The craftsmanship and polish are truly equivalent to high jewelry boutiques in Milan and Paris." <button onclick="window.toggleReviewReadMore(this)" data-expanded="true" class="text-[#7A152E] hover:underline font-semibold ml-1 cursor-pointer">Read less</button>`;
+      pTag.innerHTML = `"${fullText} The craftsmanship and polish are truly equivalent to high jewelry boutiques in Milan and Paris." <button onclick="window.toggleReviewReadMore(this)" data-expanded="true" class="text-[#145C59] hover:underline font-semibold ml-1 cursor-pointer">Read less</button>`;
     } else {
       // Collapse back
       const orig = pTag.getAttribute('data-original-html');
@@ -4485,11 +4485,11 @@
       if (svg) {
         const inW = window.isInWishlist(product.id);
         if (inW) {
-          svg.setAttribute('class', 'w-4 h-4 text-[#7A152E] fill-[#7A152E] transition-all scale-110');
-          btn.classList.add('bg-[#FAF0F2]', 'text-[#7A152E]');
+          svg.setAttribute('class', 'w-4 h-4 text-[#145C59] fill-[#145C59] transition-all scale-110');
+          btn.classList.add('bg-[#F0F7F6]', 'text-[#145C59]');
         } else {
           svg.setAttribute('class', 'w-4 h-4 text-stone-700 fill-none transition-all scale-100');
-          btn.classList.remove('bg-[#FAF0F2]', 'text-[#7A152E]');
+          btn.classList.remove('bg-[#F0F7F6]', 'text-[#145C59]');
         }
       }
     }
@@ -4532,7 +4532,7 @@
       <div class="bg-white rounded-3xl max-w-4xl w-full p-6 sm:p-8 shadow-2xl border border-stone-200 animate-slide-up max-h-[92vh] overflow-y-auto no-scrollbar space-y-6">
         <div class="flex items-center justify-between border-b border-[#EAE4DC] pb-4">
           <div>
-            <span class="text-[10px] uppercase tracking-widest text-[#7A152E] font-bold block mb-1">Solystra Flagship Boutiques</span>
+            <span class="text-[10px] uppercase tracking-widest text-[#145C59] font-bold block mb-1">Solystra Flagship Boutiques</span>
             <h3 class="font-serif text-2xl sm:text-3xl text-stone-900 font-normal">Visit Our Ateliers</h3>
           </div>
           <button onclick="window.closeBoutiqueModal()" class="w-9 h-9 rounded-full flex items-center justify-center text-stone-400 hover:text-stone-800 hover:bg-stone-100 transition-colors cursor-pointer">
@@ -4544,96 +4544,96 @@
 
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 text-xs">
           <!-- Delhi Flagship -->
-          <div class="p-4 rounded-2xl bg-[#FAF8F5] border border-[#EAE4DC] hover:border-[#7A152E]/40 transition-all space-y-2.5">
+          <div class="p-4 rounded-2xl bg-[#FAF8F5] border border-[#EAE4DC] hover:border-[#145C59]/40 transition-all space-y-2.5">
             <div class="flex items-center justify-between">
-              <span class="text-[10px] font-bold uppercase tracking-wider text-[#7A152E] bg-[#FAF0F2] px-2 py-0.5 rounded-full border border-[#EAD5DA]">New Delhi</span>
-              <a href="https://maps.google.com/?q=DLF+Emporio+Vasant+Kunj+New+Delhi" target="_blank" rel="noopener" class="text-[11px] text-[#7A152E] font-semibold hover:underline flex items-center gap-0.5">Directions <svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="m7 7 10 10"/><path d="M17 7v10H7"/></svg></a>
+              <span class="text-[10px] font-bold uppercase tracking-wider text-[#145C59] bg-[#F0F7F6] px-2 py-0.5 rounded-full border border-[#EAD5DA]">New Delhi</span>
+              <a href="https://maps.google.com/?q=DLF+Emporio+Vasant+Kunj+New+Delhi" target="_blank" rel="noopener" class="text-[11px] text-[#145C59] font-semibold hover:underline flex items-center gap-0.5">Directions <svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="m7 7 10 10"/><path d="M17 7v10H7"/></svg></a>
             </div>
             <h4 class="font-serif text-base text-stone-900 font-semibold">DLF Emporio Flagship</h4>
             <p class="text-stone-600 text-[11.5px] leading-relaxed">Ground Floor, 4 Nelson Mandela Marg, Vasant Kunj, New Delhi 110070</p>
             <div class="text-[11px] text-stone-500 pt-1 border-t border-stone-200/60 flex items-center justify-between">
               <span>Mon-Sun: 11:00 AM - 9:00 PM</span>
-              <a href="tel:+911149202200" class="hover:text-[#7A152E] font-medium">+91 11 4920 2200</a>
+              <a href="tel:+911149202200" class="hover:text-[#145C59] font-medium">+91 11 4920 2200</a>
             </div>
           </div>
 
           <!-- Mumbai Bandra -->
-          <div class="p-4 rounded-2xl bg-[#FAF8F5] border border-[#EAE4DC] hover:border-[#7A152E]/40 transition-all space-y-2.5">
+          <div class="p-4 rounded-2xl bg-[#FAF8F5] border border-[#EAE4DC] hover:border-[#145C59]/40 transition-all space-y-2.5">
             <div class="flex items-center justify-between">
-              <span class="text-[10px] font-bold uppercase tracking-wider text-[#7A152E] bg-[#FAF0F2] px-2 py-0.5 rounded-full border border-[#EAD5DA]">Mumbai</span>
-              <a href="https://maps.google.com/?q=Waterfield+Road+Bandra+West+Mumbai" target="_blank" rel="noopener" class="text-[11px] text-[#7A152E] font-semibold hover:underline flex items-center gap-0.5">Directions <svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="m7 7 10 10"/><path d="M17 7v10H7"/></svg></a>
+              <span class="text-[10px] font-bold uppercase tracking-wider text-[#145C59] bg-[#F0F7F6] px-2 py-0.5 rounded-full border border-[#EAD5DA]">Mumbai</span>
+              <a href="https://maps.google.com/?q=Waterfield+Road+Bandra+West+Mumbai" target="_blank" rel="noopener" class="text-[11px] text-[#145C59] font-semibold hover:underline flex items-center gap-0.5">Directions <svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="m7 7 10 10"/><path d="M17 7v10H7"/></svg></a>
             </div>
             <h4 class="font-serif text-base text-stone-900 font-semibold">Bandra West Studio</h4>
             <p class="text-stone-600 text-[11.5px] leading-relaxed">Plot 42, Waterfield Road, Bandra West, Mumbai 400050</p>
             <div class="text-[11px] text-stone-500 pt-1 border-t border-stone-200/60 flex items-center justify-between">
               <span>Mon-Sun: 11:00 AM - 9:00 PM</span>
-              <a href="tel:+912226408820" class="hover:text-[#7A152E] font-medium">+91 22 2640 8820</a>
+              <a href="tel:+912226408820" class="hover:text-[#145C59] font-medium">+91 22 2640 8820</a>
             </div>
           </div>
 
           <!-- Bengaluru Indiranagar -->
-          <div class="p-4 rounded-2xl bg-[#FAF8F5] border border-[#EAE4DC] hover:border-[#7A152E]/40 transition-all space-y-2.5">
+          <div class="p-4 rounded-2xl bg-[#FAF8F5] border border-[#EAE4DC] hover:border-[#145C59]/40 transition-all space-y-2.5">
             <div class="flex items-center justify-between">
-              <span class="text-[10px] font-bold uppercase tracking-wider text-[#7A152E] bg-[#FAF0F2] px-2 py-0.5 rounded-full border border-[#EAD5DA]">Bengaluru</span>
-              <a href="https://maps.google.com/?q=100+Feet+Road+Indiranagar+Bengaluru" target="_blank" rel="noopener" class="text-[11px] text-[#7A152E] font-semibold hover:underline flex items-center gap-0.5">Directions <svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="m7 7 10 10"/><path d="M17 7v10H7"/></svg></a>
+              <span class="text-[10px] font-bold uppercase tracking-wider text-[#145C59] bg-[#F0F7F6] px-2 py-0.5 rounded-full border border-[#EAD5DA]">Bengaluru</span>
+              <a href="https://maps.google.com/?q=100+Feet+Road+Indiranagar+Bengaluru" target="_blank" rel="noopener" class="text-[11px] text-[#145C59] font-semibold hover:underline flex items-center gap-0.5">Directions <svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="m7 7 10 10"/><path d="M17 7v10H7"/></svg></a>
             </div>
             <h4 class="font-serif text-base text-stone-900 font-semibold">Indiranagar Galleria</h4>
             <p class="text-stone-600 text-[11.5px] leading-relaxed">100 Feet Road, HAL 2nd Stage, Indiranagar, Bengaluru 560038</p>
             <div class="text-[11px] text-stone-500 pt-1 border-t border-stone-200/60 flex items-center justify-between">
               <span>Mon-Sun: 10:30 AM - 8:30 PM</span>
-              <a href="tel:+918041223340" class="hover:text-[#7A152E] font-medium">+91 80 4122 3340</a>
+              <a href="tel:+918041223340" class="hover:text-[#145C59] font-medium">+91 80 4122 3340</a>
             </div>
           </div>
 
           <!-- Hyderabad Jubilee Hills -->
-          <div class="p-4 rounded-2xl bg-[#FAF8F5] border border-[#EAE4DC] hover:border-[#7A152E]/40 transition-all space-y-2.5">
+          <div class="p-4 rounded-2xl bg-[#FAF8F5] border border-[#EAE4DC] hover:border-[#145C59]/40 transition-all space-y-2.5">
             <div class="flex items-center justify-between">
-              <span class="text-[10px] font-bold uppercase tracking-wider text-[#7A152E] bg-[#FAF0F2] px-2 py-0.5 rounded-full border border-[#EAD5DA]">Hyderabad</span>
-              <a href="https://maps.google.com/?q=Road+No+36+Jubilee+Hills+Hyderabad" target="_blank" rel="noopener" class="text-[11px] text-[#7A152E] font-semibold hover:underline flex items-center gap-0.5">Directions <svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="m7 7 10 10"/><path d="M17 7v10H7"/></svg></a>
+              <span class="text-[10px] font-bold uppercase tracking-wider text-[#145C59] bg-[#F0F7F6] px-2 py-0.5 rounded-full border border-[#EAD5DA]">Hyderabad</span>
+              <a href="https://maps.google.com/?q=Road+No+36+Jubilee+Hills+Hyderabad" target="_blank" rel="noopener" class="text-[11px] text-[#145C59] font-semibold hover:underline flex items-center gap-0.5">Directions <svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="m7 7 10 10"/><path d="M17 7v10H7"/></svg></a>
             </div>
             <h4 class="font-serif text-base text-stone-900 font-semibold">Jubilee Hills Atelier</h4>
             <p class="text-stone-600 text-[11.5px] leading-relaxed">Road No. 36, Near Peddamma Temple, Jubilee Hills, Hyderabad 500033</p>
             <div class="text-[11px] text-stone-500 pt-1 border-t border-stone-200/60 flex items-center justify-between">
               <span>Mon-Sun: 11:00 AM - 9:00 PM</span>
-              <a href="tel:+914023558800" class="hover:text-[#7A152E] font-medium">+91 40 2355 8800</a>
+              <a href="tel:+914023558800" class="hover:text-[#145C59] font-medium">+91 40 2355 8800</a>
             </div>
           </div>
 
           <!-- Jaipur MI Road -->
-          <div class="p-4 rounded-2xl bg-[#FAF8F5] border border-[#EAE4DC] hover:border-[#7A152E]/40 transition-all space-y-2.5">
+          <div class="p-4 rounded-2xl bg-[#FAF8F5] border border-[#EAE4DC] hover:border-[#145C59]/40 transition-all space-y-2.5">
             <div class="flex items-center justify-between">
-              <span class="text-[10px] font-bold uppercase tracking-wider text-[#7A152E] bg-[#FAF0F2] px-2 py-0.5 rounded-full border border-[#EAD5DA]">Jaipur</span>
-              <a href="https://maps.google.com/?q=MI+Road+Jaipur" target="_blank" rel="noopener" class="text-[11px] text-[#7A152E] font-semibold hover:underline flex items-center gap-0.5">Directions <svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="m7 7 10 10"/><path d="M17 7v10H7"/></svg></a>
+              <span class="text-[10px] font-bold uppercase tracking-wider text-[#145C59] bg-[#F0F7F6] px-2 py-0.5 rounded-full border border-[#EAD5DA]">Jaipur</span>
+              <a href="https://maps.google.com/?q=MI+Road+Jaipur" target="_blank" rel="noopener" class="text-[11px] text-[#145C59] font-semibold hover:underline flex items-center gap-0.5">Directions <svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="m7 7 10 10"/><path d="M17 7v10H7"/></svg></a>
             </div>
             <h4 class="font-serif text-base text-stone-900 font-semibold">Heritage Gem Vault</h4>
             <p class="text-stone-600 text-[11.5px] leading-relaxed">Mirza Ismail Road, Near Raj Mandir, Jaipur 302001</p>
             <div class="text-[11px] text-stone-500 pt-1 border-t border-stone-200/60 flex items-center justify-between">
               <span>Mon-Sun: 10:30 AM - 8:00 PM</span>
-              <a href="tel:+911412376610" class="hover:text-[#7A152E] font-medium">+91 141 237 6610</a>
+              <a href="tel:+911412376610" class="hover:text-[#145C59] font-medium">+91 141 237 6610</a>
             </div>
           </div>
 
           <!-- Kolkata Park Street -->
-          <div class="p-4 rounded-2xl bg-[#FAF8F5] border border-[#EAE4DC] hover:border-[#7A152E]/40 transition-all space-y-2.5">
+          <div class="p-4 rounded-2xl bg-[#FAF8F5] border border-[#EAE4DC] hover:border-[#145C59]/40 transition-all space-y-2.5">
             <div class="flex items-center justify-between">
-              <span class="text-[10px] font-bold uppercase tracking-wider text-[#7A152E] bg-[#FAF0F2] px-2 py-0.5 rounded-full border border-[#EAD5DA]">Kolkata</span>
-              <a href="https://maps.google.com/?q=Park+Street+Kolkata" target="_blank" rel="noopener" class="text-[11px] text-[#7A152E] font-semibold hover:underline flex items-center gap-0.5">Directions <svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="m7 7 10 10"/><path d="M17 7v10H7"/></svg></a>
+              <span class="text-[10px] font-bold uppercase tracking-wider text-[#145C59] bg-[#F0F7F6] px-2 py-0.5 rounded-full border border-[#EAD5DA]">Kolkata</span>
+              <a href="https://maps.google.com/?q=Park+Street+Kolkata" target="_blank" rel="noopener" class="text-[11px] text-[#145C59] font-semibold hover:underline flex items-center gap-0.5">Directions <svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="m7 7 10 10"/><path d="M17 7v10H7"/></svg></a>
             </div>
             <h4 class="font-serif text-base text-stone-900 font-semibold">Park Street Salon</h4>
             <p class="text-stone-600 text-[11.5px] leading-relaxed">77 Park Street, Camac Street Intersection, Kolkata 700016</p>
             <div class="text-[11px] text-stone-500 pt-1 border-t border-stone-200/60 flex items-center justify-between">
               <span>Mon-Sun: 11:00 AM - 8:30 PM</span>
-              <a href="tel:+913322295540" class="hover:text-[#7A152E] font-medium">+91 33 2229 5540</a>
+              <a href="tel:+913322295540" class="hover:text-[#145C59] font-medium">+91 33 2229 5540</a>
             </div>
           </div>
         </div>
 
-        <div class="p-4 rounded-2xl bg-[#FAF0F2] border border-[#EAD5DA] flex flex-col sm:flex-row items-center justify-between gap-3 text-xs">
+        <div class="p-4 rounded-2xl bg-[#F0F7F6] border border-[#EAD5DA] flex flex-col sm:flex-row items-center justify-between gap-3 text-xs">
           <div class="text-stone-800">
-            <strong class="text-[#7A152E] block">Complimentary Concierge Appointment:</strong>
+            <strong class="text-[#145C59] block">Complimentary Concierge Appointment:</strong>
             Reserve private atelier viewing with dedicated senior gemologist.
           </div>
-          <button onclick="window.showToast('Appointment Reserved', 'Atelier concierge will contact you within 2 hours to confirm your private suite.'); window.closeBoutiqueModal();" class="px-5 py-2.5 bg-[#7A152E] hover:bg-[#590D1E] text-white text-xs font-bold uppercase tracking-wider rounded-xl transition-all cursor-pointer whitespace-nowrap active:scale-95 shadow-md">
+          <button onclick="window.showToast('Appointment Reserved', 'Atelier concierge will contact you within 2 hours to confirm your private suite.'); window.closeBoutiqueModal();" class="px-5 py-2.5 bg-[#145C59] hover:bg-[#0D3F3D] text-white text-xs font-bold uppercase tracking-wider rounded-xl transition-all cursor-pointer whitespace-nowrap active:scale-95 shadow-md">
             Request VIP Appointment
           </button>
         </div>

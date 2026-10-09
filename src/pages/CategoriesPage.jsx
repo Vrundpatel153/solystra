@@ -176,7 +176,7 @@ export const CategoriesPage = ({ onSelectCategory, onBackToStore }) => {
         {/* Section Intro Header */}
         <div className="flex items-center justify-between pb-3 sm:pb-4 mb-6 border-b border-[#EAE4DC]">
           <div>
-            <span className="text-[10.5px] uppercase tracking-widest text-[#7A152E] font-semibold block mb-0.5">
+            <span className="text-[10.5px] uppercase tracking-widest text-[#145C59] font-semibold block mb-0.5">
               ALL ATELIER SILHOUETTES
             </span>
             <h2 className="font-serif text-xl sm:text-2xl text-stone-900 font-normal">
@@ -188,7 +188,7 @@ export const CategoriesPage = ({ onSelectCategory, onBackToStore }) => {
             onClick={() => {
               window.location.hash = '#/products';
             }}
-            className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#7A152E] hover:text-[#590D1E] group transition-colors cursor-pointer"
+            className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#145C59] hover:text-[#0D3F3D] group transition-colors cursor-pointer"
           >
             <span>Explore All Catalog</span>
             <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
@@ -201,10 +201,10 @@ export const CategoriesPage = ({ onSelectCategory, onBackToStore }) => {
             <div
               key={cat.id}
               onClick={() => handleCategoryClick(cat.id)}
-              className="group bg-white rounded-2xl sm:rounded-3xl border border-[#EAE4DC] hover:border-[#7A152E]/30 p-2.5 sm:p-3.5 transition-all duration-500 hover:shadow-lg flex flex-col cursor-pointer hover:-translate-y-1"
+              className="group bg-white rounded-2xl sm:rounded-3xl border border-[#EAE4DC] hover:border-[#145C59]/30 p-2.5 sm:p-3.5 transition-all duration-500 hover:shadow-lg flex flex-col cursor-pointer hover:-translate-y-1"
             >
               {/* Squircle Image Card with Gradient Halo */}
-              <div className="relative w-full aspect-square rounded-xl sm:rounded-2xl p-[2px] bg-gradient-to-tr from-[#7A152E]/80 via-[#D4AF37] to-[#F6E3B8] group-hover:from-[#D4AF37] group-hover:via-[#F6E3B8] group-hover:to-[#7A152E] transition-all duration-500 shadow-2xs">
+              <div className="relative w-full aspect-square rounded-xl sm:rounded-2xl p-[2px] bg-gradient-to-tr from-[#145C59]/80 via-[#D4AF37] to-[#F6E3B8] group-hover:from-[#D4AF37] group-hover:via-[#F6E3B8] group-hover:to-[#145C59] transition-all duration-500 shadow-2xs">
                 <div className="w-full h-full rounded-[10px] sm:rounded-[14px] overflow-hidden bg-white relative flex items-center justify-center">
                   <img
                     src={cat.img}
@@ -213,14 +213,14 @@ export const CategoriesPage = ({ onSelectCategory, onBackToStore }) => {
                     loading="lazy"
                   />
                   {/* Subtle Specular Ambient Sheen */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#7A152E]/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#145C59]/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                 </div>
               </div>
 
               {/* Text Info */}
               <div className="pt-3 sm:pt-4 flex-1 flex flex-col justify-between text-center">
                 <div>
-                  <h3 className="font-serif text-sm sm:text-base lg:text-lg font-semibold text-stone-900 group-hover:text-[#7A152E] transition-colors leading-snug">
+                  <h3 className="font-serif text-sm sm:text-base lg:text-lg font-semibold text-stone-900 group-hover:text-[#145C59] transition-colors leading-snug">
                     {cat.name}
                   </h3>
                   <p className="text-[10px] sm:text-[11px] text-stone-400 font-light mt-1 line-clamp-2 leading-relaxed hidden sm:block">
@@ -230,7 +230,7 @@ export const CategoriesPage = ({ onSelectCategory, onBackToStore }) => {
 
                 <div className="pt-2 sm:pt-3 mt-auto border-t border-[#EAE4DC]/60 flex items-center justify-between text-[10px] sm:text-xs text-stone-500">
                   <span className="font-medium text-stone-600">{cat.count}</span>
-                  <span className="inline-flex items-center gap-1 font-semibold text-[#7A152E] group-hover:underline">
+                  <span className="inline-flex items-center gap-1 font-semibold text-[#145C59] group-hover:underline">
                     <span>Shop</span>
                     <ArrowRight className="w-3 h-3 group-hover:translate-x-0.5 transition-transform" />
                   </span>

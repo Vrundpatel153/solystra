@@ -69,7 +69,7 @@ export const getMetalBadgeInfo = (product, selectedMetal = null) => {
       borderWidth: '1.4',
       innerRingColor: '#C47585',
       filter: 'drop-shadow(0 2px 4px rgba(180, 80, 100, 0.22))',
-      codeTextClass: 'text-[#7A152E]',
+      codeTextClass: 'text-[#145C59]',
       subTextClass: 'text-[#9E2A44]',
       stops: [
         { offset: '0%', color: '#FFF9FA' },

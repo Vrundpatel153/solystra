@@ -32,7 +32,7 @@ export const Footer = () => {
         <div className="bg-white rounded-2xl p-5 sm:p-8 lg:p-10 border border-stone-200/70 mb-8 sm:mb-14 shadow-xs">
           <div className="flex flex-col lg:flex-row items-center justify-between gap-5 sm:gap-6">
             <div className="max-w-xl text-center lg:text-left">
-              <div className="text-[11px] uppercase tracking-wider text-[#7A152E] font-bold mb-1">
+              <div className="text-[11px] uppercase tracking-wider text-[#145C59] font-bold mb-1">
                 Newsletter
               </div>
               <h3 className="font-serif text-xl sm:text-2xl lg:text-3xl text-stone-900 font-normal">
@@ -49,12 +49,12 @@ export const Footer = () => {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="Enter your email address"
-                className="flex-1 min-w-0 px-3.5 py-2.5 bg-stone-50 border border-stone-200 rounded-xl text-xs text-stone-800 placeholder-stone-400 focus:outline-none focus:border-[#7A152E] focus:bg-white transition-all"
+                className="flex-1 min-w-0 px-3.5 py-2.5 bg-stone-50 border border-stone-200 rounded-xl text-xs text-stone-800 placeholder-stone-400 focus:outline-none focus:border-[#145C59] focus:bg-white transition-all"
                 required
               />
               <button
                 type="submit"
-                className="px-5 sm:px-6 py-2.5 bg-[#7A152E] hover:bg-[#590D1E] text-white text-xs font-bold uppercase tracking-wider rounded-xl shadow-xs transition-colors shrink-0 cursor-pointer active:scale-98"
+                className="px-5 sm:px-6 py-2.5 bg-[#145C59] hover:bg-[#0D3F3D] text-white text-xs font-bold uppercase tracking-wider rounded-xl shadow-xs transition-colors shrink-0 cursor-pointer active:scale-98"
               >
                 Subscribe
               </button>
@@ -87,7 +87,7 @@ export const Footer = () => {
             </p>
             <div className="text-[11px] text-stone-500 pt-1 border-t border-stone-100 flex items-center justify-between">
               <span>care@solystrajewels.com</span>
-              <span className="text-[#7A152E] font-semibold">Mon–Sat (10AM–7PM)</span>
+              <span className="text-[#145C59] font-semibold">Mon–Sat (10AM–7PM)</span>
             </div>
           </div>
 
@@ -98,16 +98,16 @@ export const Footer = () => {
               className="w-full px-4 py-3 flex items-center justify-between text-left font-semibold text-stone-900 uppercase tracking-wider text-[11px] cursor-pointer"
             >
               <span>Collections</span>
-              <ChevronDown className={`w-4 h-4 text-stone-500 transition-transform duration-200 ${openMobileAccordion === 'collections' ? 'rotate-180 text-[#7A152E]' : ''}`} />
+              <ChevronDown className={`w-4 h-4 text-stone-500 transition-transform duration-200 ${openMobileAccordion === 'collections' ? 'rotate-180 text-[#145C59]' : ''}`} />
             </button>
             {openMobileAccordion === 'collections' && (
               <ul className="px-4 pb-3.5 space-y-2 text-stone-600 text-[11.5px] border-t border-stone-100 pt-2.5">
-                <li><a href="#/" onClick={() => { window.location.hash = '#/'; }} className="block hover:text-[#7A152E]">925 Sterling Silver Necklaces</a></li>
-                <li><a href="#/" onClick={() => { window.location.hash = '#/'; }} className="block hover:text-[#7A152E]">Solitaire and Stacking Rings</a></li>
-                <li><a href="#/" onClick={() => { window.location.hash = '#/'; }} className="block hover:text-[#7A152E]">Tennis Bracelets and Cuffs</a></li>
-                <li><a href="#/" onClick={() => { window.location.hash = '#/'; }} className="block hover:text-[#7A152E]">Earrings and Huggies</a></li>
-                <li><a href="#/" onClick={() => { window.location.hash = '#/'; }} className="block hover:text-[#7A152E]">Dainty Anklets</a></li>
-                <li><a href="#/" onClick={() => { window.location.hash = '#/'; }} className="block hover:text-[#7A152E]">18K Italian Gold Vermeil</a></li>
+                <li><a href="#/" onClick={() => { window.location.hash = '#/'; }} className="block hover:text-[#145C59]">925 Sterling Silver Necklaces</a></li>
+                <li><a href="#/" onClick={() => { window.location.hash = '#/'; }} className="block hover:text-[#145C59]">Solitaire and Stacking Rings</a></li>
+                <li><a href="#/" onClick={() => { window.location.hash = '#/'; }} className="block hover:text-[#145C59]">Tennis Bracelets and Cuffs</a></li>
+                <li><a href="#/" onClick={() => { window.location.hash = '#/'; }} className="block hover:text-[#145C59]">Earrings and Huggies</a></li>
+                <li><a href="#/" onClick={() => { window.location.hash = '#/'; }} className="block hover:text-[#145C59]">Dainty Anklets</a></li>
+                <li><a href="#/" onClick={() => { window.location.hash = '#/'; }} className="block hover:text-[#145C59]">18K Italian Gold Vermeil</a></li>
               </ul>
             )}
           </div>
@@ -119,16 +119,16 @@ export const Footer = () => {
               className="w-full px-4 py-3 flex items-center justify-between text-left font-semibold text-stone-900 uppercase tracking-wider text-[11px] cursor-pointer"
             >
               <span>Customer Care &amp; Guides</span>
-              <ChevronDown className={`w-4 h-4 text-stone-500 transition-transform duration-200 ${openMobileAccordion === 'care' ? 'rotate-180 text-[#7A152E]' : ''}`} />
+              <ChevronDown className={`w-4 h-4 text-stone-500 transition-transform duration-200 ${openMobileAccordion === 'care' ? 'rotate-180 text-[#145C59]' : ''}`} />
             </button>
             {openMobileAccordion === 'care' && (
               <ul className="px-4 pb-3.5 space-y-2 text-stone-600 text-[11.5px] border-t border-stone-100 pt-2.5">
-                <li><a href="#/" className="block hover:text-[#7A152E]">Track Your Order</a></li>
-                <li><a href="#/terms" className="block hover:text-[#7A152E]">Shipping and Delivery</a></li>
-                <li><a href="#/terms" className="block hover:text-[#7A152E]">15-Day Easy Returns</a></li>
-                <li><a href="#/" className="block hover:text-[#7A152E]">Ring Sizing Guide</a></li>
-                <li><a href="#/terms" className="block hover:text-[#7A152E]">Jewelry Care Guide</a></li>
-                <li><a href="#/terms" className="block hover:text-[#7A152E]">BIS Hallmark Verification</a></li>
+                <li><a href="#/" className="block hover:text-[#145C59]">Track Your Order</a></li>
+                <li><a href="#/terms" className="block hover:text-[#145C59]">Shipping and Delivery</a></li>
+                <li><a href="#/terms" className="block hover:text-[#145C59]">15-Day Easy Returns</a></li>
+                <li><a href="#/" className="block hover:text-[#145C59]">Ring Sizing Guide</a></li>
+                <li><a href="#/terms" className="block hover:text-[#145C59]">Jewelry Care Guide</a></li>
+                <li><a href="#/terms" className="block hover:text-[#145C59]">BIS Hallmark Verification</a></li>
               </ul>
             )}
           </div>
@@ -140,7 +140,7 @@ export const Footer = () => {
               className="w-full px-4 py-3 flex items-center justify-between text-left font-semibold text-stone-900 uppercase tracking-wider text-[11px] cursor-pointer"
             >
               <span>Our Purity Guarantee</span>
-              <ChevronDown className={`w-4 h-4 text-stone-500 transition-transform duration-200 ${openMobileAccordion === 'promise' ? 'rotate-180 text-[#7A152E]' : ''}`} />
+              <ChevronDown className={`w-4 h-4 text-stone-500 transition-transform duration-200 ${openMobileAccordion === 'promise' ? 'rotate-180 text-[#145C59]' : ''}`} />
             </button>
             {openMobileAccordion === 'promise' && (
               <div className="px-4 pb-3.5 space-y-2 text-stone-700 text-[11.5px] border-t border-stone-100 pt-2.5">
@@ -150,7 +150,7 @@ export const Footer = () => {
                 <div className="flex items-center gap-2"><CheckCircle2 className="w-3.5 h-3.5 text-[#C5A059] shrink-0" /><span>Free Insured Express Delivery</span></div>
                 <div className="flex items-center gap-2"><CheckCircle2 className="w-3.5 h-3.5 text-[#C5A059] shrink-0" /><span>Signature Velvet Keepsake Box</span></div>
                 <div className="pt-2">
-                  <a href="#/terms" className="inline-flex items-center gap-1 text-[11px] text-[#7A152E] font-semibold hover:underline group">
+                  <a href="#/terms" className="inline-flex items-center gap-1 text-[11px] text-[#145C59] font-semibold hover:underline group">
                     <span>Read Full Purity Terms &amp; Guarantee</span>
                     <ArrowRight className="w-3 h-3 group-hover:translate-x-0.5 transition-transform" />
                   </a>
@@ -201,32 +201,32 @@ export const Footer = () => {
             </h4>
             <ul className="space-y-2.5 text-stone-600">
               <li>
-                <a href="#/" onClick={() => { window.location.hash = '#/'; }} className="hover:text-[#7A152E] transition-colors">
+                <a href="#/" onClick={() => { window.location.hash = '#/'; }} className="hover:text-[#145C59] transition-colors">
                   925 Sterling Silver Necklaces
                 </a>
               </li>
               <li>
-                <a href="#/" onClick={() => { window.location.hash = '#/'; }} className="hover:text-[#7A152E] transition-colors">
+                <a href="#/" onClick={() => { window.location.hash = '#/'; }} className="hover:text-[#145C59] transition-colors">
                   Solitaire and Stacking Rings
                 </a>
               </li>
               <li>
-                <a href="#/" onClick={() => { window.location.hash = '#/'; }} className="hover:text-[#7A152E] transition-colors">
+                <a href="#/" onClick={() => { window.location.hash = '#/'; }} className="hover:text-[#145C59] transition-colors">
                   Tennis Bracelets and Cuffs
                 </a>
               </li>
               <li>
-                <a href="#/" onClick={() => { window.location.hash = '#/'; }} className="hover:text-[#7A152E] transition-colors">
+                <a href="#/" onClick={() => { window.location.hash = '#/'; }} className="hover:text-[#145C59] transition-colors">
                   Earrings and Huggies
                 </a>
               </li>
               <li>
-                <a href="#/" onClick={() => { window.location.hash = '#/'; }} className="hover:text-[#7A152E] transition-colors">
+                <a href="#/" onClick={() => { window.location.hash = '#/'; }} className="hover:text-[#145C59] transition-colors">
                   Dainty Anklets
                 </a>
               </li>
               <li>
-                <a href="#/" onClick={() => { window.location.hash = '#/'; }} className="hover:text-[#7A152E] transition-colors">
+                <a href="#/" onClick={() => { window.location.hash = '#/'; }} className="hover:text-[#145C59] transition-colors">
                   18K Italian Gold Vermeil
                 </a>
               </li>
@@ -240,37 +240,37 @@ export const Footer = () => {
             </h4>
             <ul className="space-y-2.5 text-stone-600">
               <li>
-                <a href="#/" className="hover:text-[#7A152E] transition-colors">
+                <a href="#/" className="hover:text-[#145C59] transition-colors">
                   Track Your Order
                 </a>
               </li>
               <li>
-                <a href="#/terms" className="hover:text-[#7A152E] transition-colors">
+                <a href="#/terms" className="hover:text-[#145C59] transition-colors">
                   Shipping and Delivery
                 </a>
               </li>
               <li>
-                <a href="#/terms" className="hover:text-[#7A152E] transition-colors">
+                <a href="#/terms" className="hover:text-[#145C59] transition-colors">
                   15-Day Easy Returns
                 </a>
               </li>
               <li>
-                <a href="#/" className="hover:text-[#7A152E] transition-colors">
+                <a href="#/" className="hover:text-[#145C59] transition-colors">
                   Ring Sizing Guide
                 </a>
               </li>
               <li>
-                <a href="#/terms" className="hover:text-[#7A152E] transition-colors">
+                <a href="#/terms" className="hover:text-[#145C59] transition-colors">
                   Jewelry Care Guide
                 </a>
               </li>
               <li>
-                <a href="#/terms" className="hover:text-[#7A152E] transition-colors">
+                <a href="#/terms" className="hover:text-[#145C59] transition-colors">
                   BIS Hallmark Verification
                 </a>
               </li>
               <li>
-                <a href="#/privacy" className="hover:text-[#7A152E] transition-colors font-medium">
+                <a href="#/privacy" className="hover:text-[#145C59] transition-colors font-medium">
                   Privacy &amp; Policy
                 </a>
               </li>
@@ -307,7 +307,7 @@ export const Footer = () => {
             <div className="mt-4 pt-3 border-t border-stone-200">
               <a
                 href="#/terms"
-                className="text-xs text-[#7A152E] font-semibold hover:underline inline-flex items-center gap-1 group transition-colors"
+                className="text-xs text-[#145C59] font-semibold hover:underline inline-flex items-center gap-1 group transition-colors"
               >
                 <span>Read Full Purity Terms &amp; Guarantee</span>
                 <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
@@ -323,11 +323,11 @@ export const Footer = () => {
           <div className="flex items-center gap-2 flex-wrap text-center sm:text-left justify-center sm:justify-start order-1">
             <span>&copy; {new Date().getFullYear()} Solystra Jewels. All rights reserved.</span>
             <span className="text-stone-300 hidden sm:inline">&bull;</span>
-            <a href="#/privacy" className="hidden sm:inline hover:text-[#7A152E] transition-colors underline font-medium">
+            <a href="#/privacy" className="hidden sm:inline hover:text-[#145C59] transition-colors underline font-medium">
               Privacy &amp; Policy
             </a>
             <span className="text-stone-300 hidden sm:inline">&bull;</span>
-            <a href="#/terms" className="hidden sm:inline hover:text-[#7A152E] transition-colors underline font-medium">
+            <a href="#/terms" className="hidden sm:inline hover:text-[#145C59] transition-colors underline font-medium">
               Terms &amp; Purity Standards
             </a>
           </div>
@@ -347,11 +347,11 @@ export const Footer = () => {
 
           {/* Mobile only: Terms & Privacy links placed directly below payment methods */}
           <div className="order-3 sm:hidden text-center pt-0.5 space-x-2">
-            <a href="#/privacy" className="hover:text-[#7A152E] transition-colors underline font-medium text-[11px]">
+            <a href="#/privacy" className="hover:text-[#145C59] transition-colors underline font-medium text-[11px]">
               Privacy &amp; Policy
             </a>
             <span className="text-stone-300">&bull;</span>
-            <a href="#/terms" className="hover:text-[#7A152E] transition-colors underline font-medium text-[11px]">
+            <a href="#/terms" className="hover:text-[#145C59] transition-colors underline font-medium text-[11px]">
               Terms &amp; Conditions
             </a>
           </div>
@@ -369,26 +369,26 @@ export const Footer = () => {
             className="relative w-full max-w-lg bg-[#FAF8F5] rounded-3xl border border-[#EAE4DC] shadow-2xl overflow-hidden p-6 sm:p-8 animate-slide-up text-stone-900"
             onClick={(e) => e.stopPropagation()}
           >
-            {/* Ambient Gold & Burgundy Halos */}
+            {/* Ambient Gold & Emerald Halos */}
             <div className="absolute -top-16 -right-16 w-44 h-44 rounded-full bg-[#C5A059]/20 blur-3xl pointer-events-none" />
-            <div className="absolute -bottom-16 -left-16 w-44 h-44 rounded-full bg-[#7A152E]/15 blur-3xl pointer-events-none" />
+            <div className="absolute -bottom-16 -left-16 w-44 h-44 rounded-full bg-[#145C59]/15 blur-3xl pointer-events-none" />
 
             {/* Close Button */}
             <button
               onClick={() => setIsSuccessModalOpen(false)}
-              className="absolute top-4 right-4 p-2 rounded-full bg-white/90 hover:bg-[#7A152E] text-stone-500 hover:text-white transition-all shadow-xs border border-stone-200 cursor-pointer"
+              className="absolute top-4 right-4 p-2 rounded-full bg-white/90 hover:bg-[#145C59] text-stone-500 hover:text-white transition-all shadow-xs border border-stone-200 cursor-pointer"
               aria-label="Close privilege modal"
             >
               <X className="w-4 h-4" />
             </button>
 
             {/* Luxury Crest Badge - Changed from Star/Sparkles to Royal Crown Emblem */}
-            <div className="w-14 h-14 rounded-full bg-gradient-to-tr from-[#590D1E] via-[#7A152E] to-[#9B1D3D] border-2 border-[#C5A059] flex items-center justify-center shadow-lg mx-auto mb-3.5 text-[#F3DFB0]">
+            <div className="w-14 h-14 rounded-full bg-gradient-to-tr from-[#0D3F3D] via-[#145C59] to-[#9B1D3D] border-2 border-[#C5A059] flex items-center justify-center shadow-lg mx-auto mb-3.5 text-[#F3DFB0]">
               <Crown className="w-7 h-7 stroke-[1.8]" />
             </div>
 
             {/* Header */}
-            <span className="text-[10px] uppercase tracking-[0.25em] text-[#7A152E] font-bold block text-center mb-1">
+            <span className="text-[10px] uppercase tracking-[0.25em] text-[#145C59] font-bold block text-center mb-1">
               ATELIER PRIVILEGE &bull; SOLYSTRA CLUB
             </span>
             <h3 className="font-serif text-2xl sm:text-3xl font-normal text-stone-900 text-center tracking-tight">
@@ -405,7 +405,7 @@ export const Footer = () => {
                   <span className="text-[9.5px] uppercase tracking-wider text-stone-500 font-semibold block">
                     EXCLUSIVE WELCOME PRIVILEGE
                   </span>
-                  <div className="font-mono text-2xl sm:text-3xl font-extrabold tracking-widest text-[#7A152E] mt-0.5">
+                  <div className="font-mono text-2xl sm:text-3xl font-extrabold tracking-widest text-[#145C59] mt-0.5">
                     SOULY10
                   </div>
                   <span className="text-[10px] sm:text-[10.5px] text-stone-500 font-light block mt-0.5">
@@ -421,7 +421,7 @@ export const Footer = () => {
                     showToast('Voucher code SOULY10 copied to clipboard!');
                     setTimeout(() => setCopiedCode(false), 2500);
                   }}
-                  className="px-4 py-2.5 bg-[#7A152E] hover:bg-[#590D1E] text-white text-xs font-semibold rounded-xl transition-all shadow-xs flex items-center justify-center gap-2 cursor-pointer active:scale-95"
+                  className="px-4 py-2.5 bg-[#145C59] hover:bg-[#0D3F3D] text-white text-xs font-semibold rounded-xl transition-all shadow-xs flex items-center justify-center gap-2 cursor-pointer active:scale-95"
                 >
                   <Copy className="w-3.5 h-3.5 text-[#C5A059]" />
                   <span>{copiedCode ? 'Copied!' : 'Copy Code'}</span>
@@ -450,7 +450,7 @@ export const Footer = () => {
               <button
                 type="button"
                 onClick={() => setIsSuccessModalOpen(false)}
-                className="w-full py-3 bg-[#7A152E] hover:bg-[#590D1E] text-white text-xs font-bold uppercase tracking-wider rounded-xl shadow-md transition-all cursor-pointer active:scale-98"
+                className="w-full py-3 bg-[#145C59] hover:bg-[#0D3F3D] text-white text-xs font-bold uppercase tracking-wider rounded-xl shadow-md transition-all cursor-pointer active:scale-98"
               >
                 Start Exploring the Atelier
               </button>

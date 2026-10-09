@@ -36,7 +36,7 @@ export const LuxurySortDropdown = ({ value, onChange, options, isMobile = false 
         type="button"
         onClick={() => setIsOpen(!isOpen)}
         className={`w-full flex items-center justify-between gap-2 bg-[#FAF8F5] hover:bg-[#F5F0EA] border text-stone-800 text-xs font-semibold rounded-xl transition-all cursor-pointer shadow-2xs ${
-          isOpen ? 'border-[#7A152E] ring-1 ring-[#7A152E]/30 bg-white' : 'border-[#EAE4DC]'
+          isOpen ? 'border-[#145C59] ring-1 ring-[#145C59]/30 bg-white' : 'border-[#EAE4DC]'
         } ${isMobile ? 'py-2 px-3 justify-center' : 'px-3.5 py-1.5 min-w-[140px]'}`}
         aria-haspopup="listbox"
         aria-expanded={isOpen}
@@ -44,7 +44,7 @@ export const LuxurySortDropdown = ({ value, onChange, options, isMobile = false 
         <span className="truncate">{currentOption?.label || 'Sort'}</span>
         <ChevronDown
           className={`w-3.5 h-3.5 transition-transform duration-200 shrink-0 ${
-            isOpen ? 'rotate-180 text-[#7A152E]' : 'text-stone-500'
+            isOpen ? 'rotate-180 text-[#145C59]' : 'text-stone-500'
           }`}
         />
       </button>
@@ -77,15 +77,15 @@ export const LuxurySortDropdown = ({ value, onChange, options, isMobile = false 
                   }}
                   className={`w-full px-3.5 py-2 text-xs flex items-center justify-between transition-colors text-left cursor-pointer ${
                     isSelected
-                      ? 'bg-[#7A152E]/10 text-[#7A152E] font-bold'
-                      : 'text-stone-700 hover:bg-[#FAF8F5] hover:text-[#7A152E]'
+                      ? 'bg-[#145C59]/10 text-[#145C59] font-bold'
+                      : 'text-stone-700 hover:bg-[#FAF8F5] hover:text-[#145C59]'
                   }`}
                   role="option"
                   aria-selected={isSelected}
                 >
                   <span className="tracking-wide">{opt.label}</span>
                   {isSelected && (
-                    <Check className="w-3.5 h-3.5 text-[#7A152E] shrink-0 ml-2" />
+                    <Check className="w-3.5 h-3.5 text-[#145C59] shrink-0 ml-2" />
                   )}
                 </button>
               );

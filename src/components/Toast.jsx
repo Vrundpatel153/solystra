@@ -17,7 +17,7 @@ export const ToastContainer = () => {
           {toast.type === 'info' ? (
             <Info className="w-5 h-5 text-[#EAD7AE] shrink-0 mt-0.5" />
           ) : (
-            <div className="w-5 h-5 rounded-full bg-[#7A152E] flex items-center justify-center shrink-0 text-white mt-0.5 border border-[#C5A059]/40">
+            <div className="w-5 h-5 rounded-full bg-[#145C59] flex items-center justify-center shrink-0 text-white mt-0.5 border border-[#C5A059]/40">
               <CheckCircle2 className="w-3.5 h-3.5" />
             </div>
           )}

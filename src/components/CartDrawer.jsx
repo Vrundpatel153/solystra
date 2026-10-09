@@ -68,7 +68,7 @@ export const CartDrawer = () => {
           {/* Header */}
           <div className="p-5 border-b border-[#EAE4DC] flex items-center justify-between bg-[#FAF8F5]">
             <div className="flex items-center gap-2.5">
-              <div className="w-8 h-8 rounded-full bg-[#7A152E]/10 flex items-center justify-center text-[#7A152E]">
+              <div className="w-8 h-8 rounded-full bg-[#145C59]/10 flex items-center justify-center text-[#145C59]">
                 <ShoppingBag className="w-4 h-4" />
               </div>
               <div>
@@ -102,7 +102,7 @@ export const CartDrawer = () => {
                     </span>
                   ) : (
                     <span>
-                      Add <strong className="text-[#7A152E]">₹{amountNeededForFreeShipping.toLocaleString('en-IN')}</strong> more for Free Delivery
+                      Add <strong className="text-[#145C59]">₹{amountNeededForFreeShipping.toLocaleString('en-IN')}</strong> more for Free Delivery
                     </span>
                   )}
                 </span>
@@ -112,7 +112,7 @@ export const CartDrawer = () => {
               </div>
               <div className="w-full bg-[#EAE4DC] rounded-full h-1.5 overflow-hidden">
                 <div
-                  className="bg-gradient-to-r from-[#7A152E] to-[#C5A059] h-full rounded-full transition-all duration-500"
+                  className="bg-gradient-to-r from-[#145C59] to-[#C5A059] h-full rounded-full transition-all duration-500"
                   style={{ width: `${shippingProgress}%` }}
                 />
               </div>
@@ -123,7 +123,7 @@ export const CartDrawer = () => {
           <div className="flex-1 overflow-y-auto p-5 divide-y divide-stone-100 hide-scrollbar">
             {cart.length === 0 ? (
               <div className="h-full flex flex-col items-center justify-center text-center p-6 text-stone-500 space-y-4">
-                <div className="w-20 h-20 rounded-3xl bg-[#FAF8F5] border border-[#EAE4DC] flex items-center justify-center text-[#7A152E] shadow-xs">
+                <div className="w-20 h-20 rounded-3xl bg-[#FAF8F5] border border-[#EAE4DC] flex items-center justify-center text-[#145C59] shadow-xs">
                   <ShoppingBag className="w-9 h-9 stroke-[1.5]" />
                 </div>
                 <div>
@@ -134,7 +134,7 @@ export const CartDrawer = () => {
                 </div>
                 <button
                   onClick={() => setIsCartOpen(false)}
-                  className="px-6 py-3 bg-[#7A152E] hover:bg-[#590D1E] text-white text-xs uppercase tracking-wider font-semibold rounded-xl shadow-md transition-all cursor-pointer"
+                  className="px-6 py-3 bg-[#145C59] hover:bg-[#0D3F3D] text-white text-xs uppercase tracking-wider font-semibold rounded-xl shadow-md transition-all cursor-pointer"
                 >
                   Explore Collections
                 </button>
@@ -162,7 +162,7 @@ export const CartDrawer = () => {
                     {/* Item Details */}
                     <div className="flex-1 min-w-0 text-xs">
                       <h4
-                        className="font-serif text-sm font-normal text-stone-900 truncate hover:text-[#7A152E] transition-colors cursor-pointer"
+                        className="font-serif text-sm font-normal text-stone-900 truncate hover:text-[#145C59] transition-colors cursor-pointer"
                         onClick={() => {
                           setIsCartOpen(false);
                           window.location.hash = `#/product/${item.id}`;
@@ -181,7 +181,7 @@ export const CartDrawer = () => {
                           </span>
                         )}
                         {item.engraving && (
-                          <span className="text-[#7A152E] italic">
+                          <span className="text-[#145C59] italic">
                             "{item.engraving}"
                           </span>
                         )}
@@ -210,7 +210,7 @@ export const CartDrawer = () => {
                         </div>
 
                         <div className="text-right">
-                          <span className="font-serif text-sm font-bold text-[#7A152E]">
+                          <span className="font-serif text-sm font-bold text-[#145C59]">
                             ₹{(item.price * item.quantity).toLocaleString('en-IN')}
                           </span>
                           {item.mrp && item.mrp > item.price && (
@@ -236,7 +236,7 @@ export const CartDrawer = () => {
                 {/* Velvet Keepsake Vault Free Addon */}
                 <div className="mt-4 p-3.5 rounded-2xl bg-[#FAF8F5] border border-[#EAE4DC] flex items-center justify-between gap-3">
                   <div className="flex items-center gap-2.5">
-                    <Package className="w-5 h-5 text-[#7A152E] shrink-0" />
+                    <Package className="w-5 h-5 text-[#145C59] shrink-0" />
                     <div>
                       <div className="text-xs font-bold text-stone-900">Complimentary Velvet Vault</div>
                       <div className="text-[10px] text-stone-500">Hallmark certificate & royal keepsake box</div>
@@ -249,7 +249,7 @@ export const CartDrawer = () => {
                       onChange={(e) => setIsGiftPackagingAdded(e.target.checked)}
                       className="sr-only peer"
                     />
-                    <div className="w-9 h-5 bg-stone-300 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-stone-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-[#7A152E]"></div>
+                    <div className="w-9 h-5 bg-stone-300 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-stone-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-[#145C59]"></div>
                   </label>
                 </div>
               </>
@@ -282,7 +282,7 @@ export const CartDrawer = () => {
                       value={couponInput}
                       onChange={(e) => setCouponInput(e.target.value)}
                       placeholder="Promo Code (e.g. ROYAL10)"
-                      className="flex-1 text-xs px-3 py-2 bg-white border border-stone-200 rounded-xl focus:outline-none focus:border-[#7A152E] uppercase font-mono tracking-wider"
+                      className="flex-1 text-xs px-3 py-2 bg-white border border-stone-200 rounded-xl focus:outline-none focus:border-[#145C59] uppercase font-mono tracking-wider"
                     />
                     <button
                       type="submit"
@@ -296,7 +296,7 @@ export const CartDrawer = () => {
                     <button
                       type="button"
                       onClick={() => applyCoupon('ROYAL10')}
-                      className="text-[#7A152E] font-mono font-bold hover:underline cursor-pointer"
+                      className="text-[#145C59] font-mono font-bold hover:underline cursor-pointer"
                     >
                       ROYAL10
                     </button>
@@ -304,7 +304,7 @@ export const CartDrawer = () => {
                     <button
                       type="button"
                       onClick={() => applyCoupon('VAULT500')}
-                      className="text-[#7A152E] font-mono font-bold hover:underline cursor-pointer"
+                      className="text-[#145C59] font-mono font-bold hover:underline cursor-pointer"
                     >
                       VAULT500
                     </button>
@@ -327,7 +327,7 @@ export const CartDrawer = () => {
                 )}
 
                 {discountAmount > 0 && (
-                  <div className="flex justify-between text-[#7A152E] font-bold">
+                  <div className="flex justify-between text-[#145C59] font-bold">
                     <span>Coupon Discount</span>
                     <span>-₹{discountAmount.toLocaleString('en-IN')}</span>
                   </div>
@@ -340,7 +340,7 @@ export const CartDrawer = () => {
 
                 <div className="border-t border-[#EAE4DC] pt-2 flex justify-between items-baseline font-serif">
                   <span className="text-sm font-bold text-stone-900">Total Payable</span>
-                  <span className="text-lg font-bold text-[#7A152E]">
+                  <span className="text-lg font-bold text-[#145C59]">
                     ₹{cartTotal.toLocaleString('en-IN')}
                   </span>
                 </div>
@@ -349,7 +349,7 @@ export const CartDrawer = () => {
               {/* Proceed to Checkout CTA */}
               <button
                 onClick={startCheckout}
-                className="w-full py-4 bg-[#7A152E] hover:bg-[#590D1E] text-white rounded-xl font-serif text-xs uppercase tracking-widest font-bold transition-all flex items-center justify-center gap-2 shadow-xl hover:shadow-2xl cursor-pointer"
+                className="w-full py-4 bg-[#145C59] hover:bg-[#0D3F3D] text-white rounded-xl font-serif text-xs uppercase tracking-widest font-bold transition-all flex items-center justify-center gap-2 shadow-xl hover:shadow-2xl cursor-pointer"
               >
                 <Lock className="w-4 h-4 text-white/90" />
                 <span>Proceed to Checkout &bull; ₹{cartTotal.toLocaleString('en-IN')}</span>
@@ -362,7 +362,7 @@ export const CartDrawer = () => {
                   <ShieldCheck className="w-3.5 h-3.5 text-[#C5A059]" /> 256-Bit Encrypted
                 </span>
                 <span>&bull;</span>
-                <span className="text-[#7A152E] font-bold">BIS 925 Guaranteed</span>
+                <span className="text-[#145C59] font-bold">BIS 925 Guaranteed</span>
                 <span>&bull;</span>
                 <span>15-Day Exchange</span>
               </div>

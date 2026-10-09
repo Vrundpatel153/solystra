@@ -162,9 +162,9 @@ export const OffersPage = ({ onBackToStore }) => {
                 key={tier.id}
                 type="button"
                 onClick={() => scrollToSection(tier.id, tier.code)}
-                className="shrink-0 px-3 py-1 rounded-full text-[11px] font-medium border border-[#EAE4DC] bg-white hover:bg-[#7A152E] hover:text-white hover:border-[#7A152E] text-stone-700 transition-all cursor-pointer shadow-2xs flex items-center gap-1 active:scale-95"
+                className="shrink-0 px-3 py-1 rounded-full text-[11px] font-medium border border-[#EAE4DC] bg-white hover:bg-[#145C59] hover:text-white hover:border-[#145C59] text-stone-700 transition-all cursor-pointer shadow-2xs flex items-center gap-1 active:scale-95"
               >
-                <Tag className="w-3 h-3 text-[#7A152E] group-hover:text-white" />
+                <Tag className="w-3 h-3 text-[#145C59] group-hover:text-white" />
                 <span>{tier.pill}</span>
                 {tier.code && <span className="font-mono text-[9.5px] opacity-75">({tier.code})</span>}
               </button>
@@ -203,22 +203,22 @@ export const OffersPage = ({ onBackToStore }) => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
             <div className="p-2.5">
-              <ShieldCheck className="w-5 h-5 text-[#7A152E] mx-auto mb-1.5 stroke-[1.75]" />
+              <ShieldCheck className="w-5 h-5 text-[#145C59] mx-auto mb-1.5 stroke-[1.75]" />
               <h5 className="font-serif text-xs sm:text-sm font-semibold text-stone-900">BIS 925 Hallmarked</h5>
               <p className="text-[11px] text-stone-500 font-light mt-0.5">Government certified stamp</p>
             </div>
             <div className="p-2.5">
-              <Truck className="w-5 h-5 text-[#7A152E] mx-auto mb-1.5 stroke-[1.75]" />
+              <Truck className="w-5 h-5 text-[#145C59] mx-auto mb-1.5 stroke-[1.75]" />
               <h5 className="font-serif text-xs sm:text-sm font-semibold text-stone-900">Insured Delivery</h5>
               <p className="text-[11px] text-stone-500 font-light mt-0.5">Free express across India</p>
             </div>
             <div className="p-2.5">
-              <RotateCcw className="w-5 h-5 text-[#7A152E] mx-auto mb-1.5 stroke-[1.75]" />
+              <RotateCcw className="w-5 h-5 text-[#145C59] mx-auto mb-1.5 stroke-[1.75]" />
               <h5 className="font-serif text-xs sm:text-sm font-semibold text-stone-900">7-Day Exchanges</h5>
               <p className="text-[11px] text-stone-500 font-light mt-0.5">Hassle-free doorstep pickup</p>
             </div>
             <div className="p-2.5">
-              <Award className="w-5 h-5 text-[#7A152E] mx-auto mb-1.5 stroke-[1.75]" />
+              <Award className="w-5 h-5 text-[#145C59] mx-auto mb-1.5 stroke-[1.75]" />
               <h5 className="font-serif text-xs sm:text-sm font-semibold text-stone-900">1-Year Warranty</h5>
               <p className="text-[11px] text-stone-500 font-light mt-0.5">Anti-tarnish replating guarantee</p>
             </div>
@@ -243,7 +243,7 @@ export const OffersPage = ({ onBackToStore }) => {
                 window.location.hash = '#/products';
                 window.scrollTo({ top: 0, behavior: 'smooth' });
               }}
-              className="px-6 py-3 bg-[#7A152E] hover:bg-[#590D1E] text-white text-xs sm:text-sm font-medium rounded-xl shadow-md hover:shadow-lg transition-all cursor-pointer inline-flex items-center gap-2"
+              className="px-6 py-3 bg-[#145C59] hover:bg-[#0D3F3D] text-white text-xs sm:text-sm font-medium rounded-xl shadow-md hover:shadow-lg transition-all cursor-pointer inline-flex items-center gap-2"
             >
               <span>Explore All Products</span>
               <ArrowRight className="w-4 h-4" />

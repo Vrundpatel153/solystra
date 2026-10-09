@@ -36,14 +36,14 @@ export const MobileBottomBar = ({ onOpenBoutique }) => {
             window.scrollTo({ top: 0, behavior: 'smooth' });
           }}
           className={`flex flex-col items-center justify-center py-1 px-2.5 active:scale-95 transition-all group cursor-pointer ${
-            isExploreActive ? 'text-[#7A152E]' : 'text-stone-700 hover:text-[#7A152E]'
+            isExploreActive ? 'text-[#145C59]' : 'text-stone-700 hover:text-[#145C59]'
           }`}
         >
           <Compass className={`w-5 h-5 transition-colors ${
-            isExploreActive ? 'stroke-[#7A152E] stroke-[2.2]' : 'stroke-[1.75] group-hover:stroke-[#7A152E]'
+            isExploreActive ? 'stroke-[#145C59] stroke-[2.2]' : 'stroke-[1.75] group-hover:stroke-[#145C59]'
           }`} />
           <span className={`text-[10.5px] tracking-tight mt-0.5 ${
-            isExploreActive ? 'font-bold text-[#7A152E]' : 'font-medium text-stone-600 group-hover:text-[#7A152E]'
+            isExploreActive ? 'font-bold text-[#145C59]' : 'font-medium text-stone-600 group-hover:text-[#145C59]'
           }`}>
             Explore
           </span>
@@ -56,14 +56,14 @@ export const MobileBottomBar = ({ onOpenBoutique }) => {
             window.scrollTo({ top: 0, behavior: 'smooth' });
           }}
           className={`relative flex flex-col items-center justify-center py-1 px-2.5 active:scale-95 transition-all group cursor-pointer ${
-            isOffersActive ? 'text-[#7A152E]' : 'text-stone-700 hover:text-[#7A152E]'
+            isOffersActive ? 'text-[#145C59]' : 'text-stone-700 hover:text-[#145C59]'
           }`}
         >
           <Tag className={`w-5 h-5 transition-colors ${
-            isOffersActive ? 'stroke-[#7A152E] stroke-[2.2]' : 'stroke-[1.75] group-hover:stroke-[#7A152E]'
+            isOffersActive ? 'stroke-[#145C59] stroke-[2.2]' : 'stroke-[1.75] group-hover:stroke-[#145C59]'
           }`} />
           <span className={`text-[10.5px] tracking-tight mt-0.5 ${
-            isOffersActive ? 'font-bold text-[#7A152E]' : 'font-medium text-stone-600 group-hover:text-[#7A152E]'
+            isOffersActive ? 'font-bold text-[#145C59]' : 'font-medium text-stone-600 group-hover:text-[#145C59]'
           }`}>
             Offers
           </span>
@@ -72,17 +72,17 @@ export const MobileBottomBar = ({ onOpenBoutique }) => {
         {/* Tab 3: Wishlist */}
         <button
           onClick={() => setIsWishlistOpen(true)}
-          className="relative flex flex-col items-center justify-center py-1 px-2.5 text-stone-700 hover:text-[#7A152E] active:scale-95 transition-all group cursor-pointer"
+          className="relative flex flex-col items-center justify-center py-1 px-2.5 text-stone-700 hover:text-[#145C59] active:scale-95 transition-all group cursor-pointer"
         >
           <div className="relative">
-            <Heart className="w-5 h-5 stroke-[1.75] group-hover:stroke-[#7A152E] transition-colors" />
+            <Heart className="w-5 h-5 stroke-[1.75] group-hover:stroke-[#145C59] transition-colors" />
             {wishlist.length > 0 && (
-              <span className="absolute -top-1 -right-2 bg-[#7A152E] text-white text-[9px] font-bold w-3.5 h-3.5 rounded-full flex items-center justify-center shadow-xs">
+              <span className="absolute -top-1 -right-2 bg-[#145C59] text-white text-[9px] font-bold w-3.5 h-3.5 rounded-full flex items-center justify-center shadow-xs">
                 {wishlist.length}
               </span>
             )}
           </div>
-          <span className="text-[10px] font-medium tracking-tight mt-0.5 text-stone-600 group-hover:text-[#7A152E]">
+          <span className="text-[10px] font-medium tracking-tight mt-0.5 text-stone-600 group-hover:text-[#145C59]">
             Wishlist
           </span>
         </button>
@@ -90,17 +90,17 @@ export const MobileBottomBar = ({ onOpenBoutique }) => {
         {/* Tab 4: Cart / Bag */}
         <button
           onClick={() => setIsCartOpen(true)}
-          className="relative flex flex-col items-center justify-center py-1 px-2.5 text-stone-700 hover:text-[#7A152E] active:scale-95 transition-all group cursor-pointer"
+          className="relative flex flex-col items-center justify-center py-1 px-2.5 text-stone-700 hover:text-[#145C59] active:scale-95 transition-all group cursor-pointer"
         >
           <div className="relative">
-            <ShoppingBag className="w-5 h-5 stroke-[1.75] group-hover:stroke-[#7A152E] transition-colors" />
+            <ShoppingBag className="w-5 h-5 stroke-[1.75] group-hover:stroke-[#145C59] transition-colors" />
             {cartItemCount > 0 && (
-              <span className="absolute -top-1 -right-2 bg-[#7A152E] text-white text-[9px] font-bold w-3.5 h-3.5 rounded-full flex items-center justify-center shadow-xs">
+              <span className="absolute -top-1 -right-2 bg-[#145C59] text-white text-[9px] font-bold w-3.5 h-3.5 rounded-full flex items-center justify-center shadow-xs">
                 {cartItemCount}
               </span>
             )}
           </div>
-          <span className="text-[10px] font-medium tracking-tight mt-0.5 text-stone-600 group-hover:text-[#7A152E]">
+          <span className="text-[10px] font-medium tracking-tight mt-0.5 text-stone-600 group-hover:text-[#145C59]">
             Bag {cartItemCount > 0 ? `(${cartItemCount})` : ''}
           </span>
         </button>
