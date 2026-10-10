@@ -528,9 +528,24 @@ export const HomePage = ({ activeCategory, onSelectCategory }) => {
     document.getElementById('bestsellers-showcase')?.scrollIntoView({ behavior: 'smooth' });
   };
 
-  // Top Collections: Track active centered card on mobile for dynamic peek-and-scale effect
-  const [activeCollectionIndex, setActiveCollectionIndex] = useState(7);
+  // Top Collections: Track active centered card (default centered on Card 11: Ruby Collection)
+  const [activeCollectionIndex, setActiveCollectionIndex] = useState(11);
   const isTopCollectionsScrollTicking = useRef(false);
+
+  const centerTopCollectionCard = useCallback((idx = 11, smooth = false) => {
+    const el = topCollectionsScrollRef.current;
+    if (!el) return;
+    const cards = el.querySelectorAll('[data-collection-card]');
+    const card = cards[idx];
+    if (!card) return;
+    const cardRect = card.getBoundingClientRect();
+    const containerRect = el.getBoundingClientRect();
+    const offset = (cardRect.left + cardRect.width / 2) - (containerRect.left + containerRect.width / 2);
+    if (Math.abs(offset) > 1) {
+      el.scrollBy({ left: offset, behavior: smooth ? 'smooth' : 'auto' });
+    }
+    setActiveCollectionIndex(idx);
+  }, [topCollectionsScrollRef]);
 
   const handleTopCollectionsScroll = useCallback(() => {
     if (isTopCollectionsScrollTicking.current) return;
@@ -539,15 +554,17 @@ export const HomePage = ({ activeCategory, onSelectCategory }) => {
     requestAnimationFrame(() => {
       const el = topCollectionsScrollRef.current;
       if (el) {
-        const containerCenter = el.scrollLeft + el.clientWidth / 2;
+        const containerRect = el.getBoundingClientRect();
+        const containerCenter = containerRect.left + containerRect.width / 2;
         const cards = el.querySelectorAll('[data-collection-card]');
         
-        let closestIdx = 7;
+        let closestIdx = 11;
         let minDiff = Infinity;
 
         for (let i = 0; i < cards.length; i++) {
           const card = cards[i];
-          const cardCenter = card.offsetLeft + card.clientWidth / 2;
+          const cardRect = card.getBoundingClientRect();
+          const cardCenter = cardRect.left + cardRect.width / 2;
           const diff = Math.abs(containerCenter - cardCenter);
           if (diff < minDiff) {
             minDiff = diff;
@@ -573,17 +590,11 @@ export const HomePage = ({ activeCategory, onSelectCategory }) => {
 
   const handleCollectionCardClick = useCallback((col, idx) => {
     if (idx !== activeCollectionIndex) {
-      const el = topCollectionsScrollRef.current;
-      if (el) {
-        const cards = el.querySelectorAll('[data-collection-card]');
-        if (cards[idx]) {
-          cards[idx].scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
-        }
-      }
+      centerTopCollectionCard(idx, true);
       return;
     }
     handleCategorySelect(col.category);
-  }, [activeCollectionIndex, topCollectionsScrollRef]);
+  }, [activeCollectionIndex, centerTopCollectionCard, handleCategorySelect]);
 
   // Helper function for left/right slide scrolling with auto continuous looping
   const scrollLoop = (ref, direction, amount = 340) => {
@@ -607,27 +618,19 @@ export const HomePage = ({ activeCategory, onSelectCategory }) => {
     el.scrollBy({ left: direction * amount, behavior: 'smooth' });
   };
 
-  // Attach seamless infinite circular boundary protection and quiet re-centering for collections scrollers
+  // Attach seamless infinite circular boundary protection and initial centering on Card 11 (Ruby)
   useEffect(() => {
-    const scrollers = [
-      topCollectionsScrollRef
-    ];
-
     const initPositions = () => {
-      scrollers.forEach((ref) => {
-        const el = ref.current;
-        if (!el) return;
-        const singleSet = el.scrollWidth / 3;
-        if (singleSet > 50 && (el.scrollLeft < 50 || el.scrollLeft >= singleSet * 2.5)) {
-          el.scrollLeft = singleSet;
-        }
-      });
+      centerTopCollectionCard(11, false);
     };
 
     initPositions();
-    const t1 = setTimeout(initPositions, 150);
-    const t2 = setTimeout(initPositions, 600);
+    const t1 = setTimeout(initPositions, 100);
+    const t2 = setTimeout(initPositions, 350);
+    const t3 = setTimeout(initPositions, 700);
     window.addEventListener('resize', initPositions);
+
+    const scrollers = [topCollectionsScrollRef];
 
     const cleanups = scrollers.map((ref) => {
       const el = ref.current;
@@ -659,6 +662,7 @@ export const HomePage = ({ activeCategory, onSelectCategory }) => {
     return () => {
       clearTimeout(t1);
       clearTimeout(t2);
+      clearTimeout(t3);
       window.removeEventListener('resize', initPositions);
       cleanups.forEach((cleanup) => cleanup && cleanup());
     };
@@ -1478,14 +1482,18 @@ export const HomePage = ({ activeCategory, onSelectCategory }) => {
             </h2>
           </div>
 
-          {/* Center-Hero Coverflow Slider with Noticeably Smaller Left/Right Cards */}
-          <div
-            ref={topCollectionsScrollRef}
-            {...topCollectionsDrag.dragProps}
-            onScroll={handleTopCollectionsScroll}
-            id="top-collections-scroll"
-            className="flex items-center gap-2 sm:gap-4 overflow-x-auto hide-scrollbar py-6 sm:py-8 -mx-4 sm:-mx-6 lg:-mx-8 px-[17vw] sm:px-[calc(50%-130px)] md:px-[calc(50%-145px)] snap-x snap-mandatory cursor-grab active:cursor-grabbing select-none"
-          >
+          {/* Center-Hero Coverflow Slider with Minimal Left/Right Fading Shadows */}
+          <div className="relative -mx-4 sm:-mx-6 lg:-mx-8">
+            <div className="carousel-edge-fade-left" aria-hidden="true" />
+            <div className="carousel-edge-fade-right" aria-hidden="true" />
+
+            <div
+              ref={topCollectionsScrollRef}
+              {...topCollectionsDrag.dragProps}
+              onScroll={handleTopCollectionsScroll}
+              id="top-collections-scroll"
+              className="flex items-center gap-2 sm:gap-4 overflow-x-auto hide-scrollbar py-6 sm:py-8 px-[17vw] sm:px-[calc(50%-130px)] md:px-[calc(50%-145px)] snap-x snap-mandatory cursor-grab active:cursor-grabbing select-none"
+            >
             {TRIPLE_TOP_COLLECTIONS.map((col, idx) => {
               const isCenter = idx === activeCollectionIndex;
               return (
@@ -1511,6 +1519,7 @@ export const HomePage = ({ activeCategory, onSelectCategory }) => {
                 </div>
               );
             })}
+            </div>
           </div>
 
         </div>

@@ -2670,7 +2670,7 @@
     const cards = el.querySelectorAll('[data-collection-card]');
     if (!cards.length) return;
 
-    let activeIndex = 7;
+    let activeIndex = 11;
     let isTicking = false;
     let isDragging = false;
     let startX = 0;
@@ -2696,19 +2696,24 @@
     function centerCardByIndex(idx, smooth = false) {
       const card = cards[idx];
       if (!card) return;
-      const targetScroll = card.offsetLeft - (el.clientWidth - card.clientWidth) / 2;
-      el.scrollTo({ left: targetScroll, behavior: smooth ? 'smooth' : 'auto' });
+      const cardRect = card.getBoundingClientRect();
+      const containerRect = el.getBoundingClientRect();
+      const offset = (cardRect.left + cardRect.width / 2) - (containerRect.left + containerRect.width / 2);
+      if (Math.abs(offset) > 1) {
+        el.scrollBy({ left: offset, behavior: smooth ? 'smooth' : 'auto' });
+      }
       applyCardClasses(idx);
     }
 
-    // Set initial position centered at card 7
+    // Set initial position centered at card 11 (Ruby Collection)
     function initPosition() {
-      centerCardByIndex(7, false);
+      centerCardByIndex(11, false);
     }
 
     initPosition();
     setTimeout(initPosition, 100);
-    setTimeout(initPosition, 400);
+    setTimeout(initPosition, 350);
+    setTimeout(initPosition, 700);
     window.addEventListener('resize', initPosition);
 
     // Scroll listener with RAF throttle
@@ -2717,12 +2722,14 @@
       isTicking = true;
 
       requestAnimationFrame(function () {
-        const containerCenter = el.scrollLeft + el.clientWidth / 2;
-        let closestIdx = activeIndex;
+        const containerRect = el.getBoundingClientRect();
+        const containerCenter = containerRect.left + containerRect.width / 2;
+        let closestIdx = 11;
         let minDiff = Infinity;
 
         cards.forEach((card, i) => {
-          const cardCenter = card.offsetLeft + card.clientWidth / 2;
+          const cardRect = card.getBoundingClientRect();
+          const cardCenter = cardRect.left + cardRect.width / 2;
           const diff = Math.abs(containerCenter - cardCenter);
           if (diff < minDiff) {
             minDiff = diff;

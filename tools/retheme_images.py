@@ -153,10 +153,8 @@ def main():
         base = os.path.join(root, 'solystra_assets', 'promos', p)
         process_file_bundle(base, ['jpg', 'webp'])
         
-    # 3. Banners
+    # 3. Banners (exclude human model imagery to prevent skin discoloration)
     banners = [
-        'banner_pc_1',
-        'banner_mob_1',
         'bogo_privilege_bg',
         'offers_privilege_vault_banner'
     ]

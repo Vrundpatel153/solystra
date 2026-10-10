@@ -70,6 +70,42 @@
   }
 }
 
+/* Minimal Fading Shadow on Left and Right of Top Collections Carousel */
+.carousel-edge-fade-left {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 3rem;
+  pointer-events: none;
+  z-index: 25;
+  background: linear-gradient(to right, rgba(255, 255, 255, 0.98) 0%, rgba(255, 255, 255, 0.75) 45%, rgba(255, 255, 255, 0) 100%);
+  box-shadow: inset 8px 0 10px -8px rgba(0, 0, 0, 0.08);
+}
+
+.carousel-edge-fade-right {
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 3rem;
+  pointer-events: none;
+  z-index: 25;
+  background: linear-gradient(to left, rgba(255, 255, 255, 0.98) 0%, rgba(255, 255, 255, 0.75) 45%, rgba(255, 255, 255, 0) 100%);
+  box-shadow: inset -8px 0 10px -8px rgba(0, 0, 0, 0.08);
+}
+
+@media (min-width: 640px) {
+  .carousel-edge-fade-left {
+    width: 4rem;
+    box-shadow: inset 10px 0 12px -9px rgba(0, 0, 0, 0.08);
+  }
+  .carousel-edge-fade-right {
+    width: 4rem;
+    box-shadow: inset -10px 0 12px -9px rgba(0, 0, 0, 0.08);
+  }
+}
+
 /* Custom Scrollbar - Champagne Gold and Off-White */
 ::-webkit-scrollbar {
   width: 6px;

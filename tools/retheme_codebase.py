@@ -68,8 +68,11 @@ HEX_REPLACEMENTS = [
 ]
 
 RGBA_REPLACEMENTS = [
-    (r'rgba\(\s*122\s*,\s*21\s*,\s*46', 'rgba(20, 92, 89'),
-    (r'rgba\(\s*89\s*,\s*13\s*,\s*30', 'rgba(13, 63, 61'),
+    (r'rgba?\(\s*122\s*,\s*21\s*,\s*46', 'rgba(20, 92, 89'),
+    (r'rgba?\(\s*89\s*,\s*13\s*,\s*30', 'rgba(13, 63, 61'),
+    (r'rgb\(\s*122\s+21\s+46', 'rgb(20 92 89'),
+    (r'rgb\(\s*89\s+13\s+30', 'rgb(13 63 61'),
+    (r'rgb\(\s*142\s+27\s+56', 'rgb(26 110 107'),
 ]
 
 TEXT_REPLACEMENTS = [
