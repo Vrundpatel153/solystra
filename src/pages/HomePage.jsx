@@ -148,9 +148,9 @@ const TOP_COLLECTIONS = [
     id: 'col-ombre',
     title: 'Ombre',
     subtitle: 'COLLECTION',
-    desc: 'Gradient pink sapphires and warm rose vermeil cuffs.',
+    desc: 'Gradient imperial emeralds, blue sapphires and regal peacock vermeil cuffs.',
     img: '/solystra_assets/collections/collection_ombre.webp',
-    category: 'rings',
+    category: 'bracelets',
     tag: 'BESTSELLER'
   },
   {
@@ -182,9 +182,9 @@ const TOP_COLLECTIONS = [
   },
   {
     id: 'col-ruby',
-    title: 'Ruby Radiance',
+    title: 'Emerald Radiance',
     subtitle: 'COLLECTION',
-    desc: 'Deep pigeon-blood rubies prong-set in 18K gold vermeil.',
+    desc: 'Deep imperial emeralds prong-set in 18K gold vermeil.',
     img: '/solystra_assets/collections/collection_ruby.webp',
     category: 'rings',
     tag: 'ROYAL EDIT'

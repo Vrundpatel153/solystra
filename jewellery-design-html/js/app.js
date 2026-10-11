@@ -2677,18 +2677,15 @@
     let scrollLeftStart = 0;
     let hasMoved = false;
 
-    // Center classes
-    const centerClasses = ['scale-100', 'sm:scale-105', 'opacity-100', 'z-20', 'shadow-[0_16px_40px_rgba(20, 92, 89,0.32)]', 'ring-1', 'ring-[#D4AF37]/40'];
-    const sideClasses = ['scale-[0.76]', 'sm:scale-[0.80]', 'opacity-55', 'hover:opacity-75', 'z-0', 'shadow-sm', 'filter', 'contrast-95'];
-
     function applyCardClasses(targetIdx) {
+      activeIndex = targetIdx;
       cards.forEach((card, i) => {
         if (i === targetIdx) {
-          sideClasses.forEach(c => card.classList.remove(c));
-          centerClasses.forEach(c => card.classList.add(c));
+          card.classList.remove('is-side');
+          card.classList.add('is-center');
         } else {
-          centerClasses.forEach(c => card.classList.remove(c));
-          sideClasses.forEach(c => card.classList.add(c));
+          card.classList.remove('is-center');
+          card.classList.add('is-side');
         }
       });
     }
@@ -2716,43 +2713,49 @@
     setTimeout(initPosition, 700);
     window.addEventListener('resize', initPosition);
 
+    function updateActiveCard() {
+      const containerRect = el.getBoundingClientRect();
+      const containerCenter = containerRect.left + containerRect.width / 2;
+      let closestIdx = activeIndex;
+      let minDiff = Infinity;
+
+      for (let i = 0; i < cards.length; i++) {
+        const card = cards[i];
+        const cardRect = card.getBoundingClientRect();
+        const cardCenter = cardRect.left + cardRect.width / 2;
+        const diff = Math.abs(containerCenter - cardCenter);
+        if (diff < minDiff) {
+          minDiff = diff;
+          closestIdx = i;
+        }
+      }
+
+      if (closestIdx !== activeIndex && closestIdx >= 0) {
+        applyCardClasses(closestIdx);
+      }
+
+      // Seamless boundary wrap
+      const singleSet = el.scrollWidth / 3;
+      if (singleSet > 50) {
+        if (el.scrollLeft < 30) {
+          el.scrollLeft += singleSet;
+        } else if (el.scrollLeft >= singleSet * 2) {
+          el.scrollLeft -= singleSet;
+        }
+      }
+    }
+
     // Scroll listener with RAF throttle
     el.addEventListener('scroll', function () {
       if (isTicking) return;
       isTicking = true;
 
       requestAnimationFrame(function () {
-        const containerRect = el.getBoundingClientRect();
-        const containerCenter = containerRect.left + containerRect.width / 2;
-        let closestIdx = 11;
-        let minDiff = Infinity;
-
-        cards.forEach((card, i) => {
-          const cardRect = card.getBoundingClientRect();
-          const cardCenter = cardRect.left + cardRect.width / 2;
-          const diff = Math.abs(containerCenter - cardCenter);
-          if (diff < minDiff) {
-            minDiff = diff;
-            closestIdx = i;
-          }
-        });
-
-        if (closestIdx !== activeIndex) {
-          activeIndex = closestIdx;
-          applyCardClasses(activeIndex);
+        try {
+          updateActiveCard();
+        } finally {
+          isTicking = false;
         }
-
-        // Seamless boundary wrap
-        const singleSet = el.scrollWidth / 3;
-        if (singleSet > 50) {
-          if (el.scrollLeft < 30) {
-            el.scrollLeft += singleSet;
-          } else if (el.scrollLeft >= singleSet * 2) {
-            el.scrollLeft -= singleSet;
-          }
-        }
-
-        isTicking = false;
       });
     }, { passive: true });
 
@@ -2789,6 +2792,7 @@
         hasMoved = true;
       }
       el.scrollLeft = scrollLeftStart - walk;
+      updateActiveCard();
     });
 
     window.addEventListener('mouseup', function () {
@@ -4124,14 +4128,20 @@
   };
 
 
-  // Hook into DOMContentLoaded
-  document.addEventListener('DOMContentLoaded', function () {
-    setTimeout(initFooterAccordions, 100);
-    setTimeout(initTopCollectionsCoverflow, 50);
-    setTimeout(initMotionReelsVideos, 100);
-    setTimeout(initStylingCombos, 150);
-    setTimeout(initProductCarousels, 200);
-  });
+  // Hook into DOMContentLoaded or execute immediately if already loaded
+  function runInteractiveCarousels() {
+    setTimeout(initFooterAccordions, 50);
+    setTimeout(initTopCollectionsCoverflow, 30);
+    setTimeout(initMotionReelsVideos, 50);
+    setTimeout(initStylingCombos, 80);
+    setTimeout(initProductCarousels, 100);
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', runInteractiveCarousels);
+  } else {
+    runInteractiveCarousels();
+  }
 
 
   /* ==========================================================================

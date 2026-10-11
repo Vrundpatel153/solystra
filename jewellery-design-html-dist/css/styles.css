@@ -6582,9 +6582,49 @@ video {
   }
 }
 
+/* ==========================================================================
+   Top Collections Dynamic 3D Coverflow Sizing & Scaling Engine
+   ========================================================================== */
+[data-collection-card] {
+  transition: transform 0.45s cubic-bezier(0.2, 0.8, 0.2, 1), opacity 0.45s ease-out, box-shadow 0.45s ease-out, filter 0.45s ease-out, outline 0.45s ease-out !important;
+  transform-origin: center center;
+  will-change: transform, opacity;
+}
 
+[data-collection-card].is-center {
+  transform: scale(1.05) !important;
+  opacity: 1 !important;
+  z-index: 20 !important;
+  box-shadow: 0 16px 40px rgba(20, 92, 89, 0.32) !important;
+  filter: none !important;
+  outline: 1px solid rgba(212, 175, 55, 0.4) !important;
+}
 
-/* Custom Scrollbar - Champagne Gold and Off-White */
+@media (max-width: 640px) {
+  [data-collection-card].is-center {
+    transform: scale(1.02) !important;
+  }
+}
+
+[data-collection-card].is-side {
+  transform: scale(0.78) !important;
+  opacity: 0.55 !important;
+  z-index: 0 !important;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05) !important;
+  filter: contrast(0.95) !important;
+  outline: none !important;
+}
+
+@media (min-width: 640px) {
+  [data-collection-card].is-side {
+    transform: scale(0.80) !important;
+  }
+}
+
+[data-collection-card].is-side:hover {
+  opacity: 0.75 !important;
+}
+
 
 ::-webkit-scrollbar {
 
