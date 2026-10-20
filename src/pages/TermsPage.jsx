@@ -32,13 +32,13 @@ export const TermsPage = ({ onBackToStore }) => {
   return (
     <div className="min-h-screen bg-[#FAF8F5] text-stone-800">
       {/* Editorial Header */}
-      <header className="bg-white border-b border-[#EAE4DC] py-12 sm:py-16">
+      <header className="bg-white border-b border-[#CEBDA7] py-12 sm:py-16">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           
           <div className="hidden sm:flex items-center gap-2 mb-6">
             <button
               onClick={handleBack}
-              className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#145C59] hover:text-[#0D3F3D] transition-colors cursor-pointer group"
+              className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#61532E] hover:text-[#3D341B] transition-colors cursor-pointer group"
             >
               <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
               <span>Back to Boutique</span>
@@ -48,14 +48,14 @@ export const TermsPage = ({ onBackToStore }) => {
               Terms &amp; Purity Standards
             </span>
             <span className="text-stone-300">&bull;</span>
-            <a href="#/privacy" className="inline-flex items-center gap-1 text-xs text-[#145C59] hover:underline font-semibold group">
+            <a href="#/privacy" className="inline-flex items-center gap-1 text-xs text-[#61532E] hover:underline font-semibold group">
               <span>View Privacy &amp; Policy</span>
               <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
             </a>
           </div>
 
           <div className="max-w-3xl">
-            <span className="text-xs uppercase tracking-widest text-[#145C59] font-bold block mb-2">
+            <span className="text-xs uppercase tracking-widest text-[#61532E] font-bold block mb-2">
               OFFICIAL ATELIER STANDARDS
             </span>
             <h1 className="font-serif text-3xl sm:text-5xl text-stone-900 font-normal leading-tight">
@@ -78,9 +78,9 @@ export const TermsPage = ({ onBackToStore }) => {
         {/* ========================================================
             THE SOLYSTRA PURITY PROMISE (MOVED FROM HOME PAGE)
             ======================================================== */}
-        <section id="purity-promise" className="bg-white rounded-3xl p-6 sm:p-10 border border-[#EAE4DC] shadow-sm">
+        <section id="purity-promise" className="bg-white rounded-3xl p-6 sm:p-10 border border-[#CEBDA7] shadow-sm">
           <div className="text-center max-w-2xl mx-auto mb-10">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#145C59]/10 border border-[#145C59]/20 text-[#145C59] text-[10.5px] font-bold uppercase tracking-wider mb-2">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#61532E]/10 border border-[#61532E]/20 text-[#61532E] text-[10.5px] font-bold uppercase tracking-wider mb-2">
               <Shield className="w-3.5 h-3.5" />
               <span>Government Recognized Standards</span>
             </div>
@@ -96,21 +96,21 @@ export const TermsPage = ({ onBackToStore }) => {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             
             {/* Pillar 1: BIS 925 Hallmark */}
-            <div className="relative bg-[#FAF8F5] rounded-2xl border border-[#EAE4DC] p-6 flex flex-col justify-between items-center text-center hover:border-[#145C59]/50 transition-colors">
+            <div className="relative bg-[#FAF8F5] rounded-2xl border border-[#CEBDA7] p-6 flex flex-col justify-between items-center text-center hover:border-[#61532E]/50 transition-colors">
               <div className="flex flex-col items-center w-full">
-                <span className="text-[10px] uppercase font-bold tracking-wider px-2.5 py-0.5 rounded-full bg-white text-[#145C59] border border-[#EAE4DC] mb-4">
+                <span className="text-[10px] uppercase font-bold tracking-wider px-2.5 py-0.5 rounded-full bg-white text-[#61532E] border border-[#CEBDA7] mb-4">
                   Govt. Recognized
                 </span>
 
-                <div className="w-14 h-14 rounded-2xl bg-white border border-[#EAE4DC] flex items-center justify-center text-[#145C59] mb-4 shadow-2xs">
-                  <Shield className="w-7 h-7 stroke-[1.5] text-[#145C59]" />
+                <div className="w-14 h-14 rounded-2xl bg-white border border-[#CEBDA7] flex items-center justify-center text-[#61532E] mb-4 shadow-2xs">
+                  <Shield className="w-7 h-7 stroke-[1.5] text-[#61532E]" />
                 </div>
 
                 <h3 className="font-serif text-base sm:text-lg text-stone-900 font-semibold leading-snug">
                   BIS 925 Hallmark Certified
                 </h3>
 
-                <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-white border border-[#EAE4DC] text-[11px] font-medium text-[#8C6D23] my-3">
+                <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-white border border-[#CEBDA7] text-[11px] font-medium text-[#8C6D23] my-3">
                   <span>Purity: 92.5% Fine Silver</span>
                 </div>
 
@@ -119,20 +119,20 @@ export const TermsPage = ({ onBackToStore }) => {
                 </p>
               </div>
 
-              <div className="w-full pt-3 mt-4 border-t border-[#EAE4DC] flex items-center justify-center gap-1.5 text-[11px] text-[#145C59] font-medium">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#145C59]" />
+              <div className="w-full pt-3 mt-4 border-t border-[#CEBDA7] flex items-center justify-center gap-1.5 text-[11px] text-[#61532E] font-medium">
+                <span className="w-1.5 h-1.5 rounded-full bg-[#61532E]" />
                 <span>Laser-Stamped Purity Seal</span>
               </div>
             </div>
 
             {/* Pillar 2: Double-Micron Rhodium Shield */}
-            <div className="relative bg-[#FAF8F5] rounded-2xl border border-[#EAE4DC] p-6 flex flex-col justify-between items-center text-center hover:border-[#145C59]/50 transition-colors">
+            <div className="relative bg-[#FAF8F5] rounded-2xl border border-[#CEBDA7] p-6 flex flex-col justify-between items-center text-center hover:border-[#61532E]/50 transition-colors">
               <div className="flex flex-col items-center w-full">
-                <span className="text-[10px] uppercase font-bold tracking-wider px-2.5 py-0.5 rounded-full bg-white text-[#145C59] border border-[#EAE4DC] mb-4">
+                <span className="text-[10px] uppercase font-bold tracking-wider px-2.5 py-0.5 rounded-full bg-white text-[#61532E] border border-[#CEBDA7] mb-4">
                   10x Industry Standard
                 </span>
 
-                <div className="w-14 h-14 rounded-2xl bg-white border border-[#EAE4DC] flex items-center justify-center text-[#145C59] mb-4 shadow-2xs">
+                <div className="w-14 h-14 rounded-2xl bg-white border border-[#CEBDA7] flex items-center justify-center text-[#61532E] mb-4 shadow-2xs">
                   <Layers className="w-7 h-7 stroke-[1.5] text-[#C5A059]" />
                 </div>
 
@@ -140,7 +140,7 @@ export const TermsPage = ({ onBackToStore }) => {
                   Double-Micron Rhodium Shield
                 </h3>
 
-                <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-white border border-[#EAE4DC] text-[11px] font-medium text-[#8C6D23] my-3">
+                <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-white border border-[#CEBDA7] text-[11px] font-medium text-[#8C6D23] my-3">
                   <span>Thickness: 2.0µm Barrier</span>
                 </div>
 
@@ -149,28 +149,28 @@ export const TermsPage = ({ onBackToStore }) => {
                 </p>
               </div>
 
-              <div className="w-full pt-3 mt-4 border-t border-[#EAE4DC] flex items-center justify-center gap-1.5 text-[11px] text-[#145C59] font-medium">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#145C59]" />
+              <div className="w-full pt-3 mt-4 border-t border-[#CEBDA7] flex items-center justify-center gap-1.5 text-[11px] text-[#61532E] font-medium">
+                <span className="w-1.5 h-1.5 rounded-full bg-[#61532E]" />
                 <span>Zero Skin Discoloration</span>
               </div>
             </div>
 
             {/* Pillar 3: AAA+ Austrian Solitaires */}
-            <div className="relative bg-[#FAF8F5] rounded-2xl border border-[#EAE4DC] p-6 flex flex-col justify-between items-center text-center hover:border-[#145C59]/50 transition-colors">
+            <div className="relative bg-[#FAF8F5] rounded-2xl border border-[#CEBDA7] p-6 flex flex-col justify-between items-center text-center hover:border-[#61532E]/50 transition-colors">
               <div className="flex flex-col items-center w-full">
-                <span className="text-[10px] uppercase font-bold tracking-wider px-2.5 py-0.5 rounded-full bg-white text-[#145C59] border border-[#EAE4DC] mb-4">
+                <span className="text-[10px] uppercase font-bold tracking-wider px-2.5 py-0.5 rounded-full bg-white text-[#61532E] border border-[#CEBDA7] mb-4">
                   Hearts & Arrows Cut
                 </span>
 
-                <div className="w-14 h-14 rounded-2xl bg-white border border-[#EAE4DC] flex items-center justify-center text-[#145C59] mb-4 shadow-2xs">
-                  <Award className="w-7 h-7 stroke-[1.5] text-[#145C59]" />
+                <div className="w-14 h-14 rounded-2xl bg-white border border-[#CEBDA7] flex items-center justify-center text-[#61532E] mb-4 shadow-2xs">
+                  <Award className="w-7 h-7 stroke-[1.5] text-[#61532E]" />
                 </div>
 
                 <h3 className="font-serif text-base sm:text-lg text-stone-900 font-semibold leading-snug">
                   AAA+ Austrian Solitaires
                 </h3>
 
-                <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-white border border-[#EAE4DC] text-[11px] font-medium text-[#8C6D23] my-3">
+                <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-white border border-[#CEBDA7] text-[11px] font-medium text-[#8C6D23] my-3">
                   <span>57-Facet Diamond Refraction</span>
                 </div>
 
@@ -179,20 +179,20 @@ export const TermsPage = ({ onBackToStore }) => {
                 </p>
               </div>
 
-              <div className="w-full pt-3 mt-4 border-t border-[#EAE4DC] flex items-center justify-center gap-1.5 text-[11px] text-[#145C59] font-medium">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#145C59]" />
+              <div className="w-full pt-3 mt-4 border-t border-[#CEBDA7] flex items-center justify-center gap-1.5 text-[11px] text-[#61532E] font-medium">
+                <span className="w-1.5 h-1.5 rounded-full bg-[#61532E]" />
                 <span>Micro-Prong Precision Setting</span>
               </div>
             </div>
 
             {/* Pillar 4: 1-Year Plating Warranty */}
-            <div className="relative bg-[#FAF8F5] rounded-2xl border border-[#EAE4DC] p-6 flex flex-col justify-between items-center text-center hover:border-[#145C59]/50 transition-colors">
+            <div className="relative bg-[#FAF8F5] rounded-2xl border border-[#CEBDA7] p-6 flex flex-col justify-between items-center text-center hover:border-[#61532E]/50 transition-colors">
               <div className="flex flex-col items-center w-full">
-                <span className="text-[10px] uppercase font-bold tracking-wider px-2.5 py-0.5 rounded-full bg-white text-[#145C59] border border-[#EAE4DC] mb-4">
+                <span className="text-[10px] uppercase font-bold tracking-wider px-2.5 py-0.5 rounded-full bg-white text-[#61532E] border border-[#CEBDA7] mb-4">
                   Complimentary Renewal
                 </span>
 
-                <div className="w-14 h-14 rounded-2xl bg-white border border-[#EAE4DC] flex items-center justify-center text-[#145C59] mb-4 shadow-2xs">
+                <div className="w-14 h-14 rounded-2xl bg-white border border-[#CEBDA7] flex items-center justify-center text-[#61532E] mb-4 shadow-2xs">
                   <RefreshCw className="w-7 h-7 stroke-[1.5] text-[#C5A059]" />
                 </div>
 
@@ -200,7 +200,7 @@ export const TermsPage = ({ onBackToStore }) => {
                   1-Year Plating Warranty
                 </h3>
 
-                <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-white border border-[#EAE4DC] text-[11px] font-medium text-[#8C6D23] my-3">
+                <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-white border border-[#CEBDA7] text-[11px] font-medium text-[#8C6D23] my-3">
                   <span>Free Doorstep Pickup & Spa</span>
                 </div>
 
@@ -209,8 +209,8 @@ export const TermsPage = ({ onBackToStore }) => {
                 </p>
               </div>
 
-              <div className="w-full pt-3 mt-4 border-t border-[#EAE4DC] flex items-center justify-center gap-1.5 text-[11px] text-[#145C59] font-medium">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#145C59]" />
+              <div className="w-full pt-3 mt-4 border-t border-[#CEBDA7] flex items-center justify-center gap-1.5 text-[11px] text-[#61532E] font-medium">
+                <span className="w-1.5 h-1.5 rounded-full bg-[#61532E]" />
                 <span>Doorstep Pickup Included</span>
               </div>
             </div>
@@ -224,9 +224,9 @@ export const TermsPage = ({ onBackToStore }) => {
         <div className="space-y-10">
 
           {/* Section 1 */}
-          <div className="bg-white rounded-2xl p-6 sm:p-8 border border-[#EAE4DC]">
+          <div className="bg-white rounded-2xl p-6 sm:p-8 border border-[#CEBDA7]">
             <h3 className="font-serif text-xl sm:text-2xl text-stone-900 font-medium mb-4 flex items-center gap-3">
-              <span className="w-7 h-7 rounded-full bg-[#145C59]/10 text-[#145C59] text-xs font-bold flex items-center justify-center">
+              <span className="w-7 h-7 rounded-full bg-[#61532E]/10 text-[#61532E] text-xs font-bold flex items-center justify-center">
                 1
               </span>
               <span>Authentic Atelier Materials & BIS Hallmarking</span>
@@ -245,9 +245,9 @@ export const TermsPage = ({ onBackToStore }) => {
           </div>
 
           {/* Section 2 */}
-          <div className="bg-white rounded-2xl p-6 sm:p-8 border border-[#EAE4DC]">
+          <div className="bg-white rounded-2xl p-6 sm:p-8 border border-[#CEBDA7]">
             <h3 className="font-serif text-xl sm:text-2xl text-stone-900 font-medium mb-4 flex items-center gap-3">
-              <span className="w-7 h-7 rounded-full bg-[#145C59]/10 text-[#145C59] text-xs font-bold flex items-center justify-center">
+              <span className="w-7 h-7 rounded-full bg-[#61532E]/10 text-[#61532E] text-xs font-bold flex items-center justify-center">
                 2
               </span>
               <span>1-Year Atelier Warranty & Replating Policy</span>
@@ -266,9 +266,9 @@ export const TermsPage = ({ onBackToStore }) => {
           </div>
 
           {/* Section 3 */}
-          <div className="bg-white rounded-2xl p-6 sm:p-8 border border-[#EAE4DC]">
+          <div className="bg-white rounded-2xl p-6 sm:p-8 border border-[#CEBDA7]">
             <h3 className="font-serif text-xl sm:text-2xl text-stone-900 font-medium mb-4 flex items-center gap-3">
-              <span className="w-7 h-7 rounded-full bg-[#145C59]/10 text-[#145C59] text-xs font-bold flex items-center justify-center">
+              <span className="w-7 h-7 rounded-full bg-[#61532E]/10 text-[#61532E] text-xs font-bold flex items-center justify-center">
                 3
               </span>
               <span>15-Day Easy Return & Exchange Terms</span>
@@ -287,9 +287,9 @@ export const TermsPage = ({ onBackToStore }) => {
           </div>
 
           {/* Section 4 */}
-          <div className="bg-white rounded-2xl p-6 sm:p-8 border border-[#EAE4DC]">
+          <div className="bg-white rounded-2xl p-6 sm:p-8 border border-[#CEBDA7]">
             <h3 className="font-serif text-xl sm:text-2xl text-stone-900 font-medium mb-4 flex items-center gap-3">
-              <span className="w-7 h-7 rounded-full bg-[#145C59]/10 text-[#145C59] text-xs font-bold flex items-center justify-center">
+              <span className="w-7 h-7 rounded-full bg-[#61532E]/10 text-[#61532E] text-xs font-bold flex items-center justify-center">
                 4
               </span>
               <span>Shipping, Transit Insurance & Delivery</span>
@@ -308,9 +308,9 @@ export const TermsPage = ({ onBackToStore }) => {
           </div>
 
           {/* Section 5 */}
-          <div className="bg-white rounded-2xl p-6 sm:p-8 border border-[#EAE4DC]">
+          <div className="bg-white rounded-2xl p-6 sm:p-8 border border-[#CEBDA7]">
             <h3 className="font-serif text-xl sm:text-2xl text-stone-900 font-medium mb-4 flex items-center gap-3">
-              <span className="w-7 h-7 rounded-full bg-[#145C59]/10 text-[#145C59] text-xs font-bold flex items-center justify-center">
+              <span className="w-7 h-7 rounded-full bg-[#61532E]/10 text-[#61532E] text-xs font-bold flex items-center justify-center">
                 5
               </span>
               <span>Pricing, Payments & Security</span>
@@ -331,7 +331,7 @@ export const TermsPage = ({ onBackToStore }) => {
         </div>
 
         {/* Contact Concierge Banner */}
-        <div className="rounded-3xl p-8 bg-gradient-to-r from-[#145C59] to-[#082827] text-white flex flex-col md:flex-row items-center justify-between gap-6 shadow-xl">
+        <div className="rounded-3xl p-8 bg-gradient-to-r from-[#61532E] to-[#252010] text-white flex flex-col md:flex-row items-center justify-between gap-6 shadow-xl">
           <div>
             <span className="text-xs text-[#F5E6CC] font-bold uppercase tracking-widest block mb-1">
               HAVE QUESTIONS ABOUT OUR PURITY OR WARRANTY?
@@ -347,7 +347,7 @@ export const TermsPage = ({ onBackToStore }) => {
           <div className="flex items-center gap-3 shrink-0">
             <a
               href="mailto:solystrajewels.official@gmail.com"
-              className="px-5 py-2.5 rounded-xl bg-white text-[#145C59] text-xs font-bold hover:bg-stone-100 transition-colors shadow-sm inline-flex items-center gap-2"
+              className="px-5 py-2.5 rounded-xl bg-white text-[#61532E] text-xs font-bold hover:bg-stone-100 transition-colors shadow-sm inline-flex items-center gap-2"
             >
               <Mail className="w-4 h-4" />
               <span>Email Atelier</span>

@@ -195,7 +195,7 @@ export const AllProductsPage = ({ onBackToStore }) => {
           1. SLEEK LUXURY EDITORIAL ARCHIVE BANNER
           (High-fashion Vogue jewelry photography matching Offers page)
           ======================================================== */}
-      <section className="relative overflow-hidden bg-stone-900 border-b border-[#EAE4DC]">
+      <section className="relative overflow-hidden bg-stone-900 border-b border-[#CEBDA7]">
         <div className="relative w-full h-36 xs:h-40 sm:h-48 md:h-56">
           <img
             src="solystra_assets/banners/explore_editorial_banner.webp"
@@ -242,7 +242,7 @@ export const AllProductsPage = ({ onBackToStore }) => {
       {/* ========================================================
           2. SEARCH & CATEGORY FILTER CONTROL BAR
           ======================================================== */}
-      <section className="bg-white border-b border-[#EAE4DC] py-3 sm:py-3.5">
+      <section className="bg-white border-b border-[#CEBDA7] py-3 sm:py-3.5">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row md:items-center justify-between gap-3 sm:gap-4">
             
@@ -254,7 +254,7 @@ export const AllProductsPage = ({ onBackToStore }) => {
                   onClick={() => setSelectedCategory(cat.id)}
                   className={`px-3.5 py-1.5 rounded-full text-xs font-medium whitespace-nowrap transition-all cursor-pointer active:scale-95 ${
                     selectedCategory === cat.id
-                      ? 'bg-[#145C59] text-white shadow-xs font-semibold'
+                      ? 'bg-[#61532E] text-white shadow-xs font-semibold'
                       : 'bg-stone-100 hover:bg-stone-200/80 text-stone-700'
                   }`}
                 >
@@ -271,7 +271,7 @@ export const AllProductsPage = ({ onBackToStore }) => {
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 placeholder="Search rings, necklaces, 18K gold..."
-                className="w-full pl-9 pr-9 py-2 bg-[#FAF8F5] border border-[#EAE4DC] focus:border-[#145C59] focus:bg-white rounded-xl text-xs sm:text-sm text-stone-900 placeholder:text-stone-400 outline-none transition-all shadow-2xs"
+                className="w-full pl-9 pr-9 py-2 bg-[#FAF8F5] border border-[#CEBDA7] focus:border-[#61532E] focus:bg-white rounded-xl text-xs sm:text-sm text-stone-900 placeholder:text-stone-400 outline-none transition-all shadow-2xs"
               />
               {searchQuery && (
                 <button
@@ -291,19 +291,19 @@ export const AllProductsPage = ({ onBackToStore }) => {
       {/* ========================================================
           2. MOBILE/TABLET STICKY FILTER & SORT TOOLBAR
           ======================================================== */}
-      <section className="lg:hidden bg-white/95 backdrop-blur-md border-b border-[#EAE4DC] sticky top-[52px] sm:top-[62px] z-30 shadow-[0_2px_10px_rgba(0,0,0,0.02)]">
+      <section className="lg:hidden bg-white/95 backdrop-blur-md border-b border-[#CEBDA7] sticky top-[52px] sm:top-[62px] z-30 shadow-[0_2px_10px_rgba(0,0,0,0.02)]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2.5">
           {/* Mobile & Tablet Toolbar: Premium 50/50 Symmetrical Action Bar */}
           <div className="grid grid-cols-2 gap-2.5">
             {/* Filter Drawer Trigger */}
             <button
               onClick={() => setIsMobileFilterOpen(true)}
-              className="w-full flex items-center justify-center gap-2 py-2 px-3 rounded-xl border border-[#EAE4DC] bg-[#FAF8F5] hover:bg-[#F5F0EA] active:scale-[0.98] text-xs font-semibold text-stone-800 shadow-2xs transition-all cursor-pointer"
+              className="w-full flex items-center justify-center gap-2 py-2 px-3 rounded-xl border border-[#CEBDA7] bg-[#FAF8F5] hover:bg-[#F5F0EA] active:scale-[0.98] text-xs font-semibold text-stone-800 shadow-2xs transition-all cursor-pointer"
             >
-              <SlidersHorizontal className="w-3.5 h-3.5 text-[#145C59]" />
+              <SlidersHorizontal className="w-3.5 h-3.5 text-[#61532E]" />
               <span>Filters</span>
               {activeFilterCount > 0 && (
-                <span className="w-4 h-4 rounded-full bg-[#145C59] text-white text-[10px] font-bold flex items-center justify-center ml-0.5">
+                <span className="w-4 h-4 rounded-full bg-[#61532E] text-white text-[10px] font-bold flex items-center justify-center ml-0.5">
                   {activeFilterCount}
                 </span>
               )}
@@ -320,11 +320,11 @@ export const AllProductsPage = ({ onBackToStore }) => {
 
           {/* Active Filters Tag Strip on Mobile */}
           {activeFilterCount > 0 && (
-            <div className="flex flex-wrap items-center gap-1.5 pt-2.5 mt-2 border-t border-[#EAE4DC]/60">
+            <div className="flex flex-wrap items-center gap-1.5 pt-2.5 mt-2 border-t border-[#CEBDA7]/60">
               <span className="text-[11px] text-stone-400 mr-1">Active:</span>
 
               {searchQuery && (
-                <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[11px] bg-[#F0F7F6] text-[#145C59] border border-[#EAD5DA]">
+                <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[11px] bg-[#F6F3EE] text-[#61532E] border border-[#CEBDA7]">
                   Search: "{searchQuery}"
                   <button onClick={() => setSearchQuery('')} className="cursor-pointer">
                     <X className="w-3 h-3" />
@@ -333,7 +333,7 @@ export const AllProductsPage = ({ onBackToStore }) => {
               )}
 
               {selectedCategory !== 'all' && (
-                <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[11px] bg-[#F0F7F6] text-[#145C59] border border-[#EAD5DA]">
+                <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[11px] bg-[#F6F3EE] text-[#61532E] border border-[#CEBDA7]">
                   Category: {CATEGORIES.find((c) => c.id === selectedCategory)?.label}
                   <button onClick={() => setSelectedCategory('all')} className="cursor-pointer">
                     <X className="w-3 h-3" />
@@ -342,7 +342,7 @@ export const AllProductsPage = ({ onBackToStore }) => {
               )}
 
               {selectedPriceTier !== 'all' && (
-                <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[11px] bg-[#F0F7F6] text-[#145C59] border border-[#EAD5DA]">
+                <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[11px] bg-[#F6F3EE] text-[#61532E] border border-[#CEBDA7]">
                   Price: {PRICE_TIERS.find((t) => t.id === selectedPriceTier)?.label}
                   <button onClick={() => setSelectedPriceTier('all')} className="cursor-pointer">
                     <X className="w-3 h-3" />
@@ -351,7 +351,7 @@ export const AllProductsPage = ({ onBackToStore }) => {
               )}
 
               {maxPriceSlider < maxCatalogPrice && (
-                <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[11px] bg-[#F0F7F6] text-[#145C59] border border-[#EAD5DA]">
+                <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[11px] bg-[#F6F3EE] text-[#61532E] border border-[#CEBDA7]">
                   Under ₹{maxPriceSlider.toLocaleString('en-IN')}
                   <button onClick={() => setMaxPriceSlider(maxCatalogPrice)} className="cursor-pointer">
                     <X className="w-3 h-3" />
@@ -360,7 +360,7 @@ export const AllProductsPage = ({ onBackToStore }) => {
               )}
 
               {selectedMetal !== 'all' && (
-                <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[11px] bg-[#F0F7F6] text-[#145C59] border border-[#EAD5DA]">
+                <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[11px] bg-[#F6F3EE] text-[#61532E] border border-[#CEBDA7]">
                   Metal: {METALS.find((m) => m.id === selectedMetal)?.label}
                   <button onClick={() => setSelectedMetal('all')} className="cursor-pointer">
                     <X className="w-3 h-3" />
@@ -370,7 +370,7 @@ export const AllProductsPage = ({ onBackToStore }) => {
 
               <button
                 onClick={handleResetFilters}
-                className="text-[11px] text-[#145C59] hover:underline font-semibold ml-auto cursor-pointer"
+                className="text-[11px] text-[#61532E] hover:underline font-semibold ml-auto cursor-pointer"
               >
                 Clear All
               </button>
@@ -386,16 +386,16 @@ export const AllProductsPage = ({ onBackToStore }) => {
         <div className="flex gap-8 items-start">
           
           {/* Desktop Left Filter Sidebar (Clean Sticky below Navbar) */}
-          <aside className="hidden lg:block w-64 shrink-0 space-y-6 bg-white p-5 rounded-2xl border border-[#EAE4DC] shadow-xs sticky top-[76px]">
-            <div className="flex items-center justify-between pb-3 border-b border-[#EAE4DC]">
+          <aside className="hidden lg:block w-64 shrink-0 space-y-6 bg-white p-5 rounded-2xl border border-[#CEBDA7] shadow-xs sticky top-[76px]">
+            <div className="flex items-center justify-between pb-3 border-b border-[#CEBDA7]">
               <span className="font-serif text-base font-semibold text-stone-900 flex items-center gap-2">
-                <SlidersHorizontal className="w-4 h-4 text-[#145C59]" />
+                <SlidersHorizontal className="w-4 h-4 text-[#61532E]" />
                 Filter Jewelry
               </span>
               {activeFilterCount > 0 && (
                 <button
                   onClick={handleResetFilters}
-                  className="text-xs text-[#145C59] hover:underline font-medium cursor-pointer"
+                  className="text-xs text-[#61532E] hover:underline font-medium cursor-pointer"
                 >
                   Reset
                 </button>
@@ -408,7 +408,7 @@ export const AllProductsPage = ({ onBackToStore }) => {
                 <span className="text-xs font-bold uppercase tracking-wider text-stone-800">
                   Max Budget
                 </span>
-                <span className="text-xs font-bold text-[#145C59]">
+                <span className="text-xs font-bold text-[#61532E]">
                   ₹{maxPriceSlider.toLocaleString('en-IN')}
                 </span>
               </div>
@@ -419,7 +419,7 @@ export const AllProductsPage = ({ onBackToStore }) => {
                 step="500"
                 value={maxPriceSlider}
                 onChange={(e) => setMaxPriceSlider(Number(e.target.value))}
-                className="w-full accent-[#145C59] cursor-pointer"
+                className="w-full accent-[#61532E] cursor-pointer"
               />
               <div className="flex justify-between text-[10.5px] text-stone-400 mt-1">
                 <span>₹1,000</span>
@@ -428,7 +428,7 @@ export const AllProductsPage = ({ onBackToStore }) => {
             </div>
 
             {/* Filter Group: Metal Purity */}
-            <div className="pt-4 border-t border-[#EAE4DC]">
+            <div className="pt-4 border-t border-[#CEBDA7]">
               <span className="text-xs font-bold uppercase tracking-wider text-stone-800 block mb-2.5">
                 Metal / Polish
               </span>
@@ -439,13 +439,13 @@ export const AllProductsPage = ({ onBackToStore }) => {
                     onClick={() => setSelectedMetal(metal.id)}
                     className={`w-full flex items-center justify-between px-2.5 py-1.5 rounded-lg text-xs transition-colors text-left cursor-pointer ${
                       selectedMetal === metal.id
-                        ? 'bg-[#145C59]/10 text-[#145C59] font-semibold'
+                        ? 'bg-[#61532E]/10 text-[#61532E] font-semibold'
                         : 'text-stone-600 hover:bg-stone-50'
                     }`}
                   >
                     <span>{metal.label}</span>
                     {selectedMetal === metal.id && (
-                      <Check className="w-3.5 h-3.5 text-[#145C59]" />
+                      <Check className="w-3.5 h-3.5 text-[#61532E]" />
                     )}
                   </button>
                 ))}
@@ -453,7 +453,7 @@ export const AllProductsPage = ({ onBackToStore }) => {
             </div>
 
             {/* Filter Group: Categories */}
-            <div className="pt-4 border-t border-[#EAE4DC]">
+            <div className="pt-4 border-t border-[#CEBDA7]">
               <span className="text-xs font-bold uppercase tracking-wider text-stone-800 block mb-2.5">
                 Categories
               </span>
@@ -464,13 +464,13 @@ export const AllProductsPage = ({ onBackToStore }) => {
                     onClick={() => setSelectedCategory(cat.id)}
                     className={`w-full flex items-center justify-between px-2.5 py-1.5 rounded-lg text-xs transition-colors text-left cursor-pointer ${
                       selectedCategory === cat.id
-                        ? 'bg-[#145C59]/10 text-[#145C59] font-semibold'
+                        ? 'bg-[#61532E]/10 text-[#61532E] font-semibold'
                         : 'text-stone-600 hover:bg-stone-50'
                     }`}
                   >
                     <span>{cat.label}</span>
                     {selectedCategory === cat.id && (
-                      <Check className="w-3.5 h-3.5 text-[#145C59]" />
+                      <Check className="w-3.5 h-3.5 text-[#61532E]" />
                     )}
                   </button>
                 ))}
@@ -482,10 +482,10 @@ export const AllProductsPage = ({ onBackToStore }) => {
           {/* Right Product Grid */}
           <main className="flex-1 min-w-0">
             {/* Desktop Action Bar (Clean, Non-Sticky & Perfectly Aligned with Product Grid) */}
-            <div className="hidden lg:flex items-center justify-between pb-3.5 mb-4 border-b border-[#EAE4DC]">
+            <div className="hidden lg:flex items-center justify-between pb-3.5 mb-4 border-b border-[#CEBDA7]">
               {/* Left: Luxury Collection Descriptor */}
               <div className="flex items-center gap-2">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#145C59]" />
+                <span className="w-1.5 h-1.5 rounded-full bg-[#61532E]" />
                 <span className="text-xs font-semibold text-stone-900 tracking-wide">
                   Curated Handcrafted Collection
                 </span>
@@ -504,8 +504,8 @@ export const AllProductsPage = ({ onBackToStore }) => {
                       onClick={() => setSelectedPriceTier(tier.id)}
                       className={`px-3 py-1.5 rounded-xl text-xs transition-all cursor-pointer font-medium ${
                         selectedPriceTier === tier.id
-                          ? 'bg-[#145C59] text-white font-semibold shadow-2xs'
-                          : 'bg-white hover:bg-[#FAF8F5] border border-[#EAE4DC] text-stone-700 hover:border-[#145C59]/30'
+                          ? 'bg-[#61532E] text-white font-semibold shadow-2xs'
+                          : 'bg-white hover:bg-[#FAF8F5] border border-[#CEBDA7] text-stone-700 hover:border-[#61532E]/30'
                       }`}
                     >
                       {tier.label}
@@ -514,7 +514,7 @@ export const AllProductsPage = ({ onBackToStore }) => {
                 </div>
 
                 {/* Sort Dropdown */}
-                <div className="flex items-center gap-2 text-xs text-stone-600 pl-3 border-l border-[#EAE4DC]">
+                <div className="flex items-center gap-2 text-xs text-stone-600 pl-3 border-l border-[#CEBDA7]">
                   <span className="text-stone-400 font-light">Sort:</span>
                   <LuxurySortDropdown
                     value={sortBy}
@@ -528,11 +528,11 @@ export const AllProductsPage = ({ onBackToStore }) => {
 
             {/* Desktop Active Filter Tag Strip */}
             {activeFilterCount > 0 && (
-              <div className="hidden lg:flex flex-wrap items-center gap-1.5 pb-3.5 mb-4 border-b border-[#EAE4DC]/60">
+              <div className="hidden lg:flex flex-wrap items-center gap-1.5 pb-3.5 mb-4 border-b border-[#CEBDA7]/60">
                 <span className="text-[11px] text-stone-400 mr-1">Active:</span>
 
                 {searchQuery && (
-                  <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[11px] bg-[#F0F7F6] text-[#145C59] border border-[#EAD5DA]">
+                  <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[11px] bg-[#F6F3EE] text-[#61532E] border border-[#CEBDA7]">
                     Search: "{searchQuery}"
                     <button onClick={() => setSearchQuery('')} className="cursor-pointer">
                       <X className="w-3 h-3" />
@@ -541,7 +541,7 @@ export const AllProductsPage = ({ onBackToStore }) => {
                 )}
 
                 {selectedCategory !== 'all' && (
-                  <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[11px] bg-[#F0F7F6] text-[#145C59] border border-[#EAD5DA]">
+                  <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[11px] bg-[#F6F3EE] text-[#61532E] border border-[#CEBDA7]">
                     Category: {CATEGORIES.find((c) => c.id === selectedCategory)?.label}
                     <button onClick={() => setSelectedCategory('all')} className="cursor-pointer">
                       <X className="w-3 h-3" />
@@ -550,7 +550,7 @@ export const AllProductsPage = ({ onBackToStore }) => {
                 )}
 
                 {selectedPriceTier !== 'all' && (
-                  <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[11px] bg-[#F0F7F6] text-[#145C59] border border-[#EAD5DA]">
+                  <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[11px] bg-[#F6F3EE] text-[#61532E] border border-[#CEBDA7]">
                     Price: {PRICE_TIERS.find((t) => t.id === selectedPriceTier)?.label}
                     <button onClick={() => setSelectedPriceTier('all')} className="cursor-pointer">
                       <X className="w-3 h-3" />
@@ -559,7 +559,7 @@ export const AllProductsPage = ({ onBackToStore }) => {
                 )}
 
                 {maxPriceSlider < 15000 && (
-                  <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[11px] bg-[#F0F7F6] text-[#145C59] border border-[#EAD5DA]">
+                  <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[11px] bg-[#F6F3EE] text-[#61532E] border border-[#CEBDA7]">
                     Under ₹{maxPriceSlider.toLocaleString('en-IN')}
                     <button onClick={() => setMaxPriceSlider(15000)} className="cursor-pointer">
                       <X className="w-3 h-3" />
@@ -568,7 +568,7 @@ export const AllProductsPage = ({ onBackToStore }) => {
                 )}
 
                 {selectedMetal !== 'all' && (
-                  <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[11px] bg-[#F0F7F6] text-[#145C59] border border-[#EAD5DA]">
+                  <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[11px] bg-[#F6F3EE] text-[#61532E] border border-[#CEBDA7]">
                     Metal: {METALS.find((m) => m.id === selectedMetal)?.label}
                     <button onClick={() => setSelectedMetal('all')} className="cursor-pointer">
                       <X className="w-3 h-3" />
@@ -578,7 +578,7 @@ export const AllProductsPage = ({ onBackToStore }) => {
 
                 <button
                   onClick={handleResetFilters}
-                  className="text-[11px] text-[#145C59] hover:underline font-semibold ml-auto cursor-pointer"
+                  className="text-[11px] text-[#61532E] hover:underline font-semibold ml-auto cursor-pointer"
                 >
                   Clear All
                 </button>
@@ -591,8 +591,8 @@ export const AllProductsPage = ({ onBackToStore }) => {
                 ))}
               </div>
             ) : (
-              <div className="bg-white rounded-2xl border border-[#EAE4DC] p-10 sm:p-14 text-center max-w-md mx-auto my-8 shadow-xs">
-                <div className="w-14 h-14 mx-auto rounded-full bg-[#FAF8F5] border border-[#EAE4DC] flex items-center justify-center text-[#145C59] mb-4">
+              <div className="bg-white rounded-2xl border border-[#CEBDA7] p-10 sm:p-14 text-center max-w-md mx-auto my-8 shadow-xs">
+                <div className="w-14 h-14 mx-auto rounded-full bg-[#FAF8F5] border border-[#CEBDA7] flex items-center justify-center text-[#61532E] mb-4">
                   <Search className="w-6 h-6" />
                 </div>
                 <h3 className="font-serif text-xl sm:text-2xl text-stone-900 font-normal">
@@ -603,7 +603,7 @@ export const AllProductsPage = ({ onBackToStore }) => {
                 </p>
                 <button
                   onClick={handleResetFilters}
-                  className="mt-5 px-5 py-2.5 bg-[#145C59] text-white text-xs font-semibold rounded-xl hover:bg-[#0D3F3D] transition-colors cursor-pointer shadow-xs"
+                  className="mt-5 px-5 py-2.5 bg-[#61532E] text-white text-xs font-semibold rounded-xl hover:bg-[#3D341B] transition-colors cursor-pointer shadow-xs"
                 >
                   Reset All Filters
                 </button>
@@ -628,14 +628,14 @@ export const AllProductsPage = ({ onBackToStore }) => {
           {/* Drawer Sheet */}
           <div className="relative bg-white rounded-t-3xl max-h-[85vh] flex flex-col shadow-2xl z-10 overflow-hidden">
             {/* Drawer Header */}
-            <div className="flex items-center justify-between px-5 py-4 border-b border-[#EAE4DC]">
+            <div className="flex items-center justify-between px-5 py-4 border-b border-[#CEBDA7]">
               <div className="flex items-center gap-2">
-                <SlidersHorizontal className="w-4 h-4 text-[#145C59]" />
+                <SlidersHorizontal className="w-4 h-4 text-[#61532E]" />
                 <span className="font-serif text-lg font-semibold text-stone-900">
                   Filters &amp; Refine
                 </span>
                 {activeFilterCount > 0 && (
-                  <span className="px-2 py-0.5 rounded-full bg-[#145C59] text-white text-[10px] font-bold">
+                  <span className="px-2 py-0.5 rounded-full bg-[#61532E] text-white text-[10px] font-bold">
                     {activeFilterCount} Active
                   </span>
                 )}
@@ -658,7 +658,7 @@ export const AllProductsPage = ({ onBackToStore }) => {
                   <span className="text-xs font-bold uppercase tracking-wider text-stone-800">
                     Max Price
                   </span>
-                  <span className="text-xs font-bold text-[#145C59]">
+                  <span className="text-xs font-bold text-[#61532E]">
                     Up to ₹{maxPriceSlider.toLocaleString('en-IN')}
                   </span>
                 </div>
@@ -669,7 +669,7 @@ export const AllProductsPage = ({ onBackToStore }) => {
                   step="500"
                   value={maxPriceSlider}
                   onChange={(e) => setMaxPriceSlider(Number(e.target.value))}
-                  className="w-full accent-[#145C59]"
+                  className="w-full accent-[#61532E]"
                 />
                 <div className="flex justify-between text-[11px] text-stone-400 mt-1">
                   <span>₹1,000</span>
@@ -689,7 +689,7 @@ export const AllProductsPage = ({ onBackToStore }) => {
                       onClick={() => setSelectedPriceTier(tier.id)}
                       className={`px-3 py-2 rounded-xl text-xs font-medium text-center border transition-all cursor-pointer ${
                         selectedPriceTier === tier.id
-                          ? 'border-[#145C59] bg-[#145C59]/10 text-[#145C59] font-semibold'
+                          ? 'border-[#61532E] bg-[#61532E]/10 text-[#61532E] font-semibold'
                           : 'border-stone-200 bg-stone-50 text-stone-700'
                       }`}
                     >
@@ -711,7 +711,7 @@ export const AllProductsPage = ({ onBackToStore }) => {
                       onClick={() => setSelectedMetal(metal.id)}
                       className={`px-3 py-2 rounded-xl text-xs font-medium text-center border transition-all cursor-pointer ${
                         selectedMetal === metal.id
-                          ? 'border-[#145C59] bg-[#145C59]/10 text-[#145C59] font-semibold'
+                          ? 'border-[#61532E] bg-[#61532E]/10 text-[#61532E] font-semibold'
                           : 'border-stone-200 bg-stone-50 text-stone-700'
                       }`}
                     >
@@ -733,7 +733,7 @@ export const AllProductsPage = ({ onBackToStore }) => {
                       onClick={() => setSelectedCategory(cat.id)}
                       className={`px-3 py-2 rounded-xl text-xs font-medium text-center border transition-all cursor-pointer ${
                         selectedCategory === cat.id
-                          ? 'border-[#145C59] bg-[#145C59]/10 text-[#145C59] font-semibold'
+                          ? 'border-[#61532E] bg-[#61532E]/10 text-[#61532E] font-semibold'
                           : 'border-stone-200 bg-stone-50 text-stone-700'
                       }`}
                     >
@@ -746,7 +746,7 @@ export const AllProductsPage = ({ onBackToStore }) => {
             </div>
 
             {/* Drawer Bottom Actions */}
-            <div className="p-4 border-t border-[#EAE4DC] bg-stone-50 flex items-center gap-3">
+            <div className="p-4 border-t border-[#CEBDA7] bg-stone-50 flex items-center gap-3">
               <button
                 onClick={handleResetFilters}
                 className="flex-1 py-3 text-xs font-semibold text-stone-700 bg-white border border-stone-300 rounded-xl hover:bg-stone-100 transition-colors cursor-pointer"
@@ -755,7 +755,7 @@ export const AllProductsPage = ({ onBackToStore }) => {
               </button>
               <button
                 onClick={() => setIsMobileFilterOpen(false)}
-                className="flex-1 py-3 text-xs font-semibold text-white bg-[#145C59] hover:bg-[#0D3F3D] rounded-xl transition-colors cursor-pointer shadow-md"
+                className="flex-1 py-3 text-xs font-semibold text-white bg-[#61532E] hover:bg-[#3D341B] rounded-xl transition-colors cursor-pointer shadow-md"
               >
                 Apply Filters
               </button>

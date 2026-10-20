@@ -36,7 +36,7 @@ export const LuxurySortDropdown = ({ value, onChange, options, isMobile = false 
         type="button"
         onClick={() => setIsOpen(!isOpen)}
         className={`w-full flex items-center justify-between gap-2 bg-[#FAF8F5] hover:bg-[#F5F0EA] border text-stone-800 text-xs font-semibold rounded-xl transition-all cursor-pointer shadow-2xs ${
-          isOpen ? 'border-[#145C59] ring-1 ring-[#145C59]/30 bg-white' : 'border-[#EAE4DC]'
+          isOpen ? 'border-[#61532E] ring-1 ring-[#61532E]/30 bg-white' : 'border-[#CEBDA7]'
         } ${isMobile ? 'py-2 px-3 justify-center' : 'px-3.5 py-1.5 min-w-[140px]'}`}
         aria-haspopup="listbox"
         aria-expanded={isOpen}
@@ -44,7 +44,7 @@ export const LuxurySortDropdown = ({ value, onChange, options, isMobile = false 
         <span className="truncate">{currentOption?.label || 'Sort'}</span>
         <ChevronDown
           className={`w-3.5 h-3.5 transition-transform duration-200 shrink-0 ${
-            isOpen ? 'rotate-180 text-[#145C59]' : 'text-stone-500'
+            isOpen ? 'rotate-180 text-[#61532E]' : 'text-stone-500'
           }`}
         />
       </button>
@@ -52,7 +52,7 @@ export const LuxurySortDropdown = ({ value, onChange, options, isMobile = false 
       {/* Luxury Theme Dropdown Menu (No native OS select, No bright blue highlight) */}
       {isOpen && (
         <div
-          className={`absolute z-50 mt-1.5 bg-white border border-[#EAE4DC] rounded-xl shadow-xl py-1 overflow-hidden animate-in fade-in zoom-in-95 duration-150 ${
+          className={`absolute z-50 mt-1.5 bg-white border border-[#CEBDA7] rounded-xl shadow-xl py-1 overflow-hidden animate-in fade-in zoom-in-95 duration-150 ${
             isMobile
               ? 'left-0 right-0 w-full'
               : 'right-0 w-52'
@@ -60,7 +60,7 @@ export const LuxurySortDropdown = ({ value, onChange, options, isMobile = false 
           role="listbox"
         >
           {/* Atelier Sort Header */}
-          <div className="px-3.5 py-1 text-[10px] uppercase tracking-wider font-semibold text-stone-400 border-b border-[#EAE4DC]/60 mb-0.5">
+          <div className="px-3.5 py-1 text-[10px] uppercase tracking-wider font-semibold text-stone-400 border-b border-[#CEBDA7]/60 mb-0.5">
             Sort Creations By
           </div>
 
@@ -77,15 +77,15 @@ export const LuxurySortDropdown = ({ value, onChange, options, isMobile = false 
                   }}
                   className={`w-full px-3.5 py-2 text-xs flex items-center justify-between transition-colors text-left cursor-pointer ${
                     isSelected
-                      ? 'bg-[#145C59]/10 text-[#145C59] font-bold'
-                      : 'text-stone-700 hover:bg-[#FAF8F5] hover:text-[#145C59]'
+                      ? 'bg-[#61532E]/10 text-[#61532E] font-bold'
+                      : 'text-stone-700 hover:bg-[#FAF8F5] hover:text-[#61532E]'
                   }`}
                   role="option"
                   aria-selected={isSelected}
                 >
                   <span className="tracking-wide">{opt.label}</span>
                   {isSelected && (
-                    <Check className="w-3.5 h-3.5 text-[#145C59] shrink-0 ml-2" />
+                    <Check className="w-3.5 h-3.5 text-[#61532E] shrink-0 ml-2" />
                   )}
                 </button>
               );

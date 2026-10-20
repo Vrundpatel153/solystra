@@ -74,7 +74,7 @@ export const ProductCard = ({ product, variant = 'default', isSquare = false, sh
         onClick={handleCardClick}
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
-        className="group bg-white rounded-2xl border border-[#EAE4DC] overflow-hidden shadow-xs hover:shadow-xl hover:border-[#145C59]/60 transition-all duration-300 flex flex-col cursor-pointer aspect-square relative w-full h-full"
+        className="group bg-white rounded-2xl border border-[#CEBDA7] overflow-hidden shadow-xs hover:shadow-xl hover:border-[#61532E]/60 transition-all duration-300 flex flex-col cursor-pointer aspect-square relative w-full h-full"
       >
         {/* Visual Image Viewport - Flex 1 */}
         <div className="relative w-full flex-1 min-h-0 bg-[#FAF8F5] overflow-hidden">
@@ -90,7 +90,7 @@ export const ProductCard = ({ product, variant = 'default', isSquare = false, sh
             <button
               type="button"
               onClick={handleQuickView}
-              className="pointer-events-auto py-0.5 px-2.5 bg-white/95 hover:bg-[#145C59] text-[#231F20] hover:text-white text-[10px] font-sans font-semibold rounded-full shadow-md flex items-center gap-1 border border-[#EAE4DC] transition-all cursor-pointer"
+              className="pointer-events-auto py-0.5 px-2.5 bg-white/95 hover:bg-[#61532E] text-[#231F20] hover:text-white text-[10px] font-sans font-semibold rounded-full shadow-md flex items-center gap-1 border border-[#CEBDA7] transition-all cursor-pointer"
             >
               <Eye className="w-2.5 h-2.5" />
               <span>Quick View</span>
@@ -99,19 +99,19 @@ export const ProductCard = ({ product, variant = 'default', isSquare = false, sh
         </div>
 
         {/* Bottom Content Bar - Compact Minimal Structure */}
-        <div className="p-2 sm:p-2.5 bg-white border-t border-[#EAE4DC] shrink-0 flex flex-col justify-between gap-1">
+        <div className="p-2 sm:p-2.5 bg-white border-t border-[#CEBDA7] shrink-0 flex flex-col justify-between gap-1">
           <div className="flex items-center justify-between gap-1">
-            <h3 className="font-serif text-[11px] sm:text-xs font-semibold text-[#231F20] group-hover:text-[#145C59] transition-colors truncate leading-snug">
+            <h3 className="font-serif text-[11px] sm:text-xs font-semibold text-[#231F20] group-hover:text-[#61532E] transition-colors truncate leading-snug">
               {cleanTitle}
             </h3>
             <div className="flex items-center gap-1 shrink-0">
               <MetalPurityBadge product={product} size="rating" selectedMetal={selectedMetal} />
               {showWishlist && (product.discount ? (
-                <span className="text-[#145C59] font-bold text-[8.5px] sm:text-[9.5px] tracking-wide shrink-0">
+                <span className="text-[#61532E] font-bold text-[8.5px] sm:text-[9.5px] tracking-wide shrink-0">
                   {product.discount}
                 </span>
               ) : product.badge ? (
-                <span className="text-[#145C59] font-semibold text-[8px] sm:text-[9px] uppercase tracking-wider shrink-0">
+                <span className="text-[#61532E] font-semibold text-[8px] sm:text-[9px] uppercase tracking-wider shrink-0">
                   {product.badge}
                 </span>
               ) : (
@@ -142,16 +142,16 @@ export const ProductCard = ({ product, variant = 'default', isSquare = false, sh
                   onClick={handleWishlistClick}
                   className={`w-6 h-6 rounded-full flex items-center justify-center transition-all duration-200 cursor-pointer active:scale-90 border ${
                     isWishlisted
-                      ? 'bg-[#F0F7F6] text-[#145C59] border-[#145C59]/30 ring-1 ring-[#145C59]/20'
-                      : 'bg-white text-stone-600 hover:text-[#145C59] border-stone-200'
+                      ? 'bg-[#F6F3EE] text-[#61532E] border-[#61532E]/30 ring-1 ring-[#61532E]/20'
+                      : 'bg-white text-stone-600 hover:text-[#61532E] border-stone-200'
                   }`}
                   title={isWishlisted ? "In your Wishlist" : "Add to Wishlist"}
                 >
-                  <Heart className={`w-3 h-3 ${isWishlisted ? 'fill-[#145C59] stroke-[#145C59]' : 'stroke-current fill-transparent'}`} />
+                  <Heart className={`w-3 h-3 ${isWishlisted ? 'fill-[#61532E] stroke-[#61532E]' : 'stroke-current fill-transparent'}`} />
                 </button>
               ) : (
                 discountText && (
-                  <span className="inline-flex items-center justify-center px-1.5 py-0.5 rounded-md bg-[#F0F7F6] border border-[#EAD5DA] text-[#145C59] font-sans font-bold text-[8px] sm:text-[9px] uppercase tracking-wide leading-none whitespace-nowrap shadow-2xs">
+                  <span className="inline-flex items-center justify-center px-1.5 py-0.5 rounded-md bg-[#F6F3EE] border border-[#CEBDA7] text-[#61532E] font-sans font-bold text-[8px] sm:text-[9px] uppercase tracking-wide leading-none whitespace-nowrap shadow-2xs">
                     {discountText}
                   </span>
                 )
@@ -159,7 +159,7 @@ export const ProductCard = ({ product, variant = 'default', isSquare = false, sh
               <button
                 type="button"
                 onClick={handleAddToCart}
-                className="w-6 h-6 rounded-full bg-[#145C59] hover:bg-[#0D3F3D] text-white flex items-center justify-center shadow-2xs transition-all active:scale-90 cursor-pointer"
+                className="w-6 h-6 rounded-full bg-[#61532E] hover:bg-[#3D341B] text-white flex items-center justify-center shadow-2xs transition-all active:scale-90 cursor-pointer"
                 title="Add to Bag"
               >
                 <ShoppingBag className="w-3 h-3 text-white" strokeWidth={2} />
@@ -176,7 +176,7 @@ export const ProductCard = ({ product, variant = 'default', isSquare = false, sh
       onClick={handleCardClick}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
-      className="group bg-white rounded-2xl border border-[#EAE4DC] overflow-hidden shadow-xs hover:shadow-xl hover:border-[#145C59]/60 transition-all duration-300 flex flex-col cursor-pointer h-full"
+      className="group bg-white rounded-2xl border border-[#CEBDA7] overflow-hidden shadow-xs hover:shadow-xl hover:border-[#61532E]/60 transition-all duration-300 flex flex-col cursor-pointer h-full"
     >
       {/* Visual Image Viewport - Grand Aspect 4:5 for Larger, Taller Showcase */}
       <div className="relative w-full aspect-[4/5] bg-[#FAF8F5] overflow-hidden">
@@ -192,7 +192,7 @@ export const ProductCard = ({ product, variant = 'default', isSquare = false, sh
           <button
             type="button"
             onClick={handleQuickView}
-            className="pointer-events-auto py-1 px-3 bg-white/95 hover:bg-[#145C59] text-[#231F20] hover:text-white text-[11px] font-sans font-semibold rounded-full shadow-md flex items-center gap-1.5 border border-[#EAE4DC] transition-all cursor-pointer transform translate-y-1 group-hover:translate-y-0"
+            className="pointer-events-auto py-1 px-3 bg-white/95 hover:bg-[#61532E] text-[#231F20] hover:text-white text-[11px] font-sans font-semibold rounded-full shadow-md flex items-center gap-1.5 border border-[#CEBDA7] transition-all cursor-pointer transform translate-y-1 group-hover:translate-y-0"
           >
             <Eye className="w-3 h-3 stroke-[1.75]" />
             <span>Quick View</span>
@@ -203,14 +203,14 @@ export const ProductCard = ({ product, variant = 'default', isSquare = false, sh
       {/* Content - Precision Minimalist Container */}
       <div className="p-2.5 sm:p-3 flex flex-col justify-between gap-1.5 sm:gap-2 flex-1">
         {/* Title */}
-        <h3 className="font-serif text-xs sm:text-[13.5px] font-semibold text-[#231F20] group-hover:text-[#145C59] transition-colors truncate leading-snug">
+        <h3 className="font-serif text-xs sm:text-[13.5px] font-semibold text-[#231F20] group-hover:text-[#61532E] transition-colors truncate leading-snug">
           {cleanTitle}
         </h3>
 
         {/* Rating & Hallmark Badges Row */}
         <div className="flex items-center justify-between gap-1 sm:gap-1.5 w-full">
           {/* Rating Tag */}
-          <div className="inline-flex items-center gap-1 px-1.5 sm:px-2 py-0.5 rounded-lg bg-[#FAF8F5] border border-[#EAE4DC] shadow-2xs shrink-0">
+          <div className="inline-flex items-center gap-1 px-1.5 sm:px-2 py-0.5 rounded-lg bg-[#FAF8F5] border border-[#CEBDA7] shadow-2xs shrink-0">
             <svg className="w-3 h-3 sm:w-3.5 sm:h-3.5 fill-[#C5A059] text-[#C5A059] shrink-0 drop-shadow-2xs" viewBox="0 0 24 24">
               <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
             </svg>
@@ -226,7 +226,7 @@ export const ProductCard = ({ product, variant = 'default', isSquare = false, sh
         </div>
 
         {/* Price & Action Icons Row */}
-        <div className="pt-1.5 border-t border-[#EAE4DC]/80 flex items-center justify-between gap-1 sm:gap-1.5 mt-auto">
+        <div className="pt-1.5 border-t border-[#CEBDA7]/80 flex items-center justify-between gap-1 sm:gap-1.5 mt-auto">
           {/* Price & Metal Swatches */}
           <div className="flex items-center gap-1 sm:gap-1.5 min-w-0">
             <div className="flex items-baseline flex-wrap sm:flex-nowrap gap-x-1 gap-y-0.5 min-w-0">
@@ -265,7 +265,7 @@ export const ProductCard = ({ product, variant = 'default', isSquare = false, sh
                   title="Rose Gold Plated"
                   className={`w-2.5 h-2.5 rounded-full bg-gradient-to-tr from-[#B76E79] via-[#F5D8DE] to-[#D99BA5] border shadow-2xs transition-all hover:scale-125 cursor-pointer ${
                     selectedMetal.toLowerCase().includes('rose')
-                      ? 'ring-1.5 ring-[#145C59] scale-115 border-[#B76E79]'
+                      ? 'ring-1.5 ring-[#61532E] scale-115 border-[#B76E79]'
                       : 'border-[#B76E79]/40 opacity-70 hover:opacity-100'
                   }`}
                 />
@@ -294,8 +294,8 @@ export const ProductCard = ({ product, variant = 'default', isSquare = false, sh
                 onClick={handleWishlistClick}
                 className={`w-7 h-7 sm:w-8 sm:h-8 rounded-full flex items-center justify-center transition-all duration-200 cursor-pointer active:scale-90 border shadow-2xs hover:shadow-xs ${
                   isWishlisted
-                    ? 'bg-[#F0F7F6] text-[#145C59] border-[#145C59]/30 ring-1 ring-[#145C59]/20'
-                    : 'bg-white text-stone-600 hover:text-[#145C59] hover:border-[#145C59]/40 border-stone-200'
+                    ? 'bg-[#F6F3EE] text-[#61532E] border-[#61532E]/30 ring-1 ring-[#61532E]/20'
+                    : 'bg-white text-stone-600 hover:text-[#61532E] hover:border-[#61532E]/40 border-stone-200'
                 }`}
                 aria-label={isWishlisted ? "Remove from Wishlist" : "Add to Wishlist"}
                 title={isWishlisted ? "In your Wishlist" : "Add to Wishlist"}
@@ -303,14 +303,14 @@ export const ProductCard = ({ product, variant = 'default', isSquare = false, sh
                 <Heart
                   className={`w-3.5 h-3.5 transition-all duration-200 ${
                     isWishlisted
-                      ? 'fill-[#145C59] stroke-[#145C59] stroke-[2] scale-110'
+                      ? 'fill-[#61532E] stroke-[#61532E] stroke-[2] scale-110'
                       : 'stroke-current stroke-[1.75] fill-transparent'
                   }`}
                 />
               </button>
             ) : (
               discountText && (
-                <span className="inline-flex items-center justify-center px-1.5 xs:px-2 py-0.5 sm:py-1 rounded-md sm:rounded-lg bg-[#F0F7F6] border border-[#EAD5DA] text-[#145C59] font-sans font-bold text-[8.5px] xs:text-[9.5px] sm:text-[10px] uppercase tracking-wide leading-none whitespace-nowrap shrink-0 shadow-2xs">
+                <span className="inline-flex items-center justify-center px-1.5 xs:px-2 py-0.5 sm:py-1 rounded-md sm:rounded-lg bg-[#F6F3EE] border border-[#CEBDA7] text-[#61532E] font-sans font-bold text-[8.5px] xs:text-[9.5px] sm:text-[10px] uppercase tracking-wide leading-none whitespace-nowrap shrink-0 shadow-2xs">
                   {discountText}
                 </span>
               )
@@ -320,7 +320,7 @@ export const ProductCard = ({ product, variant = 'default', isSquare = false, sh
             <button
               type="button"
               onClick={handleAddToCart}
-              className="w-7 h-7 sm:w-8 sm:h-8 rounded-full flex items-center justify-center bg-[#145C59] hover:bg-[#0D3F3D] text-white transition-all duration-200 cursor-pointer active:scale-90 shadow-2xs hover:shadow-xs group/cart shrink-0"
+              className="w-7 h-7 sm:w-8 sm:h-8 rounded-full flex items-center justify-center bg-[#61532E] hover:bg-[#3D341B] text-white transition-all duration-200 cursor-pointer active:scale-90 shadow-2xs hover:shadow-xs group/cart shrink-0"
               aria-label="Add to Bag"
               title="Add to Bag"
             >

@@ -37,7 +37,7 @@
   }
 
   ::selection {
-    background-color: #145C59;
+    background-color: #61532E;
     color: #FFFFFF;
   }
 
@@ -106,7 +106,7 @@
   }
 }
 
-/* Custom Scrollbar - Champagne Gold and Off-White */
+/* Custom Scrollbar - Primary #61532E and Warm Off-White */
 ::-webkit-scrollbar {
   width: 6px;
   height: 6px;
@@ -117,52 +117,113 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #C5A059;
+  background: #61532E;
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #9E7B35;
+  background: #3D341B;
 }
 
-/* Luxury Royal Emerald & Champagne Gold Gradients */
-.royal-gradient-bg {
-  background: linear-gradient(135deg, #1A6E6B 0%, #145C59 50%, #0D3F3D 100%);
+/* Primary Dark (#61532E), Secondary (#CEBDA7), and Golden Gradients */
+.royal-gradient-bg,
+.primary-gradient-bg {
+  background: linear-gradient(135deg, #7A693A 0%, #61532E 50%, #3D341B 100%);
 }
 
-.champagne-gradient-bg {
+.secondary-gradient-bg {
+  background: linear-gradient(135deg, #E8DFD5 0%, #CEBDA7 50%, #B5A087 100%);
+}
+
+.champagne-gradient-bg,
+.gold-gradient-bg {
   background: linear-gradient(135deg, #EAD7AE 0%, #C5A059 50%, #9E7B35 100%);
 }
 
-.champagne-gradient-text {
-  background: linear-gradient(135deg, #EAD7AE 0%, #C5A059 60%, #9E7B35 100%);
+.champagne-gradient-text,
+.gold-gradient-text {
+  background: linear-gradient(135deg, #B88E3E 0%, #C5A059 50%, #9E7B35 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
+/* Primary Dark Buttons (#61532E) & Secondary Buttons (#CEBDA7) */
+.btn-primary {
+  background-color: #61532E !important;
+  color: #FFFFFF !important;
+  border: 1px solid #61532E;
+  box-shadow: 0 4px 14px -1px rgba(97, 83, 46, 0.35);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
 
+.btn-primary:hover {
+  background-color: #4D4224 !important;
+  border-color: #4D4224;
+  box-shadow: 0 6px 20px -2px rgba(97, 83, 46, 0.5);
+  transform: translateY(-1px);
+}
 
-/* Luxury Glassmorphism & Translucency */
+.btn-primary-gradient {
+  background: linear-gradient(135deg, #7A693A 0%, #61532E 50%, #3D341B 100%) !important;
+  color: #FFFFFF !important;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 4px 16px rgba(97, 83, 46, 0.35);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.btn-primary-gradient:hover {
+  background: linear-gradient(135deg, #61532E 0%, #4D4224 50%, #2A2413 100%) !important;
+  box-shadow: 0 6px 22px rgba(97, 83, 46, 0.5);
+  transform: translateY(-1px);
+}
+
+.btn-secondary {
+  background-color: transparent;
+  color: #61532E !important;
+  border: 1.5px solid #CEBDA7 !important;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.btn-secondary:hover {
+  background-color: #CEBDA7 !important;
+  color: #231F20 !important;
+  border-color: #CEBDA7 !important;
+  box-shadow: 0 4px 12px rgba(206, 189, 167, 0.4);
+}
+
+.btn-secondary-solid {
+  background-color: #CEBDA7 !important;
+  color: #231F20 !important;
+  border: 1px solid #CEBDA7;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.btn-secondary-solid:hover {
+  background-color: #BFA992 !important;
+  border-color: #BFA992;
+}
+
+/* Luxury Glassmorphism & Translucency with Secondary Border */
 .glass-nav {
-  background: rgba(250, 248, 245, 0.76);
+  background: rgba(250, 248, 245, 0.88);
   backdrop-filter: blur(20px) saturate(180%);
   -webkit-backdrop-filter: blur(20px) saturate(180%);
-  border-bottom: 1px solid rgba(234, 228, 220, 0.65);
+  border-bottom: 1px solid rgba(206, 189, 167, 0.55);
 }
 
 .glass-drawer {
-  background: rgba(250, 248, 245, 0.86);
+  background: rgba(250, 248, 245, 0.92);
   backdrop-filter: blur(28px) saturate(180%);
   -webkit-backdrop-filter: blur(28px) saturate(180%);
-  border-left: 1px solid rgba(255, 255, 255, 0.7);
+  border-left: 1px solid rgba(206, 189, 167, 0.6);
   box-shadow: -12px 0 45px rgba(0, 0, 0, 0.12);
 }
 
 .glass-card {
-  background: rgba(255, 255, 255, 0.62);
+  background: rgba(255, 255, 255, 0.85);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.75);
+  border: 1px solid #CEBDA7;
 }
 
 /* Hide horizontal scrollbars on carousels while allowing touch/wheel scroll */

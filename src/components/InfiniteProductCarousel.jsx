@@ -62,21 +62,21 @@ export const InfiniteProductCarousel = ({
   const isCopied = code && copiedCode === code;
 
   return (
-    <section id={id} className="py-6 sm:py-9 bg-white border-b border-[#EAE4DC] scroll-mt-28 sm:scroll-mt-32 overflow-hidden">
+    <section id={id} className="py-6 sm:py-9 bg-white border-b border-[#CEBDA7] scroll-mt-28 sm:scroll-mt-32 overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-4 pb-3 border-b border-[#EAE4DC]/80">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-4 pb-3 border-b border-[#CEBDA7]/80">
           <div>
             <div className="flex items-center gap-2 mb-1">
               {pill && (
-                <span className="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-[#145C59] text-white tracking-wide shadow-2xs">
+                <span className="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-[#61532E] text-white tracking-wide shadow-2xs">
                   {pill}
                 </span>
               )}
               {code ? (
                 <span className="text-[11px] font-mono font-semibold text-stone-600 tracking-wider">
-                  CODE: <strong className="text-[#145C59]">{code}</strong>
+                  CODE: <strong className="text-[#61532E]">{code}</strong>
                 </span>
               ) : (
                 <span className="text-[11px] font-sans font-medium text-[#8B6B38]">
@@ -103,15 +103,15 @@ export const InfiniteProductCarousel = ({
                 onClick={() => onCopyCode(code)}
                 className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl border text-xs font-medium tracking-wide transition-all cursor-pointer shadow-2xs active:scale-95 ${
                   isCopied
-                    ? 'bg-[#F0F7F6] border-[#145C59] text-[#145C59] font-bold shadow-xs'
-                    : 'bg-[#FAF8F5] hover:bg-[#145C59] hover:text-white border-[#EAE4DC] text-stone-800 hover:border-[#145C59]'
+                    ? 'bg-[#F6F3EE] border-[#61532E] text-[#61532E] font-bold shadow-xs'
+                    : 'bg-[#FAF8F5] hover:bg-[#61532E] hover:text-white border-[#CEBDA7] text-stone-800 hover:border-[#61532E]'
                 }`}
                 title={`Copy code ${code}`}
               >
                 {isCopied ? (
                   <>
-                    <span className="w-1.5 h-1.5 rounded-full bg-[#145C59] animate-ping" />
-                    <span className="font-bold text-[#145C59]">COPIED!</span>
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#61532E] animate-ping" />
+                    <span className="font-bold text-[#61532E]">COPIED!</span>
                   </>
                 ) : (
                   <>

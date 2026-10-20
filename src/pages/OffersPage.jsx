@@ -103,7 +103,7 @@ export const OffersPage = ({ onBackToStore }) => {
           1. SLEEK LUXURY EDITORIAL CAMPAIGN BANNER
           (High-fashion Vogue jewelry photography in compact scale)
           ======================================================== */}
-      <section className="relative overflow-hidden bg-stone-900 border-b border-[#EAE4DC]">
+      <section className="relative overflow-hidden bg-stone-900 border-b border-[#CEBDA7]">
         <div className="relative w-full h-36 xs:h-40 sm:h-48 md:h-56">
           <img
             src="solystra_assets/banners/offers_privilege_vault_banner.webp"
@@ -150,7 +150,7 @@ export const OffersPage = ({ onBackToStore }) => {
       {/* ========================================================
           2. STICKY QUICK-JUMP FILTER PILLS
           ======================================================== */}
-      <nav className="sticky top-[52px] sm:top-[62px] z-30 bg-[#FAF8F5]/96 backdrop-blur-md border-b border-[#EAE4DC] py-2.5 px-4 sm:px-6 lg:px-8 shadow-xs">
+      <nav className="sticky top-[52px] sm:top-[62px] z-30 bg-[#FAF8F5]/96 backdrop-blur-md border-b border-[#CEBDA7] py-2.5 px-4 sm:px-6 lg:px-8 shadow-xs">
         <div className="max-w-7xl mx-auto flex items-center justify-between gap-3">
           <span className="text-[11px] uppercase tracking-wider font-bold text-stone-500 hidden sm:inline-block shrink-0">
             QUICK JUMP:
@@ -162,9 +162,9 @@ export const OffersPage = ({ onBackToStore }) => {
                 key={tier.id}
                 type="button"
                 onClick={() => scrollToSection(tier.id, tier.code)}
-                className="shrink-0 px-3 py-1 rounded-full text-[11px] font-medium border border-[#EAE4DC] bg-white hover:bg-[#145C59] hover:text-white hover:border-[#145C59] text-stone-700 transition-all cursor-pointer shadow-2xs flex items-center gap-1 active:scale-95"
+                className="shrink-0 px-3 py-1 rounded-full text-[11px] font-medium border border-[#CEBDA7] bg-white hover:bg-[#61532E] hover:text-white hover:border-[#61532E] text-stone-700 transition-all cursor-pointer shadow-2xs flex items-center gap-1 active:scale-95"
               >
-                <Tag className="w-3 h-3 text-[#145C59] group-hover:text-white" />
+                <Tag className="w-3 h-3 text-[#61532E] group-hover:text-white" />
                 <span>{tier.pill}</span>
                 {tier.code && <span className="font-mono text-[9.5px] opacity-75">({tier.code})</span>}
               </button>
@@ -177,7 +177,7 @@ export const OffersPage = ({ onBackToStore }) => {
           3. THE 5 INFINITE LOOP PRODUCT CAROUSELS
           (Exactly 2.5 products visible on mobile for intuitive swiping)
           ======================================================== */}
-      <div className="divide-y divide-[#EAE4DC]">
+      <div className="divide-y divide-[#CEBDA7]">
         {OFFER_TIERS.map((tier) => {
           const products = tier.filter(PRODUCTS);
           return (
@@ -199,26 +199,26 @@ export const OffersPage = ({ onBackToStore }) => {
       {/* ========================================================
           4. LUXURY TRUST ASSURANCE RIBBON
           ======================================================== */}
-      <section className="py-8 bg-white border-b border-[#EAE4DC]">
+      <section className="py-8 bg-white border-b border-[#CEBDA7]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
             <div className="p-2.5">
-              <ShieldCheck className="w-5 h-5 text-[#145C59] mx-auto mb-1.5 stroke-[1.75]" />
+              <ShieldCheck className="w-5 h-5 text-[#61532E] mx-auto mb-1.5 stroke-[1.75]" />
               <h5 className="font-serif text-xs sm:text-sm font-semibold text-stone-900">BIS 925 Hallmarked</h5>
               <p className="text-[11px] text-stone-500 font-light mt-0.5">Government certified stamp</p>
             </div>
             <div className="p-2.5">
-              <Truck className="w-5 h-5 text-[#145C59] mx-auto mb-1.5 stroke-[1.75]" />
+              <Truck className="w-5 h-5 text-[#61532E] mx-auto mb-1.5 stroke-[1.75]" />
               <h5 className="font-serif text-xs sm:text-sm font-semibold text-stone-900">Insured Delivery</h5>
               <p className="text-[11px] text-stone-500 font-light mt-0.5">Free express across India</p>
             </div>
             <div className="p-2.5">
-              <RotateCcw className="w-5 h-5 text-[#145C59] mx-auto mb-1.5 stroke-[1.75]" />
+              <RotateCcw className="w-5 h-5 text-[#61532E] mx-auto mb-1.5 stroke-[1.75]" />
               <h5 className="font-serif text-xs sm:text-sm font-semibold text-stone-900">7-Day Exchanges</h5>
               <p className="text-[11px] text-stone-500 font-light mt-0.5">Hassle-free doorstep pickup</p>
             </div>
             <div className="p-2.5">
-              <Award className="w-5 h-5 text-[#145C59] mx-auto mb-1.5 stroke-[1.75]" />
+              <Award className="w-5 h-5 text-[#61532E] mx-auto mb-1.5 stroke-[1.75]" />
               <h5 className="font-serif text-xs sm:text-sm font-semibold text-stone-900">1-Year Warranty</h5>
               <p className="text-[11px] text-stone-500 font-light mt-0.5">Anti-tarnish replating guarantee</p>
             </div>
@@ -243,7 +243,7 @@ export const OffersPage = ({ onBackToStore }) => {
                 window.location.hash = '#/products';
                 window.scrollTo({ top: 0, behavior: 'smooth' });
               }}
-              className="px-6 py-3 bg-[#145C59] hover:bg-[#0D3F3D] text-white text-xs sm:text-sm font-medium rounded-xl shadow-md hover:shadow-lg transition-all cursor-pointer inline-flex items-center gap-2"
+              className="px-6 py-3 bg-[#61532E] hover:bg-[#3D341B] text-white text-xs sm:text-sm font-medium rounded-xl shadow-md hover:shadow-lg transition-all cursor-pointer inline-flex items-center gap-2"
             >
               <span>Explore All Products</span>
               <ArrowRight className="w-4 h-4" />

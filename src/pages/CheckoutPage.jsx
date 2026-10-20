@@ -301,7 +301,7 @@ Status: Confirmed & Hallmarked
   if (cart.length === 0 && currentStep !== 3) {
     return (
       <div className="bg-[#FAF8F5] min-h-screen text-[#231F20] font-sans pb-20">
-        <header className="sticky top-0 z-30 bg-white/90 backdrop-blur-md border-b border-[#EAE4DC]">
+        <header className="sticky top-0 z-30 bg-white/90 backdrop-blur-md border-b border-[#CEBDA7]">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 sm:h-20 flex items-center justify-between">
             <div className="flex items-center gap-3">
               <button
@@ -336,8 +336,8 @@ Status: Confirmed & Hallmarked
           </div>
         </header>
         <div className="min-h-[60vh] flex items-center justify-center p-6 text-center font-sans">
-          <div className="max-w-md bg-white p-8 rounded-3xl border border-[#EAE4DC] shadow-xl">
-            <div className="w-16 h-16 rounded-2xl bg-[#FAF8F5] border border-[#EAE4DC] flex items-center justify-center text-[#145C59] mx-auto mb-4">
+          <div className="max-w-md bg-white p-8 rounded-3xl border border-[#CEBDA7] shadow-xl">
+            <div className="w-16 h-16 rounded-2xl bg-[#FAF8F5] border border-[#CEBDA7] flex items-center justify-center text-[#61532E] mx-auto mb-4">
               <Package className="w-8 h-8" />
             </div>
             <h2 className="font-serif text-2xl text-stone-900 font-normal">
@@ -351,7 +351,7 @@ Status: Confirmed & Hallmarked
                 if (onBackToStore) onBackToStore();
                 else window.location.hash = '#/';
               }}
-              className="mt-6 px-8 py-3.5 bg-[#145C59] hover:bg-[#0D3F3D] text-white text-xs font-semibold uppercase tracking-wider rounded-xl shadow-md transition-all cursor-pointer"
+              className="mt-6 px-8 py-3.5 bg-[#61532E] hover:bg-[#3D341B] text-white text-xs font-semibold uppercase tracking-wider rounded-xl shadow-md transition-all cursor-pointer"
             >
               Explore Atelier Catalog
             </button>
@@ -367,7 +367,7 @@ Status: Confirmed & Hallmarked
       {/* ========================================================
           CHECKOUT LUXURY HEADER
           ======================================================== */}
-      <header className="sticky top-0 z-30 bg-white/90 backdrop-blur-md border-b border-[#EAE4DC]">
+      <header className="sticky top-0 z-30 bg-white/90 backdrop-blur-md border-b border-[#CEBDA7]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 sm:h-20 flex items-center justify-between">
           
           <div className="flex items-center gap-3">
@@ -405,24 +405,24 @@ Status: Confirmed & Hallmarked
 
           {/* Stepper Progress Indicator */}
           <div className="hidden md:flex items-center gap-3 text-xs">
-            <div className={`flex items-center gap-1.5 ${currentStep >= 1 ? 'text-[#145C59] font-bold' : 'text-stone-400'}`}>
-              <span className="w-5 h-5 rounded-full bg-[#145C59] text-white text-[10px] flex items-center justify-center">1</span>
+            <div className={`flex items-center gap-1.5 ${currentStep >= 1 ? 'text-[#61532E] font-bold' : 'text-stone-400'}`}>
+              <span className="w-5 h-5 rounded-full bg-[#61532E] text-white text-[10px] flex items-center justify-center">1</span>
               <span>Delivery</span>
             </div>
             <span className="text-stone-300">&bull;&bull;&bull;</span>
-            <div className={`flex items-center gap-1.5 ${currentStep >= 2 ? 'text-[#145C59] font-bold' : 'text-stone-400'}`}>
-              <span className={`w-5 h-5 rounded-full text-[10px] flex items-center justify-center ${currentStep >= 2 ? 'bg-[#145C59] text-white' : 'bg-stone-200 text-stone-600'}`}>2</span>
+            <div className={`flex items-center gap-1.5 ${currentStep >= 2 ? 'text-[#61532E] font-bold' : 'text-stone-400'}`}>
+              <span className={`w-5 h-5 rounded-full text-[10px] flex items-center justify-center ${currentStep >= 2 ? 'bg-[#61532E] text-white' : 'bg-stone-200 text-stone-600'}`}>2</span>
               <span>Payment</span>
             </div>
             <span className="text-stone-300">&bull;&bull;&bull;</span>
-            <div className={`flex items-center gap-1.5 ${currentStep === 3 ? 'text-[#145C59] font-bold' : 'text-stone-400'}`}>
-              <span className={`w-5 h-5 rounded-full text-[10px] flex items-center justify-center ${currentStep === 3 ? 'bg-[#145C59] text-white' : 'bg-stone-200 text-stone-600'}`}>3</span>
+            <div className={`flex items-center gap-1.5 ${currentStep === 3 ? 'text-[#61532E] font-bold' : 'text-stone-400'}`}>
+              <span className={`w-5 h-5 rounded-full text-[10px] flex items-center justify-center ${currentStep === 3 ? 'bg-[#61532E] text-white' : 'bg-stone-200 text-stone-600'}`}>3</span>
               <span>Confirmation</span>
             </div>
           </div>
 
           {/* Understated Luxury Security Indicator */}
-          <div className="flex items-center gap-2 text-[11px] font-medium text-stone-700 bg-stone-100/90 border border-[#EAE4DC] px-3.5 py-1.5 rounded-full shadow-2xs">
+          <div className="flex items-center gap-2 text-[11px] font-medium text-stone-700 bg-stone-100/90 border border-[#CEBDA7] px-3.5 py-1.5 rounded-full shadow-2xs">
             <Lock className="w-3.5 h-3.5 text-[#C5A059]" />
             <span className="tracking-wide text-[11px] uppercase font-semibold text-stone-800">256-Bit Encrypted</span>
             <span className="text-stone-300">&bull;</span>
@@ -436,18 +436,18 @@ Status: Confirmed & Hallmarked
           MOBILE ACCORDION ORDER SUMMARY (COLLAPSIBLE)
           ======================================================== */}
       {currentStep !== 3 && (
-        <div className="lg:hidden bg-white border-b border-[#EAE4DC] px-4 py-3">
+        <div className="lg:hidden bg-white border-b border-[#CEBDA7] px-4 py-3">
           <button
             onClick={() => setIsMobileSummaryOpen(prev => !prev)}
             className="w-full flex items-center justify-between text-xs text-stone-800 font-medium"
           >
             <div className="flex items-center gap-2">
-              <span className="text-[#145C59] font-bold">
+              <span className="text-[#61532E] font-bold">
                 {isMobileSummaryOpen ? 'Hide Order Summary' : 'Show Order Summary'}
               </span>
               {isMobileSummaryOpen ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
             </div>
-            <span className="font-serif text-sm font-bold text-[#145C59]">
+            <span className="font-serif text-sm font-bold text-[#61532E]">
               ₹{cartTotal.toLocaleString('en-IN')}
             </span>
           </button>
@@ -480,31 +480,31 @@ Status: Confirmed & Hallmarked
         
         {/* STEP 3: ORDER SUCCESS CONFIRMATION SCREEN WITH CELEBRATION ANIMATIONS */}
         {currentStep === 3 && lastOrder ? (
-          <div className="max-w-3xl mx-auto bg-white rounded-3xl border border-[#EAE4DC] shadow-2xl overflow-hidden animate-fadeIn relative">
+          <div className="max-w-3xl mx-auto bg-white rounded-3xl border border-[#CEBDA7] shadow-2xl overflow-hidden animate-fadeIn relative">
             
             {/* Celebratory Confetti Shower */}
             <div className="absolute inset-x-0 top-0 h-96 overflow-hidden pointer-events-none z-20">
               {[
                 { left: '5%', delay: '0.1s', bg: '#C5A059', size: 'w-2.5 h-3.5', rotate: 'rotate-12' },
-                { left: '12%', delay: '0.5s', bg: '#145C59', size: 'w-3 h-2', rotate: '-rotate-45' },
+                { left: '12%', delay: '0.5s', bg: '#61532E', size: 'w-3 h-2', rotate: '-rotate-45' },
                 { left: '19%', delay: '0.2s', bg: '#C5A059', size: 'w-2.5 h-2.5 rounded-full', rotate: 'rotate-0' },
                 { left: '27%', delay: '0.7s', bg: '#CBD5E1', size: 'w-2 h-3', rotate: 'rotate-45' },
                 { left: '34%', delay: '0.3s', bg: '#C5A059', size: 'w-3 h-2', rotate: 'rotate-12' },
                 { left: '42%', delay: '0.9s', bg: '#E89895', size: 'w-2 h-2.5', rotate: '-rotate-12' },
                 { left: '49%', delay: '0.15s', bg: '#C5A059', size: 'w-2.5 h-2.5 rounded-full', rotate: 'rotate-0' },
-                { left: '56%', delay: '0.6s', bg: '#145C59', size: 'w-3 h-2', rotate: 'rotate-30' },
+                { left: '56%', delay: '0.6s', bg: '#61532E', size: 'w-3 h-2', rotate: 'rotate-30' },
                 { left: '64%', delay: '0.35s', bg: '#C5A059', size: 'w-2 h-3', rotate: '-rotate-30' },
                 { left: '72%', delay: '0.8s', bg: '#CBD5E1', size: 'w-2.5 h-2.5 rounded-full', rotate: 'rotate-12' },
                 { left: '79%', delay: '0.25s', bg: '#FFFFFF', size: 'w-2 h-3', rotate: 'rotate-45' },
                 { left: '86%', delay: '0.65s', bg: '#E89895', size: 'w-3 h-2', rotate: '-rotate-45' },
                 { left: '93%', delay: '0.4s', bg: '#C5A059', size: 'w-2.5 h-3', rotate: 'rotate-12' },
                 { left: '8%', delay: '1.2s', bg: '#C5A059', size: 'w-2 h-2.5', rotate: 'rotate-30' },
-                { left: '23%', delay: '1.4s', bg: '#145C59', size: 'w-2.5 h-2.5 rounded-full', rotate: 'rotate-0' },
+                { left: '23%', delay: '1.4s', bg: '#61532E', size: 'w-2.5 h-2.5 rounded-full', rotate: 'rotate-0' },
                 { left: '39%', delay: '1.1s', bg: '#C5A059', size: 'w-3 h-2', rotate: '-rotate-12' },
                 { left: '53%', delay: '1.5s', bg: '#CBD5E1', size: 'w-2 h-3', rotate: 'rotate-45' },
                 { left: '68%', delay: '1.3s', bg: '#C5A059', size: 'w-2.5 h-2.5 rounded-full', rotate: 'rotate-0' },
                 { left: '83%', delay: '1.6s', bg: '#E89895', size: 'w-3 h-2', rotate: 'rotate-12' },
-                { left: '96%', delay: '1.25s', bg: '#145C59', size: 'w-2 h-3', rotate: '-rotate-30' }
+                { left: '96%', delay: '1.25s', bg: '#61532E', size: 'w-2 h-3', rotate: '-rotate-30' }
               ].map((conf, idx) => (
                 <div
                   key={idx}
@@ -519,13 +519,13 @@ Status: Confirmed & Hallmarked
             </div>
 
             {/* Celebratory Banner */}
-            <div className="bg-gradient-to-r from-[#145C59] via-[#0D3F3D] to-[#380A15] p-8 sm:p-12 text-white text-center relative overflow-hidden">
+            <div className="bg-gradient-to-r from-[#61532E] via-[#3D341B] to-[#380A15] p-8 sm:p-12 text-white text-center relative overflow-hidden">
               <div className="absolute top-0 right-0 -mr-10 -mt-10 w-48 h-48 rounded-full bg-white/5 pointer-events-none" />
               
               {/* Pulsing halo and animated SVG drawing checkmark */}
               <div className="relative mx-auto mb-5 w-20 h-20 flex items-center justify-center">
                 <div className="absolute inset-0 rounded-full bg-[#C5A059]/25 celebration-halo" />
-                <div className="relative w-16 h-16 rounded-full bg-gradient-to-tr from-[#0D3F3D] to-[#1A6E6B] border-2 border-white/80 flex items-center justify-center shadow-xl">
+                <div className="relative w-16 h-16 rounded-full bg-gradient-to-tr from-[#3D341B] to-[#7A693A] border-2 border-white/80 flex items-center justify-center shadow-xl">
                   <svg
                     className="w-9 h-9 text-white"
                     viewBox="0 0 24 24"
@@ -540,7 +540,7 @@ Status: Confirmed & Hallmarked
                 </div>
               </div>
 
-              <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#0D3F3D]/80 backdrop-blur-md border border-white/30 mb-3">
+              <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#3D341B]/80 backdrop-blur-md border border-white/30 mb-3">
                 <Check className="w-3.5 h-3.5 text-emerald-400" />
                 <span className="text-[10.5px] uppercase tracking-widest text-white font-bold">
                   PAYMENT CONFIRMED &amp; SEALED
@@ -554,7 +554,7 @@ Status: Confirmed & Hallmarked
                 Your heirloom jewellery has been assigned to our master bench artisans. An official invoice and tracking link have been dispatched to <strong>{lastOrder.customer.email}</strong>.
               </p>
 
-              <div className="inline-flex items-center gap-2 mt-4 px-3.5 py-1.5 rounded-full bg-[#0D3F3D]/80 backdrop-blur-md border border-white/20 text-xs font-mono text-stone-200">
+              <div className="inline-flex items-center gap-2 mt-4 px-3.5 py-1.5 rounded-full bg-[#3D341B]/80 backdrop-blur-md border border-white/20 text-xs font-mono text-stone-200">
                 <span>Order Ref: {lastOrder.orderId}</span>
               </div>
             </div>
@@ -562,8 +562,8 @@ Status: Confirmed & Hallmarked
             <div className="p-6 sm:p-10 space-y-8">
               
               {/* BlueDart Real-time Air Tracking Progress */}
-              <div className="p-6 rounded-2xl bg-[#FAF8F5] border border-[#EAE4DC]">
-                <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-4 border-b border-[#EAE4DC] gap-2">
+              <div className="p-6 rounded-2xl bg-[#FAF8F5] border border-[#CEBDA7]">
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-4 border-b border-[#CEBDA7] gap-2">
                   <div>
                     <div className="text-[10px] text-stone-500 uppercase font-bold tracking-wider">
                       BlueDart Insured Air Consignment
@@ -574,7 +574,7 @@ Status: Confirmed & Hallmarked
                   </div>
                   <div className="text-right">
                     <span className="text-xs text-stone-500">Estimated Delivery:</span>
-                    <div className="font-bold text-xs sm:text-sm text-[#145C59]">
+                    <div className="font-bold text-xs sm:text-sm text-[#61532E]">
                       {lastOrder.estimatedDelivery} (By 7:00 PM)
                     </div>
                   </div>
@@ -591,7 +591,7 @@ Status: Confirmed & Hallmarked
                   </div>
 
                   <div className="flex flex-col items-center">
-                    <div className="w-8 h-8 rounded-full bg-[#145C59] text-white flex items-center justify-center font-bold mb-2 animate-pulse">
+                    <div className="w-8 h-8 rounded-full bg-[#61532E] text-white flex items-center justify-center font-bold mb-2 animate-pulse">
                       2
                     </div>
                     <span className="font-bold text-stone-900">Hallmark Assay</span>
@@ -618,8 +618,8 @@ Status: Confirmed & Hallmarked
 
               {/* Order Details & Address Summary */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 text-xs">
-                <div className="p-5 rounded-2xl bg-white border border-[#EAE4DC] space-y-2">
-                  <div className="text-[10.5px] uppercase font-bold text-[#145C59] tracking-wider">
+                <div className="p-5 rounded-2xl bg-white border border-[#CEBDA7] space-y-2">
+                  <div className="text-[10.5px] uppercase font-bold text-[#61532E] tracking-wider">
                     Shipping Address
                   </div>
                   <div className="font-bold text-stone-900 text-sm">
@@ -634,8 +634,8 @@ Status: Confirmed & Hallmarked
                   </div>
                 </div>
 
-                <div className="p-5 rounded-2xl bg-white border border-[#EAE4DC] space-y-2">
-                  <div className="text-[10.5px] uppercase font-bold text-[#145C59] tracking-wider">
+                <div className="p-5 rounded-2xl bg-white border border-[#CEBDA7] space-y-2">
+                  <div className="text-[10.5px] uppercase font-bold text-[#61532E] tracking-wider">
                     Payment & Guarantees
                   </div>
                   <div className="font-bold text-stone-900 text-sm">
@@ -653,11 +653,11 @@ Status: Confirmed & Hallmarked
               </div>
 
               {/* Items Breakdown */}
-              <div className="border border-[#EAE4DC] rounded-2xl overflow-hidden">
-                <div className="bg-[#FAF8F5] px-5 py-3 border-b border-[#EAE4DC] text-xs font-bold text-stone-800">
+              <div className="border border-[#CEBDA7] rounded-2xl overflow-hidden">
+                <div className="bg-[#FAF8F5] px-5 py-3 border-b border-[#CEBDA7] text-xs font-bold text-stone-800">
                   Consignment Pieces ({lastOrder.items.length})
                 </div>
-                <div className="divide-y divide-[#EAE4DC] p-2">
+                <div className="divide-y divide-[#CEBDA7] p-2">
                   {lastOrder.items.map((item) => (
                     <div key={item.variantKey} className="p-3 flex items-center justify-between gap-4">
                       <div className="flex items-center gap-3">
@@ -679,15 +679,15 @@ Status: Confirmed & Hallmarked
               <div className="flex flex-col sm:flex-row gap-3 pt-2">
                 <button
                   onClick={handleDownloadInvoice}
-                  className="flex-1 py-3.5 px-4 rounded-xl border border-stone-300 hover:border-[#145C59] bg-white hover:bg-stone-50 text-stone-800 text-xs font-semibold flex items-center justify-center gap-2 transition-all cursor-pointer shadow-xs"
+                  className="flex-1 py-3.5 px-4 rounded-xl border border-stone-300 hover:border-[#61532E] bg-white hover:bg-stone-50 text-stone-800 text-xs font-semibold flex items-center justify-center gap-2 transition-all cursor-pointer shadow-xs"
                 >
-                  <Download className="w-4 h-4 text-[#145C59]" />
+                  <Download className="w-4 h-4 text-[#61532E]" />
                   <span>Download Tax Invoice (Mock PDF)</span>
                 </button>
 
                 <button
                   onClick={() => setShowBlueDartTracking(true)}
-                  className="flex-1 py-3.5 px-4 rounded-xl border border-stone-300 hover:border-[#145C59] bg-white hover:bg-stone-50 text-stone-800 text-xs font-semibold flex items-center justify-center gap-2 transition-all cursor-pointer shadow-xs"
+                  className="flex-1 py-3.5 px-4 rounded-xl border border-stone-300 hover:border-[#61532E] bg-white hover:bg-stone-50 text-stone-800 text-xs font-semibold flex items-center justify-center gap-2 transition-all cursor-pointer shadow-xs"
                 >
                   <Truck className="w-4 h-4 text-[#C5A059]" />
                   <span>Track Consignment on BlueDart</span>
@@ -701,7 +701,7 @@ Status: Confirmed & Hallmarked
                     if (onBackToStore) onBackToStore();
                     else window.location.hash = '#/';
                   }}
-                  className="px-8 py-3.5 bg-[#145C59] hover:bg-[#0D3F3D] text-white text-xs uppercase tracking-widest font-semibold rounded-xl shadow-lg transition-all cursor-pointer"
+                  className="px-8 py-3.5 bg-[#61532E] hover:bg-[#3D341B] text-white text-xs uppercase tracking-widest font-semibold rounded-xl shadow-lg transition-all cursor-pointer"
                 >
                   Continue Shopping Atelier
                 </button>
@@ -717,11 +717,11 @@ Status: Confirmed & Hallmarked
             <div className="lg:col-span-7 space-y-8">
               
               {/* STEP 1: CONTACT & DELIVERY ADDRESS */}
-              <div className={`bg-white rounded-3xl border border-[#EAE4DC] p-6 sm:p-8 shadow-md transition-all ${currentStep === 1 ? 'ring-2 ring-[#145C59]/10' : 'opacity-80'}`}>
+              <div className={`bg-white rounded-3xl border border-[#CEBDA7] p-6 sm:p-8 shadow-md transition-all ${currentStep === 1 ? 'ring-2 ring-[#61532E]/10' : 'opacity-80'}`}>
                 
-                <div className="flex items-center justify-between pb-6 border-b border-[#EAE4DC]">
+                <div className="flex items-center justify-between pb-6 border-b border-[#CEBDA7]">
                   <div className="flex items-center gap-3">
-                    <div className="w-8 h-8 rounded-full bg-[#145C59] text-white text-xs font-bold flex items-center justify-center">
+                    <div className="w-8 h-8 rounded-full bg-[#61532E] text-white text-xs font-bold flex items-center justify-center">
                       1
                     </div>
                     <div>
@@ -737,7 +737,7 @@ Status: Confirmed & Hallmarked
                   {currentStep === 2 && (
                     <button
                       onClick={() => setCurrentStep(1)}
-                      className="text-xs font-bold text-[#145C59] hover:underline cursor-pointer"
+                      className="text-xs font-bold text-[#61532E] hover:underline cursor-pointer"
                     >
                       Edit
                     </button>
@@ -759,7 +759,7 @@ Status: Confirmed & Hallmarked
                             value={formData.email}
                             onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                             placeholder="your.email@example.com"
-                            className="w-full px-3.5 py-2.5 rounded-xl border border-stone-200 focus:border-[#145C59] focus:outline-none bg-stone-50/50"
+                            className="w-full px-3.5 py-2.5 rounded-xl border border-stone-200 focus:border-[#61532E] focus:outline-none bg-stone-50/50"
                           />
                           <Mail className="w-4 h-4 text-stone-400 absolute right-3 top-3" />
                         </div>
@@ -780,7 +780,7 @@ Status: Confirmed & Hallmarked
                             value={formData.phone}
                             onChange={(e) => setFormData({ ...formData, phone: e.target.value.replace(/\D/g, '') })}
                             placeholder="98765 43210"
-                            className="w-full px-3.5 py-2.5 rounded-r-xl border border-stone-200 focus:border-[#145C59] focus:outline-none bg-stone-50/50 font-mono"
+                            className="w-full px-3.5 py-2.5 rounded-r-xl border border-stone-200 focus:border-[#61532E] focus:outline-none bg-stone-50/50 font-mono"
                           />
                         </div>
                         {formErrors.phone && <span className="text-[11px] text-red-500">{formErrors.phone}</span>}
@@ -798,7 +798,7 @@ Status: Confirmed & Hallmarked
                           value={formData.firstName}
                           onChange={(e) => setFormData({ ...formData, firstName: e.target.value })}
                           placeholder="First Name"
-                          className="w-full px-3.5 py-2.5 rounded-xl border border-stone-200 focus:border-[#145C59] focus:outline-none bg-stone-50/50"
+                          className="w-full px-3.5 py-2.5 rounded-xl border border-stone-200 focus:border-[#61532E] focus:outline-none bg-stone-50/50"
                         />
                         {formErrors.firstName && <span className="text-[11px] text-red-500">{formErrors.firstName}</span>}
                       </div>
@@ -812,7 +812,7 @@ Status: Confirmed & Hallmarked
                           value={formData.lastName}
                           onChange={(e) => setFormData({ ...formData, lastName: e.target.value })}
                           placeholder="Last Name"
-                          className="w-full px-3.5 py-2.5 rounded-xl border border-stone-200 focus:border-[#145C59] focus:outline-none bg-stone-50/50"
+                          className="w-full px-3.5 py-2.5 rounded-xl border border-stone-200 focus:border-[#61532E] focus:outline-none bg-stone-50/50"
                         />
                         {formErrors.lastName && <span className="text-[11px] text-red-500">{formErrors.lastName}</span>}
                       </div>
@@ -828,7 +828,7 @@ Status: Confirmed & Hallmarked
                         value={formData.address}
                         onChange={(e) => setFormData({ ...formData, address: e.target.value })}
                         placeholder="Apartment, Studio, Floor, Building"
-                        className="w-full px-3.5 py-2.5 rounded-xl border border-stone-200 focus:border-[#145C59] focus:outline-none bg-stone-50/50"
+                        className="w-full px-3.5 py-2.5 rounded-xl border border-stone-200 focus:border-[#61532E] focus:outline-none bg-stone-50/50"
                       />
                       {formErrors.address && <span className="text-[11px] text-red-500">{formErrors.address}</span>}
                     </div>
@@ -842,7 +842,7 @@ Status: Confirmed & Hallmarked
                         value={formData.locality}
                         onChange={(e) => setFormData({ ...formData, locality: e.target.value })}
                         placeholder="Near Landmark / Road"
-                        className="w-full px-3.5 py-2.5 rounded-xl border border-stone-200 focus:border-[#145C59] focus:outline-none bg-stone-50/50"
+                        className="w-full px-3.5 py-2.5 rounded-xl border border-stone-200 focus:border-[#61532E] focus:outline-none bg-stone-50/50"
                       />
                     </div>
 
@@ -858,7 +858,7 @@ Status: Confirmed & Hallmarked
                           value={formData.pincode}
                           onChange={(e) => setFormData({ ...formData, pincode: e.target.value.replace(/\D/g, '') })}
                           placeholder="e.g. 400001"
-                          className="w-full px-3.5 py-2.5 rounded-xl border border-stone-200 focus:border-[#145C59] focus:outline-none bg-stone-50/50 font-mono font-bold text-stone-900"
+                          className="w-full px-3.5 py-2.5 rounded-xl border border-stone-200 focus:border-[#61532E] focus:outline-none bg-stone-50/50 font-mono font-bold text-stone-900"
                         />
                         {formErrors.pincode && <span className="text-[11px] text-red-500">{formErrors.pincode}</span>}
                       </div>
@@ -895,7 +895,7 @@ Status: Confirmed & Hallmarked
                         <label
                           className={`p-3.5 rounded-xl border cursor-pointer flex items-center justify-between transition-all ${
                             formData.deliveryMethod === 'bluedart_express'
-                              ? 'border-[#145C59] bg-[#FAF8F5] ring-1 ring-[#145C59]'
+                              ? 'border-[#61532E] bg-[#FAF8F5] ring-1 ring-[#61532E]'
                               : 'border-stone-200 bg-white hover:border-stone-300'
                           }`}
                         >
@@ -905,7 +905,7 @@ Status: Confirmed & Hallmarked
                               name="deliveryMethod"
                               checked={formData.deliveryMethod === 'bluedart_express'}
                               onChange={() => setFormData({ ...formData, deliveryMethod: 'bluedart_express' })}
-                              className="text-[#145C59] focus:ring-[#145C59]"
+                              className="text-[#61532E] focus:ring-[#61532E]"
                             />
                             <div>
                               <div className="font-bold text-stone-900">BlueDart Air Express</div>
@@ -918,7 +918,7 @@ Status: Confirmed & Hallmarked
                         <label
                           className={`p-3.5 rounded-xl border cursor-pointer flex items-center justify-between transition-all ${
                             formData.deliveryMethod === 'same_day_whiteglove'
-                              ? 'border-[#145C59] bg-[#FAF8F5] ring-1 ring-[#145C59]'
+                              ? 'border-[#61532E] bg-[#FAF8F5] ring-1 ring-[#61532E]'
                               : 'border-stone-200 bg-white hover:border-stone-300'
                           }`}
                         >
@@ -928,7 +928,7 @@ Status: Confirmed & Hallmarked
                               name="deliveryMethod"
                               checked={formData.deliveryMethod === 'same_day_whiteglove'}
                               onChange={() => setFormData({ ...formData, deliveryMethod: 'same_day_whiteglove' })}
-                              className="text-[#145C59] focus:ring-[#145C59]"
+                              className="text-[#61532E] focus:ring-[#61532E]"
                             />
                             <div>
                               <div className="font-bold text-stone-900">White-Glove Courier</div>
@@ -946,7 +946,7 @@ Status: Confirmed & Hallmarked
                         type="checkbox"
                         checked={formData.discretePackaging}
                         onChange={(e) => setFormData({ ...formData, discretePackaging: e.target.checked })}
-                        className="rounded text-[#145C59] focus:ring-[#145C59]"
+                        className="rounded text-[#61532E] focus:ring-[#61532E]"
                       />
                       <span className="text-[11px] text-stone-600">
                         Deliver in unbranded, tamper-proof outer packaging for discreet gifting surprises.
@@ -957,7 +957,7 @@ Status: Confirmed & Hallmarked
                     <div className="pt-4">
                       <button
                         type="submit"
-                        className="w-full py-3.5 bg-[#145C59] hover:bg-[#0D3F3D] text-white text-xs sm:text-sm font-semibold uppercase tracking-wider rounded-xl shadow-lg transition-all cursor-pointer flex items-center justify-center gap-2"
+                        className="w-full py-3.5 bg-[#61532E] hover:bg-[#3D341B] text-white text-xs sm:text-sm font-semibold uppercase tracking-wider rounded-xl shadow-lg transition-all cursor-pointer flex items-center justify-center gap-2"
                       >
                         <span>Continue to Payment Method</span>
                         <ArrowLeft className="w-4 h-4 rotate-180" />
@@ -983,11 +983,11 @@ Status: Confirmed & Hallmarked
               </div>
 
               {/* STEP 2: PAYMENT GATEWAY (INTERACTIVE FULL MOCK) */}
-              <div className={`bg-white rounded-3xl border border-[#EAE4DC] p-6 sm:p-8 shadow-md transition-all ${currentStep === 2 ? 'ring-2 ring-[#145C59]/10' : 'opacity-70 pointer-events-none'}`}>
+              <div className={`bg-white rounded-3xl border border-[#CEBDA7] p-6 sm:p-8 shadow-md transition-all ${currentStep === 2 ? 'ring-2 ring-[#61532E]/10' : 'opacity-70 pointer-events-none'}`}>
                 
-                <div className="flex items-center justify-between pb-6 border-b border-[#EAE4DC]">
+                <div className="flex items-center justify-between pb-6 border-b border-[#CEBDA7]">
                   <div className="flex items-center gap-3">
-                    <div className="w-8 h-8 rounded-full bg-[#145C59] text-white text-xs font-bold flex items-center justify-center">
+                    <div className="w-8 h-8 rounded-full bg-[#61532E] text-white text-xs font-bold flex items-center justify-center">
                       2
                     </div>
                     <div>
@@ -999,7 +999,7 @@ Status: Confirmed & Hallmarked
                       </p>
                     </div>
                   </div>
-                  <span className="text-xs font-serif font-bold text-[#145C59]">
+                  <span className="text-xs font-serif font-bold text-[#61532E]">
                     Payable: ₹{cartTotal.toLocaleString('en-IN')}
                   </span>
                 </div>
@@ -1024,16 +1024,16 @@ Status: Confirmed & Hallmarked
                             onClick={() => setPaymentMethod(mode.id)}
                             className={`p-3 rounded-2xl border text-left transition-all cursor-pointer flex flex-col justify-between ${
                               isSelected
-                                ? 'border-[#145C59] bg-[#FAF8F5] ring-2 ring-[#145C59]/15 shadow-sm'
+                                ? 'border-[#61532E] bg-[#FAF8F5] ring-2 ring-[#61532E]/15 shadow-sm'
                                 : 'border-stone-200 bg-white hover:border-stone-300'
                             }`}
                           >
                             <div className="flex items-center justify-between">
-                              <Icon className={`w-5 h-5 ${isSelected ? 'text-[#145C59]' : 'text-stone-400'}`} />
-                              {isSelected && <span className="w-2 h-2 rounded-full bg-[#145C59]" />}
+                              <Icon className={`w-5 h-5 ${isSelected ? 'text-[#61532E]' : 'text-stone-400'}`} />
+                              {isSelected && <span className="w-2 h-2 rounded-full bg-[#61532E]" />}
                             </div>
                             <div className="mt-3">
-                              <div className={`font-bold text-xs ${isSelected ? 'text-[#145C59]' : 'text-stone-900'}`}>
+                              <div className={`font-bold text-xs ${isSelected ? 'text-[#61532E]' : 'text-stone-900'}`}>
                                 {mode.label}
                               </div>
                               <div className="text-[10px] text-stone-500 mt-0.5">{mode.sub}</div>
@@ -1045,7 +1045,7 @@ Status: Confirmed & Hallmarked
 
                     {/* TAB A: UPI PAYMENT (MOST POPULAR) */}
                     {paymentMethod === 'upi' && (
-                      <div className="p-6 rounded-2xl bg-[#FAF8F5] border border-[#EAE4DC] space-y-6 animate-fadeIn">
+                      <div className="p-6 rounded-2xl bg-[#FAF8F5] border border-[#CEBDA7] space-y-6 animate-fadeIn">
                         
                         {/* Quick UPI App Selector */}
                         <div>
@@ -1065,7 +1065,7 @@ Status: Confirmed & Hallmarked
                                 onClick={() => setUpiApp(app.id)}
                                 className={`py-2.5 px-3 rounded-xl border text-xs font-semibold flex items-center justify-center gap-1.5 transition-all cursor-pointer ${
                                   upiApp === app.id
-                                    ? 'bg-white border-[#145C59] text-[#145C59] shadow-sm ring-1 ring-[#145C59]'
+                                    ? 'bg-white border-[#61532E] text-[#61532E] shadow-sm ring-1 ring-[#61532E]'
                                     : 'bg-white/60 border-stone-200 text-stone-700 hover:bg-white'
                                 }`}
                               >
@@ -1079,16 +1079,16 @@ Status: Confirmed & Hallmarked
                         {/* Interactive Dynamic QR Code */}
                         <div className="flex flex-col sm:flex-row items-center gap-6 p-5 rounded-2xl bg-white border border-stone-200 shadow-xs">
                           {/* Generated QR Graphic with Logo Overlay */}
-                          <div className="relative p-3 bg-white rounded-2xl border-2 border-[#145C59]/30 shadow-md shrink-0">
+                          <div className="relative p-3 bg-white rounded-2xl border-2 border-[#61532E]/30 shadow-md shrink-0">
                             <svg width="130" height="130" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
                               <rect width="100" height="100" fill="white" />
                               {/* Corner targets */}
                               <rect x="5" y="5" width="26" height="26" stroke="#231F20" strokeWidth="4" fill="none" rx="4" />
-                              <rect x="11" y="11" width="14" height="14" fill="#145C59" rx="2" />
+                              <rect x="11" y="11" width="14" height="14" fill="#61532E" rx="2" />
                               <rect x="69" y="5" width="26" height="26" stroke="#231F20" strokeWidth="4" fill="none" rx="4" />
-                              <rect x="75" y="11" width="14" height="14" fill="#145C59" rx="2" />
+                              <rect x="75" y="11" width="14" height="14" fill="#61532E" rx="2" />
                               <rect x="5" y="69" width="26" height="26" stroke="#231F20" strokeWidth="4" fill="none" rx="4" />
-                              <rect x="11" y="75" width="14" height="14" fill="#145C59" rx="2" />
+                              <rect x="11" y="75" width="14" height="14" fill="#61532E" rx="2" />
                               {/* QR Code Dots Mock */}
                               <rect x="36" y="10" width="8" height="8" fill="#231F20" />
                               <rect x="48" y="15" width="12" height="6" fill="#231F20" />
@@ -1103,7 +1103,7 @@ Status: Confirmed & Hallmarked
                               <rect x="72" y="72" width="18" height="18" fill="#231F20" />
                             </svg>
                             <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-                              <span className="w-6 h-6 rounded-full bg-white border border-[#C5A059] flex items-center justify-center text-[8px] font-bold text-[#145C59]">
+                              <span className="w-6 h-6 rounded-full bg-white border border-[#C5A059] flex items-center justify-center text-[8px] font-bold text-[#61532E]">
                                 925
                               </span>
                             </div>
@@ -1119,7 +1119,7 @@ Status: Confirmed & Hallmarked
                             <p className="text-xs text-stone-500 leading-relaxed font-light">
                               Open Google Pay, PhonePe, Paytm, or your banking app and scan this secure QR code to pay <strong className="text-stone-900">₹{cartTotal.toLocaleString('en-IN')}</strong>.
                             </p>
-                            <div className="text-[11px] text-[#145C59] font-mono font-semibold flex items-center gap-1.5 pt-1">
+                            <div className="text-[11px] text-[#61532E] font-mono font-semibold flex items-center gap-1.5 pt-1">
                               <Clock className="w-3.5 h-3.5" />
                               <span>QR Code expires in {formattedUpiTime}</span>
                             </div>
@@ -1137,7 +1137,7 @@ Status: Confirmed & Hallmarked
                               value={upiId}
                               onChange={(e) => setUpiId(e.target.value)}
                               placeholder="e.g. yourname@okhdfcbank"
-                              className="flex-1 px-3.5 py-2.5 rounded-xl border border-stone-200 bg-white text-xs focus:border-[#145C59] focus:outline-none font-mono"
+                              className="flex-1 px-3.5 py-2.5 rounded-xl border border-stone-200 bg-white text-xs focus:border-[#61532E] focus:outline-none font-mono"
                             />
                             <button
                               type="button"
@@ -1157,10 +1157,10 @@ Status: Confirmed & Hallmarked
 
                     {/* TAB B: CREDIT / DEBIT CARDS WITH INTERACTIVE 3D CARD VISUALIZER */}
                     {paymentMethod === 'card' && (
-                      <div className="p-6 rounded-2xl bg-[#FAF8F5] border border-[#EAE4DC] space-y-6 animate-fadeIn">
+                      <div className="p-6 rounded-2xl bg-[#FAF8F5] border border-[#CEBDA7] space-y-6 animate-fadeIn">
                         
                         {/* Interactive Metallic Luxury Card Preview */}
-                        <div className="relative w-full max-w-sm mx-auto aspect-[1.586/1] rounded-2xl p-6 text-white bg-gradient-to-tr from-[#1E1E24] via-[#2A1520] to-[#145C59] shadow-2xl border border-white/20 flex flex-col justify-between overflow-hidden">
+                        <div className="relative w-full max-w-sm mx-auto aspect-[1.586/1] rounded-2xl p-6 text-white bg-gradient-to-tr from-[#1E1E24] via-[#3D341B] to-[#61532E] shadow-2xl border border-white/20 flex flex-col justify-between overflow-hidden">
                           {/* Hologram shine & Chip */}
                           <div className="flex items-center justify-between">
                             <div className="w-11 h-8 rounded-md bg-gradient-to-r from-[#D5B980] via-[#F3E5C8] to-[#C5A059] border border-[#C5A059]/60 flex items-center justify-center shadow-xs">
@@ -1197,7 +1197,7 @@ Status: Confirmed & Hallmarked
                           <button
                             type="button"
                             onClick={handlePrefillDemoCard}
-                            className="text-xs font-semibold text-[#145C59] hover:underline flex items-center gap-1 cursor-pointer"
+                            className="text-xs font-semibold text-[#61532E] hover:underline flex items-center gap-1 cursor-pointer"
                           >
                             <CreditCard className="w-3.5 h-3.5" />
                             <span>Prefill Test Visa Card</span>
@@ -1217,7 +1217,7 @@ Status: Confirmed & Hallmarked
                                 value={cardData.number}
                                 onChange={handleCardNumberChange}
                                 placeholder="4532 •••• •••• ••••"
-                                className="w-full px-3.5 py-2.5 rounded-xl border border-stone-200 bg-white font-mono text-xs focus:border-[#145C59] focus:outline-none"
+                                className="w-full px-3.5 py-2.5 rounded-xl border border-stone-200 bg-white font-mono text-xs focus:border-[#61532E] focus:outline-none"
                               />
                               <CreditCard className="w-4 h-4 text-stone-400 absolute right-3 top-3" />
                             </div>
@@ -1233,7 +1233,7 @@ Status: Confirmed & Hallmarked
                                 value={cardData.name}
                                 onChange={(e) => setCardData({ ...cardData, name: e.target.value.toUpperCase() })}
                                 placeholder="NAME AS ON CARD"
-                                className="w-full px-3.5 py-2.5 rounded-xl border border-stone-200 bg-white uppercase text-xs focus:border-[#145C59] focus:outline-none"
+                                className="w-full px-3.5 py-2.5 rounded-xl border border-stone-200 bg-white uppercase text-xs focus:border-[#61532E] focus:outline-none"
                               />
                             </div>
 
@@ -1247,7 +1247,7 @@ Status: Confirmed & Hallmarked
                                 value={cardData.expiry}
                                 onChange={handleExpiryChange}
                                 placeholder="MM/YY"
-                                className="w-full px-3.5 py-2.5 rounded-xl border border-stone-200 bg-white font-mono text-xs focus:border-[#145C59] focus:outline-none"
+                                className="w-full px-3.5 py-2.5 rounded-xl border border-stone-200 bg-white font-mono text-xs focus:border-[#61532E] focus:outline-none"
                               />
                             </div>
                           </div>
@@ -1262,7 +1262,7 @@ Status: Confirmed & Hallmarked
                               value={cardData.cvv}
                               onChange={(e) => setCardData({ ...cardData, cvv: e.target.value.replace(/\D/g, '') })}
                               placeholder="•••"
-                              className="w-full px-3.5 py-2.5 rounded-xl border border-stone-200 bg-white font-mono text-xs focus:border-[#145C59] focus:outline-none"
+                              className="w-full px-3.5 py-2.5 rounded-xl border border-stone-200 bg-white font-mono text-xs focus:border-[#61532E] focus:outline-none"
                             />
                           </div>
 
@@ -1271,7 +1271,7 @@ Status: Confirmed & Hallmarked
                               type="checkbox"
                               checked={cardData.saveCard}
                               onChange={(e) => setCardData({ ...cardData, saveCard: e.target.checked })}
-                              className="rounded text-[#145C59] focus:ring-[#145C59]"
+                              className="rounded text-[#61532E] focus:ring-[#61532E]"
                             />
                             <span className="text-[11px] text-stone-600">
                               Securely save this card as per RBI tokenization directives.
@@ -1284,7 +1284,7 @@ Status: Confirmed & Hallmarked
 
                     {/* TAB C: NET BANKING */}
                     {paymentMethod === 'netbanking' && (
-                      <div className="p-6 rounded-2xl bg-[#FAF8F5] border border-[#EAE4DC] space-y-4 animate-fadeIn">
+                      <div className="p-6 rounded-2xl bg-[#FAF8F5] border border-[#CEBDA7] space-y-4 animate-fadeIn">
                         <label className="block text-xs font-bold text-stone-800">
                           Popular Indian Banks
                         </label>
@@ -1296,7 +1296,7 @@ Status: Confirmed & Hallmarked
                               onClick={() => setSelectedBank(bank)}
                               className={`p-3 rounded-xl border text-xs font-semibold text-center transition-all cursor-pointer ${
                                 selectedBank === bank
-                                  ? 'border-[#145C59] bg-white text-[#145C59] shadow-sm ring-1 ring-[#145C59]'
+                                  ? 'border-[#61532E] bg-white text-[#61532E] shadow-sm ring-1 ring-[#61532E]'
                                   : 'border-stone-200 bg-white/60 text-stone-700 hover:bg-white'
                               }`}
                             >
@@ -1317,8 +1317,8 @@ Status: Confirmed & Hallmarked
                                 onClick={() => setSelectedBank(bank)}
                                 className={`px-3 py-1.5 rounded-xl border text-xs font-medium transition-all cursor-pointer ${
                                   selectedBank === bank
-                                    ? 'border-[#145C59] bg-white text-[#145C59] font-bold shadow-2xs ring-1 ring-[#145C59]'
-                                    : 'border-stone-200 bg-white text-stone-600 hover:border-[#145C59]/40 hover:text-stone-900'
+                                    ? 'border-[#61532E] bg-white text-[#61532E] font-bold shadow-2xs ring-1 ring-[#61532E]'
+                                    : 'border-stone-200 bg-white text-stone-600 hover:border-[#61532E]/40 hover:text-stone-900'
                                 }`}
                               >
                                 {bank}
@@ -1331,9 +1331,9 @@ Status: Confirmed & Hallmarked
 
                     {/* TAB D: CASH ON DELIVERY (COD) */}
                     {paymentMethod === 'cod' && (
-                      <div className="p-6 rounded-2xl bg-[#FAF8F5] border border-[#EAE4DC] space-y-4 animate-fadeIn text-xs">
+                      <div className="p-6 rounded-2xl bg-[#FAF8F5] border border-[#CEBDA7] space-y-4 animate-fadeIn text-xs">
                         <div className="flex items-start gap-3 p-4 rounded-xl bg-stone-50 border border-stone-200 text-stone-800">
-                          <AlertCircle className="w-5 h-5 text-[#145C59] shrink-0 mt-0.5" />
+                          <AlertCircle className="w-5 h-5 text-[#61532E] shrink-0 mt-0.5" />
                           <div className="leading-relaxed">
                             <strong>Doorstep Cash / UPI Verification:</strong> BlueDart courier will present your BIS Hallmarked Keepsake Vault. You can pay via Cash or any UPI QR code directly to the delivery personnel upon inspection.
                           </div>
@@ -1362,7 +1362,7 @@ Status: Confirmed & Hallmarked
                                 value={codOtp}
                                 onChange={(e) => setCodOtp(e.target.value)}
                                 placeholder="Enter OTP (Use: 9250)"
-                                className="w-48 px-3.5 py-2 rounded-xl border border-stone-200 bg-white font-mono text-center tracking-widest text-sm focus:border-[#145C59] focus:outline-none"
+                                className="w-48 px-3.5 py-2 rounded-xl border border-stone-200 bg-white font-mono text-center tracking-widest text-sm focus:border-[#61532E] focus:outline-none"
                               />
                               <button
                                 type="button"
@@ -1394,7 +1394,7 @@ Status: Confirmed & Hallmarked
                       <button
                         type="button"
                         onClick={handleCompleteOrder}
-                        className="w-full py-4 bg-[#145C59] hover:bg-[#0D3F3D] text-white text-xs sm:text-sm font-semibold uppercase tracking-wider rounded-xl shadow-xl transition-all cursor-pointer flex items-center justify-center gap-2"
+                        className="w-full py-4 bg-[#61532E] hover:bg-[#3D341B] text-white text-xs sm:text-sm font-semibold uppercase tracking-wider rounded-xl shadow-xl transition-all cursor-pointer flex items-center justify-center gap-2"
                       >
                         <Lock className="w-4 h-4 text-white/90" />
                         <span>Place Order & Pay ₹{cartTotal.toLocaleString('en-IN')}</span>
@@ -1415,9 +1415,9 @@ Status: Confirmed & Hallmarked
             {/* RIGHT COLUMN: STICKY ORDER SUMMARY SIDEBAR (5 COLS) */}
             <div className="hidden lg:block lg:col-span-5 lg:sticky lg:top-28 space-y-6">
               
-              <div className="bg-white rounded-3xl border border-[#EAE4DC] p-6 sm:p-7 shadow-lg space-y-6">
+              <div className="bg-white rounded-3xl border border-[#CEBDA7] p-6 sm:p-7 shadow-lg space-y-6">
                 
-                <div className="flex items-center justify-between pb-4 border-b border-[#EAE4DC]">
+                <div className="flex items-center justify-between pb-4 border-b border-[#CEBDA7]">
                   <h3 className="font-serif text-lg font-bold text-stone-900">
                     Order Summary ({cart.reduce((t, i) => t + i.quantity, 0)} Pieces)
                   </h3>
@@ -1432,7 +1432,7 @@ Status: Confirmed & Hallmarked
                     <div key={item.variantKey} className="py-3 flex items-center gap-3.5">
                       <div className="relative w-14 h-14 rounded-xl overflow-hidden border border-stone-200 shrink-0 bg-stone-50">
                         <img src={item.image} alt={item.name} className="w-full h-full object-cover" />
-                        <span className="absolute top-0 right-0 w-4 h-4 rounded-bl-lg bg-[#145C59] text-white text-[9px] flex items-center justify-center font-mono">
+                        <span className="absolute top-0 right-0 w-4 h-4 rounded-bl-lg bg-[#61532E] text-white text-[9px] flex items-center justify-center font-mono">
                           {item.quantity}
                         </span>
                       </div>
@@ -1461,9 +1461,9 @@ Status: Confirmed & Hallmarked
                 </div>
 
                 {/* Complimentary Velvet Keepsake Vault Toggle */}
-                <div className="p-3.5 rounded-2xl bg-[#FAF8F5] border border-[#EAE4DC] flex items-center justify-between gap-3">
+                <div className="p-3.5 rounded-2xl bg-[#FAF8F5] border border-[#CEBDA7] flex items-center justify-between gap-3">
                   <div className="flex items-center gap-2.5">
-                    <Package className="w-5 h-5 text-[#145C59] shrink-0" />
+                    <Package className="w-5 h-5 text-[#61532E] shrink-0" />
                     <div>
                       <div className="text-xs font-bold text-stone-900">Velvet Keepsake Vault</div>
                       <div className="text-[10.5px] text-stone-500">Hallmark card + Royal velvet box</div>
@@ -1476,7 +1476,7 @@ Status: Confirmed & Hallmarked
                       onChange={(e) => setIsGiftPackagingAdded(e.target.checked)}
                       className="sr-only peer"
                     />
-                    <div className="w-9 h-5 bg-stone-300 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-stone-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-[#145C59]"></div>
+                    <div className="w-9 h-5 bg-stone-300 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-stone-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-[#61532E]"></div>
                   </label>
                 </div>
 
@@ -1501,7 +1501,7 @@ Status: Confirmed & Hallmarked
                       value={couponCodeInput}
                       onChange={(e) => setCouponCodeInput(e.target.value)}
                       placeholder="Promo Code (e.g. ROYAL10)"
-                      className="flex-1 text-xs px-3.5 py-2.5 rounded-xl border border-stone-200 bg-stone-50/50 uppercase tracking-wider focus:outline-none focus:border-[#145C59]"
+                      className="flex-1 text-xs px-3.5 py-2.5 rounded-xl border border-stone-200 bg-stone-50/50 uppercase tracking-wider focus:outline-none focus:border-[#61532E]"
                     />
                     <button
                       type="submit"
@@ -1513,7 +1513,7 @@ Status: Confirmed & Hallmarked
                 )}
 
                 {/* Pricing Summary Breakdown */}
-                <div className="space-y-2 pt-2 border-t border-[#EAE4DC] text-xs text-stone-600">
+                <div className="space-y-2 pt-2 border-t border-[#CEBDA7] text-xs text-stone-600">
                   <div className="flex justify-between">
                     <span>Bag Subtotal (MRP)</span>
                     <span className="font-semibold text-stone-900">₹{cartMrpTotal.toLocaleString('en-IN')}</span>
@@ -1527,7 +1527,7 @@ Status: Confirmed & Hallmarked
                   )}
 
                   {discountAmount > 0 && (
-                    <div className="flex justify-between text-[#145C59] font-bold">
+                    <div className="flex justify-between text-[#61532E] font-bold">
                       <span>Coupon Discount ({appliedCoupon?.code})</span>
                       <span>-₹{discountAmount.toLocaleString('en-IN')}</span>
                     </div>
@@ -1543,9 +1543,9 @@ Status: Confirmed & Hallmarked
                     <span className="font-bold text-emerald-700">COMPLIMENTARY</span>
                   </div>
 
-                  <div className="pt-3 border-t border-[#EAE4DC] flex justify-between items-baseline">
+                  <div className="pt-3 border-t border-[#CEBDA7] flex justify-between items-baseline">
                     <span className="font-serif text-base font-bold text-stone-900">Grand Total</span>
-                    <span className="font-serif text-2xl font-bold text-[#145C59]">
+                    <span className="font-serif text-2xl font-bold text-[#61532E]">
                       ₹{cartTotal.toLocaleString('en-IN')}
                     </span>
                   </div>
@@ -1561,7 +1561,7 @@ Status: Confirmed & Hallmarked
                     <span>Government BIS 925 Hallmark Certified</span>
                   </div>
                   <div className="flex items-center gap-2">
-                    <Award className="w-4 h-4 text-[#145C59]" />
+                    <Award className="w-4 h-4 text-[#61532E]" />
                     <span>2.0µm Rhodium Anti-Tarnish Platinum Clad</span>
                   </div>
                   <div className="flex items-center gap-2">
@@ -1607,7 +1607,7 @@ Status: Confirmed & Hallmarked
           <div className="bg-white rounded-3xl p-6 sm:p-8 max-w-lg w-full border border-stone-200 shadow-2xl space-y-5">
             <div className="flex items-center justify-between pb-3 border-b border-stone-200">
               <div className="flex items-center gap-2">
-                <Truck className="w-5 h-5 text-[#145C59]" />
+                <Truck className="w-5 h-5 text-[#61532E]" />
                 <h3 className="font-serif text-lg font-bold text-stone-900">
                   BlueDart Air Tracking Status
                 </h3>
@@ -1626,7 +1626,7 @@ Status: Confirmed & Hallmarked
                 <span className="text-emerald-700 font-bold">In Transit (Air)</span>
               </div>
 
-              <div className="border-l-2 border-[#145C59] pl-4 space-y-4 pt-2">
+              <div className="border-l-2 border-[#61532E] pl-4 space-y-4 pt-2">
                 <div>
                   <div className="font-bold text-stone-900">Consignment Manifested & Picked Up</div>
                   <div className="text-[11px] text-stone-500">Mumbai Central Aviation Facility &bull; Today, 9:45 PM</div>
@@ -1644,7 +1644,7 @@ Status: Confirmed & Hallmarked
 
             <button
               onClick={() => setShowBlueDartTracking(false)}
-              className="w-full py-3 bg-[#145C59] text-white text-xs font-semibold rounded-xl"
+              className="w-full py-3 bg-[#61532E] text-white text-xs font-semibold rounded-xl"
             >
               Done
             </button>
