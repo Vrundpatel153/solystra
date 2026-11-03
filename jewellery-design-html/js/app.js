@@ -827,6 +827,34 @@
     }
   };
 
+  
+  // Jewelry Category Metal Dropdowns (925 Silver & 18K Gold)
+  window.toggleCategoryDropdown = function (key, e) {
+    if (e) {
+      e.preventDefault();
+      e.stopPropagation();
+    }
+    const subMenu = document.getElementById('subcat-menu-' + key);
+    const chevron = document.getElementById('chevron-' + key);
+    if (!subMenu) return;
+    const isHidden = subMenu.classList.contains('hidden');
+
+    const prefix = key.startsWith('mob-') ? 'mob-' : 'desktop-';
+    const otherKey = prefix + (key.endsWith('silver') ? 'gold' : 'silver');
+    const otherMenu = document.getElementById('subcat-menu-' + otherKey);
+    const otherChevron = document.getElementById('chevron-' + otherKey);
+
+    if (isHidden) {
+      subMenu.classList.remove('hidden');
+      if (chevron) chevron.classList.add('rotate-180', 'text-[#61532E]');
+      if (otherMenu) otherMenu.classList.add('hidden');
+      if (otherChevron) otherChevron.classList.remove('rotate-180', 'text-[#61532E]');
+    } else {
+      subMenu.classList.add('hidden');
+      if (chevron) chevron.classList.remove('rotate-180', 'text-[#61532E]');
+    }
+  };
+
   window.closeCollectionsMenu = function () {
     isCollectionsMenuOpen = false;
     const overlay = document.getElementById('collections-dropdown-overlay');
