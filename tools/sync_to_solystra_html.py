@@ -28,3 +28,4 @@ for root, dirs, files in os.walk(src_dir):
             print(f"Copied: {os.path.relpath(dest_file, dest_dir)}")
 
 print("Sync completed!")
+

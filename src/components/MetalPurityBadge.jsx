@@ -65,17 +65,15 @@ export const getMetalBadgeInfo = (product, selectedMetal = null) => {
       code: '18K',
       metal: 'ROSE',
       label: '18K Rose Gold',
-      borderColor: '#DF9FA9',
-      borderWidth: '1.4',
-      innerRingColor: '#C47585',
-      filter: 'drop-shadow(0 2px 4px rgba(180, 80, 100, 0.22))',
+      borderColor: '#CEBDA7',
+      borderWidth: '1',
+      innerRingColor: '#61532E',
+      filter: 'drop-shadow(0 1px 2px rgba(0,0,0,0.04))',
       codeTextClass: 'text-[#61532E]',
-      subTextClass: 'text-[#9E2A44]',
+      subTextClass: 'text-[#61532E]',
       stops: [
-        { offset: '0%', color: '#FFF9FA' },
-        { offset: '30%', color: '#FDECEF' },
-        { offset: '70%', color: '#F9D4DA' },
-        { offset: '100%', color: '#EBB6C0' }
+        { offset: '0%', color: '#FAF8F5' },
+        { offset: '100%', color: '#FAF8F5' }
       ]
     };
   }
@@ -86,39 +84,34 @@ export const getMetalBadgeInfo = (product, selectedMetal = null) => {
       code: '18K',
       metal: 'GOLD',
       label: '18K Gold Vermeil',
-      // Warm champagne gold shade
-      borderColor: '#CBA64E',
-      borderWidth: '1.5',
-      innerRingColor: '#BF973A',
-      filter: 'drop-shadow(0 2px 5px rgba(180, 130, 40, 0.25))',
-      codeTextClass: 'text-[#6B4B13]',
-      subTextClass: 'text-[#8A641E]',
+      borderColor: '#CEBDA7',
+      borderWidth: '1',
+      innerRingColor: '#61532E',
+      filter: 'drop-shadow(0 1px 2px rgba(0,0,0,0.04))',
+      codeTextClass: 'text-[#61532E]',
+      subTextClass: 'text-[#61532E]',
       stops: [
-        { offset: '0%', color: '#FFFDF7' },
-        { offset: '25%', color: '#FEF8E7' },
-        { offset: '65%', color: '#F7E5BA' },
-        { offset: '100%', color: '#ECCF86' }
+        { offset: '0%', color: '#FAF8F5' },
+        { offset: '100%', color: '#FAF8F5' }
       ]
     };
   }
 
-  // Pure 925 Silver (Crisp White Silver Style)
+  // Pure 925 Silver
   return {
     type: 'silver',
     code: '925',
     metal: 'SILVER',
     label: 'Pure 925 Silver',
-    borderColor: '#CBD5E1',
-    borderWidth: '1.35',
-    innerRingColor: '#94A3B8',
-    filter: 'drop-shadow(0 2px 4px rgba(15, 23, 42, 0.12))',
-    codeTextClass: 'text-[#1E293B]',
-    subTextClass: 'text-[#64748B]',
+    borderColor: '#CEBDA7',
+    borderWidth: '1',
+    innerRingColor: '#61532E',
+    filter: 'drop-shadow(0 1px 2px rgba(0,0,0,0.04))',
+    codeTextClass: 'text-[#61532E]',
+    subTextClass: 'text-[#61532E]',
     stops: [
-      { offset: '0%', color: '#FFFFFF' },
-      { offset: '30%', color: '#F8FAFC' },
-      { offset: '70%', color: '#EDF2F7' },
-      { offset: '100%', color: '#E2E8F0' }
+      { offset: '0%', color: '#FAF8F5' },
+      { offset: '100%', color: '#FAF8F5' }
     ]
   };
 };

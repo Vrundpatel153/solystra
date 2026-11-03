@@ -87,8 +87,8 @@ export const Navbar = ({ activeCategory, onSelectCategory, onOpenBoutique }) => 
   const { cartItemCount, wishlist, setIsCartOpen, setIsWishlistOpen, setIsSearchOpen } = useShop();
 
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [openMetalDesktop, setOpenMetalDesktop] = useState('silver');
-  const [openMetalMobile, setOpenMetalMobile] = useState('silver');
+  const [openMetalDesktop, setOpenMetalDesktop] = useState(null);
+  const [openMetalMobile, setOpenMetalMobile] = useState(null);
   const menuContainerRef = useRef(null);
 
   const handleNavClick = (cat) => {

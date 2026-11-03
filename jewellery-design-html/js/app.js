@@ -828,7 +828,7 @@
   };
 
   
-  // Jewelry Category Metal Dropdowns (925 Silver & 18K Gold)
+    // Jewelry Category Metal Dropdowns (925 Silver & 18K Gold) with Smooth Transitions
   window.toggleCategoryDropdown = function (key, e) {
     if (e) {
       e.preventDefault();
@@ -837,21 +837,67 @@
     const subMenu = document.getElementById('subcat-menu-' + key);
     const chevron = document.getElementById('chevron-' + key);
     if (!subMenu) return;
-    const isHidden = subMenu.classList.contains('hidden');
 
     const prefix = key.startsWith('mob-') ? 'mob-' : 'desktop-';
     const otherKey = prefix + (key.endsWith('silver') ? 'gold' : 'silver');
     const otherMenu = document.getElementById('subcat-menu-' + otherKey);
     const otherChevron = document.getElementById('chevron-' + otherKey);
 
-    if (isHidden) {
-      subMenu.classList.remove('hidden');
-      if (chevron) chevron.classList.add('rotate-180', 'text-[#61532E]');
-      if (otherMenu) otherMenu.classList.add('hidden');
-      if (otherChevron) otherChevron.classList.remove('rotate-180', 'text-[#61532E]');
+    function closeAccordion(el, chev) {
+      if (!el || el.classList.contains('hidden')) return;
+      el.style.maxHeight = el.scrollHeight + 'px';
+      el.style.opacity = '1';
+      // Force repaint
+      void el.offsetHeight;
+      el.style.transition = 'max-height 0.45s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.35s ease, padding 0.35s ease';
+      el.style.maxHeight = '0px';
+      el.style.opacity = '0';
+      el.style.paddingTop = '0px';
+      el.style.paddingBottom = '0px';
+      if (chev) {
+        chev.style.transition = 'transform 0.45s cubic-bezier(0.22, 1, 0.36, 1)';
+        chev.classList.remove('rotate-180', 'text-[#61532E]');
+      }
+      setTimeout(function () {
+        el.classList.add('hidden');
+        el.style.maxHeight = '';
+        el.style.opacity = '';
+        el.style.paddingTop = '';
+        el.style.paddingBottom = '';
+      }, 450);
+    }
+
+    function openAccordion(el, chev) {
+      if (!el) return;
+      el.classList.remove('hidden');
+      el.style.maxHeight = '0px';
+      el.style.opacity = '0';
+      el.style.paddingTop = '0px';
+      el.style.paddingBottom = '0px';
+      // Force repaint
+      void el.offsetHeight;
+      const targetHeight = el.scrollHeight + 15;
+      el.style.transition = 'max-height 0.45s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.35s ease, padding 0.35s ease';
+      el.style.maxHeight = targetHeight + 'px';
+      el.style.opacity = '1';
+      el.style.paddingTop = key.startsWith('mob-') ? '8px' : '6px';
+      el.style.paddingBottom = key.startsWith('mob-') ? '8px' : '6px';
+      if (chev) {
+        chev.style.transition = 'transform 0.45s cubic-bezier(0.22, 1, 0.36, 1)';
+        chev.classList.add('rotate-180', 'text-[#61532E]');
+      }
+      setTimeout(function () {
+        el.style.maxHeight = 'none';
+      }, 450);
+    }
+
+    const isCurrentlyOpen = !subMenu.classList.contains('hidden') && subMenu.style.maxHeight !== '0px';
+
+    if (isCurrentlyOpen) {
+      closeAccordion(subMenu, chevron);
     } else {
-      subMenu.classList.add('hidden');
-      if (chevron) chevron.classList.remove('rotate-180', 'text-[#61532E]');
+      if (otherMenu) closeAccordion(otherMenu, otherChevron);
+      openAccordion(subMenu, chevron);
     }
   };
 
