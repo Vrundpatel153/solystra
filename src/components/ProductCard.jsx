@@ -207,17 +207,21 @@ export const ProductCard = ({ product, variant = 'default', isSquare = false, sh
           {cleanTitle}
         </h3>
 
-        {/* Discount & Metal Hallmark Badges Row */}
-        <div className="flex items-center justify-between gap-1 sm:gap-1.5 w-full">
-          {/* Discount Tag placed where reviews used to be */}
-          <span className="inline-flex items-center justify-center px-1.5 sm:px-2 py-0.5 rounded-md bg-[#61532E]/10 border border-[#61532E]/25 text-[#61532E] font-sans font-bold text-[8.5px] sm:text-[9.5px] uppercase tracking-wider leading-none shadow-2xs shrink-0">
-            {discountText || 'BIS 925'}
-          </span>
-
-          {/* Metal Purity Hallmark Badge on the right */}
-          <div className="ml-auto shrink-0 flex items-center gap-1">
+        {/* Metal Hallmark (Left) & Optional Offer Discount (Right) */}
+        <div className="flex items-center justify-between gap-1 sm:gap-1.5 w-full min-h-[22px]">
+          {/* Metal Purity Hallmark Badge on the LEFT side */}
+          <div className="shrink-0 flex items-center gap-1">
             <MetalPurityBadge product={product} size="rating" selectedMetal={selectedMetal} />
           </div>
+
+          {/* Offer / Discount Label on the RIGHT side (empty if no discount) */}
+          {discountText && (
+            <div className="ml-auto shrink-0 flex items-center">
+              <span className="inline-flex items-center justify-center px-1.5 sm:px-2 py-0.5 rounded-md bg-[#61532E]/10 border border-[#61532E]/25 text-[#61532E] font-sans font-bold text-[8.5px] sm:text-[9.5px] uppercase tracking-wider leading-none shadow-2xs shrink-0">
+                {discountText}
+              </span>
+            </div>
+          )}
         </div>
 
         {/* Price & Action Icons Row */}
