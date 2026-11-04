@@ -145,67 +145,50 @@ const CATEGORY_CARDS = [
 // Top Curated Collections (Editorial tall portrait cards with signature script typography)
 const TOP_COLLECTIONS = [
   {
-    id: 'col-ombre',
-    title: 'Ombre',
-    subtitle: 'COLLECTION',
-    desc: 'Gradient imperial emeralds, blue sapphires and regal peacock vermeil cuffs.',
+    id: 'col-links-layers',
+    title: 'Links & Layers',
+    subtitle: 'CHAINS & LAYERS',
+    desc: 'Interlocking links, sleek chains & layered statement chokers.',
+    img: '/solystra_assets/categories/zavya_style/chains.webp',
+    category: 'necklaces',
+    tag: 'CHAINS'
+  },
+  {
+    id: 'col-drops-halo',
+    title: 'Drops & Halo',
+    subtitle: 'RINGS & EARRINGS',
+    desc: 'Starlight drops, halo solitaires & radiant cocktail studs.',
+    img: '/solystra_assets/collections/collection_drops.webp',
+    category: 'earrings',
+    tag: 'RINGS & EARRINGS'
+  },
+  {
+    id: 'col-dainty-steps',
+    title: 'Dainty Steps',
+    subtitle: 'ANKLETS & PAYALS',
+    desc: 'Dainty bell charms, sleek shimmer links & everyday payals.',
+    img: '/solystra_assets/categories/zavya_style/anklets.webp',
+    category: 'anklets',
+    tag: 'DAINTY STEPS'
+  },
+  {
+    id: 'col-daily-luxe',
+    title: 'Daily Luxe',
+    subtitle: '18K GOLD PRODUCTS',
+    desc: '18K Italian gold vermeil crafted for effortless everyday elegance.',
     img: '/solystra_assets/collections/collection_ombre.webp',
     category: 'bracelets',
-    tag: 'BESTSELLER'
+    metal: 'gold',
+    tag: 'DAILY LUXE'
   },
   {
-    id: 'col-celestial',
-    title: 'Celestial',
-    subtitle: 'COLLECTION',
-    desc: 'Starlight solitaire drops and cosmic pavé earrings.',
-    img: '/solystra_assets/collections/collection_celestial.webp',
-    category: 'earrings',
-    tag: 'NEW DROP'
-  },
-  {
-    id: 'col-heart',
-    title: 'Heart Echoes',
-    subtitle: 'COLLECTION',
-    desc: 'Romantic heart pendants and intertwined keepsake chains.',
-    img: '/solystra_assets/collections/collection_heart.webp',
-    category: 'complete_sets',
-    tag: 'ROMANCE'
-  },
-  {
-    id: 'col-infinite',
-    title: 'Infinite Bond',
-    subtitle: 'COLLECTION',
-    desc: 'Continuous loop cuffs and eternal silver tennis bracelets.',
-    img: '/solystra_assets/collections/collection_infinite.webp',
+    id: 'col-tennis-fever',
+    title: 'Tennis Fever',
+    subtitle: 'TENNIS BRACELETS',
+    desc: 'Continuous Austrian crystal tennis bracelets & bold cuffs.',
+    img: '/solystra_assets/categories/zavya_style/bracelets.webp',
     category: 'bracelets',
-    tag: 'GIFTING'
-  },
-  {
-    id: 'col-ruby',
-    title: 'Emerald Radiance',
-    subtitle: 'COLLECTION',
-    desc: 'Deep imperial emeralds prong-set in 18K gold vermeil.',
-    img: '/solystra_assets/collections/collection_ruby.webp',
-    category: 'rings',
-    tag: 'ROYAL EDIT'
-  },
-  {
-    id: 'col-studs',
-    title: 'Solitaire Studs',
-    subtitle: 'COLLECTION',
-    desc: 'Brilliant round-cut Austrian crystal studs in pure 925 silver.',
-    img: '/solystra_assets/collections/collection_studs.webp',
-    category: 'earrings',
-    tag: 'TIMELESS'
-  },
-  {
-    id: 'col-drops',
-    title: 'Drop Elegance',
-    subtitle: 'COLLECTION',
-    desc: 'Graceful cascading silhouette earrings and matching pendants.',
-    img: '/solystra_assets/collections/collection_drops.webp',
-    category: 'necklaces',
-    tag: 'SIGNATURE'
+    tag: 'TENNIS FEVER'
   }
 ];
 

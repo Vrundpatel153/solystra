@@ -102,12 +102,12 @@ export const Footer = () => {
             </button>
             {openMobileAccordion === 'collections' && (
               <ul className="px-4 pb-3.5 space-y-2 text-stone-600 text-[11.5px] border-t border-stone-100 pt-2.5">
-                <li><a href="#/" onClick={() => { window.location.hash = '#/'; }} className="block hover:text-[#61532E]">925 Sterling Silver Necklaces</a></li>
-                <li><a href="#/" onClick={() => { window.location.hash = '#/'; }} className="block hover:text-[#61532E]">Solitaire and Stacking Rings</a></li>
-                <li><a href="#/" onClick={() => { window.location.hash = '#/'; }} className="block hover:text-[#61532E]">Tennis Bracelets and Cuffs</a></li>
-                <li><a href="#/" onClick={() => { window.location.hash = '#/'; }} className="block hover:text-[#61532E]">Earrings and Huggies</a></li>
-                <li><a href="#/" onClick={() => { window.location.hash = '#/'; }} className="block hover:text-[#61532E]">Dainty Anklets</a></li>
-                <li><a href="#/" onClick={() => { window.location.hash = '#/'; }} className="block hover:text-[#61532E]">18K Italian Gold Vermeil</a></li>
+                <li><a href="#/products?category=necklaces" onClick={() => { window.location.hash = '#/products?category=necklaces'; }} className="block hover:text-[#61532E]">Links &amp; Layers (Chains)</a></li>
+                <li><a href="#/products?category=earrings" onClick={() => { window.location.hash = '#/products?category=earrings'; }} className="block hover:text-[#61532E]">Drops &amp; Halo (Rings &amp; Earrings)</a></li>
+                <li><a href="#/products?category=anklets" onClick={() => { window.location.hash = '#/products?category=anklets'; }} className="block hover:text-[#61532E]">Dainty Steps (Anklets)</a></li>
+                <li><a href="#/products?metal=gold" onClick={() => { window.location.hash = '#/products?metal=gold'; }} className="block hover:text-[#61532E]">Daily Luxe (18K Gold Products)</a></li>
+                <li><a href="#/products?category=bracelets" onClick={() => { window.location.hash = '#/products?category=bracelets'; }} className="block hover:text-[#61532E]">Tennis Fever (Bracelets)</a></li>
+                <li><a href="#/products?metal=silver" onClick={() => { window.location.hash = '#/products?metal=silver'; }} className="block hover:text-[#61532E]">Pure 925 Silver Heirlooms</a></li>
               </ul>
             )}
           </div>
@@ -201,33 +201,33 @@ export const Footer = () => {
             </h4>
             <ul className="space-y-2.5 text-stone-600">
               <li>
-                <a href="#/" onClick={() => { window.location.hash = '#/'; }} className="hover:text-[#61532E] transition-colors">
-                  925 Sterling Silver Necklaces
+                <a href="#/products?category=necklaces" onClick={() => { window.location.hash = '#/products?category=necklaces'; }} className="hover:text-[#61532E] transition-colors">
+                  Links &amp; Layers (Chains)
                 </a>
               </li>
               <li>
-                <a href="#/" onClick={() => { window.location.hash = '#/'; }} className="hover:text-[#61532E] transition-colors">
-                  Solitaire and Stacking Rings
+                <a href="#/products?category=earrings" onClick={() => { window.location.hash = '#/products?category=earrings'; }} className="hover:text-[#61532E] transition-colors">
+                  Drops &amp; Halo (Rings &amp; Earrings)
                 </a>
               </li>
               <li>
-                <a href="#/" onClick={() => { window.location.hash = '#/'; }} className="hover:text-[#61532E] transition-colors">
-                  Tennis Bracelets and Cuffs
+                <a href="#/products?category=anklets" onClick={() => { window.location.hash = '#/products?category=anklets'; }} className="hover:text-[#61532E] transition-colors">
+                  Dainty Steps (Anklets)
                 </a>
               </li>
               <li>
-                <a href="#/" onClick={() => { window.location.hash = '#/'; }} className="hover:text-[#61532E] transition-colors">
-                  Earrings and Huggies
+                <a href="#/products?metal=gold" onClick={() => { window.location.hash = '#/products?metal=gold'; }} className="hover:text-[#61532E] transition-colors">
+                  Daily Luxe (18K Gold Products)
                 </a>
               </li>
               <li>
-                <a href="#/" onClick={() => { window.location.hash = '#/'; }} className="hover:text-[#61532E] transition-colors">
-                  Dainty Anklets
+                <a href="#/products?category=bracelets" onClick={() => { window.location.hash = '#/products?category=bracelets'; }} className="hover:text-[#61532E] transition-colors">
+                  Tennis Fever (Bracelets)
                 </a>
               </li>
               <li>
-                <a href="#/" onClick={() => { window.location.hash = '#/'; }} className="hover:text-[#61532E] transition-colors">
-                  18K Italian Gold Vermeil
+                <a href="#/products?metal=silver" onClick={() => { window.location.hash = '#/products?metal=silver'; }} className="hover:text-[#61532E] transition-colors">
+                  Pure 925 Silver Heirlooms
                 </a>
               </li>
             </ul>

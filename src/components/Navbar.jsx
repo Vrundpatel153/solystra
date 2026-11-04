@@ -13,11 +13,11 @@ import {
 } from 'lucide-react';
 
 const FEATURED_COLLECTIONS = [
-  { label: 'New Atelier Arrivals', category: 'all', desc: 'Fresh handcrafted releases' },
-  { label: 'The 18K Gold Suite', category: 'bracelets', desc: 'Italian vermeil & tennis links' },
-  { label: 'Blush Rose Gold Edit', category: 'necklaces', desc: 'Warm feminine luminescence' },
-  { label: 'Modern Classic Rings', category: 'rings', desc: 'Everyday solitaires & bands' },
-  { label: 'Signature Bestsellers', category: 'bestseller', desc: 'Our most-coveted icons' }
+  { label: 'Links & Layers', category: 'necklaces', desc: 'Chains, chokers & layered links' },
+  { label: 'Drops & Halo', category: 'earrings', desc: 'Halo rings, drops & cocktail studs' },
+  { label: 'Dainty Steps', category: 'anklets', desc: 'Dainty anklets & charm links' },
+  { label: 'Daily Luxe', category: 'all', metal: 'gold', desc: '18K gold vermeil for everyday elegance' },
+  { label: 'Tennis Fever', category: 'bracelets', desc: 'Tennis bracelets, crystal cuffs & links' }
 ];
 
 const CATEGORY_ITEMS = [

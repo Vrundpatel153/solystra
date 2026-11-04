@@ -2744,7 +2744,7 @@
     const cards = el.querySelectorAll('[data-collection-card]');
     if (!cards.length) return;
 
-    let activeIndex = 11;
+    let activeIndex = 12;
     let isTicking = false;
     let isDragging = false;
     let startX = 0;
@@ -2778,7 +2778,7 @@
 
     // Set initial position centered at card 11 (Ruby Collection)
     function initPosition() {
-      centerCardByIndex(11, false);
+      centerCardByIndex(12, false);
     }
 
     initPosition();
@@ -2841,7 +2841,8 @@
           e.preventDefault();
           centerCardByIndex(idx, true);
         } else {
-          window.location.href = 'products.html';
+          const targetUrl = card.getAttribute('data-url') || 'products.html';
+          window.location.href = targetUrl;
         }
       });
     });
@@ -4782,3 +4783,25 @@
 
 
 })();
+
+
+  // Mobile Footer Accordion Toggle
+  window.toggleFooterAccordion = function (name) {
+    const el = document.getElementById('footer-accordion-' + name);
+    const chev = document.getElementById('footer-accordion-' + name + '-chevron');
+    if (!el) return;
+    const isHidden = el.classList.contains('hidden');
+    if (isHidden) {
+      el.classList.remove('hidden');
+      if (chev) {
+        chev.classList.add('rotate-180');
+        chev.classList.add('text-[#61532E]');
+      }
+    } else {
+      el.classList.add('hidden');
+      if (chev) {
+        chev.classList.remove('rotate-180');
+        chev.classList.remove('text-[#61532E]');
+      }
+    }
+  };
