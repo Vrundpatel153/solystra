@@ -231,18 +231,36 @@
     const input = document.getElementById('cart-promo-input');
     if (!input) return;
     const val = input.value.trim().toUpperCase();
+    const cart = getCart();
+    const subtotal = cart.reduce((acc, item) => acc + (item.price * item.quantity), 0);
 
-    if (val === 'ROYAL10') {
-      setAppliedPromo('ROYAL10');
-      window.showToast('Promo Code Applied!', '10% privilege discount unlocked.');
+    if (val === 'PREPAID100') {
+      setAppliedPromo('PREPAID100');
+      window.showToast('Prepaid Offer Applied!', 'Flat ₹100 discount on prepaid orders unlocked.');
+    } else if (val === 'SOL5') {
+      setAppliedPromo('SOL5');
+      if (subtotal >= 5000) {
+        window.showToast('5% Privilege Applied!', '5% discount on order above ₹5,000 unlocked.');
+      } else {
+        const diff = 5000 - subtotal;
+        window.showToast('Offer Code Saved!', 'Add ₹' + diff.toLocaleString('en-IN') + ' more to unlock 5% OFF.', 'info');
+      }
+    } else if (val === 'SOL10') {
+      setAppliedPromo('SOL10');
+      if (subtotal >= 10000) {
+        window.showToast('10% Privilege Applied!', '10% discount on order above ₹10,000 unlocked.');
+      } else {
+        const diff = 10000 - subtotal;
+        window.showToast('Offer Code Saved!', 'Add ₹' + diff.toLocaleString('en-IN') + ' more to unlock 10% OFF.', 'info');
+      }
+    } else if (val === 'ROYAL10' || val === 'SOULY10') {
+      setAppliedPromo(val);
+      window.showToast('Welcome Offer Applied!', '10% privilege discount unlocked.');
     } else if (val === 'VAULT500') {
       setAppliedPromo('VAULT500');
       window.showToast('Promo Code Applied!', 'Flat ₹500 discount unlocked.');
-    } else if (val === 'SOULY10') {
-      setAppliedPromo('SOULY10');
-      window.showToast('Welcome Offer Applied!', '10% privilege discount unlocked.');
     } else {
-      window.showToast('Invalid Code', 'Try ROYAL10 or VAULT500', 'info');
+      window.showToast('Invalid Code', 'Try PREPAID100, SOL5, or SOL10', 'info');
       return;
     }
     renderCartDrawer();
@@ -252,7 +270,25 @@
     const input = document.getElementById('cart-promo-input');
     if (input) input.value = code;
     setAppliedPromo(code);
-    window.showToast('Promo Code Applied!', `${code} unlocked successfully.`);
+    const cart = getCart();
+    const subtotal = cart.reduce((acc, item) => acc + (item.price * item.quantity), 0);
+    if (code === 'PREPAID100') {
+      window.showToast('Prepaid Offer Applied!', 'Flat ₹100 off on prepaid orders unlocked.');
+    } else if (code === 'SOL5') {
+      if (subtotal >= 5000) {
+        window.showToast('5% Privilege Applied!', '5% discount unlocked on orders above ₹5,000.');
+      } else {
+        window.showToast('Code Applied!', 'Add ₹' + (5000 - subtotal).toLocaleString('en-IN') + ' more to unlock 5% OFF.', 'info');
+      }
+    } else if (code === 'SOL10') {
+      if (subtotal >= 10000) {
+        window.showToast('10% Privilege Applied!', '10% discount unlocked on orders above ₹10,000.');
+      } else {
+        window.showToast('Code Applied!', 'Add ₹' + (10000 - subtotal).toLocaleString('en-IN') + ' more to unlock 10% OFF.', 'info');
+      }
+    } else {
+      window.showToast('Promo Code Applied!', `${code} unlocked successfully.`);
+    }
     renderCartDrawer();
   };
 
@@ -334,13 +370,33 @@
       `;
     }).join('');
 
-    // Promo calculation
+    // Promo calculation with 3 client-specified offers:
+    // 1. Flat 100 off on prepaid (PREPAID100)
+    // 2. 5% off on order above 5000 (SOL5)
+    // 3. 10% off on order above 10k (SOL10)
     const promo = getAppliedPromo();
     let discount = 0;
-    if (promo === 'ROYAL10' || promo === 'SOULY10') {
+    let promoBadge = '';
+
+    if (promo === 'PREPAID100') {
+      discount = Math.min(100, subtotal);
+      promoBadge = 'PREPAID100 (Flat ₹100 Off)';
+    } else if (promo === 'SOL5') {
+      if (subtotal >= 5000) {
+        discount = Math.round(subtotal * 0.05);
+        promoBadge = 'SOL5 (5% Off above ₹5,000)';
+      }
+    } else if (promo === 'SOL10') {
+      if (subtotal >= 10000) {
+        discount = Math.round(subtotal * 0.10);
+        promoBadge = 'SOL10 (10% Off above ₹10,000)';
+      }
+    } else if (promo === 'ROYAL10' || promo === 'SOULY10') {
       discount = Math.round(subtotal * 0.10);
+      promoBadge = promo + ' (10% Off)';
     } else if (promo === 'VAULT500') {
       discount = Math.min(500, subtotal);
+      promoBadge = 'VAULT500 (Flat ₹500 Off)';
     }
 
     const totalPayable = Math.max(0, subtotal - discount);
@@ -2184,23 +2240,54 @@
       }];
     }
 
-    // Calculate totals
+    // Calculate totals with 3 client-specified offers:
+    // 1. Flat 100 off on prepaid (UPI, Card, NetBanking or PREPAID100)
+    // 2. 5% off on order above 5000 (SOL5)
+    // 3. 10% off on order above 10k (SOL10)
     function computeTotals() {
       const subtotal = cart.reduce((acc, item) => acc + (item.price * item.quantity), 0);
       const mrpTotal = cart.reduce((acc, item) => acc + ((item.mrp || item.price) * item.quantity), 0);
       const savings = Math.max(0, mrpTotal - subtotal);
 
       const promo = getAppliedPromo();
-      let discount = 0;
-      if (promo === 'ROYAL10' || promo === 'SOULY10') {
-        discount = Math.round(subtotal * 0.10);
+      let couponDiscount = 0;
+      let couponLabel = '';
+
+      if (promo === 'PREPAID100') {
+        couponDiscount = Math.min(100, subtotal);
+        couponLabel = 'PREPAID100';
+      } else if (promo === 'SOL5') {
+        if (subtotal >= 5000) {
+          couponDiscount = Math.round(subtotal * 0.05);
+          couponLabel = 'SOL5 (5% OFF)';
+        }
+      } else if (promo === 'SOL10') {
+        if (subtotal >= 10000) {
+          couponDiscount = Math.round(subtotal * 0.10);
+          couponLabel = 'SOL10 (10% OFF)';
+        }
+      } else if (promo === 'ROYAL10' || promo === 'SOULY10') {
+        couponDiscount = Math.round(subtotal * 0.10);
+        couponLabel = promo;
       } else if (promo === 'VAULT500') {
-        discount = Math.min(500, subtotal);
+        couponDiscount = Math.min(500, subtotal);
+        couponLabel = 'VAULT500';
       }
 
-      const grandTotal = Math.max(0, subtotal - discount + deliverySpeedCost);
+      // Flat 100 off on prepaid payment methods
+      const isPrepaid = (selectedPaymentMode !== 'cod');
+      let prepaidDiscount = 0;
+      if (isPrepaid) {
+        // If PREPAID100 was already applied as coupon, don't duplicate
+        if (promo !== 'PREPAID100') {
+          prepaidDiscount = 100;
+        }
+      }
 
-      return { subtotal, mrpTotal, savings, discount, grandTotal, promo };
+      const totalDiscount = couponDiscount + prepaidDiscount;
+      const grandTotal = Math.max(0, subtotal - totalDiscount + deliverySpeedCost);
+
+      return { subtotal, mrpTotal, savings, discount: totalDiscount, couponDiscount, prepaidDiscount, couponLabel, grandTotal, promo };
     }
 
     // Render Order Summary Sidebar
@@ -2569,14 +2656,33 @@
       const code = document.getElementById('checkout-coupon-input')?.value.trim();
       if (!code) return;
 
-      if (code.toUpperCase() === 'ROYAL10' || code.toUpperCase() === 'SOULY10') {
-        setAppliedPromo(code.toUpperCase());
+      const cUpper = code.toUpperCase();
+      const sub = cart.reduce((acc, item) => acc + (item.price * item.quantity), 0);
+      if (cUpper === 'PREPAID100') {
+        setAppliedPromo('PREPAID100');
+        window.showToast('Prepaid Offer Applied', 'Flat ₹100 discount on prepaid orders.');
+      } else if (cUpper === 'SOL5') {
+        setAppliedPromo('SOL5');
+        if (sub >= 5000) {
+          window.showToast('5% Privilege Applied', '5% discount on order above ₹5,000.');
+        } else {
+          window.showToast('Code Saved', 'Add ₹' + (5000 - sub).toLocaleString('en-IN') + ' more for 5% OFF.', 'info');
+        }
+      } else if (cUpper === 'SOL10') {
+        setAppliedPromo('SOL10');
+        if (sub >= 10000) {
+          window.showToast('10% Privilege Applied', '10% discount on order above ₹10,000.');
+        } else {
+          window.showToast('Code Saved', 'Add ₹' + (10000 - sub).toLocaleString('en-IN') + ' more for 10% OFF.', 'info');
+        }
+      } else if (cUpper === 'ROYAL10' || cUpper === 'SOULY10') {
+        setAppliedPromo(cUpper);
         window.showToast('Privilege Code Applied', '10% privilege reduction unlocked.');
-      } else if (code.toUpperCase() === 'VAULT500') {
-        setAppliedPromo(code.toUpperCase());
+      } else if (cUpper === 'VAULT500') {
+        setAppliedPromo('VAULT500');
         window.showToast('Privilege Code Applied', 'Flat ₹500 vault credit applied.');
       } else {
-        window.showToast('Invalid Code', 'Try ROYAL10 or VAULT500.', 'info');
+        window.showToast('Invalid Code', 'Try PREPAID100, SOL5, or SOL10.', 'info');
       }
       renderOrderSummary();
     };

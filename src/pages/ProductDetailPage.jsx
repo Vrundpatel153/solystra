@@ -798,10 +798,9 @@ export const ProductDetailPage = ({ productId }) => {
               </div>
               <div className="flex gap-2.5 overflow-x-auto hide-scrollbar pb-1">
                 {[
-                  { discount: 'Get 10% off', min: 'above ₹1990', code: 'SILVER10' },
-                  { discount: 'Get 15% off', min: 'above ₹2990', code: 'SILVER15' },
-                  { discount: 'Get 20% off', min: 'above ₹4990', code: 'SILVER20' },
-                  { discount: 'Get 25% off', min: 'above ₹7990', code: 'SOLYSTRA25' }
+                  { discount: 'Flat ₹100 off', min: 'On Prepaid orders', code: 'PREPAID100' },
+                  { discount: 'Get 5% off', min: 'above ₹5,000', code: 'SOL5' },
+                  { discount: 'Get 10% off', min: 'above ₹10,000', code: 'SOL10' }
                 ].map((offer) => (
                   <button
                     key={offer.code}

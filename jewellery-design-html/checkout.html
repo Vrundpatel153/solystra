@@ -546,12 +546,12 @@
               <input id="checkout-coupon-input" class="flex-1 text-xs px-3.5 py-2.5 rounded-xl border border-stone-200 bg-stone-50/50 uppercase tracking-wider focus:outline-none focus:border-[#61532E]" placeholder="Promo Code (e.g. ROYAL10)" type="text"/>
               <button class="px-4 py-2.5 bg-stone-900 hover:bg-black text-white text-xs font-semibold rounded-xl transition-colors cursor-pointer" type="submit">Apply</button>
             </form>
-            <div class="flex items-center gap-2 text-[10.5px] text-stone-500 -mt-3">
-              <span>Try:</span>
-              <button type="button" onclick="window.useCheckoutPromo('ROYAL10')" class="text-[#61532E] font-mono font-bold hover:underline cursor-pointer">ROYAL10</button>
-              <span>•</span>
-              <button type="button" onclick="window.useCheckoutPromo('VAULT500')" class="text-[#61532E] font-mono font-bold hover:underline cursor-pointer">VAULT500</button>
-            </div>
+            <div class="flex flex-wrap items-center gap-1.5 text-[10.5px] text-stone-500 -mt-2">
+<span>Offers:</span>
+<button type="button" onclick="window.useCheckoutPromo('PREPAID100')" class="text-[#61532E] font-mono font-bold bg-[#61532E]/10 hover:bg-[#61532E]/20 px-1.5 py-0.5 rounded cursor-pointer transition-colors">PREPAID100</button>
+<button type="button" onclick="window.useCheckoutPromo('SOL5')" class="text-[#61532E] font-mono font-bold bg-[#61532E]/10 hover:bg-[#61532E]/20 px-1.5 py-0.5 rounded cursor-pointer transition-colors">SOL5 (5% OFF)</button>
+<button type="button" onclick="window.useCheckoutPromo('SOL10')" class="text-[#61532E] font-mono font-bold bg-[#61532E]/10 hover:bg-[#61532E]/20 px-1.5 py-0.5 rounded cursor-pointer transition-colors">SOL10 (10% OFF)</button>
+</div>
 
             <!-- Pricing Breakdown -->
             <div class="space-y-2 pt-2 border-t border-[#CEBDA7] text-xs text-stone-600">

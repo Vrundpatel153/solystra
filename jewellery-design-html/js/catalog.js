@@ -5116,6 +5116,20 @@ window.TRUST_PILLARS = [
 ];
 
 window.PROMO_CODES = {
+  "PREPAID100": {
+    "discountAmount": 100,
+    "label": "Prepaid Privilege Flat ₹100 Off"
+  },
+  "SOL5": {
+    "discountPercent": 5,
+    "minSubtotal": 5000,
+    "label": "5% Off on orders above ₹5,000"
+  },
+  "SOL10": {
+    "discountPercent": 10,
+    "minSubtotal": 10000,
+    "label": "10% Off on orders above ₹10,000"
+  },
   "AUR10": {
     "discountPercent": 10,
     "label": "VIP Welcome 10% Off"
