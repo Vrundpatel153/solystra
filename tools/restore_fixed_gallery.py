@@ -97,3 +97,4 @@ if os.path.exists(react_path):
     print("Updated React file")
 
 print("All updates completed successfully!")
+
