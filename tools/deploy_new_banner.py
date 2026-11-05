@@ -35,3 +35,4 @@ for d in target_dirs:
     im_v2.save(champ_jpg, 'JPEG', quality=92)
 
 print("All banners deployed successfully!")
+

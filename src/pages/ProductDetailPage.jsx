@@ -441,7 +441,7 @@ export const ProductDetailPage = ({ productId }) => {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
           
           {/* Left: Sticky Gallery with Vertical Thumbnail Rail (7 Cols) */}
-          <div ref={imageGalleryRef} className="lg:col-span-7 flex flex-col-reverse sm:flex-row gap-4">
+          <div ref={imageGalleryRef} className="lg:col-span-7 pdp-fixed-gallery lg:sticky lg:top-24 self-start flex flex-col-reverse sm:flex-row gap-4">
             
             {/* Vertical Thumbnail Rail */}
             {product.images.length > 1 && (
@@ -829,7 +829,7 @@ export const ProductDetailPage = ({ productId }) => {
             {/* 6. ATELIER LUXURY BRAND HERITAGE BANNER (THEME QUOTE) */}
             <div className="relative w-full rounded-2xl overflow-hidden border border-[#D4AF37]/35 shadow-md group bg-[#252010]">
               <img
-                src="/solystra_assets/promos/atelier_luxury_banner.webp"
+                src="/solystra_assets/promos/atelier_luxury_banner.webp?v=bronze2026"
                 alt="Soulystra Jewels - Timeless Elegance, Crafted Forever"
                 className="w-full aspect-[16/9] object-cover object-center group-hover:scale-103 transition-transform duration-700 block"
                 loading="lazy"

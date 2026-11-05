@@ -11980,3 +11980,13 @@ video {
     min-width: 0 !important;
   }
 }
+
+/* Fixed Left Product Gallery on Desktop - Only right side scrolls */
+@media (min-width: 1024px) {
+  .pdp-fixed-gallery {
+    position: -webkit-sticky !important;
+    position: sticky !important;
+    top: calc(74px + 1.25rem) !important; /* 94px: stays fixed with elegant breathing room below 74px header */
+    align-self: flex-start !important;
+  }
+}
