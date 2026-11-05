@@ -2126,8 +2126,15 @@
         else if (text.includes('bestseller')) activeCategory = 'bestseller';
         else activeCategory = text;
 
+        activeCategories = [activeCategory];
         highlightCategoryPills();
         applyFilters();
+        try {
+          const url = new URL(window.location.href);
+          if (activeCategory === 'all') url.searchParams.delete('category');
+          else url.searchParams.set('category', activeCategory);
+          window.history.replaceState({}, '', url.toString());
+        } catch (e) {}
       };
     });
 
@@ -2280,7 +2287,19 @@
     const mobileFilterBtn = document.querySelector('section.lg\\:hidden button:has(svg.lucide-sliders-horizontal)');
     if (mobileFilterBtn) {
       mobileFilterBtn.onclick = function () {
-        window.openMobileFilterModal();
+          window.applyMobileCategory = function (cat) {
+    if (window.toggleMobileFilterCategory) {
+      window.toggleMobileFilterCategory(cat);
+    }
+  };
+
+  window.applyMobileMetal = function (metal) {
+    if (window.toggleMobileFilterMetal) {
+      window.toggleMobileFilterMetal(metal);
+    }
+  };
+
+  window.openMobileFilterModal();
       };
     }
 
