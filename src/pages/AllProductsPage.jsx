@@ -195,16 +195,20 @@ export const AllProductsPage = ({ onBackToStore }) => {
           1. SLEEK LUXURY EDITORIAL ARCHIVE BANNER
           (High-fashion Vogue jewelry photography matching Offers page)
           ======================================================== */}
-      <section className="relative overflow-hidden bg-stone-900 border-b border-[#CEBDA7]">
-        <div className="relative w-full h-36 xs:h-40 sm:h-48 md:h-56">
-          <img
-            src="solystra_assets/banners/explore_editorial_banner.webp"
-            alt="Solystra Handcrafted Fine Jewelry Collection"
-            className="w-full h-full object-cover object-center"
-          />
+      <section className="relative overflow-hidden bg-[#1F190E] border-b border-[#CEBDA7]">
+        <div className="relative w-full h-44 xs:h-48 sm:h-56 md:h-64 lg:h-72">
+          <picture className="block w-full h-full">
+            <source media="(min-width: 640px)" srcSet="solystra_assets/banners/catalog_luxury_banner_pc.webp?v=atelier2026" />
+            <img
+              src="solystra_assets/banners/catalog_luxury_banner_mobile.webp?v=atelier2026"
+              alt="Solystra Handcrafted Fine Jewelry Collection"
+              className="w-full h-full object-cover object-right sm:object-center transition-transform duration-700 hover:scale-101"
+              loading="eager"
+            />
+          </picture>
 
           {/* Luxury Editorial Scrim */}
-          <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/60 to-black/25" />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#141007]/90 via-[#201A0E]/65 to-black/20" />
 
           {/* Banner Content */}
           <div className="absolute inset-0 z-10 flex items-center">
