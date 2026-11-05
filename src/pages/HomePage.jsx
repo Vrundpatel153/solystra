@@ -34,47 +34,47 @@ import {
 const HERO_BANNERS = [
   {
     id: 1,
-    desktopImg: 'solystra_assets/banners/banner_pc_2.webp',
-    mobileImg: 'solystra_assets/banners/banner_mob_2.webp',
-    title: 'The 18K Gold Suite',
-    subtitle: 'Layered tennis bracelets and kada cuffs in 18K Italian gold vermeil.',
-    desc: 'Crafted in pure 925 sterling silver with a rich, radiant gold polish built for daily elegance.',
-    tag: 'NEW ARRIVALS',
-    cta: 'Shop Gold Suites',
-    category: 'bracelets'
-  },
-  {
-    id: 2,
-    desktopImg: 'solystra_assets/banners/banner_blush_tones_pc.webp',
-    mobileImg: 'solystra_assets/banners/banner_blush_tones_mob.webp',
-    title: 'Blush Tones Collection',
-    subtitle: 'Delicate pink enamel blossoms and brilliant solitaires.',
-    desc: 'Feminine, radiant silhouettes handcrafted for everyday elegance and festive celebrations.',
-    tag: 'MOST LOVED',
-    cta: 'Explore Collection',
+    desktopImg: 'solystra_assets/banners/hero_model_1_pc.webp?v=model2026',
+    mobileImg: 'solystra_assets/banners/hero_model_1_mob.webp?v=model2026',
+    title: 'The Solitaire Heart Suite',
+    subtitle: 'Pure 925 sterling silver with brilliant Austrian solitaire heart pendant.',
+    desc: 'Crafted in pure 925 sterling silver with a sparkling Austrian solitaire heart pendant.',
+    tag: 'ATELIER SIGNATURE',
+    cta: 'Explore Necklaces',
     category: 'necklaces'
   },
   {
+    id: 2,
+    desktopImg: 'solystra_assets/banners/hero_model_2_pc.webp?v=model2026',
+    mobileImg: 'solystra_assets/banners/hero_model_2_mob.webp?v=model2026',
+    title: 'Modern Classics Collection',
+    subtitle: 'Double-layered solitaire diamond and natural freshwater pearl necklace.',
+    desc: 'Tailored luxury chic featuring natural freshwater pearls and brilliant solitaire accents.',
+    tag: 'MOST LOVED',
+    cta: 'Shop Complete Sets',
+    category: 'complete-sets'
+  },
+  {
     id: 3,
-    desktopImg: 'solystra_assets/banners/banner_pc_3.webp',
-    mobileImg: 'solystra_assets/banners/banner_mob_3.webp',
-    title: 'Modern Classics',
-    subtitle: 'Certified 925 silver bands, huggies and solitaires.',
+    desktopImg: 'solystra_assets/banners/hero_model_3_pc.webp?v=model2026',
+    mobileImg: 'solystra_assets/banners/hero_model_3_mob.webp?v=model2026',
+    title: 'Royal Crown Solitaire',
+    subtitle: 'Bespoke tiara-cut dancing solitaire in handcrafted 925 sterling silver.',
     desc: 'Finished with dual-micron anti-tarnish rhodium for a lifetime of mirror brilliance.',
-    tag: 'SIGNATURE PIECES',
-    cta: 'Shop Classics',
-    category: 'rings'
+    tag: 'NEW ARRIVALS',
+    cta: 'View Solitaires',
+    category: 'necklaces'
   },
   {
     id: 4,
-    desktopImg: 'solystra_assets/banners/banner_gift_sets_pc.webp',
-    mobileImg: 'solystra_assets/banners/banner_gift_sets_mob.webp',
-    title: 'Signature Gift Sets',
-    subtitle: 'Delivered in bespoke velvet keepsake vault with hallmark certificate.',
-    desc: 'Complete jewelry sets paired for weddings, anniversaries, and personal milestones.',
-    tag: 'GIFTING GUIDE',
-    cta: 'Discover Gift Sets',
-    category: 'complete_sets'
+    desktopImg: 'solystra_assets/banners/hero_model_4_pc.webp?v=model2026',
+    mobileImg: 'solystra_assets/banners/hero_model_4_mob.webp?v=model2026',
+    title: 'Austrian Tennis Bracelet',
+    subtitle: 'Continuous hand-set Austrian solitaires in 18K Italian gold vermeil & 925 silver.',
+    desc: 'Continuous hand-set Austrian solitaires in radiant 18K Italian gold vermeil & 925 silver.',
+    tag: 'ICONIC SILHOUETTE',
+    cta: 'Discover Bracelets',
+    category: 'bracelets'
   }
 ];
 

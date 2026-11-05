@@ -438,7 +438,7 @@ export const ProductDetailPage = ({ productId }) => {
 
       {/* Main PDP Grid */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-4 sm:pt-8">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start lg:pb-24">
           
           {/* Left: Sticky Gallery with Vertical Thumbnail Rail (7 Cols) */}
           <div ref={imageGalleryRef} className="lg:col-span-7 pdp-fixed-gallery lg:sticky lg:top-24 self-start flex flex-col-reverse sm:flex-row gap-4">

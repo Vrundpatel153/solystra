@@ -11986,7 +11986,7 @@ video {
   .pdp-fixed-gallery {
     position: -webkit-sticky !important;
     position: sticky !important;
-    top: calc(74px + 1.25rem) !important; /* 94px: stays fixed with elegant breathing room below 74px header */
+    top: calc(74px + 1.5rem) !important; /* 98px: stays fixed with generous breathing room below 74px header */
     align-self: flex-start !important;
   }
 }
