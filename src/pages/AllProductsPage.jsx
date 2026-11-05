@@ -230,17 +230,31 @@ export const AllProductsPage = ({ onBackToStore }) => {
                 <span>Return to Boutique</span>
               </button>
 
-              <div className="max-w-xl">
-                <span className="text-[9.5px] sm:text-[10.5px] uppercase tracking-[0.25em] text-[#EAD7AE] font-semibold block mb-0.5 sm:mb-1"
-                  style={{ textShadow: '0 1px 4px rgba(0,0,0,0.9)' }}>
-                  ATELIER ARCHIVE CATALOG
+              <div className="max-w-[58%] xs:max-w-[62%] sm:max-w-xl">
+                <span
+                  className="text-[9px] sm:text-[10.5px] uppercase tracking-[0.2em] sm:tracking-[0.25em] text-[#EAD7AE] font-semibold block mb-0.5 sm:mb-1"
+                  style={{ textShadow: '0 1px 4px rgba(0,0,0,0.9)' }}
+                >
+                  <span className="block sm:hidden">ATELIER ARCHIVE</span>
+                  <span className="hidden sm:inline">ATELIER ARCHIVE CATALOG</span>
                 </span>
-                <h1 className="font-serif text-xl xs:text-2xl sm:text-3xl md:text-4xl text-white font-normal tracking-tight text-shadow-hero drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]"
-                  style={{ textShadow: '0 2px 10px rgba(0,0,0,0.95), 0 1px 3px rgba(0,0,0,0.9)' }}>
-                  All Handcrafted Creations
+                <h1
+                  className="font-serif text-lg xs:text-xl sm:text-3xl md:text-4xl text-white font-normal tracking-tight text-shadow-hero leading-tight"
+                  style={{ textShadow: '0 2px 10px rgba(0,0,0,0.95), 0 1px 3px rgba(0,0,0,0.9)' }}
+                >
+                  <span className="block sm:hidden">Handcrafted Jewels</span>
+                  <span className="hidden sm:inline">All Handcrafted Creations</span>
                 </h1>
-                <p className="text-[11px] sm:text-xs md:text-sm text-stone-200 mt-1 font-light text-shadow-sub max-w-md line-clamp-1 sm:line-clamp-none"
-                  style={{ textShadow: '0 1px 6px rgba(0,0,0,0.9)' }}>
+                <p
+                  className="text-[11px] xs:text-[11.5px] text-stone-200 mt-0.5 sm:mt-1 font-light text-shadow-sub block sm:hidden leading-snug"
+                  style={{ textShadow: '0 1px 6px rgba(0,0,0,0.9)' }}
+                >
+                  Pure 925 silver &amp; 18K gold suites
+                </p>
+                <p
+                  className="text-xs md:text-sm text-stone-200 mt-1 font-light text-shadow-sub hidden sm:block"
+                  style={{ textShadow: '0 1px 6px rgba(0,0,0,0.9)' }}
+                >
                   Certified pure 925 sterling silver, Austrian solitaires &amp; 18K Italian gold vermeil suites.
                 </p>
               </div>

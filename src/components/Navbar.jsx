@@ -528,7 +528,7 @@ export const Navbar = ({ activeCategory, onSelectCategory, onOpenBoutique }) => 
             {/* Column 4: Curated Editorial Showcase Spotlight Card (3 cols) */}
             <div className="col-span-3 space-y-3">
               <div className="text-[11px] uppercase tracking-[0.2em] text-[#C5A059] font-bold pb-2 border-b border-[#CEBDA7]/60 flex items-center gap-1.5">
-                <Sparkles className="w-3 h-3 text-[#C5A059]" />
+                
                 <span>Atelier Showcase</span>
               </div>
               
