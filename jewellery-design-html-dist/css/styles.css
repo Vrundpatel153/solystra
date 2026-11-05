@@ -11965,3 +11965,18 @@ video {
     top: 74px !important;
   }
 }
+
+/* Available Offers Cards - 2.5 cards visible on mobile, 3-column grid on desktop */
+.pdp-offer-card {
+  flex: 0 0 calc((100% - 16px) / 2.45);
+  min-width: 0;
+  scroll-snap-align: start;
+}
+
+@media (min-width: 640px) {
+  .pdp-offer-card {
+    flex: 1 1 0% !important;
+    width: 100% !important;
+    min-width: 0 !important;
+  }
+}
