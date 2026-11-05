@@ -25,3 +25,4 @@ for dest_dir in targets:
                 print(f"Copied: {os.path.relpath(dest_file, dest_dir)}")
 
 print("All targets synchronized successfully!")
+

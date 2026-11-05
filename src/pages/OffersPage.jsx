@@ -119,7 +119,7 @@ export const OffersPage = ({ onBackToStore }) => {
           {/* Luxury Editorial Scrim */}
           <div
             className="absolute inset-0 atelier-banner-scrim bg-gradient-to-r from-black/95 via-black/60 to-transparent"
-            style={{ background: 'linear-gradient(90deg, rgba(20, 16, 7, 0.96) 0%, rgba(20, 16, 7, 0.88) 55%, rgba(20, 16, 7, 0.45) 85%, rgba(0, 0, 0, 0.15) 100%)' }}
+            style={{ background: 'linear-gradient(90deg, rgba(20, 16, 7, 0.94) 0%, rgba(20, 16, 7, 0.85) 45%, rgba(20, 16, 7, 0.25) 70%, rgba(0, 0, 0, 0.05) 100%)' }}
           />
 
           {/* Banner Content */}

@@ -1,5 +1,5 @@
 import React, { useEffect, useMemo } from 'react';
-import { ArrowLeft, Sparkles, ArrowRight } from 'lucide-react';
+import { ArrowLeft, ArrowRight } from 'lucide-react';
 import { PRODUCTS } from '../data/catalog';
 
 const RAW_CATEGORIES = [
@@ -139,7 +139,7 @@ export const CategoriesPage = ({ onSelectCategory, onBackToStore }) => {
           {/* Luxury Editorial Scrim */}
           <div
             className="absolute inset-0 atelier-banner-scrim bg-gradient-to-r from-black/95 via-black/60 to-transparent"
-            style={{ background: 'linear-gradient(90deg, rgba(20, 16, 7, 0.96) 0%, rgba(20, 16, 7, 0.88) 55%, rgba(20, 16, 7, 0.45) 85%, rgba(0, 0, 0, 0.15) 100%)' }}
+            style={{ background: 'linear-gradient(90deg, rgba(20, 16, 7, 0.94) 0%, rgba(20, 16, 7, 0.85) 45%, rgba(20, 16, 7, 0.25) 70%, rgba(0, 0, 0, 0.05) 100%)' }}
           />
 
           {/* Banner Content */}
@@ -159,11 +159,7 @@ export const CategoriesPage = ({ onSelectCategory, onBackToStore }) => {
               </button>
 
               <div className="max-w-xl">
-                <span className="text-[9.5px] sm:text-[10.5px] uppercase tracking-[0.25em] text-[#EAD7AE] font-semibold block mb-0.5 sm:mb-1 flex items-center gap-1.5"
-                  style={{ textShadow: '0 1px 4px rgba(0,0,0,0.9)' }}>
-                  <Sparkles className="w-3 h-3 text-[#EAD7AE]" />
-                  <span>ATELIER CATEGORY ARCHIVE</span>
-                </span>
+                <span className="text-[9.5px] sm:text-[10.5px] uppercase tracking-[0.25em] text-[#EAD7AE] font-semibold block mb-0.5 sm:mb-1" style={{ textShadow: '0 1px 4px rgba(0,0,0,0.9)' }}>ATELIER CATEGORY ARCHIVE</span>
                 <h1 className="font-serif text-xl xs:text-2xl sm:text-3xl md:text-4xl text-white font-normal tracking-tight text-shadow-hero drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]"
                   style={{ textShadow: '0 2px 10px rgba(0,0,0,0.95), 0 1px 3px rgba(0,0,0,0.9)' }}>
                   Explore by Category
