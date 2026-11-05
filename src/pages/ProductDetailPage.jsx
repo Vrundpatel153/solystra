@@ -796,7 +796,7 @@ export const ProductDetailPage = ({ productId }) => {
               <div className="text-xs font-semibold text-stone-900 tracking-wide">
                 Available offers
               </div>
-              <div className="flex gap-2.5 overflow-x-auto hide-scrollbar pb-1">
+              <div className="flex sm:grid sm:grid-cols-3 gap-2.5 overflow-x-auto sm:overflow-visible hide-scrollbar py-1.5 px-1 -mx-1">
                 {[
                   { discount: 'Flat ₹100 off', min: 'On Prepaid orders', code: 'PREPAID100' },
                   { discount: 'Get 5% off', min: 'above ₹5,000', code: 'SOL5' },
