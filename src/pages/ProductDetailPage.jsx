@@ -441,7 +441,7 @@ export const ProductDetailPage = ({ productId }) => {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
           
           {/* Left: Sticky Gallery with Vertical Thumbnail Rail (7 Cols) */}
-          <div ref={imageGalleryRef} className="lg:col-span-7 lg:sticky lg:top-20 self-start flex flex-col-reverse sm:flex-row gap-4">
+          <div ref={imageGalleryRef} className="lg:col-span-7 flex flex-col-reverse sm:flex-row gap-4">
             
             {/* Vertical Thumbnail Rail */}
             {product.images.length > 1 && (

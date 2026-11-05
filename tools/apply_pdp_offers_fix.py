@@ -68,3 +68,4 @@ update_html('jewellery-design-html-dist/product.html')
 update_html(r'C:\Users\vrund\OneDrive\Desktop\solystra-html\product.html')
 
 print("All Vanilla files updated successfully!")
+
