@@ -130,13 +130,17 @@ export const CategoriesPage = ({ onSelectCategory, onBackToStore }) => {
             <img
               src="solystra_assets/banners/catalog_luxury_banner_mobile.webp?v=atelier2026"
               alt="Solystra Jewelry Categories Archive"
-              className="w-full h-full object-cover object-right sm:object-center transition-transform duration-700 hover:scale-101"
+              className="w-full h-full object-cover atelier-banner-img transition-transform duration-700 hover:scale-101"
+              style={{ objectPosition: '85% center' }}
               loading="eager"
             />
           </picture>
 
           {/* Luxury Editorial Scrim */}
-          <div className="absolute inset-0 bg-gradient-to-r from-[#141007]/90 via-[#201A0E]/65 to-black/20" />
+          <div
+            className="absolute inset-0 atelier-banner-scrim bg-gradient-to-r from-black/95 via-black/60 to-transparent"
+            style={{ background: 'linear-gradient(90deg, rgba(20, 16, 7, 0.96) 0%, rgba(20, 16, 7, 0.88) 55%, rgba(20, 16, 7, 0.45) 85%, rgba(0, 0, 0, 0.15) 100%)' }}
+          />
 
           {/* Banner Content */}
           <div className="absolute inset-0 z-10 flex items-center">
@@ -155,14 +159,17 @@ export const CategoriesPage = ({ onSelectCategory, onBackToStore }) => {
               </button>
 
               <div className="max-w-xl">
-                <span className="text-[9.5px] sm:text-[10.5px] uppercase tracking-[0.25em] text-[#EAD7AE] font-semibold block mb-0.5 sm:mb-1 flex items-center gap-1.5">
+                <span className="text-[9.5px] sm:text-[10.5px] uppercase tracking-[0.25em] text-[#EAD7AE] font-semibold block mb-0.5 sm:mb-1 flex items-center gap-1.5"
+                  style={{ textShadow: '0 1px 4px rgba(0,0,0,0.9)' }}>
                   <Sparkles className="w-3 h-3 text-[#EAD7AE]" />
                   <span>ATELIER CATEGORY ARCHIVE</span>
                 </span>
-                <h1 className="font-serif text-xl xs:text-2xl sm:text-3xl md:text-4xl text-white font-normal tracking-tight drop-shadow-md">
+                <h1 className="font-serif text-xl xs:text-2xl sm:text-3xl md:text-4xl text-white font-normal tracking-tight text-shadow-hero drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]"
+                  style={{ textShadow: '0 2px 10px rgba(0,0,0,0.95), 0 1px 3px rgba(0,0,0,0.9)' }}>
                   Explore by Category
                 </h1>
-                <p className="text-[11px] sm:text-xs md:text-sm text-stone-200 mt-1 font-light drop-shadow-sm max-w-md line-clamp-1 sm:line-clamp-none">
+                <p className="text-[11px] sm:text-xs md:text-sm text-stone-200 mt-1 font-light text-shadow-sub max-w-md line-clamp-1 sm:line-clamp-none"
+                  style={{ textShadow: '0 1px 6px rgba(0,0,0,0.9)' }}>
                   Discover handcrafted 925 sterling silver, Austrian solitaires &amp; 18K gold suites curated by master artisans.
                 </p>
               </div>

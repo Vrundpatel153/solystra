@@ -41,3 +41,4 @@ html_files = [
 
 for p in html_files:
     update_html_file(p)
+

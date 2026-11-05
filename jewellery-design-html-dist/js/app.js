@@ -4177,9 +4177,9 @@
               </div>
             </div>
           </div>
-          <div class="pt-3 flex gap-2">
-            <button type="button" onclick="window.resetCatalogFilters(); window.closeMobileFilterModal();" class="w-1/2 py-2.5 border border-stone-300 rounded-xl text-xs font-semibold text-stone-700">Reset Filters</button>
-            <button type="button" onclick="window.closeMobileFilterModal()" class="w-1/2 py-2.5 bg-[#61532E] text-white rounded-xl text-xs font-bold uppercase tracking-wider">Apply Filters</button>
+          <div class="pt-4 grid grid-cols-2 gap-3 w-full border-t border-stone-100">
+            <button type="button" onclick="window.resetCatalogFilters(); window.closeMobileFilterModal();" class="w-full py-3 px-3 border border-stone-300 hover:border-stone-400 bg-white hover:bg-stone-50 rounded-xl text-xs font-semibold text-stone-700 active:scale-95 transition-all text-center flex items-center justify-center">Reset Filters</button>
+            <button type="button" onclick="window.closeMobileFilterModal()" class="w-full py-3 px-3 bg-[#61532E] hover:bg-[#4A3F22] text-white rounded-xl text-xs font-bold uppercase tracking-wider active:scale-95 transition-all shadow-md text-center flex items-center justify-center">Apply Filters</button>
           </div>
         </div>
       `;

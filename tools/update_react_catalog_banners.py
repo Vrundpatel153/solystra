@@ -32,3 +32,4 @@ def update_jsx(path):
 
 for p in ['src/pages/AllProductsPage.jsx', 'src/pages/CategoriesPage.jsx', 'src/pages/OffersPage.jsx']:
     update_jsx(p)
+

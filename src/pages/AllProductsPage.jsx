@@ -202,13 +202,17 @@ export const AllProductsPage = ({ onBackToStore }) => {
             <img
               src="solystra_assets/banners/catalog_luxury_banner_mobile.webp?v=atelier2026"
               alt="Solystra Handcrafted Fine Jewelry Collection"
-              className="w-full h-full object-cover object-right sm:object-center transition-transform duration-700 hover:scale-101"
+              className="w-full h-full object-cover atelier-banner-img transition-transform duration-700 hover:scale-101"
+              style={{ objectPosition: '85% center' }}
               loading="eager"
             />
           </picture>
 
           {/* Luxury Editorial Scrim */}
-          <div className="absolute inset-0 bg-gradient-to-r from-[#141007]/90 via-[#201A0E]/65 to-black/20" />
+          <div
+            className="absolute inset-0 atelier-banner-scrim bg-gradient-to-r from-black/95 via-black/60 to-transparent"
+            style={{ background: 'linear-gradient(90deg, rgba(20, 16, 7, 0.96) 0%, rgba(20, 16, 7, 0.88) 55%, rgba(20, 16, 7, 0.45) 85%, rgba(0, 0, 0, 0.15) 100%)' }}
+          />
 
           {/* Banner Content */}
           <div className="absolute inset-0 z-10 flex items-center">
@@ -227,13 +231,16 @@ export const AllProductsPage = ({ onBackToStore }) => {
               </button>
 
               <div className="max-w-xl">
-                <span className="text-[9.5px] sm:text-[10.5px] uppercase tracking-[0.25em] text-[#EAD7AE] font-semibold block mb-0.5 sm:mb-1">
+                <span className="text-[9.5px] sm:text-[10.5px] uppercase tracking-[0.25em] text-[#EAD7AE] font-semibold block mb-0.5 sm:mb-1"
+                  style={{ textShadow: '0 1px 4px rgba(0,0,0,0.9)' }}>
                   ATELIER ARCHIVE CATALOG
                 </span>
-                <h1 className="font-serif text-xl xs:text-2xl sm:text-3xl md:text-4xl text-white font-normal tracking-tight drop-shadow-md">
+                <h1 className="font-serif text-xl xs:text-2xl sm:text-3xl md:text-4xl text-white font-normal tracking-tight text-shadow-hero drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]"
+                  style={{ textShadow: '0 2px 10px rgba(0,0,0,0.95), 0 1px 3px rgba(0,0,0,0.9)' }}>
                   All Handcrafted Creations
                 </h1>
-                <p className="text-[11px] sm:text-xs md:text-sm text-stone-200 mt-1 font-light drop-shadow-sm max-w-md line-clamp-1 sm:line-clamp-none">
+                <p className="text-[11px] sm:text-xs md:text-sm text-stone-200 mt-1 font-light text-shadow-sub max-w-md line-clamp-1 sm:line-clamp-none"
+                  style={{ textShadow: '0 1px 6px rgba(0,0,0,0.9)' }}>
                   Certified pure 925 sterling silver, Austrian solitaires &amp; 18K Italian gold vermeil suites.
                 </p>
               </div>
@@ -750,16 +757,16 @@ export const AllProductsPage = ({ onBackToStore }) => {
             </div>
 
             {/* Drawer Bottom Actions */}
-            <div className="p-4 border-t border-[#CEBDA7] bg-stone-50 flex items-center gap-3">
+            <div className="p-4 border-t border-[#CEBDA7] bg-stone-50 grid grid-cols-2 gap-3 w-full">
               <button
                 onClick={handleResetFilters}
-                className="flex-1 py-3 text-xs font-semibold text-stone-700 bg-white border border-stone-300 rounded-xl hover:bg-stone-100 transition-colors cursor-pointer"
+                className="w-full py-3 text-xs font-semibold text-stone-700 bg-white border border-stone-300 rounded-xl hover:bg-stone-100 transition-colors cursor-pointer text-center flex items-center justify-center active:scale-95"
               >
                 Reset All
               </button>
               <button
                 onClick={() => setIsMobileFilterOpen(false)}
-                className="flex-1 py-3 text-xs font-semibold text-white bg-[#61532E] hover:bg-[#3D341B] rounded-xl transition-colors cursor-pointer shadow-md"
+                className="w-full py-3 text-xs font-semibold text-white bg-[#61532E] hover:bg-[#3D341B] rounded-xl transition-colors cursor-pointer shadow-md text-center flex items-center justify-center active:scale-95"
               >
                 Apply Filters
               </button>
