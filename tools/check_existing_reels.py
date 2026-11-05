@@ -13,3 +13,4 @@ titles = re.findall(r'<p class="text-xs[^>]+title="([^"]+)"', section)
 print("Titles found:", len(titles))
 for i, t in enumerate(titles[:15]):
     print(f"{i+1}: {t}")
+

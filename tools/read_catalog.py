@@ -11,3 +11,4 @@ pattern = re.compile(r'id:\s*[\'"]([^\'"]+)[\'"].*?name:\s*[\'"]([^\'"]+)[\'"].*
 for match in pattern.finditer(text):
     pid, name, cat, price, mrp = match.groups()
     print(f"ID: {pid} | {name} | {cat} | Rs.{price} (MRP Rs.{mrp})")
+
