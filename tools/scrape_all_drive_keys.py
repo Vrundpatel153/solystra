@@ -111,3 +111,4 @@ async def get_all():
         print("Extension counts:", exts)
 
 asyncio.run(get_all())
+

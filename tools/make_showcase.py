@@ -127,3 +127,4 @@ html = """<!DOCTYPE html>
 with open('jewellery-design-html/drive_curated_showcase.html', 'w', encoding='utf-8') as f:
     f.write(html)
 print("Created drive_curated_showcase.html")
+

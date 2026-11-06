@@ -42,3 +42,4 @@ html += "</body></html>"
 with open('jewellery-design-html/category_curation_candidates.html', 'w', encoding='utf-8') as f:
     f.write(html)
 print("Created category_curation_candidates.html")
+

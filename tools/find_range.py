@@ -41,3 +41,4 @@ async def find_range():
             print("Lowest in view:", s[0], "Highest in view:", s[-1], "Total unique in view:", len(s))
 
 asyncio.run(find_range())
+

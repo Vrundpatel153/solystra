@@ -49,3 +49,4 @@ with open('jewellery-design-html/index.html', 'w', encoding='utf-8') as f:
     f.write(content)
 
 print("Updated index.html with Drive curated assets successfully!")
+

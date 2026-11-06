@@ -103,3 +103,4 @@ async def audit_home():
         print(f"Mobile categories screenshot saved: {out_mob}")
 
 asyncio.run(audit_home())
+

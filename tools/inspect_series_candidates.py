@@ -19,3 +19,4 @@ for sname, sfiles in series.items():
     print(f"\n=== {sname}: {len(sfiles)} files ===")
     print("  First 5:", sfiles[:5])
     print("  Last 5:", sfiles[-5:])
+

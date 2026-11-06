@@ -39,3 +39,4 @@ async def snap_showcase():
         print("Saved:", out_path)
 
 asyncio.run(snap_showcase())
+

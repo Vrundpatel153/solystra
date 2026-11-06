@@ -50,3 +50,4 @@ async def snap_actual_collections():
         print(f"Collections screenshot saved: {out_col}")
 
 asyncio.run(snap_actual_collections())
+

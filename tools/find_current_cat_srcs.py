@@ -9,3 +9,4 @@ for m in re.finditer(r'src="solystra_assets/categories/zavya_style/([^"]+)"', te
 print("\nCollections in index.html:")
 for m in re.finditer(r'src="solystra_assets/collections/([^"]+)"', text):
     print(" ", m.group(0))
+

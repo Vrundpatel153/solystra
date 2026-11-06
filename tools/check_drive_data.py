@@ -16,3 +16,4 @@ print(f"Thumbnails in jewellery-design-html/drive_thumbs: {len(thumbs)}")
 
 photos = os.listdir('scratch/drive_photos') if os.path.exists('scratch/drive_photos') else []
 print(f"Photos in scratch/drive_photos: {len(photos)}")
+

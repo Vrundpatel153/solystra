@@ -56,3 +56,4 @@ for key, meta in remaining.items():
                     cropped = cropped.convert('RGB')
                     cropped.save(dest_path, 'WEBP', quality=90)
                     print(f"  Fallback saved from thumb: {dest_path}")
+

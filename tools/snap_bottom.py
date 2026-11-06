@@ -45,3 +45,4 @@ async def snap_bottom():
         print("Saved:", out_path)
 
 asyncio.run(snap_bottom())
+

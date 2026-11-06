@@ -8,3 +8,4 @@ imgs = re.findall(r'<img[^>]+src=["\']([^"\']+)["\']', c)
 print(f"Total images displayed in contact sheet: {len(imgs)}")
 for src in imgs[:15]:
     print(" ", src)
+
