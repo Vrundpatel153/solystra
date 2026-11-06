@@ -10,3 +10,4 @@ end = html.find('</section>', pos_dots) + 10
 
 print("HERO SECTION MARKUP:\n")
 print(html[start:end])
+

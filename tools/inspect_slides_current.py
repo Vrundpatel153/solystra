@@ -17,3 +17,4 @@ for m in re.finditer(r'id="hero-dot-(\d+)"', html):
     start = html.rfind('<button', 0, pos)
     end = html.find('>', pos)
     print(f'Dot {dot_num}:', html[start:end+1])
+

@@ -105,3 +105,4 @@ js = js.replace(old_js_block, new_js_block)
 with open('jewellery-design-html/js/app.js', 'w', encoding='utf-8') as f:
     f.write(js)
 print("Updated jewellery-design-html/js/app.js successfully!")
+

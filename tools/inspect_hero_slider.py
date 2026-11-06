@@ -23,3 +23,4 @@ for i in range(4):
         img_match = re.search(r'<img[^>]*>', slide_chunk)
         if img_match:
             print(f"SLIDE {i} IMG:", img_match.group(0))
+
