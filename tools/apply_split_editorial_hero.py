@@ -161,3 +161,4 @@ else:
     with open('jewellery-design-html/index.html', 'w', encoding='utf-8') as f:
         f.write(new_content)
     print("Replaced via positional slice!")
+

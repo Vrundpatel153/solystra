@@ -20,3 +20,4 @@ for m in models:
         right_strip = arr[:, -50:].mean(axis=(0, 1)).astype(int).tolist()
         top_strip = arr[:50, :].mean(axis=(0, 1)).astype(int).tolist()
         print(f"{m}: size=({w}x{h}), left={left_strip}, right={right_strip}, top={top_strip}")
+

@@ -48,3 +48,4 @@ print(f"Green velvet: {green_count}, Dark/Moody: {dark_count}, Bright/Champagne:
 # Print 10 samples
 for r in results[:20]:
     print(r['fname'], 'Center RGB:', r['center_rgb'], 'Green:', r['is_green'], 'Dark:', r['is_dark'])
+

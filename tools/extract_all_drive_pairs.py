@@ -14,3 +14,4 @@ folders = re.findall(r'aria-label="([^"]*folder[^"]*)"[^>]*?>[\s\S]*?data-id="([
 print(f"\nFolders specifically: {len(folders)}")
 for flabel, fid in folders:
     print(f"  {flabel:<40} -> {fid}")
+

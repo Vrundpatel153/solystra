@@ -62,3 +62,4 @@ for name, seq_range in groups:
     del grid
 
 print("All contact sheets generated.")
+

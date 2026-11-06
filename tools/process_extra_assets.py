@@ -44,3 +44,4 @@ def process_dict(mapping, target_dirs, out_size=(600, 600)):
 process_dict(extra_cat, targets_cat)
 process_dict(extra_col, targets_col)
 print("Extra assets successfully processed!")
+

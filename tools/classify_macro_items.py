@@ -52,3 +52,4 @@ for c in sorted([c for c in classifications if c['aspect'] > 0], key=lambda x: x
 print("\nTop 10 compact/square items (potential rings/studs):")
 for c in sorted([c for c in classifications if 0.7 <= c['aspect'] <= 1.3 and 100 < c['pixels'] < 5000], key=lambda x: abs(x['aspect'] - 1.0))[:10]:
     print(c)
+

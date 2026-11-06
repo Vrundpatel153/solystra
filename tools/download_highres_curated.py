@@ -53,3 +53,4 @@ for fname, fid in targets.items():
     time.sleep(0.3)
 
 print("All curated high-res assets downloaded.")
+

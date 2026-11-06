@@ -53,3 +53,4 @@ with open('scratch/catalog_398_audit.json', 'w', encoding='utf-8') as f_out:
     json.dump(catalog, f_out, indent=2)
 
 print(f"Saved catalog_398_audit.json with {len(catalog)} analyzed photos.")
+

@@ -18,3 +18,4 @@ for cat, files in candidates.items():
         if os.path.exists(p):
             with Image.open(p) as im:
                 print(f"  {f}: size={im.size}")
+

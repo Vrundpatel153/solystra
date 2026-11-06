@@ -84,3 +84,4 @@ with open('jewellery-design-html/curated_selection_preview.html', 'w', encoding=
     f.write(html)
 
 print("Saved jewellery-design-html/curated_selection_preview.html")
+

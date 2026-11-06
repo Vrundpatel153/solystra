@@ -45,3 +45,4 @@ with open('jewellery-design-html/dark_model_candidates.html', 'w', encoding='utf
     f.write(html)
 
 print("Created jewellery-design-html/dark_model_candidates.html")
+

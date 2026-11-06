@@ -27,3 +27,4 @@ for i in range(3000, 3118, 5):
             bh = max_y - min_y
             aspect = bw / float(bh) if bh > 0 else 1.0
             print(f"{fname}: bright_pixels={total_bright}, bbox=({bw}x{bh}), aspect={aspect:.2f}, center=({(min_x+max_x)//2}, {(min_y+max_y)//2})")
+

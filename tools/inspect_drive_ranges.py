@@ -16,3 +16,4 @@ for name in names:
 print("\nBreakdown by series:")
 for k, count in sorted(groups.items()):
     print(f"  {k}xx.JPG: {count} images")
+

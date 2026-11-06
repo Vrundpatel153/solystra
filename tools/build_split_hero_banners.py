@@ -85,3 +85,4 @@ for m in models:
         print(f"Saved {mid}_pc (1200x888) and {mid}_mob (800x1200)")
 
 print("All hero banners successfully generated and saved to all target directories.")
+

@@ -51,3 +51,4 @@ for mid, fname, (fx, fy) in models:
         print(f"Saved {mid}_mob (768x1376) and {mid}_pc (1376x768)")
 
 print("Crops complete.")
+

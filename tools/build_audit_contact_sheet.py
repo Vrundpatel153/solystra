@@ -87,3 +87,4 @@ with open('jewellery-design-html/drive_audit_contact_sheet.html', 'w', encoding=
     f_out.write(html)
 
 print("Created jewellery-design-html/drive_audit_contact_sheet.html")
+

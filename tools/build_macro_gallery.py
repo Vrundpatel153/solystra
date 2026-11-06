@@ -40,3 +40,4 @@ with open('jewellery-design-html/macro_gallery.html', 'w', encoding='utf-8') as 
     f.write(html)
 
 print("Created jewellery-design-html/macro_gallery.html")
+

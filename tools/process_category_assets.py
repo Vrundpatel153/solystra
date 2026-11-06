@@ -48,3 +48,4 @@ for out_name, (src_file, (fx, fy)) in mapping.items():
         print(f"Saved {out_name} (600x600)")
 
 print("All category images processed and deployed to all target directories.")
+

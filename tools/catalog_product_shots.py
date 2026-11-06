@@ -31,3 +31,4 @@ for i in range(3000, 3118):
 print(f"Analyzed {len(results)} still life shots.")
 for r in results[:15]:
     print(r)
+

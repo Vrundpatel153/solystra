@@ -9,3 +9,4 @@ for f in test_files:
     if os.path.exists(p):
         with Image.open(p) as im:
             print(f"{f}: size={im.size}")
+

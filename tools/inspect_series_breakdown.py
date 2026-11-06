@@ -18,3 +18,4 @@ for prefix, r in [('27xx (Yellow Dress)', range(2720, 2760)),
                  ('31xx (Final Suites)', range(3100, 3118))]:
     present = [f"DSC0{i}.JPG" for i in r if os.path.exists(os.path.join(thumb_dir, f"DSC0{i}.JPG"))]
     print(f"{prefix}: {len(present)} photos present")
+

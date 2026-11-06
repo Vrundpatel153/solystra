@@ -36,3 +36,4 @@ print("Item matches with data-target=item:", len(ssk_matches))
 pos = html.find('DSC02659')
 print("\nExact snippet around DSC02659:")
 print(html[max(0, pos-200):pos+400])
+

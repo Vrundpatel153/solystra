@@ -25,3 +25,4 @@ for fpath in html_files:
         print(f"Updated cache buster in {fpath}")
 
 print("Cache bust applied!")
+

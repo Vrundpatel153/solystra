@@ -38,3 +38,4 @@ for base_name, (src_file, (fx, fy)) in mapping.items():
         print(f"Saved {base_name}.webp/.jpg/.png")
 
 print("All category formats overwritten with authentic drive assets!")
+
