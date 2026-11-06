@@ -6,3 +6,4 @@ pos_footer = text.find('<footer')
 
 print("Between pagination container and footer:")
 print(repr(text[pos_pag+len('id="catalog-pagination-container"'):pos_footer]))
+

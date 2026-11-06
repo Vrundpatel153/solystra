@@ -7,3 +7,4 @@ pos_grid = text.find('id="products-catalog-grid"')
 
 print("Between Mobile Control Stack and Grid:")
 print(repr(text[pos_mob:pos_grid]))
+

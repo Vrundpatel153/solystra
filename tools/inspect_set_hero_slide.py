@@ -7,3 +7,4 @@ if pos == -1:
 print("Position of setHeroSlide:", pos)
 if pos != -1:
     print(text[pos:pos+1500])
+

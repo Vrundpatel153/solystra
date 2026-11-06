@@ -38,3 +38,4 @@ async def snap():
         print('Captured catalog_mobile_padding_fixed.jpg')
 
 asyncio.run(snap())
+

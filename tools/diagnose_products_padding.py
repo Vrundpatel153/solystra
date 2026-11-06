@@ -8,3 +8,4 @@ print(text[max(0, pos_ctrl-400):pos_ctrl])
 pos_grid = text.find('id="products-catalog-grid"')
 print('=== BEFORE GRID ===')
 print(text[max(0, pos_grid-400):pos_grid])
+

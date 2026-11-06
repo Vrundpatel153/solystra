@@ -30,3 +30,4 @@ with open('jewellery-design-html/index.html', 'w', encoding='utf-8') as f:
     f.write(new_index_html)
 
 print("Successfully replaced hero section with 4-day-old banner!")
+

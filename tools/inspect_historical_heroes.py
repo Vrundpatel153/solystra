@@ -17,3 +17,4 @@ for c in commits:
         print("...\n")
     except Exception as e:
         print(f"Error checking commit {c}:", e)
+

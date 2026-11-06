@@ -11,3 +11,4 @@ print("Main found:", bool(main))
 grid = soup.find('div', {'id': 'products-catalog-grid'})
 print("Grid parent:", grid.parent.name, grid.parent.get('class'))
 print("Grid grandparent:", grid.parent.parent.name, grid.parent.parent.get('class'))
+

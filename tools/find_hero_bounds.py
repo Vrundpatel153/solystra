@@ -13,3 +13,4 @@ if pos_hero_start != -1:
     print(text[pos_sec_end-200:pos_sec_end])
     print("What comes immediately after hero section (200 chars):")
     print(text[pos_sec_end:pos_sec_end+200])
+

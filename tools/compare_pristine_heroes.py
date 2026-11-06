@@ -17,3 +17,4 @@ print(out_137[p2:p2+500])
 
 with open('scratch_13797d6_hero.html', 'w', encoding='utf-8') as f:
     f.write(out_137[p2:p2_end])
+

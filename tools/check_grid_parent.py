@@ -15,3 +15,4 @@ grid = soup.find('div', {'id': 'products-catalog-grid'})
 if grid:
     print("Parent of grid:", grid.parent.name, grid.parent.get('class'))
     print("Grandparent of grid:", grid.parent.parent.name if grid.parent.parent else None, grid.parent.parent.get('class') if grid.parent.parent else None)
+
