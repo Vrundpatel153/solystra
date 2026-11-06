@@ -66,3 +66,4 @@ if m != -1:
     with open('jewellery-design-html/offers.html', 'w', encoding='utf-8') as f:
         f.write(text)
     print("Updated offers.html trust section successfully!")
+

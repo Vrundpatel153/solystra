@@ -7,3 +7,4 @@ for idx in matches:
     print(f"Index: {idx}")
     print(text[max(0, idx-100):min(len(text), idx+100)])
     print("-" * 50)
+

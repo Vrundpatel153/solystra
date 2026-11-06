@@ -12442,3 +12442,29 @@ video {
   gap: 0.5rem !important;
   pointer-events: auto !important;
 }
+
+/* Filter Modal Luxury Scrollbar */
+#mobile-filter-modal .flex-1 {
+  scrollbar-width: thin;
+  scrollbar-color: #CEBDA7 #FAF8F5;
+  -webkit-overflow-scrolling: touch;
+}
+
+#mobile-filter-modal .flex-1::-webkit-scrollbar {
+  width: 6px;
+}
+
+#mobile-filter-modal .flex-1::-webkit-scrollbar-track {
+  background: #FAF8F5;
+  border-radius: 8px;
+}
+
+#mobile-filter-modal .flex-1::-webkit-scrollbar-thumb {
+  background-color: #CEBDA7;
+  border-radius: 9999px;
+  border: 1px solid #FAF8F5;
+}
+
+#mobile-filter-modal .flex-1::-webkit-scrollbar-thumb:hover {
+  background-color: #61532E;
+}

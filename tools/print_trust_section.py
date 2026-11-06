@@ -8,3 +8,4 @@ sec_end = text.find('</section>', idx) + len('</section>')
 
 print("Trust Badges Section:")
 print(text[sec_start:sec_end])
+

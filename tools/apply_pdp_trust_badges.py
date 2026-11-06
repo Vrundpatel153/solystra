@@ -66,3 +66,4 @@ with open('jewellery-design-html/product.html', 'w', encoding='utf-8') as f:
     f.write(text)
 
 print("Updated product.html trust badges successfully!")
+

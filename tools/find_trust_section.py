@@ -8,3 +8,4 @@ for m in re.finditer(r'7-Day Exchanges', text):
     print("Match at index", m.start())
     print(text[start:end])
     print("="*60)
+

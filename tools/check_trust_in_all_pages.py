@@ -6,3 +6,4 @@ for f in sorted(glob.glob('jewellery-design-html/*.html')):
     if '7-Day Exchanges' in content:
         count = content.count('7-Day Exchanges')
         print(f"{f}: {count} occurrences of '7-Day Exchanges'")
+

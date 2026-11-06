@@ -10,3 +10,4 @@ for fpath in ['jewellery-design-html/offers.html', 'jewellery-design-html/produc
         e = c.find('</div>', e) + len('</div>')
         print(f"\n=== {fpath} ===")
         print(c[s:s+300])
+
