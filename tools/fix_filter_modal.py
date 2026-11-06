@@ -162,3 +162,4 @@ with open('jewellery-design-html/js/app.js', 'w', encoding='utf-8') as f:
     f.write(text)
 
 print("Updated jewellery-design-html/js/app.js with bulletproof 3-tier filter modal!")
+

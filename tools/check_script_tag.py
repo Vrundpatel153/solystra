@@ -5,3 +5,4 @@ import re
 matches = [m.start() for m in re.finditer(r'<script[^>]*src=.*app\.js', text)]
 for m in matches:
     print(text[m:m+120])
+

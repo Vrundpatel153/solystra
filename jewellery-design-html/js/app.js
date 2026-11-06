@@ -3027,7 +3027,7 @@
   }
 
     // Hero Carousel Slider Controller
-  let currentHeroSlide = 2; // Default: Modern Classics
+  let currentHeroSlide = 0; // Default: Slide 0 (The 18K Gold Suite)
   window.setHeroSlide = function (idx) {
     currentHeroSlide = idx;
     for (let i = 0; i < 4; i++) {
@@ -3035,7 +3035,7 @@
       const dot = document.getElementById(`hero-dot-${i}`);
       if (slide) {
         if (i === idx) {
-          slide.className = 'absolute inset-0 transition-opacity duration-700 ease-in-out opacity-100 z-10';
+          slide.className = 'absolute inset-0 transition-opacity duration-700 ease-in-out opacity-100 z-10 pointer-events-auto';
         } else {
           slide.className = 'absolute inset-0 transition-opacity duration-700 ease-in-out opacity-0 z-0 pointer-events-none';
         }
@@ -3050,6 +3050,14 @@
     }
   };
 
+  // Defensively sync slide 0 on initial execution
+  if (typeof document !== 'undefined') {
+    window.setHeroSlide(0);
+  }
+
+  if (window.heroCarouselInterval) {
+    clearInterval(window.heroCarouselInterval);
+  }
   window.heroCarouselInterval = setInterval(() => {
     const next = (currentHeroSlide + 1) % 4;
     window.setHeroSlide(next);

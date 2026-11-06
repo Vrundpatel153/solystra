@@ -13,3 +13,4 @@ if main_match:
 grid_match = re.search(r'<div[^>]*id="product[^"]*"[^>]*>', html)
 if grid_match:
     print("Grid tag:", grid_match.group(0))
+

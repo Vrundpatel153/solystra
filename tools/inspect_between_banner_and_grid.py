@@ -8,3 +8,4 @@ print("Content between them:\n")
 content = html[pos_banner:pos_grid]
 # Print the first 2500 chars of this content
 print(content[:2500])
+

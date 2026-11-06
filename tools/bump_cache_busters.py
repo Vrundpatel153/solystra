@@ -12,3 +12,4 @@ for fpath in glob.glob('jewellery-design-html/*.html'):
         with open(fpath, 'w', encoding='utf-8') as f:
             f.write(new_t)
         print(f"Updated cache buster in {fpath}")
+

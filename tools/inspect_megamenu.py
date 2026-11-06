@@ -15,3 +15,4 @@ matches = re.findall(r'<a[^>]*href=\"products\.html\"[^>]*>.*?</a>', html, re.DO
 print("Links to products.html:", len(matches))
 for m in matches[:5]:
     print("  ->", m.strip())
+
