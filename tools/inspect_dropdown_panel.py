@@ -24,3 +24,4 @@ if panel:
     if mob_panel:
         for b in mob_panel.find_all('button'):
             print("  btn:", b.get_text(strip=True)[:50], "->", b.get('onclick'))
+

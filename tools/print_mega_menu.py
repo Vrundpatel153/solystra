@@ -16,3 +16,4 @@ for div in soup.find_all('div'):
             print("Found mega menu grid:")
             print(div.prettify())
             break
+

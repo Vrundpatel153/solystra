@@ -7,3 +7,4 @@ for i, l in enumerate(lines):
         for j in range(max(0, i-5), min(len(lines), i+35)):
             print(lines[j], end='')
         break
+

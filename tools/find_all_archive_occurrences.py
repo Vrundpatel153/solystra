@@ -9,3 +9,4 @@ for i, m in enumerate(re.finditer(r'Explore All Categories Archive', content)):
     end = min(len(content), m.end() + 350)
     print(f"\n--- Occurrence #{i+1} at index {m.start()} ---")
     print(content[start:end])
+

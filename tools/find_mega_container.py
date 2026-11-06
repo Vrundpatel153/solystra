@@ -19,3 +19,4 @@ if target:
             menu = menu.parent
     print("\n--- MENU HTML ---")
     print(menu.prettify()[:3000])
+

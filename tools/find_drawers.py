@@ -15,3 +15,4 @@ for b in buttons:
     onclick = b.get('onclick', '')
     if 'menu' in onclick.lower() or 'drawer' in onclick.lower():
         print(f"Button onclick: {onclick}")
+

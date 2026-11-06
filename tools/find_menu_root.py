@@ -29,3 +29,4 @@ else:
     for div in soup.find_all('div', class_=lambda c: c and 'overflow-hidden' in c and 'top-full' in c):
         print("Found top-full dropdown:", div.get('id'), div.get('class'))
         print(div.prettify()[:1000])
+

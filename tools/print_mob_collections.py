@@ -9,3 +9,4 @@ for div in soup.find_all('div'):
         print("Found mobile collections container:")
         print(div.prettify()[:3000])
         break
+

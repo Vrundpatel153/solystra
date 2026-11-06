@@ -83,3 +83,4 @@ if crumb_old in pdp_content:
     print("  -> Updated product.html breadcrumb with 'All Products' link")
 else:
     print("  -> Warning: crumb_old not found in product.html, let's inspect")
+

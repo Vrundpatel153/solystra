@@ -8,3 +8,4 @@ col2 = target.find_parent('div', class_=lambda c: c and 'col-span-3' in c)
 if col2:
     print("=== COLUMN 2 ===")
     print(col2.prettify())
+

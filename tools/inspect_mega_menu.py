@@ -10,3 +10,4 @@ for html_file in ['jewellery-design-html/index.html', 'jewellery-design-html/pro
         print(content[idx-200:idx+400])
     else:
         print("Not found in", html_file)
+

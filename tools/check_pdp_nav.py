@@ -7,3 +7,4 @@ nav = soup.find('nav')
 if nav:
     print("Nav in product.html:")
     print(nav.prettify())
+

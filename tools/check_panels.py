@@ -9,3 +9,4 @@ for fpath in ['jewellery-design-html/index.html', 'jewellery-design-html/product
         print(fpath, "has panel: True, has Categories Archive btn:", cat_btn is not None)
     else:
         print(fpath, "has panel: False")
+

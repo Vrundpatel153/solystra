@@ -12,3 +12,4 @@ else:
     import re
     matches = re.findall(r'<div[^>]*id="[^"]*mobile[^"]*"[^>]*>', content)
     print("Mobile containers:", matches)
+
