@@ -1,16 +1,14 @@
-import re
-
 with open('jewellery-design-html/products.html', 'r', encoding='utf-8') as f:
-    html = f.read()
+    text = f.read()
 
-print("=== CHECKING ONCLICK IN PRODUCTS.HTML ===")
-for m in re.finditer(r'onclick=["\']([^"\']+)["\']', html):
-    val = m.group(1)
-    line = html[:m.start()].count('\n') + 1
-    if any(k in val.lower() for k in ['filter', 'category', 'metal', 'search', 'location.href']):
-        print(f"L{line}: {val}")
+import re
+matches = re.findall(r'window\.location[^\'"]*[\'"][^\'"]*[\'"]', text)
+print("Found location reloads:")
+for m in set(matches):
+    print(" - ", m)
 
-# Also check how script tag is loaded in products.html
-script_tags = re.findall(r'<script[^>]*src=["\']([^"\']+)["\'][^>]*>', html)
-print("\nScript tags in products.html:", script_tags)
-
+# Also check for onclick attributes in sidebar / filter buttons
+sidebar_matches = re.findall(r'<button[^>]+filter[^>]*>', text, re.IGNORECASE)
+print(f"Found {len(sidebar_matches)} filter button tags in products.html")
+for sm in sidebar_matches[:10]:
+    print("  ", sm[:100])

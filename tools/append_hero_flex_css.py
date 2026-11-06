@@ -65,3 +65,4 @@ for p in css_paths:
         with open(p, 'a', encoding='utf-8') as f:
             f.write(css_addition)
         print(f"Appended flexbox CSS to {p}")
+

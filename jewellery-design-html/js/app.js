@@ -1760,7 +1760,6 @@
   function initProductsPage() {
     const grid = document.getElementById('products-catalog-grid') ||
                  document.querySelector('main .grid.grid-cols-2') ||
-                 document.querySelector('.grid.xl\\:grid-cols-4') ||
                  document.querySelector('main .grid');
     if (!grid) return;
     grid.id = 'products-catalog-grid';
@@ -1808,6 +1807,10 @@
       }
     });
 
+    // Pagination constants and state
+    const ITEMS_PER_PAGE = 20; // Exactly 4 rows on 5-col desktop grid (or 10 rows on 2-col mobile)
+    let currentPage = 1;
+
     // Filter states (supports single or multi-select array)
     const params = new URLSearchParams(window.location.search);
     const rawCat = (params.get('category') || 'all').toLowerCase();
@@ -1829,21 +1832,19 @@
     let searchQuery = (params.get('search') || '').trim().toLowerCase();
     let currentSort = params.get('sort') || 'featured';
 
+    const initPageParam = parseInt(params.get('page') || '1', 10);
+    if (!isNaN(initPageParam) && initPageParam >= 1) {
+      currentPage = initPageParam;
+    }
+
     const searchInput = document.getElementById('catalog-search-input');
     if (searchInput && searchQuery) {
       searchInput.value = searchQuery;
     }
 
-    const priceSlider = document.getElementById('catalog-price-slider');
-    const priceDisplay = document.querySelector('input#catalog-price-slider')?.parentElement?.querySelector('.text-\\[\\#61532E\\]');
-    if (priceSlider) {
-      priceSlider.value = maxPrice;
-      if (priceDisplay) priceDisplay.textContent = `₹${maxPrice.toLocaleString('en-IN')}`;
-    }
-
-    // Function to apply filters
+    // Function to apply filters and paginate
     function applyFilters() {
-      let visibleCount = 0;
+      const matchingCards = [];
 
       cards.forEach(card => {
         const cat = card.getAttribute('data-category') || '';
@@ -1964,23 +1965,43 @@
           searchMatch = name.includes(searchQuery) || cat.includes(searchQuery) || metal.includes(searchQuery);
         }
 
-        if (catMatch && metalMatch && filterMatch && priceMatch && searchMatch) {
-          card.style.display = '';
-          visibleCount++;
+        if (catMatch && metalMatch && curatedMatch && filterMatch && priceMatch && searchMatch) {
+          matchingCards.push(card);
         } else {
           card.style.display = 'none';
         }
       });
 
-      // Update counters
-      const countEl = document.querySelector('.text-stone-400.font-light');
-      if (countEl) {
-        countEl.textContent = `(${visibleCount} creations)`;
+      const totalMatching = matchingCards.length;
+      const totalPages = Math.ceil(totalMatching / ITEMS_PER_PAGE) || 1;
+      if (currentPage > totalPages) currentPage = totalPages;
+      if (currentPage < 1) currentPage = 1;
+
+      const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
+      const endIndex = Math.min(startIndex + ITEMS_PER_PAGE, totalMatching);
+
+      // Show only cards for the active page
+      matchingCards.forEach((card, idx) => {
+        if (idx >= startIndex && idx < endIndex) {
+          card.style.display = '';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+
+      // Update counters in desktop and mobile headers
+      const desktopCountEl = document.getElementById('catalog-products-count');
+      if (desktopCountEl) {
+        desktopCountEl.textContent = `(${totalMatching} creations)`;
+      }
+      const mobileCountEl = document.getElementById('mobile-catalog-products-count');
+      if (mobileCountEl) {
+        mobileCountEl.textContent = `(${totalMatching} creations)`;
       }
 
       // Show/Hide Empty State
       let emptyState = document.getElementById('catalog-empty-state');
-      if (visibleCount === 0) {
+      if (totalMatching === 0) {
         if (!emptyState) {
           emptyState = document.createElement('div');
           emptyState.id = 'catalog-empty-state';
@@ -1991,17 +2012,143 @@
             </div>
             <h4 class="font-serif text-xl text-stone-900 font-normal">No creations match your filter criteria</h4>
             <p class="text-xs text-stone-500 max-w-md mx-auto leading-relaxed">Try adjusting your budget, selecting all precious finishes, or resetting your filter preferences to explore the complete Solystra atelier collection.</p>
-            <button onclick="window.resetCatalogFilters()" class="px-5 py-2.5 bg-[#61532E] hover:bg-[#3D341B] text-white text-xs font-semibold uppercase tracking-wider rounded-xl shadow-xs transition-colors cursor-pointer">Reset All Filters</button>
+            <button onclick="window.resetCatalogFilters()" class="px-5 py-2.5 bg-[#61532E] hover:bg-[#3D341B] text-white text-xs font-semibold rounded-xl transition-all cursor-pointer shadow-xs">Reset All Filters</button>
           `;
           grid.appendChild(emptyState);
         }
-        emptyState.style.display = 'block';
+        emptyState.style.display = '';
       } else if (emptyState) {
         emptyState.style.display = 'none';
       }
+
+      // Render Pagination
+      renderPagination(totalMatching, totalPages, startIndex, endIndex);
+
+      // Update Filter Badges
+      updateActiveFilterBadges();
     }
 
-    // Sorting function
+    // Render pagination controls
+    function renderPagination(totalMatching, totalPages, startIndex, endIndex) {
+      const container = document.getElementById('catalog-pagination-container');
+      if (!container) return;
+
+      if (totalMatching === 0) {
+        container.style.display = 'none';
+        return;
+      }
+      container.style.display = 'flex';
+
+      const startEl = document.getElementById('pagination-start-range');
+      const endEl = document.getElementById('pagination-end-range');
+      const totalEl = document.getElementById('pagination-total-items');
+      if (startEl) startEl.textContent = totalMatching === 0 ? 0 : startIndex + 1;
+      if (endEl) endEl.textContent = endIndex;
+      if (totalEl) totalEl.textContent = totalMatching;
+
+      const prevBtn = document.getElementById('pagination-prev-btn');
+      const nextBtn = document.getElementById('pagination-next-btn');
+      if (prevBtn) prevBtn.disabled = (currentPage <= 1);
+      if (nextBtn) nextBtn.disabled = (currentPage >= totalPages);
+
+      const pagesList = document.getElementById('pagination-pages-list');
+      if (!pagesList) return;
+      pagesList.innerHTML = '';
+
+      // Determine pages to show
+      let pagesToShow = [];
+      if (totalPages <= 7) {
+        for (let i = 1; i <= totalPages; i++) pagesToShow.push(i);
+      } else {
+        pagesToShow.push(1);
+        if (currentPage > 3) pagesToShow.push('...');
+        const s = Math.max(2, currentPage - 1);
+        const e = Math.min(totalPages - 1, currentPage + 1);
+        for (let i = s; i <= e; i++) {
+          if (!pagesToShow.includes(i)) pagesToShow.push(i);
+        }
+        if (currentPage < totalPages - 2) pagesToShow.push('...');
+        if (!pagesToShow.includes(totalPages)) pagesToShow.push(totalPages);
+      }
+
+      pagesToShow.forEach(p => {
+        if (p === '...') {
+          const span = document.createElement('span');
+          span.className = 'px-1.5 py-1 text-xs text-stone-400 font-medium select-none';
+          span.textContent = '…';
+          pagesList.appendChild(span);
+        } else {
+          const btn = document.createElement('button');
+          btn.type = 'button';
+          btn.textContent = p;
+          const isActive = (p === currentPage);
+          btn.className = isActive
+            ? 'w-8 h-8 sm:w-9 sm:h-9 rounded-xl text-xs font-bold transition-all cursor-pointer bg-[#61532E] text-white border border-[#61532E] shadow-2xs flex items-center justify-center'
+            : 'w-8 h-8 sm:w-9 sm:h-9 rounded-xl text-xs font-semibold transition-all cursor-pointer bg-white hover:bg-[#FAF8F5] text-stone-700 border border-[#CEBDA7] hover:border-[#61532E]/40 shadow-2xs flex items-center justify-center';
+          btn.onclick = () => window.changeCatalogPage(p);
+          pagesList.appendChild(btn);
+        }
+      });
+    }
+
+    // Global page switcher
+    window.getCurrentCatalogPage = function () {
+      return currentPage;
+    };
+
+    window.changeCatalogPage = function (targetPage) {
+      if (targetPage < 1) return;
+      currentPage = targetPage;
+      applyFilters();
+
+      // Smooth scroll back to top of catalog
+      const anchor = document.getElementById('catalog-products-count') || document.getElementById('products-catalog-grid') || document.querySelector('main');
+      if (anchor) {
+        const topY = anchor.getBoundingClientRect().top + window.pageYOffset - 120;
+        window.scrollTo({ top: Math.max(0, topY), behavior: 'smooth' });
+      }
+
+      // URL Sync without reload
+      try {
+        const url = new URL(window.location.href);
+        if (currentPage > 1) {
+          url.searchParams.set('page', currentPage);
+        } else {
+          url.searchParams.delete('page');
+        }
+        window.history.pushState({ page: currentPage }, '', url.toString());
+      } catch (e) {}
+    };
+
+    // Active filter badge updater
+    function updateActiveFilterBadges() {
+      let activeCount = 0;
+      if (!activeCategories.includes('all') && activeCategories.length > 0) activeCount += activeCategories.length;
+      if (!activeMetals.includes('all') && activeMetals.length > 0) activeCount += activeMetals.length;
+      if (activeCurated.length > 0) activeCount += activeCurated.length;
+      if (maxPrice < 80000) activeCount += 1;
+
+      const desktopBadge = document.getElementById('desktop-filter-count-badge');
+      if (desktopBadge) {
+        if (activeCount > 0) {
+          desktopBadge.textContent = activeCount;
+          desktopBadge.classList.remove('hidden');
+        } else {
+          desktopBadge.classList.add('hidden');
+        }
+      }
+      const mobileBadge = document.getElementById('mobile-filter-count-badge');
+      if (mobileBadge) {
+        if (activeCount > 0) {
+          mobileBadge.textContent = activeCount;
+          mobileBadge.classList.remove('hidden');
+        } else {
+          mobileBadge.classList.add('hidden');
+        }
+      }
+    }
+
+    // Sorting Engine
     function applySort(sortKey) {
       currentSort = sortKey;
       const visibleCards = cards.slice();
@@ -2023,17 +2170,44 @@
       });
 
       visibleCards.forEach(c => grid.appendChild(c));
+      currentPage = 1;
+      applyFilters();
+
+      // Update sort button text & checkmarks
+      const sortLabels = {
+        'featured': 'Featured',
+        'price-low': 'Price: Low to High',
+        'price-high': 'Price: High to Low',
+        'rating': 'Customer Rating',
+        'newest': 'Newest First'
+      };
+      const labelText = sortLabels[sortKey] || 'Featured';
+
+      const deskLabel = document.getElementById('desktop-sort-label');
+      if (deskLabel) deskLabel.textContent = labelText;
+      const mobLabel = document.getElementById('mobile-sort-label');
+      if (mobLabel) mobLabel.textContent = labelText;
+
+      document.querySelectorAll('.sort-check, .mobile-sort-check').forEach(chk => {
+        const val = chk.getAttribute('data-sort-val');
+        if (val === sortKey) {
+          chk.classList.remove('hidden');
+        } else {
+          chk.classList.add('hidden');
+        }
+      });
     }
 
     // Attach global filterCatalog for oninput/onchange
     window.filterCatalog = function () {
       if (searchInput) searchQuery = searchInput.value.trim().toLowerCase();
+      currentPage = 1;
       applyFilters();
     };
 
     window.setCatalogMaxPrice = function (val) {
       maxPrice = parseInt(val, 10);
-      if (priceDisplay) priceDisplay.textContent = `₹${maxPrice.toLocaleString('en-IN')}`;
+      currentPage = 1;
       applyFilters();
     };
 
@@ -2052,28 +2226,20 @@
       else if (newCurated && typeof newCurated === 'string') activeCurated = [newCurated];
       else activeCurated = [];
 
+      currentPage = 1;
       highlightCategoryPills();
-      highlightMetalButtons();
-      highlightSidebarCurated();
+      highlightPricePills();
       applyFilters();
 
       try {
         const url = new URL(window.location.href);
-        if (activeCategories.includes('all') || activeCategories.length === 0) {
-          url.searchParams.delete('category');
-        } else {
-          url.searchParams.set('category', activeCategories.join(','));
-        }
-        if (activeMetals.includes('all') || activeMetals.length === 0) {
-          url.searchParams.delete('metal');
-        } else {
-          url.searchParams.set('metal', activeMetals.join(','));
-        }
-        if (activeCurated.length === 0) {
-          url.searchParams.delete('curated');
-        } else {
-          url.searchParams.set('curated', activeCurated.join(','));
-        }
+        if (activeCategories.includes('all') || activeCategories.length === 0) url.searchParams.delete('category');
+        else url.searchParams.set('category', activeCategories.join(','));
+        if (activeMetals.includes('all') || activeMetals.length === 0) url.searchParams.delete('metal');
+        else url.searchParams.set('metal', activeMetals.join(','));
+        if (activeCurated.length === 0) url.searchParams.delete('curated');
+        else url.searchParams.set('curated', activeCurated.join(','));
+        url.searchParams.delete('page');
         window.history.replaceState({}, '', url.toString());
       } catch (e) {}
     };
@@ -2086,43 +2252,19 @@
       };
     };
 
-    function highlightSidebarCurated() {
-      const curBtns = document.querySelectorAll('[data-curated-filter]');
-      curBtns.forEach(btn => {
-        const key = btn.getAttribute('data-curated-filter');
-        const isMatch = activeCurated.includes(key);
-        if (isMatch) {
-          btn.className = 'w-full flex items-center justify-between px-2.5 py-1.5 rounded-lg text-xs transition-colors text-left cursor-pointer bg-[#61532E]/10 text-[#61532E] font-semibold';
-        } else {
-          btn.className = 'w-full flex items-center justify-between px-2.5 py-1.5 rounded-lg text-xs transition-colors text-left cursor-pointer text-stone-600 hover:bg-stone-50';
-        }
-      });
-    }
-
-    window.toggleSidebarCurated = function (key) {
-      if (activeCurated.includes(key)) {
-        activeCurated = activeCurated.filter(k => k !== key);
-      } else {
-        activeCurated.push(key);
-      }
-      highlightSidebarCurated();
-      applyFilters();
-    };
-
     window.resetCatalogFilters = function () {
       activeCategories = ['all'];
       activeCategory = 'all';
       activeMetals = ['all'];
       activeMetal = 'all';
+      activeCurated = [];
       activeFilter = 'all';
       maxPrice = 80000;
       activePriceRange = 'all';
       searchQuery = '';
+      currentPage = 1;
       if (searchInput) searchInput.value = '';
-      if (priceSlider) priceSlider.value = 80000;
-      if (priceDisplay) priceDisplay.textContent = '₹80,000';
       highlightCategoryPills();
-      highlightMetalButtons();
       highlightPricePills();
       applyFilters();
       applySort('featured');
@@ -2131,11 +2273,16 @@
         const url = new URL(window.location.href);
         url.searchParams.delete('category');
         url.searchParams.delete('metal');
+        url.searchParams.delete('curated');
+        url.searchParams.delete('search');
+        url.searchParams.delete('priceRange');
+        url.searchParams.delete('maxPrice');
+        url.searchParams.delete('page');
         window.history.replaceState({}, '', url.toString());
       } catch (e) {}
     };
 
-    // Category button click handlers
+    // Category button click handlers (Top category bar)
     function highlightCategoryPills() {
       const topPills = document.querySelectorAll('section.bg-white.border-b button');
       topPills.forEach(btn => {
@@ -2157,30 +2304,11 @@
           btn.className = 'px-3.5 py-1.5 rounded-full text-xs font-medium whitespace-nowrap transition-all cursor-pointer active:scale-95 bg-stone-100 hover:bg-stone-200/80 text-stone-700';
         }
       });
-
-      const sideCatButtons = document.querySelectorAll('aside button');
-      sideCatButtons.forEach(btn => {
-        const text = btn.textContent.trim().toLowerCase();
-        if (text.includes('all metals') || text.includes('silver') || text.includes('gold') || text.includes('rose')) return;
-        let isMatch = false;
-        if (activeCategory === 'all' && text.includes('all designs')) isMatch = true;
-        else if (activeCategory === 'bracelets' && text.includes('bracelet')) isMatch = true;
-        else if (activeCategory === 'necklaces' && text.includes('necklace')) isMatch = true;
-        else if (activeCategory === 'rings' && text.includes('ring')) isMatch = true;
-        else if (activeCategory === 'earrings' && text.includes('earring')) isMatch = true;
-        else if (activeCategory === 'complete_sets' && (text.includes('suite') || text.includes('set'))) isMatch = true;
-        else if (activeCategory === 'anklets' && text.includes('anklet')) isMatch = true;
-
-        if (isMatch) {
-          btn.className = 'w-full flex items-center justify-between px-2.5 py-1.5 rounded-lg text-xs transition-colors text-left cursor-pointer bg-[#61532E]/10 text-[#61532E] font-semibold';
-        } else {
-          btn.className = 'w-full flex items-center justify-between px-2.5 py-1.5 rounded-lg text-xs transition-colors text-left cursor-pointer text-stone-600 hover:bg-stone-50';
-        }
-      });
     }
 
-    const topPills = document.querySelectorAll('section.bg-white.border-b button');
-    topPills.forEach(btn => {
+    // Top Category Bar click binding
+    const topCategoryPills = document.querySelectorAll('section.bg-white.border-b button');
+    topCategoryPills.forEach(btn => {
       btn.onclick = function () {
         const text = btn.textContent.trim().toLowerCase();
         if (text.includes('all')) activeCategory = 'all';
@@ -2188,198 +2316,129 @@
         else if (text.includes('necklace')) activeCategory = 'necklaces';
         else if (text.includes('ring')) activeCategory = 'rings';
         else if (text.includes('earring')) activeCategory = 'earrings';
-        else if (text.includes('suite') || text.includes('set')) activeCategory = 'complete_sets';
+        else if (text.includes('gift sets') || text.includes('suites') || text.includes('suite')) activeCategory = 'complete_sets';
         else if (text.includes('chain')) activeCategory = 'necklaces';
         else if (text.includes('anklet')) activeCategory = 'anklets';
         else if (text.includes('bestseller')) activeCategory = 'bestseller';
         else activeCategory = text;
 
         activeCategories = [activeCategory];
+        currentPage = 1;
         highlightCategoryPills();
         applyFilters();
+
         try {
           const url = new URL(window.location.href);
           if (activeCategory === 'all') url.searchParams.delete('category');
           else url.searchParams.set('category', activeCategory);
+          url.searchParams.delete('page');
           window.history.replaceState({}, '', url.toString());
         } catch (e) {}
       };
     });
 
-    const sideCatButtons = document.querySelectorAll('aside button');
-    sideCatButtons.forEach(btn => {
-      const text = btn.textContent.trim().toLowerCase();
-      if (text.includes('all metals') || text.includes('silver') || text.includes('gold') || text.includes('rose')) return;
-      btn.onclick = function () {
-        if (text.includes('all designs')) activeCategory = 'all';
-        else if (text.includes('bracelet')) activeCategory = 'bracelets';
-        else if (text.includes('necklace')) activeCategory = 'necklaces';
-        else if (text.includes('ring')) activeCategory = 'rings';
-        else if (text.includes('earring')) activeCategory = 'earrings';
-        else if (text.includes('suite') || text.includes('set')) activeCategory = 'complete_sets';
-        else if (text.includes('chain')) activeCategory = 'necklaces';
-        else if (text.includes('anklet')) activeCategory = 'anklets';
-        else activeCategory = text;
-
-        highlightCategoryPills();
-        applyFilters();
-      };
-    });
-
-    // Sidebar Metal polish buttons
-    function highlightMetalButtons() {
-      const metalButtons = Array.from(document.querySelectorAll('aside button')).filter(btn => {
-        const t = btn.textContent.trim().toLowerCase();
-        return t.includes('all metals') || t.includes('silver') || t.includes('gold') || t.includes('rose');
-      });
-
-      metalButtons.forEach(btn => {
-        const t = btn.textContent.trim().toLowerCase();
-        let isMatch = false;
-        if (activeMetal === 'all' && t.includes('all metals')) isMatch = true;
-        else if (activeMetal === 'silver' && t.includes('silver')) isMatch = true;
-        else if (activeMetal === 'gold' && t.includes('gold') && !t.includes('rose')) isMatch = true;
-        else if (activeMetal === 'rose' && t.includes('rose')) isMatch = true;
-
-        if (isMatch) {
-          btn.className = 'w-full flex items-center justify-between px-2.5 py-1.5 rounded-lg text-xs transition-colors text-left cursor-pointer bg-[#61532E]/10 text-[#61532E] font-semibold';
-        } else {
-          btn.className = 'w-full flex items-center justify-between px-2.5 py-1.5 rounded-lg text-xs transition-colors text-left cursor-pointer text-stone-600 hover:bg-stone-50';
-        }
-      });
-    }
-
-    const metalButtons = Array.from(document.querySelectorAll('aside button')).filter(btn => {
-      const t = btn.textContent.trim().toLowerCase();
-      return t.includes('all metals') || t.includes('silver') || t.includes('gold') || t.includes('rose');
-    });
-
-    metalButtons.forEach(btn => {
-      btn.onclick = function () {
-        const t = btn.textContent.trim().toLowerCase();
-        if (t.includes('all metals')) activeMetal = 'all';
-        else if (t.includes('silver')) activeMetal = 'silver';
-        else if (t.includes('rose')) activeMetal = 'rose';
-        else if (t.includes('gold')) activeMetal = 'gold';
-
-        highlightMetalButtons();
-        applyFilters();
-      };
-    });
-
-    // Quick Price range buttons
+    // Price Pills Highlighting & Click Handling (Desktop & Mobile)
     function highlightPricePills() {
-      const priceButtons = document.querySelectorAll('main .flex.items-center.gap-1\\.5 button');
+      const priceButtons = document.querySelectorAll('#desktop-price-pills button, #mobile-price-pills button');
       priceButtons.forEach(btn => {
-        const t = btn.textContent.trim().toLowerCase();
-        if (!t.includes('price') && !t.includes('under') && !t.includes('3,000') && !t.includes('7,000') && !t.includes('15,000') && !t.includes('above')) return;
-        let isMatch = false;
-        if (activePriceRange === 'all' && t.includes('all prices')) isMatch = true;
-        else if (activePriceRange === 'under-3000' && t.includes('under')) isMatch = true;
-        else if (activePriceRange === '3000-7000' && t.includes('3,000')) isMatch = true;
-        else if (activePriceRange === '7000-15000' && t.includes('7,000')) isMatch = true;
-        else if (activePriceRange === '15000-30000' && t.includes('15,000')) isMatch = true;
-        else if (activePriceRange === 'above-30000' && t.includes('above')) isMatch = true;
-
+        const pr = btn.getAttribute('data-price-range') || '';
+        const isMatch = (pr === activePriceRange);
         if (isMatch) {
-          btn.className = 'px-3 py-1.5 rounded-xl text-xs transition-all cursor-pointer font-semibold bg-[#61532E] text-white shadow-2xs';
+          btn.className = 'px-3 py-1.5 rounded-xl text-xs transition-all cursor-pointer font-semibold whitespace-nowrap bg-[#61532E] text-white shadow-2xs shrink-0';
         } else {
-          btn.className = 'px-3 py-1.5 rounded-xl text-xs transition-all cursor-pointer font-medium bg-white hover:bg-[#FAF8F5] border border-[#CEBDA7] text-stone-700 hover:border-[#61532E]/30';
+          btn.className = 'px-3 py-1.5 rounded-xl text-xs transition-all cursor-pointer font-medium whitespace-nowrap bg-white hover:bg-[#FAF8F5] border border-[#CEBDA7] text-stone-700 hover:border-[#61532E]/30 shrink-0';
         }
       });
     }
 
-    const priceButtons = document.querySelectorAll('main .flex.items-center.gap-1\\.5 button');
+    const priceButtons = document.querySelectorAll('#desktop-price-pills button, #mobile-price-pills button');
     priceButtons.forEach(btn => {
-      const t = btn.textContent.trim().toLowerCase();
-      if (!t.includes('price') && !t.includes('under') && !t.includes('3,000') && !t.includes('7,000') && !t.includes('15,000') && !t.includes('above')) return;
       btn.onclick = function () {
-        if (t.includes('all prices')) activePriceRange = 'all';
-        else if (t.includes('under')) activePriceRange = 'under-3000';
-        else if (t.includes('3,000')) activePriceRange = '3000-7000';
-        else if (t.includes('7,000')) activePriceRange = '7000-15000';
-        else if (t.includes('15,000')) activePriceRange = '15000-30000';
-        else if (t.includes('above')) activePriceRange = 'above-30000';
-
+        const pr = btn.getAttribute('data-price-range') || 'all';
+        activePriceRange = pr;
+        currentPage = 1;
         highlightPricePills();
         applyFilters();
       };
     });
 
-    // Sort Dropdown
-    const sortButtons = document.querySelectorAll('button[aria-haspopup="listbox"]');
-    sortButtons.forEach(sortBtn => {
-      const container = sortBtn.parentElement;
-      if (!container) return;
+    // Sort Dropdown Controls
+    window.toggleDesktopSortMenu = function (e) {
+      if (e) e.stopPropagation();
+      const menu = document.getElementById('desktop-sort-dropdown');
+      const chev = document.getElementById('desktop-sort-chevron');
+      if (!menu) return;
+      const isHidden = menu.classList.contains('hidden');
+      // close mobile if open
+      const mobMenu = document.getElementById('mobile-sort-dropdown');
+      if (mobMenu) mobMenu.classList.add('hidden');
 
-      let sortMenu = container.querySelector('.catalog-sort-menu');
-      if (!sortMenu) {
-        sortMenu = document.createElement('div');
-        sortMenu.className = 'catalog-sort-menu hidden absolute right-0 mt-2 w-48 bg-white border border-[#CEBDA7] rounded-xl shadow-xl z-40 py-1 font-sans text-xs';
-        sortMenu.innerHTML = `
-          <button data-sort="featured" class="w-full text-left px-3.5 py-2 hover:bg-[#F6F3EE] hover:text-[#61532E] transition-colors font-medium text-stone-800">Featured Curated</button>
-          <button data-sort="price-low" class="w-full text-left px-3.5 py-2 hover:bg-[#F6F3EE] hover:text-[#61532E] transition-colors font-medium text-stone-800">Price: Low to High</button>
-          <button data-sort="price-high" class="w-full text-left px-3.5 py-2 hover:bg-[#F6F3EE] hover:text-[#61532E] transition-colors font-medium text-stone-800">Price: High to Low</button>
-          <button data-sort="rating" class="w-full text-left px-3.5 py-2 hover:bg-[#F6F3EE] hover:text-[#61532E] transition-colors font-medium text-stone-800">Customer Rating ★</button>
-          <button data-sort="newest" class="w-full text-left px-3.5 py-2 hover:bg-[#F6F3EE] hover:text-[#61532E] transition-colors font-medium text-stone-800">Newest Arrivals</button>
-        `;
-        container.appendChild(sortMenu);
-
-        sortMenu.querySelectorAll('button').forEach(item => {
-          item.onclick = function (e) {
-            e.stopPropagation();
-            const sKey = item.getAttribute('data-sort');
-            const label = item.textContent.trim();
-            const labelSpan = sortBtn.querySelector('.truncate') || sortBtn.querySelector('span');
-            if (labelSpan) labelSpan.textContent = label;
-            sortMenu.classList.add('hidden');
-            applySort(sKey);
-          };
-        });
+      if (isHidden) {
+        menu.classList.remove('hidden');
+        if (chev) chev.classList.add('rotate-180');
+      } else {
+        menu.classList.add('hidden');
+        if (chev) chev.classList.remove('rotate-180');
       }
+    };
 
-      sortBtn.onclick = function (e) {
-        e.stopPropagation();
-        document.querySelectorAll('.catalog-sort-menu').forEach(m => {
-          if (m !== sortMenu) m.classList.add('hidden');
-        });
-        sortMenu.classList.toggle('hidden');
-      };
+    window.toggleMobileSortMenu = function (e) {
+      if (e) e.stopPropagation();
+      const menu = document.getElementById('mobile-sort-dropdown');
+      const chev = document.getElementById('mobile-sort-chevron');
+      if (!menu) return;
+      const isHidden = menu.classList.contains('hidden');
+      const deskMenu = document.getElementById('desktop-sort-dropdown');
+      if (deskMenu) deskMenu.classList.add('hidden');
+
+      if (isHidden) {
+        menu.classList.remove('hidden');
+        if (chev) chev.classList.add('rotate-180');
+      } else {
+        menu.classList.add('hidden');
+        if (chev) chev.classList.remove('rotate-180');
+      }
+    };
+
+    window.setSortOption = function (sortKey) {
+      applySort(sortKey);
+      const deskMenu = document.getElementById('desktop-sort-dropdown');
+      if (deskMenu) deskMenu.classList.add('hidden');
+      const deskChev = document.getElementById('desktop-sort-chevron');
+      if (deskChev) deskChev.classList.remove('rotate-180');
+
+      const mobMenu = document.getElementById('mobile-sort-dropdown');
+      if (mobMenu) mobMenu.classList.add('hidden');
+      const mobChev = document.getElementById('mobile-sort-chevron');
+      if (mobChev) mobChev.classList.remove('rotate-180');
+    };
+
+    document.addEventListener('click', function (e) {
+      const deskWrap = document.getElementById('desktop-sort-wrapper');
+      if (deskWrap && !deskWrap.contains(e.target)) {
+        const menu = document.getElementById('desktop-sort-dropdown');
+        if (menu) menu.classList.add('hidden');
+        const chev = document.getElementById('desktop-sort-chevron');
+        if (chev) chev.classList.remove('rotate-180');
+      }
+      const mobWrap = document.getElementById('mobile-sort-wrapper');
+      if (mobWrap && !mobWrap.contains(e.target)) {
+        const menu = document.getElementById('mobile-sort-dropdown');
+        if (menu) menu.classList.add('hidden');
+        const chev = document.getElementById('mobile-sort-chevron');
+        if (chev) chev.classList.remove('rotate-180');
+      }
     });
-
-    document.addEventListener('click', () => {
-      document.querySelectorAll('.catalog-sort-menu').forEach(m => m.classList.add('hidden'));
-    });
-
-    // Mobile Filters Drawer Button
-    const mobileFilterBtn = document.querySelector('section.lg\\:hidden button:has(svg.lucide-sliders-horizontal)');
-    if (mobileFilterBtn) {
-      mobileFilterBtn.onclick = function () {
-          window.applyMobileCategory = function (cat) {
-    if (window.toggleMobileFilterCategory) {
-      window.toggleMobileFilterCategory(cat);
-    }
-  };
-
-  window.applyMobileMetal = function (metal) {
-    if (window.toggleMobileFilterMetal) {
-      window.toggleMobileFilterMetal(metal);
-    }
-  };
-
-  window.openMobileFilterModal();
-      };
-    }
 
     // Initial setup
     highlightCategoryPills();
-    highlightMetalButtons();
     highlightPricePills();
     applyFilters();
     if (currentSort !== 'featured') {
       applySort(currentSort);
     }
   }
+
 
   // Checkout Page initialization (Full 3-Step Interactive Experience matching React 1:1)
   function initCheckoutPage() {
@@ -2991,7 +3050,7 @@
     }
   };
 
-  setInterval(() => {
+  window.heroCarouselInterval = setInterval(() => {
     const next = (currentHeroSlide + 1) % 4;
     window.setHeroSlide(next);
   }, 5500);
@@ -4467,7 +4526,13 @@ window.toggleModalCuratedDropdown = function () {
 
       const summary = document.getElementById('modal-curated-summary');
       if (summary) {
-        summary.textContent = window._tempMobileCurated.size > 0 ? `${window._tempMobileCurated.size} selected` : 'Explore';
+        if (window._tempMobileCurated.size > 0) {
+          summary.textContent = `${window._tempMobileCurated.size} selected`;
+          summary.className = 'text-[9.5px] px-2 py-0.5 rounded-full bg-[#61532E]/10 text-[#61532E] font-semibold';
+        } else {
+          summary.textContent = '';
+          summary.className = 'hidden';
+        }
       }
     }
   };
@@ -4478,6 +4543,7 @@ window.toggleModalCuratedDropdown = function () {
     const curated = Array.from(window._tempMobileCurated);
     if (window.setCatalogFilterState) {
       window.setCatalogFilterState(cats, metals, curated);
+    if (window.setCatalogMaxPrice && window._modalMaxPrice) window.setCatalogMaxPrice(window._modalMaxPrice);
     }
     window.closeMobileFilterModal();
     if (window.showToast) {
@@ -4495,14 +4561,29 @@ window.toggleModalCuratedDropdown = function () {
     window.closeMobileFilterModal();
   };
 
-  window.openMobileFilterModal = function () {
+  
+  // Global filter modal open aliases
+  window.openFilterModal = function () {
+    if (window.openMobileFilterModal) window.openMobileFilterModal();
+  };
+  window.closeFilterModal = function () {
+    if (window.closeMobileFilterModal) window.closeMobileFilterModal();
+  };
+  window._modalMaxPrice = 80000;
+  window.setModalMaxPrice = function (val) {
+    window._modalMaxPrice = parseInt(val, 10);
+    const disp = document.getElementById('modal-budget-display');
+    if (disp) disp.textContent = '₹' + window._modalMaxPrice.toLocaleString('en-IN');
+  };
+
+window.openMobileFilterModal = function () {
     let m = document.getElementById('mobile-filter-modal');
     if (!m) {
       m = document.createElement('div');
       m.id = 'mobile-filter-modal';
-      m.className = 'fixed inset-0 z-50 bg-black/70 backdrop-blur-xs flex items-end sm:items-center justify-center font-sans';
+      m.className = 'fixed inset-0 z-50 bg-black/70 backdrop-blur-xs flex items-end sm:items-center justify-center font-sans p-2 sm:p-4 pb-16 sm:pb-4';
       m.innerHTML = `
-        <div class="bg-white w-full max-w-lg rounded-t-3xl sm:rounded-2xl p-6 pb-14 sm:pb-6 space-y-4 max-h-[88vh] overflow-y-auto no-scrollbar shadow-2xl border border-stone-200 animate-slide-up">
+        <div class="bg-white w-full max-w-lg rounded-3xl sm:rounded-2xl p-6 pb-8 sm:pb-6 space-y-4 max-h-[82vh] overflow-y-auto no-scrollbar shadow-2xl border border-stone-200 animate-slide-up mb-2 sm:mb-0">
           <div class="flex items-center justify-between pb-3 border-b border-stone-200">
             <div>
               <h3 class="font-serif text-lg font-normal text-stone-900">Filter Atelier Creations</h3>
@@ -4513,7 +4594,20 @@ window.toggleModalCuratedDropdown = function () {
             </button>
           </div>
           <div class="space-y-4 text-xs">
-            <!-- 1. Category -->
+            
+            <!-- 0. Max Budget Slider -->
+            <div class="rounded-xl border border-[#CEBDA7]/70 bg-[#FAF8F5]/80 p-3.5 shadow-2xs space-y-2 mb-3">
+              <div class="flex items-center justify-between">
+                <span class="font-bold text-stone-800 uppercase tracking-wider text-[11px]">Max Budget</span>
+                <span id="modal-budget-display" class="font-bold text-xs text-[#61532E]">₹80,000</span>
+              </div>
+              <input type="range" id="modal-budget-slider" min="1000" max="80000" step="1000" value="80000" oninput="window.setModalMaxPrice(this.value)" class="w-full accent-[#61532E] cursor-pointer" />
+              <div class="flex items-center justify-between text-[10px] text-stone-400 font-light">
+                <span>₹1,000</span>
+                <span>₹80,000+</span>
+              </div>
+            </div>
+<!-- 1. Category -->
             <div>
               <div class="flex items-center justify-between mb-2">
                 <span class="font-bold text-stone-800 uppercase tracking-wider">Category</span>
@@ -4546,18 +4640,15 @@ window.toggleModalCuratedDropdown = function () {
             <!-- 3. Curated Collections Accordion (Collapsible with smooth animation) -->
             <div class="rounded-xl border border-[#CEBDA7]/70 bg-[#FAF8F5]/80 overflow-hidden shadow-2xs">
               <button type="button" onclick="window.toggleModalCuratedDropdown()" class="w-full flex items-center justify-between p-3 text-left cursor-pointer active:bg-[#F6F3EE] transition-colors" aria-expanded="false">
-                <div class="flex items-center gap-2">
+                <div class="flex items-center gap-2.5">
                   <span class="w-3.5 h-3.5 rounded-full border border-white shrink-0 shadow-xs" style="background: linear-gradient(135deg, #F3E8D6 0%, #C5A059 50%, #61532E 100%);"></span>
                   <div>
-                    <div class="font-bold text-stone-900 uppercase tracking-wider text-[11px] flex items-center gap-1.5">
-                      <span>Curated Collections</span>
-                      <span class="text-[8px] px-1 py-0.2 rounded bg-white text-[#61532E] border border-[#CEBDA7]/80 font-bold uppercase">Dropdown</span>
-                    </div>
-                    <div class="text-[9.5px] text-stone-400 font-light">Tap to expand curated suites &amp; links</div>
+                    <span class="font-bold text-stone-900 uppercase tracking-wider text-[11px] block">Curated Collections</span>
+                    <span class="text-[9.5px] text-stone-400 font-light block mt-0.5">Tap to expand curated suites &amp; links</span>
                   </div>
                 </div>
                 <div class="flex items-center gap-1.5">
-                  <span class="text-[10px] text-[#61532E] font-medium" id="modal-curated-summary">Explore</span>
+                  <span class="hidden" id="modal-curated-summary"></span>
                   <svg class="w-4 h-4 text-stone-500 transition-transform duration-300" id="chevron-modal-curated" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"></path></svg>
                 </div>
               </button>

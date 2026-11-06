@@ -13,3 +13,4 @@ for ip in [
             with open(ip, 'w', encoding='utf-8') as f:
                 f.write(new_c)
             print(f"Busted CSS cache in {ip}")
+
