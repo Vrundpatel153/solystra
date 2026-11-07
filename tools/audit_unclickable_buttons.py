@@ -24,3 +24,4 @@ for hf in html_files:
                 curr = curr.parent
             if not has_action:
                 print(f"[{os.path.basename(hf)}] Missing action on: {el.name} -> '{el.get_text(strip=True)}'")
+

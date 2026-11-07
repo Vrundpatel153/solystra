@@ -12487,3 +12487,51 @@ video {
 #filter-modal-scroll::-webkit-scrollbar-thumb:hover {
   background: #61532E;
 }
+
+
+/* Hero Banner Enhancements */
+.hero-scrim-desktop {
+  background: linear-gradient(90deg, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.60) 45%, rgba(0,0,0,0.20) 75%, rgba(0,0,0,0) 100%) !important;
+}
+.hero-scrim-mobile {
+  background: linear-gradient(0deg, rgba(0,0,0,0.92) 0%, rgba(0,0,0,0.72) 40%, rgba(0,0,0,0.30) 70%, rgba(0,0,0,0) 100%) !important;
+}
+.hero-title-shadow {
+  text-shadow: 0 2px 10px rgba(0,0,0,0.95), 0 4px 20px rgba(0,0,0,0.85), 0 1px 3px rgba(0,0,0,0.9) !important;
+}
+.hero-desc-shadow {
+  text-shadow: 0 1px 6px rgba(0,0,0,0.95), 0 2px 14px rgba(0,0,0,0.85) !important;
+}
+.hero-tag-shadow {
+  text-shadow: 0 1px 4px rgba(0,0,0,0.95), 0 2px 8px rgba(0,0,0,0.75) !important;
+}
+.hero-cta-button {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 8px !important;
+  padding: 10px 22px !important;
+  font-size: 13px !important;
+  font-weight: 500 !important;
+  line-height: 1.2 !important;
+  border-radius: 8px !important;
+  background-color: #61532E !important;
+  color: #ffffff !important;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.45) !important;
+  transition: all 0.2s ease !important;
+  cursor: pointer !important;
+  border: 1px solid rgba(255,255,255,0.18) !important;
+  text-decoration: none !important;
+}
+.hero-cta-button:hover {
+  background-color: #3D341B !important;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.55) !important;
+  transform: translateY(-1px) !important;
+}
+@media (min-width: 640px) {
+  .hero-cta-button {
+    padding: 12px 32px !important;
+    font-size: 14px !important;
+    gap: 10px !important;
+  }
+}
