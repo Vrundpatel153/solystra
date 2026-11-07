@@ -38,3 +38,4 @@ with open(path, 'w', encoding='utf-8') as f:
     f.write(content)
 
 print("Updated all 4 slides in jewellery-design-html/index.html successfully!")
+

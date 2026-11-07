@@ -4,3 +4,4 @@ for name in ['banner_mob_1.webp', 'banner_mob_2.webp', 'banner_floral_portrait_m
     p = f'jewellery-design-html/solystra_assets/banners/{name}'
     im = Image.open(p)
     print(name, im.size)
+
