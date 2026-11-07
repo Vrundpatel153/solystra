@@ -154,3 +154,4 @@ async def main():
         print("\nAll small modal tests verified successfully!")
 
 asyncio.run(main())
+

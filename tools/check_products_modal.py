@@ -15,3 +15,4 @@ print("\nAny filter buttons in products.html:")
 for m in re.finditer(r'openFilterModal|openMobileFilterModal', html):
     pos = m.start()
     print("Call at", pos, ":", html[max(0, pos-100):pos+150])
+

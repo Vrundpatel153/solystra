@@ -9,3 +9,4 @@ section = text[start:end]
 for line in section.splitlines():
     if 'window.' in line or 'function' in line:
         print(line[:120])
+

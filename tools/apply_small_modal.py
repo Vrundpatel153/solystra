@@ -259,3 +259,4 @@ with open('jewellery-design-html/js/app.js', 'w', encoding='utf-8') as f:
     f.write(new_text)
 
 print("Applied ultra-compact, simple small centered modal to app.js!")
+
