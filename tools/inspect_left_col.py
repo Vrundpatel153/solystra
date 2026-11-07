@@ -6,3 +6,4 @@ pos_right = html.find('lg:col-span-5')
 
 print("Left column length:", pos_right - pos_start)
 print(html[pos_start:pos_right])
+

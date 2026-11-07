@@ -5,3 +5,4 @@ pos_right = html.find('lg:col-span-5')
 pos_tabs = html.find('SPECIFICATIONS & PURITY')
 
 print(html[pos_right+2000:pos_tabs])
+

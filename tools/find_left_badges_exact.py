@@ -10,3 +10,4 @@ pos_right_col = html.find('lg:col-span-5')
 left_block = html[pos_img:pos_right_col]
 print("Inside left column after pdp-main-img:\n")
 print(left_block)
+

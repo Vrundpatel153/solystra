@@ -6,3 +6,4 @@ pos_tabs = html.find('SPECIFICATIONS & PURITY')
 
 print("Right column structure snippet:\n")
 print(html[pos_right:pos_right+3500])
+

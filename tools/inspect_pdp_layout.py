@@ -15,3 +15,4 @@ grid_pos = html.find('grid lg:grid-cols', pos_main)
 if grid_pos == -1:
     grid_pos = html.find('grid-cols', pos_main)
 print("\nGrid section:\n", html[grid_pos-100:grid_pos+1000])
+

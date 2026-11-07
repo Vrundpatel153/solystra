@@ -38,3 +38,4 @@ with open('jewellery-design-html/product.html', 'w', encoding='utf-8') as f:
     f.write(new_html)
 
 print("Successfully removed unwanted badges from product.html!")
+

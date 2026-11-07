@@ -3,3 +3,4 @@ with open('jewellery-design-html/css/styles.css', 'r', encoding='utf-8') as f:
 
 pos = css.find('.pdp-fixed-gallery')
 print(css[pos-50:pos+350])
+

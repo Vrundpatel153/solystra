@@ -9,3 +9,4 @@ try:
             print(f" - {t.get('type')}: {t.get('title')} | {t.get('url')} (id: {t.get('id')})")
 except Exception as e:
     print("Error connecting to CDP:", e)
+
