@@ -1,0 +1,7 @@
+with open('jewellery-design-html/js/app.js', 'r', encoding='utf-8') as f:
+    text = f.read()
+
+import re
+matches = re.findall(r'editorialImg:\s*[\'"][^\'"]+[\'"]', text)
+for m in matches:
+    print(m)
