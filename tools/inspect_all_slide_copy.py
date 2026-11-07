@@ -14,3 +14,4 @@ for num, s_body in slides:
     if pic:
         srcs = re.findall(r'(?:srcset|src)="([^"]+)"', pic.group(1))
         print(f"  Images: {srcs}")
+

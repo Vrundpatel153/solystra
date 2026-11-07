@@ -41,3 +41,4 @@ make_mobile_crop(
     'scratch/drive_raw_downloads/Serene Profile with Floral Jewelry.png',
     os.path.join(BANNERS_DIR, 'banner_profile_floral_mob.webp')
 )
+

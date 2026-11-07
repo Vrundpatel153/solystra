@@ -15,3 +15,4 @@ for bf in banner_files:
     if os.path.exists(p):
         im = Image.open(p)
         print(f"{bf}: size={im.size}, mode={im.mode}")
+

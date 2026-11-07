@@ -19,3 +19,4 @@ pictures = re.findall(r'<picture[^>]*>.*?</picture>', c, re.DOTALL)
 print(f"Found {len(pictures)} picture tags:")
 for p in pictures:
     print(" -", p[:200])
+

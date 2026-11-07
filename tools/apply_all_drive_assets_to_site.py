@@ -83,3 +83,4 @@ if os.path.exists(cat_js_path):
     with open(cat_js_path, 'w', encoding='utf-8') as f:
         f.write(js_c)
     print("catalog.js updated!")
+

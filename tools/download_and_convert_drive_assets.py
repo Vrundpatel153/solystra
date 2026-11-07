@@ -117,3 +117,4 @@ for item in drive_data.get('hero-banner', []):
         convert_to_webp(raw_path, dest_path, quality=92)
 
 print("\nALL DRIVE IMAGES DOWNLOADED & CONVERTED TO CRISP HD WEBP SUCCESSFULLY!")
+

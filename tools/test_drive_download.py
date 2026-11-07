@@ -29,3 +29,4 @@ for u in urls_to_test:
                 break
     except Exception as e:
         print("Error:", e)
+

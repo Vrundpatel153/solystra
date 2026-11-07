@@ -11,3 +11,4 @@ keywords = ['banner', 'category', 'collection', 'folder', 'image', 'hero', '1g8z
 for s in strings:
     if any(k in s.lower() for k in keywords):
         print(' -', s)
+

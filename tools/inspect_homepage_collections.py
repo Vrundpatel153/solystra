@@ -26,3 +26,4 @@ if col_idx == -1:
 if col_idx != -1:
     print("\nFound collections in app.js:")
     print(js_c[col_idx:col_idx+1200])
+

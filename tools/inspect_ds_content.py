@@ -10,3 +10,4 @@ for idx in [1, 3]:
     for s in strings:
         if any(k in s.lower() for k in ['banner', 'category', 'collection', 'folder', 'image', 'hero', '1g8z', 'dsc', 'png', 'jpg', 'webp', 'pc', 'mobile', 'silver', 'quantrolab']):
             print(" ->", s)
+

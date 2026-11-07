@@ -958,7 +958,6 @@
     if (isCurrentlyOpen) {
       closeAccordion(subMenu, chevron);
     } else {
-      if (otherMenu) closeAccordion(otherMenu, otherChevron);
       openAccordion(subMenu, chevron);
     }
   };
