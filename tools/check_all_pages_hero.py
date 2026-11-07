@@ -7,3 +7,4 @@ for html_file in glob.glob('jewellery-design-html/*.html'):
     hero_matches = len(re.findall(r'hero-slide', content))
     cta_matches = len(re.findall(r'Shop|Explore|Discover', content))
     print(f"{html_file}: hero-slide={hero_matches}")
+

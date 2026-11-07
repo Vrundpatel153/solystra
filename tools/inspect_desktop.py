@@ -57,3 +57,4 @@ async def inspect_desktop():
             print(f"Desktop Slide {s_id}:", json.dumps(val, indent=2))
 
 asyncio.run(inspect_desktop())
+

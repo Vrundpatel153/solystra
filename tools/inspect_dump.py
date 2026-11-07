@@ -6,3 +6,4 @@ tags = re.findall(r'<section|<div id="[^"]+"', text)
 print("Tags found:", tags[:20])
 print("First 1000 chars:")
 print(text[:1000])
+

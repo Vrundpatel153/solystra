@@ -80,3 +80,4 @@ async def test_mobile():
         print("Mobile slides 0-3 captured cleanly!")
 
 asyncio.run(test_mobile())
+

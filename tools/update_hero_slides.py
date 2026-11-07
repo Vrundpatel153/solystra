@@ -75,3 +75,4 @@ else:
     with open('jewellery-design-html/index.html', 'w', encoding='utf-8') as f:
         f.write(new_text)
     print("Successfully updated jewellery-design-html/index.html hero slides!")
+

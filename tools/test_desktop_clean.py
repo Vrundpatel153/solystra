@@ -80,3 +80,4 @@ async def test_desktop():
         print("Desktop slides 0-3 captured cleanly!")
 
 asyncio.run(test_desktop())
+

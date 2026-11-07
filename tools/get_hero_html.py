@@ -11,3 +11,4 @@ if start_idx != -1 and end_idx != -1:
     print(hero_block)
 else:
     print('Could not find hero block!')
+

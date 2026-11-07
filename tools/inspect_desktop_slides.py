@@ -104,3 +104,4 @@ async def inspect_desktop():
         print("Done capturing 4 desktop slides.")
 
 asyncio.run(inspect_desktop())
+

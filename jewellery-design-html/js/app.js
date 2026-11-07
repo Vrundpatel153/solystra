@@ -3364,49 +3364,14 @@
   const STYLING_COMBOS = [
     {
       id: 'combo-1',
-      name: 'Amethyst Floral Blossom Set',
-      tag: 'ROSE GOLD VERMEIL',
-      desc: 'Handcrafted floral blossom necklace paired with matching petal drop earrings.',
-      editorialImg: 'solystra_assets/banners/banner_blush_tones_pc.webp',
-      imagePosition: 'object-[75%_center]',
-      items: [
-        {
-          id: 'c1-item-1',
-          productId: 'amethyst-bloom-necklace-set-925-sterling-silver',
-          type: 'NECKLACE',
-          name: 'Amethyst Bloom Floral Necklace',
-          metal: 'Rose Gold Vermeil • Handcrafted Setting',
-          price: 9585,
-          mrp: 11981,
-          image: 'solystra_assets/products/amethyst-bloom-necklace-set-925-sterling-silver/angle_1.webp',
-          hotspot: { x: 75.1, y: 55.0, pcX: 75.1, pcY: 55.0, label: 'Floral Blossom Necklace' }
-        },
-        {
-          id: 'c1-item-2',
-          productId: 'flora-band-hoops',
-          type: 'EARRINGS',
-          name: 'Blossom Petal Drop Earrings',
-          metal: 'Rose Gold Vermeil • Double-Micron Rhodium',
-          price: 2499,
-          mrp: 3499,
-          image: 'solystra_assets/products/flora-band-hoops/angle_1.webp',
-          hotspot: { x: 78.6, y: 27.1, pcX: 78.6, pcY: 27.1, label: 'Blossom Drop Earrings' }
-        }
-      ],
-      bundlePrice: 12084,
-      originalPrice: 15480,
-      savings: 3396
-    },
-    {
-      id: 'combo-2',
       name: 'Classic Solitaire Set',
       tag: 'PURE 925 STERLING SILVER',
       desc: 'Brilliant Austrian solitaire pendant paired with matching solitaire drop earrings.',
-      editorialImg: 'solystra_assets/banners/banner_pc_1.webp',
-      imagePosition: 'object-[72%_center]',
+      editorialImg: 'solystra_assets/curated/curated_look_combo2.webp',
+      imagePosition: 'object-center',
       items: [
         {
-          id: 'c2-item-1',
+          id: 'c1-item-1',
           productId: 'universal-embrace',
           type: 'NECKLACE',
           name: 'Universal Solitaire Drop Necklace',
@@ -3414,10 +3379,10 @@
           price: 2799,
           mrp: 3999,
           image: 'solystra_assets/products/unity-circle/angle_1.webp',
-          hotspot: { x: 32.3, y: 76.2, pcX: 46.1, pcY: 78.2, label: 'Solitaire Pendant Necklace' }
+          hotspot: { x: 50.5, y: 70.6, pcX: 51.3, pcY: 75.5, label: 'Solitaire Pendant Necklace' }
         },
         {
-          id: 'c2-item-2',
+          id: 'c1-item-2',
           productId: 'classic-knot-earrings',
           type: 'EARRINGS',
           name: 'Solitaire Drop Earrings',
@@ -3425,7 +3390,7 @@
           price: 2299,
           mrp: 3299,
           image: 'solystra_assets/products/classic-knot-earrings/angle_1.webp',
-          hotspot: { x: 42.7, y: 40.6, pcX: 53.6, pcY: 41.8, label: 'Solitaire Drop Earrings' }
+          hotspot: { x: 54.4, y: 50.6, pcX: 54.8, pcY: 47.6, label: 'Solitaire Drop Earrings' }
         }
       ],
       bundlePrice: 5098,
@@ -3433,43 +3398,32 @@
       savings: 2200
     },
     {
-      id: 'combo-3',
-      name: 'Gala Choker & Chandelier Set',
-      tag: 'FINE EVENING WEAR',
-      desc: 'Graduated tennis choker in pure silver paired with tiered chandelier drops.',
-      editorialImg: 'solystra_assets/generated/cocktail_glam.webp',
+      id: 'combo-2',
+      name: 'Golden Meadow 18K Gold Set',
+      tag: '18K GOLD VERMEIL',
+      desc: 'Inspired by blooming wildflowers: a graduated tennis choker with matching delicate floral drop earrings in 18K gold vermeil.',
+      editorialImg: 'solystra_assets/curated/curated_look_golden_meadow.webp',
       imagePosition: 'object-center',
       items: [
         {
-          id: 'c3-item-1',
+          id: 'c2-item-1',
           productId: 'golden-meadow-necklace-set-925-sterling-silver',
-          type: 'NECKLACE',
-          name: 'Grand Solitaire Tennis Choker',
-          metal: 'Pure 925 Silver • Graduated Tennis Links',
+          type: 'JEWELRY SUITE',
+          name: 'Golden Meadow Tennis Choker & Earrings Set in 18K Gold',
+          metal: '18K Gold Vermeil • AAA+ Austrian Solitaires',
           price: 5499,
           mrp: 7999,
           image: 'solystra_assets/products/golden-meadow-necklace-set-925-sterling-silver/angle_1.webp',
-          hotspot: { x: 52.5, y: 50.5, pcX: 52.5, pcY: 50.5, label: 'Graduated Tennis Choker' }
-        },
-        {
-          id: 'c3-item-2',
-          productId: 'greek-pattern-hoops',
-          type: 'EARRINGS',
-          name: 'Imperial Chandelier Drops',
-          metal: 'Pure 925 Silver • Multi-Tier Drops',
-          price: 3499,
-          mrp: 4999,
-          image: 'solystra_assets/products/greek-pattern-hoops/angle_1.webp',
-          hotspot: { x: 60.8, y: 34.5, pcX: 60.8, pcY: 34.5, label: 'Imperial Chandelier Drops' }
+          hotspot: { x: 54.4, y: 74.0, pcX: 53.2, pcY: 72.4, label: 'Golden Meadow Choker & Earrings Set' }
         }
       ],
-      bundlePrice: 8998,
-      originalPrice: 12998,
-      savings: 4000
+      bundlePrice: 5499,
+      originalPrice: 7999,
+      savings: 2500
     }
   ];
 
-  let currentComboIdx = 1; // Default to Classic Solitaire Set
+  let currentComboIdx = 0; // Default to Classic Solitaire Set
   let isComboSectionHovered = false;
   let activeHotspotItemId = null;
   let comboTimer = null;
@@ -3522,9 +3476,9 @@
               <!-- Small Luxury Pinpoint Button -->
               <button type="button"
                       data-pin-btn="${item.id}"
-                      class="w-3 h-3 sm:w-3.5 sm:h-3.5 rounded-full flex items-center justify-center transition-all duration-300 border border-[#D4AF37] shadow-sm cursor-pointer bg-[#61532E] hover:scale-125"
+                      class="w-3.5 h-3.5 rounded-full flex items-center justify-center transition-all duration-300 border border-[#D4AF37] shadow-sm cursor-pointer bg-[#61532E] hover:scale-125"
                       aria-label="View ${item.name}">
-                <span class="w-1 h-1 rounded-full bg-white shadow-xs pointer-events-none"></span>
+                <span class="w-1.5 h-1.5 rounded-full bg-white shadow-xs pointer-events-none"></span>
               </button>
 
               <!-- Interactive Luxury Tooltip Popover -->
@@ -3605,9 +3559,18 @@
               </span>
             </div>
 
-            <!-- 2 Equal-Height Matched Pieces Cards -->
+            <!-- Matched Pieces Cards -->
             <div class="space-y-2.5 mt-3.5">
               ${itemsHtml}
+              ${combo.items.length === 1 ? `
+                <div class="p-3.5 rounded-xl bg-[#FAF8F5] border border-[#CEBDA7]/70 text-stone-600 text-xs space-y-2 mt-2">
+                  <div class="flex items-center gap-1.5 text-[#61532E] font-bold text-[11px] uppercase tracking-wider">
+                    <svg class="w-3.5 h-3.5 text-[#61532E]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                    <span>Complete Atelier Gala Suite</span>
+                  </div>
+                  <p class="text-[11.5px] text-stone-500 leading-relaxed">Harmonized 18K gold vermeil graduated tennis choker and matching drop earrings suite, packaged in our signature velvet keepsake vault.</p>
+                </div>
+              ` : ''}
             </div>
           </div>
 
@@ -3629,7 +3592,7 @@
                 <path d="M3 6H21" stroke="url(#solystraChampagneGoldCombo)" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
                 <path d="M16 10C16 12.21 14.21 14 12 14C9.79 14 8 12.21 8 10" stroke="url(#solystraChampagneGoldCombo)" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
               </svg>
-              <span class="leading-none">Add Look to Bag</span>
+              <span class="leading-none">${combo.items.length === 1 ? 'Add Suite to Bag' : 'Add Look to Bag'}</span>
             </button>
           </div>
         </div>
@@ -3646,13 +3609,13 @@
           const btn = pin.querySelector('button');
           const popover = pin.querySelector('[data-popover]');
           if (pId === itemId) {
-            if (btn) btn.className = 'w-3 h-3 sm:w-3.5 sm:h-3.5 rounded-full flex items-center justify-center transition-all duration-300 border border-[#D4AF37] shadow-sm cursor-pointer scale-125 bg-[#61532E] ring-2 ring-[#D4AF37]';
+            if (btn) btn.className = 'w-3.5 h-3.5 rounded-full flex items-center justify-center transition-all duration-300 border border-[#D4AF37] shadow-sm cursor-pointer scale-125 bg-[#61532E] ring-2 ring-[#D4AF37]';
             if (popover) {
               popover.classList.remove('opacity-0', 'scale-95', 'invisible');
               popover.classList.add('opacity-100', 'scale-100', 'visible');
             }
           } else {
-            if (btn) btn.className = 'w-3 h-3 sm:w-3.5 sm:h-3.5 rounded-full flex items-center justify-center transition-all duration-300 border border-[#D4AF37] shadow-sm cursor-pointer bg-[#61532E] hover:scale-125';
+            if (btn) btn.className = 'w-3.5 h-3.5 rounded-full flex items-center justify-center transition-all duration-300 border border-[#D4AF37] shadow-sm cursor-pointer bg-[#61532E] hover:scale-125';
             if (popover) {
               popover.classList.remove('opacity-100', 'scale-100', 'visible');
               popover.classList.add('opacity-0', 'scale-95', 'invisible');
@@ -3727,7 +3690,8 @@
             }
             window.addToCart(prod, item.metal, null, '', 1);
           });
-          window.showToast('Curated Look Added', combo.name + ' (2 pieces) added to your private bag.');
+          const countDesc = combo.items.length === 1 ? 'Complete suite' : combo.items.length + ' pieces';
+          window.showToast('Curated Look Added', combo.name + ' (' + countDesc + ') added to your private bag.');
           window.openCartDrawer();
         });
       }
@@ -3752,8 +3716,8 @@
       }, 4800);
     }
 
-    // Initial render: start at Combo 2 (Classic Solitaire Set) or Combo 1
-    renderCombo(1);
+    // Initial render: start at first Combo (Classic Solitaire Set)
+    renderCombo(0);
     startComboTimer();
   }
 
