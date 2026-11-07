@@ -3366,7 +3366,6 @@
       id: 'combo-1',
       name: 'Classic Solitaire Set',
       tag: 'PURE 925 STERLING SILVER',
-      desc: 'Brilliant Austrian solitaire pendant paired with matching solitaire drop earrings.',
       editorialImg: 'solystra_assets/curated/curated_look_combo2.webp',
       items: [
         {
@@ -3400,19 +3399,18 @@
       id: 'combo-2',
       name: 'Golden Meadow 18K Gold Set',
       tag: '18K GOLD VERMEIL',
-      desc: 'Inspired by blooming wildflowers: a graduated tennis choker with matching delicate floral drop earrings in 18K gold vermeil.',
       editorialImg: 'solystra_assets/curated/curated_look_golden_meadow.webp',
       items: [
         {
           id: 'c2-item-1',
           productId: 'golden-meadow-necklace-set-925-sterling-silver',
           type: 'JEWELRY SUITE',
-          name: 'Golden Meadow Tennis Choker & Earrings Set in 18K Gold',
-          metal: '18K Gold Vermeil • AAA+ Austrian Solitaires',
+          name: 'Golden Meadow Tennis Choker & Earrings Set',
+          metal: 'Harmonized 18K Gold Vermeil Gala Suite',
           price: 5499,
           mrp: 7999,
           image: 'solystra_assets/products/golden-meadow-necklace-set-925-sterling-silver/angle_1.webp',
-          hotspot: { x: 35.8, y: 82.8, pcX: 35.8, pcY: 82.8, label: 'Golden Meadow Choker Suite' }
+          hotspot: { x: 50.6, y: 68.1, pcX: 50.6, pcY: 68.1, label: 'Golden Meadow Choker Suite' }
         }
       ],
       bundlePrice: 5499,
@@ -3457,11 +3455,9 @@
         if (!item.hotspot) return '';
         const pcX = item.hotspot.pcX !== undefined ? item.hotspot.pcX : item.hotspot.x;
         const pcY = item.hotspot.pcY !== undefined ? item.hotspot.pcY : item.hotspot.y;
-        const isBottom = (item.hotspot.y > 55 || pcY > 55);
-        const isRight = (item.hotspot.x > 60 || pcX > 60);
 
-        const popoverPos = (isBottom ? 'bottom-full mb-3' : 'top-full mt-3') + ' ' +
-                           (isRight ? 'right-0 sm:-right-4' : 'left-0 sm:-left-4');
+        // Centered tooltip above hotspot
+        const popoverPos = 'bottom-full mb-3 left-1/2 -translate-x-1/2';
 
         return `
           <div class="combo-hotspot-pin absolute -translate-x-1/2 -translate-y-1/2 z-20"
@@ -3503,11 +3499,11 @@
         `;
       }).join('');
 
-      // Build right-hand matched pieces HTML
+      // Build right-hand matched pieces HTML (Clean, spacious, professional)
       const itemsHtml = combo.items.map(item => `
         <div data-combo-item="${item.id}"
              data-product-id="${item.productId}"
-             class="flex items-center gap-3 p-3 rounded-xl transition-all cursor-pointer group border bg-[#FAF8F5]/80 border-[#CEBDA7] hover:border-[#61532E]/60 hover:bg-white hover:shadow-2xs"
+             class="flex items-center gap-3.5 p-3.5 rounded-xl transition-all cursor-pointer group border bg-[#FAF8F5]/80 border-[#CEBDA7] hover:border-[#61532E]/60 hover:bg-white hover:shadow-2xs"
              title="Click to view product details">
           <img src="${item.image}" alt="${item.name}" onerror="if(!this.dataset.err){this.dataset.err=1; this.src=this.src.endsWith('.webp')?this.src.replace('.webp','.png'):(this.src.endsWith('.png')?this.src.replace('.png','.jpg'):this.src.replace('.jpg','.webp'));}" class="w-14 h-14 rounded-xl object-cover border border-[#CEBDA7] bg-white shrink-0 group-hover:scale-105 transition-transform">
           <div class="flex-1 min-w-0">
@@ -3516,7 +3512,7 @@
               <span class="text-[8.5px] text-[#C5A059] opacity-0 group-hover:opacity-100 transition-opacity font-semibold">View Piece ↗</span>
             </div>
             <h4 class="font-serif text-sm font-normal text-stone-900 truncate group-hover:text-[#61532E] transition-colors mt-0.5">${item.name}</h4>
-            <div class="text-[11px] text-stone-500 truncate mt-0.5">${item.metal}</div>
+            <div class="text-[11.5px] text-stone-500 truncate mt-0.5">${item.metal}</div>
           </div>
           <div class="text-right shrink-0">
             <div class="font-bold text-sm text-[#61532E]">₹${item.price.toLocaleString('en-IN')}</div>
@@ -3525,69 +3521,51 @@
         </div>
       `).join('');
 
-      // Compact, Balanced 2-Column HTML (Fits comfortably on screen, Full Model & Jewelry Visible)
+      // Ultra-Clean, Professional Layout (Pure photo on left, refined luxury typography on right)
       grid.innerHTML = `
-        <!-- Left Column: Compact Portrait Image (Full Model & Jewelry 100% visible with natural 2:3 ratio) -->
+        <!-- Left Column: Pure Editorial Portrait (Clean, unwatermarked, full model & jewelry visible) -->
         <div class="lg:col-span-5 flex justify-center items-center">
           <div id="combo-left-col" class="h-[380px] xs:h-[410px] sm:h-[440px] aspect-[2/3] relative rounded-2xl overflow-hidden shadow-xs border border-[#CEBDA7] group bg-stone-900 select-none">
             <img src="${combo.editorialImg}" alt="${combo.name}" draggable="false" class="w-full h-full object-cover block pointer-events-none animate-fadeIn">
             
-            <!-- Subtle ambient gradient in bottom 20% -->
-            <div class="absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-black/80 via-black/25 to-transparent pointer-events-none"></div>
-
-            <!-- Glowing Hotspots -->
+            <!-- Glowing Hotspots (Pinpoint calibrated on jewelry) -->
             ${hotspotsHtml}
-
-            <!-- Bottom Editorial Tag & Name -->
-            <div class="absolute bottom-3 left-3 sm:bottom-3.5 sm:left-3.5 z-10 pointer-events-none max-w-[85%] sm:max-w-md">
-              <span class="text-[8px] xs:text-[8.5px] sm:text-[9.5px] uppercase tracking-widest text-[#E5C985] font-bold block mb-0.5 drop-shadow-xs">${combo.tag}</span>
-              <h3 class="font-serif text-xs xs:text-sm sm:text-base text-white font-normal leading-snug drop-shadow-sm whitespace-nowrap">${combo.name}</h3>
-            </div>
           </div>
         </div>
 
-        <!-- Right Column: Compact Matched Pieces & Bundle Pricing (Matching Height, Instant CTA visibility) -->
-        <div id="combo-right-col" class="lg:col-span-7 h-auto lg:h-[440px] flex flex-col justify-between bg-white rounded-2xl p-4 sm:p-5 lg:p-6 border border-[#CEBDA7] shadow-xs animate-fadeIn">
+        <!-- Right Column: Refined Luxury Card (Zero redundant text, perfectly balanced whitespace) -->
+        <div id="combo-right-col" class="lg:col-span-7 h-auto lg:h-[440px] flex flex-col justify-between bg-white rounded-2xl p-5 sm:p-6 lg:p-7 border border-[#CEBDA7] shadow-xs animate-fadeIn">
           <div>
-            <div class="flex items-start justify-between pb-3 border-b border-[#CEBDA7] gap-2">
+            <!-- Clean Header: Eyebrow + Title + Savings Badge -->
+            <div class="flex items-start justify-between pb-4 border-b border-[#CEBDA7] gap-2">
               <div>
                 <span class="text-[9.5px] text-[#61532E] uppercase tracking-widest font-bold block">${combo.tag}</span>
-                <h3 class="text-sm sm:text-base font-serif font-normal text-stone-900 leading-tight mt-0.5">${combo.name}</h3>
-                <p class="text-[11.5px] text-stone-500 mt-1 leading-relaxed hidden sm:block">${combo.desc}</p>
+                <h3 class="text-lg sm:text-xl font-serif font-normal text-stone-900 leading-tight mt-0.5">${combo.name}</h3>
               </div>
-              <span class="text-[10.5px] text-[#61532E] font-bold bg-[#61532E]/8 px-2.5 py-1 rounded-full border border-[#61532E]/20 uppercase tracking-wider shrink-0">
+              <span class="text-[11px] text-[#61532E] font-bold bg-[#61532E]/8 px-3 py-1 rounded-full border border-[#61532E]/20 uppercase tracking-wider shrink-0">
                 Save ₹${combo.savings.toLocaleString('en-IN')}
               </span>
             </div>
 
-            <!-- Matched Pieces Cards -->
-            <div class="space-y-2.5 mt-3">
+            <!-- Matched Pieces List -->
+            <div class="space-y-3 mt-4">
               ${itemsHtml}
-              ${combo.items.length === 1 ? `
-                <div class="p-3 rounded-xl bg-[#FAF8F5] border border-[#CEBDA7]/70 text-stone-600 text-xs space-y-1.5 mt-1.5">
-                  <div class="flex items-center gap-1.5 text-[#61532E] font-bold text-[10.5px] uppercase tracking-wider">
-                    <svg class="w-3.5 h-3.5 text-[#61532E]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                    <span>Complete Atelier Gala Suite</span>
-                  </div>
-                  <p class="text-[11px] text-stone-500 leading-relaxed">Harmonized 18K gold vermeil graduated tennis choker and matching drop earrings suite, packaged in our signature velvet keepsake vault with certified hallmark card.</p>
-                </div>
-              ` : ''}
             </div>
           </div>
 
-          <!-- Bundle Pricing & Action Bar -->
-          <div class="pt-3 border-t border-[#CEBDA7] flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 mt-3">
+          <!-- Bundle Pricing & Immediate CTA -->
+          <div class="pt-4 border-t border-[#CEBDA7] flex flex-col sm:flex-row sm:items-center justify-between gap-3 mt-4">
             <div>
               <div class="text-[9.5px] text-stone-500 uppercase tracking-wider font-semibold">Complete Set Price</div>
               <div class="flex items-baseline gap-2 mt-0.5">
-                <span class="font-serif text-xl sm:text-2xl font-bold text-[#61532E]">₹${combo.bundlePrice.toLocaleString('en-IN')}</span>
+                <span class="font-serif text-2xl font-bold text-[#61532E]">₹${combo.bundlePrice.toLocaleString('en-IN')}</span>
                 <span class="text-xs text-stone-400 line-through font-sans">₹${combo.originalPrice.toLocaleString('en-IN')}</span>
-                <span class="text-[9.5px] font-bold text-[#61532E] uppercase bg-[#61532E]/10 px-2 py-0.5 rounded-full border border-[#61532E]/20">Save ₹${combo.savings.toLocaleString('en-IN')}</span>
+                <span class="text-[10px] font-bold text-[#61532E] uppercase bg-[#61532E]/10 px-2 py-0.5 rounded-full border border-[#61532E]/20">Save ₹${combo.savings.toLocaleString('en-IN')}</span>
               </div>
             </div>
 
-            <button type="button" id="btn-add-combo-to-bag" class="px-6 py-2.5 bg-[#61532E] hover:bg-[#3D341B] text-white text-xs font-bold uppercase tracking-wider rounded-xl shadow-md hover:shadow-lg transition-all cursor-pointer flex items-center justify-center gap-2 active:scale-98 shrink-0 group">
-              <svg aria-hidden="true" class="w-3.5 h-3.5 shrink-0 -translate-y-px transition-transform group-hover:-translate-y-0.5" fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <button type="button" id="btn-add-combo-to-bag" class="px-7 py-3 bg-[#61532E] hover:bg-[#3D341B] text-white text-xs font-bold uppercase tracking-wider rounded-xl shadow-md hover:shadow-lg transition-all cursor-pointer flex items-center justify-center gap-2 active:scale-98 shrink-0 group">
+              <svg aria-hidden="true" class="w-4 h-4 shrink-0 -translate-y-px transition-transform group-hover:-translate-y-0.5" fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                 <defs><linearGradient id="solystraChampagneGoldCombo" x1="0%" x2="100%" y1="0%" y2="100%"><stop offset="0%" stop-color="#FFF6D8"></stop><stop offset="35%" stop-color="#F9E2A8"></stop><stop offset="70%" stop-color="#E5BE64"></stop><stop offset="100%" stop-color="#D4AF37"></stop></linearGradient></defs>
                 <path d="M6 2L3 6V20C3 21.1 3.9 22 5 22H19C20.1 22 21 21.1 21 20V6L18 2H6Z" stroke="url(#solystraChampagneGoldCombo)" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
                 <path d="M3 6H21" stroke="url(#solystraChampagneGoldCombo)" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
@@ -3627,9 +3605,9 @@
         allCards.forEach(card => {
           const cId = card.getAttribute('data-combo-item');
           if (cId === itemId) {
-            card.className = 'flex items-center gap-3 p-3 rounded-xl transition-all cursor-pointer group border bg-[#61532E]/5 border-[#61532E] shadow-sm ring-1 ring-[#61532E]/20';
+            card.className = 'flex items-center gap-3.5 p-3.5 rounded-xl transition-all cursor-pointer group border bg-[#61532E]/5 border-[#61532E] shadow-sm ring-1 ring-[#61532E]/20';
           } else {
-            card.className = 'flex items-center gap-3 p-3 rounded-xl transition-all cursor-pointer group border bg-[#FAF8F5]/80 border-[#CEBDA7] hover:border-[#61532E]/60 hover:bg-white hover:shadow-2xs';
+            card.className = 'flex items-center gap-3.5 p-3.5 rounded-xl transition-all cursor-pointer group border bg-[#FAF8F5]/80 border-[#CEBDA7] hover:border-[#61532E]/60 hover:bg-white hover:shadow-2xs';
           }
         });
       }
