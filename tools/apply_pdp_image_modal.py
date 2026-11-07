@@ -259,3 +259,4 @@ with open(app_js_path, 'w', encoding='utf-8') as f:
     f.write(new_content)
 
 print("Successfully replaced Lightbox Magnifier code in app.js!")
+

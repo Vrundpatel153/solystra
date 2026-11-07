@@ -1,0 +1,53 @@
+{
+  "desktop_initial": {
+    "scrollY": 0,
+    "hasUnwantedBadges": false,
+    "galleryTop": 180,
+    "galleryHeight": 593,
+    "rightColHeight": 1053
+  },
+  "desktop_sticky_450": {
+    "scrollY": 450.3999938964844,
+    "galleryTop": 98,
+    "isSticky": true
+  },
+  "desktop_modal_normal": {
+    "display": "flex",
+    "bodyOverflow": "hidden",
+    "dialog": {
+      "width": 672,
+      "height": 803,
+      "top": 48,
+      "left": 384
+    },
+    "img": {
+      "width": 622,
+      "height": 800
+    },
+    "counterText": "1 / 3"
+  },
+  "desktop_modal_next_angle": {
+    "src": "http://127.0.0.1:8090/assets/craftsmanship-atelier.webp",
+    "counterText": "2 / 3"
+  },
+  "desktop_theater_mode": {
+    "width": 1416,
+    "height": 1547
+  },
+  "desktop_post_close": {
+    "modalDisplay": "none",
+    "bodyOverflow": "",
+    "scrollY": 0
+  },
+  "mobile_modal_open": {
+    "display": "flex",
+    "bodyOverflow": "hidden",
+    "dialog": {
+      "width": 366,
+      "height": 478,
+      "top": 183,
+      "left": 12
+    },
+    "counterText": "2 / 3"
+  }
+}

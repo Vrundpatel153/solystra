@@ -15,3 +15,4 @@ if target in c:
     print("Bumped app.js version to v=pdp_modal_v1 in product.html!")
 else:
     print("Version string not matched!")
+

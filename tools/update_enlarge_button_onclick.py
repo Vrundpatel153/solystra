@@ -15,3 +15,4 @@ if target in c:
     print("Successfully added inline onclick to Enlarge Image button in product.html!")
 else:
     print("Target not found or already updated!")
+
