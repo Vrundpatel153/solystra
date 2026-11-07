@@ -97,3 +97,4 @@ def ensure_visible_chrome(urls=None):
 if __name__ == '__main__':
     target_urls = sys.argv[1:] if len(sys.argv) > 1 else ["http://127.0.0.1:8095/index.html"]
     ensure_visible_chrome(target_urls)
+
