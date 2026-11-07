@@ -56,3 +56,4 @@ def add_grid(crop, filename):
 
 add_grid(crop_gm_mob, "calib_gm_mob.jpg")
 add_grid(crop_gm_pc, "calib_gm_pc.jpg")
+

@@ -28,3 +28,4 @@ def add_grid(crop, filename):
 
 add_grid(crop_c2_mob, "calib_c2_mob.jpg")
 add_grid(crop_c2_pc, "calib_c2_pc.jpg")
+

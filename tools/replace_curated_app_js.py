@@ -378,3 +378,4 @@ if idx_start != -1 and idx_end != -1:
     print("Successfully replaced curated looks in app.js!")
 else:
     print("Failed to find start or end marker!")
+

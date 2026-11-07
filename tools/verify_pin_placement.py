@@ -37,3 +37,4 @@ draw_test_pin("calib_gm_mob.jpg", [
 draw_test_pin("calib_gm_pc.jpg", [
     {'x': 53.2, 'y': 72.4, 'label': 'Choker & Earrings Set'}
 ], "pin_test_gm_pc.jpg")
+

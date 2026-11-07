@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Hotspot Calibration Tool v2</title>
+<style>
+  body { font-family: sans-serif; background: #1a1a1a; color: #fff; padding: 20px; }
+  .row { display: flex; gap: 30px; margin-bottom: 40px; }
+  .box { border: 2px solid #C5A059; border-radius: 16px; overflow: hidden; position: relative; background: #000; }
+  .box-mob { width: 358px; height: 420px; }
+  .box-pc { width: 592px; height: 490px; }
+  img { width: 100%; height: 100%; object-fit: cover; object-position: center 58%; }
+  .pin {
+    position: absolute; width: 16px; height: 16px; border-radius: 50%;
+    background: #61532E; border: 2px solid #D4AF37; transform: translate(-50%, -50%);
+    pointer-events: none; box-shadow: 0 0 10px rgba(212,175,55,0.9); z-index: 10;
+  }
+  .pin::after {
+    content: ''; position: absolute; left: 4px; top: 4px; width: 4px; height: 4px;
+    border-radius: 50%; background: #fff;
+  }
+  .coord-display {
+    margin-top: 10px; font-family: monospace; font-size: 14px; color: #4ade80;
+  }
+</style>
+</head>
+<body>
+<h1>Hotspot Calibration Tool (Adjusted Height & Object Position)</h1>
+
+<h2>1. Combo 2 (Classic Solitaire Set: Necklace + Earrings)</h2>
+<div class="row">
+  <div>
+    <h3>Mobile View (358 x 420)</h3>
+    <div class="box box-mob" id="box-c2-mob">
+      <img src="solystra_assets/curated/curated_look_combo2.webp" id="img-c2-mob">
+    </div>
+    <div class="coord-display" id="coords-c2-mob">Click image to place pin</div>
+  </div>
+
+  <div>
+    <h3>Desktop View (592 x 490)</h3>
+    <div class="box box-pc" id="box-c2-pc">
+      <img src="solystra_assets/curated/curated_look_combo2.webp" id="img-c2-pc">
+    </div>
+    <div class="coord-display" id="coords-c2-pc">Click image to place pin</div>
+  </div>
+</div>
+
+<h2>2. Golden Meadow 18K Gold Set (Single Hotspot)</h2>
+<div class="row">
+  <div>
+    <h3>Mobile View (358 x 420)</h3>
+    <div class="box box-mob" id="box-gm-mob">
+      <img src="solystra_assets/curated/curated_look_golden_meadow.webp" id="img-gm-mob">
+    </div>
+    <div class="coord-display" id="coords-gm-mob">Click image to place pin</div>
+  </div>
+
+  <div>
+    <h3>Desktop View (592 x 490)</h3>
+    <div class="box box-pc" id="box-gm-pc">
+      <img src="solystra_assets/curated/curated_look_golden_meadow.webp" id="img-gm-pc">
+    </div>
+    <div class="coord-display" id="coords-gm-pc">Click image to place pin</div>
+  </div>
+</div>
+
+<script>
+function setupBox(boxId, displayId) {
+  const box = document.getElementById(boxId);
+  const display = document.getElementById(displayId);
+  box.addEventListener('click', (e) => {
+    const rect = box.getBoundingClientRect();
+    const xPct = ((e.clientX - rect.left) / rect.width * 100).toFixed(1);
+    const yPct = ((e.clientY - rect.top) / rect.height * 100).toFixed(1);
+    display.innerHTML += `<div>📍 x: <b>${xPct}%</b>, y: <b>${yPct}%</b></div>`;
+    
+    const pin = document.createElement('div');
+    pin.className = 'pin';
+    pin.style.left = xPct + '%';
+    pin.style.top = yPct + '%';
+    box.appendChild(pin);
+  });
+}
+setupBox('box-c2-mob', 'coords-c2-mob');
+setupBox('box-c2-pc', 'coords-c2-pc');
+setupBox('box-gm-mob', 'coords-gm-mob');
+setupBox('box-gm-pc', 'coords-gm-pc');
+</script>
+</body>
+</html>

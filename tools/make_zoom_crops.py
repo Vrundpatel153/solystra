@@ -23,3 +23,4 @@ crop_gm_choker = im_gm.crop((int(w_gm * 0.30), int(h_gm * 0.60), int(w_gm * 0.70
 crop_gm_choker.save('scratch/gm_choker_zoom.jpg')
 
 print("Zoom crops saved!")
+

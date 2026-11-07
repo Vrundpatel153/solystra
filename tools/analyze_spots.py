@@ -24,3 +24,4 @@ find_bright_spots('scratch/c2_earring_test.jpg', 'c2_earring')
 find_bright_spots('scratch/c2_neck_test.jpg', 'c2_neck')
 find_bright_spots('scratch/gm_ear_test.jpg', 'gm_ear')
 find_bright_spots('scratch/gm_choker_test.jpg', 'gm_choker')
+

@@ -41,3 +41,4 @@ analyze_box("calib_c2_mob.jpg", "C2 Mobile")
 analyze_box("calib_c2_pc.jpg", "C2 Desktop")
 analyze_box("calib_gm_mob.jpg", "GM Mobile")
 analyze_box("calib_gm_pc.jpg", "GM Desktop")
+

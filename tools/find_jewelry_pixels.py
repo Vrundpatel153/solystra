@@ -26,3 +26,4 @@ choker_crop_gm = im_gm.crop((int(w_gm * 0.35), int(h_gm * 0.70), int(w_gm * 0.65
 choker_crop_gm.save('scratch/gm_choker_test.jpg')
 
 print("Saved test crops for c2 and gm.")
+

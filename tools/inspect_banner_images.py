@@ -1,18 +1,16 @@
-import os
 from PIL import Image
+import os
 
-banner_files = [
-    'banner-1-pc.png',
-    'banner-1-mobile.png',
-    'banner-2-pc.png',
-    'banner2-mobile.png',
-    'Serene Floral Jewelry Portrait.png',
-    'Serene Profile with Floral Jewelry.png'
+files = [
+    'scratch/drive_downloads_new/banner-3-pc.png',
+    'scratch/drive_downloads_new/banner-3-mobile.png',
+    'scratch/drive_downloads_new/banner-4-pc.png',
+    'scratch/drive_downloads_new/banner-4-mobile.png'
 ]
 
-for bf in banner_files:
-    p = os.path.join('scratch/drive_raw_downloads', bf)
-    if os.path.exists(p):
-        im = Image.open(p)
-        print(f"{bf}: size={im.size}, mode={im.mode}")
-
+for f in files:
+    if os.path.exists(f):
+        im = Image.open(f)
+        print(f"{f}: size={im.size}, mode={im.mode}")
+    else:
+        print(f"Not found: {f}")

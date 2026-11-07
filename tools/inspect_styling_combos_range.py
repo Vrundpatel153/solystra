@@ -7,3 +7,4 @@ end_idx = text.find('let isComboSectionHovered = false;')
 print("Start idx:", start_idx)
 print("End idx:", end_idx)
 print(text[start_idx:end_idx])
+
