@@ -3368,7 +3368,6 @@
       tag: 'PURE 925 STERLING SILVER',
       desc: 'Brilliant Austrian solitaire pendant paired with matching solitaire drop earrings.',
       editorialImg: 'solystra_assets/curated/curated_look_combo2.webp',
-      imagePosition: 'object-center',
       items: [
         {
           id: 'c1-item-1',
@@ -3379,7 +3378,7 @@
           price: 2799,
           mrp: 3999,
           image: 'solystra_assets/products/unity-circle/angle_1.webp',
-          hotspot: { x: 50.5, y: 70.6, pcX: 51.3, pcY: 75.5, label: 'Solitaire Pendant Necklace' }
+          hotspot: { x: 42.7, y: 75.1, pcX: 42.7, pcY: 75.1, label: 'Solitaire Drop Necklace' }
         },
         {
           id: 'c1-item-2',
@@ -3390,7 +3389,7 @@
           price: 2299,
           mrp: 3299,
           image: 'solystra_assets/products/classic-knot-earrings/angle_1.webp',
-          hotspot: { x: 54.4, y: 50.6, pcX: 54.8, pcY: 47.6, label: 'Solitaire Drop Earrings' }
+          hotspot: { x: 65.0, y: 37.7, pcX: 65.0, pcY: 37.7, label: 'Solitaire Drop Earrings' }
         }
       ],
       bundlePrice: 5098,
@@ -3403,7 +3402,6 @@
       tag: '18K GOLD VERMEIL',
       desc: 'Inspired by blooming wildflowers: a graduated tennis choker with matching delicate floral drop earrings in 18K gold vermeil.',
       editorialImg: 'solystra_assets/curated/curated_look_golden_meadow.webp',
-      imagePosition: 'object-center',
       items: [
         {
           id: 'c2-item-1',
@@ -3414,7 +3412,7 @@
           price: 5499,
           mrp: 7999,
           image: 'solystra_assets/products/golden-meadow-necklace-set-925-sterling-silver/angle_1.webp',
-          hotspot: { x: 54.4, y: 74.0, pcX: 53.2, pcY: 72.4, label: 'Golden Meadow Choker & Earrings Set' }
+          hotspot: { x: 36.0, y: 84.5, pcX: 36.0, pcY: 84.5, label: 'Golden Meadow Choker Suite' }
         }
       ],
       bundlePrice: 5499,
@@ -3471,19 +3469,19 @@
                style="--dot-x-mob: ${item.hotspot.x}%; --dot-y-mob: ${item.hotspot.y}%; --dot-x-pc: ${pcX}%; --dot-y-pc: ${pcY}%;">
             <div class="relative group/hotspot cursor-pointer">
               <!-- Subtle micro pulse -->
-              <span class="absolute -inset-0.5 rounded-full bg-[#61532E]/35 animate-ping pointer-events-none"></span>
+              <span class="absolute -inset-1 rounded-full bg-[#61532E]/35 animate-ping pointer-events-none"></span>
 
               <!-- Small Luxury Pinpoint Button -->
               <button type="button"
                       data-pin-btn="${item.id}"
-                      class="w-3.5 h-3.5 rounded-full flex items-center justify-center transition-all duration-300 border border-[#D4AF37] shadow-sm cursor-pointer bg-[#61532E] hover:scale-125"
+                      class="w-4 h-4 rounded-full flex items-center justify-center transition-all duration-300 border border-[#D4AF37] shadow-sm cursor-pointer bg-[#61532E] hover:scale-125"
                       aria-label="View ${item.name}">
                 <span class="w-1.5 h-1.5 rounded-full bg-white shadow-xs pointer-events-none"></span>
               </button>
 
               <!-- Interactive Luxury Tooltip Popover -->
               <div data-popover="${item.id}"
-                   class="absolute z-30 transition-all duration-300 pointer-events-auto ${popoverPos} opacity-0 scale-95 invisible min-w-[210px] sm:min-w-[230px] p-2.5 rounded-xl bg-[#1C1819]/95 backdrop-blur-md border border-[#C5A059]/60 shadow-[0_15px_35px_rgba(0,0,0,0.6)]">
+                   class="absolute z-30 transition-all duration-300 pointer-events-auto ${popoverPos} opacity-0 scale-95 invisible min-w-[210px] sm:min-w-[240px] p-2.5 rounded-xl bg-[#1C1819]/95 backdrop-blur-md border border-[#C5A059]/60 shadow-[0_15px_35px_rgba(0,0,0,0.6)]">
                 <div class="flex items-center gap-2.5">
                   <img src="${item.image}" alt="${item.name}" onerror="if(!this.dataset.err){this.dataset.err=1; this.src=this.src.endsWith('.webp')?this.src.replace('.webp','.png'):(this.src.endsWith('.png')?this.src.replace('.png','.jpg'):this.src.replace('.jpg','.webp'));}" class="w-11 h-11 rounded-lg object-cover bg-white/10 border border-white/20 shrink-0">
                   <div class="flex-1 min-w-0 text-left">
@@ -3509,73 +3507,76 @@
       const itemsHtml = combo.items.map(item => `
         <div data-combo-item="${item.id}"
              data-product-id="${item.productId}"
-             class="flex items-center gap-3.5 p-3 rounded-xl transition-all cursor-pointer group border bg-[#FAF8F5]/80 border-[#CEBDA7] hover:border-[#61532E]/60 hover:bg-white hover:shadow-2xs"
+             class="flex items-center gap-3.5 p-3.5 rounded-xl transition-all cursor-pointer group border bg-[#FAF8F5]/80 border-[#CEBDA7] hover:border-[#61532E]/60 hover:bg-white hover:shadow-2xs"
              title="Click to view product details">
-          <img src="${item.image}" alt="${item.name}" onerror="if(!this.dataset.err){this.dataset.err=1; this.src=this.src.endsWith('.webp')?this.src.replace('.webp','.png'):(this.src.endsWith('.png')?this.src.replace('.png','.jpg'):this.src.replace('.jpg','.webp'));}" class="w-14 h-14 rounded-xl object-cover border border-[#CEBDA7] bg-white shrink-0 group-hover:scale-105 transition-transform">
+          <img src="${item.image}" alt="${item.name}" onerror="if(!this.dataset.err){this.dataset.err=1; this.src=this.src.endsWith('.webp')?this.src.replace('.webp','.png'):(this.src.endsWith('.png')?this.src.replace('.png','.jpg'):this.src.replace('.jpg','.webp'));}" class="w-16 h-16 rounded-xl object-cover border border-[#CEBDA7] bg-white shrink-0 group-hover:scale-105 transition-transform">
           <div class="flex-1 min-w-0">
             <div class="flex items-center gap-2">
               <span class="text-[9.5px] text-[#61532E] uppercase font-bold tracking-wider block">${item.type}</span>
               <span class="text-[9px] text-[#C5A059] opacity-0 group-hover:opacity-100 transition-opacity font-semibold">View Piece ↗</span>
             </div>
-            <h4 class="font-serif text-sm font-normal text-stone-900 truncate group-hover:text-[#61532E] transition-colors mt-0.5">${item.name}</h4>
-            <div class="text-[11px] text-stone-500 truncate mt-0.5">${item.metal}</div>
+            <h4 class="font-serif text-sm sm:text-base font-normal text-stone-900 truncate group-hover:text-[#61532E] transition-colors mt-0.5">${item.name}</h4>
+            <div class="text-[11.5px] text-stone-500 truncate mt-0.5">${item.metal}</div>
           </div>
           <div class="text-right shrink-0">
-            <div class="font-bold text-sm text-[#61532E]">₹${item.price.toLocaleString('en-IN')}</div>
-            <div class="text-[11px] text-stone-400 line-through">₹${item.mrp.toLocaleString('en-IN')}</div>
+            <div class="font-bold text-sm sm:text-base text-[#61532E]">₹${item.price.toLocaleString('en-IN')}</div>
+            <div class="text-xs text-stone-400 line-through">₹${item.mrp.toLocaleString('en-IN')}</div>
           </div>
         </div>
       `).join('');
 
-      // Complete 2-Column HTML
+      // Complete 2-Column HTML with Proportional Portrait Framing (Full Model & Full Jewelry Visible)
       grid.innerHTML = `
-        <!-- Left Column: Editorial Photo with Delicate Glowing Hotspots -->
-        <div id="combo-left-col" class="lg:col-span-6 h-[380px] sm:h-[420px] lg:h-[430px] relative rounded-2xl overflow-hidden shadow-xs border border-[#CEBDA7] group bg-stone-900 select-none">
-          <img src="${combo.editorialImg}" alt="${combo.name}" draggable="false" class="w-full h-full object-cover ${combo.imagePosition} group-hover:scale-102 transition-transform duration-700 block pointer-events-none animate-fadeIn">
-          
-          <!-- Subtle ambient gradient in bottom 20% -->
-          <div class="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-black/80 via-black/25 to-transparent pointer-events-none"></div>
+        <!-- Left Column: Editorial Photo (aspect-[2/3] ensures 100% full model and jewelry view with ZERO crop) -->
+        <div class="lg:col-span-5 flex justify-center">
+          <div id="combo-left-col" class="w-full max-w-[420px] aspect-[2/3] relative rounded-2xl overflow-hidden shadow-xs border border-[#CEBDA7] group bg-stone-900 select-none">
+            <img src="${combo.editorialImg}" alt="${combo.name}" draggable="false" class="w-full h-full object-cover block pointer-events-none animate-fadeIn">
+            
+            <!-- Subtle ambient gradient in bottom 20% -->
+            <div class="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-black/80 via-black/25 to-transparent pointer-events-none"></div>
 
-          <!-- Glowing Hotspots -->
-          ${hotspotsHtml}
+            <!-- Glowing Hotspots -->
+            ${hotspotsHtml}
 
-          <!-- Bottom Editorial Tag & Name -->
-          <div class="absolute bottom-3 left-3 sm:bottom-4 sm:left-4 z-10 pointer-events-none max-w-[85%] sm:max-w-md">
-            <span class="text-[8px] xs:text-[9px] sm:text-[10px] uppercase tracking-widest text-[#E5C985] font-bold block mb-0.5 drop-shadow-xs">${combo.tag}</span>
-            <h3 class="font-serif text-sm xs:text-base sm:text-xl text-white font-normal leading-snug drop-shadow-sm whitespace-nowrap">${combo.name}</h3>
+            <!-- Bottom Editorial Tag & Name -->
+            <div class="absolute bottom-3.5 left-3.5 sm:bottom-4 sm:left-4 z-10 pointer-events-none max-w-[85%] sm:max-w-md">
+              <span class="text-[8.5px] xs:text-[9.5px] sm:text-[10px] uppercase tracking-widest text-[#E5C985] font-bold block mb-0.5 drop-shadow-xs">${combo.tag}</span>
+              <h3 class="font-serif text-sm xs:text-base sm:text-lg text-white font-normal leading-snug drop-shadow-sm whitespace-nowrap">${combo.name}</h3>
+            </div>
           </div>
         </div>
 
         <!-- Right Column: Matched Pieces & Bundle Pricing -->
-        <div id="combo-right-col" class="lg:col-span-6 h-[380px] sm:h-[420px] lg:h-[430px] flex flex-col justify-between bg-white rounded-2xl p-5 sm:p-6 border border-[#CEBDA7] shadow-xs animate-fadeIn">
+        <div id="combo-right-col" class="lg:col-span-7 flex flex-col justify-between bg-white rounded-2xl p-5 sm:p-7 border border-[#CEBDA7] shadow-xs animate-fadeIn self-stretch">
           <div>
-            <div class="flex items-start justify-between pb-3 border-b border-[#CEBDA7] gap-2">
+            <div class="flex items-start justify-between pb-3.5 border-b border-[#CEBDA7] gap-2">
               <div>
-                <span class="text-[9.5px] text-[#61532E] uppercase tracking-widest font-bold block">${combo.tag}</span>
-                <h3 class="text-sm sm:text-base font-serif font-normal text-stone-900 leading-tight mt-0.5">${combo.name}</h3>
+                <span class="text-[10px] text-[#61532E] uppercase tracking-widest font-bold block">${combo.tag}</span>
+                <h3 class="text-base sm:text-lg font-serif font-normal text-stone-900 leading-tight mt-0.5">${combo.name}</h3>
+                <p class="text-xs text-stone-500 mt-1 leading-relaxed hidden sm:block">${combo.desc}</p>
               </div>
-              <span class="text-[10.5px] text-[#61532E] font-bold bg-[#61532E]/8 px-2.5 py-1 rounded-full border border-[#61532E]/20 uppercase tracking-wider shrink-0">
+              <span class="text-[11px] text-[#61532E] font-bold bg-[#61532E]/8 px-3 py-1 rounded-full border border-[#61532E]/20 uppercase tracking-wider shrink-0">
                 Save ₹${combo.savings.toLocaleString('en-IN')}
               </span>
             </div>
 
             <!-- Matched Pieces Cards -->
-            <div class="space-y-2.5 mt-3.5">
+            <div class="space-y-3 mt-4">
               ${itemsHtml}
               ${combo.items.length === 1 ? `
-                <div class="p-3.5 rounded-xl bg-[#FAF8F5] border border-[#CEBDA7]/70 text-stone-600 text-xs space-y-2 mt-2">
+                <div class="p-4 rounded-xl bg-[#FAF8F5] border border-[#CEBDA7]/70 text-stone-600 text-xs space-y-2 mt-2">
                   <div class="flex items-center gap-1.5 text-[#61532E] font-bold text-[11px] uppercase tracking-wider">
-                    <svg class="w-3.5 h-3.5 text-[#61532E]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                    <svg class="w-4 h-4 text-[#61532E]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
                     <span>Complete Atelier Gala Suite</span>
                   </div>
-                  <p class="text-[11.5px] text-stone-500 leading-relaxed">Harmonized 18K gold vermeil graduated tennis choker and matching drop earrings suite, packaged in our signature velvet keepsake vault.</p>
+                  <p class="text-[11.5px] text-stone-500 leading-relaxed">Harmonized 18K gold vermeil graduated tennis choker and matching drop earrings suite, packaged in our signature velvet keepsake vault with certified hallmark card.</p>
                 </div>
               ` : ''}
             </div>
           </div>
 
           <!-- Bundle Pricing & Action Bar -->
-          <div class="pt-3.5 mt-3 border-t border-[#CEBDA7] flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+          <div class="pt-4 border-t border-[#CEBDA7] flex flex-col sm:flex-row sm:items-center justify-between gap-3 mt-4">
             <div>
               <div class="text-[10px] text-stone-500 uppercase tracking-wider font-semibold">Complete Set Price</div>
               <div class="flex items-baseline gap-2 mt-0.5">
@@ -3585,7 +3586,7 @@
               </div>
             </div>
 
-            <button type="button" id="btn-add-combo-to-bag" class="px-6 py-2.5 bg-[#61532E] hover:bg-[#3D341B] text-white text-xs font-bold uppercase tracking-wider rounded-xl shadow-md hover:shadow-lg transition-all cursor-pointer flex items-center justify-center gap-2 active:scale-98 shrink-0 group">
+            <button type="button" id="btn-add-combo-to-bag" class="px-7 py-3 bg-[#61532E] hover:bg-[#3D341B] text-white text-xs font-bold uppercase tracking-wider rounded-xl shadow-md hover:shadow-lg transition-all cursor-pointer flex items-center justify-center gap-2 active:scale-98 shrink-0 group">
               <svg aria-hidden="true" class="w-4 h-4 shrink-0 -translate-y-px transition-transform group-hover:-translate-y-0.5" fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                 <defs><linearGradient id="solystraChampagneGoldCombo" x1="0%" x2="100%" y1="0%" y2="100%"><stop offset="0%" stop-color="#FFF6D8"></stop><stop offset="35%" stop-color="#F9E2A8"></stop><stop offset="70%" stop-color="#E5BE64"></stop><stop offset="100%" stop-color="#D4AF37"></stop></linearGradient></defs>
                 <path d="M6 2L3 6V20C3 21.1 3.9 22 5 22H19C20.1 22 21 21.1 21 20V6L18 2H6Z" stroke="url(#solystraChampagneGoldCombo)" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
@@ -3609,13 +3610,13 @@
           const btn = pin.querySelector('button');
           const popover = pin.querySelector('[data-popover]');
           if (pId === itemId) {
-            if (btn) btn.className = 'w-3.5 h-3.5 rounded-full flex items-center justify-center transition-all duration-300 border border-[#D4AF37] shadow-sm cursor-pointer scale-125 bg-[#61532E] ring-2 ring-[#D4AF37]';
+            if (btn) btn.className = 'w-4 h-4 rounded-full flex items-center justify-center transition-all duration-300 border border-[#D4AF37] shadow-sm cursor-pointer scale-125 bg-[#61532E] ring-2 ring-[#D4AF37]';
             if (popover) {
               popover.classList.remove('opacity-0', 'scale-95', 'invisible');
               popover.classList.add('opacity-100', 'scale-100', 'visible');
             }
           } else {
-            if (btn) btn.className = 'w-3.5 h-3.5 rounded-full flex items-center justify-center transition-all duration-300 border border-[#D4AF37] shadow-sm cursor-pointer bg-[#61532E] hover:scale-125';
+            if (btn) btn.className = 'w-4 h-4 rounded-full flex items-center justify-center transition-all duration-300 border border-[#D4AF37] shadow-sm cursor-pointer bg-[#61532E] hover:scale-125';
             if (popover) {
               popover.classList.remove('opacity-100', 'scale-100', 'visible');
               popover.classList.add('opacity-0', 'scale-95', 'invisible');
@@ -3626,9 +3627,9 @@
         allCards.forEach(card => {
           const cId = card.getAttribute('data-combo-item');
           if (cId === itemId) {
-            card.className = 'flex items-center gap-3.5 p-3 rounded-xl transition-all cursor-pointer group border bg-[#61532E]/5 border-[#61532E] shadow-sm ring-1 ring-[#61532E]/20';
+            card.className = 'flex items-center gap-3.5 p-3.5 rounded-xl transition-all cursor-pointer group border bg-[#61532E]/5 border-[#61532E] shadow-sm ring-1 ring-[#61532E]/20';
           } else {
-            card.className = 'flex items-center gap-3.5 p-3 rounded-xl transition-all cursor-pointer group border bg-[#FAF8F5]/80 border-[#CEBDA7] hover:border-[#61532E]/60 hover:bg-white hover:shadow-2xs';
+            card.className = 'flex items-center gap-3.5 p-3.5 rounded-xl transition-all cursor-pointer group border bg-[#FAF8F5]/80 border-[#CEBDA7] hover:border-[#61532E]/60 hover:bg-white hover:shadow-2xs';
           }
         });
       }
@@ -3720,6 +3721,7 @@
     renderCombo(0);
     startComboTimer();
   }
+
 
   /* ==========================================================================
      Newly Launched & Product Carousels Loop & Drag Engine
